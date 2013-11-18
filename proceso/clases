@@ -1,0 +1,42 @@
+User
+	-signup(recibe array con la info de usuario)
+	-login(user, passs, token)
+	-logout(user)
+
+Pet
+	-create(array con info de la mascota)
+	-delete(id_pet)
+
+
+Inbox
+	-send(array->from, to, date, msg)
+	-read(id_user)
+
+Blog
+	-post(array->id_user, title, content, date)
+	-delete(id_post)
+
+
+Project
+	-post(array->title, content, pics[])
+	-delete(id_project)
+
+VetTalk
+	-post(array->id_user, title, content, date)
+	-delete(id_vettalk)
+
+Tribute
+	-post(array->title, post, picture, id_pet??)
+	-delete(id_tribute)
+
+-------
+
+Pic
+	-upload(array)
+	-delete(array?)
+
+Video
+	-upload(video)
+	-delete(id_video)
+
+Orgs???

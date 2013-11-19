@@ -1,9 +1,0 @@
-Agregar presupuesto
-
-Campo para fecha
-
-Campo para firmar x2
-
-Agregar que desde el momento en q paga empieza a correr el tiempo.
-
-

@@ -1,0 +1,44 @@
+
+
+1) Las fotos q corresponden a las tablas:
+                             		- Users 
+					- Pets
+                             		- Projects
+			     		- Blog
+			     		- Tribute
+					- Vet talk
+					- Organisations
+			    	        - Blog
+					- Video (thumbnails)
+
+Deberian agruparse en la tabla "Pics" y luego categorizarlas o tendria cada una de estas tablas su propia "Pic"?
+Lo dejo como estaba para no marear. Si te parece q todo a pic, avisame y veo como lo haria.
+
+				
+					-----------------------------------------------
+
+
+2) "Organizaciones" funcionaria de la misma forma q "Projects". Un usuario puede publicar una o varias, 
+   pero cada publicacion solo es publicada por un usuario. Seria 1 a N. Creo....
+
+					-----------------------------------------------
+
+3) Vet talk: 
+	    - preguntas y respuestas
+
+Seria como en inbox?
+Usuarios contra usuarios?
+Nueva tabla?
+
+					-----------------------------------------------
+
+4) Comments: 
+	    No me queda claro aca como relacionarlo. FK usuarios y FK tribute?
+	    Me acorde q habias dicho facebook para esto. Dejo la pregunta en caso de q sirva para algo. Desestimala si no...
+
+					-----------------------------------------------
+
+5) Advertisements:
+ 	          Agregue la tabla sin atributos ya q no sabemos como los vamos a administrar. Mire un poco el de inkedin....
+
+

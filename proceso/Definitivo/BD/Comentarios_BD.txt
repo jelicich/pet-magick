@@ -42,3 +42,12 @@ Nueva tabla?
  	          Agregue la tabla sin atributos ya q no sabemos como los vamos a administrar. Mire un poco el de inkedin....
 
 
+6) Corregi la BD como la mandaste:
+				  En tabla USERS y TRIBUTES el problema estaba en los campos RANGE y TO respectivamente. 
+				  Luego de probar de todo, solo andubo cuando le cambie el nombre. 
+				  En COMMENTS era una boludes, un UNSIGNED en campo texto.
+
+7) Lo de las imgs no me termina de quedar claro como dijimos q lo ibamos a hacer. Si queres mandame un comentario a ver si se me alcara y le busco la vuelta hasta armarlo.
+				
+
+

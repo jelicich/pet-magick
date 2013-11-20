@@ -1,7 +1,8 @@
-info:
-base de datos pet magick
+Info de la base de datos.
 
-Nombre:
+Datos para usar en php (datos de conexion, en doctrine no me acuerdo donde van, pero son los datos q poniamos en la funcion "conectar(bd,usr,pass)")
+
+Nombre de la base:
 	idomy_11076335_pet
 
 User:
@@ -10,12 +11,14 @@ User:
 Password:
 	32982502
 
+
 Hostname (no hace falta creo ya ni me acuerdo):
 	sql311.idomyweb.com
 
 
+Datos para entrar a administrar la base desde el panel de control:
 
-Para entrar a editar la base:
+Ir a:
 	http://cpanel.idomyweb.com
 
 Usuario: 
@@ -23,3 +26,6 @@ Usuario:
 
 Password:
 	32982502
+
+Una vez adentro esta el botón para entrar a PHPMYADMIN y tambien MySQL DATABASES que es para borrar, o crear bases nuevas.
+

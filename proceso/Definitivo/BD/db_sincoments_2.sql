@@ -59,12 +59,13 @@ CREATE TABLE users(
 	LASTNAME VARCHAR(45) NOT NULL,
 	NICKNAME VARCHAR(45) NOT NULL UNIQUE,
 	EMAIL VARCHAR(45) NOT NULL UNIQUE,
-	PASSWORD VARCHAR(45) NOT NULL,
+	PASSWORD CHAR(40) NOT NULL,
 	ABOUT VARCHAR(45),
 	PIC_ID INT UNSIGNED, /*Foto de perfil q es una relacion directa entre user y pics*/
 	ALBUM_ID INT UNSIGNED, /*fotos subidas al album q es la relacion entre users y albums*/
 	RANK TINYINT(1) UNSIGNED NOT NULL, /* Aca probe de todo y solo funciono cuando cambie RANGE x RANGO. Parece ser q el problema es el nombre, raro... */
 	CITY_ID INT UNSIGNED NOT NULL,
+	TOKEN CHAR(40) UNSIGNED,
 	
 	FOREIGN KEY(PIC_ID) REFERENCES pics(ID_PIC),
 	FOREIGN KEY(ALBUM_ID) REFERENCES albums(ID_ALBUM),

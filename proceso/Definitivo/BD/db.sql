@@ -47,7 +47,6 @@ CREATE TABLE users(
 	FOREIGN KEY(CITY_ID) REFERENCES cities(ID_CITY)
 );
 
-
 /* ---------------- */
 CREATE TABLE animal_categories(
 	ID_ANIMAL_CATEGORY INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
@@ -149,13 +148,13 @@ CREATE TABLE pics(
 	/* Aca irian todos los FK de las tablas q tienen un campo para pic si es que queremos manejar TODAS las fotos desde aca, los FK NO llevan not null */
 );
 
-
 /* ---------------- */
 CREATE TABLE videos(
 	ID_VIDEO INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
 	VIDEO CHAR(30) NOT NULL,
 	TITLE VARCHAR(100) NOT NULL,
 	CAPTION VARCHAR(300) NOT NULL,
+	THUMBNAIL CHAR(30) NOT NULL,
 	DATE DATE NOT NULL,
 	PET_ID INT UNSIGNED,
 	FOREIGN KEY(PET_ID) REFERENCES pets(ID_PET)
@@ -174,7 +173,6 @@ CREATE TABLE messages(
 	FOREIGN KEY(FROM_USER_ID) REFERENCES users(ID_USER),
 	FOREIGN KEY(TO_USER_ID) REFERENCES users(ID_USER)
 );
-
 
 /* ---------------- */ 
 CREATE TABLE ads(

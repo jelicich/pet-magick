@@ -1,0 +1,14 @@
+info:
+base de datos pet magick
+
+Nombre:
+	idomy_11076335_pet
+
+User:
+	idomy_11076335
+
+Password:
+	32982502
+
+Hostname (no hace falta creo ya ni me acuerdo):
+	sql311.idomyweb.com

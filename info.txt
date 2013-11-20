@@ -12,3 +12,14 @@ Password:
 
 Hostname (no hace falta creo ya ni me acuerdo):
 	sql311.idomyweb.com
+
+
+
+Para entrar a editar la base:
+	http://cpanel.idomyweb.com
+
+Usuario: 
+	idomy_11076335
+
+Password:
+	32982502

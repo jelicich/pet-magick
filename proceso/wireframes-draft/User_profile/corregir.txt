@@ -1,0 +1,25 @@
+Todos 
+	- inbox %
+	- Chequear TODOS los pop ups %
+2- 
+	- leave message %
+	- view my tributes * %
+7- 
+	- Ventana modal
+9- 
+	- Advertisement
+	- More categories
+
+1(edit) *
+	- delete picture
+2(edit) *
+	- Reahcer y convinar con 4 (edit) con botones "Add", "edit" y "delete" en cada pet.
+
+
+FALTA
+-----
+
+- Back-end administrador e invitados (diseno y funcionalidades)
+- Inbox
+- Groups
+

@@ -65,7 +65,7 @@ CREATE TABLE users(
 	ALBUM_ID INT UNSIGNED, /*fotos subidas al album q es la relacion entre users y albums*/
 	RANK TINYINT(1) UNSIGNED NOT NULL, /* Aca probe de todo y solo funciono cuando cambie RANGE x RANGO. Parece ser q el problema es el nombre, raro... */
 	CITY_ID INT UNSIGNED NOT NULL,
-	TOKEN CHAR(40) UNSIGNED,
+	TOKEN CHAR(40),
 	
 	FOREIGN KEY(PIC_ID) REFERENCES pics(ID_PIC),
 	FOREIGN KEY(ALBUM_ID) REFERENCES albums(ID_ALBUM),

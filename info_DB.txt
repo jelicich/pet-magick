@@ -1,0 +1,13 @@
+To connect to your database use these details
+Host: sql3.freesqldatabase.com
+
+Database name: sql323164
+
+Database user: sql323164
+
+Database password: kK8*mN1*
+
+Port number: 3306
+
+phpMyAdmin
+phpMyAdmin is now available to administer your database.  phpMyAdmin will allow you to create, edit and remove tables and to back up and import your data.  Follow this link http://www.phpmyadmin.co and use the database details above to get started with your new database.

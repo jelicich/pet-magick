@@ -2,7 +2,7 @@
 
 //$url = 'mysql://USUARIO:PASSWORDBD@SERVER/NOMBRE_BD';
 //$url = 'mysql://idomy_11076335:32982502@sql311.idomyweb.com/idomy_11076335_pet';
-$url = 'mysql://root:@localhost/pet_magick';
+$url = 'mysql://sql323164:kK8*mN1*@sql3.freesqldatabase.com/sql323164';
 
 //sirve para que el directorio LIB este en nuesro include Path y se encuentre Doctrine.php
 ini_set('include_path', __DIR__.'/../lib/;'.ini_get('include_path') );

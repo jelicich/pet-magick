@@ -1,4 +1,0 @@
-- Ver tamano de advertisement
-- Definir cantidad y nombres de grupos
-- Tamano buscador 
-- Centrar triangulito en barra de navegacion

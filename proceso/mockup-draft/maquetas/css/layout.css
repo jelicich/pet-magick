@@ -6,6 +6,7 @@
 
 a{
 	text-decoration: none;
+	font-weight: bold;
 }
 
 a:hover{
@@ -15,6 +16,14 @@ a:hover{
 body{
 	font-family: "Tahoma", Verdana, Arial, sans-serif;
 	background: url('../img/fresh_snow.png');
+	color:#000000;
+}
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
 }
 
 h1{
@@ -76,6 +85,7 @@ h1{
 	font-size: 11px;
 	margin: 0;
 	line-height: 13px;
+	font-weight: normal;
 }
 
 .hidden{
@@ -137,6 +147,10 @@ h1{
 	border-bottom:1px solid #c788a3;
 }
 
+.pet-loss-mod-list .content-description{
+	width: 270px;
+}
+
 .projects-mod-list, .pet-loss-mod-list{
 	padding:0;
 }
@@ -150,7 +164,7 @@ h1{
 	border-bottom:1px solid #647dbe;
 }
 
-.projects-mod-list li:last-child{
+.projects-mod-list li:last-child, .pet-loss-mod-list li:last-child{
 	border-bottom:none;
 }
 
@@ -190,6 +204,41 @@ h1{
 #content{
 	/* SI EL HEADER VA FIJO */
 	margin-top: 89px;
+
+	padding-bottom:40px;   /* Height of the footer */
+}
+
+#dsg{
+	text-align: right;
+}
+
+#footer{
+	padding: 10px 0;
+	background: #d95248;
+	font-size: 12px;
+
+	/* fixed bottom */
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:40px;
+}
+
+#footer a{
+	color: #000000;
+}
+
+#footer li{
+	float: left;
+	margin: 0;
+	border-left: 1px solid #a6322a;
+	padding:0 5px;
+	line-height: 12px;
+}
+
+#footer span, #footer ul{
+	display: inline-block;
+	margin: 0;
 }
 
 #header{
@@ -259,6 +308,10 @@ h1{
 	background: #dfc2cf;
 }
 
+#pet-loss-mod > .mod-header{
+	background: #d95248;
+}
+
 #profiles-mod{
 	background: #e8b2ae;
 }
@@ -314,6 +367,12 @@ h1{
 
 #user-menu span{
 	font-weight: bold;
+	color:#b5382a;
+}
+
+#wrapper{
+	min-height:100%;
+	position:relative;
 }
 
 #yellow-bar{

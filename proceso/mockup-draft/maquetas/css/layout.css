@@ -86,9 +86,31 @@ h1{
 	margin-bottom: 20px;
 }
 
+.mod a{
+	color:#000000;
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: bold;
+}
+
 .mod-content{
 	margin: 0;
 	color:#000000;
+}
+
+.mod-content h3{
+	margin: 0;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 14px;
+	color:#000000;
+}
+
+.mod-content p{
+	color:#000000;
+	font-size: 12px;
+	line-height: 16px;
+	margin-bottom: 0;
 }
 
 .mod-header, .mod-content{
@@ -108,6 +130,53 @@ h1{
 	color: #FFFFFF;
 	margin: 0;
 	font-size: 12px;
+}
+
+.pet-loss-mod-list li{
+	padding:10px;
+	border-bottom:1px solid #c788a3;
+}
+
+.projects-mod-list, .pet-loss-mod-list{
+	padding:0;
+}
+
+.projects-mod-list .content-description{
+	width: 430px;
+}
+
+.projects-mod-list li{
+	padding:10px;
+	border-bottom:1px solid #647dbe;
+}
+
+.projects-mod-list li:last-child{
+	border-bottom:none;
+}
+
+.side-img, .content-description{
+	float: left;
+}
+
+.side-img{
+	margin-right:10px;
+}
+
+.thumb-mid{
+	width: 122.5px;
+	height: 122.5px;
+}
+
+.thumb-small{
+	width: 80px;
+	height: 80px;
+}
+
+.video div{
+	width: 100%;
+	height: 200px;
+	background: #000000;
+	margin-bottom: 10px;
 }
 
 #animal-antics-mod{
@@ -184,6 +253,10 @@ h1{
 
 #nav-bar ul li a:hover{
 	text-decoration: none;
+}
+
+#pet-loss-mod{
+	background: #dfc2cf;
 }
 
 #profiles-mod{

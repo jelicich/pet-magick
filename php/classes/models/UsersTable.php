@@ -16,4 +16,42 @@ class UsersTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Users');
     }
-}
+
+    //======================== REGISTRAR
+
+       public function reg_bd($name, $lastname, $nickname, $email, $pass, $rank, $city_id){
+
+       			$pass_sha1 = sha1($pass);
+
+	            $Users = new Users();
+	            $Users->NAME = $name;
+	            $Users->LASTNAME = $lastname;
+	            $Users->NICKNAME = $nickname;
+	            $Users->EMAIL = $email;
+	            $Users->PASSWORD = $pass_sha1;
+	            $Users->RANK = $rank;
+	            $Users->CITY_ID = $city_id;
+	            $Users->TOKEN = 1;// sin loguear
+	            $Users->save();
+	           
+	            return $Users->toArray();
+	   }
+
+       //======== Validaciones
+       
+       public function val_bd($us){
+
+		        $q = Doctrine_Query::create()
+					->from('Users u') 
+					->AndWhere('u.NICKNAME = ?', $us);
+
+				$Userss = $q->execute();
+	           
+	           if(sizeof($Userss) == 0){
+	           		return true;
+	           }else{
+	           		return false;
+	           }
+	   }
+
+}//end class

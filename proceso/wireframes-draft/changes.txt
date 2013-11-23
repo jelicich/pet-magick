@@ -1,0 +1,6 @@
+- Groups (drop down menu)
+- Shades
+- Pets (states)
+- New sections:
+                - Organitation ( similar projects board: photo, text, link )
+                - blog

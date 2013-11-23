@@ -1,0 +1,58 @@
+User
+	-signup(recibe array con la info de usuario)
+	-login(user, passs, token)
+	-logout(user)
+ 	- Darse de baja (delete) (?)**
+
+Pet
+	-create(array con info de la mascota)
+	-delete(id_pet)
+
+
+Inbox
+	-send(array->from, to, date, msg)
+	-read(id_user)
+
+Blog
+	-post(array->id_user, title, content, date)
+	-delete(id_post)
+
+
+Project
+	-post(array->title, content, pics[])
+	-delete(id_project)
+
+Orgs **
+	-post(array->title, content, pic, link or article(?))
+	-delete(id_project)
+
+VetTalk
+	-post(array->id_user, title, content, date)
+	-ask and reply (?)**
+	-delete(id_vettalk)
+
+Tribute
+	-post(array->title, post, picture, id_pet??)
+	-delete(id_tribute)
+
+Advertisements **
+	      -Upload (?)
+	      -Delete(?)
+	
+
+-------
+
+Pic
+	-upload(array)
+	-delete(array?)
+
+Video
+	-upload(video)
+	-delete(id_video)
+
+
+** Solo hice alguna pequena modificacion. Agregue tambien lo q serian mis dudas, pq en general estoy de accuerdo.
+   Advertisementes lo puse como sugerencia. En base a lo q hagamos en la BD se define solo. O no se si vamos a usar alguna API. 
+   Lo mismo con el tema imagenes aca y en la BD. Todavia no lo craneo, pero las manejamos independientemente o con una clase todo lo q es img??
+
+

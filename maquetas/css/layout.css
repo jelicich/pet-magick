@@ -35,6 +35,11 @@ h1{
 	margin-bottom:5px;
 	margin-top: 5px;
 }
+
+p,span{
+	font-size: 13px;
+}
+
 .asd{
 	height: 150px;
 	background-color: gray;
@@ -126,7 +131,6 @@ h1{
 
 .mod-content p{
 	color:#000000;
-	font-size: 12px;
 	line-height: 16px;
 	margin-bottom: 0;
 }
@@ -163,6 +167,10 @@ h1{
 	text-align: center;
 }
 
+.nogrid-mod .mod-content{
+	padding: 10px !important;
+}
+
 .pet-loss-mod-list li{
 	padding:10px;
 	border-bottom:1px solid #c788a3;
@@ -174,6 +182,20 @@ h1{
 
 .projects-mod-list, .pet-loss-mod-list{
 	padding:0;
+}
+
+.profiles-mod{
+	background: #e8b2ae;
+}
+
+.profiles-mod > .mod-header{
+	background: #d95248;
+}
+
+.profiles-mod .mod-content{
+	/* PARA EQUILIBRAR LA GRILLA */
+	padding-right: 0;
+	padding-bottom: 0;
 }
 
 .projects-mod-list .content-description{
@@ -333,7 +355,7 @@ h1{
 }
 
 #pet-loss-mod > .mod-header{
-	background: #d95248;
+	background: #b04f78;
 }
 
 #profiles-mod{
@@ -440,6 +462,7 @@ h1{
 #lastest-video-mod ul li:last-child{
 	margin-right: 0;
 }
+/* -- */
 
 #lastest-video-mod .thumb-big{
 	/*margin: 20px 0 20px 8px;*/
@@ -535,4 +558,77 @@ h1{
 
 /* profiles */
 
+
+.pet-info{
+	width: 80px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.pet-info img{
+	margin-bottom: 10px;
+}
+
+.recent-news{
+	border-bottom: 1px solid #c788a3;
+}
+
+.recent-news:last-child{
+	border-bottom: none;
+}
+
+.recent-news{
+	padding: 10px;
+}
+
+.recent-news span{
+	display: block;
+	width: 100%;
+	font-style: italic;
+	font-weight: bold;
+	opacity: 0.5;
+}
+
+.user-info, #user-about, #user-extra, .pet-info{
+	float: left;
+}
+
+.user-info{
+	width: 125.5px;
+	margin-right: 10px;
+}
+
+.user-info span, .pet-info span{
+	font-size: 12px;
+}
+
+.user-info .thumb-mid{
+	margin-bottom: 10px;
+}
+
+#user-about{
+	background:#f6dddb;
+	width: 620px;
+	height: 161px;
+	padding: 10px 15px 10px 10px;
+	margin-right: 10px;
+}
+
+#user-extra ul{
+	margin: 0;
+}
+
+#news-mod{
+	height: 182px;
+	overflow: hidden;
+}
+
+#news-mod .mod-content{
+	padding: 0 !important;
+}
+
+#nickname{
+	display: inline-block;
+	width: 135.5px;
+}
 

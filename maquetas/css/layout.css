@@ -35,6 +35,11 @@ h1{
 	margin-bottom:5px;
 	margin-top: 5px;
 }
+.asd{
+	height: 150px;
+	background-color: gray;
+	margin-bottom: 20px;
+}
 
 .btn{
 	border-radius: 0 !important;
@@ -143,6 +148,19 @@ h1{
 	color: #FFFFFF;
 	margin: 0;
 	font-size: 12px;
+}
+
+.mod-menu{
+	margin: -10px;
+}
+
+.mod-menu a{
+	color: #FFFFFF;
+}
+
+.mod-menu li{
+	padding: 10px;
+	text-align: center;
 }
 
 .pet-loss-mod-list li{
@@ -410,13 +428,22 @@ h1{
 }
 
 #lastest-video-mod ul li{
-	width: 50%;
+	width: 335px;
 	float: left;
 	position: relative;
+	/* esteban */
+	margin-right: 10px;
+}
+
+/*esteban */
+
+#lastest-video-mod ul li:last-child{
+	margin-right: 0;
 }
 
 #lastest-video-mod .thumb-big{
-	margin: 20px 0 20px 8px;
+	/*margin: 20px 0 20px 8px;*/
+	margin-right: 
 	float: left;
 	background-color: #fff; /* provisorio */
 }
@@ -431,16 +458,21 @@ h1{
 #lastest-video-mod .play{
 	width: 335px;
 	height: 70%;
-	margin: 20px 0 0 9px;
+	/*margin: 20px 0 0 9px;*/
 }
 
 #ad{
+	/* hay que cambiarle el nombre sino el adblock te lo bloquea */
 	background: #bdd19c; /* provisorio */
-	height: 337px; 
+	height: 302px; 
 }
 
 .video-last-caption{
-	margin-left: 11px;
+	/*margin-left: 11px;*/
+}
+
+.video-thumb{
+	margin-bottom: 10px;
 }
 
 #what{
@@ -466,7 +498,7 @@ h1{
 	margin: 20px auto;
 }
 
-#arrow{
+.arrow-top{
 	width: 0; 
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
@@ -475,7 +507,7 @@ h1{
 	right: 40px;
 }
 
-#pop-up, #arrow{
+#pop-up, .arrow-top{
 	 display: block;
 	 opacity: 0; 
 	 height: 0;
@@ -487,9 +519,20 @@ h1{
 	 transition: all 0.5s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera     12.50+ */
 }
 
+#pop-up .arrow-top{
+	margin-top: -20px;
+}
+
 #what a:hover~.active {
 	opacity: 1;
     height: auto;
 }
 
 /* end pop up*/
+
+
+
+
+/* profiles */
+
+

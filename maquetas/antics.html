@@ -74,7 +74,7 @@
 			</p>
 
 		</div>
-		<div id='arrow' class='active'></div>
+		<div class='active arrow-top'></div>
 	</div>
 
 		
@@ -86,33 +86,35 @@
 				<h2>Latest videos</h2>
 			</div>
 			
-			<ul class='alpha'>
+			<ul class='mod-content clearfix'>
 
 				<li>
+					<!--semanticamente el a no puede contener un div pero entiendo q todo este bloque va a ser reemplazado por el video no? -->
 					<a href="#">
 						<div class="play"></div>
-						<img src="" class="thumb-big"/>
+						<img src="" class="thumb-big video-thumb"/>
 					</a>
 
-					<dl class="video-last-caption">
-						<dt>Hey! let me pass - <span>2:12</span></dt>
-						<dd><strong>By: </strong> Petter Putter</dd>
-					</dl>
+					<div class="video-last-caption">
+						<h3>Hey! let me pass - <span>2:12</span></h3>
+						<span><strong>By: </strong> Petter Putter</span>
+					</div>
 					
 				</li>
 
 
 				<li>
+					<!--semanticamente el a no puede contener un div pero entiendo q todo este bloque va a ser reemplazado por el video no? -->
 					<a href="#">
 						<div class="play"></div>
-						<img src="" class="thumb-big"/>
+						<img src="" class="thumb-big video-thumb"/>
 					</a>
+
+					<div class="video-last-caption">
+						<h3>Hey! let me pass - <span>2:12</span></h3>
+						<span><strong>By: </strong> Petter Putter</span>
+					</div>
 					
-					<dl class="video-last-caption">
-						<dt>Hey! let me pass - <span>2:12</span></dt>
-						<dd><strong>By: </strong> Petter Putter</dd>
-					</dl>
-				
 				</li>
 
 			</ul>
@@ -130,12 +132,12 @@
 		<div id="profiles-mod" class="mod grid_12">
 			<div class="mod-header">
 				<ul class="clearfix mod-menu">
-					<li>Dog</li>
-					<li>Cat</li>
-					<li>Bird</li>
-					<li>Rabbit</li>
-					<li>Ferret</li>
-					<li>Others</li>
+					<li class="grid_2 alpha"><a href="#" class="active">Dog</a></li>
+					<li class="grid_2"><a href="#">Cat</a></li>
+					<li class="grid_2"><a href="#">Bird</a></li>
+					<li class="grid_2"><a href="#">Rabbit</a></li>
+					<li class="grid_2"><a href="#">Ferret</a></li>
+					<li class="grid_2 omega"><a href="#">Others</a></li>
 				</ul>
 			</div>
 			<ul class="grid-thumbs clearfix mod-content">
@@ -532,7 +534,7 @@
 
 			</ul>
 		</div>
-		<!-- END profiles module -->
+		<!-- END video module -->
 
 
 	</div>

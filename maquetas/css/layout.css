@@ -11,6 +11,7 @@ a{
 
 a:hover{
 	text-decoration: underline;
+
 }
 
 body{
@@ -66,22 +67,24 @@ h1{
 }
 
 .grid-thumbs li dl{
-	height: 50%;
+	/*height: 50%; esto quedo en auto asi se adapta a cada caso. en antics es mas chico, aunque si el texto es largo pisa el play igual*/ 
+	max-height: 50%; /*esto lo puse para q no exeda la medida q pusiste antes vos */
 	width: 100%;
 	position: absolute;
 	bottom: 0;
-	background: url('../img/bg-user-grid.png');
+	/*background: url('../img/bg-user-grid.png');*/
+	background-color: rgba(217, 82, 72, 0.6); /* me parecio mejor esto, pero lo dejo a tu criterio */
 	overflow: hidden;
 	margin: 0;
 	padding: 5px;
 }
 
-.grid-thumbs li dl dt{
+.grid-thumbs li dl dt, .video-last-caption dt{
 	font-size: 12px;
 	line-height: 14px;
 }
 
-.grid-thumbs li dl dd{
+.grid-thumbs li dl dd, .video-last-caption dd{
 	font-size: 11px;
 	margin: 0;
 	line-height: 13px;
@@ -192,6 +195,9 @@ h1{
 	background: #000000;
 	margin-bottom: 10px;
 }
+
+
+
 
 #animal-antics-mod{
 	background: #bdd19c;
@@ -378,4 +384,112 @@ h1{
 #yellow-bar{
 	background: #e7cd00;
 }
-afdgsdfgsdfgsdfgsdg
+
+
+
+
+
+
+/* Animal antics */
+
+.thumb-big{
+	width: 335px;
+	height: 200px;
+}
+
+#lastest-video-mod{
+	background: #bdd19c;
+}
+
+#lastest-video-mod > .mod-header{
+	background: #6a9a16;
+}
+
+#lastest-video-mod ul {
+	width: 100%;
+}
+
+#lastest-video-mod ul li{
+	width: 50%;
+	float: left;
+	position: relative;
+}
+
+#lastest-video-mod .thumb-big{
+	margin: 20px 0 20px 8px;
+	float: left;
+	background-color: #fff; /* provisorio */
+}
+
+.play{
+	background: url(../img/antics/thumbs/play_midd.png) center no-repeat transparent;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+#lastest-video-mod .play{
+	width: 335px;
+	height: 70%;
+	margin: 20px 0 0 9px;
+}
+
+#ad{
+	background: #bdd19c; /* provisorio */
+	height: 337px; 
+}
+
+.video-last-caption{
+	margin-left: 11px;
+}
+
+#what{
+	float: right;
+	margin: -25px 10px 0 0;
+	position: relative;
+}
+
+
+/*pop up*/
+#pop-up{
+	background-color: rgba(0, 0, 0, 0.8);
+	height: auto;
+	right: -10px;
+	top: 25px;
+	z-index: 9999;
+}
+
+#pop-up p{
+	color: #fff;
+	font-size: 12px;
+	width: 90%;
+	margin: 20px auto;
+}
+
+#arrow{
+	width: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid rgba(0, 0, 0, 0.8);
+	top: 15px;
+	right: 40px;
+}
+
+#pop-up, #arrow{
+	 display: block;
+	 opacity: 0; 
+	 height: 0;
+	 position: absolute;
+     overflow: hidden;
+     -webkit-transition: all 0.5s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+	 -moz-transition: all 0.5s ease-out;  /* Firefox 4-15 */
+	 -o-transition: all 0.5s ease-out;  /* Opera 10.50–12.00 */
+	 transition: all 0.5s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera     12.50+ */
+}
+
+#what a:hover~.active {
+	opacity: 1;
+    height: auto;
+}
+
+/* end pop up*/

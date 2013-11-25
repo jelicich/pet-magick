@@ -251,7 +251,7 @@ p,span{
 	/* SI EL HEADER VA FIJO */
 	margin-top: 109px;
 
-	padding-bottom:40px;   /* Height of the footer */
+	padding-bottom:60px;   /* Height of the footer */
 }
 
 #dsg{
@@ -569,6 +569,41 @@ p,span{
 	margin-bottom: 10px;
 }
 
+.pet-info span{
+	line-height: 12px;
+}
+
+.pet-about{
+	width: 784px !important;
+	margin-right: 0 !important;
+	margin-bottom: 20px;
+}
+
+.pet-album{
+	width: 429px;
+	float: left;
+}
+
+.pet-album ul{
+	margin: 0 20px;	
+}
+
+.pet-album ul li{
+	float: left;
+	margin-right: 10px;
+}
+
+.pet-album ul li:last-child{
+	margin-right: 0;
+}
+
+.pet-video{
+	float: left;
+	margin-left: 10px;
+	width: 481px;
+	text-align: center;
+}
+
 .recent-news{
 	border-bottom: 1px solid #c788a3;
 }
@@ -589,7 +624,7 @@ p,span{
 	opacity: 0.5;
 }
 
-.user-info, #user-about, #user-extra, .pet-info{
+.user-info, .user-about, #user-extra, .pet-info{
 	float: left;
 }
 
@@ -606,7 +641,7 @@ p,span{
 	margin-bottom: 10px;
 }
 
-#user-about{
+.user-about{
 	background:#f6dddb;
 	width: 620px;
 	height: 161px;
@@ -619,12 +654,12 @@ p,span{
 }
 
 #news-mod{
-	height: 182px;
-	overflow: hidden;
+	height: 174px;
 }
 
 #news-mod .mod-content{
-	padding: 0 !important;
+	padding: 0 0 10px 0 !important;
+	height: 136px;
 }
 
 #nickname{

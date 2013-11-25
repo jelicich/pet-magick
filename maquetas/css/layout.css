@@ -192,7 +192,9 @@ p,span{
 	background: #d95248;
 }
 
-.profiles-mod .mod-content{
+.profiles-mod .mod-content, 
+.animal-antics-mod .mod-content, 
+.pet-loss-mod .mod-content{
 	/* PARA EQUILIBRAR LA GRILLA */
 	padding-right: 0;
 	padding-bottom: 0;
@@ -239,18 +241,17 @@ p,span{
 
 
 
-#animal-antics-mod{
+.animal-antics-mod{
 	background: #bdd19c;
 }
 
-#animal-antics-mod > .mod-header{
+.animal-antics-mod > .mod-header{
 	background: #6a9a16;
 }
 
 #content{
 	/* SI EL HEADER VA FIJO */
 	margin-top: 109px;
-
 	padding-bottom:60px;   /* Height of the footer */
 }
 
@@ -350,11 +351,11 @@ p,span{
 	text-decoration: none;
 }
 
-#pet-loss-mod{
+.pet-loss-mod{
 	background: #dfc2cf;
 }
 
-#pet-loss-mod > .mod-header{
+.pet-loss-mod > .mod-header{
 	background: #b04f78;
 }
 
@@ -372,11 +373,11 @@ p,span{
 	padding-bottom: 0;
 }
 
-#projects-mod{
+.projects-mod{
 	background: #b0bcda;
 }
 
-#projects-mod > .mod-header{
+.projects-mod > .mod-header{
 	background: #153ca0;
 }
 
@@ -466,7 +467,6 @@ p,span{
 
 #lastest-video-mod .thumb-big{
 	/*margin: 20px 0 20px 8px;*/
-	margin-right: 
 	float: left;
 	background-color: #fff; /* provisorio */
 }
@@ -480,11 +480,11 @@ p,span{
 
 #lastest-video-mod .play{
 	width: 335px;
-	height: 70%;
+	height: 80%;
 	/*margin: 20px 0 0 9px;*/
 }
 
-#ad{
+#publi{
 	/* hay que cambiarle el nombre sino el adblock te lo bloquea */
 	background: #bdd19c; /* provisorio */
 	height: 302px; 
@@ -498,12 +498,21 @@ p,span{
 	margin-bottom: 10px;
 }
 
+.wrapper-play{ /* Provisorio hasta definir funcionalidad */
+	height: 200px;
+	cursor: pointer;
+}
+
+.animal-antics-mod .grid-thumbs li dl{
+	/*background: url('../img/bg-user-grid.png');*/
+	background-color: rgba(106, 154, 22, 0.6); /* Esta clase (.grid-thumbs li dl) ya tiene un color asignado cuando la creaste. Fijate si preferis pasarle de esta forma el color a cada seccion */
+}
+
 #what{
 	float: right;
 	margin: -25px 10px 0 0;
 	position: relative;
 }
-
 
 /*pop up*/
 #pop-up{
@@ -667,3 +676,19 @@ p,span{
 	width: 135.5px;
 }
 
+
+/* pet loss */
+
+.pet-loss-mod .grid-thumbs li dl{
+	/*background: url('../img/bg-user-grid.png');*/
+	background-color: rgba(176, 79, 120, 0.6); /* Esta clase (.grid-thumbs li dl) ya tiene un color asignado cuando la creaste. Fijate si preferis pasarle de esta forma el color a cada seccion */
+}
+
+.five_pixels{
+	color: #000 !important; /* bootstrap me lo pinta de azul solo en pet loss. Si sabes pq solo aca avisame.... */
+	margin-top: -5px;
+}
+
+
+
+/* Project boards */

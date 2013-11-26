@@ -139,6 +139,14 @@ p,span{
 	padding:10px;
 }
 
+.mod-header{
+	position: relative;
+}
+
+.mod-header a{
+	color:#ffffff;
+}
+
 .mod-header > h2{
 	font-size:16px;
 	font-weight: bold;
@@ -193,7 +201,7 @@ p,span{
 }
 
 .profiles-mod .mod-content, 
-.animal-antics-mod .mod-content, 
+/*.animal-antics-mod .mod-content, */
 .pet-loss-mod .mod-content{
 	/* PARA EQUILIBRAR LA GRILLA */
 	padding-right: 0;
@@ -690,5 +698,56 @@ p,span{
 }
 
 
+
+/* vet talk */
+#ask-qa{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.vet-talk-mod{
+	background: #bdd19c;
+}
+
+.vet-talk-mod > .mod-header{
+	background: #6a9a16;
+}
+
+.vet-talk-article, .vet-talk-img{
+	float: left;
+}
+
+.vet-talk-article{
+	text-align: justify;
+}
+
+.vet-talk-img{
+	margin-right: 10px;
+	margin-bottom: 0px;
+}
+
+.talks-list li,.qa-list li{
+	border-bottom: 1px solid #67a51e;
+}
+
+.talks-list .content-description{
+	width: 830px;
+}
+
+.vet-q, .vet-a{
+	border-bottom: none !important;
+	padding: 0 !important;
+}
+
+.vet-a{
+	margin-left: 10px;
+	margin-top: 10px;
+	font-style: italic;
+}
+
+.qa-list ul{
+	margin: 0;
+}
 
 /* Project boards */

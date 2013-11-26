@@ -2,3 +2,25 @@
 - .vet-talk-article: foto del tamano de "featured project"
 - menu categorias en modulos (dog, cat...): generar espacio entre la barra y el contenido. 
 - .slide-small: me hace ruido q las fotos del slider sean del mismo tamano q las de perfil
+
+
+Lo q hice:
+
+- users-profile: 
+                - Cambie el video y lo classie para q sea el mismo q en antics.
+		- standarice tambien los backgrounds de los textos (lo mas q pude, seguro se puede mejorar) y se ve en varias secciones
+		- Tambien standarice las fotos de pet como 'slider-small'(aparece en projects tambien). Deje lugar para las flechitas, por eso esta 		  medio corrido
+
+- Vet talk:
+           - Puse el pop up con el form y acomodarlo bien, pero falta hacer q se mantenga cuando sacas el hover. No llegue...
+           - bg en txt tambien aca
+
+- Projects:
+	   - Hice la seccion, con los bg txt y el slider-small tambien aca 
+           - Me sigue pareciendo q algunos modulos se ven vacios (en las otras secciones tambien)
+
+Estate atento a las clases pq tal vez moves una laburando en una seccion y se mueve tambien en otra. 
+Encerre entre comentarios algunas cosas q funcionan en conjunto en el css (pop up, slider-small, bg txt, etc) y lo mismo con lo q corresponde a secciones. Si te parece una mierda lo podes cambiar jajaja.
+Bueno, me llevo mas tiempo eso se ir classeando q hacer una seccion en si. Espero q sea util jajaj
+Abrazo
+

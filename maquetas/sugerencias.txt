@@ -1,0 +1,4 @@
+- .pet-loss-mod-list, .qa-list: lineas divisorias centradas horizontalmente coupando 80% del ancho (no llegaria a las puntas)\
+- .vet-talk-article: foto del tamano de "featured project"
+- menu categorias en modulos (dog, cat...): generar espacio entre la barra y el contenido. 
+- .slide-small: me hace ruido q las fotos del slider sean del mismo tamano q las de perfil

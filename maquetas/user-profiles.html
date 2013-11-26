@@ -42,15 +42,15 @@
 		<div id="nav-bar">
 			<div class="container_12 clearfix">
 				<ul class="grid_9 btn-group">
-					<li class="btn btn-small btn-danger"><a href="#">Profiles</a></li>
-					<li class="btn btn-small btn-danger"><a href="#">Formums</a></li>
-					<li class="btn btn-small btn-danger"><a href="#">Animal Antics</a></li>
-					<li class="btn btn-small btn-danger"><a href="#">Vet Talk</a></li>
-					<li class="btn btn-small btn-danger"><a href="#">Projects</a></li>
-					<li class="btn btn-small btn-danger"><a href="#">Organizations</a></li>
-					<li class="btn btn-small btn-danger"><a href="#">Pet Loss</a></li>
-					<li class="btn btn-small btn-danger"><a href="#">Forum</a></li>
-					<li class="btn btn-small btn-danger"><a href="#">Blog</a></li>
+						<li class="btn btn-small btn-danger"><a href="profiles.html">Profiles</a></li>
+						<li class="btn btn-small btn-danger"><a href="#">Formums</a></li>
+						<li class="btn btn-small btn-danger"><a href="antics.html">Animal Antics</a></li>
+						<li class="btn btn-small btn-danger"><a href="vet-talk.html">Vet Talk</a></li>
+						<li class="btn btn-small btn-danger"><a href="projects.html">Projects</a></li>
+						<li class="btn btn-small btn-danger"><a href="#">Organizations</a></li>
+						<li class="btn btn-small btn-danger"><a href="pet-loss.html">Pet Loss</a></li>
+						<li class="btn btn-small btn-danger"><a href="#">Forum</a></li>
+						<li class="btn btn-small btn-danger"><a href="#">Blog</a></li>
 				</ul>
 				<form class="grid_3">
 					<input type="text" placeholder="Find pet lovers" />
@@ -75,7 +75,7 @@
 					<h3>Michael Perez</h3>
 					<span>Kaikoura, New Zealand</span>
 				</div>
-				<div class="user-about">
+				<div class="bg-txt">
 					<p>El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15. El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15</p>
 				</div>
 				<div id="user-extra">
@@ -147,18 +147,23 @@
 
 		<!-- pet profile -->
 		<div class="mod grid_12 profiles-mod nogrid-mod">
+
 			<div class="mod-header">
 				<h2><strong id="nickname">Pepe</strong>My pet story</h2>
 			</div>
+
 			<div class="mod-content clearfix">
+				
 				<div class="user-info pet-info">
 					<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
 					<span>Loyal, smart, quiet, lovely, etc</span>
 				</div>
-				<div class="user-about pet-about">
+				
+				<div class="bg-txt txt-wider">
 					<p>El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15. El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15</p>
 				</div>
-				<div class="pet-album">
+				
+				<div class="slider-small">
 					<ul class="clearfix">
 						<li><img class="thumb-mid" src="img/users/thumb/1.jpg"/></li>
 						<li><img class="thumb-mid" src="img/users/thumb/1.jpg"/></li>
@@ -166,15 +171,25 @@
 					</ul>	
 				</div>
 
-				<div class="pet-video">
-					<img src="" style="background:black" class="thumb-big video-thumb"/>
+				<div class='video'>
+					<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
+					<div class='wrapper-play'>
+						<div class="play"></div>
+						<img src="" class="thumb-big video-thumb"/>
+					</div>
+
+					<div class="video-last-caption">
+						<h3>Hey! let me pass - <span>2:12</span></h3>
+						<span><strong>By: </strong> Petter Putter</span>
+					</div>
+					
 				</div>
 			</div>
 		</div>
 		<!-- END my pet profile -->
 
 		<!-- user album -->
-		<div class="mod grid_12 profiles-mod">
+		<div class="mod grid_12 profiles-mod ">
 			<div class="mod-header">
 				<h2>My album</h2>
 			</div>

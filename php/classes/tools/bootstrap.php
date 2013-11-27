@@ -15,6 +15,6 @@ $manager->setAttribute(Doctrine_Core::ATTR_MODEL_LOADING, Doctrine_Core::MODEL_L
 Doctrine::loadModels(__DIR__.'/../models/generated/');
 Doctrine::loadModels(__DIR__.'/../models/');
 
-$conn = Doctrine_Manager::connection('mysql://sql323164:kK8*mN1*@sql3.freesqldatabase.com/sql323164?charset=utf8&collate=utf8_unicode_ci');
-//$conn = Doctrine_Manager::connection('mysql://root:@localhost/pet_magick?charset=utf8&collate=utf8_unicode_ci');
+//$conn = Doctrine_Manager::connection('mysql://sql323164:kK8*mN1*@sql3.freesqldatabase.com/sql323164?charset=utf8&collate=utf8_unicode_ci');
+$conn = Doctrine_Manager::connection('mysql://root:@localhost/pet_magick?charset=utf8&collate=utf8_unicode_ci');
 //$conn = Doctrine_Manager::connection('mysql://idomy_11076335:32982502@cpanel.idomyweb.com/idomy_11076335_pet?charset=utf8&collate=utf8_unicode_ci');

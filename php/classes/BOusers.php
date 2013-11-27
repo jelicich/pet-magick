@@ -8,32 +8,35 @@ class BOUsers{
 
     //======================== VALIDACIONES
 
-    function val_reg($ref){
+   function val_reg($ref){
 
-         $t = sizeof($ref);
+        $t = sizeof($ref);
 
-        if($t < 3 || $ref[0] == '' || $ref[1] == '' || $ref[2] == '' ){
+        if($t < 7 || $ref[0] == '' || $ref[1] == '' // error 1: campos obligatorios
+                  || $ref[2] == '' || $ref[3] == ''  
+                  || $ref[4] == '' || $ref[5] == '' || $ref[6] =='')
+        {
 
-            throw new Exception('error 1');
+            throw new Exception('error 1: Completar todo');
             break;
 
         }else{
 
             $table = Doctrine_Core::getTable('Users');
-            $rta = $table->val_bd($ref[0]);
+            $rta = $table->val_bd($ref[2]);
 
-            if($ref[1] != $ref[2]){
+            if($rta == false){// error 2: usuario existente
 
-                  throw new Exception('error 2');
-                  break;
-            }
-            else if($rta == false){
-
-                 throw new Exception('error 3');
+                 throw new Exception('error 2: usuario existente');
                  break;
+
+            }else if(preg_match("/^[a-zA-Z]\w+(\.\w+)*\@\w+(\.[0-9a-zA-Z]+)*\.[a-zA-Z]{2,4}$/", $ref[3]) === 0){// error 3: formato mail incorrecto
+
+                throw new Exception('error 3: no es email');
+                break;
             }
         }
-    }
+    } // End function val_reg
 
 
     //======================== REGISTRATION
@@ -61,7 +64,7 @@ class BOUsers{
 
 
 $yo = new BOUsers;
-$query = array('julian', 'pena', 'mistlav', 'saudade',  "hola", '88', '33');
+$query = array('julian', 'pena', 'rolo', 'saudade@hotmail.com',  2, 1, 1);
 $yo->registration($query);
 
 /*

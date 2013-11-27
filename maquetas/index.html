@@ -47,7 +47,7 @@
 						<li class="btn btn-small btn-danger"><a href="antics.html">Animal Antics</a></li>
 						<li class="btn btn-small btn-danger"><a href="vet-talk.html">Vet Talk</a></li>
 						<li class="btn btn-small btn-danger"><a href="projects.html">Projects</a></li>
-						<li class="btn btn-small btn-danger"><a href="#">Organizations</a></li>
+						<li class="btn btn-small btn-danger"><a href="organizations.html">Organizations</a></li>
 						<li class="btn btn-small btn-danger"><a href="pet-loss.html">Pet Loss</a></li>
 						<li class="btn btn-small btn-danger"><a href="#">Forum</a></li>
 						<li class="btn btn-small btn-danger"><a href="#">Blog</a></li>
@@ -241,15 +241,16 @@
 				<ul class="mod-content projects-mod-list">
 					<li class="clearfix">
 						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description">
+						<div class="content-description bg-txt">
 							<h3>Looking for pet owners to visit people in...</h3>
-							<p>asdlk asl asdl adl a´dla ´dl aldadadsl ñasdkl jflksjdfklsjf lskdjf klj klasjdlk ajsdl ajsdl jkadlkaj lsdkja ldjk alsjkd akljsd kljkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
+							<!-- a estos <p> habria q ponerle un limite de caracteres desde la consulta sql y un "seguir leyendo" o algo asi. Yo lo hice en el home de induser, por si queres ver a q me refiero... -->
+							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
 							<a href="#">View project</a>
 						</div>
 					</li>
 					<li class="clearfix">
 						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description">
+						<div class="content-description bg-txt">
 							<h3>Looking for pet owners to visit people in...</h3>
 							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
 							<a href="#">View project</a>
@@ -257,7 +258,7 @@
 					</li>
 					<li class="clearfix">
 						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description">
+						<div class="content-description bg-txt">
 							<h3>Looking for pet owners to visit people in...</h3>
 							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
 							<a href="#">View project</a>
@@ -274,16 +275,26 @@
 		<div class="grid_5">
 			
 			<!-- animal antics module -->
-			<div class="mod animal-antics-mod"> <!-- animal-antics-mod lo converti de id a class para q sea como profiles-mod ya q compartian algunas cosas -->
+			<div class="mod animal-antics-mod  clearfix"> <!-- animal-antics-mod lo converti de id a class para q sea como profiles-mod ya q compartian algunas cosas -->
 				<div class="mod-header">
 					<h2>Laugh with other pet lovers</h2>
 					<span>Upload those videos of your pet doing crazy funny things!</span>
 				</div>
-				<div class="video mod-content">
-					<div>VIDEO</div>
-					<h3>Dog surfing</h3>
-					<span>by <a href="" class="user-link">Peter Jackson</a></span>
+				
+				<div class='video mod-content'>
+					<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
+					<div class='wrapper-play'>
+						<div class="play"></div>
+						<img src="" class="thumb-big video-thumb"/>
+					</div>
+
+					<div class="video-last-caption">
+						<h3>Hey! let me pass - <span>2:12</span></h3>
+						<span><strong>By: </strong> Petter Putter</span>
+					</div>
+					
 				</div>
+
 			</div>
 			<!-- END animal antics module -->
 
@@ -296,34 +307,34 @@
 				<ul class="mod-content pet-loss-mod-list">
 					<li class="clearfix">
 						<img src="img/pet-loss/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description">
+						<div class="content-description bg-txt corregir">
 							<h3>We will mis you</h3>
 							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<a href="#">Suppor this fellow</a>
+							<!-- <a href="#">Suppor this fellow</a> -->
 						</div>
 					</li>
 					<li class="clearfix">
 						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description">
+						<div class="content-description bg-txt corregir">
 							<h3>Forever</h3>
 							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<a href="#">Support this fellow</a>
+							<!-- <a href="#">Suppor this fellow</a> -->
 						</div>
 					</li>
 					<li class="clearfix">
 						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description">
+						<div class="content-description bg-txt corregir">
 							<h3>Coco</h3>
 							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<a href="#">Suppor this fellow</a>
+							<!-- <a href="#">Suppor this fellow</a> -->
 						</div>
 					</li>
 					<li class="clearfix">
 						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description">
+						<div class="content-description bg-txt corregir">
 							<h3>Coco</h3>
 							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<a href="#">Suppor this fellow</a>
+							<!-- <a href="#">Suppor this fellow</a> -->
 						</div>
 					</li>
 				</ul>

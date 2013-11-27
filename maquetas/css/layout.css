@@ -61,6 +61,21 @@ p,span{
 }
 
 
+
+
+.pet-loss-mod-list .bg-txt{ /*optimizar */
+	width: 830px;
+}
+
+.org-mod .bg-txt{ /*optimizar */
+	width: 85% !important;
+}
+
+.pet-loss-mod-list .corregir{ /*optimizar. Esta clase (.corregir) solo aparece en index*/
+	width: 75% !important;
+}
+
+
 /* ------------------------------------- end background textos */
 
 
@@ -209,9 +224,11 @@ p,span{
 	border-bottom:1px solid #c788a3;
 }
 
+/*
 .pet-loss-mod-list .content-description{
 	width: 270px;
 }
+*/
 
 .projects-mod-list, .pet-loss-mod-list{
 	padding:0;
@@ -524,6 +541,16 @@ p,span{
 	height: 80%;
 }
 
+.animal-antics-mod .video{ /* video en index.html */
+	margin-left: 20px; /* centra el bloque en en general */
+}
+
+.animal-antics-mod .video .play{ /* video en index.html */
+	margin-left: -10px; /* centra el play dentro del video*/
+	height: 75%; /* evita q el pointer se haga por fuera del video */
+}
+
+
 /* ------------------------------ end big videos*/
 
 
@@ -613,7 +640,7 @@ p,span{
 	margin-right: 0;
 }
 
-#publi{
+#publi{/* esto hay q modificarlo pq se repite con otras publis */
 	background: #bdd19c; /* provisorio */
 	height: 302px; 
 }
@@ -666,20 +693,20 @@ p,span{
 	opacity: 0.5;
 }
 
-.user-info, .bg-txt, #user-extra, .pet-info{
+.pic-caption, .bg-txt, #user-extra, .pet-info{
 	float: left;
 }
 
-.user-info{
+.pic-caption{  /* pic caption reemplaza user-info */
 	width: 125.5px;
 	margin-right: 10px;
 }
 
-.user-info span, .pet-info span{
+.pic-caption span, .pet-info span{
 	font-size: 12px;
 }
 
-.user-info .thumb-mid{
+.pic-caption .thumb-mid{
 	margin-bottom: 10px;
 }
 
@@ -729,9 +756,11 @@ p,span{
 }
 
 
+/* ------------------------------ tribute */
 
-
-
+#visit-member{
+	margin-left: 135px;
+}
 
 
 /* -------------------------------- vet talk */
@@ -766,10 +795,11 @@ p,span{
 	border-bottom: 1px solid #67a51e;
 }
 
+/*
 .talks-list .content-description{
 	width: 830px;
 }
-
+*/
 .vet-q, .vet-a{
 	border-bottom: none !important;
 	padding: 0 !important;
@@ -793,6 +823,22 @@ textarea {
 
 
 
+/* -------------------------------------- organizations */
+
+.org-mod{
+	background: #b0bcda; /*cambiar color para organiztions */
+}
+
+.org-mod > .mod-header{
+	background: #153ca0; /*cambiar color para organiztions */
+}
+
+
+
+.publi-org{ /* esto hay q modificarlo pq se repite con otras publis */
+	height: 210px; 
+	background: #bdd19c; /* provisorio */
+}
 
 
 

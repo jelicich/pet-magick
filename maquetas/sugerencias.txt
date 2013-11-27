@@ -1,15 +1,40 @@
-- .pet-loss-mod-list, .qa-list: lineas divisorias centradas horizontalmente coupando 80% del ancho (no llegaria a las puntas)\
+Cosas para hacer:
+
+- Faltaria blog (sin contar back-ends)
+- Tipografias y formato de textos
+- dropdown para 'groups' (esto si podes hacelo vos asi no meto mano en el bootstrap)
+- Q no se note la separacion del triangulo y el pop up al desaparecer
+- Hacer q el pop up se mantenga cuando queres llenar el formulario.
+- Alinear el bottom en las clases bg-txt segun corresponda en cada seccion. Por ahora estan desparejos.
+- Buscar y cambiar color para "organizations" (ya esta la clase creada en el css y aplicada al html, solo hay q cambiar el exadecimal
+- standarizar los advertisements en la medida de lo posible....
+- Standarizar los mod-list (hice un poco de esto con los bg-text y eso, pero le falta mas)
+- Emparejar modulos en index (bottom pet loss mod)
+- Revisar medida en foto de vet talk (tiene la medida standard de video, tal vez no es la mas conveniente)
+
+
+
+Sugerencias:
+
+- Separar css en archivos por seccion? (se me acalambra el faquiu de scrollear con la ruedita en layout.css jajaj)
+- .pet-loss-mod-list, .qa-list, content-description: lineas divisorias centradas horizontalmente ocupando 80% del ancho (no llegaria a las puntas)\
 - .vet-talk-article: foto del tamano de "featured project"
 - menu categorias en modulos (dog, cat...): generar espacio entre la barra y el contenido. 
 - .slide-small: me hace ruido q las fotos del slider sean del mismo tamano q las de perfil
+- Habria q buscarle la vuelta a algunos modulos q tienen mucho vacio.
+
+
 
 
 Lo q hice:
 
+- index:
+	- Solo tuve q aplicar las clases q habia modificado para q no se rompa.
+
 - users-profile: 
                 - Cambie el video y lo classie para q sea el mismo q en antics.
 		- standarice tambien los backgrounds de los textos (lo mas q pude, seguro se puede mejorar) y se ve en varias secciones
-		- Tambien standarice las fotos de pet como 'slider-small'(aparece en projects tambien). Deje lugar para las flechitas, por eso esta 		  medio corrido
+		- Tambien standarice las fotos de pet como 'slider-small'(aparece en projects tambien). Deje lugar para las flechitas, por eso esta 		 	   medio corrido
 
 - Vet talk:
            - Puse el pop up con el form y acomodarlo bien, pero falta hacer q se mantenga cuando sacas el hover. No llegue...
@@ -19,8 +44,14 @@ Lo q hice:
 	   - Hice la seccion, con los bg txt y el slider-small tambien aca 
            - Me sigue pareciendo q algunos modulos se ven vacios (en las otras secciones tambien)
 
+- tribute.html
+
+- Organizations
+
+
+
 Estate atento a las clases pq tal vez moves una laburando en una seccion y se mueve tambien en otra. 
 Encerre entre comentarios algunas cosas q funcionan en conjunto en el css (pop up, slider-small, bg txt, etc) y lo mismo con lo q corresponde a secciones. Si te parece una mierda lo podes cambiar jajaja.
-Bueno, me llevo mas tiempo eso se ir classeando q hacer una seccion en si. Espero q sea util jajaj
-Abrazo
+Bueno, me llevo mas tiempo eso de ir classeando q hacer una seccion en si. Espero q sea util jajaj
+
 

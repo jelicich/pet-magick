@@ -16,12 +16,14 @@ Cosas para hacer:
 
 Sugerencias:
 
-- Separar css en archivos por seccion? (se me acalambra el faquiu de scrollear con la ruedita en layout.css jajaj)
-- .pet-loss-mod-list, .qa-list, content-description: lineas divisorias centradas horizontalmente ocupando 80% del ancho (no llegaria a las puntas)\
-- .vet-talk-article: foto del tamano de "featured project"
-- menu categorias en modulos (dog, cat...): generar espacio entre la barra y el contenido. 
-- .slide-small: me hace ruido q las fotos del slider sean del mismo tamano q las de perfil
-- Habria q buscarle la vuelta a algunos modulos q tienen mucho vacio.
+	- Separar css en archivos por seccion? (se me acalambra el faquiu de scrollear con la ruedita en layout.css jajaj)
+	- .pet-loss-mod-list, .qa-list, content-description: lineas divisorias centradas horizontalmente ocupando 80% del ancho (no llegaria a las puntas)\
+listo---- .vet-talk-article: foto del tamano de "featured project"
+listo---- menu categorias en modulos (dog, cat...): generar espacio entre la barra y el contenido. 
+	(falta ponerle la flechita a la sección activa).
+listo---- .slide-small: me hace ruido q las fotos del slider sean del mismo tamano q las de perfil
+	(las puse en chiquito, pero queda mucho espacio muerto, entre las fotos y el video... hay que resolver eso, se puede poner una miniatura del video del tamaño de las miniaturas del slider). Igual, si el usuario solo sube 1 foto al album, también quedaría vacío
+	- Habria q buscarle la vuelta a algunos modulos q tienen mucho vacio.
 
 
 

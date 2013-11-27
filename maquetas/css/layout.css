@@ -96,6 +96,10 @@ p,span{
 	padding: 0;
 }
 
+.spacer10{
+	padding-top: 20px !important; /*Para agregar mas espacio entre los menues. Pero solo se lo agrega a los q tienen dsps fotitos y en el home no queda bien que lo tenga.*/
+}
+
 .grid-thumbs li{
 	float: left;
 	margin-right: 10px;
@@ -778,7 +782,7 @@ p,span{
 	background: #6a9a16;
 }
 
-.vet-talk-article, .vet-talk-img{
+.vet-talk-img{
 	float: left;
 }
 
@@ -793,6 +797,13 @@ p,span{
 
 .talks-list li,.qa-list li{
 	border-bottom: 1px solid #67a51e;
+}
+
+.vet-talk-author{
+	margin: 10px 0 0 0;
+	padding-top: 5px;
+	font-size: 12px;
+	border-top: 1px solid black;
 }
 
 /*

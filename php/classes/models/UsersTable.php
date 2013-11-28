@@ -39,11 +39,26 @@ class UsersTable extends Doctrine_Table
 
        //======== Validaciones
        
-       public function val_bd($us){
+       public function val_nickname($us){ // Ver si puedo hacer estas dos consultas en una sola
 
 		        $q = Doctrine_Query::create()
 					->from('Users u') 
 					->AndWhere('u.NICKNAME = ?', $us);
+
+				$Userss = $q->execute();
+	           
+	           if(sizeof($Userss) == 0){
+	           		return true;
+	           }else{
+	           		return false;
+	           }
+	   }
+
+	       public function val_email($email){ // Ver si puedo hacer estas dos consultas en una sola
+
+		        $q = Doctrine_Query::create()
+					->from('Users u') 
+					->AndWhere('u.EMAIL = ?', $email);
 
 				$Userss = $q->execute();
 	           

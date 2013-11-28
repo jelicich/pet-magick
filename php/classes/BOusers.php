@@ -16,16 +16,16 @@ class BOUsers{
                   || $ref[2] == '' || $ref[3] == ''  
                   || $ref[4] == '' || $ref[5] == '' || $ref[6] =='')
         {
-
             throw new Exception('error 1: Completar todo');
             break;
 
         }else{
 
             $table = Doctrine_Core::getTable('Users');
-            $rta = $table->val_bd($ref[2]);
+            $rta_nickname = $table->val_nickname($ref[2]);
+            $rta_email = $table->val_email($ref[3]);
 
-            if($rta == false){// error 2: usuario existente
+            if($rta_nickname == false){// error 2: usuario existente
 
                  throw new Exception('error 2: usuario existente');
                  break;
@@ -34,6 +34,11 @@ class BOUsers{
 
                 throw new Exception('error 3: no es email');
                 break;
+
+            }else if($rta_email == false){// error 4: email existente
+
+                 throw new Exception('error 4: mail existente');
+                 break;
             }
         }
     } // End function val_reg
@@ -64,25 +69,8 @@ class BOUsers{
 
 
 $yo = new BOUsers;
-$query = array('julian', 'pena', 'rolo', 'saudade@hotmail.com',  2, 1, 1);
+$query = array('julian', 'pena', 'pepe', 'saudade@hotmail.com',  2, 1, 1);
 $yo->registration($query);
 
-/*
-PHP.INI
--------
-error_reporting = E_ALL & ~E_NOTICE & ~E_WARNING
-zend_extension=C:\xampp\htdocs\php\ext\php_xdebug-2.2.1-5.4-vc9.dll
-extension=C:\xampp\htdocs\php\ext\php_pdo_mysql.dll
- 
 
-CONSULTA
----------
-php.exe .\lib\phpunit-3.7.5.phar .\proyectos\log-msj
-
-
-x-debug reporte
----------------
- php.exe .\lib\phpunit-3.7.5.phar --coverage-html reporteChat .\proyectos\log-msj
-
-*/
 ?>

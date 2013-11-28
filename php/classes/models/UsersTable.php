@@ -31,7 +31,7 @@ class UsersTable extends Doctrine_Table
 	            $Users->PASSWORD = $pass_sha1;
 	            $Users->RANK = $rank;
 	            $Users->CITY_ID = $city_id;
-	            $Users->TOKEN = 1;// sin loguear
+	            $Users->TOKEN = 0;// sin loguear
 	            $Users->save();
 	           
 	            return $Users->toArray();

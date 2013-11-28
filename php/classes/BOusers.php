@@ -6,6 +6,13 @@ include_once('models/UsersTable.php');
 
 class BOUsers{
 
+  var $table;
+
+  function __construct()
+  {
+    $this->table = Doctrine_Core::getTable('Usuarios');
+  }
+
     //======================== VALIDACIONES
 
    function val_reg($ref){
@@ -21,9 +28,9 @@ class BOUsers{
 
         }else{
 
-            $table = Doctrine_Core::getTable('Users');
-            $rta_nickname = $table->val_nickname($ref[2]);
-            $rta_email = $table->val_email($ref[3]);
+            //$table = Doctrine_Core::getTable('Users');
+            $rta_nickname = $this->$table->val_nickname($ref[2]);
+            $rta_email = $this->$table->val_email($ref[3]);
 
             if($rta_nickname == false){// error 2: usuario existente
 

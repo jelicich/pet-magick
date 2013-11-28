@@ -17,9 +17,9 @@ class UsersTable extends Doctrine_Table
         return Doctrine_Core::getTable('Users');
     }
 
-    //======================== REGISTRAR
+//====================================================================== REG
 
-       public function reg_bd($name, $lastname, $nickname, $email, $pass, $rank, $city_id){
+       public function reg($name, $lastname, $nickname, $email, $pass, $rank, $city_id){
 
        			$pass_sha1 = sha1($pass);
 
@@ -31,42 +31,105 @@ class UsersTable extends Doctrine_Table
 	            $Users->PASSWORD = $pass_sha1;
 	            $Users->RANK = $rank;
 	            $Users->CITY_ID = $city_id;
-	            $Users->TOKEN = 0;// sin loguear
+	            $Users->TOKEN = 0;
 	            $Users->save();
 	           
 	            return $Users->toArray();
 	   }
 
-       //======== Validaciones
+	    //================== REG VALIDATION
        
-       public function val_nickname($us){ // Ver si puedo hacer estas dos consultas en una sola
+       public function val_nickname($us){ // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
 
 		        $q = Doctrine_Query::create()
 					->from('Users u') 
 					->AndWhere('u.NICKNAME = ?', $us);
 
-				$Userss = $q->execute();
+				$user = $q->execute();
 	           
 	           if(sizeof($Userss) == 0){
 	           		return true;
 	           }else{
 	           		return false;
 	           }
-	   }
+	   }// End function val_nickname
 
-	       public function val_email($email){ // Ver si puedo hacer estas dos consultas en una sola
 
-		        $q = Doctrine_Query::create()
-					->from('Users u') 
-					->AndWhere('u.EMAIL = ?', $email);
 
-				$Userss = $q->execute();
-	           
-	           if(sizeof($Userss) == 0){
-	           		return true;
-	           }else{
-	           		return false;
-	           }
-	   }
+       public function val_email($email){ // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
+
+       		$q = Doctrine_Query::create()
+				->from('Users u') 
+				->AndWhere('u.EMAIL = ?', $email);
+
+			$user = $q->execute();
+           
+           if(sizeof($user) == 0){
+           		return true;
+           }else{
+           		return false;
+           }
+  		}// End function val_email
+
+
+	    
+
+
+//====================================================================== LOGIN
+
+	    public function login($nickname, $pass, $token){
+			
+			$pass_sha1 = sha1($pass);
+
+			$q = Doctrine_Query::create()
+				->from('Users u') 
+				->AndWhere('u.NICKNAME = ?', $nickname)
+				->AndWhere('u.PASSWORD = ?', $pass_sha1);
+
+			$user = $q->execute();
+
+			$id = $user[0]['ID_USER'];
+
+		       $q = Doctrine_Query::create()
+		            ->update('Users u')
+		            ->set('u.TOKEN', '?', $token)
+		            ->where('u.ID_USER = ?', $id);
+
+		       $q->execute();
+
+		       return $user[0]->toArray();
+			
+		}
+
+      
+	   //================== LOGIN VALIDATION
+
+	   public function val_login($ref){
+
+	   		$pass_sha1 = sha1($ref[1]);
+
+			$q = Doctrine_Query::create()
+				->from('Users u') 
+				->AndWhere('u.NICKNAME = ?', $ref[0])
+				->AndWhere('u.PASSWORD = ?', $pass_sha1);
+
+			$user = $q->execute();
+
+			return $user[0]->toArray();
+
+		}// End function val_login
+
+//====================================================================== LOGOUT
+
+	    public function logout($ref){
+
+	    	 $q = Doctrine_Query::create()
+		            ->update('Users u')
+		            ->set('u.TOKEN', '?', '0')
+		            ->where('u.NICKNAME = ?', $ref);
+
+		    $rta =  $q->execute();
+
+	    }// End function logout
 
 }//end class

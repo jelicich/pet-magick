@@ -96,6 +96,8 @@ p,span{
 	padding: 0;
 }
 
+
+
 .spacer10{
 	padding-top: 20px !important; /*Para agregar mas espacio entre los menues. Pero solo se lo agrega a los q tienen dsps fotitos y en el home no queda bien que lo tenga.*/
 }
@@ -405,6 +407,27 @@ p,span{
 
 #nav-bar ul li a:hover{
 	text-decoration: none;
+}
+
+#nav-bar ul li:active, #nav-bar ul li:focus, #nav-bar ul li a:active, #nav-bar ul li a:focus, #nav-bar .dropdown-toggle:active, #nav-bar .dropdown-toggle:focus{
+	-webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#nav-bar .dropdown-menu{
+	background: #da4f49;
+	border-radius: 0;
+	margin-top: 0;
+}
+
+#nav-bar .dropdown-menu > li > a:hover, #nav-bar .dropdown-menu > li > a:focus, #nav-bar .dropdown-submenu > li > a:hover, #nav-bar .dropdown-submenu > li > a:focus{
+	background-color: #be3730;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#be3730), to(#a32c26));
+	background-image: -webkit-linear-gradient(top, #be3730, #a32c26);
+	background-image: -o-linear-gradient(top, #be3730, #a32c26);
+	background-image: linear-gradient(to bottom, #be3730, #a32c26);
+	background-repeat: repeat-x;
 }
 
 .pet-loss-mod{

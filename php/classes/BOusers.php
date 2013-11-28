@@ -62,6 +62,7 @@ class BOUsers{
 
     //======================= LOGIN VAL
 
+    /*
     function val_login($ref){
 
         $t = sizeof($ref);
@@ -87,6 +88,57 @@ class BOUsers{
             }
         }// End else
       }// End function val_login
+      
+      */
+      
+          //=======VERSION ESTEBAN
+
+      //no termino de entender tu validacion de login. porque se autoejecuta el validador... entra en un bucle q no entiendo como sale.
+      //mi funcion de validacion de login es la siguiente y ademas busca al usuario por si no está registrado o no coincide la contraseña
+      //la adapto a tu metodología de errores
+      function validateLogin($usr, $pass, $tok)
+      {
+        //me fijo si estan vacios usr y pass
+        if(empty($usr) || empty($pass))
+        {
+          throw new Exception('Debe ingresar el mail y contraseña');
+        }
+        else
+        {
+          //si no están vacios busco que el mail coincida con la contraseña (ejecuta un query q es "Select * where usr = $usr & pass = $pass")
+          //metodo en UsersTable
+          $rta = $this->table->findByMailPass($usr,$pass);
+          //si la respuesta viene vacia le tiro el error
+          if(empty($rta))
+          {
+            throw new Exception('Usuario inexistente o contraseña incorrecta');
+          }
+          else
+          {
+            //sino está vacia, es decir q el usuario existe y puso bien la contraseña, me fijo q no esté logueado.
+            if($rta[0]['TOKEN'] != 0)
+            {
+              if($rta[0]['TOKEN'] != $tok)
+                //si el token no es 0 y es diferente del parametro q pasa significa q esta logueado
+                throw new Exception('Ya hay una sesion abierta de este usuario');
+            }
+          }
+        }
+
+        /*
+        $e = $this->getErrores();
+        if(empty($e))
+          return true;
+        else
+          return false;
+        */
+
+        //Devuelvo true pq paso la validación aunque segun entiendo con el try y catch no hace falta q la funcion devuelva ningun valor
+        return true;
+        
+      }
+
+
 
 
     //======================== REGISTRATION
@@ -114,10 +166,19 @@ class BOUsers{
 
          try
             {
-               $this->val_login($ref);
-               $rta = $this->table->login($ref[0], $ref[1], $ref[2]);
-               echo 'logueado! (Borrar este echo del codigo)';
-               return true;
+              //$this->val_login($ref);
+              //=====ESTEBAN
+              //desarmo el array para q lo reciba bien funcion
+              $usr = $ref[0];
+              $pass = sha1($ref[1]);
+              $tok = $ref[2];
+              //===END ESTEBAN
+              $this->validateLogin($usr, $pass, $tok);
+              $rta = $this->table->login($usr, $tok); //para hacer el update solo necesito el usr y el $tok
+              echo 'logueado! (Borrar este echo del codigo)';
+              return true;
+              //cuando ejecuto el login desde el objeto instanciado hago if($obj->login()), si entra guardo la info del usuario en sesion pidiendola asi:
+              //obj->table->findByMail($mail)   <-- todavía no puse este metodo
             }
        
         catch(Exception $e)
@@ -142,15 +203,25 @@ class BOUsers{
 
 $yo = new BOUsers;
 
-/*
+
 
 // Registrarse
-$query = array('luis', 'miguel', 'luismi', 'luismi@hotmail.com', 'clave', 'clave', 1, 1);
+/*
+$query = array('luis', 'miguel', 'luismi', 'luismi@hotmail.com', 'clave', 'clave', 1, 1211);
 $yo->registration($query);
 
 // Loguearse
 $query = array('luismi', 'clave', 1);
 $yo->login($query);
+
+
+*/
+
+// Loguearse
+$query = array('luismi@hotmail.com', 'clave', 1); //uso el mail como usuario 
+$yo->login($query);
+
+/*
 
 // Desloguearse
 $query = array('luismi');

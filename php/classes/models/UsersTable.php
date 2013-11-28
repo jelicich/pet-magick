@@ -47,7 +47,7 @@ class UsersTable extends Doctrine_Table
 
 				$user = $q->execute();
 	           
-	           if(sizeof($Userss) == 0){
+	           if(sizeof($user) == 0){
 	           		return true;
 	           }else{
 	           		return false;
@@ -77,6 +77,7 @@ class UsersTable extends Doctrine_Table
 
 //====================================================================== LOGIN
 
+	    /*
 	    public function login($nickname, $pass, $token){
 			
 			$pass_sha1 = sha1($pass);
@@ -100,7 +101,21 @@ class UsersTable extends Doctrine_Table
 		       return $user[0]->toArray();
 			
 		}
+		*/
 
+		//======= ESTEBAN
+
+		public function login($usr, $tok)
+		{
+			
+			$q = Doctrine_Query::create()
+		            ->update('Users u')
+		            ->set('u.TOKEN', '?', $tok )
+		            ->where('u.EMAIL = ?', $usr);
+		    $rta = $q->execute();
+		    return; // logueado
+		
+		}
       
 	   //================== LOGIN VALIDATION
 
@@ -131,5 +146,18 @@ class UsersTable extends Doctrine_Table
 		    $rta =  $q->execute();
 
 	    }// End function logout
+
+
+//===================================================================== FIND USER MAIL = PASS
+	//para ver si tiene la contraseña bien y si el usuario existe	
+	public function findByMailPass($usr, $pass)
+	{
+		$q = Doctrine_Query::create()
+			->from('Users u') 
+			->AndWhere('u.EMAIL = ?',$usr)
+			->AndWhere('u.PASSWORD = ?',$pass);
+		$rta = $q->execute()->toArray();
+		return $rta;
+	}	    
 
 }//end class

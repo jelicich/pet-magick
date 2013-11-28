@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+
 </head>
 
 <body>
@@ -41,7 +44,7 @@
 		<!-- navbar -->
 		<div id="nav-bar">
 			<div class="container_12 clearfix">
-				<ul class="grid_9 btn-group">
+				<ul class="grid_10 btn-group">
 						<li class="btn btn-small btn-danger"><a href="profiles.html">Profiles</a></li>
 						<li class="btn btn-small btn-danger"><a href="#">Formums</a></li>
 						<li class="btn btn-small btn-danger"><a href="antics.html">Animal Antics</a></li>
@@ -51,8 +54,16 @@
 						<li class="btn btn-small btn-danger"><a href="pet-loss.html">Pet Loss</a></li>
 						<li class="btn btn-small btn-danger"><a href="#">Forum</a></li>
 						<li class="btn btn-small btn-danger"><a href="#">Blog</a></li>
+						<li class="btn btn-small btn-danger">
+							<a href="#" class="btn dropdown-toggle btn-small btn-danger" data-toggle="dropdown">Groups <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Perro</a></li>
+								<li><a href="#">Gato</a></li>
+								<li><a href="#">Loro</a></li>
+							</ul>
+						</li>
 				</ul>
-				<form class="grid_3">
+				<form class="grid_2">
 					<input type="text" placeholder="Find pet lovers" />
 				</form>
 			</div>

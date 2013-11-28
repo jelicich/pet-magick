@@ -12,14 +12,14 @@
  * @property string $EMAIL
  * @property string $PASSWORD
  * @property string $ABOUT
+ * @property integer $CITY_ID
  * @property integer $PIC_ID
  * @property integer $ALBUM_ID
  * @property integer $RANK
- * @property integer $CITY_ID
  * @property string $TOKEN
+ * @property Cities $Cities
  * @property Pics $Pics
  * @property Albums $Albums
- * @property Cities $Cities
  * @property Doctrine_Collection $Blogs
  * @property Doctrine_Collection $Comments
  * @property Doctrine_Collection $Messages
@@ -105,6 +105,15 @@ abstract class BaseUsers extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
+        $this->hasColumn('CITY_ID', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
         $this->hasColumn('PIC_ID', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
@@ -132,15 +141,6 @@ abstract class BaseUsers extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('CITY_ID', 'integer', 4, array(
-             'type' => 'integer',
-             'length' => 4,
-             'fixed' => false,
-             'unsigned' => true,
-             'primary' => false,
-             'notnull' => true,
-             'autoincrement' => false,
-             ));
         $this->hasColumn('TOKEN', 'string', 40, array(
              'type' => 'string',
              'length' => 40,
@@ -155,6 +155,10 @@ abstract class BaseUsers extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Cities', array(
+             'local' => 'CITY_ID',
+             'foreign' => 'CityId'));
+
         $this->hasOne('Pics', array(
              'local' => 'PIC_ID',
              'foreign' => 'ID_PIC'));
@@ -162,10 +166,6 @@ abstract class BaseUsers extends Doctrine_Record
         $this->hasOne('Albums', array(
              'local' => 'ALBUM_ID',
              'foreign' => 'ID_ALBUM'));
-
-        $this->hasOne('Cities', array(
-             'local' => 'CITY_ID',
-             'foreign' => 'ID_CITY'));
 
         $this->hasMany('Blogs', array(
              'local' => 'ID_USER',

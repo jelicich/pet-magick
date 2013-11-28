@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-11-2013 a las 20:44:37
+-- Tiempo de generación: 28-11-2013 a las 22:39:15
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
 
@@ -44354,6 +44354,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `EMAIL` varchar(45) NOT NULL,
   `PASSWORD` char(40) NOT NULL,
   `ABOUT` varchar(45) DEFAULT NULL,
+  `CITY_ID` int(11) NOT NULL,
   `PIC_ID` int(10) unsigned DEFAULT NULL,
   `ALBUM_ID` int(10) unsigned DEFAULT NULL,
   `RANK` tinyint(1) unsigned NOT NULL,
@@ -44362,8 +44363,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `NICKNAME` (`NICKNAME`),
   UNIQUE KEY `EMAIL` (`EMAIL`),
   KEY `PIC_ID` (`PIC_ID`),
-  KEY `ALBUM_ID` (`ALBUM_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `ALBUM_ID` (`ALBUM_ID`),
+  KEY `CITY_ID` (`CITY_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`ID_USER`, `NAME`, `LASTNAME`, `NICKNAME`, `EMAIL`, `PASSWORD`, `ABOUT`, `CITY_ID`, `PIC_ID`, `ALBUM_ID`, `RANK`, `TOKEN`) VALUES
+(4, 'luis', 'miguel', 'luismi', 'luismi@hotmail.com', '8927bd748f26a7258a01e318a7e1e7585458a228', NULL, 1211, NULL, NULL, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -44481,6 +44490,7 @@ ALTER TABLE `tributes`
 -- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`CITY_ID`) REFERENCES `cities` (`CityId`),
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`),
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
 

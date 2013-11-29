@@ -214,11 +214,24 @@ p,span{
 
 .mod-menu a{
 	color: #FFFFFF;
+	display: block;
+	padding: 10px;
+}
+
+.mod-menu a:hover{
+	text-decoration: none;
+	background: rgba(0,0,0,0.1);
 }
 
 .mod-menu li{
-	padding: 10px;
 	text-align: center;
+	width: 16.6%;
+	float: left;
+	border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+.mod-menu li:last-child{
+	border-right:none;
 }
 
 .nogrid-mod .mod-content{
@@ -418,7 +431,7 @@ p,span{
 #nav-bar .dropdown-menu{
 	background: #da4f49;
 	border-radius: 0;
-	margin-top: 0;
+	text-align: left;
 }
 
 #nav-bar .dropdown-menu > li > a:hover, #nav-bar .dropdown-menu > li > a:focus, #nav-bar .dropdown-submenu > li > a:hover, #nav-bar .dropdown-submenu > li > a:focus{

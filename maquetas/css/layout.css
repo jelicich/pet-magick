@@ -71,12 +71,16 @@ p,span{
 	width: 85% !important;
 }
 
-.pet-loss-mod-list .corregir{ /*optimizar. Esta clase (.corregir) solo aparece en index*/
+.corregir{ /*optimizar. Esta clase (.corregir) solo aparece en index*/
 	width: 75% !important;
 }
 
+.profiles-mod .corregir{ /*optimizar. Esta clase (.corregir) solo aparece en index*/
+	width: 73% !important;
+}
 
 /* ------------------------------------- end background textos */
+
 
 
 
@@ -228,11 +232,48 @@ p,span{
 	width: 16.6%;
 	float: left;
 	border-right: 1px solid rgba(0,0,0,0.1);
+	position: relative;
 }
 
 .mod-menu li:last-child{
 	border-right:none;
 }
+
+/* flechas menu */
+
+#arrow-dog, 
+#arrow-cat,
+#arrow-bird,
+#arrow-rabbit,
+#arrow-ferret,
+#arrow-others
+ {
+	opacity: 0; /* esto va a cero */
+	width: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #d95248;
+	position: absolute;
+	top: 33px;
+	left: 67px;
+}
+
+#dog a:hover #arrow-dog,
+#cat a:hover #arrow-cat,
+#bird a:hover #arrow-bird,
+#rabbit a:hover #arrow-rabbit,
+#ferret a:hover #arrow-ferret,
+#others a:hover #arrow-others
+{
+	opacity: 1;
+    -webkit-transition: all 0.5s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+	 -moz-transition: all 0.5s ease-out;  /* Firefox 4-15 */
+	 -o-transition: all 0.5s ease-out;  /* Opera 10.50–12.00 */
+	 transition: all 0.5s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera     12.50+ */
+}
+
+/* end flechas menu */
+
 
 .nogrid-mod .mod-content{
 	padding: 10px !important;
@@ -615,9 +656,8 @@ p,span{
 #pop-up{
 	background-color: rgba(0, 0, 0, 0.8);
 	height: auto;
-	right: -10px;
-	top: 25px;
-	z-index: 9999;
+    margin-top: 10px;
+
 }
 
 #pop-up p{
@@ -632,15 +672,17 @@ p,span{
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
 	border-bottom: 10px solid rgba(0, 0, 0, 0.8);
-	top: 15px;
-	right: 40px;
+	margin-left: 250px;
 }
 
-#pop-up, .arrow-top{
+#what .active{
 	 display: block;
 	 opacity: 0; 
 	 height: 0;
 	 position: absolute;
+	 right: -10px;
+	 top: 15px;
+	 z-index: 9999;
      overflow: hidden;
      -webkit-transition: all 0.5s ease-out;  /* Chrome 1-25, Safari 3.2+ */
 	 -moz-transition: all 0.5s ease-out;  /* Firefox 4-15 */
@@ -649,7 +691,7 @@ p,span{
 }
 
 #pop-up .arrow-top{
-	margin-top: -20px;
+	margin-top: -40px;
 }
 
 #what a:hover~.active {
@@ -762,7 +804,7 @@ p,span{
 }
 
 #news-mod{
-	height: 174px;
+	height: 354px;
 }
 
 #news-mod .mod-content{
@@ -797,17 +839,25 @@ p,span{
 	background-color: rgba(176, 79, 120, 0.6); /* Esta clase (.grid-thumbs li dl) ya tiene un color asignado cuando la creaste. Fijate si preferis pasarle de esta forma el color a cada seccion */
 }
 
-.five_pixels{
+#what a{
 	color: #000 !important; /* bootstrap me lo pinta de azul solo en pet loss. Si sabes pq solo aca avisame.... */
-	margin-top: -5px;
 }
 
+
+.five_pixels{ /*para corregir la ubicacion del pop up, solo en esta seccion */
+	top: 20px !important;
+}
 
 /* ------------------------------ tribute */
 
 #visit-member{
 	margin-left: 135px;
 }
+
+.ask-qa a p{
+	color:#fff;
+}
+
 
 
 /* -------------------------------- vet talk */

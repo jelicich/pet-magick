@@ -62,42 +62,8 @@ class BOUsers{
 
     //======================= LOGIN VAL
 
-    /*
-    function val_login($ref){
+      function val_login($usr, $pass, $tok){
 
-        $t = sizeof($ref);
-
-        if($t < 3 || $ref[0] == '' || $ref[1] == ''){
-
-             throw new Exception('Completar todo');
-             break;
-            
-        }else{
-
-             $rta = $this->table->val_login($ref);
-            
-             if($rta["ID_USER"] == null){ 
-                
-                 throw new Exception('usuario o pass incorrecto');
-                 break;
-             } 
-            else if($rta["TOKEN"] != 0){
-
-                 throw new Exception('usuario ya esta logueado');
-                 break;
-            }
-        }// End else
-      }// End function val_login
-      
-      */
-      
-          //=======VERSION ESTEBAN
-
-      //no termino de entender tu validacion de login. porque se autoejecuta el validador... entra en un bucle q no entiendo como sale.
-      //mi funcion de validacion de login es la siguiente y ademas busca al usuario por si no está registrado o no coincide la contraseña
-      //la adapto a tu metodología de errores
-      function validateLogin($usr, $pass, $tok)
-      {
         //me fijo si estan vacios usr y pass
         if(empty($usr) || empty($pass))
         {
@@ -124,22 +90,9 @@ class BOUsers{
             }
           }
         }
+      }// End val_login
 
-        /*
-        $e = $this->getErrores();
-        if(empty($e))
-          return true;
-        else
-          return false;
-        */
-
-        //Devuelvo true pq paso la validación aunque segun entiendo con el try y catch no hace falta q la funcion devuelva ningun valor
-        return true;
-        
-      }
-
-
-
+    
 
     //======================== REGISTRATION
 
@@ -160,20 +113,18 @@ class BOUsers{
     }// End function registration
 
 
-     //============================= LOGIN
+    
+    //============================= LOGIN
 
     function login($ref){
 
          try
             {
-              //$this->val_login($ref);
-              //=====ESTEBAN
               //desarmo el array para q lo reciba bien funcion
               $usr = $ref[0];
               $pass = sha1($ref[1]);
               $tok = $ref[2];
-              //===END ESTEBAN
-              $this->validateLogin($usr, $pass, $tok);
+              $this->val_login($usr, $pass, $tok);
               $rta = $this->table->login($usr, $tok); //para hacer el update solo necesito el usr y el $tok
               echo 'logueado! (Borrar este echo del codigo)';
               return true;
@@ -187,45 +138,59 @@ class BOUsers{
             }
     }// End login
 
+   
+
     //======================== LOGOUT
 
     function logout($ref){
 
-       $rta = $this->table->logout($ref);
-       echo 'Deslogueado! (Borrar este echo del codigo)';
-       return true;
+       $q = Doctrine_Query::create()
+            ->update('Users u')
+            ->set('u.TOKEN', '?', '0')
+            ->where('u.NICKNAME = ?', $ref);
+       $q->execute();
 
-    }// End loout
+        echo 'Deslogueado! (Borrar este echo del codigo)';
 
-   
+    }// End logout
+
+    
+
+    //======================== DELETE USER
+    
+    function delete($ref){
+
+      $q = doctrine_query:: create()
+          ->delete('Users u')
+          ->where('u.EMAIL = ?', $ref);
+      $q->execute();
+
+      echo 'Borrado! (Borrar este echo del codigo)';
+
+    }// End delete
+
 }//End class BOUsers
 
 
 $yo = new BOUsers;
 
-
+/*
 
 // Registrarse
-/*
 $query = array('luis', 'miguel', 'luismi', 'luismi@hotmail.com', 'clave', 'clave', 1, 1211);
 $yo->registration($query);
-
-// Loguearse
-$query = array('luismi', 'clave', 1);
-$yo->login($query);
-
-
-*/
 
 // Loguearse
 $query = array('luismi@hotmail.com', 'clave', 1); //uso el mail como usuario 
 $yo->login($query);
 
-/*
-
 // Desloguearse
-$query = array('luismi');
+$query = array('luismi@hotmail.com');
 $yo->logout($query);
+
+// Delete
+$query = array('luismi@hotmail.com');
+$yo->delete($query);
 
 */
 

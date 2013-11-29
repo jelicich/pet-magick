@@ -6,6 +6,8 @@
 -- Tiempo de generación: 28-11-2013 a las 22:39:15
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
+CREATE DATABASE pet_magick;
+USE pet_magick;
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";

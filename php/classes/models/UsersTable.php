@@ -77,37 +77,9 @@ class UsersTable extends Doctrine_Table
 
 //====================================================================== LOGIN
 
-	    /*
-	    public function login($nickname, $pass, $token){
-			
-			$pass_sha1 = sha1($pass);
-
-			$q = Doctrine_Query::create()
-				->from('Users u') 
-				->AndWhere('u.NICKNAME = ?', $nickname)
-				->AndWhere('u.PASSWORD = ?', $pass_sha1);
-
-			$user = $q->execute();
-
-			$id = $user[0]['ID_USER'];
-
-		       $q = Doctrine_Query::create()
-		            ->update('Users u')
-		            ->set('u.TOKEN', '?', $token)
-		            ->where('u.ID_USER = ?', $id);
-
-		       $q->execute();
-
-		       return $user[0]->toArray();
-			
-		}
-		*/
-
-		//======= ESTEBAN
-
+  		//================== LOGIN 
 		public function login($usr, $tok)
 		{
-			
 			$q = Doctrine_Query::create()
 		            ->update('Users u')
 		            ->set('u.TOKEN', '?', $tok )
@@ -115,11 +87,10 @@ class UsersTable extends Doctrine_Table
 		    $rta = $q->execute();
 		    return; // logueado
 		
-		}
+		}// End function login
       
 	   //================== LOGIN VALIDATION
-
-	   public function val_login($ref){
+		public function val_login($ref){
 
 	   		$pass_sha1 = sha1($ref[1]);
 
@@ -134,21 +105,8 @@ class UsersTable extends Doctrine_Table
 
 		}// End function val_login
 
-//====================================================================== LOGOUT
-
-	    public function logout($ref){
-
-	    	 $q = Doctrine_Query::create()
-		            ->update('Users u')
-		            ->set('u.TOKEN', '?', '0')
-		            ->where('u.NICKNAME = ?', $ref);
-
-		    $rta =  $q->execute();
-
-	    }// End function logout
-
-
-//===================================================================== FIND USER MAIL = PASS
+	
+	//==================== FIND USER MAIL = PASS
 	//para ver si tiene la contraseña bien y si el usuario existe	
 	public function findByMailPass($usr, $pass)
 	{
@@ -156,8 +114,9 @@ class UsersTable extends Doctrine_Table
 			->from('Users u') 
 			->AndWhere('u.EMAIL = ?',$usr)
 			->AndWhere('u.PASSWORD = ?',$pass);
+		
 		$rta = $q->execute()->toArray();
 		return $rta;
-	}	    
+	}
 
 }//end class

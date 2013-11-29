@@ -2,14 +2,13 @@ Cosas para hacer:
 
 - Faltaria blog (sin contar back-ends)
 - Tipografias y formato de textos
-- dropdown para 'groups' (esto si podes hacelo vos asi no meto mano en el bootstrap) - esteban
-- Q no se note la separacion del triangulo y el pop up al desaparecer -  julian
 - Hacer q el pop up se mantenga cuando queres llenar el formulario - julian
 - Alinear el bottom en las clases bg-txt segun corresponda en cada seccion. Por ahora estan desparejos.
 - Buscar y cambiar color para "organizations" (ya esta la clase creada en el css y aplicada al html, solo hay q cambiar el exadecimal) - esteban 
 - standarizar los advertisements en la medida de lo posible.
 - Standarizar los mod-list (hice un poco de esto con los bg-text y eso, pero le falta mas)
 - Emparejar modulos en index (bottom pet loss mod)
+- Limitar texto en news en user profile (sobresale del contenedor si se agregan mas.) esto igual se arregla con el scroll...
 
 
 
@@ -17,12 +16,8 @@ Sugerencias:
 
 
 	- .pet-loss-mod-list, .qa-list, content-description: lineas divisorias centradas horizontalmente ocupando 80% del ancho (no llegaria a las puntas)\
-listo---- .vet-talk-article: foto del tamano de "featured project"
-listo---- menu categorias en modulos (dog, cat...): generar espacio entre la barra y el contenido. 
-	(falta ponerle la flechita a la sección activa).
-listo---- .slide-small: me hace ruido q las fotos del slider sean del mismo tamano q las de perfil
-	(las puse en chiquito, pero queda mucho espacio muerto, entre las fotos y el video... hay que resolver eso, se puede poner una miniatura del video del tamaño de las miniaturas del slider). Igual, si el usuario solo sube 1 foto al album, también quedaría vacío
-	- Habria q buscarle la vuelta a algunos modulos q tienen mucho vacio.
+
+
 
 
 

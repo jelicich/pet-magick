@@ -423,15 +423,22 @@ p,span{
 }
 
 #nav-bar ul li:active, #nav-bar ul li:focus, #nav-bar ul li a:active, #nav-bar ul li a:focus, #nav-bar .dropdown-toggle:active, #nav-bar .dropdown-toggle:focus{
-	-webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
+    outline: none;
 }
 
 #nav-bar .dropdown-menu{
 	background: #da4f49;
 	border-radius: 0;
 	text-align: left;
+}
+
+/* MOZ */
+
+@-moz-document url-prefix(){
+	#nav-bar .dropdown-menu{
+		padding:0 3px;
+		margin-top: 0;
+	}
 }
 
 #nav-bar .dropdown-menu > li > a:hover, #nav-bar .dropdown-menu > li > a:focus, #nav-bar .dropdown-submenu > li > a:hover, #nav-bar .dropdown-submenu > li > a:focus{

@@ -119,4 +119,14 @@ class UsersTable extends Doctrine_Table
 		return $rta;
 	}
 
+	 public function findByMail($mail)
+    {
+    	$q = Doctrine_Query::create()
+			->from('Users u') 
+			->AndWhere('u.EMAIL = ?',$mail);
+		$rta = $q->execute()->toArray();
+		
+		return $rta;
+    }
+
 }//end class

@@ -174,6 +174,11 @@ class BOUsers{
 
 $yo = new BOUsers;
 
+
+// Loguearse
+$query = array('diego@hotmail.com', 'clave', 1); //uso el mail como usuario 
+$yo->login($query);
+
 /*
 
 // Registrarse

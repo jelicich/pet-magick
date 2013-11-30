@@ -16,4 +16,58 @@ class MessagesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Messages');
     }
+
+//====================================================================== SUBMIT
+
+      public  function submit($from, $to, $subject, $message, $status){
+
+				$now = date('Y-m-d H:i:s');
+
+    	 		$msg = new Messages();
+	            $msg->FROM_USER_ID = $from;
+	            $msg->TO_USER_ID = $to;
+	            $msg->SUBJECT = $subject;
+	            $msg->MESSAGE = $message;
+	            $msg->STATUS = $status;
+	            $msg->DATE = $now;
+
+	            $msg->save();
+
+    }// End submit
+
+
+//====================================================================== READ
+
+    public function read($to, $date){
+
+              $q = Doctrine_Query::create()
+                ->select('m.MESSAGE, m.DATE, u.NICKNAME, m.ID_MESSAGE')
+                ->from('messages m')
+                ->innerJoin('m.Users u')
+                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->AndWhere('m.DATE > ?', $date)
+                ->AndWhere('m.STATUS = ?', '0');
+
+                 $rta = $q->execute();
+                 $json = array();
+
+                 foreach($rta as $m) {
+
+                     $json[] = $m->toArray();
+                 }
+
+                 $rta = json_encode($json);
+
+                for ($i=0; $i < sizeof($json); $i++) { 
+                    
+                     $q = Doctrine_Query::create()
+                        ->update('messages m')
+                        ->set('m.STATUS' , '?', '9')
+                        ->where('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']);
+                     $q->execute();
+                  }
+
+                  return $rta;
+    }// End read
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-ini_set('include_path', __DIR__.'/../lib/;'.ini_get('include_path') );
+ini_set('include_path', __DIR__.'/../lib/'.ini_get('include_path') );
 
 require_once('Doctrine.php');
 spl_autoload_register(array('Doctrine', 'modelsAutoload'));//Solo se requiere para cargar modelos

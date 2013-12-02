@@ -7,6 +7,22 @@ include_once('models/UsersTable.php');
 class BOUsers{
 
   var $table;
+  
+
+  /*
+  creo esta variable $err, para poder modificar el metodo login, ya que devuelve un valor y eso se toma como verdadero. es decir, cuando quiero loguearme hago 
+  if($usr->login())
+  {
+    entro
+  }
+  else
+  {
+    error;
+  }
+  al recibir el error como respuesta, en lugar de un false, entra en el if.
+  En la variable err voy a guardar e->getMessage
+  */
+  var $err;
 
   function __construct()
   {
@@ -126,7 +142,7 @@ class BOUsers{
               $tok = $ref[2];
               $this->val_login($usr, $pass, $tok);
               $rta = $this->table->login($usr, $tok); //para hacer el update solo necesito el usr y el $tok
-              echo 'logueado! (Borrar este echo del codigo)';
+              //echo 'logueado! (Borrar este echo del codigo)';
               return true;
               //cuando ejecuto el login desde el objeto instanciado hago if($obj->login()), si entra guardo la info del usuario en sesion pidiendola asi:
               //obj->table->findByMail($mail)   <-- todavía no puse este metodo
@@ -134,7 +150,9 @@ class BOUsers{
        
         catch(Exception $e)
             {
-               echo 'Message: ' .$e->getMessage();
+               //echo 'Message: ' .$e->getMessage();
+              $this->err = array('Error:'=> $e->getMessage());
+              return false;
             }
     }// End login
 

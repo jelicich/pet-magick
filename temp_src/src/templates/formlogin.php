@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <?php $_SESSION['token'] = sha1(uniqid()); ?>
 
 <div id="wrap">

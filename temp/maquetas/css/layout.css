@@ -1,0 +1,972 @@
+*{
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+a{
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover{
+	text-decoration: underline;
+
+}
+
+body{
+	font-family: "Tahoma", Verdana, Arial, sans-serif;
+	background: url('../img/fresh_snow.png');
+	color:#000000;
+}
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+h1{
+	background: url('../img/logo.png') no-repeat;
+	text-indent: -9999px;
+	width: 120px;
+	height: 35px;
+	margin-bottom:5px;
+	margin-top: 5px;
+}
+
+p,span{
+	font-size: 13px;
+}
+
+
+/* ----------------------------------- background textos */
+
+.bg-txt{ /* bg-txt reemplaza user-about para standarizarlo */
+	background: rgba(255, 255, 255, 0.3);
+	width: 620px;
+	height: 150px;
+	padding: 10px 15px 10px 10px;
+}
+
+.txt-wider{ /* txt-wider reemplaza pet-about para standarizarlo */
+	width: 784px !important;
+	height: 200px !important;
+	margin-bottom: 20px;
+}
+
+.content-description{ 
+	height: 80px;
+}
+
+
+
+
+.pet-loss-mod-list .bg-txt{ /*optimizar */
+	width: 830px;
+}
+
+.org-mod .bg-txt{ /*optimizar */
+	width: 85% !important;
+}
+
+.corregir{ /*optimizar. Esta clase (.corregir) solo aparece en index*/
+	width: 75% !important;
+}
+
+.profiles-mod .corregir{ /*optimizar. Esta clase (.corregir) solo aparece en index*/
+	width: 73% !important;
+}
+
+/* ------------------------------------- end background textos */
+
+
+
+
+.asd{
+	height: 150px;
+	background-color: gray;
+	margin-bottom: 20px;
+}
+
+.btn{
+	border-radius: 0 !important;
+	border-top:0;
+	border-bottom:0;
+}
+
+.btn-small{
+	padding: 0;
+}
+
+
+
+.spacer10{
+	padding-top: 20px !important; /*Para agregar mas espacio entre los menues. Pero solo se lo agrega a los q tienen dsps fotitos y en el home no queda bien que lo tenga.*/
+}
+
+.grid-thumbs li{
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	width: 122.5px;
+	height: 122.5px;
+	position: relative;
+}
+
+.grid-thumbs li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #FFFFFF;
+}
+
+.grid-thumbs li a:hover .hidden{
+	display: block;
+}
+
+.grid-thumbs li dl{
+	/*height: 50%; esto quedo en auto asi se adapta a cada caso. en antics es mas chico, aunque si el texto es largo pisa el play igual*/ 
+	max-height: 50%; /*esto lo puse para q no exeda la medida q pusiste antes vos */
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	/*background: url('../img/bg-user-grid.png');*/
+	background-color: rgba(217, 82, 72, 0.6); /* me parecio mejor esto, pero lo dejo a tu criterio */
+	overflow: hidden;
+	margin: 0;
+	padding: 5px;
+}
+
+.grid-thumbs li dl dt, .video-last-caption dt{
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.grid-thumbs li dl dd, .video-last-caption dd{
+	font-size: 11px;
+	margin: 0;
+	line-height: 13px;
+	font-weight: normal;
+}
+
+.hidden{
+	display: none;
+}
+
+.mod{
+	margin-bottom: 20px;
+}
+
+.mod a{
+	color:#000000;
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: bold;
+}
+
+.mod-content{
+	margin: 0;
+	color:#000000;
+}
+
+.mod-content h3{
+	margin: 0;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 14px;
+	color:#000000;
+}
+
+.mod-content p{
+	color:#000000;
+	line-height: 16px;
+	margin-bottom: 0;
+}
+
+.mod-header, .mod-content{
+	padding:10px;
+}
+
+.mod-header{
+	position: relative;
+}
+
+.mod-header a{
+	color:#ffffff;
+}
+
+.mod-header > h2{
+	font-size:16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	margin:0;
+	line-height: 16px;
+	height: 18px;
+}
+
+.mod-header > span{
+	color: #FFFFFF;
+	margin: 0;
+	font-size: 12px;
+}
+
+.mod-menu{
+	margin: -10px;
+}
+
+.mod-menu a{
+	color: #FFFFFF;
+	display: block;
+	padding: 10px;
+}
+
+.mod-menu a:hover{
+	text-decoration: none;
+	background: rgba(0,0,0,0.1);
+}
+
+.mod-menu li{
+	text-align: center;
+	width: 16.6%;
+	float: left;
+	border-right: 1px solid rgba(0,0,0,0.1);
+	position: relative;
+}
+
+.mod-menu li:last-child{
+	border-right:none;
+}
+
+/* flechas menu */
+
+#arrow-dog, 
+#arrow-cat,
+#arrow-bird,
+#arrow-rabbit,
+#arrow-ferret,
+#arrow-others
+ {
+	opacity: 0; /* esto va a cero */
+	width: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #d95248;
+	position: absolute;
+	top: 33px;
+	left: 67px;
+}
+
+#dog a:hover #arrow-dog,
+#cat a:hover #arrow-cat,
+#bird a:hover #arrow-bird,
+#rabbit a:hover #arrow-rabbit,
+#ferret a:hover #arrow-ferret,
+#others a:hover #arrow-others
+{
+	opacity: 1;
+    -webkit-transition: all 0.5s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+	 -moz-transition: all 0.5s ease-out;  /* Firefox 4-15 */
+	 -o-transition: all 0.5s ease-out;  /* Opera 10.50–12.00 */
+	 transition: all 0.5s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera     12.50+ */
+}
+
+/* end flechas menu */
+
+
+.nogrid-mod .mod-content{
+	padding: 10px !important;
+}
+
+.pet-loss-mod-list li{
+	padding:10px;
+	border-bottom:1px solid #c788a3;
+}
+
+/*
+.pet-loss-mod-list .content-description{
+	width: 270px;
+}
+*/
+
+.projects-mod-list, .pet-loss-mod-list{
+	padding:0;
+}
+
+.profiles-mod{
+	background: #e8b2ae;
+}
+
+.profiles-mod > .mod-header{
+	background: #d95248;
+}
+
+.profiles-mod .mod-content, 
+/*.animal-antics-mod .mod-content, */
+.pet-loss-mod .mod-content{
+	/* PARA EQUILIBRAR LA GRILLA */
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+.projects-mod-list .content-description{
+	width: 430px;
+}
+
+.projects-mod-list li{
+	padding:10px;
+	border-bottom:1px solid #647dbe;
+}
+
+.projects-mod-list li:last-child, .pet-loss-mod-list li:last-child{
+	border-bottom:none;
+}
+
+.side-img, .content-description{
+	float: left;
+}
+
+.side-img{
+	margin-right:10px;
+}
+
+
+.thumb-mid{
+	width: 122.5px;
+	height: 122.5px;
+}
+
+.thumb-small{
+	width: 80px;
+	height: 80px;
+}
+
+/*
+.video div{
+	width: 100%;
+	height: 200px;
+	background: #000000;
+	margin-bottom: 10px;
+}
+
+*/
+
+
+.animal-antics-mod{
+	background: #bdd19c;
+}
+
+.animal-antics-mod > .mod-header{
+	background: #6a9a16;
+}
+
+#content{
+	/* SI EL HEADER VA FIJO */
+	padding-top: 109px;
+	padding-bottom:60px;   /* Height of the footer */
+}
+
+#dsg{
+	text-align: right;
+}
+
+#footer{
+	padding: 10px 0;
+	background: #d95248;
+	font-size: 12px;
+
+	/* fixed bottom */
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:40px;
+}
+
+#footer a{
+	color: #000000;
+}
+
+#footer li{
+	float: left;
+	margin: 0;
+	border-left: 1px solid #a6322a;
+	padding:0 5px;
+	line-height: 12px;
+}
+
+#footer span, #footer ul{
+	display: inline-block;
+	margin: 0;
+}
+
+#header{
+	margin-bottom:20px;
+	/* SI EL HEADER VA FIJO */
+	position: fixed;
+	width: 100%;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#nav-bar{
+	background-color: #da4f49;
+	*background-color: #bd362f;
+	background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+	background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+	background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+	background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+	background-repeat: repeat-x;
+	border:1px solid;
+	border-color: #bd362f #bd362f #802420;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	 -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#nav-bar input{
+	margin:1px 0;
+	width: 100%;
+	/* IE */
+	padding: 0\9;
+	padding-left: 3px\9;
+	padding-right: 3px\9;
+}
+
+/* MOZ */
+
+@-moz-document url-prefix(){
+	#nav-bar input{
+		padding:0 3px;
+	}
+}
+
+#nav-bar ul, #nav-bar form, #nav-bar form input{
+	margin-bottom: 0;
+}
+
+#nav-bar ul li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 1px 10px;
+	color:#FFFFFF;
+}
+
+#nav-bar ul li a:hover{
+	text-decoration: none;
+}
+
+#nav-bar ul li:active, #nav-bar ul li:focus, #nav-bar ul li a:active, #nav-bar ul li a:focus, #nav-bar .dropdown-toggle:active, #nav-bar .dropdown-toggle:focus{
+    outline: none;
+}
+
+#nav-bar .dropdown-menu{
+	background: #da4f49;
+	border-radius: 0;
+	text-align: left;
+}
+
+/* MOZ */
+
+@-moz-document url-prefix(){
+	#nav-bar .dropdown-menu{
+		padding:0 3px;
+		margin-top: 0;
+	}
+}
+
+#nav-bar .dropdown-menu > li > a:hover, #nav-bar .dropdown-menu > li > a:focus, #nav-bar .dropdown-submenu > li > a:hover, #nav-bar .dropdown-submenu > li > a:focus{
+	background-color: #be3730;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#be3730), to(#a32c26));
+	background-image: -webkit-linear-gradient(top, #be3730, #a32c26);
+	background-image: -o-linear-gradient(top, #be3730, #a32c26);
+	background-image: linear-gradient(to bottom, #be3730, #a32c26);
+	background-repeat: repeat-x;
+}
+
+.pet-loss-mod{
+	background: #dfc2cf;
+}
+
+.pet-loss-mod > .mod-header{
+	background: #b04f78;
+}
+
+
+#profiles-mod{
+	background: #e8b2ae;
+}
+
+#profiles-mod > .mod-header{
+	background: #d95248;
+}
+
+#profiles-mod .mod-content{
+	/* PARA EQUILIBRAR LA GRILLA */
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+.projects-mod{
+	background: #b0bcda;
+}
+
+.projects-mod > .mod-header{
+	background: #153ca0;
+}
+
+
+#user-menu{
+	margin-top:10px;
+}
+
+#user-menu a{
+	color: #000000;
+}
+
+#user-menu img{
+	width: 25px;
+	border: 1px solid #c9b200;
+}
+
+#user-menu li{
+	font-size: 12px;
+	float: right;
+	padding:1px 5px 0;
+	border-right: 1px solid #c9b200;
+	height: 25px;
+}
+
+#user-menu li:first-child{
+	padding-right: 0;
+	border:none;
+}
+
+#user-menu li:last-child{
+	padding-top: 0;
+}
+
+#user-menu span{
+	font-weight: bold;
+	color:#b5382a;
+}
+
+#yellow-bar{
+	background: #e7cd00;
+}
+
+
+/* ------------------------------ small slider */
+
+.slider-small{ /* slider-small reemplaza a pet-album para standarizarlo */
+	width: auto;
+	float: left;
+	margin-left: 135px;
+}
+
+.slider-small ul{
+	margin: 0 20px;	
+}
+
+.slider-small ul li{
+	float: left;
+	margin-right: 10px;
+}
+
+.slider-small ul li:last-child{
+	margin-right: 0;
+}
+
+/* ------------------------------ end small slider */
+
+
+
+
+/*------------------------------- Big videos */
+
+.video{ /* Standarice video para antics y user profile y su contenido: .wrapper-play, .play, .thumb-big, .video-thumb,.video-last-caption */
+	width: 335px;
+	float: left;
+	position: relative;
+	margin-right: 10px;
+}
+
+.video-thumb{
+	margin-bottom: 10px;
+}
+
+.video .thumb-big{
+	float: left;
+	background-color: #fff; /* provisorio */
+}
+
+#wrapper{
+	min-height:100%;
+	position:relative;
+}
+
+.wrapper-play{ /* Provisorio hasta definir funcionalidad */
+	height: 200px;
+	cursor: pointer;
+}
+
+.play{
+	background: url(../img/antics/thumbs/play_midd.png) center no-repeat transparent;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.video .play{ /* centra el play en el thumb grande */
+	width: 335px;
+	height: 80%;
+}
+
+.animal-antics-mod .video{ /* video en index.html */
+	margin-left: 20px; /* centra el bloque en en general */
+}
+
+.animal-antics-mod .video .play{ /* video en index.html */
+	margin-left: -10px; /* centra el play dentro del video*/
+	height: 75%; /* evita q el pointer se haga por fuera del video */
+}
+
+
+/* ------------------------------ end big videos*/
+
+
+
+
+
+/*---------------------------pop up*/
+
+#what{
+	float: right;
+	margin: -25px 10px 0 0;
+	position: relative;
+}
+
+#pop-up{
+	background-color: rgba(0, 0, 0, 0.8);
+	height: auto;
+    margin-top: 10px;
+
+}
+
+#pop-up p{
+	color: #fff;
+	font-size: 12px;
+	width: 90%;
+	margin: 20px auto;
+}
+
+.arrow-top{
+	width: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid rgba(0, 0, 0, 0.8);
+	margin-left: 250px;
+}
+
+#what .active{
+	 display: block;
+	 opacity: 0; 
+	 height: 0;
+	 position: absolute;
+	 right: -10px;
+	 top: 15px;
+	 z-index: 9999;
+     overflow: hidden;
+     -webkit-transition: all 0.5s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+	 -moz-transition: all 0.5s ease-out;  /* Firefox 4-15 */
+	 -o-transition: all 0.5s ease-out;  /* Opera 10.50–12.00 */
+	 transition: all 0.5s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera     12.50+ */
+}
+
+#pop-up .arrow-top{
+	margin-top: -40px;
+}
+
+#what a:hover~.active {
+	opacity: 1;
+    height: auto;
+}
+
+/* ------------------------------ end pop up*/
+
+
+
+
+
+
+/* -------------------------- Animal antics */
+
+.thumb-big{
+	width: 335px;
+	height: 200px;
+}
+
+#lastest-video-mod{
+	background: #bdd19c;
+}
+
+#lastest-video-mod > .mod-header{
+	background: #6a9a16;
+}
+
+#lastest-video-mod ul {
+	width: 100%;
+}
+
+#lastest-video-mod .video:last-child{
+	margin-right: 0;
+}
+
+#publi{/* esto hay q modificarlo pq se repite con otras publis */
+	background: #bdd19c; /* provisorio */
+	height: 302px; 
+}
+
+.animal-antics-mod .grid-thumbs li dl{
+	/*background: url('../img/bg-user-grid.png');*/
+	background-color: rgba(106, 154, 22, 0.6); /* Esta clase (.grid-thumbs li dl) ya tiene un color asignado cuando la creaste. Fijate si preferis pasarle de esta forma el color a cada seccion */
+}
+
+
+
+
+
+
+
+/* ---------------------------- profiles */
+
+
+.pet-info{
+	width: 80px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.pet-info img{
+	margin-bottom: 10px;
+}
+
+.pet-info span{
+	line-height: 12px;
+}
+
+.recent-news{
+	border-bottom: 1px solid #c788a3;
+}
+
+.recent-news:last-child{
+	border-bottom: none;
+}
+
+.recent-news{
+	padding: 10px;
+}
+
+.recent-news span{
+	display: block;
+	width: 100%;
+	font-style: italic;
+	font-weight: bold;
+	opacity: 0.5;
+}
+
+.pic-caption, .bg-txt, #user-extra, .pet-info{
+	float: left;
+}
+
+.pic-caption{  /* pic caption reemplaza user-info */
+	width: 125.5px;
+	margin-right: 10px;
+}
+
+.pic-caption span, .pet-info span{
+	font-size: 12px;
+}
+
+.pic-caption .thumb-mid{
+	margin-bottom: 10px;
+}
+
+#user-extra ul{
+	margin-left: 10px;
+}
+
+#news-mod{
+	height: 354px;
+}
+
+#news-mod .mod-content{
+	padding: 0 0 10px 0 !important;
+	height: 136px;
+}
+
+#nickname{
+	display: inline-block;
+	width: 135.5px;
+}
+
+
+.profiles-mod .video{
+	float: right;
+	margin-right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------ pet loss */
+
+.pet-loss-mod .grid-thumbs li dl{
+	/*background: url('../img/bg-user-grid.png');*/
+	background-color: rgba(176, 79, 120, 0.6); /* Esta clase (.grid-thumbs li dl) ya tiene un color asignado cuando la creaste. Fijate si preferis pasarle de esta forma el color a cada seccion */
+}
+
+#what a{
+	color: #000 !important; /* bootstrap me lo pinta de azul solo en pet loss. Si sabes pq solo aca avisame.... */
+}
+
+
+.five_pixels{ /*para corregir la ubicacion del pop up, solo en esta seccion */
+	top: 20px !important;
+}
+
+/* ------------------------------ tribute */
+
+#visit-member{
+	margin-left: 135px;
+}
+
+.ask-qa a p{
+	color:#fff;
+}
+
+
+
+/* -------------------------------- vet talk */
+
+.ask-qa{
+	position: absolute;
+	top: 10px;
+}
+
+.vet-talk-mod{
+	background: #bdd19c;
+}
+
+.vet-talk-mod > .mod-header{
+	background: #6a9a16;
+}
+
+.vet-talk-img{
+	float: left;
+}
+
+.vet-talk-article{
+	text-align: justify;
+}
+
+.vet-talk-img{
+	margin-right: 10px;
+	margin-bottom: 0px;
+}
+
+.talks-list li,.qa-list li{
+	border-bottom: 1px solid #67a51e;
+}
+
+.vet-talk-author{
+	margin: 10px 0 0 0;
+	padding-top: 5px;
+	font-size: 12px;
+	border-top: 1px solid black;
+}
+
+/*
+.talks-list .content-description{
+	width: 830px;
+}
+*/
+.vet-q, .vet-a{
+	border-bottom: none !important;
+	padding: 0 !important;
+}
+
+.vet-a{
+	margin-left: 10px;
+	margin-top: 10px;
+	font-style: italic;
+}
+
+.qa-list ul{
+	margin: 0;
+}
+
+textarea {   
+	height: 98px;  
+    line-height: 150%;  
+
+}  
+
+
+
+/* -------------------------------------- organizations */
+
+.org-mod{
+	background: #b0bcda; /*cambiar color para organiztions */
+}
+
+.org-mod > .mod-header{
+	background: #153ca0; /*cambiar color para organiztions */
+}
+
+
+
+.publi-org{ /* esto hay q modificarlo pq se repite con otras publis */
+	height: 210px; 
+	background: #bdd19c; /* provisorio */
+}
+
+
+
+/* -------------------------------------- Project boards */
+
+.projects-mod .slider-small{
+	margin: 0 0 20px 145px;
+}
+
+
+/*
+Prueba para hover en imagenes....
+Tunear!!!
+
+.ups img{
+   opacity: 1;
+   transition: opacity .25s linear;
+   -moz-transition: opacity .25s linear;
+   -webkit-transition: opacity .25s linear;
+
+}
+
+.ups img:hover{
+  opacity: 0.8;
+ }
+
+*/

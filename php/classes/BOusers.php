@@ -164,11 +164,11 @@ class BOUsers{
 
        $q = Doctrine_Query::create()
             ->update('Users u')
-            ->set('u.TOKEN', '?', '0')
-            ->where('u.NICKNAME = ?', $ref);
+            ->set('u.TOKEN', '?', 0)
+            ->where('u.ID_USER = ?', $ref);
        $q->execute();
 
-        echo 'Deslogueado! (Borrar este echo del codigo)';
+       //echo 'Deslogueado! (Borrar este echo del codigo)';
 
     }// End logout
 
@@ -189,14 +189,14 @@ class BOUsers{
 
 }//End class BOUsers
 
-
+/*
 $yo = new BOUsers;
 
 
 // Loguearse
 $query = array('diego@hotmail.com', 'clave', 1); //uso el mail como usuario 
 $yo->login($query);
-
+*/
 /*
 
 // Registrarse

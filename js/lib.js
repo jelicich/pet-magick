@@ -42,9 +42,28 @@ function ajax(metodo,url, unaFuncion, mensaje, async) {
 }
 
 
-vardump = function() {
+function vardump() 
+{
 	console.log(this.responseText);
 }
+
+function redirect()
+{
+	setTimeout("location.href='index.php'", 1);
+}
+
+function byid(s)
+{
+	
+	 return document.getElementById(s);
+}
+
+
+//=============================================================== 
+
+
+
+//============================= LOGIN FUNCTIONS
 
 function printUserMenu()
 {
@@ -74,18 +93,63 @@ function printUserMenu()
  	}
  	catch(e)
  	{
-		var wrap = document.getElementById('user-login');
+		var wrap = byid('user-login');
  		wrap.innerHTML = html;
- 		eval(document.getElementById('jslogout').innerHTML); 	//esta linea le hace un eval a la etiqueta script q trae el archivo q se carga	
+ 		eval(byid('jslogout').innerHTML); 	//esta linea le hace un eval a la etiqueta script q trae el archivo q se carga	
  	}	 	
  	
  	//para que pueda ejecutar el codigo nuevo que cargue en la otra pagina con el responsetext
  	
  	//onLoadChat();
-}
+}//end printUserMenu
 
 
-function redirect()
-{
-	setTimeout("location.href='index.php'", 1);
-}
+function login(){
+
+	//levanto los valores de los campos
+	var email = byid('email').value;
+	var pass = byid('password').value;
+	var token = byid('token').value;
+
+	//variable q pasa todo por post
+	var vars = 'email='+email+'&password='+pass+'&token='+token;
+
+	ajax('POST', 'ajax/login.php', printUserMenu, vars, true);
+
+}//end login
+
+
+//============================= REGISTRATION FUNCTIONS
+
+function printReg(){
+
+	var html = this.responseText;
+	var wrap = byid('user-login');
+		wrap.innerHTML = html;
+		eval(byid('jsreg').innerHTML); 	
+}//end printReg
+
+
+
+function reg(){
+		
+		//levanto los valores de los campos
+		var name = byid('name').value;
+		var lastname = byid('lastname').value;
+		var nickname = byid('nickname').value;
+		var email = byid('email').value;
+		var password = byid('password').value;
+		var password2 = byid('password2').value;
+		var rank = 1;
+		//var country = byid('country').value;
+		var city = byid('city').value;
+		var token = byid('token').value;
+
+		//variable q pasa todo por post
+		var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
+				   '&password2='+password2+'&rank='+rank +'&city='+city+'&token='+token;
+
+		ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);
+
+}//end reg
+

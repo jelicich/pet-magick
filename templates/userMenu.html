@@ -1,3 +1,4 @@
+				
 				<!-- user menu -->
 				<ul class="grid_4 push_6 clearfix" id="user-menu">
 					<li>
@@ -12,11 +13,13 @@
 					</li>
 				</ul>
 				<!-- END user menu -->
+				
+
 				<script type="text/javascript" id="jslogout">
 
-				document.getElementById('logout').onclick = function() {
-					//EJECUTO ajax sin callback y sin variables
-					ajax('POST', 'ajax/logout.php', redirect, false, true);
-				}
+					byid('logout').onclick = function() {
+						//EJECUTO ajax sin callback y sin variables
+						ajax('POST', 'ajax/logout.php', redirect, false, true);
+					}
 
 				</script>

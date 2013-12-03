@@ -128,6 +128,24 @@ class BOUsers{
             }
     }// End function registration
 
+ 
+
+  //======================= nombres de todos los paises
+    function countryList(){
+
+        $rta = $this->table->countries();
+        return $rta;
+       
+    }// End country
+
+     function countryId(){
+
+        $rta = $this->table->id_countries();
+        return $rta;
+       
+    }// End country
+
+
 
     
     //============================= LOGIN
@@ -142,7 +160,7 @@ class BOUsers{
               $tok = $ref[2];
               $this->val_login($usr, $pass, $tok);
               $rta = $this->table->login($usr, $tok); //para hacer el update solo necesito el usr y el $tok
-              //echo 'logueado! (Borrar este echo del codigo)';
+              echo 'logueado! (Borrar este echo del codigo)';
               return true;
               //cuando ejecuto el login desde el objeto instanciado hago if($obj->login()), si entra guardo la info del usuario en sesion pidiendola asi:
               //obj->table->findByMail($mail)   <-- todavía no puse este metodo

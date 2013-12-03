@@ -1,12 +1,32 @@
 <?php
 
 session_start();
-include_once "../php/classes/BOusers.php";
+
+include('../php/classes/BOusers.php');
+
 $user = new BOusers;
 
-//if($user->login(array($_POST['email'],$_POST['password'], $_POST['token']))) //si devuelve true
-if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) // Fijate q tuve q cambiar esto para q imprimiera un sha, pero no se bien q onda.
-{
+$dato = array(
+	$_POST['name'],
+	$_POST['lastname'],
+	$_POST['nickname'],
+
+	$_POST['email'],
+	$_POST['password'],
+	$_POST['password2'],
+
+	$_POST['rank'],
+	//$_POST['country'],
+	$_POST['city'],
+	$_POST['token'],
+);
+
+
+
+if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la misma de login.php
+	
+	$user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']));
+
 	// busco el nombre de usuario
 	$datosU = $user->table->findByMail($_POST['email']);
 
@@ -20,15 +40,11 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
 
 	//cargo el html con el menu del usuario
 	include_once '../templates/userMenu.html';
-}
-else 
-{
+
+
+
+}else{
+
 	echo json_encode($user->err);
-	/*
-	foreach ($er as $key => $value) 
-	{
-		echo '<p>Err# <strong>' . $key . '</strong>: '. $value . '</p>';	
-	}
-	*/
+	
 }
-?>

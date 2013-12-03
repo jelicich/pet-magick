@@ -12,33 +12,20 @@
 							<input type="password" name="password" id="password" placeholder="Password" style="width:100%"/>
 						</div>
 						<input type="button" id="login" value="Login" />
-						<input type="hidden" name="token" id="token" value="'. $_SESSION['token'] . '" />
+						<input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />
 					</form>
 					<input type="button" id="link" value="reg" />
 					
 				</div>
 
 				<script type="text/javascript">
-					
 
-
+					//======================DESPLIEGA REGISTRO
 					byid('link').onclick = function(){
 						ajax('POST', 'ajax/getReg.php', printReg, null, true);
 					}
 
-
-
 					//======================PARA LOGUEARSE 
-					byid('login').onclick = function() {
-						//levanto los valores de los campos
-						var email = byid('email').value;
-						var pass = byid('password').value;
-						var token = byid('token').value;
-
-						//variable q pasa todo por post
-						var vars = 'email='+email+'&password='+pass+'&token='+token;
-
-						ajax('POST', 'ajax/login.php', printUserMenu, vars, true);
-					}
+					byid('login').onclick = function() {login();)}
 
 				</script>

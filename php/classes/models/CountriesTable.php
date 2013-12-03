@@ -16,4 +16,43 @@ class CountriesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Countries');
     }
+
+    public function getCountries()
+    {
+		
+	    $q = Doctrine_Query::create()
+			->from('Countries c');
+
+			$country = $q->execute();
+
+			return $country->toArray();
+	 }
+
+
+
+	public function getRegionsByCountry($id){
+			
+	    $q = Doctrine_Query::create()
+			->from('Regions r') 
+			->AndWhere('r.CountryID = ?', $id);
+
+			$regions = $q->execute();
+
+			return $regions->toArray();
+	}
+
+
+
+	public function getCitiesByRegion($id){
+			
+	    $q = Doctrine_Query::create()
+			->from('Cities c') 
+			->AndWhere('c.RegionID = ?', $id);
+
+			$regions = $q->execute();
+
+			return $regions->toArray();
+	}
+
+
 }

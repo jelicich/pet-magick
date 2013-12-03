@@ -130,28 +130,6 @@ class UsersTable extends Doctrine_Table
     }
 
 
-    public function countries(){
-			
-		     $q = Doctrine_Query::create()
-				->from('Countries c');
-
-				$country = $q->execute();
-
-				return $country->toArray();
-		 }
-
-
-
-	  public function id_countries($country){
-			
-		     $q = Doctrine_Query::create()
-				->from('Countries c') 
-				->AndWhere('c.Country = ?', $country);
-
-				$country_id = $q->execute();
-
-				return $country_id[0]->toArray();
-		 }
 
 
 		

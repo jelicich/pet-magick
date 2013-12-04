@@ -423,8 +423,22 @@ p,span{
 	display: none;
 	padding:10px;
 	background:#e7cd00;
-	width: 200px;
+	width: 400px;
 	border:1px solid rgba(0,0,0,0.1);
+}
+
+#reg-form select{
+	width: 100%;
+}
+
+#reg-form .half:first-child{
+	margin-right: 2%
+}
+
+.half{
+	float: left;
+	width: 49%;
+	margin-bottom: 10px;
 }
 
 #log-form{

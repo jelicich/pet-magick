@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+<script type="text/javascript" src="js/lib.js"></script>
+
 </head>
 
 <body>
@@ -26,64 +28,61 @@
 	?>
 
 	<!-- site content -->
-
-	<div id="content" class="mod container_12" >
-
-	<div id='what' >
-		<a href="#"><p>How does Project board works ?</p></a>
-		<div class='active'>
-			<div id='pop-up' class='mod grid_4 '>
-
-				<p> 
-					It's time to make your pet a star. Show the rest of the world those moments your pet has done those "amazing...zany...pull your hair out" things that only pets can do and you've managed to capture on video. 
-				</p>
-
-			</div>
-			<div class=' arrow-top'></div>
-		</div>
-	</div>
-
-	<!-- featured project module -->
-		<div class="mod grid_12 projects-mod nogrid-mod">
-			
+	<div class="container_12" id="content">
+		
+		<!-- about module -->
+		<div class="mod grid_12 pet-loss-mod nogrid-mod">
 			<div class="mod-header">
-				<h2>Me and Dad</h2>
+				<h2><strong id="nickname">R.I.P</strong>A tribute to my dear pet friend</h2>
 			</div>
-			
 			<div class="mod-content clearfix">
-				
 				<div class="pic-caption">
 					<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					<a href="#"><span>Contact user >></span></a>
+					<h3>Kali</h3>
+					<span>Kelpy X</span> <br>
+					<span>1998 - 2010</span>
 				</div>
 				
 				<div class="bg-txt txt-wider">
-					
-					<p>
-						El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15. El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15
-						El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. 
-					</p>
-
+					<p>El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15. El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15</p>
 				</div>
+
+				<a href="#" id='visit-member'><span>View member profile >></span></a> <!-- provisorio -->
 				
 			</div>
-
-				<div class="slider-small">
-					<ul class="clearfix">
-						<li><img class="thumb-mid" src="img/users/thumb/1.jpg"/></li>
-						<li><img class="thumb-mid" src="img/users/thumb/1.jpg"/></li>
-						<li><img class="thumb-mid" src="img/users/thumb/1.jpg"/></li>
-					</ul>	
-				</div>
 		</div>
-		<!-- END featured project module -->
+		<!-- END about module -->
 
+		
 
 		<!-- Current projects module -->
-		<div class="mod grid_12 projects-mod">
+		<div class="mod grid_12 pet-loss-mod">
 			<div class="mod-header">
-				<h2>Current projects</h2>
+				<h2>Support mesagges</h2>
+
+				<div id='what' class='ask-qa'> <!-- invertir clase y id aca -->
+					<a href="#"><p>Leave your coment</p></a>
+					<div class='active'>
+						<div id='pop-up' class='mod grid_4 '>
+
+							<form class="form" >  
+
+							    <p class="text">  
+							        <textarea placeholder="Your question..." ></textarea>  
+							    </p>  
+
+							    <p class="submit">  
+							        <input type="submit" value="Submit" />  
+							    </p>  
+
+						    </form> 
+s
+						</div>
+						<div class=' arrow-top'></div>
+					</div>
+				</div>
 			</div>
+
 			<!-- talks -->
 			<ul class="mod-content pet-loss-mod-list talks-list">
 				<li class="clearfix">
@@ -123,20 +122,15 @@
 		</div>
 		<!-- END Current projects module -->
 
-		<!-- ads -->
-		<div class="grid_6 asd" ></div>
-		<div class="grid_6 asd"></div>
-		<!-- END ads -->
-
-	
+		
 
 	</div>
 	<!-- END site content -->
-
+	
 	<?php 
 		include_once 'templates/footer.php'; 
 	?>
-	
+
 </div>
 <!-- END wrapper-->
 </body>

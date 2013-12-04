@@ -7,7 +7,7 @@
 
 ?>
 
-				<div id="user-reg">
+				<div id="reg-form">
 					<form class="grid_4 push_6 clearfix" id="form-login">
 						
 
@@ -67,7 +67,6 @@
 						<input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />
 
 					</form>
-					<input type="button" id="link" value="reg" />
 					
 				</div>
 

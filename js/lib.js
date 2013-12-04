@@ -88,7 +88,7 @@ function printUserMenu()
  	}
  	catch(e)
  	{
-		var wrap = byid('user-login');
+		var wrap = byid('login-reg');
  		wrap.innerHTML = html;
  		eval(byid('jslogout').innerHTML); 	//esta linea le hace un eval a la etiqueta script q trae el archivo q se carga	
  	}	 	
@@ -113,13 +113,22 @@ function login(){
 
 }//end login
 
+function printLogin(){
+
+	var html = this.responseText;
+	var wrap = byid('login-reg');
+		wrap.innerHTML = html;
+		eval(byid('jslogin').innerHTML); 	
+}//end printReg
+
+
 
 //=============================================================================== REGISTRATION FUNCTIONS
 
 function printReg(){
 
 	var html = this.responseText;
-	var wrap = byid('user-login');
+	var wrap = byid('login-reg');
 		wrap.innerHTML = html;
 		eval(byid('jsreg').innerHTML); 	
 }//end printReg
@@ -149,7 +158,7 @@ function reg(){
 				   '&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
 
 		ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);
-		alert(city);
+		
 
 }//end reg
 

@@ -41,7 +41,7 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 	$_SESSION['email'] = $datosU[0]['EMAIL'];
 
 	//cargo el html con el menu del usuario
-	include_once '../templates/userMenu.html';
+	include_once '../templates/userMenu.php';
 
 
 

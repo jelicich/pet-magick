@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+<script type="text/javascript" src="js/lib.js"></script>
+
 </head>
 
 <body>
@@ -503,7 +505,7 @@
 	<?php 
 		include_once 'templates/footer.php'; 
 	?>
-	
+
 </div>
 <!-- END wrapper-->
 </body>

@@ -1,5 +1,5 @@
 			
-				<div id="user-login">
+				<div id="log-form">
 					<form class="grid_4 push_6 clearfix" id="form-login">
 						
 
@@ -14,18 +14,13 @@
 						<input type="button" id="login" value="Login" />
 						<input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />
 					</form>
-					<input type="button" id="link" value="reg" />
+					
 					
 				</div>
 
-				<script type="text/javascript">
-
-					//======================DESPLIEGA REGISTRO
-					byid('link').onclick = function(){
-						ajax('POST', 'ajax/getReg.php', printReg, null, true);
-					}
+				<script type="text/javascript" id='jslogin'>
 
 					//======================PARA LOGUEARSE 
-					byid('login').onclick = function() {login();)}
+					byid('login').onclick = function() {login();}
 
 				</script>

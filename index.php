@@ -1,8 +1,8 @@
 <?php 
-session_start();
-//session_destroy();
-$_SESSION['token'] = sha1(uniqid()); 
-//var_dump($_SESSION);
+	session_start();
+	//session_destroy();
+	$_SESSION['token'] = sha1(uniqid()); 
+	//var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,63 +24,10 @@ $_SESSION['token'] = sha1(uniqid());
 
 <body>
 <div id="wrapper">
-	<div id="header">
-		<!-- yellow bar -->
-		<div id="yellow-bar">
-			<div class="container_12">
-				<!-- logo -->
-				<h1 class="grid_2">Pet Magick</h1>
-				
-				<!-- form login  -->
-				<!--IF QUE SE FIJA Q SI ESTA LOGUEADO CARGUE EL MENU DE USUARIO EN VEZ DEL LOGIN --> 
-				<?php 
-					//session_destroy();
 
-					if(isset($_SESSION['token']) && isset($_SESSION['email']))
-					{
-						include_once 'templates/userMenu.html';
-					}
-					else
-					{
-						include_once 'templates/userLogin.html';
-					}
-				?>
-				
-				<!-- END form login -->
-			</div>
-		</div>
-		<!-- END yellow bar -->
-
-		<!-- navbar -->
-		<div id="nav-bar">
-			<div class="container_12 clearfix">
-				<ul class="grid_10 btn-group">
-						<li class="btn btn-small btn-danger"><a href="profiles.html">Profiles</a></li>
-						<li class="btn btn-small btn-danger"><a href="#">Formums</a></li>
-						<li class="btn btn-small btn-danger"><a href="antics.html">Animal Antics</a></li>
-						<li class="btn btn-small btn-danger"><a href="vet-talk.html">Vet Talk</a></li>
-						<li class="btn btn-small btn-danger"><a href="projects.html">Projects</a></li>
-						<li class="btn btn-small btn-danger"><a href="organizations.html">Organizations</a></li>
-						<li class="btn btn-small btn-danger"><a href="pet-loss.html">Pet Loss</a></li>
-						<li class="btn btn-small btn-danger"><a href="#">Forum</a></li>
-						<li class="btn btn-small btn-danger"><a href="#">Blog</a></li>
-						<li class="btn btn-small btn-danger">
-							<a href="#" class="btn dropdown-toggle btn-small btn-danger" id="dd" data-toggle="dropdown">Groups <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Perro</a></li>
-								<li><a href="#">Gato con botas</a></li>
-								<li><a href="#">Lazarillo</a></li>
-							</ul>
-						</li>
-				</ul>
-				<form class="grid_2">
-					<input type="text" placeholder="Find pet lovers" />
-				</form>
-			</div>
-		</div>
-		<!-- END navbar -->
-	</div>
-	<!-- END header -->
+	<?php 
+		include_once 'templates/header.php'; 
+	?>
 
 	<!-- site content -->
 	<div class="container_12" id="content">
@@ -368,23 +315,10 @@ $_SESSION['token'] = sha1(uniqid());
 	</div>
 	<!-- END site content -->
 
-	<!-- footer -->
-	<div id="footer">
-		<div class="container_12 clearfix">
-			<div class="grid_11">
-				<span class="copyright">Copyright All rights reserved</span>
-				<ul class="clearfix">
-					<li><a href="#">About Pet Magick</a></li>
-					<li><a href="#">Terms and conditions</a></li>
-					<li><a href="#">Privacy</a></li>
-				</ul>
-			</div>
-			<div id="dsg" class="grid_1">
-				Design
-			</div>
-		</div>
-	</div>
-	<!-- END footer -->
+	<?php 
+		include_once 'templates/footer.php'; 
+	?>
+	
 </div>
 <!-- END wrapper-->
 

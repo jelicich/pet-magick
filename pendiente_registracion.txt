@@ -1,14 +1,15 @@
-registro:
+registro y login:
 
-- Errores de validacion de registro q se muestren sin borrar el form.
+- Hacer los pop ups (creo q ya con js y aplicarle la misma funcion a los popups-form de vet talk y tributes)
+- Errores de validacion de registro q se muestren sin borrar el form (es importante pq tira un error en consola. No lo pude resolver).
 - (*) Ver como manejar los errores del combo (campos vacios, etc)
 - Ampliar el preg_match de emaill para q acepte otros formatos (como te paso ayer)
 - Ver q valor pasamos para "rank" y generar los inputs necesarios en el form
 - Vamos a revisar el formato de los passwords? (8 caracteres o algo asi digo)
 - Display none en userReg.php (lineas 57 y 63)
-- Ver si podemos poner los scripts al final del body
+- Ver si podemos poner los scripts al final del body (segun investigue, esta bien como esta. Solo q detiene el parseo hasta q termina de leer todo el script)
  
 
 * Son varios los errores q aparecen en este caso, pero creo q todos estan relacionados con la misma causa, no podes mandar valores asi nomas pq son FK y te salta error. Tanto si dejas campos vacios, como si le pasas null o lo q se te ocurra. Por ejemplo cuando retrocedes en el combo, osea, llenas las 3 instancias y luego en region pones una opcion q no tiene city, el combo responde bien pq te devuelve "city" q es el option disabled. El tema esta en la bd.
 No se bien como resolverlo, probe mandando valores por default pero como te dije, no garpa. La otra q pense es agregar un campoa las tablas country, region, city, con valor "0", como para poder mandar ese valor por default sin q tire error y q ademas represente a los q no tienen "pais, region o ciudad".
-En fin, si se te ocurre algo mejos joya. Sigo pensando....
+En fin, si se te ocurre algo mejor joya. Sigo pensando....

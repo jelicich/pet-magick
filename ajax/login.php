@@ -19,7 +19,7 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
 	$_SESSION['email'] = $datosU[0]['EMAIL'];
 
 	//cargo el html con el menu del usuario
-	include_once '../templates/userMenu.html';
+	include_once '../templates/userMenu.php';
 }
 else 
 {

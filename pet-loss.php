@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+<script type="text/javascript" src="js/lib.js"></script>
+
 </head>
 
 <body>
@@ -27,58 +29,49 @@
 
 	<!-- site content -->
 	<div class="container_12" id="content">
+
+		<div id='what'>
+		<a href="#" ><p>How does Project board works ?</p></a>
+		<div class='active five_pixels'>
+			<div id='pop-up' class='mod grid_4 '>
+
+				<p> 
+					Losing a pet can be a very traumatic experience for those who have formed a close bond with their good
+					friend and companion.
+					So we've added this Wall 
+					of Rememberance, a place 
+					where you can create a memorial to your special friend and let the rest of the world know of the special times you had together. 
+					You can add your favorite pet photo, and write a short tribute to your loyal mate.
+					There's also some space for other members to post
+					messages of support, so if 
+					you are struggling with greif, others can help you 
+					through the pain and let
+					the healing process begin.
+				</p>
+
+			</div>
+			<div class=' arrow-top'></div>
+		</div>
+	</div>
+
 		
-		<!-- profiles module -->
-		<div id="profiles-mod" class="mod grid_12">
+		
+		<!-- pet loss module -->
+		<div  class="pet-loss-mod mod grid_12">
 			<div class="mod-header">
 				<ul class="clearfix mod-menu">
-					<li id='dog'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-							Dog
-							<div id='arrow-dog'></div>
-						</a>
-					</li>
-
-					<li id='cat'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-							Cat
-							<div id='arrow-cat'></div>
-						</a>
-					</li>
-
-					<li id='bird'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-							Bird
-							<div id='arrow-bird'></div>
-						</a>
-					</li>
-
-					<li id='rabbit'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-							Rabbit
-							<div id='arrow-rabbit'></div>
-						</a>
-					</li>
-
-					<li id='ferret'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-							Ferret
-							<div id='arrow-ferret'></div>
-						</a>
-					</li>
-
-					<li id='others'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-							Others
-							<div id='arrow-others'></div>
-						</a>
-					</li>
+					<li><a href="#" class="active">Dog</a></li>
+					<li><a href="#">Cat</a></li>
+					<li><a href="#">Bird</a></li>
+					<li><a href="#">Rabbit</a></li>
+					<li><a href="#">Ferret</a></li>
+					<li><a href="#">Others</a></li>
 				</ul>
 			</div>
 			<ul class="grid-thumbs clearfix mod-content spacer10">
 				<!-- user -->
 				<li>
-					<a href="user-profiles.html">
+					<a href="tribute.html">
 						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
 						<dl class="hidden">
 							<dt>Anna Simpson</dt>
@@ -444,12 +437,7 @@
 		</div>
 		<!-- END profiles module -->
 
-		<!-- ads -->
-		<div class="grid_6 asd" >
-		</div>
-		<div class="grid_6 asd">
-		</div>
-		<!-- END ads -->
+	
 
 	</div>
 	<!-- END site content -->
@@ -457,7 +445,7 @@
 	<?php 
 		include_once 'templates/footer.php'; 
 	?>
-	
+
 </div>
 <!-- END wrapper-->
 </body>

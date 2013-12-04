@@ -59,7 +59,7 @@ function byid(s)
 }//end byid
 
 //=============================================================================== LOGIN FUNCTIONS
-
+var source; //variable para poder hacer el switch en print user menu 
 function printUserMenu()
 {
 	//eval('var html = ' + this.responseText + ';');
@@ -75,7 +75,16 @@ function printUserMenu()
  			var p = '<strong>'+error+'</strong> '+errores[error];
  		}
  		err.innerHTML = p;
- 		byid('log-form').appendChild(err);
+ 		switch(source) //switch para ver donde imprimir el error
+ 		{
+ 			case 'log':
+ 				byid('log-form').appendChild(err);
+ 				break;
+ 			case 'reg':
+ 				byid('reg-form').appendChild(err);
+ 				break;
+ 		}
+ 		
  		//document.body.insertBefore(err,document.body.firstChild);
  		
 		//intervalo que borra el error - ver si es conveniente
@@ -107,7 +116,7 @@ function login(){
 
 	//variable q pasa todo por post
 	var vars = 'email='+email+'&password='+pass+'&token='+token;
-
+	source = 'log';
 	ajax('POST', 'ajax/login.php', printUserMenu, vars, true);
 
 }//end login
@@ -124,7 +133,7 @@ function printLogin(){
 
 
 //=============================================================================== REGISTRATION FUNCTIONS
-
+/* NO VA CON EL POPUP
 function printReg(){
 
 	var html = this.responseText;
@@ -132,7 +141,7 @@ function printReg(){
 		wrap.innerHTML = html;
 		eval(byid('jsreg').innerHTML); 	
 }//end printReg
-
+*/
 
 
 function reg(){
@@ -156,7 +165,7 @@ function reg(){
 		//variable q pasa todo por post
 		var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
 				   '&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
-
+		source = 'reg';
 		ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);
 		
 

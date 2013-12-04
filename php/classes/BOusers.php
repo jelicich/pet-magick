@@ -43,7 +43,7 @@ class BOUsers{
                   || $ref[6] =='' || $ref[7] ==''
                   || $ref[8] =='' || $ref[9] =='' || $ref[10] =='')
         {
-            throw new Exception('Completar todo');
+            throw new Exception('Please fill in the mandatory fields');
             break;
 
         }else{
@@ -119,13 +119,14 @@ class BOUsers{
             {
                $this->val_reg($ref);
                $rta = $this->table->reg($ref[0], $ref[1], $ref[2], $ref[3], $ref[4], $ref[6],$ref[7], $ref[8], $ref[9] ,$ref[10]);
-               echo 'Registrado! (Borrar este echo del codigo)';
+               //echo 'Registrado! (Borrar este echo del codigo)';
                return true;
             }
 
         catch(Exception $e)
             {
-               echo 'Message: ' .$e->getMessage();
+              $this->err = array('Error:'=> $e->getMessage());
+              return false;
             }
     }// End function registration
 

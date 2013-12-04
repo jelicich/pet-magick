@@ -84,7 +84,7 @@ class BOUsers{
         //me fijo si estan vacios usr y pass
         if(empty($usr) || empty($pass))
         {
-          throw new Exception('Debe ingresar el mail y contraseña');
+          throw new Exception('Please fill in both fields');
         }
         else
         {
@@ -94,7 +94,7 @@ class BOUsers{
           //si la respuesta viene vacia le tiro el error
           if(empty($rta))
           {
-            throw new Exception('Usuario inexistente o contraseña incorrecta');
+            throw new Exception('Invalid username/password');
           }
           else
           {
@@ -103,7 +103,7 @@ class BOUsers{
             {
               if($rta[0]['TOKEN'] != $tok)
                 //si el token no es 0 y es diferente del parametro q pasa significa q esta logueado
-                throw new Exception('Ya hay una sesion abierta de este usuario');
+                throw new Exception('There\'s an open session');
             }
           }
         }
@@ -161,7 +161,7 @@ class BOUsers{
               $tok = $ref[2];
               $this->val_login($usr, $pass, $tok);
               $rta = $this->table->login($usr, $tok); //para hacer el update solo necesito el usr y el $tok
-              echo 'logueado! (Borrar este echo del codigo)';
+              //echo 'logueado! (Borrar este echo del codigo)';
               return true;
               //cuando ejecuto el login desde el objeto instanciado hago if($obj->login()), si entra guardo la info del usuario en sesion pidiendola asi:
               //obj->table->findByMail($mail)   <-- todavía no puse este metodo

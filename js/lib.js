@@ -75,10 +75,8 @@ function printUserMenu()
  			var p = '<strong>'+error+'</strong> '+errores[error];
  		}
  		err.innerHTML = p;
- 		//ESTILO PARA VER Q ANDE NOMAS; BORRAR Y DARLE ESTILO CON CSS
- 		err.style.position = "absolute";
- 		err.style.zIndex = "22222";
- 		document.body.insertBefore(err,document.body.firstChild);
+ 		byid('log-form').appendChild(err);
+ 		//document.body.insertBefore(err,document.body.firstChild);
  		
 		//intervalo que borra el error - ver si es conveniente
  		setTimeout(function()
@@ -89,6 +87,7 @@ function printUserMenu()
  	catch(e)
  	{
 		var wrap = byid('login-reg');
+		//byid('logo-pet-magick').nextSibling
  		wrap.innerHTML = html;
  		eval(byid('jslogout').innerHTML); 	//esta linea le hace un eval a la etiqueta script q trae el archivo q se carga	
  	}	 	
@@ -102,8 +101,8 @@ function printUserMenu()
 function login(){
 
 	//levanto los valores de los campos
-	var email = byid('email').value;
-	var pass = byid('password').value;
+	var email = byid('email-log').value;
+	var pass = byid('password-log').value;
 	var token = byid('token').value;
 
 	//variable q pasa todo por post
@@ -113,6 +112,7 @@ function login(){
 
 }//end login
 
+/* NO LA USO CON LA VENTANA POP UP
 function printLogin(){
 
 	var html = this.responseText;
@@ -120,7 +120,7 @@ function printLogin(){
 		wrap.innerHTML = html;
 		eval(byid('jslogin').innerHTML); 	
 }//end printReg
-
+*/
 
 
 //=============================================================================== REGISTRATION FUNCTIONS

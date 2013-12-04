@@ -100,7 +100,12 @@ p,span{
 	padding: 0;
 }
 
-
+.error{
+	border:1px solid #d95248;
+	background: rgba(186,0,0,0.2);
+	padding:5px;
+	margin-top: 10px;
+}
 
 .spacer10{
 	padding-top: 20px !important; /*Para agregar mas espacio entre los menues. Pero solo se lo agrega a los q tienen dsps fotitos y en el home no queda bien que lo tenga.*/
@@ -409,6 +414,48 @@ p,span{
 	top: 0;
 	left: 0;
 	right: 0;
+}
+
+#reg-form{
+	position: absolute;
+	right: 0;
+	z-index: 100;
+	display: none;
+	padding:10px;
+	background:#e7cd00;
+	width: 200px;
+	border:1px solid rgba(0,0,0,0.1);
+}
+
+#log-form{
+	position: absolute;
+	right: 0;
+	z-index: 100;
+	display: none;
+	padding:10px;
+	background:#e7cd00;
+	width: 200px;
+	border:1px solid rgba(0,0,0,0.1);
+}
+
+#login-reg-btns{
+	margin-top: 10px;
+}
+
+#login-reg-btns a{
+	border:1px;
+	padding: 2px 10px;
+	font-weight: normal;
+}
+
+#login-reg-btns li{
+	float: right;
+	margin-left: 10px;
+	position: relative;
+}
+
+#form-login{
+	margin-bottom: 0;
 }
 
 #nav-bar{

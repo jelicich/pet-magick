@@ -3,24 +3,25 @@
 		<div id="yellow-bar">
 			<div class="container_12">
 				<!-- logo -->
-				<h1 class="grid_2">Pet Magick</h1>
+				<h1 class="grid_2" id="logo-pet-magick">Pet Magick</h1>
 				
 				<!-- form login  -->
 				<!--IF QUE SE FIJA Q SI ESTA LOGUEADO CARGUE EL MENU DE USUARIO EN VEZ DEL LOGIN --> 
-				<?php 
-					//session_destroy();
+				<div id="login-reg">
+					<?php 
+						//session_destroy();
 
-					if(isset($_SESSION['token']) && isset($_SESSION['email']))
-					{
-						include_once 'templates/userMenu.html';
-					}
-					else
-					{
-						include_once 'templates/log-reg.php';
-					}
-				?>
+						if(isset($_SESSION['token']) && isset($_SESSION['email']))
+						{
+							include_once 'templates/userMenu.php';
+						}
+						else
+						{
+							include_once 'templates/logReg.php';
+						}
+					?>
+				</div>
 				
-				<div id='login-reg'></div>
 			</div>
 		</div>
 		<!-- END yellow bar -->

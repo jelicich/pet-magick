@@ -3,7 +3,8 @@ include('../php/classes/BOlocation.php');
 $location = new BOLocation();
 
 $cities = $location->citiesByRegion($_GET['idRegion']);
-var_dump($_GET);
+
+echo '<option disabled="disabled" selected="selected">City</option>';
 
 foreach ($cities as $key => $value) 
 {

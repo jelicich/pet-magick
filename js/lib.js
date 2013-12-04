@@ -135,17 +135,21 @@ function reg(){
 		var email = byid('email').value;
 		var password = byid('password').value;
 		var password2 = byid('password2').value;
-		var rank = 1;
+		var rank = 1; // Ver q valores mandamos por aca
 		var country = byid('country').value;
 		var region = byid('region').value;
 		var city = byid('city').value;
 		var token = byid('token').value;
+
+		// probando pasar valores por deffault...
+		//if(isNaN(country) || country == ''){country = ''; region =''; city = '';}
 
 		//variable q pasa todo por post
 		var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
 				   '&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
 
 		ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);
+		alert(city);
 
 }//end reg
 
@@ -158,10 +162,11 @@ function printRegions()
 	var wrap = byid('region');
 		wrap.innerHTML = html;
 		var options = wrap.getElementsByTagName('option');
-		if(options.length > 1){
 		
-		byid('region').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
-	}
+		if(options.length > 1){
+			
+			byid('region').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
+		}
 
 }//end printRegions
 

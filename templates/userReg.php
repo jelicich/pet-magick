@@ -1,12 +1,11 @@
 			
-	<?php 
+<?php 
 	include('../php/classes/BOlocation.php');
-	
+
 	$country = new BOLocation;
 	$countries = $country->countryList();
 
-	//var_dump($countries);
-	?>
+?>
 
 				<div id="user-reg">
 					<form class="grid_4 push_6 clearfix" id="form-login">
@@ -55,14 +54,12 @@
 			     		<!-- pasar estos displays al css -->
 			     		<div id="region-wrapper" >
 			     			<select id="region" style='display:none;'><!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->
-			     				<option disabled="disabled" selected="selected">Region</option>
 			     			</select>
 			     		</div>
 
 		     			<div id="city-wrapper" >
 		     				<!-- pasar estos displays al css -->
 			     			<select id="city" style='display:none;'> <!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->
-			     				<option disabled="disabled">City</option>
 			     			</select>
 			     		</div>
 

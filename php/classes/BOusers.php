@@ -43,7 +43,7 @@ class BOUsers{
                   || $ref[6] =='' || $ref[7] ==''
                   || $ref[8] =='' || $ref[9] =='' || $ref[10] =='')
         {
-            throw new Exception('error 1: Completar todo');
+            throw new Exception('Completar todo');
             break;
 
         }else{

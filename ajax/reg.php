@@ -18,6 +18,7 @@ $dato = array(
 	$_POST['rank'],
 	$_POST['country'],
 	$_POST['region'],
+	
 	$_POST['city'],
 	$_POST['token'],
 );

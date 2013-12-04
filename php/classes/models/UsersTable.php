@@ -19,7 +19,7 @@ class UsersTable extends Doctrine_Table
 
 //====================================================================== REG
 
-       public function reg($name, $lastname, $nickname, $email, $pass, $rank, $city_id){
+       public function reg($name, $lastname, $nickname, $email, $pass, $rank, $country_id, $region_id, $city_id, $token){
 
        			$pass_sha1 = sha1($pass);
 
@@ -30,8 +30,10 @@ class UsersTable extends Doctrine_Table
 	            $Users->EMAIL = $email;
 	            $Users->PASSWORD = $pass_sha1;
 	            $Users->RANK = $rank;
+	            $Users->COUNTRY_ID = $country_id;
+	            $Users->REGION_ID = $region_id;
 	            $Users->CITY_ID = $city_id;
-	            $Users->TOKEN = 0;
+	            $Users->TOKEN = $token;
 	            $Users->save();
 	           
 	            return $Users->toArray();

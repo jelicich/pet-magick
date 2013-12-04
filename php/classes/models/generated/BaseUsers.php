@@ -12,6 +12,8 @@
  * @property string $EMAIL
  * @property string $PASSWORD
  * @property string $ABOUT
+ * @property integer $COUNTRY_ID
+ * @property integer $REGION_ID
  * @property integer $CITY_ID
  * @property integer $PIC_ID
  * @property integer $ALBUM_ID
@@ -105,13 +107,31 @@ abstract class BaseUsers extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
+        $this->hasColumn('COUNTRY_ID', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('REGION_ID', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             ));
         $this->hasColumn('CITY_ID', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => true,
+             'notnull' => false,
              'autoincrement' => false,
              ));
         $this->hasColumn('PIC_ID', 'integer', 4, array(

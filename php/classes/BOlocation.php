@@ -18,10 +18,7 @@ class BOLocation{
     $this->country_table = Doctrine_Core::getTable('Countries');
   }
 
-
- 
-
-  //======================= nombres de todos los paises
+//======================= nombres de todos los paises
     function countryList(){
 
         $rta = $this->country_table->getCountries();

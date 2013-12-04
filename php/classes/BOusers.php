@@ -37,10 +37,11 @@ class BOUsers{
 
         $t = sizeof($ref);
 
-        if($t < 8 || $ref[0] == '' || $ref[1] == '' 
+        if($t < 11 || $ref[0] == '' || $ref[1] == '' 
                   || $ref[2] == '' || $ref[3] == ''  
                   || $ref[4] == '' || $ref[5] == '' 
-                  || $ref[6] =='' || $ref[7] =='')
+                  || $ref[6] =='' || $ref[7] ==''
+                  || $ref[8] =='' || $ref[9] =='' || $ref[10] =='')
         {
             throw new Exception('error 1: Completar todo');
             break;
@@ -117,7 +118,7 @@ class BOUsers{
         try
             {
                $this->val_reg($ref);
-               $rta = $this->table->reg($ref[0], $ref[1], $ref[2], $ref[3], $ref[4], $ref[6], $ref[7]);
+               $rta = $this->table->reg($ref[0], $ref[1], $ref[2], $ref[3], $ref[4], $ref[6],$ref[7], $ref[8], $ref[9] ,$ref[10]);
                echo 'Registrado! (Borrar este echo del codigo)';
                return true;
             }

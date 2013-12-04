@@ -1,4 +1,5 @@
-//============== LIBRERIA
+
+//===============================================================  AJAX LIB and GENERAL FUNCTIONS
 
 var XMLHttpFactories = [
 	function () {return new XMLHttpRequest()},//este es el standard
@@ -22,7 +23,7 @@ function createXMLHTTPObject() {
 }
 
 function ajax(metodo,url, unaFuncion, mensaje, async) {
-	//hacer una funcion
+	
 	var xhr = createXMLHTTPObject();
 	xhr.open(metodo, url, async);
 	if (metodo ==  'POST'){
@@ -45,25 +46,19 @@ function ajax(metodo,url, unaFuncion, mensaje, async) {
 function vardump() 
 {
 	console.log(this.responseText);
-}
+}//end vardump
 
 function redirect()
 {
 	setTimeout("location.href='index.php'", 1);
-}
+}//end redirect
 
 function byid(s)
 {
-	
-	 return document.getElementById(s);
-}
+	return document.getElementById(s);
+}//end byid
 
-
-//=============================================================== 
-
-
-
-//============================= LOGIN FUNCTIONS
+//=============================================================================== LOGIN FUNCTIONS
 
 function printUserMenu()
 {
@@ -119,7 +114,7 @@ function login(){
 }//end login
 
 
-//============================= REGISTRATION FUNCTIONS
+//=============================================================================== REGISTRATION FUNCTIONS
 
 function printReg(){
 
@@ -141,15 +136,74 @@ function reg(){
 		var password = byid('password').value;
 		var password2 = byid('password2').value;
 		var rank = 1;
-		//var country = byid('country').value;
+		var country = byid('country').value;
+		var region = byid('region').value;
 		var city = byid('city').value;
 		var token = byid('token').value;
 
 		//variable q pasa todo por post
 		var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
-				   '&password2='+password2+'&rank='+rank +'&city='+city+'&token='+token;
+				   '&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
 
 		ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);
 
 }//end reg
 
+
+//============================= COMBO FUNCTIONS
+
+function printRegions()
+{
+	var html = this.responseText;
+	var wrap = byid('region');
+		wrap.innerHTML = html;
+		var options = wrap.getElementsByTagName('option');
+		if(options.length > 1){
+		
+		byid('region').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
+	}
+
+}//end printRegions
+
+function printCities()
+{
+	var html = this.responseText;
+	var wrap = byid('city');
+		wrap.innerHTML = html;
+	var options = wrap.getElementsByTagName('option');
+
+	if(options.length > 1){
+		
+		byid('city').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
+	}
+
+}//end printCities
+
+function countriesCombo(){
+
+	var country = byid('country');
+	country.onchange = function()
+	{
+		byid('region-wrapper').style.display = 'block';
+		var id = country.options[country.selectedIndex].value; 
+		var vars = 'idCountry='+id;
+		ajax('GET', 'ajax/selectRegions.php?'+vars, printRegions, false, true);
+		//printRegions();
+	};
+	
+}//end countriesCombo
+
+
+function regionsCombo(){
+		
+	var region = byid('region');
+	region.onchange = function()
+	{
+		byid('city-wrapper').style.display = 'block';	
+		var id = region.options[region.selectedIndex].value; 
+		var vars = 'idRegion='+id;
+		ajax('GET', 'ajax/selectCities.php?'+vars, printCities, false, true);
+		//printCities();
+	};
+
+}//end regionsCombo

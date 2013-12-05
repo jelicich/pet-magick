@@ -4,14 +4,11 @@ session_start();
 
 include('../php/classes/BOmessages.php');
 
-$message = new BOmessages;
+$mssg = new BOmessages;
 
-$data = array(
-	$_SESSION['id_r'],
-	$_SESSION['fecha']
-);
+$data = array($_SESSION['id'], $_SESSION['datelog']);
 
-$message->read($data);
-echo $message->getMessages();
+$mssg->read($data);
+echo $mssg->getMessages();
 
 ?>

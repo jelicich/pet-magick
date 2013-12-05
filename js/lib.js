@@ -135,6 +135,7 @@ function login(){
 
 		//variable q pasa todo por post
 		var vars = 'email='+email+'&password='+pass+'&token='+token;
+
 		source = 'log';
 		ajax('POST', 'ajax/login.php', printUserMenu, vars, true);
 	}
@@ -247,43 +248,47 @@ function regionsCombo(){
 
 //=============================================================================== INBOX FUNCTIONS
 
+/*
+
+function processResponse(){
+   //console.log(this.responseText);
+   var html = eval(this.responseText);
+  
+    for(var i = 0; i < html.length; i++)
+	{
+ 	  var lines = document.createElement('p');
+	 	  lines.innerHTML = html[i]['Users']['NAME'] + ' dice : '  + html[i]['mensaje'] +'<br> Fecha: ' + html[i]['fechaenvio'];
+		  html.appendChild(lines);
+	}
+}//end processResponse
+
+*/
+
 function inbox(){
 
-		(function getMessages(){
-			
-			ajax('GET', 'ajax/getMessages.php', processResponse, null, true);
+	(function getMessages(){
+				
+		ajax('GET', 'ajax/getMessages.php', processResponse, null, true);
 
-			if(this.readyState == undefined || this.readyState == 4){
+		if(this.readyState == undefined || this.readyState == 4){
 
-				t = setTimeout(getMessages,3000);
-			}
-
-	    })();
-
-		var to = byid('to').value ;
-		var subject = byid('subject').value;
-		var message = byid('message').value;
-
-		byid('submit').onclick = function(){
-			
-			var vars = 'rnd=' + to + '&subject='+ subject + '&mensaje='+ message;
-				ajax('POST', 'ajax/submit.php', errs, vars, true);
+			t = setTimeout(getMessages,3000);
 		}
+	})();
+
+
+	 byid('submit').onclick = function(){
+
+	 	var vars = 'from='+byid('from').value+'&to='+byid('to').value+'&subject='+byid('subject').value+'&message='+byid('message').value;
+	 	ajax('POST', 'ajax/submit.php', vardump, vars, true); // q funcion metemos aca en lugar de vardump???
+	 }
+
 }//end inbox
 
 
 
-function processResponse(){
 
-		    var html = eval(this.responseText);
 
-		    for(var i = 0; i < html.length; i++)
-			{
-		 	  lines = document.createElement('p');
-		 	  lines.innerHTML = html[i]['Usuario']['usuario'] + ' dice : '  + html[i]['mensaje'] +'<br> Fecha: ' + html[i]['fechaenvio'];
-			  html.appendChild(lines);
-			}
-}//end responseProcess
 
 
 

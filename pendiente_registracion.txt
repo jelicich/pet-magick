@@ -9,6 +9,13 @@ registro y login:
 - Vamos a revisar el formato de los passwords? (8 caracteres o algo asi digo)
 - Display none en userReg.php (lineas 57 y 63)
 
+Inbox:
+
+Estaba adaptando un poco las cunciones del chat y por ahora solo pude mandar mensajes. No llegue a adaptar para recibir....
+El form esta en usersMenu.php provisoriamente y desde ahi hice las pruebas. En el lib.js hay dos funciones nuevas una inbox y otra processResponse.
+En inbox esta la funcion q trae los mensajes y utilizaria processResponse para entregar el mensaje formateado. Pero por lo pronto processResponse no esta adaptada. Obviamente, cree algunos phps relacionados a estas funcionalidades. Por el momento tenes q ingresar el mail del destinatario para q reciba el mensaje, ya veremos q necesitamos ahi. Lo importante ahora seria poder mandar y traer mensajes. Una vez eso vemos que, como, cuando, cuanto, etc. Te parece?
+Asi q lo proximo y mas urgente seria traer mensajes....
+ 
  
 
 

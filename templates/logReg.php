@@ -7,6 +7,7 @@
 		<div id="reg-form">
 			
 			<?php 
+				
 				include('php/classes/BOlocation.php');
 
 				$country = new BOLocation;

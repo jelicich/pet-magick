@@ -13,13 +13,44 @@
 					</li>
 				</ul>
 				<!-- END user menu -->
+
+
+
+
+
+
+
+
+
+
+
+<form method='' action=''>
+
+	<input id='from' type='hidden' name='from' value=<?php echo '"'. $_SESSION['id'] . '"'; ?> />
+	<input type='text' name='to' placeholder='to (email)' id='to' /><br>
+	<input type='text' name='subject' placeholder='subject' id='subject' /><br>
+	<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
+
+	<input type='button' value='Submit' id='submit'/>
+
+
+</form>
 				
 
-				<script type="text/javascript" id="jslogout">
+			<script type="text/javascript" id="jslogout">
 
-					byid('logout').onclick = function() {
-						//EJECUTO ajax sin callback y sin variables
-						ajax('POST', 'ajax/logout.php', redirect, false, true);
-					}
+				byid('logout').onclick = function() {
+					ajax('POST', 'ajax/logout.php', redirect, false, true);
+				}
 
-				</script>
+				inbox();
+
+			</script>
+
+
+
+
+
+
+
+

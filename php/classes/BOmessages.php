@@ -33,7 +33,7 @@ class BOmessages{
         else
         {
             //si tiene algun campo vacio
-            if($t < 5)
+            if($t < 4)
             {   
                 throw new Exception("Debe completar todos los campos");
                 break;
@@ -80,7 +80,7 @@ class BOmessages{
 
          try
             {  $this->val_submit($ref);
-               $rta = $this->msg->submit($ref[0], $ref[1], $ref[2], $ref[3], $ref[4]);
+               $rta = $this->msg->submit($ref[0], $ref[1], $ref[2], $ref[3]);
                return true;
             }
          catch(Exception $e)
@@ -118,20 +118,18 @@ class BOmessages{
 
     }// End getMessages
 
-
-
 }// End class BOmesagges
 
 
 
-
+/*
 
 $inbox = new BOmessages;
 $yesterday = date('Y-m-d H:i:s', time()-86400);
 
 
 // Submit
-$query = array(17,18, 'pijita', 'hola puto', 0);
+$query = array(17,18, 'pijita', 'hola puto');
 $inbox->submit($query);
 /*
 
@@ -150,11 +148,11 @@ var_dump( $inbox->getMessages());
 
 
 
-
-
-
-
-
-
-
 ?>
+
+
+
+
+
+
+

@@ -189,10 +189,17 @@ class BOUsers{
 
     }// End delete
 
+
 }//End class BOUsers
 
 
-  /*
+
+
+ /*
+$inbox = new BOusers;
+$query = array('chule_catupe@hotmail.com');
+var_dump($inbox->id_user($query));
+ 
   creo esta variable $err, para poder modificar el metodo login, ya que devuelve un valor y eso se toma como verdadero. es decir, cuando quiero loguearme hago 
   if($usr->login())
   {

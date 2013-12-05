@@ -2,26 +2,21 @@
 
 session_start();
 
-include('../php/classes/BOusers.php');
-include('../php/classes/BOmessages.php');
+include_once "../php/classes/BOusers.php";
+include_once "../php/classes/BOmessages.php";
 
-$message = new BOMensaje;
-$user = new BOUsuario;
+$mssg = new BOmessages;
+$user = new BOUsers;
 
-if($_POST['rnd'] == '' || $_POST['rnd'] == null){ $id_dest['id'] = 'vacio'; }
-else{$id_dest = $user->id_user($_POST['rnd']);}// REVISAR ESTO junto con el validar de BOMensaje////////////////////////////////////
+$to = $user->table->findByMail($_POST['to']);
+$data = array($_POST['from'], $to[0]['ID_USER'],  $_POST['subject'],  $_POST['message']);
 
-$data = array(
-	 $_SESSION['id_r'],
-	 $id_dest['id'],
-	 $_POST['mensaje']
-);
 
-if($mensaje->enviar($data) != true)
-echo json_encode($mensaje->getErrores());
+if($mssg->submit($data) != true)
+echo json_encode($user->err);
 
 
 
-
+?>
 
 

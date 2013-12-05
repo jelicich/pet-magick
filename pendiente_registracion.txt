@@ -8,6 +8,7 @@ registro y login:
 
 - Salir del pop up clickeando en cualquier parte (?)
 	- Hice unas pruebas pero no me sale, lo dejo comentado dentro de la funcion showLogin linea 126 aprox.
+	- Me estuve basando en esta respuesta de stackoverflow http://stackoverflow.com/questions/1403615/use-jquery-to-hide-a-div-when-the-user-clicks-outside-of-it
 
 - Vamos a pedir genero?
 	- Podemos pedir, pero no creo que sea una info vital para registrarse. Puede ponerlo cuando completa el perfil.

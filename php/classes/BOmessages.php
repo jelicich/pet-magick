@@ -129,6 +129,10 @@ class BOmessages{
 $inbox = new BOmessages;
 $yesterday = date('Y-m-d H:i:s', time()-86400);
 
+
+// Submit
+$query = array(17,18, 'pijita', 'hola puto', 0);
+$inbox->submit($query);
 /*
 
 // Submit

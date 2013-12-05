@@ -70,7 +70,7 @@
 					
 				</div>
 
-				<script type="text/javascript" id='jsreg'>
+				<script type="text/javascript">
 
 					byid('reg').onclick = function() {reg();}
 					countriesCombo();

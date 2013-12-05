@@ -8,6 +8,7 @@
 				<!-- form login  -->
 				<!--IF QUE SE FIJA Q SI ESTA LOGUEADO CARGUE EL MENU DE USUARIO EN VEZ DEL LOGIN --> 
 				<div id="login-reg">
+
 					<?php 
 						//session_destroy();
 
@@ -20,6 +21,7 @@
 							include_once 'templates/logReg.php';
 						}
 					?>
+					
 				</div>
 				
 			</div>

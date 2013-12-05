@@ -7,29 +7,14 @@ include_once('models/UsersTable.php');
 class BOUsers{
 
   var $table;
-  
-
-  /*
-  creo esta variable $err, para poder modificar el metodo login, ya que devuelve un valor y eso se toma como verdadero. es decir, cuando quiero loguearme hago 
-  if($usr->login())
-  {
-    entro
-  }
-  else
-  {
-    error;
-  }
-  al recibir el error como respuesta, en lugar de un false, entra en el if.
-  En la variable err voy a guardar e->getMessage
-  */
   var $err;
 
-  function __construct()
-  {
+  function __construct(){
+
     $this->table = Doctrine_Core::getTable('Users');
   }
 
-//=========================================================== VALIDATIONS
+//=============================================================================== VALIDATION FUNCTIONS
 
   //======================= REG VAL
 
@@ -54,7 +39,7 @@ class BOUsers{
                 
                 if($ref[4] != $ref[5]){
 
-                    throw new Exception('password no coincide');
+                    throw new Exception("passwords don't match");
                     break;
 
                 }else if($rta_nickname == false){
@@ -64,12 +49,12 @@ class BOUsers{
 
                 }else if(preg_match("/^[a-zA-Z]\w+(\.\w+)*\@\w+(\.[0-9a-zA-Z]+)*\.[a-zA-Z]{2,4}$/", $ref[3]) === 0){
 
-                    throw new Exception('no es email');
+                    throw new Exception('Please, enter a valid email address');
                     break;
 
                 }else if($rta_email == false){
 
-                     throw new Exception('mail existente');
+                     throw new Exception('This email address already exits in our system');
                      break;
                 }
         }// End else
@@ -77,41 +62,41 @@ class BOUsers{
 
 
 
-    //======================= LOGIN VAL
+  //======================= LOGIN VAL
 
-      function val_login($usr, $pass, $tok){
+  function val_login($usr, $pass, $tok){
 
-        //me fijo si estan vacios usr y pass
-        if(empty($usr) || empty($pass))
+    //me fijo si estan vacios usr y pass
+    if(empty($usr) || empty($pass))
+    {
+      throw new Exception('Please fill in both fields');
+    }
+    else
+    {
+      //si no están vacios busco que el mail coincida con la contraseña (ejecuta un query q es "Select * where usr = $usr & pass = $pass")
+      //metodo en UsersTable
+      $rta = $this->table->findByMailPass($usr,$pass);
+      //si la respuesta viene vacia le tiro el error
+      if(empty($rta))
+      {
+        throw new Exception('Invalid username/password');
+      }
+      else
+      {
+        //sino está vacia, es decir q el usuario existe y puso bien la contraseña, me fijo q no esté logueado.
+        if($rta[0]['TOKEN'] != 0)
         {
-          throw new Exception('Please fill in both fields');
+          if($rta[0]['TOKEN'] != $tok)
+            //si el token no es 0 y es diferente del parametro q pasa significa q esta logueado
+            throw new Exception('There\'s an open session');
         }
-        else
-        {
-          //si no están vacios busco que el mail coincida con la contraseña (ejecuta un query q es "Select * where usr = $usr & pass = $pass")
-          //metodo en UsersTable
-          $rta = $this->table->findByMailPass($usr,$pass);
-          //si la respuesta viene vacia le tiro el error
-          if(empty($rta))
-          {
-            throw new Exception('Invalid username/password');
-          }
-          else
-          {
-            //sino está vacia, es decir q el usuario existe y puso bien la contraseña, me fijo q no esté logueado.
-            if($rta[0]['TOKEN'] != 0)
-            {
-              if($rta[0]['TOKEN'] != $tok)
-                //si el token no es 0 y es diferente del parametro q pasa significa q esta logueado
-                throw new Exception('There\'s an open session');
-            }
-          }
-        }
-      }// End val_login
+      }
+    }
+  }// End val_login
 
     
 
-    //======================== REGISTRATION
+//=============================================================================== REGISTRATION FUNCTIONS
 
     function registration($ref){
 
@@ -132,7 +117,8 @@ class BOUsers{
 
  
 
-  //======================= nombres de todos los paises
+    //======================= COMBO COUNTRIES
+
     function countryList(){
 
         $rta = $this->table->countries();
@@ -147,10 +133,8 @@ class BOUsers{
        
     }// End country
 
-
-
     
-    //============================= LOGIN
+//=============================================================================== LOGIN FUNCTIONS
 
     function login($ref){
 
@@ -192,9 +176,7 @@ class BOUsers{
 
     }// End logout
 
-    
-
-    //======================== DELETE USER
+     //======================== DELETE USER
     
     function delete($ref){
 
@@ -209,33 +191,21 @@ class BOUsers{
 
 }//End class BOUsers
 
-/*
-$yo = new BOUsers;
 
+  /*
+  creo esta variable $err, para poder modificar el metodo login, ya que devuelve un valor y eso se toma como verdadero. es decir, cuando quiero loguearme hago 
+  if($usr->login())
+  {
+    entro
+  }
+  else
+  {
+    error;
+  }
+  al recibir el error como respuesta, en lugar de un false, entra en el if.
+  En la variable err voy a guardar e->getMessage
+  */
 
-// Loguearse
-$query = array('diego@hotmail.com', 'clave', 1); //uso el mail como usuario 
-$yo->login($query);
-*/
-/*
-
-// Registrarse
-$query = array('luis', 'miguel', 'luismi', 'luismi@hotmail.com', 'clave', 'clave', 1, 1211);
-$yo->registration($query);
-
-// Loguearse
-$query = array('luismi@hotmail.com', 'clave', 1); //uso el mail como usuario 
-$yo->login($query);
-
-// Desloguearse
-$query = array('luismi@hotmail.com');
-$yo->logout($query);
-
-// Delete
-$query = array('luismi@hotmail.com');
-$yo->delete($query);
-
-*/
 
 
 ?>

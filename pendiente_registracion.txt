@@ -1,13 +1,28 @@
 registro y login:
 
-- Manejar errores al seleccionar en combo (IMPORTANTE!!!!!!)
+- Manejar errores al seleccionar en combo (IMPORTANTE!!!!!!) 
+	- Listo, podes registrarte sin ingresar el pais. El combo se va actualizando, si cambias de pais se "resetea" es decir, se oculta el de ciudades y hasta q no elijas region no se vuelve a mostrar (siempre q la region tenga ciudades).
+
 - Color y triangulito en pop ups reg-log. 
+	- Te lo encargo jaja
+
 - Salir del pop up clickeando en cualquier parte (?)
+	- Hice unas pruebas pero no me sale, lo dejo comentado dentro de la funcion showLogin linea 126 aprox.
+
 - Vamos a pedir genero?
+	- Podemos pedir, pero no creo que sea una info vital para registrarse. Puede ponerlo cuando completa el perfil.
+
 - Ampliar el preg_match de emaill para q acepte otros formatos (como te paso ayer)
+	- No tengo idea como se hace esto, explicame pq está bueno
+
 - Ver q valor pasamos para "rank" y generar los inputs necesarios en el form
+	- Esto ya está, no se pasa ningun valor, se guarda 0 automáticamente. El unico q puede cambiar ese valir es el admin del sitio, y lo tiene q hacer desde el backend
+
 - Vamos a revisar el formato de los passwords? (8 caracteres o algo asi digo)
+	-Podria ser con preg match como el otro, pero sin obligar demasiado al usuario, poner una minima validacion que sea tipo mas largo que 6 caracteres o algo asi
+
 - Display none en userReg.php (lineas 57 y 63)
+	- No se q es esto pero creo q ya está pq quedo bastante cocinado el login y registro.
 
 Inbox:
 
@@ -15,6 +30,10 @@ Estaba adaptando un poco las cunciones del chat y por ahora solo pude mandar men
 El form esta en usersMenu.php provisoriamente y desde ahi hice las pruebas. En el lib.js hay dos funciones nuevas una inbox y otra processResponse.
 En inbox esta la funcion q trae los mensajes y utilizaria processResponse para entregar el mensaje formateado. Pero por lo pronto processResponse no esta adaptada. Obviamente, cree algunos phps relacionados a estas funcionalidades. Por el momento tenes q ingresar el mail del destinatario para q reciba el mensaje, ya veremos q necesitamos ahi. Lo importante ahora seria poder mandar y traer mensajes. Una vez eso vemos que, como, cuando, cuanto, etc. Te parece?
 Asi q lo proximo y mas urgente seria traer mensajes....
+
+	- Ok, lo vi pero no toqué nada. Ahora me tengo q poner con unas cosas del trabajo, y dsps lo sigo.
+
+
  
  
 

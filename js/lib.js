@@ -101,9 +101,8 @@ function printUserMenu(){
  	}	 
 }//end printUserMenu
 
+var flagL = 0; //Estas vairables (flagL y R) tienen q ser publicas porque se modifican entre showReg y showLogin
 function showLogin(){
-
-	var flagL = 0;
 
 	byid('link-login').onclick = function()
 	{
@@ -122,7 +121,31 @@ function showLogin(){
 		//ESCONDO EL OTRO POR LAS DUDAS
 		byid('reg-form').style.display = "none";
 		flagR=0;
+
+		
+		/*
+		//PRUEBA PARA Q SE BORRE SI HACE CLICK EN CUAQLERUI LUGAR
+		byid('log-form').onmouseover = function ()
+		{
+			var over = true;
+		}
+		byid('log-form').onmouseout = function ()
+		{
+			over = false;	
+		}
+		
+		document.body.onclick = function()
+		{
+			if(!over)
+			{
+				byid('log-form').style.display = "none";
+				flagL = 0;
+			}
+		}
+		*/
 	}
+
+
 }//end showLogin
 
 function login(){
@@ -143,9 +166,10 @@ function login(){
 
 //=============================================================================== REGISTRATION FUNCTIONS
 
+var flagR = 0; //Estas vairables (flagL y R) tienen q ser publicas porque se modifican entre showReg y showLogin
 function showReg(){
 		
-	var flagR = 0;
+	
 
 	byid('link-reg').onclick = function(){
 		//ajax('POST', 'ajax/getReg.php', printReg, null, true);
@@ -205,6 +229,12 @@ function printRegions(){
 			
 			byid('region').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
 		}
+		else
+		{
+			byid('region').style.display = 'none';
+		}
+	var loading = byid('loading-location');
+	loading.parentNode.removeChild(loading);
 }//end printRegions
 
 function printCities(){
@@ -212,11 +242,13 @@ function printCities(){
 	var wrap = byid('city');
 		wrap.innerHTML = html;
 	var options = wrap.getElementsByTagName('option');
-
+	console.log(options)
 	if(options.length > 1){
 		
 		byid('city').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
 	}
+	var loading = byid('loading-location');
+	loading.parentNode.removeChild(loading);
 }//end printCities
 
 function countriesCombo(){
@@ -227,8 +259,15 @@ function countriesCombo(){
 		byid('region-wrapper').style.display = 'block';
 		var id = country.options[country.selectedIndex].value; 
 		var vars = 'idCountry='+id;
+		// VACIO EL SELECT DE CITY y lo oculto
+		byid('city').innerHTML = '';
+		byid('city').style.display = 'none';
+		//le pongo el gif loading
+		var loading = document.createElement('img');
+		loading.src = 'img/loading.gif'; 
+		loading.id='loading-location';
+		byid('country-wrapper').appendChild(loading);
 		ajax('GET', 'ajax/selectRegions.php?'+vars, printRegions, false, true);
-
 	};
 }//end countriesCombo
 
@@ -240,6 +279,11 @@ function regionsCombo(){
 		byid('city-wrapper').style.display = 'block';	
 		var id = region.options[region.selectedIndex].value; 
 		var vars = 'idRegion='+id;
+		//le pongo el gif loading
+		var loading = document.createElement('img');
+		loading.src = 'img/loading.gif'; 
+		loading.id='loading-location';
+		byid('region-wrapper').appendChild(loading);
 		ajax('GET', 'ajax/selectCities.php?'+vars, printCities, false, true);
 
 	};

@@ -21,40 +21,39 @@ class BOUsers{
    function val_reg($ref){
 
         $t = sizeof($ref);
-
-        if($t < 11 || $ref[0] == '' || $ref[1] == '' 
-                  || $ref[2] == '' || $ref[3] == ''  
-                  || $ref[4] == '' || $ref[5] == '' 
-                  || $ref[6] =='' || $ref[7] ==''
-                  || $ref[8] =='' || $ref[9] =='' || $ref[10] =='')
+        //var_dump($ref);
+        if($t < 7 || $ref['name'] == '' || $ref['lastname'] == '' 
+                  || $ref['nickname'] == '' || $ref['email'] == ''  
+                  || $ref['password'] == '' || $ref['password2'] == '' ) // Le saque los datos que no son obligatorios (pais ciudad, etc) Pido un array de 7 q son los 6 campos obligatorios mas el token el ranking va default 0 en la BD
         {
             throw new Exception('Please fill in the mandatory fields');
             break;
 
         }else{
 
-                $rta_nickname = $this->table->val_nickname($ref[2]); // Ver si esto se puede optimizar (junto con las consultas en table: val_nickname, val_email)
-                $rta_email = $this->table->val_email($ref[3]);
+                //$rta_nickname = $this->table->val_nickname($ref[2]); // Ver si esto se puede optimizar (junto con las consultas en table: val_nickname, val_email)
+                $rta_email = $this->table->val_email($ref['email']);
 
                 
-                if($ref[4] != $ref[5]){
+                if($ref['password'] != $ref['password2']){
 
-                    throw new Exception("passwords don't match");
+                    throw new Exception("Passwords don't match");
                     break;
 
-                }else if($rta_nickname == false){
+                    //LO COMENTO PORQUE EL NICKNAME NO ERA UNIQUE
+                /*}else if($rta_nickname == false){ 
 
                      throw new Exception('usuario existente');
-                     break;
+                     break;*/
 
-                }else if(preg_match("/^[a-zA-Z]\w+(\.\w+)*\@\w+(\.[0-9a-zA-Z]+)*\.[a-zA-Z]{2,4}$/", $ref[3]) === 0){
+                }else if(preg_match("/^[a-zA-Z]\w+(\.\w+)*\@\w+(\.[0-9a-zA-Z]+)*\.[a-zA-Z]{2,4}$/", $ref['email']) === 0){
 
                     throw new Exception('Please, enter a valid email address');
                     break;
 
                 }else if($rta_email == false){
 
-                     throw new Exception('This email address already exits in our system');
+                     throw new Exception('This email address already exists in our system');
                      break;
                 }
         }// End else
@@ -103,7 +102,7 @@ class BOUsers{
         try
             {
                $this->val_reg($ref);
-               $rta = $this->table->reg($ref[0], $ref[1], $ref[2], $ref[3], $ref[4], $ref[6],$ref[7], $ref[8], $ref[9] ,$ref[10]);
+               $rta = $this->table->reg($ref);
                //echo 'Registrado! (Borrar este echo del codigo)';
                return true;
             }

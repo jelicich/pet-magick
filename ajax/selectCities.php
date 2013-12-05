@@ -11,3 +11,4 @@ foreach ($cities as $key => $value)
 	echo '<option value="'.$value['CityId'].'">'.$value['City'].'</option>';
 }
 
+//echo '<option value="0">Other</option>';

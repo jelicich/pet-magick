@@ -17,37 +17,39 @@
 
 			<form class="clearfix" id="form-login">
 				
-				<div class="half">
-					<div>
-						<label for="name">Name*</label>
-						<input type="text" name="name" id="name" placeholder="name" style="width:100%"/>
+				<div class="clearfix">
+					<div class="half">
+						<div>
+							<label for="name">Name*</label>
+							<input type="text" name="name" id="name" placeholder="name" style="width:100%"/>
+						</div>
+
+						<div>
+							<label for="lastname">Lastname*</label>
+							<input type="text" name="lastname" id="lastname" placeholder="lastname" style="width:100%"/>
+						</div>
+
+						<div>
+							<label for="nickname">Nickname*</label>
+							<input type="text" name="nickname" id="nickname" placeholder="nickname" style="width:100%"/>
+						</div>
 					</div>
 
-					<div>
-						<label for="lastname">Lastname*</label>
-						<input type="text" name="lastname" id="lastname" placeholder="lastname" style="width:100%"/>
-					</div>
+					<div class="half">
+						<div>
+							<label for="email">e-mail*</label>
+							<input type="text" name="email" id="email" placeholder="email" style="width:100%"/>
+						</div>
 
-					<div>
-						<label for="nickname">Nickname*</label>
-						<input type="text" name="nickname" id="nickname" placeholder="nickname" style="width:100%"/>
-					</div>
-				</div>
+						<div>
+							<label for="password">Password*</label>
+							<input type="password" name="password" id="password" placeholder="password" style="width:100%"/>
+						</div>
 
-				<div class="half">
-					<div>
-						<label for="email">e-mail*</label>
-						<input type="text" name="email" id="email" placeholder="email" style="width:100%"/>
-					</div>
-
-					<div>
-						<label for="password">Password*</label>
-						<input type="password" name="password" id="password" placeholder="password" style="width:100%"/>
-					</div>
-
-					<div>
-						<label for="password2">Confirm password*</label>
-						<input type="password" name="password2" id="password2" placeholder="password2" style="width:100%"/>
+						<div>
+							<label for="password2">Confirm password*</label>
+							<input type="password" name="password2" id="password2" placeholder="password2" style="width:100%"/>
+						</div>
 					</div>
 				</div>
 
@@ -65,13 +67,13 @@
 	     		</div>
 	     		<!-- pasar estos displays al css -->
 	     		<div id="region-wrapper" >
-	     			<select id="region" style='display:none;'></select><!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->
+	     			<select id="region" name="region" style='display:none;'></select><!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->
 	     			
 	     		</div>
 
      			<div id="city-wrapper" >
      				<!-- pasar estos displays al css -->
-	     			<select id="city" style='display:none;'></select> <!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->
+	     			<select id="city" name="city" style='display:none;'></select> <!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->
 	     			
 	     		</div>
 
@@ -94,15 +96,18 @@
 			<form class="clearfix" id="form-login">
 				
 				<div>
-					<label for="email">e-mail</label>
+					<label for="email-log">e-mail</label>
 					<input type="text" name="email" id="email-log" placeholder="e-mail" style="width:100%"/>
 				</div>
 				<div>
-					<label for="password">Password</label>
+					<label for="password-log">Password</label>
 					<input type="password" name="password" id="password-log" placeholder="Password" style="width:100%"/>
 				</div>
+				
 				<input type="button" id="login" value="Login" class="btn btn-danger"/>
 				<input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />
+
+				<a href="#">Forgot your password?</a>
 
 			</form>
 		</div>

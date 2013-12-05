@@ -7,20 +7,19 @@ include('../php/classes/BOusers.php');
 $user = new BOusers;
 
 $dato = array(
-	$_POST['name'],
-	$_POST['lastname'],
-	$_POST['nickname'],
+	'name' => $_POST['name'],
+	'lastname' => $_POST['lastname'],
+	'nickname' => $_POST['nickname'],
 
-	$_POST['email'],
-	$_POST['password'],
-	$_POST['password2'],
+	'email' => $_POST['email'],
+	'password' => $_POST['password'],
+	'password2' => $_POST['password2'],
 
-	$_POST['rank'],
-	$_POST['country'],
-	$_POST['region'],
+	'country' => $_POST['country'],
+	'region' => $_POST['region'],
 	
-	$_POST['city'],
-	$_POST['token'],
+	'city' => $_POST['city'],
+	'token' => $_POST['token']
 );
 
 

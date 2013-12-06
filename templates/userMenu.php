@@ -5,11 +5,11 @@
 						<a href="#" id="logout">Log out</a>
 					</li>
 					<li>
-						<a href="#">My profile</a>
+						<a href="#">Inbox</a>
 					</li>
 					<li>
 						<img src="img/users/thumb/1.jpg" />
-						<span><?php echo $_SESSION['name'].' '.$_SESSION['lastname'] ?></span>
+						<a href="#"><?php echo $_SESSION['name'].' '.$_SESSION['lastname'] ?></a>
 					</li>
 				</ul>
 				<!-- END user menu -->
@@ -23,21 +23,7 @@
 
 
 
-
-<form method='' action=''>
-
-	<input id='from' type='hidden' name='from' value=<?php echo '"'. $_SESSION['id'] . '"'; ?> />
-	<input type='text' name='to' placeholder='to (email)' id='to' /><br>
-	<input type='text' name='subject' placeholder='subject' id='subject' /><br>
-	<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
-
-	<input type='button' value='Submit' id='submit'/>
-
-
-</form>
-<div id="wrap-messages">
-</div>
-				
+	
 
 			<script type="text/javascript" id="jslogout">
 
@@ -45,7 +31,6 @@
 					ajax('POST', 'ajax/logout.php', redirect, false, true);
 				}
 
-				inbox(); //============= 
 
 			</script>
 

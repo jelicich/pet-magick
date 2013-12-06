@@ -76,7 +76,7 @@ class BOMessages{
 
     //======================= READ VAL
 
-    function val_read($idUser)
+    function val_getMessages($idUser)
     {
         /*
         if(sizeof($ref) < 2 || empty($ref['id']) || empty($ref['datelog']))
@@ -129,15 +129,15 @@ class BOMessages{
 
 
     //======================== READ MESSAGES
-    function read($idUser){
+    function getMessages($idUser){
 /**
 Si el mensaje tiene Ñ o acentos devuelve null. hay q escapar esos caracteres y los saltos de linea tmb.
 para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
 */
         try
             {  
-                $this->val_read($idUser);
-                $this->inbox = $this->tableMsg->read($idUser);
+                $this->val_getMessages($idUser);
+                $this->inbox = $this->tableMsg->getMessages($idUser);
                 //echo 'Leido! (Borrar este echo del codigo)';
 
                 return true;

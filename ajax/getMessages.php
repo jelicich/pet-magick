@@ -7,7 +7,7 @@ include_once('../php/classes/BOMessages.php');
 $mssg = new BOMessages;
 
 $data = $_SESSION['id'];
-	
+
 /**
  NO NECESITAMOS LA FECHA CREO
 $data = array(
@@ -16,9 +16,10 @@ $data = array(
 	);
 */
 
-if($mssg->read($data))
+if($mssg->getMessages($data))
 	echo $mssg->getInbox();
 else
 	echo $mssg->getErrors();
+
 
 ?>

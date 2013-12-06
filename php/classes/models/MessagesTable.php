@@ -38,18 +38,40 @@ class MessagesTable extends Doctrine_Table
 
 //====================================================================== READ
 
-    public function read($to){
+    public function getMessages($to){
 
+                // para que traiga los grupos ordenados descendente hay q hacer subquery
+                // http://melikedev.com/2013/06/07/php-doctrine-dql-select-subquery/
+                // http://stackoverflow.com/questions/8575542/sql-cant-grab-values-in-descending-order-when-using-group-by
+                // https://doctrine-orm.readthedocs.org/en/2.0.x/reference/native-sql.html#examples
               $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.SUBJECT, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
+                ->select('*')
+                ->from('messages m')
+                ->groupBy('m.FROM_USER_ID');
+                
+
+              $subq = $q->createSubquery()
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
-                ->AndWhere('m.TO_USER_ID = ?', $to );
+                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->orderBy('m.DATE DESC');
+
+
+                /* //Consulta q agrupa por usuario pero no ordena por fecha dentro del mismo usuario
+                $q = Doctrine_Query::create()
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
+                ->from('messages m')
+                ->innerJoin('m.Users u')
+                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->groupBy('m.FROM_USER_ID')
+                ->orderBy('m.DATE DESC');
                 //->AndWhere('m.DATE > ?', $date)
                 //->AndWhere('m.STATUS = ?', '0');
 
+                */
 
-                 $rta = $q->execute();
+                 $rta = $subq->execute();
 
                  $json = array();
 

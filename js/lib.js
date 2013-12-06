@@ -323,13 +323,14 @@ function printMessages(){
 	console.log(this.responseText);
 	var html = eval(this.responseText);
 	//console.log(html);
-  
+  	var ul = document.createElement('ul');
     for(var i = 0; i < html.length; i++)
 	{
- 	  var lines = document.createElement('p');
-	 	  lines.innerHTML = 'From:' + html[i]['Users']['NAME'] + '<br> subject : '  + html[i]['SUBJECT'] +'<br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
-		  byid('wrap-messages').appendChild(lines);
+ 	  var lines = document.createElement('li');
+	 	  lines.innerHTML = '<strong>From: ' + html[i]['Users']['NAME'] + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
+		  ul.appendChild(lines);
 	}
+	byid('wrap-messages').appendChild(ul);
 
 function isSent()
 {

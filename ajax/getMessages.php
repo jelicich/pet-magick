@@ -2,13 +2,23 @@
 
 session_start();
 
-include('../php/classes/BOmessages.php');
+include_once('../php/classes/BOMessages.php');
 
-$mssg = new BOmessages;
+$mssg = new BOMessages;
 
-$data = array($_SESSION['id'], $_SESSION['datelog']);
+$data = $_SESSION['id'];
+	
+/**
+ NO NECESITAMOS LA FECHA CREO
+$data = array(
+	'id'=>$_SESSION['id'], 
+	'datelog'=>$_SESSION['datelog']
+	);
+*/
 
-$mssg->read($data);
-echo $mssg->getMessages();
+if($mssg->read($data))
+	echo $mssg->getInbox();
+else
+	echo $mssg->getErrors();
 
 ?>

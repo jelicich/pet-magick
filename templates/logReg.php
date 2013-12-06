@@ -8,7 +8,7 @@
 			
 			<?php 
 				
-				include('php/classes/BOlocation.php');
+				include_once('php/classes/BOLocation.php');
 
 				$country = new BOLocation;
 				$countries = $country->countryList();

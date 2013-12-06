@@ -2,14 +2,21 @@
 
 session_start();
 
-include_once "../php/classes/BOusers.php";
-include_once "../php/classes/BOmessages.php";
+include_once "../php/classes/BOUsers.php";
+include_once "../php/classes/BOMessages.php";
 
-$mssg = new BOmessages;
+$mssg = new BOMessages;
 $user = new BOUsers;
-
-$to = $user->table->findByMail($_POST['to']);
-$data = array($_POST['from'], $to[0]['ID_USER'],  $_POST['subject'],  $_POST['message']);
+/**
+Comento $to, hago las pruebas con el ID, dsps deberíamos poner un autocomplete ahi.
+*/
+//$to = $user->table->findByMail($_POST['to']);
+$data = array(
+	'from'=>$_POST['from'], 
+	'to'=>$_POST['to'],
+	'subject'=>$_POST['subject'],
+	'message'=>$_POST['message']
+	);
 
 
 if($mssg->submit($data) != true)

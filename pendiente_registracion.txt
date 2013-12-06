@@ -35,7 +35,20 @@ Asi q lo proximo y mas urgente seria traer mensajes....
 	- Ok, lo vi pero no toqué nada. Ahora me tengo q poner con unas cosas del trabajo, y dsps lo sigo.
 
 
+---------------------------------------
+
+
+- Estoy armando lo del inbox. Antes de empezar modifique unas giladas q me confund’an (lo m‡s relevante es que le modifique los nombres a las clases y archivos, algunas clases ten’an mayœscula y otras no. con los archivos lo mismo. asique le puse a todo igual BO con mayœscula y la primer letra de la clase en mayœscula BOUser BOLocation BOMessage, etc. con los archivos lo mismo)
+
+-Los comentarios q hice en el c—digo los marquŽ con fuxia (si usas el sublime). Asi encontras rapido.
+
+- Ya levanta los mensajes sin problema. Pero me acabo de dar cuenta de un problema.
+EL sistema de mensajes q tenemos nosotros funciona como un chat. No como un mail, es decir, tendr’amos que ver c—mo se pueden mostrar para que te muestre tu chat con una persona siempre igual. es decir, deber’a funcionar como el FB. Que cuando entras a tu inbox no tenes mensajes, sino personas, y ah’ adentro est‡n los mensajes de corrido.
+Una estructura as’ habr’a q pensar. Ahora no se me ocurre bien c—mo pero me parece q seria lo mas sencillo. Pq si tenemos q hacer como un mail es un laburo de locos.
  
- 
+- Anoto para no olvidarme 
+AGREGAR FUNCION GET ERROR en BOUser
+
+- Ya manda enviar mensajes. Termine de acomodar todo para que ande. Hice una prueba y anda. Esta todo como lo fui haciendo habr’a que ordenarlo bien, te deje comentarios por todos lados por si algo no est‡ claro.
 
 

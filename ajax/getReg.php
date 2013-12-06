@@ -1,5 +1,5 @@
 <?php
 
 session_start();
-include('../templates/userReg.php');
+include_once('../templates/userReg.php');
 

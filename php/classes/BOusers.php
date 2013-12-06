@@ -148,7 +148,7 @@ class BOUsers{
               //echo 'logueado! (Borrar este echo del codigo)';
               return true;
               //cuando ejecuto el login desde el objeto instanciado hago if($obj->login()), si entra guardo la info del usuario en sesion pidiendola asi:
-              //obj->table->findByMail($mail)   <-- todavía no puse este metodo
+              
             }
        
         catch(Exception $e)

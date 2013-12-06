@@ -38,20 +38,23 @@ class MessagesTable extends Doctrine_Table
 
 //====================================================================== READ
 
-    public function read($to, $date){
+    public function read($to){
 
               $q = Doctrine_Query::create()
-                ->select('m.MESSAGE, m.DATE, u.NICKNAME, m.ID_MESSAGE')
+                ->select('m.ID_MESSAGE, m.SUBJECT, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
-                ->AndWhere('m.TO_USER_ID = ?', $to )
-                ->AndWhere('m.DATE > ?', $date)
-                ->AndWhere('m.STATUS = ?', '0');
+                ->AndWhere('m.TO_USER_ID = ?', $to );
+                //->AndWhere('m.DATE > ?', $date)
+                //->AndWhere('m.STATUS = ?', '0');
+
 
                  $rta = $q->execute();
+
                  $json = array();
 
-                 foreach($rta as $m) {
+                 foreach($rta as $m) 
+                 {
 
                      $json[] = $m->toArray();
                  }

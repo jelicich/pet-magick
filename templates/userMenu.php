@@ -35,6 +35,8 @@
 
 
 </form>
+<div id="wrap-messages">
+</div>
 				
 
 			<script type="text/javascript" id="jslogout">
@@ -43,7 +45,7 @@
 					ajax('POST', 'ajax/logout.php', redirect, false, true);
 				}
 
-				inbox();
+				inbox(); //============= 
 
 			</script>
 

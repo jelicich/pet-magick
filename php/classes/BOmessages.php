@@ -5,17 +5,25 @@ include_once('models/MessagesTable.php');
 include_once('models/UsersTable.php');
 
 
-class BOmessages{
+class BOMessages{
 
-    var $tablaUsr;
-    var $msg;
+    var $tableUsr;
+    var $tableMsg;
+    var $inbox;
+    var $err;
 
-    function __construct(){
+    function __construct()
+    {
 
         $this->tableUsr = Doctrine_Core::getTable('Users');
-        $this->msg = Doctrine_Core::getTable('Messages');
+        $this->tableMsg = Doctrine_Core::getTable('Messages');
 
     }// End constructor
+
+    function getErrors()
+    {
+        return $this->err;
+    }
 
 //=========================================================== VALIDATIONS
 
@@ -25,28 +33,37 @@ class BOmessages{
     {
         $t = sizeof($ref);
 
+        if(!$ref['from'] || empty($ref['from']) )
+        {
+            throw new Exception('There was an error with your session. Message can\'t be sent');
+        }
         //si no es array lo que recibo
         if(!is_array($ref))
         {   
-             throw new Exception('Formato de datos incorrecto');
+            throw new Exception('Data format error');
         }
         else
         {
             //si tiene algun campo vacio
+            //me parece q esto no evalua si el campo esta vacio, sino si existen todas las posiciones. puede estar la posición y estar vacia y esto no lo evalua
+            /*
             if($t < 4)
             {   
-                throw new Exception("Debe completar todos los campos");
+                throw new Exception("Please ");
                 break;
             }
-            
-            //Si el usuario no existe
-            if(!empty($ref[1]))
+            */
+
+            if(empty($ref['to']))
+            {
+                throw new Exception('Please enter the recipient');
+            }
+            else
             {
                 $rta = $this->tableUsr->findByMail($ref[1]);
                 if(!empty($rta))
                 {   
-                    throw new Exception("El usuario destinatario no existe");
-                    break;
+                    throw new Exception('Invalid recipient');
                 }
                /* else
                 {
@@ -59,9 +76,10 @@ class BOmessages{
 
     //======================= READ VAL
 
-    function val_read($ref)
+    function val_read($idUser)
     {
-        if(sizeof($ref) < 2 || empty($ref[0]) || empty($ref[1]))
+        /*
+        if(sizeof($ref) < 2 || empty($ref['id']) || empty($ref['datelog']))
         {
             throw new Exception("Hubo un error con su sesion. No se pueden leer los mensajes");
             break;
@@ -70,6 +88,22 @@ class BOmessages{
         {
             return true;
         }
+        */
+
+        /** 
+        Adapto la funcion de arriba ya que no necesitamos que reciba un array. Solo el ID
+         */
+
+        if(empty($idUser)) 
+        {
+            throw new Exception("There was an error with your session. Messages can't be loaded.");
+            //break;
+        }
+        else
+        {
+            return true;
+        }
+        
     }// End val_read
 
 
@@ -79,13 +113,15 @@ class BOmessages{
     function submit($ref){
 
          try
-            {  $this->val_submit($ref);
-               $rta = $this->msg->submit($ref[0], $ref[1], $ref[2], $ref[3]);
-               return true;
+            {  
+                $this->val_submit($ref);
+                $rta = $this->tableMsg->submit($ref['from'], $ref['to'], $ref['subject'], $ref['message']);
+                return true;
             }
          catch(Exception $e)
             {
-               echo 'Message: ' .$e->getMessage();
+               $this->err = $e->getMessage();
+               return false;
             }
 
     }// End submit
@@ -93,24 +129,32 @@ class BOmessages{
 
 
     //======================== READ MESSAGES
-    function read($ref){
-
+    function read($idUser){
+/**
+Si el mensaje tiene Ñ o acentos devuelve null. hay q escapar esos caracteres y los saltos de linea tmb.
+para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
+*/
         try
             {  
-                $this->val_read($ref);
-                $rta = $this->msg->read($ref[0], $ref[1]);
-                echo 'Leido! (Borrar este echo del codigo)';
+                $this->val_read($idUser);
+                $this->inbox = $this->tableMsg->read($idUser);
+                //echo 'Leido! (Borrar este echo del codigo)';
+
                 return true;
             }
          catch(Exception $e)
             {
-               echo 'Message: ' .$e->getMessage();
+               $this->err = $e->getMessage();
+               return false;
             }
 
     }// End read
 
     
-
+/**
+    Esta funcion no la necesitamos me parece. Si la necesitamos habria q cambiarle el nombre pq confunde
+*/
+/*
     //======================= MESSAGES
     function getMessages(){
 
@@ -119,6 +163,31 @@ class BOmessages{
     }// End getMessages
 
 }// End class BOmesagges
+*/
+
+    //======================== READ MESSAGES
+    /**
+    Creo esta función para obtener el inbox, Vidaurri decía q era más seguro hacerlo así.
+    */
+
+    function getInbox()
+    {
+        return $this->inbox;
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -292,32 +292,20 @@ function regionsCombo(){
 
 //=============================================================================== INBOX FUNCTIONS
 
-/*
-
-function processResponse(){
-   //console.log(this.responseText);
-   var html = eval(this.responseText);
-  
-    for(var i = 0; i < html.length; i++)
-	{
- 	  var lines = document.createElement('p');
-	 	  lines.innerHTML = html[i]['Users']['NAME'] + ' dice : '  + html[i]['mensaje'] +'<br> Fecha: ' + html[i]['fechaenvio'];
-		  html.appendChild(lines);
-	}
-}//end processResponse
-
-*/
-
 function inbox(){
 
 	(function getMessages(){
 				
-		ajax('GET', 'ajax/getMessages.php', processResponse, null, true);
+		ajax('GET', 'ajax/getMessages.php', printMessages, null, true);
 
+		
+		//comento para que no cargue constantemente
+		/*
 		if(this.readyState == undefined || this.readyState == 4){
 
 			t = setTimeout(getMessages,3000);
 		}
+		*/
 	})();
 
 
@@ -328,6 +316,65 @@ function inbox(){
 	 }
 
 }//end inbox
+
+
+
+function printMessages(){
+	console.log(this.responseText);
+	var html = eval(this.responseText);
+	//console.log(html);
+  
+    for(var i = 0; i < html.length; i++)
+	{
+ 	  var lines = document.createElement('p');
+	 	  lines.innerHTML = 'From:' + html[i]['Users']['NAME'] + '<br> subject : '  + html[i]['SUBJECT'] +'<br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
+		  byid('wrap-messages').appendChild(lines);
+	}
+
+function isSent()
+{
+	
+}
+
+
+	/*
+Estructura del json q trae
+[
+{
+	"ID_MESSAGE":"1",
+	"FROM_USER_ID":"4",
+	"TO_USER_ID":"5",
+	"SUBJECT":"Hola",
+	"MESSAGE":"Hola como estas",
+	"STATUS":"9",
+	"DATE":"2013-12-06",
+	"Users":
+	{
+		"ID_USER":"4",
+		"NAME":"luis",
+		"LASTNAME":"miguel",
+		"NICKNAME":null,
+		"EMAIL":null,
+		"PASSWORD":null,
+		"ABOUT":null,
+		"COUNTRY_ID":null,
+		"REGION_ID":null,
+		"CITY_ID":null,
+		"PIC_ID":null,
+		"ALBUM_ID":null,
+		"RANK":null,
+		"TOKEN":null
+	}
+}
+] 
+
+	*/
+
+}//end processResponse
+
+
+
+
 
 
 

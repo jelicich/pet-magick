@@ -2,9 +2,9 @@
 
 session_start();
 
-include('../php/classes/BOusers.php');
+include_once('../php/classes/BOUsers.php');
 
-$user = new BOusers;
+$user = new BOUsers;
 
 $dato = array(
 	'name' => $_POST['name'],

@@ -1,4 +1,4 @@
 <?php
 
 session_start();
-include('../templates/userLogin.php');
+include_once('../templates/userLogin.php');

@@ -37,7 +37,7 @@ class MessagesTable extends Doctrine_Table
 
 
 //====================================================================== READ
-
+/*
     public function getMessages($to){
 
                 // para que traiga los grupos ordenados descendente hay q hacer subquery
@@ -69,7 +69,6 @@ class MessagesTable extends Doctrine_Table
                 //->AndWhere('m.DATE > ?', $date)
                 //->AndWhere('m.STATUS = ?', '0');
 
-                */
 
                  $rta = $subq->execute();
 
@@ -94,5 +93,108 @@ class MessagesTable extends Doctrine_Table
 
                   return $rta;
     }// End read
+*/
 
+
+    public function getMessages($to){
+
+                // para que traiga los grupos ordenados descendente hay q hacer subquery
+                // http://melikedev.com/2013/06/07/php-doctrine-dql-select-subquery/
+                // http://stackoverflow.com/questions/8575542/sql-cant-grab-values-in-descending-order-when-using-group-by
+                // https://doctrine-orm.readthedocs.org/en/2.0.x/reference/native-sql.html#examples
+            
+                
+
+             $q = Doctrine_Query::create()
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
+                ->from('messages m')
+                ->innerJoin('m.Users u')
+                ->AndWhere('m.FROM_USER_ID = ?', $to )
+                ->orderBy('m.DATE DESC');
+
+
+                /* //Consulta q agrupa por usuario pero no ordena por fecha dentro del mismo usuario
+                $q = Doctrine_Query::create()
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
+                ->from('messages m')
+                ->innerJoin('m.Users u')
+                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->groupBy('m.FROM_USER_ID')
+                ->orderBy('m.DATE DESC');
+                //->AndWhere('m.DATE > ?', $date)
+                //->AndWhere('m.STATUS = ?', '0');
+
+                */
+
+                 $rta = $q->execute();
+
+                 $json = array();
+
+                 foreach($rta as $m) 
+                 {
+
+                     $json[] = $m->toArray();
+                 }
+
+                 $rta = json_encode($json);
+
+                for ($i=0; $i < sizeof($json); $i++) { 
+                    
+                     $q = Doctrine_Query::create()
+                        ->update('messages m')
+                        ->set('m.STATUS' , '?', '1')
+                        ->where('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']);
+                     $q->execute();
+                  }
+
+                  return $rta;
+    }// End read
+
+
+     public function getHeaders($to){
+
+              $q = Doctrine_Query::create()
+                ->select('m.FROM_USER_ID, u.NAME, u.LASTNAME')
+                ->from('messages m')
+                ->innerJoin('m.Users u')
+                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->orderBy('m.DATE DESC');
+
+
+                /* //Consulta q agrupa por usuario pero no ordena por fecha dentro del mismo usuario
+                $q = Doctrine_Query::create()
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
+                ->from('messages m')
+                ->innerJoin('m.Users u')
+                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->groupBy('m.FROM_USER_ID')
+                ->orderBy('m.DATE DESC');
+                //->AndWhere('m.DATE > ?', $date)
+                //->AndWhere('m.STATUS = ?', '0');
+
+                */
+
+                 $rta = $q->execute();
+
+                 $json = array();
+
+                 foreach($rta as $m) 
+                 {
+
+                     $json[] = $m->toArray();
+                 }
+
+                 $rta = json_encode($json);
+
+                for ($i=0; $i < sizeof($json); $i++) { 
+                    
+                    /* $q = Doctrine_Query::create()
+                        ->update('messages m')
+                        ->set('m.STATUS' , '?', '1')
+                        ->where('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']);
+                     $q->execute(); */
+                  }
+
+                  return $rta;
+    }// End read
 }

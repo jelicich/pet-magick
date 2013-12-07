@@ -281,7 +281,7 @@ function inbox(){
 
 	(function getMessages(){
 				
-		ajax('GET', 'ajax/getMessages.php', printMessages, null, true);
+		ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
 		
 		//comento para que no cargue constantemente
@@ -301,52 +301,59 @@ function inbox(){
 	 }
 }//end inbox
 
-function printMessages(){
+
+function printHeaders(){
 
 	var html = eval(this.responseText);
 	var uls;
 	var title;
 	var lines;
-	var each; 
-	// Las decclaro aca afuera para hacerlo solo una vez y luego reutilizarlas (era asi o la estoy flasheando? jaja)...
+	var each;
+	var eachName;
 
 	for(var i = 0; i < html.length; i++){
 
-		 each = html[i]['Users']['NAME'];
+		 each =  html[i]['Users']['ID_USER'];
+		 eachName =  html[i]['Users']['NAME'];
 
 		 if(byid(each) === null){ 
-		 	//crea un solo ul por "from"
-		 	//Estoy usando el nombre pq me queda comodo y para probar va, hay q tomar otro valor obviamente...
 
 		 		uls = create('ul');
 		  		uls.id = each;
 
 		  		title = create('span'); 
-		  		title.innerHTML = each;
+		  		title.innerHTML = eachName;
 
 		  		byid('wrap-messages').appendChild(uls);
 		  		byid(each).appendChild(title);
 		  }
 
-           lines = create('li');
-	  	   lines.className = each;
-	 	   lines.innerHTML = '<strong>From: ' + each + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
-		   lines.style.display = 'none';
-
-		   if(lines.className == uls.id){ 
-	  		 uls.appendChild(lines);
-		   }	
-
-		   // Funcion q despliega los mensajes segun usuario
-		   byid(each).onclick = function(){
+          
+		    byid(each).onclick = function(){
 		  		//console.log(this.id);
-		  		getClass(this.id); // Esta funcion me la chorie de internet jjaj (ojo q la retoque eh!!)...
-		  }
+		  		fromId = 'fromId=' + each;
+		  		ajax('POST', 'ajax/getMessages.php', vardump, fromId, true);
+		  		//var html = eval(this.responseText);
+		  		//console.log(eachName);
+
+		  		for(var i = 0; i < html.length; i++){
+
+		  			uls = byid(each);
+
+		  			lines = create('li');
+			  		lines.className = each;
+			  		lines.innerHTML = '<strong>From: ' + each + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
+			   		lines.style.display = 'none';
+
+			  		if(lines.className == uls.id){ 
+				  		 uls.appendChild(lines);
+					}
+				}//end for
+		  		getClass(this.id); 
+		    }
 
 	}//end for
 }//end printMessages
-
-
 
 
 

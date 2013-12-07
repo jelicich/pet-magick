@@ -6,9 +6,9 @@
 
 	$mssg = new BOMessages;
 
-	$data = $_POST['fromId'];
+	$data = $_SESSION['id'];
 
-	if($mssg->getMessages($data))
+	if($mssg->getHeaders($data))
 		echo $mssg->getInbox();
 	else
 		echo $mssg->getErrors();

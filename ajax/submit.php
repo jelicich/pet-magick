@@ -10,7 +10,7 @@ $user = new BOUsers;
 /**
 Comento $to, hago las pruebas con el ID, dsps deberíamos poner un autocomplete ahi.
 */
-//$to = $user->table->findByMail($_POST['to']);
+//$to = $user->table->findByMail($_POST['to']); /**Hay una validacion q utiliza findbymail en BOMessages....
 $data = array(
 	'from'=>$_POST['from'], 
 	'to'=>$_POST['to'],
@@ -20,7 +20,7 @@ $data = array(
 
 
 if($mssg->submit($data) != true)
-echo json_encode($user->err);
+echo json_encode($mssg->err);
 
 
 

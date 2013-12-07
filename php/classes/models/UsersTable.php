@@ -139,9 +139,4 @@ class UsersTable extends Doctrine_Table
 		return $rta;
     }
 
-
-
-
-		
-
 }//end class

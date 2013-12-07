@@ -114,25 +114,7 @@ class BOUsers{
             }
     }// End function registration
 
- 
-
-    //======================= COMBO COUNTRIES
-
-    function countryList(){
-
-        $rta = $this->table->countries();
-        return $rta;
-       
-    }// End country
-
-     function countryId(){
-
-        $rta = $this->table->id_countries();
-        return $rta;
-       
-    }// End country
-
-    
+  
 //=============================================================================== LOGIN FUNCTIONS
 
     function login($ref){

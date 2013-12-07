@@ -1055,3 +1055,11 @@ Tunear!!!
  }
 
 */
+
+#wrap-messages ul{
+	background-color: red;
+	cursor: pointer;
+	width: 200px; /* provisorio */
+	height: auto; /* provisorio */
+}
+

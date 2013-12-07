@@ -56,6 +56,20 @@ function byid(s){
 	return document.getElementById(s);
 }//end byid
 
+function create(s){
+
+	return document.createElement(s);
+}//end create
+
+function getClass(matchClass) {
+    var elems = document.getElementsByTagName('*'), i;
+    for (i in elems) {
+        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1) {
+            elems[i].style.display = 'block';
+        }
+    }
+}//end getClass
+
 //=============================================================================== LOGIN FUNCTIONS
 
 var source; //variable para poder hacer el switch en print user menu 
@@ -67,7 +81,7 @@ function printUserMenu(){
  	try 
  	{
  		var errores = JSON.parse(this.responseText);
- 		var err = document.createElement('p');
+ 		var err = create('p');
  		err.className = 'error';
  		for(error in errores)
  		{
@@ -101,53 +115,6 @@ function printUserMenu(){
  	}	 
 }//end printUserMenu
 
-var flagL = 0; //Estas vairables (flagL y R) tienen q ser publicas porque se modifican entre showReg y showLogin
-function showLogin(){
-
-	byid('link-login').onclick = function()
-	{
-		//ajax('POST', 'ajax/getLogin.php', printLogin, null, true);
-		if(flagL == 0)
-		{
-			byid('log-form').style.display = "block";
-			flagL=1;
-		}	
-		else
-		{
-			byid('log-form').style.display = "none";
-			flagL = 0;
-		}
-
-		//ESCONDO EL OTRO POR LAS DUDAS
-		byid('reg-form').style.display = "none";
-		flagR=0;
-
-		
-		/*
-		//PRUEBA PARA Q SE BORRE SI HACE CLICK EN CUAQLERUI LUGAR
-		byid('log-form').onmouseover = function ()
-		{
-			var over = true;
-		}
-		byid('log-form').onmouseout = function ()
-		{
-			over = false;	
-		}
-		
-		document.body.onclick = function()
-		{
-			if(!over)
-			{
-				byid('log-form').style.display = "none";
-				flagL = 0;
-			}
-		}
-		*/
-	}
-
-
-}//end showLogin
-
 function login(){
 
 	byid('login').onclick = function(){ 
@@ -165,30 +132,6 @@ function login(){
 }//end login
 
 //=============================================================================== REGISTRATION FUNCTIONS
-
-var flagR = 0; //Estas vairables (flagL y R) tienen q ser publicas porque se modifican entre showReg y showLogin
-function showReg(){
-		
-	
-
-	byid('link-reg').onclick = function(){
-		//ajax('POST', 'ajax/getReg.php', printReg, null, true);
-		if(flagR == 0)
-		{
-			byid('reg-form').style.display = "block";
-			flagR=1;
-		}	
-		else
-		{
-			byid('reg-form').style.display = "none";
-			flagR = 0;
-		}
-
-		//ESCONDO EL OTRO POR LAS DUDAS
-		byid('log-form').style.display = "none";
-		flagL = 0;
-	}
-}//end showReg
 
 function reg(){
 		
@@ -215,6 +158,48 @@ function reg(){
 		ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);
 	}
 }//end reg
+
+var flag = 0; // showForms(), -- publica --
+function showForms(link, show, hide){
+    
+	byid(link).onclick = function()
+	{
+		if(flag == 0)
+		{
+			byid(show).style.display = "block";
+			flag = 1;
+		}	
+		else
+		{
+			byid(show).style.display = "none";
+			flag = 0;
+		}
+
+		//ESCONDO EL OTRO POR LAS DUDAS
+		byid(hide).style.display = "none";
+		flag=0;
+
+		var over = true;
+
+		byid(show).onmouseover = function ()
+		{
+			 over = true;
+		}
+		byid(show).onmouseout = function ()
+		{
+			over = false;	
+		}
+		
+		document.body.onclick = function()
+		{
+			if(!over)
+			{
+				byid(show).style.display = "none";
+				flag = 0;
+			}
+		}
+	}
+}//end showLogin
 
 //============================= COMBO FUNCTIONS
 
@@ -263,7 +248,7 @@ function countriesCombo(){
 		byid('city').innerHTML = '';
 		byid('city').style.display = 'none';
 		//le pongo el gif loading
-		var loading = document.createElement('img');
+		var loading = create('img');
 		loading.src = 'img/loading.gif'; 
 		loading.id='loading-location';
 		byid('country-wrapper').appendChild(loading);
@@ -280,7 +265,7 @@ function regionsCombo(){
 		var id = region.options[region.selectedIndex].value; 
 		var vars = 'idRegion='+id;
 		//le pongo el gif loading
-		var loading = document.createElement('img');
+		var loading = create('img');
 		loading.src = 'img/loading.gif'; 
 		loading.id='loading-location';
 		byid('region-wrapper').appendChild(loading);
@@ -308,34 +293,107 @@ function inbox(){
 		*/
 	})();
 
-
+    
 	 byid('submit').onclick = function(){
 
 	 	var vars = 'from='+byid('from').value+'&to='+byid('to').value+'&subject='+byid('subject').value+'&message='+byid('message').value;
 	 	ajax('POST', 'ajax/submit.php', vardump, vars, true); // q funcion metemos aca en lugar de vardump???
 	 }
-
 }//end inbox
 
-
-
 function printMessages(){
-	console.log(this.responseText);
-	var html = eval(this.responseText);
-	//console.log(html);
-  	var ul = document.createElement('ul');
-    for(var i = 0; i < html.length; i++)
-	{
- 	  var lines = document.createElement('li');
-	 	  lines.innerHTML = '<strong>From: ' + html[i]['Users']['NAME'] + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
-		  ul.appendChild(lines);
-	}
-	byid('wrap-messages').appendChild(ul);
 
-function isSent()
-{
-	
-}
+	var html = eval(this.responseText);
+	var uls;
+	var title;
+	var lines;
+	var each; 
+	// Las decclaro aca afuera para hacerlo solo una vez y luego reutilizarlas (era asi o la estoy flasheando? jaja)...
+
+	for(var i = 0; i < html.length; i++){
+
+		 each = html[i]['Users']['NAME'];
+
+		 if(byid(each) === null){ 
+		 	//crea un solo ul por "from"
+		 	//Estoy usando el nombre pq me queda comodo y para probar va, hay q tomar otro valor obviamente...
+
+		 		uls = create('ul');
+		  		uls.id = each;
+
+		  		title = create('span'); 
+		  		title.innerHTML = each;
+
+		  		byid('wrap-messages').appendChild(uls);
+		  		byid(each).appendChild(title);
+		  }
+
+           lines = create('li');
+	  	   lines.className = each;
+	 	   lines.innerHTML = '<strong>From: ' + each + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
+		   lines.style.display = 'none';
+
+		   if(lines.className == uls.id){ 
+	  		 uls.appendChild(lines);
+		   }	
+
+		   // Funcion q despliega los mensajes segun usuario
+		   byid(each).onclick = function(){
+		  		//console.log(this.id);
+		  		getClass(this.id); // Esta funcion me la chorie de internet jjaj (ojo q la retoque eh!!)...
+		  }
+
+	}//end for
+}//end printMessages
+
+
+
+
+
+/*
+
+function showReg(){
+
+
+		byid('link-reg').onclick = function(){
+
+		if(flag == 0)
+		{
+			byid('reg-form').style.display = "block";
+			flag=1;
+		}	
+		else
+		{
+			byid('reg-form').style.display = "none";
+			flag = 0;
+		}
+
+		byid('log-form').style.display = "none";
+		flag = 0;
+
+		var over = true;
+
+		byid('reg-form').onmouseover = function ()
+		{
+			 over = true;
+		}
+		byid('reg-form').onmouseout = function ()
+		{
+			over = false;	
+		}
+		
+		document.body.onclick = function()
+		{
+			if(!over)
+			{
+				byid('reg-form').style.display = "none";
+				flag = 0;
+			}
+		}
+	}
+}//end showReg
+
+*/
 
 
 	/*
@@ -371,7 +429,7 @@ Estructura del json q trae
 
 	*/
 
-}//end processResponse
+
 
 
 

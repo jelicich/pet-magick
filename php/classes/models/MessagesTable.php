@@ -87,7 +87,7 @@ class MessagesTable extends Doctrine_Table
                     
                      $q = Doctrine_Query::create()
                         ->update('messages m')
-                        ->set('m.STATUS' , '?', '9')
+                        ->set('m.STATUS' , '?', '1')
                         ->where('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']);
                      $q->execute();
                   }

@@ -44,32 +44,21 @@ class BOMessages{
         }
         else
         {
-            //si tiene algun campo vacio
-            //me parece q esto no evalua si el campo esta vacio, sino si existen todas las posiciones. puede estar la posición y estar vacia y esto no lo evalua
-            /*
-            if($t < 4)
-            {   
-                throw new Exception("Please ");
-                break;
-            }
-            */
-
-            if(empty($ref['to']))
+             if(empty($ref['to']))
             {
                 throw new Exception('Please enter the recipient');
             }
             else
-            {
-                $rta = $this->tableUsr->findByMail($ref[1]);
+            {   /** 
+                Esta funcion requiere el mail del destinatario para validar. 
+                Queda pendiente hasta q sepamos q dato vamos a manejar// findByMail($ref['to']) 
+                */
+                //$rta = $this->tableUsr->findByMail($ref['to']);
                 if(!empty($rta))
                 {   
                     throw new Exception('Invalid recipient');
                 }
-               /* else
-                {
-                    //$this->dest = $rta[0]['ID'];
-                    var_dump($rta);
-                }*/
+
             }   
         }// End else
     }// End val_submit
@@ -78,19 +67,7 @@ class BOMessages{
 
     function val_getMessages($idUser)
     {
-        /*
-        if(sizeof($ref) < 2 || empty($ref['id']) || empty($ref['datelog']))
-        {
-            throw new Exception("Hubo un error con su sesion. No se pueden leer los mensajes");
-            break;
-        }
-        else
-        {
-            return true;
-        }
-        */
-
-        /** 
+         /** 
         Adapto la funcion de arriba ya que no necesitamos que reciba un array. Solo el ID
          */
 
@@ -138,7 +115,6 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
             {  
                 $this->val_getMessages($idUser);
                 $this->inbox = $this->tableMsg->getMessages($idUser);
-                //echo 'Leido! (Borrar este echo del codigo)';
 
                 return true;
             }
@@ -150,22 +126,8 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
 
     }// End read
 
-    
-/**
-    Esta funcion no la necesitamos me parece. Si la necesitamos habria q cambiarle el nombre pq confunde
-*/
-/*
-    //======================= MESSAGES
-    function getMessages(){
+ //======================== READ MESSAGES
 
-        return $this->msg;
-
-    }// End getMessages
-
-}// End class BOmesagges
-*/
-
-    //======================== READ MESSAGES
     /**
     Creo esta función para obtener el inbox, Vidaurri decía q era más seguro hacerlo así.
     */
@@ -173,12 +135,9 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
     function getInbox()
     {
         return $this->inbox;
-    }
+    }// End getInbox
 
-
-
-}
-
+}// End class
 
 
 

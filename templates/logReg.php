@@ -115,10 +115,13 @@
 </ul>
 
 <script type="text/javascript">
-	showReg(); //====================== DESPLIEGA REGISTRO
+
+	showForms('link-reg', 'reg-form', 'log-form'); //====================== DESPLIEGA REGISTRO
+	showForms('link-login', 'log-form', 'reg-form'); //====================== DESPLIEGA LOGIN
+	
 	reg(); //====================== PARA REGISTRARSE
 	countriesCombo(); //====================== DESPLIEGA COMBOS
 	regionsCombo(); //====================== DESPLIEGA REGIONES
-	showLogin(); //====================== DESPLIEGA LOGIN
 	login(); //====================== PARA LOGUEARSE 
+
 </script>

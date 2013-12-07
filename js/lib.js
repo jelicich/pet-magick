@@ -326,36 +326,42 @@ function printHeaders(){
 
 		  		byid('wrap-messages').appendChild(uls);
 		  		byid(each).appendChild(title);
-		  }
+		 }
 
           
 		    byid(each).onclick = function(){
+		  		
 		  		//console.log(this.id);
-		  		fromId = 'fromId=' + each;
-		  		ajax('POST', 'ajax/getMessages.php', vardump, fromId, true);
-		  		//var html = eval(this.responseText);
-		  		//console.log(eachName);
-
-		  		for(var i = 0; i < html.length; i++){
-
-		  			uls = byid(each);
-
-		  			lines = create('li');
-			  		lines.className = each;
-			  		lines.innerHTML = '<strong>From: ' + each + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
-			   		lines.style.display = 'none';
-
-			  		if(lines.className == uls.id){ 
-				  		 uls.appendChild(lines);
-					}
-				}//end for
-		  		getClass(this.id); 
-		    }
-
+		  		fromId = 'fromId=' + this.id;
+		  		ajax('POST', 'ajax/getMessages.php', printMessages, fromId, true);
+		  		
+		  	}
 	}//end for
 }//end printMessages
 
 
+
+function printMessages(){
+
+	
+	var html = eval(this.responseText);
+    for(var i = 0; i < html.length; i++){
+
+		  			lines = create('li');
+			  		lines.className = html[i]['Users']['ID_USER'];
+			  		lines.innerHTML = '<strong>From: ' + html[i]['Users']['NAME']; + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
+			   		lines.style.display = 'none';
+			   		var ul = byid(html[i]['Users']['ID_USER']);
+			   		ul.appendChild(lines);
+
+			   		if(lines.className == ul.id){ 
+			  		 ul.appendChild(lines);
+				   }	
+
+			   		getClass(html[i]['Users']['ID_USER']);
+
+			   	}//end for
+}
 
 /*
 

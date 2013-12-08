@@ -30,9 +30,14 @@
 	<!-- site content -->
 	<div class="container_12" id="content">
 		
-		<div class="grid_4" id="wrap-messages">
-			
-		</div>		
+		<div class="grid_4">
+			<ul id="wrap-conversations">
+
+			</ul>
+		</div>	
+
+		<div id="wrap-messages">
+		</div>	
 
 
 

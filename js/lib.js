@@ -304,43 +304,65 @@ function inbox(){
 
 function printHeaders(){
 
+	//console.log(this.responseText);
 	var html = eval(this.responseText);
-	var uls;
+	var as;
+	var lis;
 	var title;
 	var lines;
 	var each;
 	var eachName;
+	var lastMsg;
 
 	for(var i = 0; i < html.length; i++){
 
-		 each =  html[i]['Users']['ID_USER'];
-		 eachName =  html[i]['Users']['NAME'];
+		 each =  html[i]['ID_USER'];
+		 eachName =  html[i]['NAME'] + ' ' + html[i]['LASTNAME'] + ' (' + html[i]['NICKNAME'] + ')';
+		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
+		 //console.log(lastMsg);
 
-		 if(byid(each) === null){ 
-
-		 		uls = create('ul');
-		  		uls.id = each;
+	// if(byid(each) === null){ 
+				as = create('a');
+				as.href = "?u="+each;
+		 		lis = create('li');
+		  		//lis.id = each;
 
 		  		title = create('span'); 
 		  		title.innerHTML = eachName;
+		  		caption = create('p');
+		  		caption.innerHTML = lastMsg;
 
-		  		byid('wrap-messages').appendChild(uls);
-		  		byid(each).appendChild(title);
-		 }
+		  		lis.appendChild(title);
+		  		lis.appendChild(caption);
+		  		as.appendChild(lis);
+		  		byid('wrap-conversations').appendChild(as);
+		  		
+		  		
+//		 }
+			
+
+
+		  	
+		  		
+		  	
+
 
           
-		    byid(each).onclick = function(){
-		  		
-		  		//console.log(this.id);
-		  		fromId = 'fromId=' + this.id;
+		    as.onclick = function(e){
+		    	e.preventDefault();
+		  		var index = this.href.indexOf('=');
+		  		index ++;
+		  		fromId = 'fromId=' + this.href.substr(index);
+		  		console.log(fromId);
 		  		ajax('POST', 'ajax/getMessages.php', printMessages, fromId, true);
 		  		
 		  	}
+		  	
 	}//end for
 }//end printMessages
 
 
-
+/*
 function printMessages(){
 
 	
@@ -362,6 +384,36 @@ function printMessages(){
 
 			   	}//end for
 }
+*/
+
+
+
+function printMessages(){
+console.log(this.responseText);
+
+ var html = eval(this.responseText);
+  for(var i = 0; i < html.length; i++){
+
+ 	lines = create('li');
+  lines.className = html[i]['Users']['ID_USER'];
+  lines.innerHTML = '<strong>From: ' + html[i]['Users']['NAME'] + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
+  //lines.style.display = 'none';
+  //var uls = byid(html[i]['Users']['ID_USER']);
+  byid('wrap-messages').innerHTML = "";
+  byid('wrap-messages').appendChild(lines);
+/*
+  if(lines.className == uls.id){ 
+  uls.appendChild(lines);
+ 	 } 
+*/
+  //getClass(html[i]['Users']['ID_USER']);
+
+  }//end for
+}//end printMessages
+
+
+
+
 
 /*
 

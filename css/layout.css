@@ -1056,7 +1056,7 @@ Tunear!!!
 
 */
 
-#wrap-messages ul{
+#wrap-conversations li{
 	background-color: red;
 	cursor: pointer;
 	width: 200px; /* provisorio */

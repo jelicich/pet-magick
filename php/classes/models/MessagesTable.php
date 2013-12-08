@@ -174,7 +174,27 @@ class MessagesTable extends Doctrine_Table
 
                 */
 
-                 $rta = $q->execute();
+            $q = Doctrine_Query::create()
+                ->select('*')
+                ->from('messages m')
+                //->AndWhere('m.TO_USER_ID = ?', $to )
+                ->groupBy('m.FROM_USER_ID');
+                
+                //->innerJoin('u.Messages m');
+                //->AndWhere('m.TO_USER_ID = ?', $to )
+                //->groupBy('u.ID_USER');
+
+            $subq = $q->createSubquery()
+                ->select("u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, CONCAT(LEFT(m.MESSAGE,35),'...') AS MESSAGE, m.DATE")
+                ->from('users u')
+                ->innerJoin('u.Messages m')
+                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->orderBy('m.DATE DESC');
+                //->orderBy('m.DATE DESC');
+                //->orderBy('m.DATE DESC');
+
+
+                 $rta = $subq->execute();
 
                  $json = array();
 
@@ -198,3 +218,38 @@ class MessagesTable extends Doctrine_Table
                   return $rta;
     }// End read
 }
+
+/*
+
+[
+{
+    "ID_USER":"4",
+    "NAME":"luis",
+    "LASTNAME":"miguel",
+    "NICKNAME":"luismi",
+    "EMAIL":null,
+    "PASSWORD":null,
+    "ABOUT":null,
+    "COUNTRY_ID":null,
+    "REGION_ID":null,
+    "CITY_ID":null,
+    "PIC_ID":null,
+    "ALBUM_ID":null,
+    "RANK":null,
+    "TOKEN":null,
+    "Messages":
+    [
+    {
+        "ID_MESSAGE":null,
+        "FROM_USER_ID":"4",
+        "TO_USER_ID":null,
+        "SUBJECT":null,
+        "MESSAGE":"asdasd",
+        "STATUS":null,
+        "DATE":"2013-12-06 04:00:00"
+    }
+    ]
+},
+{"ID_USER":"5","NAME":"pepe","LASTNAME":"papa","NICKNAME":"pape","EMAIL":null,"PASSWORD":null,"ABOUT":null,"COUNTRY_ID":null,"REGION_ID":null,"CITY_ID":null,"PIC_ID":null,"ALBUM_ID":null,"RANK":null,"TOKEN":null,"Messages":[{"ID_MESSAGE":null,"FROM_USER_ID":"5","TO_USER_ID":null,"SUBJECT":null,"MESSAGE":" caca caca caca pedo perro caca pedo lclclc lso lks co e smen s snf 39 is   als ","STATUS":null,"DATE":"2013-12-06 02:00:00"}]}] 
+
+*/

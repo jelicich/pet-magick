@@ -96,7 +96,7 @@ class MessagesTable extends Doctrine_Table
 */
 
 
-    public function getMessages($to){
+    public function getMessages($from){
 
                 // para que traiga los grupos ordenados descendente hay q hacer subquery
                 // http://melikedev.com/2013/06/07/php-doctrine-dql-select-subquery/
@@ -106,11 +106,14 @@ class MessagesTable extends Doctrine_Table
                 
 
              $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
-                ->AndWhere('m.FROM_USER_ID = ?', $to )
-                ->orderBy('m.DATE DESC');
+                ->AndWhere('m.FROM_USER_ID = ?', $from)
+                ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id'] )
+                ->orWhere('m.FROM_USER_ID = ?', $_SESSION['id'])
+                ->AndWhere('m.TO_USER_ID = ?', $from )
+                ->orderBy('m.DATE ASC');
 
 
                 /* //Consulta q agrupa por usuario pero no ordena por fecha dentro del mismo usuario

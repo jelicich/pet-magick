@@ -30,19 +30,19 @@
 	<!-- site content -->
 	<div class="container_12" id="content">
 		
-		<div class="grid_4">
+		<div class="grid_5">
 			<ul id="wrap-conversations">
 
 			</ul>
 		</div>	
 
-		<div id="wrap-messages">
+		<div class="grid_7" id="wrap-messages">
 		</div>	
 
 
 
 
-<form method='' action=''>
+<form method='' action='' class="grid_12">
 
 	<input id='from' type='hidden' name='from' value=<?php echo '"'. $_SESSION['id'] . '"'; ?> />
 	<input type='text' name='to' placeholder='to (email)' id='to' /><br>

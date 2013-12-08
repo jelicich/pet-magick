@@ -9,7 +9,7 @@
 	$data = $_POST['fromId'];
 
 	if($mssg->getMessages($data))
-		echo $mssg->getInbox();
+		echo $mssg->getChat();
 	else
 		echo $mssg->getErrors();
 

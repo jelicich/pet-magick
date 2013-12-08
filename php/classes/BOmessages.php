@@ -10,6 +10,7 @@ class BOMessages{
     var $tableUsr;
     var $tableMsg;
     var $inbox;
+    var $chat;
     var $err;
 
     function __construct()
@@ -114,7 +115,7 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
         try
             {  
                 $this->val_getMessages($idUser);
-                $this->inbox = $this->tableMsg->getMessages($idUser);
+                $this->chat = $this->tableMsg->getMessages($idUser);
 
                 return true;
             }
@@ -157,6 +158,15 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
     {
         return $this->inbox;
     }// End getInbox
+
+   
+
+
+    function getChat()
+    {
+        return $this->chat;
+    }// End getChat
+    
 
 }// End class
 

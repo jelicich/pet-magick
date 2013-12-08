@@ -355,6 +355,7 @@ function printHeaders(){
 		  		fromId = 'fromId=' + this.href.substr(index);
 		  		console.log(fromId);
 		  		ajax('POST', 'ajax/getMessages.php', printMessages, fromId, true);
+		  		byid('wrap-messages').innerHTML = ""; // borro el contenido del contenedor de los mensajes (hacer remove childs???)
 		  		
 		  	}
 		  	
@@ -388,29 +389,42 @@ function printMessages(){
 
 
 
-function printMessages(){
-console.log(this.responseText);
+function printMessages()
+{
+	console.log(this.responseText);
 
- var html = eval(this.responseText);
-  for(var i = 0; i < html.length; i++){
+	
+	var html = eval(this.responseText);
 
- 	lines = create('li');
-  lines.className = html[i]['Users']['ID_USER'];
-  lines.innerHTML = '<strong>From: ' + html[i]['Users']['NAME'] + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
-  //lines.style.display = 'none';
-  //var uls = byid(html[i]['Users']['ID_USER']);
-  byid('wrap-messages').innerHTML = "";
-  byid('wrap-messages').appendChild(lines);
-/*
-  if(lines.className == uls.id){ 
-  uls.appendChild(lines);
- 	 } 
-*/
-  //getClass(html[i]['Users']['ID_USER']);
+	for(var i = 0; i < html.length; i++)
+	{
 
-  }//end for
+		lines = create('li');
+		lines.className = html[i]['Users']['ID_USER'];
+		lines.innerHTML = '<strong>' + html[i]['Users']['NAME'] + ' ' + html[i]['Users']['LASTNAME'] + ' (' + html[i]['Users']['NICKNAME'] + ')</strong><span> | ' + html[i]['DATE'] + '</span><p>' + html[i]['MESSAGE'] + '</p>';
+		//lines.style.display = 'none';
+		//var uls = byid(html[i]['Users']['ID_USER']);
+		  
+		byid('wrap-messages').appendChild(lines);
+		/*
+		if(lines.className == uls.id){ 
+			uls.appendChild(lines);
+		} 
+		*/
+		//getClass(html[i]['Users']['ID_USER']);
+
+	}//end for
 }//end printMessages
 
+/**
+Logré hacer una consulta que evita que armemos la tabla "conversaciones" que te dije, asqiue ahora se puede tener los chats como en FB y cuando cargas los mensajes, trae los enviados y recibidos.
+Lo que sí me parece que habría que tener es otra función ademas de printMessages. 
+printMessages sirve para cargar todo (todo el historial de conversacion digamos -leidos y no leidos-). y deberíamos tener otra que te traiga solo los no leidos, y los imprima al final, y esta deberia ser la función que se ejecuta constantemente para ver si hay msgs nuevos o no.
+Y ademas, al imprimirlos deberia hacer un update del msg para marcarlo como leido una vez q lo trajo.
+Tener en cuenta que solo hay q marcar como leidos los recibidos y no los enviados, de lo contrario el usuario q los recibe no se entera.
+
+
+*/
 
 
 

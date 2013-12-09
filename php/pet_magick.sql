@@ -40176,7 +40176,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `SUBJECT` varchar(100) NOT NULL,
   `MESSAGE` text,
   `STATUS` tinyint(1) NOT NULL,
-  `DATE` date NOT NULL,
+  `DATE` datetime NOT NULL,
   PRIMARY KEY (`ID_MESSAGE`),
   KEY `FROM_USER_ID` (`FROM_USER_ID`),
   KEY `TO_USER_ID` (`TO_USER_ID`)

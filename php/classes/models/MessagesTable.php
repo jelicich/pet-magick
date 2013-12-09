@@ -163,8 +163,7 @@ class MessagesTable extends Doctrine_Table
 
                  foreach($rta as $m) 
                  {
-
-                     $json[] = $m->toArray();
+                    $json[] = $m->toArray();
                  }
 
                  $rta = json_encode($json);
@@ -187,9 +186,7 @@ class MessagesTable extends Doctrine_Table
 
   public function getNewMessages($from){
 
-                
-
-             $q = Doctrine_Query::create()
+                $q = Doctrine_Query::create()
                 ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')

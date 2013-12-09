@@ -442,52 +442,42 @@ function getNewMessages()
 }
 
 
+/*
+
+http://new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata
+
+var form = document.getElementById('form');
+var fileInput = document.getElementById('file');
+
+
+ form.onsubmit = function() {
+     var file = fileInput.files[0];
+     var formData = new FormData(form);
+    	 formData.append('file', file);
+    	 ajax('POST', 'ajax/insertar.php', formData, false, true);
+ }
+*/
+
+
 
 
 /*
+function upload_img(){
 
-function showReg(){
+	byid('upload').onclick = function(){ 
+		//levanto los valores de los campos
+		var file = byid('file').name;
+		var caption = byid('caption').value;
 
-
-		byid('link-reg').onclick = function(){
-
-		if(flag == 0)
-		{
-			byid('reg-form').style.display = "block";
-			flag=1;
-		}	
-		else
-		{
-			byid('reg-form').style.display = "none";
-			flag = 0;
-		}
-
-		byid('log-form').style.display = "none";
-		flag = 0;
-
-		var over = true;
-
-		byid('reg-form').onmouseover = function ()
-		{
-			 over = true;
-		}
-		byid('reg-form').onmouseout = function ()
-		{
-			over = false;	
-		}
+		var vars = 'img='+file+'&caption='+caption;
 		
-		document.body.onclick = function()
-		{
-			if(!over)
-			{
-				byid('reg-form').style.display = "none";
-				flag = 0;
-			}
-		}
+		ajax('POST', 'ajax/insertar.php', vardump, vars, true);
 	}
-}//end showReg
-
+}//end logi
 */
+
+
+
 
 
 	/*

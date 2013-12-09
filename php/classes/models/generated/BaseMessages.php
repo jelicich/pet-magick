@@ -11,7 +11,7 @@
  * @property string $SUBJECT
  * @property string $MESSAGE
  * @property integer $STATUS
- * @property date $DATE
+ * @property timestamp $DATE
  * @property Users $Users
  * @property Users $Users_2
  * 
@@ -77,8 +77,8 @@ abstract class BaseMessages extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE', 'date', null, array(
-             'type' => 'date',
+        $this->hasColumn('DATE', 'timestamp', null, array(
+             'type' => 'timestamp',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

@@ -279,7 +279,7 @@ function regionsCombo(){
 
 function inbox(){
 
-	(function getMessages(){
+	(function getInbox(){
 				
 		ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
@@ -297,9 +297,11 @@ function inbox(){
 	 byid('submit').onclick = function(){
 
 	 	var vars = 'from='+byid('from').value+'&to='+byid('to').value+'&subject='+byid('subject').value+'&message='+byid('message').value;
-	 	ajax('POST', 'ajax/submit.php', vardump, vars, true); // q funcion metemos aca en lugar de vardump???
+	 	ajax('POST', 'ajax/submit.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 	 }
 }//end inbox
+
+
 
 
 function printHeaders(){
@@ -321,7 +323,7 @@ function printHeaders(){
 		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
 		 //console.log(lastMsg);
 
-	// if(byid(each) === null){ 
+	
 				as = create('a');
 				as.href = "?u="+each;
 		 		lis = create('li');
@@ -337,16 +339,7 @@ function printHeaders(){
 		  		as.appendChild(lis);
 		  		byid('wrap-conversations').appendChild(as);
 		  		
-		  		
-//		 }
 			
-
-
-		  	
-		  		
-		  	
-
-
           
 		    as.onclick = function(e){
 		    	e.preventDefault();
@@ -354,8 +347,20 @@ function printHeaders(){
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
 		  		console.log(fromId);
-		  		ajax('POST', 'ajax/getMessages.php', printMessages, fromId, true);
+		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
 		  		byid('wrap-messages').innerHTML = ""; // borro el contenido del contenedor de los mensajes (hacer remove childs???)
+		  		
+		  		//para q empiece a ejecutar y ver si hay nuevos mensajes
+		  		//intento borrar el intervalo por si ya se esta ejecutando.
+		  		try
+		  		{
+		  			clearInterval(msgInterval);
+		  			getNewMessages();	
+		  		}
+		  		catch(e)
+		  		{
+		  			getNewMessages();		
+		  		}
 		  		
 		  	}
 		  	
@@ -391,7 +396,7 @@ function printMessages(){
 
 function printMessages()
 {
-	console.log(this.responseText);
+	//console.log(this.responseText);
 
 	
 	var html = eval(this.responseText);
@@ -414,17 +419,27 @@ function printMessages()
 		//getClass(html[i]['Users']['ID_USER']);
 
 	}//end for
+
+	
 }//end printMessages
 
-/**
-Logré hacer una consulta que evita que armemos la tabla "conversaciones" que te dije, asqiue ahora se puede tener los chats como en FB y cuando cargas los mensajes, trae los enviados y recibidos.
-Lo que sí me parece que habría que tener es otra función ademas de printMessages. 
-printMessages sirve para cargar todo (todo el historial de conversacion digamos -leidos y no leidos-). y deberíamos tener otra que te traiga solo los no leidos, y los imprima al final, y esta deberia ser la función que se ejecuta constantemente para ver si hay msgs nuevos o no.
-Y ademas, al imprimirlos deberia hacer un update del msg para marcarlo como leido una vez q lo trajo.
-Tener en cuenta que solo hay q marcar como leidos los recibidos y no los enviados, de lo contrario el usuario q los recibe no se entera.
 
 
-*/
+
+function getNewMessages()
+{
+	if(this.readyState == undefined || this.readyState == 4)
+		{
+			//console.log('entrooo');
+			//fromId es publica y esta definida en el onclick del remitente			
+			ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
+		}
+	else
+		console.log('esperando');
+	
+	msgInterval = setTimeout(getNewMessages, 1000);
+
+}
 
 
 

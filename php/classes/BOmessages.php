@@ -11,6 +11,7 @@ class BOMessages{
     var $tableMsg;
     var $inbox;
     var $chat;
+    var $msgSent;
     var $err;
 
     function __construct()
@@ -74,7 +75,7 @@ class BOMessages{
 
         if(empty($idUser)) 
         {
-            throw new Exception("There was an error with your session. Messages can't be loaded.");
+            throw new Exception("There was a problem. Messages can't be loaded.");
             //break;
         }
         else
@@ -93,7 +94,8 @@ class BOMessages{
          try
             {  
                 $this->val_submit($ref);
-                $rta = $this->tableMsg->submit($ref['from'], $ref['to'], $ref['subject'], $ref['message']);
+                $this->msgSent = $this->tableMsg->submit($ref['from'], $ref['to'], $ref['subject'], $ref['message']);
+
                 return true;
             }
          catch(Exception $e)
@@ -107,7 +109,7 @@ class BOMessages{
 
 
     //======================== READ MESSAGES
-    function getMessages($idUser){
+    function getAllMessages($idUser){
 /**
 Si el mensaje tiene Ñ o acentos devuelve null. hay q escapar esos caracteres y los saltos de linea tmb.
 para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
@@ -115,7 +117,7 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
         try
             {  
                 $this->val_getMessages($idUser);
-                $this->chat = $this->tableMsg->getMessages($idUser);
+                $this->chat = $this->tableMsg->getAllMessages($idUser);
 
                 return true;
             }
@@ -127,6 +129,26 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
 
     }// End read
 
+
+    function getNewMessages($from){
+/**
+Si el mensaje tiene Ñ o acentos devuelve null. hay q escapar esos caracteres y los saltos de linea tmb.
+para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
+*/
+        try
+            {  
+                $this->val_getMessages($from);
+                $this->chat = $this->tableMsg->getNewMessages($from);
+
+                return true;
+            }
+         catch(Exception $e)
+            {
+               $this->err = $e->getMessage();
+               return false;
+            }
+
+    }// End read
 
         function getHeaders($idUser){
 /**
@@ -150,9 +172,10 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
 
  //======================== READ MESSAGES
 
-    /**
-    Creo esta función para obtener el inbox, Vidaurri decía q era más seguro hacerlo así.
-    */
+
+
+
+ //======================== GETS
 
     function getInbox()
     {
@@ -166,6 +189,15 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
     {
         return $this->chat;
     }// End getChat
+
+
+
+
+
+    function getMsgSent()
+    {
+        return $this->msgSent;
+    }
     
 
 }// End class

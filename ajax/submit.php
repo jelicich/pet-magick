@@ -20,7 +20,9 @@ $data = array(
 
 
 if($mssg->submit($data) != true)
-echo json_encode($mssg->err);
+	echo json_encode($mssg->err);
+else
+	echo $mssg->getMsgSent();
 
 
 

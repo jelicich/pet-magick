@@ -8,7 +8,7 @@
 
 	$data = $_POST['fromId'];
 
-	if($mssg->getMessages($data))
+	if($mssg->getAllMessages($data))
 		echo $mssg->getChat();
 	else
 		echo $mssg->getErrors();

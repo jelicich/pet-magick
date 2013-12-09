@@ -33,6 +33,34 @@ class MessagesTable extends Doctrine_Table
 
 	            $msg->save();
 
+            //me devuelve el id del mensaje, todo lo siguiente es para poder imprimirlo en el chat.
+
+        $msgSent = $msg->ID_MESSAGE;
+
+        $q = Doctrine_Query::create()
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
+                ->from('messages m')
+                ->innerJoin('m.Users u')
+                ->AndWhere('m.ID_MESSAGE = ?', $msgSent);
+                
+
+        $rta = $q->execute();
+
+        $json = array();
+
+        foreach($rta as $m) 
+        {
+
+           $json[] = $m->toArray();
+        }
+
+        $rta = json_encode($json);
+
+
+
+        return $rta;
+
+
     }// End submit
 
 
@@ -96,7 +124,7 @@ class MessagesTable extends Doctrine_Table
 */
 
 
-    public function getMessages($from){
+    public function getAllMessages($from){
 
                 // para que traiga los grupos ordenados descendente hay q hacer subquery
                 // http://melikedev.com/2013/06/07/php-doctrine-dql-select-subquery/
@@ -146,7 +174,10 @@ class MessagesTable extends Doctrine_Table
                      $q = Doctrine_Query::create()
                         ->update('messages m')
                         ->set('m.STATUS' , '?', '1')
-                        ->where('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']);
+                        ->AndWhere('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']) 
+                        ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id'])
+                        ->AndWhere('m.STATUS = ?', '0');
+                        //cambia el status de leido a los que levanta siempre y cuando sean PARA el usuario y esten NO leidos
                      $q->execute();
                   }
 
@@ -154,15 +185,61 @@ class MessagesTable extends Doctrine_Table
     }// End read
 
 
+  public function getNewMessages($from){
+
+                
+
+             $q = Doctrine_Query::create()
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
+                ->from('messages m')
+                ->innerJoin('m.Users u')
+                ->AndWhere('m.FROM_USER_ID = ?', $from)
+                ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id'] )
+                ->AndWhere('m.STATUS = ?', '0')
+                //->orWhere('m.FROM_USER_ID = ?', $_SESSION['id'])
+                //->AndWhere('m.TO_USER_ID = ?', $from )
+                ->orderBy('m.DATE ASC');
+
+
+                 $rta = $q->execute();
+
+                 $json = array();
+
+                 foreach($rta as $m) 
+                 {
+
+                     $json[] = $m->toArray();
+                 }
+
+                 $rta = json_encode($json);
+
+                for ($i=0; $i < sizeof($json); $i++) { 
+                    
+                     $q = Doctrine_Query::create()
+                        ->update('messages m')
+                        ->set('m.STATUS' , '?', '1')
+                        ->AndWhere('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']) 
+                        ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id']);
+                        //cambia el status de leido a los que levanta, siempre y cuando sean PARA el usuario y esten NO leidos
+                     $q->execute();
+                  }
+
+                  return $rta;
+    }// End read
+
+
+
+
      public function getHeaders($to){
 
+            /*
               $q = Doctrine_Query::create()
                 ->select('m.FROM_USER_ID, u.NAME, u.LASTNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
                 ->AndWhere('m.TO_USER_ID = ?', $to )
                 ->orderBy('m.DATE DESC');
-
+*/ 
 
                 /* //Consulta q agrupa por usuario pero no ordena por fecha dentro del mismo usuario
                 $q = Doctrine_Query::create()

@@ -392,6 +392,10 @@ function printMessages(){
 }
 */
 
+// esta variable "arregla" el tema del readystate. Si está en 0 es que todavía no se ejecuto printMessages, con lo cual todavía no llego a 4 el readystate.
+//si está en 1 es que si se ejecuto, igual acá en el trabajo está como bugueado... sigue imprimiendome el readystate 2 3 4 del getNewMessages, antes de haber impreso toda la conversación.
+var pmFlag = 0;
+
 
 
 function printMessages()
@@ -420,7 +424,7 @@ function printMessages()
 
 	}//end for
 
-	
+	pmFlag=1;
 }//end printMessages
 
 
@@ -428,14 +432,15 @@ function printMessages()
 
 function getNewMessages()
 {
-	if(this.readyState == undefined || this.readyState == 4)
+	if(pmFlag == 1)
 		{
-			//console.log('entrooo');
+			console.log('entrooo');
 			//fromId es publica y esta definida en el onclick del remitente			
+			pmFlag = 0;
 			ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
 		}
 	else
-		console.log('esperando');
+		console.log('no entro');
 	
 	msgInterval = setTimeout(getNewMessages, 1000);
 

@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
-<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/hola2.js"></script>
 
 </head>
 

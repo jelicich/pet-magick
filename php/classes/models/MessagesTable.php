@@ -262,7 +262,7 @@ class MessagesTable extends Doctrine_Table
                 //->groupBy('u.ID_USER');
 
             $subq = $q->createSubquery()
-                ->select("u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, CONCAT(LEFT(m.MESSAGE,35),'...') AS MESSAGE, m.DATE")
+                ->select("u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, CONCAT(LEFT(m.MESSAGE,35),'...') AS MESSAGE, m.DATE, m.STATUS")
                 ->from('users u')
                 ->innerJoin('u.Messages m')
                 ->AndWhere('m.TO_USER_ID = ?', $to )

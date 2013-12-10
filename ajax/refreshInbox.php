@@ -8,12 +8,22 @@
 
 	$data = $_SESSION['id'];
 
+	echo '["headers"=>';
+
 	if($mssg->getHeaders($data))
 		echo $mssg->getInbox();
 	else
 		echo $mssg->getErrors();
 
-	$_SESSION['last-header'] = date('Y-m-d H:i:s');
+	echo ', "messages"=>';
 
+	$from = $_POST['fromId'];
+
+	if($mssg->getNewMessages($from))
+		echo $mssg->getChat();
+	else
+		echo $mssg->getErrors();
+
+	echo']';
 
 ?>

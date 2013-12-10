@@ -13,5 +13,5 @@
 	else
 		echo $mssg->getErrors();
 
-
+	$_SESSION['current-chat'] = $_POST['fromId'];
 ?>

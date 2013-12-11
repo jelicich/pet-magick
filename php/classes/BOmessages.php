@@ -139,7 +139,9 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
             {  
                 $this->val_getMessages($from);
                 $this->chat = $this->tableMsg->getNewMessages($from);
-
+                if($this->chat == null)
+                    return null;
+                
                 return true;
             }
          catch(Exception $e)
@@ -159,6 +161,30 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
             {  
                 //$this->val_getMessages($idUser);
                 $this->inbox = $this->tableMsg->getHeaders($idUser);
+
+                return true;
+            }
+         catch(Exception $e)
+            {
+               $this->err = $e->getMessage();
+               return false;
+            }
+
+    }// End read
+
+
+
+     function getNewHeaders($idUser){
+/**
+Si el mensaje tiene Ñ o acentos devuelve null. hay q escapar esos caracteres y los saltos de linea tmb.
+para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
+*/
+        try
+            {  
+                //$this->val_getMessages($idUser);
+                $this->inbox = $this->tableMsg->getNewHeaders($idUser);
+                if($this->inbox == null)
+                    return null;
 
                 return true;
             }

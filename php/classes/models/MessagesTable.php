@@ -208,6 +208,9 @@ class MessagesTable extends Doctrine_Table
                      $json[] = $m->toArray();
                  }
 
+                 if(sizeof($json) == 0)
+                    return null;
+
                  $rta = json_encode($json);
 
                 for ($i=0; $i < sizeof($json); $i++) { 
@@ -294,6 +297,46 @@ class MessagesTable extends Doctrine_Table
 
                   return $rta;
     }// End read
+
+
+
+
+     public function getNewHeaders($to){
+
+            $q = Doctrine_Query::create()
+                ->select('*')
+                ->from('messages m')
+                ->groupBy('m.FROM_USER_ID');
+           
+
+            $subq = $q->createSubquery()
+                ->select("u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, CONCAT(LEFT(m.MESSAGE,35),'...') AS MESSAGE, m.DATE, m.STATUS")
+                ->from('users u')
+                ->innerJoin('u.Messages m')
+                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->AndWhere('m.DATE > ?', $_SESSION['last-header'] )
+                ->orderBy('m.DATE DESC');
+
+
+                 $rta = $subq->execute();
+
+                 $json = array();
+                
+                 foreach($rta as $m) 
+                 {
+
+                     $json[] = $m->toArray();
+                 }
+
+                 if(sizeof($json) == 0)
+                    return null;
+
+                 $rta = json_encode($json);
+
+                  return $rta;
+    }// End read
+
+
 }
 
 /*

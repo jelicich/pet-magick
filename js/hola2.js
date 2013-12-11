@@ -286,12 +286,18 @@ var fromId;
 //A los li le pone como ID user-#ID (ej user-23) para despues borrarlos y subirlos en caso de que haya nuevos mensajes.
 //Los onclick de los "a" de las conversaciones tienen un if, que se fija si hay alguna petición en curso por ajax. si hay, la cancelan. Hay q tener cuidado con esto por si hay otra petición por ajax ajena al chat, ya que esto lo cancelaría. Para esto lo que hice fue hacer publica la variable xhr de la funcion ajax()
 //Hasta acá todo ok funciona y está hecho.
-//==TODO
+//
 //Ahora, tiene q haber un bucle, que esté constantemente chequeando si hay mensajes nuevos. Tendria q haber una función (desde php) que chequeé si hay mensajes que hayan llegado después de la fecha q se guardo en sesión. ['last-header']
 //Si encuentra que hay mensajes nuevos. habría que generar el/los encabezados de esos mensajes y actualizarlos (a través del id que le puse al li). y actualizar la fecha de $_SESSION['last-header'];
 //Le agregué también una variable a getAllMessages $_SESSION['current-chat'] que guarda el id de la conversación abierta.
 //Si el archivo q ejecuta el bucle encuentra mensajes nuevos, además de devolver los encabezados, tiene q tener un IF, que verifique si 'current-chat' existe, si existe debe evaluar si dentro de los mensajes recibidos existe alguno del usuario guardado en sesión. Si esto es así, devuelve el mensaje y lo actualiza en la conversación abierta. De lo contrario, no pasa nada, y solo se actualizan los encabezados.
 
+//Todo lo planteado arriba está hecho, hay q testearlo bien. No testée nada solo probé una vez y listo
+//TODO
+//El formulario de envío de mensajes tendria q mostrarse al abrir una conversación, con lo cual debería generarse al hacer click en el A.
+//Una vez q hace click ahi se guarda en una variable publica el ID de ese usuario asi cuando se manda mensaje el usuario no tiene q completar nada.
+//Por una cuestión de seguridad, conviene encriptar los id d usuario??? (de alguna forma q se pueda desencriptar después).
+//Tengo mucho cagazo q todo lo q venimos haciendo hasta acá no ande en EXPLORER.
 
 
 
@@ -300,27 +306,6 @@ function inbox(){
 
 	ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
-	(function refreshInbox(){
-				
-		ajax('POST', 'ajax/refreshInbox.php', vardump, fromId, true);
-
-		
-			/*
-			//console.log(request);
-			if(request === true){
-				
-				ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
-				request = false;
-				t = setTimeout(getInbox,3000);
-
-			}else{
-
-				t = setTimeout(getInbox,3000);
-			}
-			*/
-		
-	})();
-	
 
 	 byid('submit').onclick = function(){
 
@@ -331,7 +316,15 @@ function inbox(){
 
 function printHeaders(){
 
-	var html = eval(this.responseText);
+	//si no viene nada por arguments es q esta ejecutada por ajax
+	if(arguments.length == 0)
+	{
+		var html = eval(this.responseText);	
+	}
+	else
+	{
+		var html = arguments[0];
+	}
 	var as;
 	var lis;
 	var title;
@@ -362,10 +355,20 @@ function printHeaders(){
 	  		caption = create('p');
 	  		caption.innerHTML = lastMsg;
 
-	  		lis.appendChild(title);
-	  		lis.appendChild(caption);
-	  		as.appendChild(lis);
-	  		byid('wrap-conversations').appendChild(as);
+	  		as.appendChild(title);
+	  		as.appendChild(caption);
+	  		lis.appendChild(as);
+	  		
+	  		//byid('wrap-conversations').appendChild(lis);
+	  		
+	  		if(arguments.length==0)
+	  		{
+	  			byid('wrap-conversations').appendChild(lis);
+	  		}
+	  		else
+	  		{
+	  			byid('wrap-conversations').insertBefore(lis,arguments[1]);
+	  		}
 
 	  		byid(each).onclick = function(e)
 	  		{
@@ -399,11 +402,19 @@ function printHeaders(){
 		  	}
 	  	}
 	 }//end for
-}//end printMessages
+
+	 //empiezo a chequear si hay nuevos mensajes
+	 refreshInbox();
+}//end printHeaders
 
 function printMessages(){
 
-	var html = eval(this.responseText);
+	//si no tiene argumentos viene por ajax
+	if(arguments.length == 0)
+		var html = eval(this.responseText);
+	else
+		var html = arguments[0];
+
 	// valido si la respuesta es undefined es pq cancelo el request o vino vacía.
 	if(html == undefined) return;
 	for(var i = 0; i < html.length; i++)
@@ -417,6 +428,86 @@ function printMessages(){
 }//end printMessages
 
 
+
+function refreshInbox()
+{
+				
+	if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
+	{
+		//hay una petición en curso;
+		setTimeout(refreshInbox,2000);		
+	}
+	else
+	{
+		//ok ejecuta denuevo
+		ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);	
+		setTimeout(refreshInbox,5000);
+	}
+	
+
+	
+				
+			/*
+			//console.log(request);
+			if(request === true){
+				
+				ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
+				request = false;
+				t = setTimeout(getInbox,3000);
+
+			}else{
+
+				t = setTimeout(getInbox,3000);
+			}
+			*/
+		
+};
+
+
+function printUpdates()
+{
+	//console.log(this.responseText);
+	var html = eval(this.responseText);
+	//console.log(html[0]);
+	if(html[0] == null)
+	{
+		return;
+	}
+	else
+	{
+		//si hay busco los encabezados impresos y los borro con try catch, porque si es la primera vez q mandan mensaje no lo va a encontrar
+		for(var i = 0; i < html[0].length; i++)
+		{	
+			try
+			{
+				var id = 'user-' + html[0][i]['ID_USER'];
+				var li = byid(id);
+				li.parentNode.removeChild(li);
+			}
+			catch(e)
+			{
+				continue;
+			}
+		}
+		
+		//tomo como referencia el primer LI (header) q hay actualmente, asi inserto arriba de ese
+		var fchild = byid('wrap-conversations').firstChild;
+
+		//imprimo los encabezados pasandole como referencia lo q tiene q imprimir y a partir de donde (ver función para ver los cambios)
+		printHeaders(html[0],fchild);
+
+	}
+
+	if(html[1] == null)
+	{
+		return;
+	}
+	else
+	{
+		printMessages(html[1]);
+	}
+}
+	
 
 
 

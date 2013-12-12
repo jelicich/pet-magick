@@ -1064,8 +1064,61 @@ Tunear!!!
 }
 
 .msg-unread{
-	background-color: green !important;
-	cursor: pointer;
-	width: 200px; /* provisorio */
-	height: auto; /* provisorio */
+	background-color: #b14037 !important;
+	font-style: italic;
+}
+
+.from-user-name{
+	display: block;
+}
+
+.preview-message{
+	font-weight: normal;
+}
+
+#message-area{
+	background: rgba(255,255,255,0.5);
+	background: #e8b2ae;
+	position: absolute;
+	top:110px;
+	bottom: 80px;
+	padding:10px;
+}
+
+#wrap-conversations{
+	margin: 0 0 20px 0;
+}
+
+#wrap-conversations li{
+	background: #d95248;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+}
+
+#wrap-conversations li:hover{
+	background: #ea574c;
+}
+
+#wrap-conversations li a{
+	color: #FFFFFF;
+	text-decoration: none;
+	display: block;
+	padding: 10px;
+}
+
+#wrap-conversations li:last-child{
+	border-bottom:none;
+}
+
+#wrap-messages{
+	margin: 0;
+	overflow: hidden;
+}
+
+#wrap-messages li{
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	margin-bottom: 10px;
+}
+
+#wrap-messages li:last-child{
+	border-bottom:none;
 }

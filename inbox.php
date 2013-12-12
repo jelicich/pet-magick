@@ -28,13 +28,19 @@
 	?>
 
 	<!-- site content -->
-	<div class="container_12" id="content">
+	<div class="container_12" id="content" style="height:100%">
+		<div id="what">
+			<a href="#" id='new-message'>New Message</a>
+		</div>
 		
-		<div class="grid_5">
+		<div class="grid_4" id="conv-area">
 			<ul id="wrap-conversations"></ul>
 		</div>	
 
-		<div class="grid_7" id="wrap-messages"></div>	
+		<div class="grid_8" id="message-area">
+			<ul id="wrap-messages"> <!-- scroleable -->
+			</ul>
+		</div>	
 
 		<form method='' action='' class="grid_12" style="display:none" id="write-message">	
 			<input type='text' placeholder='To' id='inputTo' /><br><br>
@@ -42,7 +48,7 @@
 			<input type='button' value='Submit' id='send-message'/>
 		</form>
 
-		<input type='button' value='New message' id='new-message'/>
+		
 </div>
 	<!-- END site content -->
 

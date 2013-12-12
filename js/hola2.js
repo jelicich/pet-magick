@@ -380,9 +380,11 @@ function printHeaders(){
 	  		if(html[i]['Messages'][0]['STATUS'] == 0)
 	  			lis.className = 'msg-unread';
 
-	  		title = create('span'); 
+	  		title = create('span');
+	  		title.className = 'from-user-name';
 	  		title.innerHTML = eachName;
-	  		caption = create('p');
+	  		caption = create('span');
+	  		caption.className = 'preview-message';
 	  		caption.innerHTML = lastMsg;
 
 	  		as.appendChild(title);
@@ -419,6 +421,11 @@ function printHeaders(){
 		  		byid('inputTo').style.display = "none";
 		  		byid('write-message').style.display = "block";
 		  		flagNM = 1;
+
+		  		if(this.parentNode.className == 'msg-unread')
+		  		{
+		  			this.parentNode.removeAttribute('class');
+		  		}
 		  	}
 	  	}
 	 }//end for

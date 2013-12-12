@@ -114,7 +114,7 @@ function printUserMenu(){
 		var wrap = byid('login-reg');
 		//byid('logo-pet-magick').nextSibling
  		wrap.innerHTML = html;
- 		eval(byid('jslogout').innerHTML); 
+ 		//eval(byid('jslogout').innerHTML); 
  	}	 
 }//end printUserMenu
 
@@ -280,7 +280,7 @@ function regionsCombo(){
 
 //=============================================================================== INBOX FUNCTIONS
 
-var fromId;
+var fromId; //ya no sé si debe ser publica ???
 
 //Lo primero que hace es imprimir los encabezados (la lista de conversaciones) Le agregué a getHeaders.php una variable $_SESSION['last-header'] q guarda la fecha en que trajo los encabezados.
 //A los li le pone como ID user-#ID (ej user-23) para despues borrarlos y subirlos en caso de que haya nuevos mensajes.
@@ -293,11 +293,18 @@ var fromId;
 //Si el archivo q ejecuta el bucle encuentra mensajes nuevos, además de devolver los encabezados, tiene q tener un IF, que verifique si 'current-chat' existe, si existe debe evaluar si dentro de los mensajes recibidos existe alguno del usuario guardado en sesión. Si esto es así, devuelve el mensaje y lo actualiza en la conversación abierta. De lo contrario, no pasa nada, y solo se actualizan los encabezados.
 
 //Todo lo planteado arriba está hecho, hay q testearlo bien. No testée nada solo probé una vez y listo
-//TODO
+
 //El formulario de envío de mensajes tendria q mostrarse al abrir una conversación, con lo cual debería generarse al hacer click en el A.
 //Una vez q hace click ahi se guarda en una variable publica el ID de ese usuario asi cuando se manda mensaje el usuario no tiene q completar nada.
 //Por una cuestión de seguridad, conviene encriptar los id d usuario??? (de alguna forma q se pueda desencriptar después).
 //Tengo mucho cagazo q todo lo q venimos haciendo hasta acá no ande en EXPLORER.
+
+//TODO LO DE ARRIBA HECHO
+
+//===================
+//TO DO
+//Para poder iniciar una conversación tendría q haber un boton q diga "new message". Ahi se abre una ventana modal y tenes el TO q sería el autocomplete con ajax. y el campo del mensaje.
+//Algo q no pude resolver desde las consultas y creo q no se puede resolver es que si vos mandas un mensaje a alguien q nunca te mensajeaste, hasta q ese usr no te responde, ese mensaje no lo levantas desde ningun lado. Intenté hacer como fb que en en los encabezados tambien te muestra el mensaje q mandas vos. pero es imposible. para eso si necesitariamos la tabla "conversaciones" pero a esta altura me parece q es complicarla al pedo, con todo lo que ya avanzamos. Se me ocurre q para resolver ese bache se puede imprimir debajo de los encabezados, otros encabezados bajo el titulo "unanswered messages" o alguna gilada así, para q el tipo tenga acceso a esos mensajes. Pensé en enviados, pero ahi deberían aparecer todos y es alta japa. Pq habria q hacer todo el chat, pero a la inversa, creo estoy pensando asi en el aire.
 
 
 
@@ -307,10 +314,16 @@ function inbox(){
 	ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
 
-	 byid('submit').onclick = function(){
+	 byid('send-message').onclick = function(){
+	 	//me fijo en el objeto xhr publico si existe y si esta procesando algo y lo borro.
+		if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
+		{
+			xhr.abort();
+		}
 
-	 	var vars = 'from='+byid('from').value+'&to='+byid('to').value+'&subject='+byid('subject').value+'&message='+byid('message').value;
-	 	ajax('POST', 'ajax/submit.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
+	 	var vars = 'message='+byid('message').value;
+	 	ajax('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
+	 	byid('message').value = '';
 	 }
 }//end inbox
 
@@ -382,22 +395,11 @@ function printHeaders(){
 		  		var index = this.href.indexOf('=');
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
-		  		console.log(fromId);
+		  		//console.log(fromId);
 		  		
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
 		  		byid('wrap-messages').innerHTML = ""; // borro el contenido del contenedor de los mensajes (hacer remove childs???)
-		  		
-		  		//para q empiece a ejecutar y ver si hay nuevos mensajes
-		  		//intento borrar el intervalo por si ya se esta ejecutando.
-		  	 /*	try
-		  		{
-		  			clearInterval(msgInterval);
-		  			getNewMessages();	
-		  		}
-		  		catch(e)
-		  		{
-		  			getNewMessages();		
-		  		}*/
+		  		byid('write-message').style.display = "block";
 		  		
 		  	}
 	  	}
@@ -441,25 +443,8 @@ function refreshInbox()
 	{
 		//ok ejecuta denuevo
 		ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);	
-		setTimeout(refreshInbox,5000);
+		setTimeout(refreshInbox,2000);
 	}
-	
-
-	
-				
-			/*
-			//console.log(request);
-			if(request === true){
-				
-				ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
-				request = false;
-				t = setTimeout(getInbox,3000);
-
-			}else{
-
-				t = setTimeout(getInbox,3000);
-			}
-			*/
 		
 };
 

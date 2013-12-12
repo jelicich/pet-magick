@@ -19,14 +19,13 @@ class MessagesTable extends Doctrine_Table
 
 //====================================================================== SUBMIT
 
-      public  function submit($from, $to, $subject, $message){
+      public  function submit($from, $to, $message){
 
 				$now = date('Y-m-d H:i:s');
 
     	 		$msg = new Messages();
 	            $msg->FROM_USER_ID = $from;
 	            $msg->TO_USER_ID = $to;
-	            $msg->SUBJECT = $subject;
 	            $msg->MESSAGE = $message;
 	            $msg->STATUS = 0; // hacer q sea 0 por default en la BD
 	            $msg->DATE = $now;

@@ -94,7 +94,7 @@ class BOMessages{
          try
             {  
                 $this->val_submit($ref);
-                $this->msgSent = $this->tableMsg->submit($ref['from'], $ref['to'], $ref['subject'], $ref['message']);
+                $this->msgSent = $this->tableMsg->submit($ref['from'], $ref['to'], $ref['message']);
 
                 return true;
             }

@@ -12,9 +12,8 @@ Comento $to, hago las pruebas con el ID, dsps deberíamos poner un autocomplete 
 */
 //$to = $user->table->findByMail($_POST['to']); /**Hay una validacion q utiliza findbymail en BOMessages....
 $data = array(
-	'from'=>$_POST['from'], 
-	'to'=>$_POST['to'],
-	'subject'=>$_POST['subject'],
+	'from'=>$_SESSION['id'], 
+	'to'=>$_SESSION['current-chat'],
 	'message'=>$_POST['message']
 	);
 

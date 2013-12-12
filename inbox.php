@@ -42,14 +42,10 @@
 
 
 
-<form method='' action='' class="grid_12">
-
-	<input id='from' type='hidden' name='from' value=<?php echo '"'. $_SESSION['id'] . '"'; ?> />
-	<input type='text' name='to' placeholder='to (email)' id='to' /><br>
-	<input type='text' name='subject' placeholder='subject' id='subject' /><br>
+<form method='' action='' class="grid_12" style="display:none" id="write-message">	
 	<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
 
-	<input type='button' value='Submit' id='submit'/>
+	<input type='button' value='Submit' id='send-message'/>
 
 
 </form>

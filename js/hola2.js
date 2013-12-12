@@ -248,7 +248,7 @@ function countriesCombo(){
 		var id = country.options[country.selectedIndex].value; 
 		var vars = 'idCountry='+id;
 		// VACIO EL SELECT DE CITY y lo oculto
-		byid('city').innerHTML = '';
+		byid('city').innerHTML = '';// mientras
 		byid('city').style.display = 'none';
 		//le pongo el gif loading
 		var loading = create('img');
@@ -304,26 +304,41 @@ var fromId; //ya no sé si debe ser publica ???
 //===================
 //TO DO
 //Para poder iniciar una conversación tendría q haber un boton q diga "new message". Ahi se abre una ventana modal y tenes el TO q sería el autocomplete con ajax. y el campo del mensaje.
-//Algo q no pude resolver desde las consultas y creo q no se puede resolver es que si vos mandas un mensaje a alguien q nunca te mensajeaste, hasta q ese usr no te responde, ese mensaje no lo levantas desde ningun lado. Intenté hacer como fb que en en los encabezados tambien te muestra el mensaje q mandas vos. pero es imposible. para eso si necesitariamos la tabla "conversaciones" pero a esta altura me parece q es complicarla al pedo, con todo lo que ya avanzamos. Se me ocurre q para resolver ese bache se puede imprimir debajo de los encabezados, otros encabezados bajo el titulo "unanswered messages" o alguna gilada así, para q el tipo tenga acceso a esos mensajes. Pensé en enviados, pero ahi deberían aparecer todos y es alta japa. Pq habria q hacer todo el chat, pero a la inversa, creo estoy pensando asi en el aire.
+//Algo q no pude resolver desde las consultas y creo q no se puede resolver es que si vos mandas un mensaje a alguien q nunca te mensajeaste, hasta q ese usr no te responde, ese mensaje 
+//no lo levantas desde ningun lado. Intenté hacer como fb que en en los encabezados tambien te muestra el mensaje q mandas vos. pero es imposible. para eso si necesitariamos la tabla "conversaciones" 
+//pero a esta altura me parece q es complicarla al pedo, con todo lo que ya avanzamos. Se me ocurre q para resolver ese bache se puede imprimir debajo de los encabezados, otros encabezados bajo 
+//el titulo "unanswered messages" o alguna gilada así, para q el tipo tenga acceso a esos mensajes. Pensé en enviados, pero ahi deberían aparecer todos y es alta japa. Pq habria q hacer todo el chat, 
+//pero a la inversa, creo estoy pensando asi en el aire.
 
 
-
+var flagNM = 0; // Agrego este flag para q cuando llega un nuevo mensaje y no esta la conversacion abierta no lo imprima suelto, pero si en el header.
+// Si la conversacion esta abierta lo lista junto con los demas. Lo hice asi para no tocar la consulta, lo cual no se si es mejor o no. q decis?
 
 function inbox(){
 
-	ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
+	 ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
+	 // =========== New messages
+	 byid('new-message').onclick = function(){
 
+	 		byid('wrap-messages').innerHTML = ""; //mientras
+	 		byid('inputTo').style.display = "block"; // ver como evitar esta linea ya q el html es blck por default
+		 	byid('write-message').style.display = 'block';
+	 }
+
+	 // ===========  Submit messages
 	 byid('send-message').onclick = function(){
 	 	//me fijo en el objeto xhr publico si existe y si esta procesando algo y lo borro.
 		if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
 		{
 			xhr.abort();
 		}
-
-	 	var vars = 'message='+byid('message').value;
+		var vars = 'to=' + byid('inputTo').value + '&message='+ byid('message').value; // Agrego to para enviar destinatario seleccionado.
 	 	ajax('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
+
+	 	byid('inputTo').value = '';
 	 	byid('message').value = '';
+
 	 }
 }//end inbox
 
@@ -331,8 +346,10 @@ function printHeaders(){
 
 	//si no viene nada por arguments es q esta ejecutada por ajax
 	if(arguments.length == 0)
-	{
+	{	
+		//console.log(this.responseText);
 		var html = eval(this.responseText);	
+		
 	}
 	else
 	{
@@ -395,30 +412,30 @@ function printHeaders(){
 		  		var index = this.href.indexOf('=');
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
-		  		//console.log(fromId);
 		  		
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
-		  		byid('wrap-messages').innerHTML = ""; // borro el contenido del contenedor de los mensajes (hacer remove childs???)
+
+		  		byid('wrap-messages').innerHTML = ""; //mientras
+		  		byid('inputTo').style.display = "none";
 		  		byid('write-message').style.display = "block";
-		  		
+		  		flagNM = 1;
 		  	}
 	  	}
 	 }//end for
-
 	 //empiezo a chequear si hay nuevos mensajes
 	 refreshInbox();
 }//end printHeaders
 
 function printMessages(){
-
+ 
 	//si no tiene argumentos viene por ajax
-	if(arguments.length == 0)
+	if(arguments.length == 0){
 		var html = eval(this.responseText);
-	else
-		var html = arguments[0];
 
-	// valido si la respuesta es undefined es pq cancelo el request o vino vacía.
-	if(html == undefined) return;
+	}else{
+		var html = arguments[0];
+	}
+
 	for(var i = 0; i < html.length; i++)
 	{
 		lines = create('li');
@@ -429,10 +446,7 @@ function printMessages(){
 	}//end for
 }//end printMessages
 
-
-
-function refreshInbox()
-{
+function refreshInbox(){
 				
 	if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
 	{
@@ -440,26 +454,22 @@ function refreshInbox()
 		setTimeout(refreshInbox,2000);		
 	}
 	else
-	{
+	{	
 		//ok ejecuta denuevo
 		ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);	
 		setTimeout(refreshInbox,2000);
 	}
-		
-};
+}//end refreshInbox
 
-
-function printUpdates()
-{
+function printUpdates(){
 	//console.log(this.responseText);
 	var html = eval(this.responseText);
-	//console.log(html[0]);
-	if(html[0] == null)
+
+	if(html == null || html[0] == null ) // html == null para q no tire error al ejecutar algunos eventos (refrescar, submit, etc)
 	{
 		return;
-	}
-	else
-	{
+
+	}else{
 		//si hay busco los encabezados impresos y los borro con try catch, porque si es la primera vez q mandan mensaje no lo va a encontrar
 		for(var i = 0; i < html[0].length; i++)
 		{	
@@ -476,22 +486,26 @@ function printUpdates()
 		}
 		
 		//tomo como referencia el primer LI (header) q hay actualmente, asi inserto arriba de ese
-		var fchild = byid('wrap-conversations').firstChild;
+		var fchildHeader = byid('wrap-conversations').firstChild;
 
 		//imprimo los encabezados pasandole como referencia lo q tiene q imprimir y a partir de donde (ver función para ver los cambios)
-		printHeaders(html[0],fchild);
+		printHeaders(html[0],fchildHeader);
 
 	}
 
-	if(html[1] == null)
+	if(html[1] == null || flagNM == 0)
 	{
 		return;
 	}
 	else
-	{
+	{	
 		printMessages(html[1]);
+		flagNM = 0; // No se si hace falta resetearla, lo pongo por las dudas ahora.....
+
 	}
-}
+}//end printUpdates
+
+
 	
 
 

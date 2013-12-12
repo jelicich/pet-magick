@@ -31,28 +31,18 @@
 	<div class="container_12" id="content">
 		
 		<div class="grid_5">
-			<ul id="wrap-conversations">
-
-			</ul>
+			<ul id="wrap-conversations"></ul>
 		</div>	
 
-		<div class="grid_7" id="wrap-messages">
-		</div>	
+		<div class="grid_7" id="wrap-messages"></div>	
 
+		<form method='' action='' class="grid_12" style="display:none" id="write-message">	
+			<input type='text' placeholder='To' id='inputTo' /><br><br>
+			<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
+			<input type='button' value='Submit' id='send-message'/>
+		</form>
 
-
-
-<form method='' action='' class="grid_12" style="display:none" id="write-message">	
-	<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
-
-	<input type='button' value='Submit' id='send-message'/>
-
-
-</form>
-
-				
-
-
+		<input type='button' value='New message' id='new-message'/>
 </div>
 	<!-- END site content -->
 
@@ -66,9 +56,14 @@
 
 
 
+
+
+
+
 <script type="text/javascript" id="jslogout">
 
 	inbox(); //============= Carga los mensajes
+
 
 </script>
 

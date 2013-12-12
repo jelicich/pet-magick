@@ -1056,10 +1056,16 @@ Tunear!!!
 
 */
 
-#wrap-conversations li{
+.msg-read{
 	background-color: red;
 	cursor: pointer;
 	width: 200px; /* provisorio */
 	height: auto; /* provisorio */
 }
 
+.msg-unread{
+	background-color: green !important;
+	cursor: pointer;
+	width: 200px; /* provisorio */
+	height: auto; /* provisorio */
+}

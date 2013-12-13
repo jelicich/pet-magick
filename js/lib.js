@@ -70,6 +70,7 @@ function getClass(matchClass) {
     }
 }//end getClass
 
+
 //=============================================================================== LOGIN FUNCTIONS
 
 var source; //variable para poder hacer el switch en print user menu 
@@ -159,7 +160,7 @@ function reg(){
 	}
 }//end reg
 
-var flag = 0; // showForms(), -- publica --
+var flag = 0; // showForms(), -- public --
 function showForms(link, show, hide){
     
 	byid(link).onclick = function()
@@ -276,24 +277,29 @@ function regionsCombo(){
 
 
 //=============================================================================== INBOX FUNCTIONS
-
+var request = false; // inbox(), -- public --
 function inbox(){
 
 	(function getInbox(){
 				
 		ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
-		
-		//comento para que no cargue constantemente
-		/*
 		if(this.readyState == undefined || this.readyState == 4){
+			//console.log(request);
+			if(request === true){
+				
+				ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
+				request = false;
+				t = setTimeout(getInbox,3000);
 
-			t = setTimeout(getMessages,3000);
+			}else{
+
+				t = setTimeout(getInbox,3000);
+			}
 		}
-		*/
+		
 	})();
 
-    
 	 byid('submit').onclick = function(){
 
 	 	var vars = 'from='+byid('from').value+'&to='+byid('to').value+'&subject='+byid('subject').value+'&message='+byid('message').value;
@@ -301,12 +307,8 @@ function inbox(){
 	 }
 }//end inbox
 
-
-
-
 function printHeaders(){
 
-	//console.log(this.responseText);
 	var html = eval(this.responseText);
 	var as;
 	var lis;
@@ -323,36 +325,38 @@ function printHeaders(){
 		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
 		 //console.log(lastMsg);
 
-	
-				as = create('a');
-				as.href = "?u="+each;
-		 		lis = create('li');
-		  		//lis.id = each;
+		if(byid(each) === null){ 
 
-		  		title = create('span'); 
-		  		title.innerHTML = eachName;
-		  		caption = create('p');
-		  		caption.innerHTML = lastMsg;
+	 		as = create('a');
+	 		as.id = each; //revisar valor
+	 		as.href = "?u="+each;
+	 		lis = create('li');
+	  		//lis.id = each;
 
-		  		lis.appendChild(title);
-		  		lis.appendChild(caption);
-		  		as.appendChild(lis);
-		  		byid('wrap-conversations').appendChild(as);
-		  		
-			
-          
-		    as.onclick = function(e){
+	  		title = create('span'); 
+	  		title.innerHTML = eachName;
+	  		caption = create('p');
+	  		caption.innerHTML = lastMsg;
+
+	  		lis.appendChild(title);
+	  		lis.appendChild(caption);
+	  		as.appendChild(lis);
+	  		byid('wrap-conversations').appendChild(as);
+
+	  		byid(each).onclick = function(e){
+
 		    	e.preventDefault();
 		  		var index = this.href.indexOf('=');
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
 		  		console.log(fromId);
+		  		
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
 		  		byid('wrap-messages').innerHTML = ""; // borro el contenido del contenedor de los mensajes (hacer remove childs???)
-		  		
+		  		request = true;
 		  		//para q empiece a ejecutar y ver si hay nuevos mensajes
 		  		//intento borrar el intervalo por si ya se esta ejecutando.
-		  		try
+		  	 /*	try
 		  		{
 		  			clearInterval(msgInterval);
 		  			getNewMessages();	
@@ -360,12 +364,68 @@ function printHeaders(){
 		  		catch(e)
 		  		{
 		  			getNewMessages();		
-		  		}
+		  		}*/
 		  		
 		  	}
-		  	
+	  	}
+	 }//end for
+}//end printMessages
+
+function printMessages(){
+
+	var html = eval(this.responseText);
+
+	for(var i = 0; i < html.length; i++)
+	{
+		lines = create('li');
+		lines.className = html[i]['Users']['ID_USER'];
+		lines.innerHTML = '<strong>' + html[i]['Users']['NAME'] + ' ' + html[i]['Users']['LASTNAME'] + ' (' + html[i]['Users']['NICKNAME'] + ')</strong><span> | ' + html[i]['DATE'] + '</span><p>' + html[i]['MESSAGE'] + '</p>';
+		
+		byid('wrap-messages').appendChild(lines);
 	}//end for
 }//end printMessages
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//=============================================================================== BIN
+
+
+
+/*
+function getNewMessages()
+{
+	if(this.readyState == undefined || this.readyState == 4)
+		{
+			//console.log('entrooo');
+			//fromId es publica y esta definida en el onclick del remitente			
+			ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
+		}
+	else
+		console.log('esperando');
+	
+	msgInterval = setTimeout(getNewMessages, 1000);
+
+}
+*/
+
 
 
 /*
@@ -392,59 +452,10 @@ function printMessages(){
 }
 */
 
-// esta variable "arregla" el tema del readystate. Si está en 0 es que todavía no se ejecuto printMessages, con lo cual todavía no llego a 4 el readystate.
-//si está en 1 es que si se ejecuto, igual acá en el trabajo está como bugueado... sigue imprimiendome el readystate 2 3 4 del getNewMessages, antes de haber impreso toda la conversación.
-var pmFlag = 0;
-
-
-
-function printMessages()
-{
-	//console.log(this.responseText);
-
-	
-	var html = eval(this.responseText);
-
-	for(var i = 0; i < html.length; i++)
-	{
-
-		lines = create('li');
-		lines.className = html[i]['Users']['ID_USER'];
-		lines.innerHTML = '<strong>' + html[i]['Users']['NAME'] + ' ' + html[i]['Users']['LASTNAME'] + ' (' + html[i]['Users']['NICKNAME'] + ')</strong><span> | ' + html[i]['DATE'] + '</span><p>' + html[i]['MESSAGE'] + '</p>';
-		//lines.style.display = 'none';
-		//var uls = byid(html[i]['Users']['ID_USER']);
-		  
-		byid('wrap-messages').appendChild(lines);
-		/*
-		if(lines.className == uls.id){ 
-			uls.appendChild(lines);
-		} 
-		*/
-		//getClass(html[i]['Users']['ID_USER']);
-
-	}//end for
-
-	pmFlag=1;
-}//end printMessages
 
 
 
 
-function getNewMessages()
-{
-	if(pmFlag == 1)
-		{
-			console.log('entrooo');
-			//fromId es publica y esta definida en el onclick del remitente			
-			pmFlag = 0;
-			ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
-		}
-	else
-		console.log('no entro');
-	
-	msgInterval = setTimeout(getNewMessages, 1000);
-
-}
 
 
 /*

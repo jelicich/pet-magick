@@ -43,7 +43,7 @@
 		</div>	
 
 		<form method='' action='' class="grid_12" style="display:none" id="write-message">	
-			<input type='text' placeholder='To' id='inputTo' /><br><br>
+			<input type='text' placeholder='To' id='inputTo' /><br>
 			<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
 			<input type='button' value='Submit' id='send-message'/>
 		</form>

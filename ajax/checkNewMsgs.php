@@ -26,7 +26,7 @@
 	
 	echo ',';
 	
-	if($_SESSION['current-chat'])
+	if(isset($_SESSION['current-chat']))// Agregue el isset pq es la forma q encontre de evitar el error q me tiraba en ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);
 	{
 		if($mssg->getNewMessages($_SESSION['current-chat']))
 			echo $mssg->getChat();

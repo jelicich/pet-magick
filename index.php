@@ -18,7 +18,7 @@
 
 <script src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/hola2.js"></script>
 
 </head>
 

@@ -22,8 +22,7 @@ function createXMLHTTPObject() {
 	return xmlhttp;
 }// end createXMLHTTPObject
 
-
-var xhr;
+var xhr; // ajax(), -- public --
 function ajax(metodo,url, unaFuncion, mensaje, async) {
 	
 	xhr = createXMLHTTPObject();
@@ -63,15 +62,11 @@ function create(s){
 	return document.createElement(s);
 }//end create
 
-function getClass(matchClass) {
-    var elems = document.getElementsByTagName('*'), i;
-    for (i in elems) {
-        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1) {
-            elems[i].style.display = 'block';
-        }
-    }
-}//end getClass
-
+function whilst(s){
+	while (s.hasChildNodes()){
+	  s.removeChild(s.firstChild);
+	}
+}//end whilst
 
 //=============================================================================== LOGIN FUNCTIONS
 
@@ -248,7 +243,7 @@ function countriesCombo(){
 		var id = country.options[country.selectedIndex].value; 
 		var vars = 'idCountry='+id;
 		// VACIO EL SELECT DE CITY y lo oculto
-		byid('city').innerHTML = '';// mientras
+		whilst(byid('city'));
 		byid('city').style.display = 'none';
 		//le pongo el gif loading
 		var loading = create('img');
@@ -280,39 +275,13 @@ function regionsCombo(){
 
 //=============================================================================== INBOX FUNCTIONS
 
-var fromId; //ya no sé si debe ser publica ???
+// PENDIENTE
+//----------
 
-//Lo primero que hace es imprimir los encabezados (la lista de conversaciones) Le agregué a getHeaders.php una variable $_SESSION['last-header'] q guarda la fecha en que trajo los encabezados.
-//A los li le pone como ID user-#ID (ej user-23) para despues borrarlos y subirlos en caso de que haya nuevos mensajes.
-//Los onclick de los "a" de las conversaciones tienen un if, que se fija si hay alguna petición en curso por ajax. si hay, la cancelan. Hay q tener cuidado con esto por si hay otra petición por ajax ajena al chat, ya que esto lo cancelaría. Para esto lo que hice fue hacer publica la variable xhr de la funcion ajax()
-//Hasta acá todo ok funciona y está hecho.
-//
-//Ahora, tiene q haber un bucle, que esté constantemente chequeando si hay mensajes nuevos. Tendria q haber una función (desde php) que chequeé si hay mensajes que hayan llegado después de la fecha q se guardo en sesión. ['last-header']
-//Si encuentra que hay mensajes nuevos. habría que generar el/los encabezados de esos mensajes y actualizarlos (a través del id que le puse al li). y actualizar la fecha de $_SESSION['last-header'];
-//Le agregué también una variable a getAllMessages $_SESSION['current-chat'] que guarda el id de la conversación abierta.
-//Si el archivo q ejecuta el bucle encuentra mensajes nuevos, además de devolver los encabezados, tiene q tener un IF, que verifique si 'current-chat' existe, si existe debe evaluar si dentro de los mensajes recibidos existe alguno del usuario guardado en sesión. Si esto es así, devuelve el mensaje y lo actualiza en la conversación abierta. De lo contrario, no pasa nada, y solo se actualizan los encabezados.
+// Cuando creo mensaje, abrir el chat correspondiente y agregarlo a la lista, crear header o agregarlo al header segun corresponda
 
-//Todo lo planteado arriba está hecho, hay q testearlo bien. No testée nada solo probé una vez y listo
-
-//El formulario de envío de mensajes tendria q mostrarse al abrir una conversación, con lo cual debería generarse al hacer click en el A.
-//Una vez q hace click ahi se guarda en una variable publica el ID de ese usuario asi cuando se manda mensaje el usuario no tiene q completar nada.
-//Por una cuestión de seguridad, conviene encriptar los id d usuario??? (de alguna forma q se pueda desencriptar después).
-//Tengo mucho cagazo q todo lo q venimos haciendo hasta acá no ande en EXPLORER.
-
-//TODO LO DE ARRIBA HECHO
-
-//===================
-//TO DO
-//Para poder iniciar una conversación tendría q haber un boton q diga "new message". Ahi se abre una ventana modal y tenes el TO q sería el autocomplete con ajax. y el campo del mensaje.
-//Algo q no pude resolver desde las consultas y creo q no se puede resolver es que si vos mandas un mensaje a alguien q nunca te mensajeaste, hasta q ese usr no te responde, ese mensaje 
-//no lo levantas desde ningun lado. Intenté hacer como fb que en en los encabezados tambien te muestra el mensaje q mandas vos. pero es imposible. para eso si necesitariamos la tabla "conversaciones" 
-//pero a esta altura me parece q es complicarla al pedo, con todo lo que ya avanzamos. Se me ocurre q para resolver ese bache se puede imprimir debajo de los encabezados, otros encabezados bajo 
-//el titulo "unanswered messages" o alguna gilada así, para q el tipo tenga acceso a esos mensajes. Pensé en enviados, pero ahi deberían aparecer todos y es alta japa. Pq habria q hacer todo el chat, 
-//pero a la inversa, creo estoy pensando asi en el aire.
-
-
-var flagNM = 0; // Agrego este flag para q cuando llega un nuevo mensaje y no esta la conversacion abierta no lo imprima suelto, pero si en el header.
-// Si la conversacion esta abierta lo lista junto con los demas. Lo hice asi para no tocar la consulta, lo cual no se si es mejor o no. q decis?
+var fromId;
+var flagNM = 0; 
 
 function inbox(){
 
@@ -321,7 +290,7 @@ function inbox(){
 	 // =========== New messages
 	 byid('new-message').onclick = function(){
 
-	 		byid('wrap-messages').innerHTML = ""; //mientras
+	 		//whilst(byid('wrap-messages')); 
 	 		byid('inputTo').style.display = "block"; // ver como evitar esta linea ya q el html es blck por default
 		 	byid('write-message').style.display = 'block';
 	 }
@@ -333,6 +302,7 @@ function inbox(){
 		{
 			xhr.abort();
 		}
+
 		var vars = 'to=' + byid('inputTo').value + '&message='+ byid('message').value; // Agrego to para enviar destinatario seleccionado.
 	 	ajax('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
@@ -368,15 +338,16 @@ function printHeaders(){
 		 each =  html[i]['ID_USER'];
 		 eachName =  html[i]['NAME'] + ' ' + html[i]['LASTNAME'] + ' (' + html[i]['NICKNAME'] + ')';
 		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
+		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
 		 //console.log(lastMsg);
 
 		if(byid(each) === null){ 
 
 	 		as = create('a');
 	 		as.id = each; //revisar valor
-	 		as.href = "?u="+each;
+	 		as.href = "?u="+ each;
 	 		lis = create('li');
-	  		lis.id = 'user-'+each;
+	  		lis.id = 'user-'+ each;
 	  		if(html[i]['Messages'][0]['STATUS'] == 0)
 	  			lis.className = 'msg-unread';
 
@@ -414,10 +385,10 @@ function printHeaders(){
 		  		var index = this.href.indexOf('=');
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
-		  		
+		  		//console.log(fromId);
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
 
-		  		byid('wrap-messages').innerHTML = ""; //mientras
+		  		whilst(byid('wrap-messages')); 
 		  		byid('inputTo').style.display = "none";
 		  		byid('write-message').style.display = "block";
 		  		flagNM = 1;
@@ -434,22 +405,24 @@ function printHeaders(){
 }//end printHeaders
 
 function printMessages(){
- 
+
 	//si no tiene argumentos viene por ajax
 	if(arguments.length == 0){
+		//console.log(this.responseText);
 		var html = eval(this.responseText);
 
 	}else{
 		var html = arguments[0];
 	}
 
-	for(var i = 0; i < html.length; i++)
-	{
+	for(var i = 0; i < html.length; i++){
+
 		lines = create('li');
 		lines.className = html[i]['Users']['ID_USER'];
 		lines.innerHTML = '<strong>' + html[i]['Users']['NAME'] + ' ' + html[i]['Users']['LASTNAME'] + ' (' + html[i]['Users']['NICKNAME'] + ')</strong><span> | ' + html[i]['DATE'] + '</span><p>' + html[i]['MESSAGE'] + '</p>';
 		
 		byid('wrap-messages').appendChild(lines);
+
 	}//end for
 }//end printMessages
 
@@ -462,7 +435,6 @@ function refreshInbox(){
 	}
 	else
 	{	
-		//ok ejecuta denuevo
 		ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);	
 		setTimeout(refreshInbox,2000);
 	}
@@ -512,7 +484,6 @@ function printUpdates(){
 	}
 }//end printUpdates
 
-
 	
 
 
@@ -536,54 +507,16 @@ function printUpdates(){
 //=============================================================================== BIN
 
 
-
 /*
-function getNewMessages()
-{
-	if(this.readyState == undefined || this.readyState == 4)
-		{
-			//console.log('entrooo');
-			//fromId es publica y esta definida en el onclick del remitente			
-			ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
-		}
-	else
-		console.log('esperando');
-	
-	msgInterval = setTimeout(getNewMessages, 1000);
-
-}
+function getClass(matchClass) {
+    var elems = document.getElementsByTagName('*'), i;
+    for (i in elems) {
+        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1) {
+            elems[i].style.display = 'block';
+        }
+    }
+}//end getClass
 */
-
-
-
-/*
-function printMessages(){
-
-	
-	var html = eval(this.responseText);
-    for(var i = 0; i < html.length; i++){
-
-		  			lines = create('li');
-			  		lines.className = html[i]['Users']['ID_USER'];
-			  		lines.innerHTML = '<strong>From: ' + html[i]['Users']['NAME']; + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
-			   		lines.style.display = 'none';
-			   		var ul = byid(html[i]['Users']['ID_USER']);
-			   		ul.appendChild(lines);
-
-			   		if(lines.className == ul.id){ 
-			  		 ul.appendChild(lines);
-				   }	
-
-			   		getClass(html[i]['Users']['ID_USER']);
-
-			   	}//end for
-}
-*/
-
-
-
-
-
 
 
 /*
@@ -603,8 +536,6 @@ var fileInput = document.getElementById('file');
 */
 
 
-
-
 /*
 function upload_img(){
 
@@ -620,11 +551,7 @@ function upload_img(){
 }//end logi
 */
 
-
-
-
-
-	/*
+/*
 Estructura del json q trae
 [
 {

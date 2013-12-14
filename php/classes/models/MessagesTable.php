@@ -267,7 +267,7 @@ class MessagesTable extends Doctrine_Table
                 ->select("u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, CONCAT(LEFT(m.MESSAGE,35),'...') AS MESSAGE, m.DATE, m.STATUS")
                 ->from('users u')
                 ->innerJoin('u.Messages m')
-                ->AndWhere('m.TO_USER_ID = ?', $to )
+                ->AndWhere('m.TO_USER_ID = ?', $to)
                 ->orderBy('m.DATE DESC');
                 //->orderBy('m.DATE DESC');
                 //->orderBy('m.DATE DESC');
@@ -285,14 +285,14 @@ class MessagesTable extends Doctrine_Table
 
                  $rta = json_encode($json);
 
-                for ($i=0; $i < sizeof($json); $i++) { 
+             /*for ($i=0; $i < sizeof($json); $i++) { 
                     
-                    /* $q = Doctrine_Query::create()
+                     $q = Doctrine_Query::create()
                         ->update('messages m')
                         ->set('m.STATUS' , '?', '1')
                         ->where('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']);
-                     $q->execute(); */
-                  }
+                     $q->execute(); 
+                  }*/
 
                   return $rta;
     }// End read

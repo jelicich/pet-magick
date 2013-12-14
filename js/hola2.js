@@ -71,7 +71,6 @@ function whilst(s){
 //=============================================================================== LOGIN FUNCTIONS
 
 var source; //variable para poder hacer el switch en print user menu 
-
 function printUserMenu(){
 
 	var html = this.responseText;
@@ -278,7 +277,16 @@ function regionsCombo(){
 // PENDIENTE
 //----------
 
-// Cuando creo mensaje, abrir el chat correspondiente y agregarlo a la lista, crear header o agregarlo al header segun corresponda
+//Logueo en todos los navegadores
+//Chequear logueo para entrar por url al inbox o secciones q requieran estar logueado
+
+//CUANDO CREO MENSAJE
+//abrir el chat correspondiente y agregarlo a la lista
+//crear header 
+//o agregarlo al header segun corresponda...
+
+// Input autocompletado...
+//Maqueta (crudo)
 
 var fromId;
 var flagNM = 0; 
@@ -319,12 +327,12 @@ function printHeaders(){
 	{	
 		//console.log(this.responseText);
 		var html = eval(this.responseText);	
-		
 	}
 	else
 	{
 		var html = arguments[0];
 	}
+
 	var as;
 	var lis;
 	var title;

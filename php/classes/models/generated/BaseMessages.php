@@ -57,7 +57,7 @@ abstract class BaseMessages extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => false,
+             'notnull' => true,
              'autoincrement' => false,
              ));
         $this->hasColumn('MESSAGE', 'string', null, array(

@@ -40169,18 +40169,7 @@ INSERT INTO `dmas` (`DmaId`, `CountryId`, `DMA`, `Market`) VALUES
 -- Estructura de tabla para la tabla `messages`
 --
 
-CREATE TABLE IF NOT EXISTS `messages` (
-  `ID_MESSAGE` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `FROM_USER_ID` int(10) unsigned NOT NULL,
-  `TO_USER_ID` int(10) unsigned NOT NULL,
-  `SUBJECT` varchar(100) NOT NULL,
-  `MESSAGE` text,
-  `STATUS` tinyint(1) NOT NULL,
-  `DATE` datetime NOT NULL,
-  PRIMARY KEY (`ID_MESSAGE`),
-  KEY `FROM_USER_ID` (`FROM_USER_ID`),
-  KEY `TO_USER_ID` (`TO_USER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+```````
 
 -- --------------------------------------------------------
 
@@ -44417,15 +44406,7 @@ CREATE TABLE IF NOT EXISTS `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
-CREATE TABLE IF NOT EXISTS `conversations` (
-  `ID_CONVERSATIONS` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `FROM_USER_ID` int(10) unsigned NOT NULL,
-  `TO_USER_ID` int(10) unsigned NOT NULL,
- 
-  PRIMARY KEY (`ID_CONVERSATIONS`),
-  KEY `FROM_USER_ID` (`FROM_USER_ID`),
-  KEY `TO_USER_ID` (`TO_USER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 --
 -- Restricciones para tablas volcadas
 --

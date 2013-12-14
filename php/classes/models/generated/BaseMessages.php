@@ -8,6 +8,7 @@
  * @property integer $ID_MESSAGE
  * @property integer $FROM_USER_ID
  * @property integer $TO_USER_ID
+ * @property integer $CONVERSATION_ID
  * @property string $SUBJECT
  * @property string $MESSAGE
  * @property integer $STATUS
@@ -43,6 +44,15 @@ abstract class BaseMessages extends Doctrine_Record
              'autoincrement' => false,
              ));
         $this->hasColumn('TO_USER_ID', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => true,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('CONVERSATION_ID', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
              'fixed' => false,

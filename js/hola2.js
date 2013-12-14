@@ -279,11 +279,13 @@ function regionsCombo(){
 
 //Logueo en todos los navegadores
 //Chequear logueo para entrar por url al inbox o secciones q requieran estar logueado
+//Agregar CASCADE a la tabla users
 
 //CUANDO CREO MENSAJE
 //abrir el chat correspondiente y agregarlo a la lista
 //crear header 
 //o agregarlo al header segun corresponda...
+//Eliminar mensajes
 
 // Input autocompletado...
 //Maqueta (crudo)

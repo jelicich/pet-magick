@@ -40,9 +40,20 @@ class ConversationsTable extends Doctrine_Table
 */
             	//$this tendria q ser $em pero no sé cómo hacer para instanciar o hacer que $em sea EntityManager
                 //http://www.9lessons.info/2013/05/message-conversation-database-design.html
-            $q = $this->createQuery("
+
+            $q = Doctrine_Query::create()
+                ->select("u.ID_USER, c.ID_CONVERSATION, u.NICKNAME")
+                ->from("conversations c, users u")
+                ->where("CASE WHEN c.USER_1_ID = '".$_SESSION['id']."' THEN c.USER_1_ID = '".$_SESSION['id']."' WHEN c.USER_2_ID = '".$_SESSION['id']."' THEN c.USER_1_ID = u.ID_USER 
+                    AND  (
+                    c.USER_1_ID = '".$_SESSION['id']."'
+                    or c.USER_2_ID = '".$_SESSION['id']."'
+                )")
+                ->orderBy("c.ID_CONVERSATION DESC");
+
+           /* $q = $this->createQuery("
             	SELECT u.ID_USER, c.ID_CONVERSATION, u.NICKNAME 
-            	FROM conversations c JOIN users u c.USER_1_ID
+            	FROM conversations c, users u
             	WHERE CASE
             	WHEN c.USER_1_ID = '".$_SESSION['id']."'
             	THEN c.USER_2_ID = u.ID_USER
@@ -55,7 +66,7 @@ class ConversationsTable extends Doctrine_Table
             	)
             	ORDER BY c.ID_CONVERSATION DESC
             	");
-                
+                */
            		
 
 

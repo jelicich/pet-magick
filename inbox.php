@@ -1,8 +1,13 @@
 <?php 
 	session_start();
-	//session_destroy();
 	$_SESSION['token'] = sha1(uniqid()); 
-	//var_dump($_SESSION);
+	/** 
+	Agrego esto para chequear q el user este logueado. Hay q ver si el valor q tomo por session es el q queremos.
+	Es mas largo traerlo de la clase q pegar la funcion, pero me parecio mejor asi...
+	**/
+	include_once "php/classes/BOUsers.php";
+	$user = new BOUsers;
+	$user->checklogin();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -16,7 +21,7 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
-<script type="text/javascript" src="js/hola2.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
 
 </head>
 
@@ -43,7 +48,7 @@
 		</div>	
 
 		<form method='' action='' class="grid_12" style="display:none" id="write-message">	
-			<input type='text' placeholder='To' id='inputTo' /><br>
+			<input type='text' placeholder='To' id='inputTo' name='inputTo'/><br>
 			<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
 			<input type='button' value='Submit' id='send-message'/>
 		</form>
@@ -61,14 +66,10 @@
 </body>
 
 
-
-
-
-
-
 <script type="text/javascript" id="jslogout">
 
 	inbox(); //============= Carga los mensajes
+	autoComplete();
 
 
 </script>

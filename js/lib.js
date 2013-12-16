@@ -22,9 +22,10 @@ function createXMLHTTPObject() {
 	return xmlhttp;
 }// end createXMLHTTPObject
 
+var xhr; // ajax(), -- public --
 function ajax(metodo,url, unaFuncion, mensaje, async) {
 	
-	var xhr = createXMLHTTPObject();
+	xhr = createXMLHTTPObject();
 	xhr.open(metodo, url, async);
 	if (metodo ==  'POST'){
 		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -61,20 +62,15 @@ function create(s){
 	return document.createElement(s);
 }//end create
 
-function getClass(matchClass) {
-    var elems = document.getElementsByTagName('*'), i;
-    for (i in elems) {
-        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1) {
-            elems[i].style.display = 'block';
-        }
-    }
-}//end getClass
-
+function whilst(s){
+	while (s.hasChildNodes()){
+	  s.removeChild(s.firstChild);
+	}
+}//end whilst
 
 //=============================================================================== LOGIN FUNCTIONS
 
 var source; //variable para poder hacer el switch en print user menu 
-
 function printUserMenu(){
 
 	var html = this.responseText;
@@ -112,7 +108,7 @@ function printUserMenu(){
 		var wrap = byid('login-reg');
 		//byid('logo-pet-magick').nextSibling
  		wrap.innerHTML = html;
- 		eval(byid('jslogout').innerHTML); 
+ 		//eval(byid('jslogout').innerHTML); 
  	}	 
 }//end printUserMenu
 
@@ -246,7 +242,7 @@ function countriesCombo(){
 		var id = country.options[country.selectedIndex].value; 
 		var vars = 'idCountry='+id;
 		// VACIO EL SELECT DE CITY y lo oculto
-		byid('city').innerHTML = '';
+		whilst(byid('city'));
 		byid('city').style.display = 'none';
 		//le pongo el gif loading
 		var loading = create('img');
@@ -276,40 +272,68 @@ function regionsCombo(){
 }//end regionsCombo
 
 
-//=============================================================================== INBOX FUNCTIONS
-var request = false; // inbox(), -- public --
+// =============================================================================== INBOX FUNCTIONS
+
+// PENDIENTE
+//----------
+
+//Logueo en todos los navegadores
+//Agregar CASCADE a la tabla users
+
+//CUANDO CREO MENSAJE
+//abrir el chat correspondiente y agregarlo a la lista
+//crear header 
+//o agregarlo al header segun corresponda...
+//Eliminar mensajes
+
+// Input autocompletado...
+//Maqueta (crudo)
+
+var fromId;
+var flagNM = 0; 
+
 function inbox(){
 
-	(function getInbox(){
-				
-		ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
+	 ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
-		if(this.readyState == undefined || this.readyState == 4){
-			//console.log(request);
-			if(request === true){
-				
-				ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
-				request = false;
-				t = setTimeout(getInbox,3000);
+	 // =========== New messages
+	 byid('new-message').onclick = function(){
 
-			}else{
+	 		//whilst(byid('wrap-messages')); 
+	 		byid('inputTo').style.display = "block"; // ver como evitar esta linea ya q el html es blck por default
+		 	byid('write-message').style.display = 'block';
+	 }
 
-				t = setTimeout(getInbox,3000);
-			}
+	 // ===========  Submit messages
+	 byid('send-message').onclick = function(){
+	 	//me fijo en el objeto xhr publico si existe y si esta procesando algo y lo borro.
+		if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
+		{
+			xhr.abort();
 		}
-		
-	})();
 
-	 byid('submit').onclick = function(){
+		var vars = 'to=' + byid('inputTo').value + '&message='+ byid('message').value; // Agrego to para enviar destinatario seleccionado.
+	 	ajax('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
-	 	var vars = 'from='+byid('from').value+'&to='+byid('to').value+'&subject='+byid('subject').value+'&message='+byid('message').value;
-	 	ajax('POST', 'ajax/submit.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
+	 	byid('inputTo').value = '';
+	 	byid('message').value = '';
+
 	 }
 }//end inbox
 
 function printHeaders(){
 
-	var html = eval(this.responseText);
+	//si no viene nada por arguments es q esta ejecutada por ajax
+	if(arguments.length == 0)
+	{	
+		//console.log(this.responseText);
+		var html = eval(this.responseText);	
+	}
+	else
+	{
+		var html = arguments[0];
+	}
+
 	var as;
 	var lis;
 	var title;
@@ -323,67 +347,191 @@ function printHeaders(){
 		 each =  html[i]['ID_USER'];
 		 eachName =  html[i]['NAME'] + ' ' + html[i]['LASTNAME'] + ' (' + html[i]['NICKNAME'] + ')';
 		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
+		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
 		 //console.log(lastMsg);
 
 		if(byid(each) === null){ 
 
 	 		as = create('a');
 	 		as.id = each; //revisar valor
-	 		as.href = "?u="+each;
+	 		as.href = "?u="+ each;
 	 		lis = create('li');
-	  		//lis.id = each;
+	  		lis.id = 'user-'+ each;
+	  		if(html[i]['Messages'][0]['STATUS'] == 0)
+	  			lis.className = 'msg-unread';
 
-	  		title = create('span'); 
+	  		title = create('span');
+	  		title.className = 'from-user-name';
 	  		title.innerHTML = eachName;
-	  		caption = create('p');
+	  		caption = create('span');
+	  		caption.className = 'preview-message';
 	  		caption.innerHTML = lastMsg;
 
-	  		lis.appendChild(title);
-	  		lis.appendChild(caption);
-	  		as.appendChild(lis);
-	  		byid('wrap-conversations').appendChild(as);
+	  		as.appendChild(title);
+	  		as.appendChild(caption);
+	  		lis.appendChild(as);
+	  		
+	  		//byid('wrap-conversations').appendChild(lis);
+	  		
+	  		if(arguments.length==0)
+	  		{
+	  			byid('wrap-conversations').appendChild(lis);
+	  		}
+	  		else
+	  		{
+	  			byid('wrap-conversations').insertBefore(lis,arguments[1]);
+	  		}
 
-	  		byid(each).onclick = function(e){
-
+	  		byid(each).onclick = function(e)
+	  		{
+	  			//me fijo en el objeto xhr publico si existe y si esta procesando algo y lo borro.
+	  			if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
+	  			{
+	  				xhr.abort();
+	  			}
+		    	
 		    	e.preventDefault();
 		  		var index = this.href.indexOf('=');
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
-		  		console.log(fromId);
-		  		
+		  		//console.log(fromId);
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
-		  		byid('wrap-messages').innerHTML = ""; // borro el contenido del contenedor de los mensajes (hacer remove childs???)
-		  		request = true;
-		  		//para q empiece a ejecutar y ver si hay nuevos mensajes
-		  		//intento borrar el intervalo por si ya se esta ejecutando.
-		  	 /*	try
+
+		  		whilst(byid('wrap-messages')); 
+		  		byid('inputTo').style.display = "none";
+		  		byid('write-message').style.display = "block";
+		  		flagNM = 1;
+
+		  		if(this.parentNode.className == 'msg-unread')
 		  		{
-		  			clearInterval(msgInterval);
-		  			getNewMessages();	
+		  			this.parentNode.removeAttribute('class');
 		  		}
-		  		catch(e)
-		  		{
-		  			getNewMessages();		
-		  		}*/
-		  		
 		  	}
 	  	}
 	 }//end for
-}//end printMessages
+	 //empiezo a chequear si hay nuevos mensajes
+	 refreshInbox();
+}//end printHeaders
 
 function printMessages(){
 
-	var html = eval(this.responseText);
+	//si no tiene argumentos viene por ajax
+	if(arguments.length == 0){
+		//console.log(this.responseText);
+		var html = eval(this.responseText);
 
-	for(var i = 0; i < html.length; i++)
-	{
+	}else{
+		var html = arguments[0];
+	}
+
+	for(var i = 0; i < html.length; i++){
+
 		lines = create('li');
 		lines.className = html[i]['Users']['ID_USER'];
 		lines.innerHTML = '<strong>' + html[i]['Users']['NAME'] + ' ' + html[i]['Users']['LASTNAME'] + ' (' + html[i]['Users']['NICKNAME'] + ')</strong><span> | ' + html[i]['DATE'] + '</span><p>' + html[i]['MESSAGE'] + '</p>';
 		
 		byid('wrap-messages').appendChild(lines);
+
 	}//end for
 }//end printMessages
+
+function refreshInbox(){
+				
+	if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
+	{
+		//hay una petición en curso;
+		setTimeout(refreshInbox,2000);		
+	}
+	else
+	{	
+		ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);	
+		setTimeout(refreshInbox,2000);
+	}
+}//end refreshInbox
+
+function printUpdates(){
+	//console.log(this.responseText);
+	var html = eval(this.responseText);
+
+	if(html == null || html[0] == null ) // html == null para q no tire error al ejecutar algunos eventos (refrescar, submit, etc)
+	{
+		return;
+
+	}else{
+		//si hay busco los encabezados impresos y los borro con try catch, porque si es la primera vez q mandan mensaje no lo va a encontrar
+		for(var i = 0; i < html[0].length; i++)
+		{	
+			try
+			{
+				var id = 'user-' + html[0][i]['ID_USER'];
+				var li = byid(id);
+				li.parentNode.removeChild(li);
+			}
+			catch(e)
+			{
+				continue;
+			}
+		}
+		
+		//tomo como referencia el primer LI (header) q hay actualmente, asi inserto arriba de ese
+		var fchildHeader = byid('wrap-conversations').firstChild;
+
+		//imprimo los encabezados pasandole como referencia lo q tiene q imprimir y a partir de donde (ver función para ver los cambios)
+		printHeaders(html[0],fchildHeader);
+
+	}
+
+	if(html[1] == null || flagNM == 0)
+	{
+		return;
+	}
+	else
+	{	
+		printMessages(html[1]);
+		flagNM = 0; // No se si hace falta resetearla, lo pongo por las dudas ahora.....
+
+	}
+}//end printUpdates
+
+//============================= AUTOCOMPLETE FUNCTIONS
+
+// Esto es lo incluye la prueba del autocompletado:
+
+// inbox.php: autocomplete()
+// - lib.js: autoComplete(), function suggest()
+// ajax/autoComplete.php
+// BOusers->autoComplete(), getComplete() (las puse en esa clase pq en este caso responde a busqueda de users, pero si te parece podemos mudarla)
+// UsersTable, autoComplete($ref)
+
+// Despues hay q ver como tunearlo bien. Por ahora va, viene y ya. TArda un toque, deberia imprimir lindo, etc...
+// Ahora me tengo q ir a apoliyar. Pero tira unos errores cuando ingresas algo q no es "3 caracteres". Estaba pensando en mandarle como parametro el length del value
+// a la consulta, pero manana lo hago. Tambien hay q hacerlo convivir con las demas consultas.
+// Si te parece una verga y se te ocurre algo mejor, adelante!!
+
+
+
+
+function autoComplete(){
+
+	byid('inputTo').onkeyup = function(){
+		
+		if(this.value.length >= 3){
+			
+			var vars = 'user=' + this.value;
+			ajax('POST', 'ajax/autoComplete.php', suggest, vars, true);
+			//console.log(this.value);
+		}
+	}
+}//end autoComplete
+
+
+function suggest(){
+
+	var html = eval(this.responseText);
+	byid('inputTo').value = html[0]['NICKNAME'];
+
+}//end suggest
+
 
 
 
@@ -408,54 +556,16 @@ function printMessages(){
 //=============================================================================== BIN
 
 
-
 /*
-function getNewMessages()
-{
-	if(this.readyState == undefined || this.readyState == 4)
-		{
-			//console.log('entrooo');
-			//fromId es publica y esta definida en el onclick del remitente			
-			ajax('POST', 'ajax/getNewMessages.php', printMessages, fromId, true);
-		}
-	else
-		console.log('esperando');
-	
-	msgInterval = setTimeout(getNewMessages, 1000);
-
-}
+function getClass(matchClass) {
+    var elems = document.getElementsByTagName('*'), i;
+    for (i in elems) {
+        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1) {
+            elems[i].style.display = 'block';
+        }
+    }
+}//end getClass
 */
-
-
-
-/*
-function printMessages(){
-
-	
-	var html = eval(this.responseText);
-    for(var i = 0; i < html.length; i++){
-
-		  			lines = create('li');
-			  		lines.className = html[i]['Users']['ID_USER'];
-			  		lines.innerHTML = '<strong>From: ' + html[i]['Users']['NAME']; + '</strong><br> message: ' + html[i]['MESSAGE'] + '<br> Fecha: ' + html[i]['DATE'];
-			   		lines.style.display = 'none';
-			   		var ul = byid(html[i]['Users']['ID_USER']);
-			   		ul.appendChild(lines);
-
-			   		if(lines.className == ul.id){ 
-			  		 ul.appendChild(lines);
-				   }	
-
-			   		getClass(html[i]['Users']['ID_USER']);
-
-			   	}//end for
-}
-*/
-
-
-
-
-
 
 
 /*
@@ -475,8 +585,6 @@ var fileInput = document.getElementById('file');
 */
 
 
-
-
 /*
 function upload_img(){
 
@@ -492,11 +600,7 @@ function upload_img(){
 }//end logi
 */
 
-
-
-
-
-	/*
+/*
 Estructura del json q trae
 [
 {

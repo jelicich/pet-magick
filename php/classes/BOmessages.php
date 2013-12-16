@@ -209,8 +209,6 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
     }// End getInbox
 
    
-
-
     function getChat()
     {
         return $this->chat;

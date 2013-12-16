@@ -19,9 +19,9 @@
  * @property integer $ALBUM_ID
  * @property integer $RANK
  * @property string $TOKEN
- * @property Cities $Cities
  * @property Pics $Pics
  * @property Albums $Albums
+ * @property Cities $Cities
  * @property Doctrine_Collection $Blogs
  * @property Doctrine_Collection $Comments
  * @property Doctrine_Collection $Messages
@@ -175,10 +175,6 @@ abstract class BaseUsers extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Cities', array(
-             'local' => 'CITY_ID',
-             'foreign' => 'CityId'));
-
         $this->hasOne('Pics', array(
              'local' => 'PIC_ID',
              'foreign' => 'ID_PIC'));
@@ -186,6 +182,10 @@ abstract class BaseUsers extends Doctrine_Record
         $this->hasOne('Albums', array(
              'local' => 'ALBUM_ID',
              'foreign' => 'ID_ALBUM'));
+
+        $this->hasOne('Cities', array(
+             'local' => 'CITY_ID',
+             'foreign' => 'CityId'));
 
         $this->hasMany('Blogs', array(
              'local' => 'ID_USER',

@@ -139,4 +139,26 @@ class UsersTable extends Doctrine_Table
 		return $rta;
     }
 
+    //==================== AUTOCOMPLETE
+
+    public function autoComplete($ref){
+
+    	$q = Doctrine_Query::create()
+    		->select("*")
+			->from('Users u') 
+			->AndWhere('u.NICKNAME LIKE ?', $ref.'%');
+
+		
+		$rta = $q->execute();
+		
+        $json = array();
+
+         foreach($rta as $m) 
+         {
+            $json[] = $m->toArray();
+         }
+
+         $rta = json_encode($json);
+         return $rta;
+    }
 }//end class

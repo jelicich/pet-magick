@@ -8,6 +8,7 @@ class BOUsers{
 
   var $table;
   var $err;
+  var $complete;
 
   function __construct(){
 
@@ -143,6 +144,18 @@ class BOUsers{
 
    
 
+    function checklogin(){
+
+      if(!isset($_SESSION['email'])){// Ver si mail es el valor correcto
+        
+        header('Location: index.php');
+
+      }//end if
+
+    }//end checklogin()
+
+   
+
     //======================== LOGOUT
 
     function logout($ref){
@@ -171,11 +184,51 @@ class BOUsers{
     }// End delete
 
 
+//=============================================================================== AUTOCOMPLETE FUNCTIONS
+    function autoComplete($ref){
+
+      try
+          {
+            $this->complete = $this->table->autoComplete($ref);
+            return true;
+          }
+          catch(Exception $e)
+          {
+            $this->err = array('Error:'=> $e->getMessage());
+            return false;
+          }
+    }// End delete
+
+
+    function getComplete()
+    {
+       return $this->complete;
+    }// End getInbox
+
+
 }//End class BOUsers
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+$inbox = new BOusers;
+$query = 'mis';
+var_dump($inbox->autoComplete($query));
+
+*/
  /*
 $inbox = new BOusers;
 $query = array('chule_catupe@hotmail.com');

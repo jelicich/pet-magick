@@ -64,75 +64,11 @@ class MessagesTable extends Doctrine_Table
 
 
 //====================================================================== READ
-/*
-    public function getMessages($to){
-
-                // para que traiga los grupos ordenados descendente hay q hacer subquery
-                // http://melikedev.com/2013/06/07/php-doctrine-dql-select-subquery/
-                // http://stackoverflow.com/questions/8575542/sql-cant-grab-values-in-descending-order-when-using-group-by
-                // https://doctrine-orm.readthedocs.org/en/2.0.x/reference/native-sql.html#examples
-              $q = Doctrine_Query::create()
-                ->select('*')
-                ->from('messages m')
-                ->groupBy('m.FROM_USER_ID');
-                
-
-              $subq = $q->createSubquery()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
-                ->from('messages m')
-                ->innerJoin('m.Users u')
-                ->AndWhere('m.TO_USER_ID = ?', $to )
-                ->orderBy('m.DATE DESC');
-
-
-                /* //Consulta q agrupa por usuario pero no ordena por fecha dentro del mismo usuario
-                $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
-                ->from('messages m')
-                ->innerJoin('m.Users u')
-                ->AndWhere('m.TO_USER_ID = ?', $to )
-                ->groupBy('m.FROM_USER_ID')
-                ->orderBy('m.DATE DESC');
-                //->AndWhere('m.DATE > ?', $date)
-                //->AndWhere('m.STATUS = ?', '0');
-
-
-                 $rta = $subq->execute();
-
-                 $json = array();
-
-                 foreach($rta as $m) 
-                 {
-
-                     $json[] = $m->toArray();
-                 }
-
-                 $rta = json_encode($json);
-
-                for ($i=0; $i < sizeof($json); $i++) { 
-                    
-                     $q = Doctrine_Query::create()
-                        ->update('messages m')
-                        ->set('m.STATUS' , '?', '1')
-                        ->where('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']);
-                     $q->execute();
-                  }
-
-                  return $rta;
-    }// End read
-*/
 
 
     public function getAllMessages($from){
 
-                // para que traiga los grupos ordenados descendente hay q hacer subquery
-                // http://melikedev.com/2013/06/07/php-doctrine-dql-select-subquery/
-                // http://stackoverflow.com/questions/8575542/sql-cant-grab-values-in-descending-order-when-using-group-by
-                // https://doctrine-orm.readthedocs.org/en/2.0.x/reference/native-sql.html#examples
-            
-                
-
-             $q = Doctrine_Query::create()
+            $q = Doctrine_Query::create()
                 ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
@@ -142,19 +78,6 @@ class MessagesTable extends Doctrine_Table
                 ->AndWhere('m.TO_USER_ID = ?', $from )
                 ->orderBy('m.DATE ASC');
 
-
-                /* //Consulta q agrupa por usuario pero no ordena por fecha dentro del mismo usuario
-                $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
-                ->from('messages m')
-                ->innerJoin('m.Users u')
-                ->AndWhere('m.TO_USER_ID = ?', $to )
-                ->groupBy('m.FROM_USER_ID')
-                ->orderBy('m.DATE DESC');
-                //->AndWhere('m.DATE > ?', $date)
-                //->AndWhere('m.STATUS = ?', '0');
-
-                */
 
                  $rta = $q->execute();
 
@@ -175,7 +98,7 @@ class MessagesTable extends Doctrine_Table
                         ->AndWhere('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']) 
                         ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id'])
                         ->AndWhere('m.STATUS = ?', '0');
-                        //cambia el status de leido a los que levanta siempre y cuando sean PARA el usuario y esten NO leidos
+
                      $q->execute();
                   }
 
@@ -192,8 +115,6 @@ class MessagesTable extends Doctrine_Table
                 ->AndWhere('m.FROM_USER_ID = ?', $from)
                 ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id'] )
                 ->AndWhere('m.STATUS = ?', '0')
-                //->orWhere('m.FROM_USER_ID = ?', $_SESSION['id'])
-                //->AndWhere('m.TO_USER_ID = ?', $from )
                 ->orderBy('m.DATE ASC');
 
 
@@ -219,7 +140,6 @@ class MessagesTable extends Doctrine_Table
                         ->set('m.STATUS' , '?', '1')
                         ->AndWhere('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']) 
                         ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id']);
-                        //cambia el status de leido a los que levanta, siempre y cuando sean PARA el usuario y esten NO leidos
                      $q->execute();
                   }
 
@@ -231,37 +151,11 @@ class MessagesTable extends Doctrine_Table
 
      public function getHeaders($to){
 
-            /*
-              $q = Doctrine_Query::create()
-                ->select('m.FROM_USER_ID, u.NAME, u.LASTNAME')
-                ->from('messages m')
-                ->innerJoin('m.Users u')
-                ->AndWhere('m.TO_USER_ID = ?', $to )
-                ->orderBy('m.DATE DESC');
-*/ 
-
-                /* //Consulta q agrupa por usuario pero no ordena por fecha dentro del mismo usuario
-                $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME')
-                ->from('messages m')
-                ->innerJoin('m.Users u')
-                ->AndWhere('m.TO_USER_ID = ?', $to )
-                ->groupBy('m.FROM_USER_ID')
-                ->orderBy('m.DATE DESC');
-                //->AndWhere('m.DATE > ?', $date)
-                //->AndWhere('m.STATUS = ?', '0');
-
-                */
-
             $q = Doctrine_Query::create()
                 ->select('*')
                 ->from('messages m')
-                //->AndWhere('m.TO_USER_ID = ?', $to )
                 ->groupBy('m.FROM_USER_ID');
-                
-                //->innerJoin('u.Messages m');
-                //->AndWhere('m.TO_USER_ID = ?', $to )
-                //->groupBy('u.ID_USER');
+
 
             $subq = $q->createSubquery()
                 ->select("u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, CONCAT(LEFT(m.MESSAGE,35),'...') AS MESSAGE, m.DATE, m.STATUS")
@@ -269,8 +163,6 @@ class MessagesTable extends Doctrine_Table
                 ->innerJoin('u.Messages m')
                 ->AndWhere('m.TO_USER_ID = ?', $to)
                 ->orderBy('m.DATE DESC');
-                //->orderBy('m.DATE DESC');
-                //->orderBy('m.DATE DESC');
 
 
                  $rta = $subq->execute();
@@ -284,17 +176,7 @@ class MessagesTable extends Doctrine_Table
                  }
 
                  $rta = json_encode($json);
-
-             /*for ($i=0; $i < sizeof($json); $i++) { 
-                    
-                     $q = Doctrine_Query::create()
-                        ->update('messages m')
-                        ->set('m.STATUS' , '?', '1')
-                        ->where('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']);
-                     $q->execute(); 
-                  }*/
-
-                  return $rta;
+                 return $rta;
     }// End read
 
 
@@ -338,37 +220,3 @@ class MessagesTable extends Doctrine_Table
 
 }
 
-/*
-
-[
-{
-    "ID_USER":"4",
-    "NAME":"luis",
-    "LASTNAME":"miguel",
-    "NICKNAME":"luismi",
-    "EMAIL":null,
-    "PASSWORD":null,
-    "ABOUT":null,
-    "COUNTRY_ID":null,
-    "REGION_ID":null,
-    "CITY_ID":null,
-    "PIC_ID":null,
-    "ALBUM_ID":null,
-    "RANK":null,
-    "TOKEN":null,
-    "Messages":
-    [
-    {
-        "ID_MESSAGE":null,
-        "FROM_USER_ID":"4",
-        "TO_USER_ID":null,
-        "SUBJECT":null,
-        "MESSAGE":"asdasd",
-        "STATUS":null,
-        "DATE":"2013-12-06 04:00:00"
-    }
-    ]
-},
-{"ID_USER":"5","NAME":"pepe","LASTNAME":"papa","NICKNAME":"pape","EMAIL":null,"PASSWORD":null,"ABOUT":null,"COUNTRY_ID":null,"REGION_ID":null,"CITY_ID":null,"PIC_ID":null,"ALBUM_ID":null,"RANK":null,"TOKEN":null,"Messages":[{"ID_MESSAGE":null,"FROM_USER_ID":"5","TO_USER_ID":null,"SUBJECT":null,"MESSAGE":" caca caca caca pedo perro caca pedo lclclc lso lks co e smen s snf 39 is   als ","STATUS":null,"DATE":"2013-12-06 02:00:00"}]}] 
-
-*/

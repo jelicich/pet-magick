@@ -3,6 +3,7 @@
 include_once('tools/bootstrap.php');
 include_once('models/MessagesTable.php');
 include_once('models/UsersTable.php');
+include_once('models/ConversationsTable.php');
 
 
 class BOMessages{
@@ -19,6 +20,7 @@ class BOMessages{
 
         $this->tableUsr = Doctrine_Core::getTable('Users');
         $this->tableMsg = Doctrine_Core::getTable('Messages');
+        $this->tableConv = Doctrine_Core::getTable('Conversations');
 
     }// End constructor
 
@@ -160,7 +162,7 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
         try
             {  
                 //$this->val_getMessages($idUser);
-                $this->inbox = $this->tableMsg->getHeaders($idUser);
+                $this->inbox = $this->tableConv->getHeaders($idUser);
 
                 return true;
             }

@@ -323,11 +323,10 @@ function inbox(){
 }//end inbox
 
 function printHeaders(){
-
 	//si no viene nada por arguments es q esta ejecutada por ajax
 	if(arguments.length == 0)
 	{	
-		//console.log(this.responseText);
+		console.log(this.responseText);
 		var html = eval(this.responseText);	
 	}
 	else

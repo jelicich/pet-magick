@@ -19,13 +19,14 @@
  * @property integer $ALBUM_ID
  * @property integer $RANK
  * @property string $TOKEN
+ * @property Cities $Cities
  * @property Pics $Pics
  * @property Albums $Albums
- * @property Cities $Cities
  * @property Doctrine_Collection $Blogs
  * @property Doctrine_Collection $Comments
+ * @property Doctrine_Collection $Conversations
+ * @property Doctrine_Collection $Conversations_2
  * @property Doctrine_Collection $Messages
- * @property Doctrine_Collection $Messages_2
  * @property Doctrine_Collection $News
  * @property Doctrine_Collection $Organizations
  * @property Doctrine_Collection $Pets
@@ -175,6 +176,10 @@ abstract class BaseUsers extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Cities', array(
+             'local' => 'CITY_ID',
+             'foreign' => 'CityId'));
+
         $this->hasOne('Pics', array(
              'local' => 'PIC_ID',
              'foreign' => 'ID_PIC'));
@@ -182,10 +187,6 @@ abstract class BaseUsers extends Doctrine_Record
         $this->hasOne('Albums', array(
              'local' => 'ALBUM_ID',
              'foreign' => 'ID_ALBUM'));
-
-        $this->hasOne('Cities', array(
-             'local' => 'CITY_ID',
-             'foreign' => 'CityId'));
 
         $this->hasMany('Blogs', array(
              'local' => 'ID_USER',
@@ -195,13 +196,17 @@ abstract class BaseUsers extends Doctrine_Record
              'local' => 'ID_USER',
              'foreign' => 'USER_ID'));
 
+        $this->hasMany('Conversations', array(
+             'local' => 'ID_USER',
+             'foreign' => 'USER_1_ID'));
+
+        $this->hasMany('Conversations as Conversations_2', array(
+             'local' => 'ID_USER',
+             'foreign' => 'USER_2_ID'));
+
         $this->hasMany('Messages', array(
              'local' => 'ID_USER',
-             'foreign' => 'FROM_USER_ID'));
-
-        $this->hasMany('Messages as Messages_2', array(
-             'local' => 'ID_USER',
-             'foreign' => 'TO_USER_ID'));
+             'foreign' => 'USER_ID'));
 
         $this->hasMany('News', array(
              'local' => 'ID_USER',

@@ -3,8 +3,9 @@
 	session_start();
 
 	include_once('../php/classes/BOMessages.php');
+	include_once('../php/classes/BOConversations.php');
 
-	$mssg = new BOMessages;
+	$mssg = new BOConversations;
 
 	$data = $_SESSION['id'];
 

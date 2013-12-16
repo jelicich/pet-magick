@@ -149,7 +149,8 @@ class MessagesTable extends Doctrine_Table
 
 
 
-     public function getHeaders($to){
+    /*
+    public function getHeaders($to){
 
             $q = Doctrine_Query::create()
                 ->select('*')
@@ -178,6 +179,35 @@ class MessagesTable extends Doctrine_Table
                  $rta = json_encode($json);
                  return $rta;
     }// End read
+    */
+
+    public function getHeaders($to){
+
+
+            $q = Doctrine_Query::create()
+                ->select("c.ID_CONVERSATION")
+                ->from('conversations c')
+                ->innerJoin('c.Users u')
+                ->AndWhere('c.USER_1_ID = ?', $to)
+                ->orWhere('c.USER_2_ID = ?', $to)
+                ->orderBy('m.DATE DESC');
+                /*->groupBy('m.CONVERSATION_ID');*/
+           
+
+
+                 $rta = $q->execute();
+
+                 $json = array();
+
+                 foreach($rta as $m) 
+                 {
+
+                     $json[] = $m->toArray();
+                 }
+
+                 $rta = json_encode($json);
+                 return $rta;
+    }// End getHeaders
 
 
 

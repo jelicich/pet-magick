@@ -16,4 +16,60 @@ class ConversationsTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Conversations');
     }
+
+
+
+
+    public function getHeaders($to){
+
+
+/*
+				SELECT u.ID_USER, c.ID_CONVERSATION, u.NICKNAME 
+            	FROM conversations c, users u
+            	WHERE CASE
+            	WHEN c.USER_1_ID = '".$_SESSION['id']."'
+            	THEN c.USER_2_ID = u.ID_USER
+            	WHEN c.USER_2_ID = '".$_SESSION['id']."'
+            	THEN c.USER_1_ID = u.ID_USER
+            	END
+            	AND (
+            		c.USER_1_ID = '".$_SESSION['id']."'
+            		or c.USER_2_ID = '".$_SESSION['id']."'
+            	)
+            	ORDER BY c.ID_CONVERSATION DESC
+*/
+            	//$this tendria q ser $em pero no sé cómo hacer para instanciar o hacer que $em sea EntityManager
+                //http://www.9lessons.info/2013/05/message-conversation-database-design.html
+            $q = $this->createQuery("
+            	SELECT u.ID_USER, c.ID_CONVERSATION, u.NICKNAME 
+            	FROM conversations c JOIN users u c.USER_1_ID
+            	WHERE CASE
+            	WHEN c.USER_1_ID = '".$_SESSION['id']."'
+            	THEN c.USER_2_ID = u.ID_USER
+            	WHEN c.USER_2_ID = '".$_SESSION['id']."'
+            	THEN c.USER_1_ID = u.ID_USER
+            	END
+            	AND (
+            		c.USER_1_ID = '".$_SESSION['id']."'
+            		or c.USER_2_ID = '".$_SESSION['id']."'
+            	)
+            	ORDER BY c.ID_CONVERSATION DESC
+            	");
+                
+           		
+
+
+                 $rta = $q->execute();
+
+                 $json = array();
+
+                 foreach($rta as $m) 
+                 {
+
+                     $json[] = $m->toArray();
+                 }
+
+                 $rta = json_encode($json);
+                 return $rta;
+    }// End getHeaders
 }

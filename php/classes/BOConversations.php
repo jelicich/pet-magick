@@ -75,6 +75,7 @@ class BOConversations{
 
 
         function getHeaders($idUser){
+            /*
             $c = $this->conectar();
             $q = "
                 SELECT u.ID_USER, c.ID_CONVERSATION, u.NICKNAME 
@@ -94,8 +95,8 @@ class BOConversations{
             
             $this->inbox = json_encode($r);
             return true;
-
-        /*
+            */
+        
         try
             {  
                 //$this->val_getMessages($idUser);
@@ -108,7 +109,7 @@ class BOConversations{
                $this->err = $e->getMessage();
                return false;
             }
-        */
+        
 
     }// End read
 

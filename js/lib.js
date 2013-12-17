@@ -286,7 +286,6 @@ function regionsCombo(){
 //o agregarlo al header segun corresponda...
 //Eliminar mensajes
 
-// Input autocompletado...
 //Maqueta (crudo)
 
 var fromId;
@@ -493,6 +492,7 @@ function printUpdates(){
 	}
 }//end printUpdates
 
+
 //============================= AUTOCOMPLETE FUNCTIONS
 
 // Esto es lo incluye la prueba del autocompletado:
@@ -502,70 +502,95 @@ function printUpdates(){
 // ajax/autoComplete.php
 // BOusers->autoComplete(), getComplete() (las puse en esa clase pq en este caso responde a busqueda de users, pero si te parece podemos mudarla)
 // UsersTable, autoComplete($ref)
+// ajax/searchTool.php
 
-// Despues hay q ver como tunearlo bien. Por ahora va, viene y ya. TArda un toque, deberia imprimir lindo, etc...
-// Ahora me tengo q ir a apoliyar. Pero tira unos errores cuando ingresas algo q no es "3 caracteres". Estaba pensando en mandarle como parametro el length del value
-// a la consulta, pero manana lo hago. Tambien hay q hacerlo convivir con las demas consultas.
-// Si te parece una verga y se te ocurre algo mejor, adelante!!
+// Avance un poco con el autocompletado...
+// toma 3 eventos: 
+//keypress:  tomo lo q el tipo escribe un segundo despues de q termina.
+//paste: tomo lo q el tipo pegue con mouse o ctrl + v
+//keydown: una vez q selecciono de la lisa, con este evento puedo volver a reactivar (ejecutar)la consulta.
+// Basicamente te va listando las opciones q se generan de acuerdo a lo q vas ingresando. Luego seleccionas y listo.
+
+// PENDIENTE:
+
+// - poder navegar la lista q se despliega con las flechas (intento en lineas 528 a 532)
+// - Ver q parametros queremos tomar, mostrar y enviar (facil pq ya funciona, es elegir). La idea seria q te muestre fotito y nombre...
+// - Es muy lento. Desde q ingresas un caracter hasta q desplliega tarda mucho. Intente cachear el array y pude, pero no se bien como manejar el tema cacheo, vos?
+// - Ver si se buguea en determinadas situaciones y como convive con las otras consultas. De todas formas esta en proceso y van a aparecer algunas cosas supongo
+// - Los elementos q cree son al tun tun cortando y pegando del css, una vez sepamos com va a caminar, lo hacemos bien.
+
+// En fin, si podes hechale un vistazo a ver si se te ocurre como optimizarlo. No se si es lo mejor, pero estuve todo el dia y es lo q hay jajaj
+// Asi q una mirada agena aporta!
 
 
+LetterCounter = 0; // Global variable
+function searchField(){
 
+	byid('inputTo').addEventListener("keypress", handler, false); 
+	byid('inputTo').addEventListener("paste", handler, false); 
+	byid('inputTo').addEventListener("keydown", handler, false);
 
-function autoComplete(){
-
-	byid('inputTo').onkeyup = function(){
-		
-		if(this.value.length >= 3){
-			
-			var vars = 'user=' + this.value;
-			ajax('POST', 'ajax/autoComplete.php', suggest, vars, true);
-			//console.log(this.value);
-		}
-	}
 }//end autoComplete
 
+function handler(){
+
+	 	/* var e = e || window.event;
+	 	  if (e.keyCode == '38' || e.keyCode == '40') {
+	 	  	alert('hola');
+	     }*/
+
+		if(byid('suggestions')){
+
+			byid('suggestions').parentNode.removeChild(byid('suggestions'));
+		}
+		
+		LetterCounter++;
+		setTimeout("lookFor("+ LetterCounter +")", 1000);
+
+}//end handler
+
+function lookFor(compareCounter){
+	
+	if(compareCounter == LetterCounter) {
+		
+		var vars = 'user=' + byid('inputTo').value;
+			ajax('POST', 'ajax/autoComplete.php', suggest , vars, true);
+	}
+}//end lookFor
 
 function suggest(){
 
 	var html = eval(this.responseText);
-	byid('inputTo').value = html[0]['NICKNAME'];
+	var uls = create('ul');
+		uls.id = 'suggestions';
+		byid('searchField').appendChild(uls);
 
-}//end suggest
+		for(var i = 0; i < html.length; i++){
 
+			var each = html[i]['NICKNAME'];
+			
+			if(byid(each) === null){
 
+				var lis = create('li');
+				lis.id = each;
+				lis.role="option";
+				lis.innerHTML = each;
+				byid('suggestions').appendChild(lis);
 
+				byid(each).onclick = function(){
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+					byid('inputTo').value = this.id;
+					byid('suggestions').parentNode.removeChild(byid('suggestions'));
+				}
+			}
+		}//end for
+}//end autoComplete
 
 
 
 
 //=============================================================================== BIN
 
-
-/*
-function getClass(matchClass) {
-    var elems = document.getElementsByTagName('*'), i;
-    for (i in elems) {
-        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ') > -1) {
-            elems[i].style.display = 'block';
-        }
-    }
-}//end getClass
-*/
 
 
 /*
@@ -598,81 +623,4 @@ function upload_img(){
 		ajax('POST', 'ajax/insertar.php', vardump, vars, true);
 	}
 }//end logi
-*/
-
-/*
-Estructura del json q trae
-[
-{
-	"ID_MESSAGE":"1",
-	"FROM_USER_ID":"4",
-	"TO_USER_ID":"5",
-	"SUBJECT":"Hola",
-	"MESSAGE":"Hola como estas",
-	"STATUS":"9",
-	"DATE":"2013-12-06",
-	"Users":
-	{
-		"ID_USER":"4",
-		"NAME":"luis",
-		"LASTNAME":"miguel",
-		"NICKNAME":null,
-		"EMAIL":null,
-		"PASSWORD":null,
-		"ABOUT":null,
-		"COUNTRY_ID":null,
-		"REGION_ID":null,
-		"CITY_ID":null,
-		"PIC_ID":null,
-		"ALBUM_ID":null,
-		"RANK":null,
-		"TOKEN":null
-	}
-}
-] 
-
-	*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* NO VA CON EL POPUP
-function printReg(){
-
-	var html = this.responseText;
-	var wrap = byid('login-reg');
-		wrap.innerHTML = html;
-		eval(byid('jsreg').innerHTML); 	
-}//end printReg
-*/
-
-
-/* NO LA USO CON LA VENTANA POP UP
-function printLogin(){
-
-	var html = this.responseText;
-	var wrap = byid('login-reg');
-		wrap.innerHTML = html;
-		eval(byid('jslogin').innerHTML); 	
-}//end printReg
 */

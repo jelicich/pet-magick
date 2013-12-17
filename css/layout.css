@@ -1122,3 +1122,42 @@ Tunear!!!
 #wrap-messages li:last-child{
 	border-bottom:none;
 }
+
+
+
+
+
+
+
+#searchField {
+	background-color: yellow;
+	width: 205px;
+	height: auto;
+	position: relative;
+}
+
+#searchField ul{
+	position: absolute;
+	background-color: green;
+	width: 205px;
+	height: auto;
+	float: left;
+	top:22px;
+	left: -25px;
+
+}
+
+
+#searchField li {
+	color: #FFFFFF;
+	text-decoration: none;
+	display: block;
+	padding: 10px;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	
+}
+
+#searchField li:hover{
+	cursor: pointer;
+	background: #ea574c;
+}

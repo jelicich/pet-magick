@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
-<script type="text/javascript" src="js/hola2.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
 
 </head>
 
@@ -48,7 +48,11 @@
 		</div>	
 
 		<form method='' action='' class="grid_12" style="display:none" id="write-message">	
-			<input type='text' placeholder='To' id='inputTo' name='inputTo'/><br>
+			<div id='searchField'>
+				<input type='text' placeholder='To' id='inputTo' name='inputTo'/>
+			<!--	<input type='hidden' id='inputToHidden' name='inputToHidden'/> -->
+			</div><br>
+
 			<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
 			<input type='button' value='Submit' id='send-message'/>
 		</form>
@@ -69,7 +73,7 @@
 <script type="text/javascript" id="jslogout">
 
 	inbox(); //============= Carga los mensajes
-	autoComplete();
+	searchField();
 
 
 </script>

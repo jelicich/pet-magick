@@ -345,9 +345,10 @@ function printHeaders(){
 	for(var i = 0; i < html.length; i++){
 
 		 each =  html[i]['ID_USER'];
-		 eachName =  html[i]['NAME'] + ' ' + html[i]['LASTNAME'] + ' (' + html[i]['NICKNAME'] + ')';
-		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
-		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
+		 //eachName =  html[i]['NAME'] + ' ' + html[i]['LASTNAME'] + ' (' + html[i]['NICKNAME'] + ')';
+		 eachName =  '(' + html[i]['NICKNAME'] + ')';
+		 //lastMsg =  html[i]['Messages'][0]['MESSAGE'];
+		 //lastMsg =  html[i]['Messages'][0]['MESSAGE'];
 		 //console.log(lastMsg);
 
 		if(byid(each) === null){ 
@@ -357,15 +358,15 @@ function printHeaders(){
 	 		as.href = "?u="+ each;
 	 		lis = create('li');
 	  		lis.id = 'user-'+ each;
-	  		if(html[i]['Messages'][0]['STATUS'] == 0)
-	  			lis.className = 'msg-unread';
+	  		//if(html[i]['Messages'][0]['STATUS'] == 0)
+	  		//	lis.className = 'msg-unread';
 
 	  		title = create('span');
 	  		title.className = 'from-user-name';
 	  		title.innerHTML = eachName;
 	  		caption = create('span');
 	  		caption.className = 'preview-message';
-	  		caption.innerHTML = lastMsg;
+	  		//caption.innerHTML = lastMsg;
 
 	  		as.appendChild(title);
 	  		as.appendChild(caption);

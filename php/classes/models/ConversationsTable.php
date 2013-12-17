@@ -24,7 +24,8 @@ class ConversationsTable extends Doctrine_Table
 
 
 /*
-				SELECT u.ID_USER, c.ID_CONVERSATION, u.NICKNAME 
+				//ESTA CONSULTA EN MYSQL ANDA JOYA
+                SELECT u.ID_USER, c.ID_CONVERSATION, u.NICKNAME 
             	FROM conversations c, users u
             	WHERE CASE
             	WHEN c.USER_1_ID = '".$_SESSION['id']."'
@@ -41,15 +42,22 @@ class ConversationsTable extends Doctrine_Table
             	//$this tendria q ser $em pero no sé cómo hacer para instanciar o hacer que $em sea EntityManager
                 //http://www.9lessons.info/2013/05/message-conversation-database-design.html
 
+            //ESTA CONSULTA ANDA PERO NO DEVUELVE RESULTADOS
+            /*
             $q = Doctrine_Query::create()
                 ->select("u.ID_USER, c.ID_CONVERSATION, u.NICKNAME")
-                ->from("conversations c, users u")
-                ->where("CASE WHEN c.USER_1_ID = '".$_SESSION['id']."' THEN c.USER_1_ID = '".$_SESSION['id']."' WHEN c.USER_2_ID = '".$_SESSION['id']."' THEN c.USER_1_ID = u.ID_USER 
-                    AND  (
-                    c.USER_1_ID = '".$_SESSION['id']."'
-                    or c.USER_2_ID = '".$_SESSION['id']."'
-                )")
+                ->from("Conversations c, c.Users u")
+                ->where("CASE 
+                    WHEN c.USER_1_ID = '".$_SESSION['id']."' 
+                    THEN c.USER_2_ID = u.ID_USER
+                    WHEN c.USER_2_ID = '".$_SESSION['id']."'
+                    THEN c.USER_1_ID = u.ID_USER 
+                    END
+                    ")
+                ->AndWhere("c.USER_1_ID = ?", $_SESSION['id'])
+                ->orWhere("c.USER_2_ID = ?", $_SESSION['id'])
                 ->orderBy("c.ID_CONVERSATION DESC");
+            */
 
            /* $q = $this->createQuery("
             	SELECT u.ID_USER, c.ID_CONVERSATION, u.NICKNAME 
@@ -67,20 +75,54 @@ class ConversationsTable extends Doctrine_Table
             	ORDER BY c.ID_CONVERSATION DESC
             	");
                 */
+            
+            /*
+            $q = Doctrine_Query::create()
+                ->select("u.ID_USER, c.ID_CONVERSATION, u.NICKNAME")
+                ->from("conversations c, c.Users u")
+                ->where("CASE 
+                    WHEN c.USER_1_ID = '".$_SESSION['id']."' 
+                    THEN c.USER_2_ID = u.ID_USER
+                    WHEN c.USER_2_ID = '".$_SESSION['id']."'
+                    THEN c.USER_1_ID = u.ID_USER 
+                    END
+                    AND (
+                    c.USER_1_ID = '".$_SESSION['id']."'
+                    or c.USER_2_ID = '".$_SESSION['id']."'
+                )")
+                ->orderBy("c.ID_CONVERSATION DESC");
+
+            */
            		
+                //ESTA DEBERIA ANDAR PERO NO LA EJECUTA
+                
+                $q = Doctrine_Manager::getInstance()->getCurrentConnection();
 
+                $rta = $q->execute("
+                SELECT u.ID_USER, c.ID_CONVERSATION, u.NICKNAME 
+                FROM conversations c, users u
+                WHERE CASE
+                WHEN c.USER_1_ID = '".$_SESSION['id']."'
+                THEN c.USER_2_ID = u.ID_USER
+                WHEN c.USER_2_ID = '".$_SESSION['id']."'
+                THEN c.USER_1_ID = u.ID_USER
+                END
+                AND (
+                    c.USER_1_ID = '".$_SESSION['id']."'
+                    or c.USER_2_ID = '".$_SESSION['id']."'
+                )
+                ORDER BY c.ID_CONVERSATION DESC");
+                
+                $json = array();
 
-                 $rta = $q->execute();
+                foreach($rta as $m) 
+                {
 
-                 $json = array();
+                    $json[] = $m->toArray();
+                }
 
-                 foreach($rta as $m) 
-                 {
+                $rta = json_encode($json);
 
-                     $json[] = $m->toArray();
-                 }
-
-                 $rta = json_encode($json);
-                 return $rta;
+                return $rta;
     }// End getHeaders
 }

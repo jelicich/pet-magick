@@ -19,17 +19,19 @@ class MessagesTable extends Doctrine_Table
 
 //====================================================================== SUBMIT
 
-      public  function submit($from, $to, $message){
+      public  function submit($to, $message){
 
 				$now = date('Y-m-d H:i:s');
 
     	 		$msg = new Messages();
-	            $msg->FROM_USER_ID = $from;
-	            $msg->TO_USER_ID = $to;
+	            $msg->USER_ID = $_SESSION['id'];
 	            $msg->MESSAGE = $message;
+                $msg->CONVERSATION_ID = $to;
 	            $msg->STATUS = 0; // hacer q sea 0 por default en la BD
 	            $msg->DATE = $now;
 
+                //ACTUALIZAR EN CONVERSATIONS LA FECHA!!!
+                
 	            $msg->save();
 
             //me devuelve el id del mensaje, todo lo siguiente es para poder imprimirlo en el chat.
@@ -66,16 +68,13 @@ class MessagesTable extends Doctrine_Table
 //====================================================================== READ
 
 
-    public function getAllMessages($from){
+    public function getAllMessages($conv){
 
             $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
+                ->select('m.*, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
-                ->AndWhere('m.FROM_USER_ID = ?', $from)
-                ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id'] )
-                ->orWhere('m.FROM_USER_ID = ?', $_SESSION['id'])
-                ->AndWhere('m.TO_USER_ID = ?', $from )
+                ->AndWhere('m.CONVERSATION_ID = ?', $conv)
                 ->orderBy('m.DATE ASC');
 
 
@@ -96,7 +95,7 @@ class MessagesTable extends Doctrine_Table
                         ->update('messages m')
                         ->set('m.STATUS' , '?', '1')
                         ->AndWhere('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']) 
-                        ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id'])
+                        ->AndWhere('m.USER_ID != '. $_SESSION['id'])
                         ->AndWhere('m.STATUS = ?', '0');
 
                      $q->execute();
@@ -180,7 +179,7 @@ class MessagesTable extends Doctrine_Table
                  return $rta;
     }// End read
     */
-
+    /*
     public function getHeaders($to){
 
 
@@ -191,7 +190,7 @@ class MessagesTable extends Doctrine_Table
                 ->AndWhere('c.USER_1_ID = ?', $to)
                 ->orWhere('c.USER_2_ID = ?', $to)
                 ->orderBy('m.DATE DESC');
-                /*->groupBy('m.CONVERSATION_ID');*/
+                //->groupBy('m.CONVERSATION_ID');
            
 
 
@@ -208,9 +207,9 @@ class MessagesTable extends Doctrine_Table
                  $rta = json_encode($json);
                  return $rta;
     }// End getHeaders
+    */
 
-
-
+/*
 
      public function getNewHeaders($to){
 
@@ -246,7 +245,7 @@ class MessagesTable extends Doctrine_Table
 
                   return $rta;
     }// End read
-
+*/
 
 }
 

@@ -37,7 +37,7 @@ class BOMessages{
     {
         $t = sizeof($ref);
 
-        if(!$ref['from'] || empty($ref['from']) )
+        if(!$_SESSION['id'] || empty($_SESSION['id']) )
         {
             throw new Exception('There was an error with your session. Message can\'t be sent');
         }
@@ -71,9 +71,7 @@ class BOMessages{
 
     function val_getMessages($idUser)
     {
-         /** 
-        Adapto la funcion de arriba ya que no necesitamos que reciba un array. Solo el ID
-         */
+  
 
         if(empty($idUser)) 
         {
@@ -96,7 +94,7 @@ class BOMessages{
          try
             {  
                 $this->val_submit($ref);
-                $this->msgSent = $this->tableMsg->submit($ref['from'], $ref['to'], $ref['message']);
+                $this->msgSent = $this->tableMsg->submit($ref['to'], $ref['message']);
 
                 return true;
             }

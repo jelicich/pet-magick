@@ -321,7 +321,6 @@ function inbox(){
 }//end inbox
 
 function printHeaders(){
-
 	//si no viene nada por arguments es q esta ejecutada por ajax
 	if(arguments.length == 0)
 	{	
@@ -343,22 +342,27 @@ function printHeaders(){
 
 	for(var i = 0; i < html.length; i++){
 
-		 each =  html[i]['ID_USER'];
-		 eachName =  html[i]['NAME'] + ' ' + html[i]['LASTNAME'] + ' (' + html[i]['NICKNAME'] + ')';
-		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
-		 lastMsg =  html[i]['Messages'][0]['MESSAGE'];
+		 each =  html[i]['ID_CONVERSATION'];
+		 eachName = html[i]['NAME'] + ' ' + html[i]['LASTNAME'] + ' ' + '(' + html[i]['NICKNAME'] + ')';
+		 lastMsg =  html[i]['MESSAGE'];
 		 //console.log(lastMsg);
 
 		if(byid(each) === null){ 
 
 	 		as = create('a');
-	 		as.id = each; //revisar valor
-	 		as.href = "?u="+ each;
+	 		as.href = "?c="+ each;
 	 		lis = create('li');
-	  		lis.id = 'user-'+ each;
-	  		if(html[i]['Messages'][0]['STATUS'] == 0)
-	  			lis.className = 'msg-unread';
-
+	  		lis.id = 'conv-'+ each;
+	  		
+	  		if(html[i]['ID_USER'] != html[i]['SENDER'])//me fijo de quien es el último mensaje para estilearlo
+  			{
+  				lis.className += 'msg-sent';
+  			}
+	  		else
+	  		{	
+	  			if(html[i]['STATUS'] == 0)
+	  				lis.className = 'msg-unread';
+	  		}
 	  		title = create('span');
 	  		title.className = 'from-user-name';
 	  		title.innerHTML = eachName;
@@ -381,7 +385,7 @@ function printHeaders(){
 	  			byid('wrap-conversations').insertBefore(lis,arguments[1]);
 	  		}
 
-	  		byid(each).onclick = function(e)
+	  		as.onclick = function(e)
 	  		{
 	  			//me fijo en el objeto xhr publico si existe y si esta procesando algo y lo borro.
 	  			if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
@@ -393,7 +397,7 @@ function printHeaders(){
 		  		var index = this.href.indexOf('=');
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
-		  		//console.log(fromId);
+		  		console.log(fromId);
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
 
 		  		whilst(byid('wrap-messages')); 
@@ -408,15 +412,17 @@ function printHeaders(){
 		  	}
 	  	}
 	 }//end for
+	 
 	 //empiezo a chequear si hay nuevos mensajes
-	 refreshInbox();
+	 //refreshInbox();
+
 }//end printHeaders
 
 function printMessages(){
 
 	//si no tiene argumentos viene por ajax
 	if(arguments.length == 0){
-		//console.log(this.responseText);
+		console.log(this.responseText);
 		var html = eval(this.responseText);
 
 	}else{

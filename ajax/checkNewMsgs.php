@@ -3,19 +3,22 @@
 	session_start();
 
 	include_once('../php/classes/BOMessages.php');
+	include_once('../php/classes/BOConversations.php');
 
+	$conv = new BOConversations;
 	$mssg = new BOMessages;
+
 
 	$data = $_SESSION['id'];
 
-	echo '[';
+	//echo '[';
 
-	if($mssg->getNewHeaders($data))
+	if($conv->getNewHeaders($data))
 	{
-		echo $mssg->getInbox();
+		echo $conv->getInbox();
 		$_SESSION['last-header'] = date('Y-m-d H:i:s');
 	}
-	elseif($mssg->getNewHeaders($data) == null)
+	elseif($conv->getNewHeaders($data) == null)
 	{
 		echo "null";
 	}
@@ -24,6 +27,7 @@
 		echo $mssg->getErrors();
 	}
 	
+	/*
 	echo ',';
 	
 	if(isset($_SESSION['current-chat']))// Agregue el isset pq es la forma q encontre de evitar el error q me tiraba en ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);

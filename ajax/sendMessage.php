@@ -13,17 +13,16 @@ Comento $to, hago las pruebas con el ID, dsps deberíamos poner un autocomplete 
 //$to = $user->table->findByMail($_POST['to']); /**Hay una validacion q utiliza findbymail en BOMessages....
 
 // Modifico esto para q pueda handlear cuando hay usuario seleccionado o por default si esta dentro de la conversacion
-if (empty($_POST['to'])){
+if (empty($_POST['conversation'])){
 
 	$to = $_SESSION['current-chat'];
 
 }else{
-	
-	$to = $_POST['to'];
+	//HACER QUE $to sea el ID DE LA CONVERSACION ENTRE el usuario q seleccionó y $_SESSION(id)
+	//$to
 }
 
-$data = array(
-	'from'=>$_SESSION['id'], 
+$data = array( 
 	'to'=>$to,
 	'message'=>$_POST['message']
 	);

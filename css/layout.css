@@ -1063,6 +1063,13 @@ Tunear!!!
 	height: auto; /* provisorio */
 }
 
+.msg-sent .preview-message{
+	display: block;
+	padding-left: 15px;
+	background: url('../img/sent-arrow.png') no-repeat;
+	background-position: 0;
+}
+
 .msg-unread{
 	background-color: #b14037 !important;
 	font-style: italic;

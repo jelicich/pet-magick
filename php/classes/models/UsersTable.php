@@ -139,14 +139,15 @@ class UsersTable extends Doctrine_Table
 		return $rta;
     }
 
-    //==================== AUTOCOMPLETE
+    
 
-    public function autoComplete($ref){
+     //==================== AUTOCOMPLETE EVERYTHING
+
+    public function autoCompleteEverything(){
 
     	$q = Doctrine_Query::create()
     		->select('*')
-			->from('Users u') 
-			->AndWhere('u.NICKNAME LIKE ?', $ref.'%');
+			->from('Users u');
 
 		
 		$rta = $q->execute();

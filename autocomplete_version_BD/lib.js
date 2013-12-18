@@ -503,28 +503,34 @@ function printUpdates(){
 
 //============================= AUTOCOMPLETE FUNCTIONS
 
-/*
+// Esto es lo incluye la prueba del autocompletado:
 
-Procedimiento version cacheada:
-------------------------------
+// inbox.php: autocomplete()
+// - lib.js: autoComplete(), function suggest()
+// ajax/autoComplete.php
+// BOusers->autoComplete(), getComplete() (las puse en esa clase pq en este caso responde a busqueda de users, pero si te parece podemos mudarla)
+// UsersTable, autoComplete($ref)
+// ajax/searchTool.php
 
-En el archivo login.php agregue unas lineas (24 a 31) q cachean en el archivo searTool.php la info de todos los usuarios. De este archivo va 
-a sacar la info el campo de autocmpletado en lugar de ir a la bd por cada letra q se ingresa.Aca habria q definir q usuarios queremos cachear, si toda la bd o los  favoritos del user q se loguea o q.
-Lo q hace el js a partir de la linea 511 es, searchfile() instancia los eventos y esos eventos ejecutan la handler().
-handler() limpia las sugerencias anteriores y ejecuta la funcion lookFor(), q es quien hacce la consulta por AJAX y ejecuta suggest().
-suggest() lo q hace es sencillamente recorrer el array q obtiene e imprimir las opciones segun corresponda a la busqueda
-
+// Avance un poco con el autocompletado...
+// toma 3 eventos: 
+//keypress:  tomo lo q el tipo escribe un segundo despues de q termina.
+//paste: tomo lo q el tipo pegue con mouse o ctrl + v
+//keydown: con este evento puedo volver a reactivar (ejecutar)la consulta.
+// Basicamente te va listando las opciones q se generan de acuerdo a lo q vas ingresando. Luego seleccionas y listo.
 
 // PENDIENTE:
 
-- Seleccionar que usuarios van a ser los sugeridos (favoritos?) pq todos es bocha, pero no se....
-- poder navegar la lista q se despliega con las flechas (intento en lineas 538 a 541)
-- Ver q parametros queremos tomar, mostrar y enviar (facil pq ya funciona, es elegir). La idea seria q te muestre fotito y nombre y/o fragento conversacion...
+// - Seleccionar que usuarios van a ser los sugeridos (favoritos?) pq todos es bocha, pero no se....
+// - poder navegar la lista q se despliega con las flechas (intento en lineas 528 a 532)
+// - Ver q parametros queremos tomar, mostrar y enviar (facil pq ya funciona, es elegir). La idea seria q te muestre fotito y nombre...
+// - Es muy lento. Desde q ingresas un caracter hasta q desplliega tarda mucho. Intente cachear el array y pude, pero no se bien como manejar el tema cacheo, vos?
+// - Ver si se buguea en determinadas situaciones y como convive con las otras consultas. De todas formas esta en proceso y van a aparecer algunas cosas supongo
+// - Los elementos q cree son al tun tun cortando y pegando del css, una vez sepamos com va a caminar, lo hacemos bien.
 
-- Ver si se buguea en determinadas situaciones y como convive con las otras consultas. Esta en proceso y van a aparecer algunas cosas supongo
-- Los elementos q cree son al tun tun cortando y pegando del css, una vez sepamos com va a caminar, lo hacemos bien.
+// En fin, si podes hechale un vistazo a ver si se te ocurre como optimizarlo. No se si es lo mejor, pero estuve todo el dia y es lo q hay jajaj
+// Asi q una mirada agena aporta!
 
-*/
 
 LetterCounter = 0; // Global variable
 
@@ -557,29 +563,24 @@ function lookFor(compareCounter){
 	if(compareCounter == LetterCounter) {
 		
 		if(byid('inputTo').value != ''){
-
-				ajax('POST', 'ajax/searchTool.php', suggest , false, true);
+			
+			var vars = 'user=' + byid('inputTo').value;
+				ajax('POST', 'ajax/autoComplete.php', suggest , vars, true);
 		}
 	}// Hace falta un else return aca????
 }//end lookFor
 
 function suggest(){
 	
-	var vars = byid('inputTo').value;
-	var largo = byid('inputTo').value.length;
-
 	var html = eval(this.responseText);
 	var uls = create('ul');
 		uls.id = 'suggestions';
 		byid('searchField').appendChild(uls);
-	   //console.log(html);
-	
-	for(var i = 0; i < html.length; i++){
 
-		var each = html[i]['NICKNAME'];
-		//console.log(each);
-		if(each.substring(0, largo) == vars){
-			//console.log(each);
+		for(var i = 0; i < html.length; i++){
+
+			var each = html[i]['NICKNAME'];
+			
 			if(byid(each) === null){
 
 				var lis = create('li');
@@ -594,8 +595,7 @@ function suggest(){
 					byid('suggestions').parentNode.removeChild(byid('suggestions'));
 				}
 			}
-		}
-	}
+		}//end for
 }//end autoComplete
 
 
@@ -605,26 +605,7 @@ function suggest(){
 
 
 
-
-
-
-
 /*
-
-
-LetterCounter = 0; // Global variable
-
-function searchField(){
-
-	byid('inputTo').addEventListener("keypress", handler, false); 
-	byid('inputTo').addEventListener("paste", handler, false); 
-	byid('inputTo').addEventListener("keydown", handler, false);
-	// ver si puedo evitar uno de estos eventos. 
-}//end autoComplete
-
-
-
-
 
 http://new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata
 

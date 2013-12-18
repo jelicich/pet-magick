@@ -184,12 +184,11 @@ class BOUsers{
     }// End delete
 
 
-//=============================================================================== AUTOCOMPLETE FUNCTIONS
-    function autoComplete($ref){
+    function autoCompleteEverything(){
 
       try
           {
-            $this->complete = $this->table->autoComplete($ref);
+            $this->complete = $this->table->autoCompleteEverything();
             return true;
           }
           catch(Exception $e)
@@ -200,7 +199,7 @@ class BOUsers{
     }// End delete
 
 
-    function getComplete()
+    function getCompleteEverything()
     {
        return $this->complete;
     }// End getInbox

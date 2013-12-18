@@ -311,7 +311,7 @@ function inbox(){
 			xhr.abort();
 		}
 
-		var vars = 'to=' + byid('inputTo').value + '&message='+ byid('message').value; // Agrego to para enviar destinatario seleccionado.
+		var vars = 'message='+ byid('message').value; // Agrego to para enviar destinatario seleccionado.
 	 	ajax('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
 	 	byid('inputTo').value = '';
@@ -347,7 +347,7 @@ function printHeaders(){
 		 lastMsg =  html[i]['MESSAGE'];
 		 //console.log(lastMsg);
 
-		if(byid(each) === null){ 
+		if(byid(each) === null){ //este es medio al pedo :S para que es?
 
 	 		as = create('a');
 	 		as.href = "?c="+ each;
@@ -397,7 +397,7 @@ function printHeaders(){
 		  		var index = this.href.indexOf('=');
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
-		  		console.log(fromId);
+		  		//console.log(fromId);
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
 
 		  		whilst(byid('wrap-messages')); 
@@ -414,15 +414,15 @@ function printHeaders(){
 	 }//end for
 	 
 	 //empiezo a chequear si hay nuevos mensajes
-	 //refreshInbox();
+	 refreshInbox();
 
 }//end printHeaders
 
 function printMessages(){
-
+	//console.log(this.responseText);
 	//si no tiene argumentos viene por ajax
 	if(arguments.length == 0){
-		console.log(this.responseText);
+		//console.log(this.responseText);
 		var html = eval(this.responseText);
 
 	}else{
@@ -455,10 +455,10 @@ function refreshInbox(){
 }//end refreshInbox
 
 function printUpdates(){
-	//console.log(this.responseText);
+	console.log(this.responseText);
 	var html = eval(this.responseText);
 
-	if(html == null || html[0] == null ) // html == null para q no tire error al ejecutar algunos eventos (refrescar, submit, etc)
+	if(html == null || html[0] == null) // html == null para q no tire error al ejecutar algunos eventos (refrescar, submit, etc)
 	{
 		return;
 
@@ -468,8 +468,10 @@ function printUpdates(){
 		{	
 			try
 			{
-				var id = 'user-' + html[0][i]['ID_USER'];
+				var id = 'conv-' + html[0][i]['ID_CONVERSATION'];
+				//console.log(id);
 				var li = byid(id);
+				
 				li.parentNode.removeChild(li);
 			}
 			catch(e)

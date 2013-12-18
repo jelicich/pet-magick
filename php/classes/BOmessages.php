@@ -48,7 +48,7 @@ class BOMessages{
         }
         else
         {
-             if(empty($ref['to']))
+             if(empty($ref['conversation']))
             {
                 throw new Exception('Please enter the recipient');
             }
@@ -91,11 +91,12 @@ class BOMessages{
 
     function submit($ref){
 
+
          try
             {  
                 $this->val_submit($ref);
-                $this->msgSent = $this->tableMsg->submit($ref['to'], $ref['message']);
-
+                $this->msgSent = $this->tableMsg->submit($ref['conversation'], $ref['message']);
+                //actualizo la fecha en la tabla conversaciones
                 return true;
             }
          catch(Exception $e)
@@ -130,15 +131,15 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
     }// End read
 
 
-    function getNewMessages($from){
+    function getNewMessages($conversation){
 /**
 Si el mensaje tiene Ñ o acentos devuelve null. hay q escapar esos caracteres y los saltos de linea tmb.
 para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
 */
         try
             {  
-                $this->val_getMessages($from);
-                $this->chat = $this->tableMsg->getNewMessages($from);
+                $this->val_getMessages($conversation);
+                $this->chat = $this->tableMsg->getNewMessages($conversation);
                 if($this->chat == null)
                     return null;
                 
@@ -152,49 +153,6 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
 
     }// End read
 
-        function getHeaders($idUser){
-/**
-Si el mensaje tiene Ñ o acentos devuelve null. hay q escapar esos caracteres y los saltos de linea tmb.
-para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
-*/
-        try
-            {  
-                //$this->val_getMessages($idUser);
-                $this->inbox = $this->tableConv->getHeaders($idUser);
-
-                return true;
-            }
-         catch(Exception $e)
-            {
-               $this->err = $e->getMessage();
-               return false;
-            }
-
-    }// End read
-
-
-
-     function getNewHeaders($idUser){
-/**
-Si el mensaje tiene Ñ o acentos devuelve null. hay q escapar esos caracteres y los saltos de linea tmb.
-para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
-*/
-        try
-            {  
-                //$this->val_getMessages($idUser);
-                $this->inbox = $this->tableMsg->getNewHeaders($idUser);
-                if($this->inbox == null)
-                    return null;
-
-                return true;
-            }
-         catch(Exception $e)
-            {
-               $this->err = $e->getMessage();
-               return false;
-            }
-
-    }// End read
 
  //======================== READ MESSAGES
 

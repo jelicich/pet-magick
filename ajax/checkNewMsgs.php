@@ -11,7 +11,7 @@
 
 	$data = $_SESSION['id'];
 
-	//echo '[';
+	echo '[';
 
 	if($conv->getNewHeaders($data))
 	{
@@ -27,7 +27,7 @@
 		echo $mssg->getErrors();
 	}
 	
-	/*
+	
 	echo ',';
 	
 	if(isset($_SESSION['current-chat']))// Agregue el isset pq es la forma q encontre de evitar el error q me tiraba en ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);

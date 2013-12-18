@@ -11,9 +11,7 @@ class BOConversations{
     var $tableUsr;
     var $tableMsg;
     var $inbox;
-    var $chat;
-    var $msgSent;
-    var $err;
+
 
     function __construct()
     {
@@ -40,7 +38,7 @@ class BOConversations{
         if (!$conexion) 
         {
         //entra en este if si $conexion es false
-            die("No hay conexion a la bd");
+            die("No connection to database");
         }
         return $conexion;
     }
@@ -52,7 +50,7 @@ class BOConversations{
         $err = mysqli_error($conexion);
         if ($err) 
         {
-            die("Error en la consulta " . $err);
+            die("Query error " . $err);
         }
         return $resultadoConsulta;
     }
@@ -120,12 +118,11 @@ class BOConversations{
             $out = $crow['ID_MESSAGE'];
             $out = $crow['MESSAGE'];
             $out = $crow['DATE'];
-            */
-
-
-            
+            */   
 
         }
+        if(sizeof($out) == 0)
+            return null;
         
         $this->inbox = json_encode($out);
         return true;
@@ -241,19 +238,6 @@ class BOConversations{
     }// End getInbox
 
    
-    function getChat()
-    {
-        return $this->chat;
-    }// End getChat
-
-
-
-
-
-    function getMsgSent()
-    {
-        return $this->msgSent;
-    }
     
 
 }// End class
@@ -261,37 +245,6 @@ class BOConversations{
 
 
 
-
-
-
-
-
-
-
-
-/*
-
-$inbox = new BOmessages;
-$yesterday = date('Y-m-d H:i:s', time()-86400);
-
-
-// Submit
-$query = array(17,18, 'pijita', 'hola puto');
-$inbox->submit($query);
-/*
-
-// Submit
-$query = array(6,7, 'pijita', 'hola puto', 0);
-$inbox->submit($query);
-
-//Read
-$query = array(7, $yesterday);
-$inbox->read($query);
-
-var_dump( $inbox->getMessages());
-
-
-*/
 
 
 

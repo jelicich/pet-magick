@@ -155,4 +155,6 @@ class ConversationsTable extends Doctrine_Table
 
                 return $rta;
     }// End getHeaders
+
+
 }

@@ -19,16 +19,22 @@ class MessagesTable extends Doctrine_Table
 
 //====================================================================== SUBMIT
 
-      public  function submit($to, $message){
+      public  function submit($conversation, $message){
 
 				$now = date('Y-m-d H:i:s');
 
     	 		$msg = new Messages();
 	            $msg->USER_ID = $_SESSION['id'];
 	            $msg->MESSAGE = $message;
-                $msg->CONVERSATION_ID = $to;
+                $msg->CONVERSATION_ID = $conversation;
 	            $msg->STATUS = 0; // hacer q sea 0 por default en la BD
 	            $msg->DATE = $now;
+
+                $q = Doctrine_Query::create()
+                        ->update('conversations c')
+                        ->set('c.DATE' , '?', $now)
+                        ->AndWhere('c.ID_CONVERSATION = ?', $conversation);
+                     $q->execute();
 
                 //ACTUALIZAR EN CONVERSATIONS LA FECHA!!!
                 
@@ -39,7 +45,7 @@ class MessagesTable extends Doctrine_Table
         $msgSent = $msg->ID_MESSAGE;
 
         $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
                 ->AndWhere('m.ID_MESSAGE = ?', $msgSent);
@@ -105,14 +111,14 @@ class MessagesTable extends Doctrine_Table
     }// End read
 
 
-  public function getNewMessages($from){
+  public function getNewMessages($conversation){
 
                 $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.FROM_USER_ID, m.TO_USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
+                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
-                ->AndWhere('m.FROM_USER_ID = ?', $from)
-                ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id'] )
+                ->AndWhere('m.CONVERSATION_ID = ?', $conversation)
+                ->AndWhere('m.USER_ID != ?', $_SESSION['id'])
                 ->AndWhere('m.STATUS = ?', '0')
                 ->orderBy('m.DATE ASC');
 
@@ -138,7 +144,7 @@ class MessagesTable extends Doctrine_Table
                         ->update('messages m')
                         ->set('m.STATUS' , '?', '1')
                         ->AndWhere('m.ID_MESSAGE = ?', $json[$i]['ID_MESSAGE']) 
-                        ->AndWhere('m.TO_USER_ID = ?', $_SESSION['id']);
+                        ->AndWhere('m.USER_ID != ?', $_SESSION['id']);
                      $q->execute();
                   }
 

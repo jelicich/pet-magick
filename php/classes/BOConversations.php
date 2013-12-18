@@ -202,7 +202,9 @@ class BOConversations{
 
         }
         
-        if(sizeof($out) == 0)
+        
+
+        if(empty($out))
             return null;
 
         $this->inbox = json_encode($out);

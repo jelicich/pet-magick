@@ -135,6 +135,8 @@ class MessagesTable extends Doctrine_Table
 
                  if(sizeof($json) == 0)
                     return null;
+                if(empty($json))
+                    return null;
 
                  $rta = json_encode($json);
 

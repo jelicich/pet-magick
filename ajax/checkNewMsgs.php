@@ -18,13 +18,13 @@
 		echo $conv->getInbox();
 		$_SESSION['last-header'] = date('Y-m-d H:i:s');
 	}
-	elseif($conv->getNewHeaders($data) == null)
+	elseif($conv->getNewHeaders($data) === false)
 	{
-		echo "null";
+		echo $mssg->getErrors();	
 	}
 	else
 	{
-		echo $mssg->getErrors();
+		echo "null";
 	}
 	
 	
@@ -34,10 +34,10 @@
 	{
 		if($mssg->getNewMessages($_SESSION['current-chat']))
 			echo $mssg->getChat();
-		elseif($mssg->getNewMessages($_SESSION['current-chat']) == null)
-			echo "null";
-		else
+		elseif($mssg->getNewMessages($_SESSION['current-chat']) === false)
 			echo $mssg->getErrors();
+		else
+			echo "null";
 	}
 
 	echo ']';

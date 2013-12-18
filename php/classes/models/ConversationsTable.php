@@ -18,7 +18,43 @@ class ConversationsTable extends Doctrine_Table
     }
 
 
+    public function existsConversation($recipient)
+    {
+         $q = Doctrine_Query::create()
+                ->select("c.ID_CONVERSATION")
+                ->from("conversations c")
+                ->where("USER_1_ID =?", $recipient)
+                ->AndWhere("USER_2_ID =?", $_SESSION['id'])
+                ->orWhere("USER_1_ID =?", $_SESSION['id'])
+                ->AndWhere("USER_2_ID =?", $recipient);
 
+        $rta = $q->execute();
+
+        $json = array();
+
+        foreach($rta as $m) 
+        {
+
+            $json[] = $m->toArray();
+        }
+
+        //$rta = json_encode($json);
+
+        return $rta;
+    }  
+
+    public function createConversation($recipient)
+    {
+        $conv = new Conversations;
+        $conv->USER_1_ID = $_SESSION['id'];
+        $conv->USER_2_ID = $recipient;
+        $conv->DATE = date('Y-m-d H:i:s');
+
+        $conv->save();
+
+        $convID = $conv->ID_CONVERSATION;
+        return $convID;
+    }
 
     public function getHeaders($to){
 

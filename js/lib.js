@@ -322,10 +322,16 @@ function inbox(){
 
 function printHeaders(){
 	//si no viene nada por arguments es q esta ejecutada por ajax
+	//console.log(this.responseText);
 	if(arguments.length == 0)
 	{	
 		//console.log(this.responseText);
 		var html = eval(this.responseText);	
+		if(html == undefined)
+		{
+			refreshInbox();
+			return;
+		}	
 	}
 	else
 	{
@@ -455,7 +461,7 @@ function refreshInbox(){
 }//end refreshInbox
 
 function printUpdates(){
-	console.log(this.responseText);
+	//console.log(this.responseText);
 	var html = eval(this.responseText);
 
 	if(html == null || html[0] == null) // html == null para q no tire error al ejecutar algunos eventos (refrescar, submit, etc)
@@ -581,20 +587,24 @@ function suggest(){
 	for(var i = 0; i < html.length; i++){
 
 		var each = html[i]['NICKNAME'];
+		var idUser = html[i]['ID_USER'];
 
 		if(each.substring(0, typing) == vars){
 
 			if(byid(each) === null){
 
 				var lis = create('li');
-				lis.id = each;
+				//lis.id = each;
+				lis.id = 'user-'+idUser;
 				lis.role="option";
 				lis.innerHTML = each;
 				byid('suggestions').appendChild(lis);
 
-				byid(each).onclick = function(){
-
-					byid('inputTo').value = this.id;
+				lis.onclick = function(){
+					var index = this.id.indexOf('-'); // saco el nro de indice del guion del id user-
+			  		index ++; //le sumo uno
+			  		byid('id-recipient').value = this.id.substr(index);
+					byid('inputTo').value = this.innerHTML;
 					byid('suggestions').parentNode.removeChild(byid('suggestions'));
 				}
 			}

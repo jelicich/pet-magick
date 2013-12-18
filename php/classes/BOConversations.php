@@ -11,7 +11,8 @@ class BOConversations{
     var $tableUsr;
     var $tableMsg;
     var $inbox;
-
+    var $err;
+    var $conversationId;
 
     function __construct()
     {
@@ -121,7 +122,7 @@ class BOConversations{
             */   
 
         }
-        if(sizeof($out) == 0)
+        if(empty($out))
             return null;
         
         $this->inbox = json_encode($out);
@@ -229,8 +230,27 @@ class BOConversations{
 
 
 
+    function existsConversation($recipient)
+    {
+        $rta = $this->tableConv->existsConversation($recipient);
+        if(sizeof($rta)==0 || empty($rta))
+        {
+            return false;
+        }
+        else
+        {
+            $this->conversationId = $rta;
+            return true;
+        }
+    }
 
 
+    function createConversation($recipient)
+    {
+        $rta = $this->tableConv->createConversation();
+        $this->conversationId = $rta;
+        return;
+    }
 
  //======================== GETS
 
@@ -239,7 +259,10 @@ class BOConversations{
         return $this->inbox;
     }// End getInbox
 
-   
+   function getConversationId()
+   {
+        return $this->conversationId;
+   }
     
 
 }// End class

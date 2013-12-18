@@ -50,7 +50,7 @@
 		<form method='' action='' class="grid_12" style="display:none" id="write-message">	
 			<div id='searchField'>
 				<input type='text' placeholder='To' id='inputTo' name='inputTo'/>
-			<!--	<input type='hidden' id='inputToHidden' name='inputToHidden'/> -->
+				<input type='hidden' id='id-recipient' name='recipient'/> 
 			</div><br>
 
 			<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>

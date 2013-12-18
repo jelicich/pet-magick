@@ -30,19 +30,21 @@ class MessagesTable extends Doctrine_Table
 	            $msg->STATUS = 0; // hacer q sea 0 por default en la BD
 	            $msg->DATE = $now;
 
-                $q = Doctrine_Query::create()
+	            $msg->save();
+
+                $msgSent = $msg->ID_MESSAGE;
+
+                 $q = Doctrine_Query::create()
                         ->update('conversations c')
                         ->set('c.DATE' , '?', $now)
                         ->AndWhere('c.ID_CONVERSATION = ?', $conversation);
                      $q->execute();
 
-                //ACTUALIZAR EN CONVERSATIONS LA FECHA!!!
                 
-	            $msg->save();
 
             //me devuelve el id del mensaje, todo lo siguiente es para poder imprimirlo en el chat.
 
-        $msgSent = $msg->ID_MESSAGE;
+        
 
         $q = Doctrine_Query::create()
                 ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')

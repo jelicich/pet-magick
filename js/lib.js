@@ -517,6 +517,7 @@ suggest() lo q hace es sencillamente recorrer el array q obtiene e imprimir las 
 
 // PENDIENTE:
 
+- Revisar el codigo para aprolijarlo, limpiarlo, reutilizar variables, etc....
 - Seleccionar que usuarios van a ser los sugeridos (favoritos?) pq todos es bocha, pero no se....
 - poder navegar la lista q se despliega con las flechas (intento en lineas 538 a 541)
 - Ver q parametros queremos tomar, mostrar y enviar (facil pq ya funciona, es elegir). La idea seria q te muestre fotito y nombre y/o fragento conversacion...
@@ -526,14 +527,14 @@ suggest() lo q hace es sencillamente recorrer el array q obtiene e imprimir las 
 
 */
 
-LetterCounter = 0; // Global variable
+LetterCounter = 0;  // handler(), lookFor() -- public --
 
 function searchField(){
 
 	byid('inputTo').addEventListener("keypress", handler, false); 
 	byid('inputTo').addEventListener("paste", handler, false); 
 	byid('inputTo').addEventListener("keydown", handler, false);
-	// ver si puedo evitar uno de estos eventos. 
+	// ver si puedo evitar uno de estos eventos (keydown o keypress). 
 }//end autoComplete
 
 function handler(){
@@ -552,34 +553,37 @@ function handler(){
 		setTimeout("lookFor("+ LetterCounter +")", 100);
 }//end handler
 
+
+
 function lookFor(compareCounter){
 	
 	if(compareCounter == LetterCounter) {
 		
 		if(byid('inputTo').value != ''){
-
+				// Puedo hacerlo sin ajax esto???
 				ajax('POST', 'ajax/searchTool.php', suggest , false, true);
 		}
 	}// Hace falta un else return aca????
 }//end lookFor
 
+
+
 function suggest(){
 	
 	var vars = byid('inputTo').value;
-	var largo = byid('inputTo').value.length;
+	var typing = byid('inputTo').value.length;
 
 	var html = eval(this.responseText);
 	var uls = create('ul');
 		uls.id = 'suggestions';
 		byid('searchField').appendChild(uls);
-	   //console.log(html);
 	
 	for(var i = 0; i < html.length; i++){
 
 		var each = html[i]['NICKNAME'];
-		//console.log(each);
-		if(each.substring(0, largo) == vars){
-			//console.log(each);
+
+		if(each.substring(0, typing) == vars){
+
 			if(byid(each) === null){
 
 				var lis = create('li');
@@ -596,18 +600,12 @@ function suggest(){
 			}
 		}
 	}
-}//end autoComplete
+}//end suggest
 
 
 
 
 //=============================================================================== BIN
-
-
-
-
-
-
 
 /*
 

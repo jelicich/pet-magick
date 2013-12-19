@@ -1154,37 +1154,51 @@ Tunear!!!
 	right: 0;
 }
 
-#wrap-new-message{
-	width: 100%;
-}
-
 #write-new-message{
 	display: block;
-	position: absolute;
+	position: fixed;
 	width: 400px;
-	height: 400px;
+	height: 185px;
 	left: 50%;
 	top:50%;
 	margin-left: -200px;
-	margin-top: -200px;
-	background: black;
-
+	margin-top: -92.5px;
+	background: #e8b2ae;
+	padding: 10px;
+	box-shadow: 0 0 55px #FFFFFF;
 }
 
+#write-new-message textarea{
+	width: 100%;
+	resize:none;
+}
+
+#write-new-message #send-new-message{
+	position: absolute; 
+	left:10px;
+}
+
+#write-new-message #cancel-new-message{
+	position: absolute;
+	right: 10px;
+}
 
 
 
 #searchField {
-	background-color: yellow;
-	width: 205px;
+	width: 100%;
 	height: auto;
 	position: relative;
+}
+
+#searchField input{
+	width: 100%;
 }
 
 #searchField ul{
 	position: absolute;
 	background-color: green;
-	width: 205px;
+	width: 100%;
 	height: auto;
 	float: left;
 	top:22px;

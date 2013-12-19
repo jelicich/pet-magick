@@ -239,7 +239,7 @@ class BOConversations{
         }
         else
         {
-            $this->conversationId = $rta;
+            $this->conversationId = $rta[0]['ID_CONVERSATION'];
             return true;
         }
     }

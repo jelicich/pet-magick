@@ -296,7 +296,7 @@ function inbox(){
 	 ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
 	 // =========== New messages
-	 byid('new-message').onclick = function(){
+	 byid('btn-new-message').onclick = function(){
 
 	 		//whilst(byid('wrap-messages')); 
 	 		byid('write-new-message').style.display = "block"; 
@@ -313,9 +313,36 @@ function inbox(){
 		var vars = 'message='+ byid('message').value + '&recipient='+byid('id-recipient').value; // Agrego to para enviar destinatario seleccionado.
 	 	ajax('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
-	 	byid('inputTo').value = '';
+	 	//byid('inputTo').value = '';
 	 	byid('message').value = '';
 
+	 }
+
+	 // ===========  Submit new messages
+	 byid('send-new-message').onclick = function(){
+	 	//me fijo en el objeto xhr publico si existe y si esta procesando algo y lo borro.
+		if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
+		{
+			xhr.abort();
+		}
+
+		var vars = 'message='+ byid('new-message').value + '&recipient='+byid('id-recipient').value; // Agrego to para enviar destinatario seleccionado.
+	 	ajax('POST', 'ajax/sendMessage.php', vardump, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
+
+	 	byid('inputTo').value = '';
+	 	byid('new-message').value = '';
+	 	byid('id-recipient').value = '';
+	 	byid('write-new-message').style.display = "none";
+
+	 }
+
+	 // ====== cancel new message
+	 byid('cancel-new-message').onclick = function()
+	 {
+	 	byid('inputTo').value = '';
+	 	byid('new-message').value = '';
+	 	byid('id-recipient').value = '';
+	 	this.parentNode.style.display = 'none';
 	 }
 }//end inbox
 
@@ -424,7 +451,7 @@ function printHeaders(){
 }//end printHeaders
 
 function printMessages(){
-	console.log(this.responseText);
+	//console.log(this.responseText);
 	//si no tiene argumentos viene por ajax
 	if(arguments.length == 0){
 		//console.log(this.responseText);

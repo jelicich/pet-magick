@@ -35,7 +35,7 @@
 	<!-- site content -->
 	<div class="container_12" id="content" style="height:100%">
 		<div id="what">
-			<a href="#" id='new-message'>New Message</a>
+			<a href="#" id='btn-new-message'>New Message</a>
 		</div>
 		
 		<div class="grid_4" id="conv-area">
@@ -74,15 +74,17 @@
 <form method='' action='' class="clearfix" style="display:none" id="write-new-message">	
 				
 
-			<div id='searchField'>
-					<input type='text' placeholder='To' id='inputTo' name='inputTo'/>
-					<input type='hidden' id='id-recipient' name='recipient'/> 
-			</div>
-			
-			<textarea rows='5' cols='30' name='message' id='message'></textarea>
-			<input type='button' value='Submit' id='send-message' class="btn btn-danger"/>
-		
-		</form>
+	<div id='searchField'>
+			<input type='text' placeholder='To' id='inputTo' name='inputTo'/>
+			<input type='hidden' id='id-recipient' name='recipient'/> 
+	</div>
+	
+	<textarea rows='5' cols='30' name='new-message' id='new-message'></textarea>
+	<input type='button' value='Submit' id='send-new-message' class="btn btn-danger"/>
+	<input type="button" value='Cancel' id="cancel-new-message" class="btn btn-danger"/>
+
+</form>
+
 </body>
 
 

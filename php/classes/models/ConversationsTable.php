@@ -41,7 +41,7 @@ class ConversationsTable extends Doctrine_Table
 
         //$rta = json_encode($json);
 
-        return $json[0]['ID_CONVERSATION'];
+        return $json;
 
     }  
 

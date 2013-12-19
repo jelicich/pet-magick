@@ -10,8 +10,8 @@ $pics = new BOPics;
 //$mime = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png');
    
 	$path = "../img";
-	$file = $_FILES['file']['tmp_name'];
-	$fileName = $_FILES['file']['name'];// averiguar sobre esta funcion
+	$file = $_FILES['img']['tmp_name'];
+	$fileName = $_FILES['img']['name'];// averiguar sobre esta funcion
 	$rand = rand(1000,9999);
 	$ext = pathinfo($fileName, PATHINFO_EXTENSION);
 	$newName = $rand . "_" . time() .'.' . $ext;  

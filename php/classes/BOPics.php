@@ -22,7 +22,6 @@ class BOPics{
         try
             {
                $rta = $this->table->upload_img($ref);
-               echo 'arriba! (Borrar este echo del codigo)';
                return true;
             }
 

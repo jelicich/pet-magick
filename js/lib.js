@@ -510,73 +510,58 @@ function printUpdates(){
 
 /*
 
-Procedimiento version cacheada:
-------------------------------
-
-En el archivo login.php agregue unas lineas (24 a 31) q cachean en el archivo searTool.php la info de todos los usuarios. De este archivo va 
-a sacar la info el campo de autocmpletado en lugar de ir a la bd por cada letra q se ingresa.Aca habria q definir q usuarios queremos cachear, si toda la bd o los  favoritos del user q se loguea o q.
-Lo q hace el js a partir de la linea 511 es, searchfile() instancia los eventos y esos eventos ejecutan la handler().
-handler() limpia las sugerencias anteriores y ejecuta la funcion lookFor(), q es quien hacce la consulta por AJAX y ejecuta suggest().
-suggest() lo q hace es sencillamente recorrer el array q obtiene e imprimir las opciones segun corresponda a la busqueda
-
-
 // PENDIENTE:
 
-- Revisar el codigo para aprolijarlo, limpiarlo, reutilizar variables, etc....
-- Seleccionar que usuarios van a ser los sugeridos (favoritos?) pq todos es bocha, pero no se....
-- poder navegar la lista q se despliega con las flechas (intento en lineas 538 a 541)
-- Ver q parametros queremos tomar, mostrar y enviar (facil pq ya funciona, es elegir). La idea seria q te muestre fotito y nombre y/o fragento conversacion...
-
-- Ver si se buguea en determinadas situaciones y como convive con las otras consultas. Esta en proceso y van a aparecer algunas cosas supongo
-- Los elementos q cree son al tun tun cortando y pegando del css, una vez sepamos com va a caminar, lo hacemos bien.
+- poder navegar la lista q se despliega con las flechas
+- Hacerlo andar en el input de busqueda del header (ideal seria pasar todo esto a objeto. En su defecto, pasar un parametro a suggest de q input tomar)
 
 */
 
-LetterCounter = 0;  // handler(), lookFor() -- public --
+var LetterCounter = 0;  // handler(), lookFor() -- public --
 
 function searchField(){
 
-	byid('inputTo').addEventListener("keypress", handler, false); 
-	byid('inputTo').addEventListener("paste", handler, false); 
-	byid('inputTo').addEventListener("keydown", handler, false);
-	// ver si puedo evitar uno de estos eventos (keydown o keypress). 
+	var inputTo = byid('inputTo'); //ver donde declarar esta variable para usarla publicamente
+
+	inputTo.addEventListener("keypress", handler, false); 
+	inputTo.addEventListener("paste", handler, false); 
+	inputTo.addEventListener("keydown", handler, false);
 }//end autoComplete
 
 function handler(){
 
-	 	/* var e = e || window.event;
-	 	  if (e.keyCode == '38' || e.keyCode == '40') {
-	 	  	alert('hola');
-	     }*/
+		/*	var e = e || window.event;
+		 	  if (e.keyCode == '38' || e.keyCode == '40') {
+		 	  	
+		 	  	alert('hola');
+		     }
+		*/
+		var suggestions = byid('suggestions'); //ver donde declarar esta variable para usarla publicamente
 
-		if(byid('suggestions')){
+		if(suggestions){
 
-			byid('suggestions').parentNode.removeChild(byid('suggestions'));
+			suggestions.parentNode.removeChild(suggestions);
 		}
 		
 		LetterCounter++;
 		setTimeout("lookFor("+ LetterCounter +")", 100);
 }//end handler
 
-
-
 function lookFor(compareCounter){
 	
 	if(compareCounter == LetterCounter) {
 		
-		if(byid('inputTo').value != ''){
-				// Puedo hacerlo sin ajax esto???
+		if(inputTo.value != ''){
+
 				ajax('POST', 'ajax/searchTool.php', suggest , false, true);
 		}
-	}// Hace falta un else return aca????
+	}
 }//end lookFor
-
-
 
 function suggest(){
 	
-	var vars = byid('inputTo').value;
-	var typing = byid('inputTo').value.length;
+	var vars = inputTo.value;
+	var typing = inputTo.value.length;
 
 	var html = eval(this.responseText);
 	var uls = create('ul');
@@ -593,18 +578,16 @@ function suggest(){
 			if(byid(each) === null){
 
 				var lis = create('li');
-				//lis.id = each;
-				lis.id = 'user-'+idUser;
-				lis.role="option";
-				lis.innerHTML = each;
-				byid('suggestions').appendChild(lis);
-
+					lis.id = 'user-'+idUser;
+					lis.innerHTML = each;
+					suggestions.appendChild(lis);
+				
 				lis.onclick = function(){
 					var index = this.id.indexOf('-'); // saco el nro de indice del guion del id user-
 			  		index ++; //le sumo uno
 			  		byid('id-recipient').value = this.id.substr(index);
-					byid('inputTo').value = this.innerHTML;
-					byid('suggestions').parentNode.removeChild(byid('suggestions'));
+					inputTo.value = this.innerHTML;
+					suggestions.parentNode.removeChild(suggestions);
 				}
 			}
 		}
@@ -615,50 +598,42 @@ function suggest(){
 
 
 //=============================================================================== BIN
-
 /*
 
+Me pase un buen rato tratando de hacer la subida de imgs. Encontre algunas formas. Algunas las entiendo, otras no...
+Aca abajo te dejo algunos links a modo de referencia. No se si son "lo q hay q hacer" pero paar tener un pantallazo de las opciones, a priori....
+Yo empece probando con el metodo tradicioal (lo use con induser y supongo q vos lo usaste para tu empresa). Pero hay un problema con AJAX y $_FILES en PHP.
+Osea q con ajax no pude y hay q poder pq tenemos q poder subir varias imgs al mismo tiempo y sin refrescar. Ahora, cual de estos metodos es implementable para nosotros? no lo se.
+Opciones a grandes rasgos: encabezados de xhr(ver tuto), objeto formData (ver otro tuto), plugin. 
+En fin, me pase 4 hs y sin exito. disculpas....
+Lo q mas me esta costando es q no se q busco. Obvio subir imgs, pero no entiendo muy bien los metodos pq utilizan bocha de cosas q no conozco.
+Si podes, hechale un vistazo a todo esto y decime q pensas. En base a eso me concentro en lo q creamos mejor hasta q me salga. Tal vez necesitemos hablar para dar este paso.
 
-LetterCounter = 0; // Global variable
-
-function searchField(){
-
-	byid('inputTo').addEventListener("keypress", handler, false); 
-	byid('inputTo').addEventListener("paste", handler, false); 
-	byid('inputTo').addEventListener("keydown", handler, false);
-	// ver si puedo evitar uno de estos eventos. 
-}//end autoComplete
-
-
-
-
+PD: fijate q alguno de los tutos tiene el codigo para bajar de dropbox y puede ser util
 
 http://new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata
-
-var form = document.getElementById('form');
-var fileInput = document.getElementById('file');
-
-
- form.onsubmit = function() {
-     var file = fileInput.files[0];
-     var formData = new FormData(form);
-    	 formData.append('file', file);
-    	 ajax('POST', 'ajax/insertar.php', formData, false, true);
- }
-*/
+http://www.enricflorit.com/como-subir-multiples-archivos-usando-ajax/#sthash.MhDvBJqN.dpbs
+http://cafeconweb.net/subir-archivos-al-servidor-con-ajax-sin-plugin/
 
 
-/*
+PRUEBA:
+
+- lib.js
+- ajax/insertar.php
+- BOPics.php
+- PicsTable.php
+- crear html pq lo perdi jaja
+
 function upload_img(){
 
 	byid('upload').onclick = function(){ 
-		//levanto los valores de los campos
+		
 		var file = byid('file').name;
 		var caption = byid('caption').value;
-
 		var vars = 'img='+file+'&caption='+caption;
 		
 		ajax('POST', 'ajax/insertar.php', vardump, vars, true);
 	}
-}//end logi
+}//end upload_img
+
 */

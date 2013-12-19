@@ -21,14 +21,7 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
 	//cargo el html con el menu del usuario
 	include_once '../templates/userMenu.php';
 
-	if($user->autoCompleteEverything()){
 
-		$searchTool = 'searchTool.php';
-		//file_put_contents($GLOBALS['searchTool'], serialize($rta));
-		//echo unserialize(file_get_contents($GLOBALS['searchTool']));
-		file_put_contents($GLOBALS['searchTool'], $user->getCompleteEverything());
-		file_get_contents($searchTool);
-	}
 }
 else 
 {

@@ -23,7 +23,6 @@ $dato = array(
 );
 
 
-
 if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la misma de login.php
 	
 	$user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']));
@@ -41,8 +40,8 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 
 	//cargo el html con el menu del usuario
 	include_once '../templates/userMenu.php';
-
-
+	//cacheo la info para las herramientas de busqueda
+	include_once 'autocompleteEverything.php';
 
 }else{
 

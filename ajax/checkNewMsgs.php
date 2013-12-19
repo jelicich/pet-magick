@@ -39,6 +39,10 @@
 		else
 			echo "null";
 	}
+	else
+	{
+		echo "null";
+	}
 
 	echo ']';
 

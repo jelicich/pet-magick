@@ -30,6 +30,7 @@ class ConversationsTable extends Doctrine_Table
 
         $rta = $q->execute();
 
+
         $json = array();
 
         foreach($rta as $m) 
@@ -40,7 +41,8 @@ class ConversationsTable extends Doctrine_Table
 
         //$rta = json_encode($json);
 
-        return $rta;
+        return $json[0]['ID_CONVERSATION'];
+
     }  
 
     public function createConversation($recipient)

@@ -247,7 +247,7 @@ class BOConversations{
 
     function createConversation($recipient)
     {
-        $rta = $this->tableConv->createConversation();
+        $rta = $this->tableConv->createConversation($recipient);
         $this->conversationId = $rta;
         return;
     }

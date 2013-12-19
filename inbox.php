@@ -45,17 +45,20 @@
 		<div class="grid_8" id="message-area">
 			<ul id="wrap-messages"> <!-- scroleable -->
 			</ul>
-		</div>	
 
-		<form method='' action='' class="grid_12" style="display:none" id="write-message">	
-			<div id='searchField'>
-				<input type='text' placeholder='To' id='inputTo' name='inputTo'/>
-				<input type='hidden' id='id-recipient' name='recipient'/> 
-			</div><br>
+			<form method='' action='' class="clearfix" style="display:none" id="write-message">	
+				
 
-			<textarea rows='5' cols='30' name='message' id='message'></textarea><br><br>
-			<input type='button' value='Submit' id='send-message'/>
-		</form>
+				<textarea rows='5' cols='30' name='message' id='message'></textarea>
+				<input type='button' value='Submit' id='send-message' class="btn btn-danger"/>
+
+				
+			</form>
+		</div><!-- END message area -->
+
+
+
+		
 
 		
 </div>
@@ -67,6 +70,19 @@
 
 </div>
 <!-- END wrapper-->
+
+<form method='' action='' class="clearfix" style="display:none" id="write-new-message">	
+				
+
+			<div id='searchField'>
+					<input type='text' placeholder='To' id='inputTo' name='inputTo'/>
+					<input type='hidden' id='id-recipient' name='recipient'/> 
+			</div>
+			
+			<textarea rows='5' cols='30' name='message' id='message'></textarea>
+			<input type='button' value='Submit' id='send-message' class="btn btn-danger"/>
+		
+		</form>
 </body>
 
 

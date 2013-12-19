@@ -299,8 +299,7 @@ function inbox(){
 	 byid('new-message').onclick = function(){
 
 	 		//whilst(byid('wrap-messages')); 
-	 		byid('inputTo').style.display = "block"; // ver como evitar esta linea ya q el html es blck por default
-		 	byid('write-message').style.display = 'block';
+	 		byid('write-new-message').style.display = "block"; 
 	 }
 
 	 // ===========  Submit messages
@@ -311,7 +310,7 @@ function inbox(){
 			xhr.abort();
 		}
 
-		var vars = 'message='+ byid('message').value; // Agrego to para enviar destinatario seleccionado.
+		var vars = 'message='+ byid('message').value + '&recipient='+byid('id-recipient').value; // Agrego to para enviar destinatario seleccionado.
 	 	ajax('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
 	 	byid('inputTo').value = '';
@@ -407,7 +406,7 @@ function printHeaders(){
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
 
 		  		whilst(byid('wrap-messages')); 
-		  		byid('inputTo').style.display = "none";
+		  		//byid('inputTo').style.display = "none";
 		  		byid('write-message').style.display = "block";
 		  		flagNM = 1;
 
@@ -425,7 +424,7 @@ function printHeaders(){
 }//end printHeaders
 
 function printMessages(){
-	//console.log(this.responseText);
+	console.log(this.responseText);
 	//si no tiene argumentos viene por ajax
 	if(arguments.length == 0){
 		//console.log(this.responseText);

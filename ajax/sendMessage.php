@@ -13,8 +13,9 @@ $conv = new BOConversations;
 Comento $to, hago las pruebas con el ID, dsps deberíamos poner un autocomplete ahi.
 */
 //$to = $user->table->findByMail($_POST['to']); /**Hay una validacion q utiliza findbymail en BOMessages....
-
 // Modifico esto para q pueda handlear cuando hay usuario seleccionado o por default si esta dentro de la conversacion
+
+
 if (!isset($_POST['recipient']) || empty($_POST['recipient']))
 {
 	$to = $_SESSION['current-chat'];
@@ -32,8 +33,10 @@ if (!isset($_POST['recipient']) || empty($_POST['recipient']))
 		$to = $conv->getConversationId();	
 	}
 
-	$_SESSION['current-chat'] = $to;
+	//$_SESSION['current-chat'] = $to;
 }
+
+
 
 $data = array( 
 	'conversation'=>$to,

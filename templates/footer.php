@@ -15,3 +15,12 @@
 		</div>
 	</div>
 <!-- END footer -->
+
+
+<script type="text/javascript" id="jslogout">
+
+	
+	searchFieldf('finder');
+
+
+</script>

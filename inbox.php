@@ -34,6 +34,7 @@
 
 	<!-- site content -->
 	<div class="container_12" id="content" style="height:100%">
+		
 		<div id="what">
 			<a href="#" id='btn-new-message'>New Message</a>
 		</div>
@@ -74,7 +75,7 @@
 <form method='' action='' class="clearfix" style="display:none" id="write-new-message">	
 				
 
-	<div id='searchField'>
+	<div id='searchField' class="grid_3">
 			<input type='text' placeholder='To' id='inputTo' name='inputTo'/>
 			<input type='hidden' id='id-recipient' name='recipient'/> 
 	</div>
@@ -91,8 +92,6 @@
 <script type="text/javascript" id="jslogout">
 
 	inbox(); //============= Carga los mensajes
-	searchField();
-
 
 </script>
 

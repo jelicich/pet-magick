@@ -277,16 +277,10 @@ function regionsCombo(){
 // PENDIENTE
 //----------
 
-//Logueo en todos los navegadores
-//Agregar CASCADE a la tabla users
-
-//CUANDO CREO MENSAJE
-//abrir el chat correspondiente y agregarlo a la lista
-//crear header 
-//o agregarlo al header segun corresponda...
-//Eliminar mensajes
-
-//Maqueta (crudo)
+// Logueo en todos los navegadores
+// Agregar CASCADE a la tabla users
+// Eliminar mensajes
+// llamamos muchas veces byid para el mismo elemento, ver de optimizarlo
 
 var fromId;
 var flagNM = 0; 
@@ -298,8 +292,9 @@ function inbox(){
 	 // =========== New messages
 	 byid('btn-new-message').onclick = function(){
 
-	 		//whilst(byid('wrap-messages')); 
-	 		byid('write-new-message').style.display = "block"; 
+	 		byid('write-new-message').style.display = "block";
+	 		searchField('inputTo');
+	 		//searchField('finder') = function(){return;}
 	 }
 
 	 // ===========  Submit messages
@@ -333,7 +328,6 @@ function inbox(){
 	 	byid('new-message').value = '';
 	 	byid('id-recipient').value = '';
 	 	byid('write-new-message').style.display = "none";
-
 	 }
 
 	 // ====== cancel new message
@@ -343,7 +337,12 @@ function inbox(){
 	 	byid('new-message').value = '';
 	 	byid('id-recipient').value = '';
 	 	this.parentNode.style.display = 'none';
-	 }
+
+	 	if(byid('suggestions')){
+
+	 		byid('suggestions').parentNode.removeChild(byid('suggestions'));
+	 	}
+	  }
 }//end inbox
 
 function printHeaders(){
@@ -447,7 +446,6 @@ function printHeaders(){
 	 
 	 //empiezo a chequear si hay nuevos mensajes
 	 refreshInbox();
-
 }//end printHeaders
 
 function printMessages(){
@@ -536,90 +534,188 @@ function printUpdates(){
 //============================= AUTOCOMPLETE FUNCTIONS
 
 /*
-
-// PENDIENTE:
+ PENDIENTE:
 
 - poder navegar la lista q se despliega con las flechas
-- Hacerlo andar en el input de busqueda del header (ideal seria pasar todo esto a objeto. En su defecto, pasar un parametro a suggest de q input tomar)
+- Hacer funcionar juntos el input de busqueda del header y el de mensajes
+- Quitar el on evento en bootstrap cuando vas con el mouse sobre los inputs pq levanta una variable q se elimina al salir del buscador y se genera al buscar...
 
 */
 
-var LetterCounter = 0;  // handler(), lookFor() -- public --
+function searchField(inputField){
 
-function searchField(){
+	var LetterCounter = 0;
+	var inputField = byid(inputField); 
 
-	var inputTo = byid('inputTo'); //ver donde declarar esta variable para usarla publicamente
+		handler = function(){
 
-	inputTo.addEventListener("keypress", handler, false); 
-	inputTo.addEventListener("paste", handler, false); 
-	inputTo.addEventListener("keydown", handler, false);
-}//end autoComplete
+				var suggestions = byid('suggestions'); 
 
-function handler(){
+					/* 
+					var e = e || window.event;
+				 	 if (e.keyCode == '38' || e.keyCode == '40') {
 
-		/*	var e = e || window.event;
-		 	  if (e.keyCode == '38' || e.keyCode == '40') {
-		 	  	
-		 	  	alert('hola');
-		     }
-		*/
-		var suggestions = byid('suggestions'); //ver donde declarar esta variable para usarla publicamente
+				 	 	suggestions.style.display = 'none';
+				 	 }
+				 	 */
 
-		if(suggestions){
+				if(suggestions){
 
-			suggestions.parentNode.removeChild(suggestions);
-		}
-		
-		LetterCounter++;
-		setTimeout("lookFor("+ LetterCounter +")", 100);
-}//end handler
-
-function lookFor(compareCounter){
-	
-	if(compareCounter == LetterCounter) {
-		
-		if(inputTo.value != ''){
-
-				ajax('POST', 'ajax/searchTool.php', suggest , false, true);
-		}
-	}
-}//end lookFor
-
-function suggest(){
-	
-	var vars = inputTo.value;
-	var typing = inputTo.value.length;
-
-	var html = eval(this.responseText);
-	var uls = create('ul');
-		uls.id = 'suggestions';
-		byid('searchField').appendChild(uls);
-	
-	for(var i = 0; i < html.length; i++){
-
-		var each = html[i]['NICKNAME'];
-		var idUser = html[i]['ID_USER'];
-
-		if(each.substring(0, typing) == vars){
-
-			if(byid(each) === null){
-
-				var lis = create('li');
-					lis.id = 'user-'+idUser;
-					lis.innerHTML = each;
-					suggestions.appendChild(lis);
-				
-				lis.onclick = function(){
-					var index = this.id.indexOf('-'); // saco el nro de indice del guion del id user-
-			  		index ++; //le sumo uno
-			  		byid('id-recipient').value = this.id.substr(index);
-					inputTo.value = this.innerHTML;
 					suggestions.parentNode.removeChild(suggestions);
 				}
+				
+				LetterCounter++;
+				setTimeout("lookFor("+ LetterCounter +")", 100);
+		}//end handler
+
+		lookFor = function(compareCounter){
+			
+			if(compareCounter == LetterCounter) {
+				
+				if(inputField.value != ''){
+
+						ajax('POST', 'ajax/searchTool.php', suggest , false, true);
+				}
 			}
+		}//end lookFor
+
+		suggest = function(){
+			
+			var vars = inputField.value;
+			var typing = inputField.value.length;
+
+			var html = eval(this.responseText);
+			var uls = create('ul');
+				uls.id = 'suggestions';
+				inputField.parentNode.appendChild(uls);
+
+			for(var i = 0; i < html.length; i++){
+
+				var each = html[i]['NICKNAME'];
+				var idUser = html[i]['ID_USER'];
+
+				if(each.substring(0, typing) == vars){
+
+					if(byid(each) === null){
+
+						var lis = create('li');
+							lis.id = 'user_'+ idUser;
+							lis.innerHTML = each;
+							suggestions.appendChild(lis);
+						
+						lis.onclick = function(){
+							
+							var index = this.id.indexOf('-');
+						  		index ++;
+						  		byid('id-recipient').value = this.id.substr(index);
+								inputField.value = this.innerHTML;
+								suggestions.parentNode.removeChild(suggestions);
+						}
+					}
+				}
+			}
+		}//end suggest
+
+		document.body.onclick = function(){
+
+			// Hay q sacar el evento de bootstrap sobre el input para q no tire error
+			suggestions.parentNode.removeChild(suggestions);
+			inputField.value = '';
 		}
-	}
-}//end suggest
+
+		inputField.addEventListener("keypress", handler, false); 
+		inputField.addEventListener("paste", handler, false);
+		inputField.addEventListener("keydown", handler, false); 
+}//end searchField
+
+function searchFieldf(inputField){
+
+	var LetterCounterf = 0;
+	var inputField = byid(inputField); 
+
+		handlerf = function(){
+
+				var suggestionsf = byid('suggestionsf'); 
+
+					/* 
+					var e = e || window.event;
+				 	 if (e.keyCode == '38' || e.keyCode == '40') {
+
+				 	 	suggestions.style.display = 'none';
+				 	 }
+				 	 */
+
+				if(suggestionsf){
+
+					suggestionsf.parentNode.removeChild(suggestionsf);
+				}
+				
+				LetterCounterf++;
+				setTimeout("lookForf("+ LetterCounterf +")", 100);
+		}//end handler
+
+		lookForf = function(compareCounterf){
+			
+			if(compareCounterf == LetterCounterf) {
+				
+				if(inputField.value != ''){
+
+						ajax('POST', 'ajax/searchTool.php', suggestf , false, true);
+				}
+			}
+		}//end lookFor
+
+		suggestf = function(){
+			
+			var varsf = inputField.value;
+			var typingf = inputField.value.length;
+
+			var htmlf = eval(this.responseText);
+			var ulsf = create('ul');
+				ulsf.id = 'suggestionsf';
+				inputField.parentNode.appendChild(ulsf);
+
+			for(var i = 0; i < htmlf.length; i++){
+
+				var eachf = htmlf[i]['NICKNAME'];
+				var idUserf = htmlf[i]['ID_USER'];
+
+				if(eachf.substring(0, typingf) == varsf){
+
+					if(byid(eachf) === null){
+
+						var lisf = create('li');
+							lisf.id = 'userf_'+ idUserf;
+							lisf.innerHTML = eachf;
+							suggestionsf.appendChild(lisf);
+						
+						lisf.onclick = function(){
+							
+							var indexf = this.id.indexOf('-');
+						  		indexf ++;
+						  		byid('id-recipientf').value = this.id.substr(indexf);
+								inputField.value = this.innerHTML;
+								suggestionsf.parentNode.removeChild(suggestionsf);
+						}
+					}
+				}
+			}
+		}//end suggest
+
+		document.body.onclick = function(){
+
+			// Hay q sacar el evento de bootstrap sobre el input para q no tire error
+			suggestionsf.parentNode.removeChild(suggestionsf);
+			inputField.value = '';
+		}
+
+		inputField.addEventListener("keypress", handlerf, false); 
+		inputField.addEventListener("paste", handlerf, false);
+		inputField.addEventListener("keydown", handlerf, false); 
+}//end searchField
+
+
+
 
 
 
@@ -663,4 +759,24 @@ function upload_img(){
 	}
 }//end upload_img
 
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				*/
+				
+				
+

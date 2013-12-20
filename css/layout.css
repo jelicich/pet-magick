@@ -1185,17 +1185,17 @@ Tunear!!!
 
 
 
-#searchField {
-	width: 100%;
+#searchField, #searchF {
+	
 	height: auto;
 	position: relative;
 }
 
-#searchField input{
+#searchField input, #searchF input{
 	width: 100%;
 }
 
-#searchField ul{
+#searchField ul, #searchF ul{
 	position: absolute;
 	background-color: green;
 	width: 100%;
@@ -1207,7 +1207,7 @@ Tunear!!!
 }
 
 
-#searchField li {
+#searchField li, #searchF li {
 	color: #FFFFFF;
 	text-decoration: none;
 	display: block;
@@ -1216,7 +1216,8 @@ Tunear!!!
 	
 }
 
-#searchField li:hover{
+#searchField li:hover, #searchF li:hover{
 	cursor: pointer;
 	background: #ea574c;
 }
+

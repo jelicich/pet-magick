@@ -50,9 +50,10 @@
 							</ul>
 						</li>
 				</ul>
-				<form class="grid_2">
-					<input type="text" placeholder="Find pet lovers" />
-				</form>
+				<div class="grid_2" id='searchF'>
+					<input type="text" placeholder="Find pet lovers" id='finder'/>
+					<input type='hidden' id='id-recipientf' name='recipient'/> 
+				</div>
 			</div>
 		</div>
 		<!-- END navbar -->

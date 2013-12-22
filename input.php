@@ -58,7 +58,7 @@ function create(s){
 
 
 
-
+//=========================================================== COMPONENTE
 
 
 function searchField(id){
@@ -66,11 +66,11 @@ function searchField(id){
 	//==================== autoComplete
 	var autoComplete = {
 
-		inputs: document.createElement('input'),
+		LetterCounter : 0,
+		inputs: create('input'),
 
 		ini:function(){
 
-			var LetterCounter = 0;
 				this.inputs.id = id;
 			var inputsId = byid(id); 
 
@@ -83,13 +83,13 @@ function searchField(id){
 						suggestions.parentNode.removeChild(suggestions);
 					}
 					
-					LetterCounter++;
-					setTimeout("lookFor("+ LetterCounter +")", 100);
+					autoComplete.LetterCounter++;
+					setTimeout("lookFor("+ autoComplete.LetterCounter +")", 100);
 			}//end handler
 
 			lookFor = function(compareCounter){
 				
-				if(compareCounter == LetterCounter) {
+				if(compareCounter == autoComplete.LetterCounter) {
 					
 					if(inputsId.value != ''){
 
@@ -165,7 +165,7 @@ function searchField(id){
 
 		return {//objeto publico
 
-				renderTo:function (obj){
+			renderTo: function(obj){
 
 		        obj.appendChild(autoComplete.inputs);
 
@@ -175,13 +175,10 @@ function searchField(id){
 		}//end return
 }//end searchField
 
-
 window.onload = function () {
 
 	 searchField('hola').renderTo(searchField1);
 	 searchField('chau').renderTo(searchField2);
-    
-   
 }//end window on load
 
 

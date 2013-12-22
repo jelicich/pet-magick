@@ -277,11 +277,6 @@ function regionsCombo(){
 // PENDIENTE
 //----------
 
-// Logueo en todos los navegadores
-// Agregar CASCADE a la tabla users
-// Eliminar mensajes
-// llamamos muchas veces byid para el mismo elemento, ver de optimizarlo
-
 var fromId;
 var flagNM = 0; 
 
@@ -536,9 +531,7 @@ function printUpdates(){
 /*
  PENDIENTE:
 
-- poder navegar la lista q se despliega con las flechas
-- Hacer funcionar juntos el input de busqueda del header y el de mensajes
-- Quitar el on evento en bootstrap cuando vas con el mouse sobre los inputs pq levanta una variable q se elimina al salir del buscador y se genera al buscar...
+    - poder navegar la lista q se despliega con las flechas
 
 */
 
@@ -611,17 +604,22 @@ function searchField(inputField){
 								inputField.value = this.innerHTML;
 								suggestions.parentNode.removeChild(suggestions);
 						}
+
+
+						document.body.onclick = function(){
+
+								if(byid('suggestions') != null){
+
+									suggestions.parentNode.removeChild(suggestions);
+									inputField.value = '';
+								}
+							}
 					}
 				}
 			}
 		}//end suggest
 
-		document.body.onclick = function(){
-
-			// Hay q sacar el evento de bootstrap sobre el input para q no tire error
-			suggestions.parentNode.removeChild(suggestions);
-			inputField.value = '';
-		}
+		
 
 		inputField.addEventListener("keypress", handler, false); 
 		inputField.addEventListener("paste", handler, false);
@@ -697,17 +695,20 @@ function searchFieldf(inputField){
 								inputField.value = this.innerHTML;
 								suggestionsf.parentNode.removeChild(suggestionsf);
 						}
+
+
+							document.body.onclick = function(){
+
+								if(byid('suggestionsf') != null){
+
+									suggestionsf.parentNode.removeChild(suggestionsf);
+									inputField.value = '';
+								}
+							}
 					}
 				}
 			}
 		}//end suggest
-
-		document.body.onclick = function(){
-
-			// Hay q sacar el evento de bootstrap sobre el input para q no tire error
-			suggestionsf.parentNode.removeChild(suggestionsf);
-			inputField.value = '';
-		}
 
 		inputField.addEventListener("keypress", handlerf, false); 
 		inputField.addEventListener("paste", handlerf, false);
@@ -715,24 +716,9 @@ function searchFieldf(inputField){
 }//end searchField
 
 
-
-
-
-
-
 //=============================================================================== BIN
 /*
 
-Me pase un buen rato tratando de hacer la subida de imgs. Encontre algunas formas. Algunas las entiendo, otras no...
-Aca abajo te dejo algunos links a modo de referencia. No se si son "lo q hay q hacer" pero paar tener un pantallazo de las opciones, a priori....
-Yo empece probando con el metodo tradicioal (lo use con induser y supongo q vos lo usaste para tu empresa). Pero hay un problema con AJAX y $_FILES en PHP.
-Osea q con ajax no pude y hay q poder pq tenemos q poder subir varias imgs al mismo tiempo y sin refrescar. Ahora, cual de estos metodos es implementable para nosotros? no lo se.
-Opciones a grandes rasgos: encabezados de xhr(ver tuto), objeto formData (ver otro tuto), plugin. 
-En fin, me pase 4 hs y sin exito. disculpas....
-Lo q mas me esta costando es q no se q busco. Obvio subir imgs, pero no entiendo muy bien los metodos pq utilizan bocha de cosas q no conozco.
-Si podes, hechale un vistazo a todo esto y decime q pensas. En base a eso me concentro en lo q creamos mejor hasta q me salga. Tal vez necesitemos hablar para dar este paso.
-
-PD: fijate q alguno de los tutos tiene el codigo para bajar de dropbox y puede ser util
 
 http://new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata
 http://www.enricflorit.com/como-subir-multiples-archivos-usando-ajax/#sthash.MhDvBJqN.dpbs

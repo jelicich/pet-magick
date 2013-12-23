@@ -16,13 +16,12 @@ Comento $to, hago las pruebas con el ID, dsps deberíamos poner un autocomplete 
 // Modifico esto para q pueda handlear cuando hay usuario seleccionado o por default si esta dentro de la conversacion
 
 
-if (!isset($_POST['recipient']) || empty($_POST['recipient']))
+if (!isset($_POST['recipient']))
 {
 	$to = $_SESSION['current-chat'];
-
-}else{
-	//HACER QUE $to sea el ID DE LA CONVERSACION ENTRE el usuario q seleccionó y $_SESSION(id)
-	//$to
+}
+else
+{
 	if($conv->existsConversation($_POST['recipient']))
 	{
 		$to = $conv->getConversationId();
@@ -33,7 +32,7 @@ if (!isset($_POST['recipient']) || empty($_POST['recipient']))
 		$to = $conv->getConversationId();	
 	}
 
-	//$_SESSION['current-chat'] = $to;
+	unset($_SESSION['current-chat']);
 }
 
 

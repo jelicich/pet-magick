@@ -42,6 +42,25 @@ function ajax(metodo,url, unaFuncion, mensaje, async) {
 	xhr.send(mensaje);
 }// end ajax
 
+function ajax_pvt(metodo,url, unaFuncion, mensaje, async) {
+	var xhr;
+	xhr = createXMLHTTPObject();
+	xhr.open(metodo, url, async);
+	if (metodo ==  'POST'){
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+	}
+	
+	xhr.onreadystatechange = function () {
+		console.log(new Date(),  this.readyState);
+		if (this.readyState!=4 ) {
+			//console.log('esperando');
+		} else {
+			unaFuncion.call(xhr);
+		}
+	}
+	xhr.send(mensaje);
+}// end ajax
+
 function vardump(){
 
 	console.log(this.responseText);
@@ -279,7 +298,7 @@ var flagNM = 0;
 
 function inbox(){
 
-	 ajax('GET', 'ajax/getHeaders.php', printHeaders, null, true);
+	 ajax_pvt('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
 	 // =========== New messages
 	 byid('btn-new-message').onclick = function(){
@@ -298,7 +317,7 @@ function inbox(){
 		}
 
 		var vars = 'message='+ byid('message').value + '&recipient='+byid('id-recipient').value; // Agrego to para enviar destinatario seleccionado.
-	 	ajax('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
+	 	ajax_pvt('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
 	 	//byid('inputTo').value = '';
 	 	byid('message').value = '';
@@ -313,13 +332,19 @@ function inbox(){
 			xhr.abort();
 		}
 
-		var vars = 'message='+ byid('new-message').value + '&recipient='+byid('id-recipient').value; // Agrego to para enviar destinatario seleccionado.
-	 	ajax('POST', 'ajax/sendMessage.php', vardump, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
+		var rcpt = byid('id-recipient').value
+		var index = rcpt.indexOf('_');
+  		index ++;
+  		rcpt = rcpt.substr(index);
+		var vars = 'message=' + byid('new-message').value + '&recipient='+rcpt; // Agrego to para enviar destinatario seleccionado.
+	 	ajax_pvt('POST', 'ajax/sendMessage.php', vardump, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
 	 	byid('inputTo').value = '';
 	 	byid('new-message').value = '';
 	 	byid('id-recipient').value = '';
 	 	byid('write-new-message').style.display = "none";
+	 	byid('wrap-messages').innerHTML = '';
+	 	byid('write-message').style.display = 'none';
 	 }
 
 	 // ====== cancel new message

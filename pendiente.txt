@@ -1,5 +1,8 @@
-- Logueo en los navegadores (esteban) (definitivo)
+- Logueo en los navegadores (esteban) (definitivo) 
+	Listo (se puede hacer más seguro, pero no me parece necesario).
+
 - hxr publico o no (esteban) (transitorio)
+	Listo.
 - Navegar lis en searchfield (esteban)
 
 - Funciones inputsearch repetidas (julian)

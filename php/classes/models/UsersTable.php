@@ -88,6 +88,7 @@ class UsersTable extends Doctrine_Table
 //====================================================================== LOGIN
 
   		//================== LOGIN 
+		/*
 		public function login($usr, $tok)
 		{
 			$q = Doctrine_Query::create()
@@ -98,6 +99,7 @@ class UsersTable extends Doctrine_Table
 		    return; // logueado
 		
 		}// End function login
+		*/
       
 	   //================== LOGIN VALIDATION
 		public function val_login($ref){

@@ -66,30 +66,22 @@ class BOUsers{
 
   function val_login($usr, $pass, $tok){
 
-    //me fijo si estan vacios usr y pass
     if(empty($usr) || empty($pass))
     {
       throw new Exception('Please fill in both fields');
     }
     else
     {
-      //si no están vacios busco que el mail coincida con la contraseña (ejecuta un query q es "Select * where usr = $usr & pass = $pass")
-      //metodo en UsersTable
       $rta = $this->table->findByMailPass($usr,$pass);
-      //si la respuesta viene vacia le tiro el error
       if(empty($rta))
       {
         throw new Exception('Invalid username/password');
       }
       else
       {
-        //sino está vacia, es decir q el usuario existe y puso bien la contraseña, me fijo q no esté logueado.
-        if($rta[0]['TOKEN'] != 0)
-        {
-          if($rta[0]['TOKEN'] != $tok)
-            //si el token no es 0 y es diferente del parametro q pasa significa q esta logueado
-            throw new Exception('There\'s an open session');
-        }
+        //no sé si esto es al pedo
+        if($_SESSION['token'] != $tok)
+          throw new Exception('There\'s an open session');
       }
     }
   }// End val_login
@@ -122,16 +114,11 @@ class BOUsers{
 
          try
             {
-              //desarmo el array para q lo reciba bien funcion
               $usr = $ref[0];
               $pass = sha1($ref[1]);
               $tok = $ref[2];
               $this->val_login($usr, $pass, $tok);
-              $rta = $this->table->login($usr, $tok); //para hacer el update solo necesito el usr y el $tok
-              //echo 'logueado! (Borrar este echo del codigo)';
               return true;
-              //cuando ejecuto el login desde el objeto instanciado hago if($obj->login()), si entra guardo la info del usuario en sesion pidiendola asi:
-              
             }
        
         catch(Exception $e)

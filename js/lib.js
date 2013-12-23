@@ -274,9 +274,6 @@ function regionsCombo(){
 
 // =============================================================================== INBOX FUNCTIONS
 
-// PENDIENTE
-//----------
-
 var fromId;
 var flagNM = 0; 
 
@@ -714,6 +711,22 @@ function searchFieldf(inputField){
 		inputField.addEventListener("paste", handlerf, false);
 		inputField.addEventListener("keydown", handlerf, false); 
 }//end searchField
+
+
+//=============================================================================== IMAGES FUNCTIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //=============================================================================== BIN

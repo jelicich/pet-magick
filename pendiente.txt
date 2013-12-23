@@ -3,7 +3,9 @@
 
 - hxr publico o no (esteban) (transitorio)
 	Listo.
+
 - Navegar lis en searchfield (esteban)
+	Listo.
 
 - Funciones inputsearch repetidas (julian)
 - Agregar CASCADE a la tabla users (julian)

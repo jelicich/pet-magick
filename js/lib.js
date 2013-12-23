@@ -648,34 +648,63 @@ function searchField(inputField){
 		inputField.addEventListener("keydown", handler, false); 
 }//end searchField
 
+
+
+
+
+
+
+
 function searchFieldf(inputField){
 
 	var LetterCounterf = 0;
 	var inputField = byid(inputField); 
 
+	var indexLi;
+	var currentLi;
+
 		handlerf = function(){
-
 				var suggestionsf = byid('suggestionsf'); 
-
-					/* 
-					var e = e || window.event;
-				 	 if (e.keyCode == '38' || e.keyCode == '40') {
-
-				 	 	suggestions.style.display = 'none';
-				 	 }
-				 	 */
-
-				if(suggestionsf){
-
-					suggestionsf.parentNode.removeChild(suggestionsf);
-				}
 				
-				LetterCounterf++;
-				setTimeout("lookForf("+ LetterCounterf +")", 100);
+				var e = e || window.event;
+			 	/*
+			 	if (e.keyCode == '38' || e.keyCode == '40') {
+
+			 	 	suggestions.style.display = 'none';
+			 	}*/
+			 	switch(e.keyCode)
+			 	{
+			 		//up
+			 		case 38:
+			 			var nextLi = currentLi - 1;
+			 			navigate(currentLi,nextLi);
+			 			console.log(nextLi);
+			 			break;
+			 		//down
+			 		case 40:
+			 			var nextLi = currentLi + 1;
+			 			navigate(currentLi,nextLi);
+			 			break;
+			 		//enter
+			 		case 13:
+			 			goTo(currentLi);
+			 			break;
+
+			 		default:
+			 			if(suggestionsf){
+
+							suggestionsf.parentNode.removeChild(suggestionsf);
+						}
+						
+						LetterCounterf++;
+						setTimeout("lookForf("+ LetterCounterf +")", 100);
+						break;
+			 	}
+
+				
 		}//end handler
 
 		lookForf = function(compareCounterf){
-			
 			if(compareCounterf == LetterCounterf) {
 				
 				if(inputField.value != ''){
@@ -686,6 +715,10 @@ function searchFieldf(inputField){
 		}//end lookFor
 
 		suggestf = function(){
+
+			//reseteo li actual y cantidad de lis
+			currentLi = -1;
+			//indexLi = htmlf.length;
 			
 			var varsf = inputField.value;
 			var typingf = inputField.value.length;
@@ -732,11 +765,59 @@ function searchFieldf(inputField){
 			}
 		}//end suggest
 
+		navigate = function(current, next) 
+		{
+			var lis = byid('suggestionsf').getElementsByTagName('li');
+			//si es menor que cero y menor que el largo de los li (el ultimo debería quedar siempre seleccionado al llegar al tope)
+
+			if(next >= lis.length)
+			{
+				return;
+			}
+			else if(next == -1)
+			{
+				lis[current].removeAttribute('style');
+				currentLi = next;
+			}
+			else
+			{
+				if(current >= 0 && current < lis.length)
+				{
+					lis[current].removeAttribute('style');
+				}
+				//
+				if(next >= 0 && next < lis.length)
+				{
+					lis[next].style.background = 'purple';
+					currentLi = next;
+				}
+			}	
+		}
+
+		goTo = function(current)
+		{
+			if(current== -1)
+			{
+				var val = byid('finder').value
+				window.location.href = "search.php?q="+val;
+			}
+			else
+			{
+				var lis = byid('suggestionsf').getElementsByTagName('li');
+				var user = lis[currentLi].id
+				var index = user.indexOf('_');
+		  		index ++;
+		  		user = user.substr(index);
+				window.location.href = "profile.php?u="+user;
+			}
+		}
+
 		inputField.addEventListener("keypress", handlerf, false); 
 		inputField.addEventListener("paste", handlerf, false);
 		inputField.addEventListener("keydown", handlerf, false); 
 }//end searchField
 
+//byid('finder').onkeydown = keycheck;
 
 //=============================================================================== IMAGES FUNCTIONS
 

@@ -663,7 +663,7 @@ function searchFieldf(inputField){
 	var indexLi;
 	var currentLi;
 
-		handlerf = function(){
+		handlerf = function(e){
 				var suggestionsf = byid('suggestionsf'); 
 				
 				var e = e || window.event;
@@ -672,13 +672,20 @@ function searchFieldf(inputField){
 
 			 	 	suggestions.style.display = 'none';
 			 	}*/
-			 	switch(e.keyCode)
+			 	var kc = e.keyCode;
+			 	var nav = navigator.appName;
+			 	if (nav.indexOf("Firefox") > -1)
+			 	{
+			 		kc = e.charCode;
+			 	}
+
+			 	switch(kc)
 			 	{
 			 		//up
 			 		case 38:
+			 			e.preventDefault(); //para evitar que el cursor se vaya al principio
 			 			var nextLi = currentLi - 1;
 			 			navigate(currentLi,nextLi);
-			 			console.log(nextLi);
 			 			break;
 			 		//down
 			 		case 40:

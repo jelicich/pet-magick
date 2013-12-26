@@ -20,7 +20,7 @@
 <script type="text/javascript" id="jslogout">
 
 	
-	searchFieldf('finder');
+	//searchFieldf('finder');
 
 
 </script>

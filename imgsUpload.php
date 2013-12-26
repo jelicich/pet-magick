@@ -1,4 +1,11 @@
 <!doctype html>
+
+<!--[if lte IE 8]>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<![endif]-->
 <html>
 <head>
 
@@ -17,20 +24,18 @@
 </head>
 <body>
 
-	<p id="support-notice">Your browser does not support Ajax uploads :-(<br/>The form will be submitted as normal.</p>
 	
 	<div id='imgContainer'></div>
 
-	<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id">
+	<iframe name="iframe_IE" src="" style="display: none;"></iframe> 
+
+	<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 		 
-		  <p><input id="file-id" type="file" name="file" onchange="showSelected(this);"/>
-		  	
-		  <p><label>From server: <input name="other-field" type="text" id="other-field-id" /></label></p>
+		  <p><input id="file-id" type="file" name="file"/>
 
 		  <p id="upload-status"></p>
 		  <p id="progress"></p>
 		  <pre id="result"></pre>
-
 	</form>
 
 <script type="text/javascript">
@@ -82,6 +87,9 @@ function vardump(){
 	console.log(this.responseText);
 }//end vardump
 
+
+//===================================================== UPLOAD IMGS FUNCTIONS
+
 function support(){
  
 	  return supportFileAPI() && supportEvents() && supportFormData();
@@ -108,33 +116,74 @@ function support(){
 
 if(support()){
 
-	  var notice = byid('support-notice');
-		  notice.innerHTML = "Your browser supports HTML uploads. Go try me! :-)";
-		 
+	  var formData = new FormData();
+	  var file_id = byid('file-id');
       var uploadBtn = create('input');
 	  	  uploadBtn.type = 'button';
 	  	  uploadBtn.value = 'Upload AJAX';
 	      uploadBtn.id = 'upload-button-id';
 
-		  byid('file-id').parentNode.appendChild(uploadBtn);
-		  onlyFile();
+	      file_id.parentNode.appendChild(uploadBtn);
+		  
+		  file_id.onchange = function(){ 
+
+		  	formData.append("file[]", file_id.files[0]);
+		  	showSelected(this); 
+		  	file_id.value = '';
+		  }
+		  ajaxSubmition(formData);
 }else{
 
-	 var uploadSubmit = create('input');
-	  	 uploadSubmit.type = 'submit';
-	  	 uploadSubmit.value = 'Upload as usual';
-	     uploadSubmit.id = 'upload-submit-id';
+	 var submit_IE = create('input');
+	  	 submit_IE.type = 'submit';
+	  	 submit_IE.value = 'Upload as usual';
+	     submit_IE.id = 'upload-submit-id';
 
-	     byid('file-id').parentNode.appendChild(uploadSubmit);
-		 fullForm();
+	     byid('file-id').parentNode.appendChild(submit_IE);
+	     byid('file-id').onchange = function(){ 
+ 			var imgContainer = byid('imgContainer');
+ 			var img =  create('img');
+ 				img.src = this.value;
+ 				imgContainer.appendChild(img);
+	     	alert(this.value);
+	     	//img.src.split(":///").pop();
+
+	     }
+	
+	/* var iframe = create('iframe');
+	 	 iframe.id = 'iframe_IE';	
+	  	 iframe.name = 'iframe_IE';
+	  	 iframe.src = '';
+	     iframe.style.display = 'none';*/
+
+	    // byid('form-id').onchange = function(){ alert('hola'); }
+	   
+	     //document.body.appendChild(iframe);
+	   
+
 }// end else
-
 
 // =============== Submition
 
-function fullForm(){
+
+function ajaxSubmition(formData) {
  
-	  var form = byid('form-id');
+  var uploadBtn = byid('upload-button-id');
+ 
+	  uploadBtn.onclick = function (evt) {
+
+	  		var action = 'ajax/insertar.php';
+		    var fileInput = byid('file-id');
+		    //var file = fileInput.files[0];
+		    //formData.append('file', file);
+
+			ajax('POST', action, vardump , formData, true);
+	  }
+}// end ajaxSubmition
+
+function fallBAckIE(){
+ 
+	/*  var form = byid('form-id');
 
 	  form.onsubmit = function() {
 
@@ -143,24 +192,10 @@ function fullForm(){
 
 			    ajax('POST', action, vardump , formData, true);
 			    return false;
-	  }
-}// end fullForm
+	  } */
+}// end fallBAckIE
 
-function onlyFile() {
- 
-  var uploadBtn = byid('upload-button-id');
- 
-	  uploadBtn.onclick = function (evt) {
-	    
-		    var formData = new FormData();
-		    var action = 'ajax/insertar.php';
-		    var fileInput = byid('file-id');
-		    var file = fileInput.files[0];
-		    
-			    formData.append('file', file);
-			    ajax('POST', action, vardump , formData, true);
-	  }
-}// end onlyFile
+
 
 
 // =============== Handlers
@@ -207,7 +242,7 @@ function onreadystatechangeHandler(evt) {
 	  if (status == '200' && evt.target.responseText) {
 
 	    var result = byid('result');
-	   		result.innerHTML = '<p>The server saw it as:</p><pre>' + evt.target.responseText + '</pre>';
+	   		result.innerHTML = evt.target.responseText;
 	  }
 }// end onreadystatechangeHandler
 
@@ -248,11 +283,13 @@ TUTORIALES UTILIZADOS
 -	http://new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata
 -   http://stackoverflow.com/questions/12368910/html-display-image-after-selecting-filename
 -   http://stackoverflow.com/questions/5397991/html-4-equivalent-of-html-5s-filereader
+-   http://ramui.com/articles/ajax-file-upload-using-iframe.html
+-   http://www.akchauhan.com/upload-image-using-hidden-iframe/
 
 
 PENDIENTE
 
-- Adaptar todo a IE 9 e inferior (iframe hidden?)
+- Adaptar todo a IE 9 e inferior (pasar src correctamente)
 - Estilo a todo
 - Seleccionar multiples imagenes
 - Validar tamano y demas (php)

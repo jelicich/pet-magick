@@ -550,12 +550,6 @@ function printUpdates(){
 
 //============================= AUTOCOMPLETE FUNCTIONS
 
-/*
- PENDIENTE:
-
-    - poder navegar la lista q se despliega con las flechas
-
-*/
 
 function searchField(inputField){
 
@@ -647,13 +641,6 @@ function searchField(inputField){
 		inputField.addEventListener("paste", handler, false);
 		inputField.addEventListener("keydown", handler, false); 
 }//end searchField
-
-
-
-
-
-
-
 
 function searchFieldf(inputField){
 

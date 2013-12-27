@@ -2,7 +2,7 @@
 
 function autoSearch(inputId)
 {
-	config = 
+	var config = 
 	{
 		initialize:function()
 		{
@@ -12,7 +12,7 @@ function autoSearch(inputId)
 		}
 	}
 
-	input =
+	var input =
 	{
 		inputField: document.getElementById(inputId),
 		suggestions: document.createElement('ul'),
@@ -106,13 +106,14 @@ function autoSearch(inputId)
 	{
 		if(current== -1)
 		{
-			var val = byid('finder').value
+			//var val = byid('finder').value
+			var val = input.inputField.value;
 			window.location.href = "search.php?q="+val;
 		}
 		else
 		{
-			var lis = byid('suggestionsf').getElementsByTagName('li');
-			var user = lis[currentLi].id
+			var lis = input.suggestions.getElementsByTagName('li');
+			var user = lis[input.currentLi].id
 			var index = user.indexOf('_');
 	  		index ++;
 	  		user = user.substr(index);
@@ -145,30 +146,31 @@ function autoSearch(inputId)
 		var vars = input.inputField.value;
 		var typing = input.inputField.value.length;
 
-		var htmlf = eval(this.responseText);
+		var html = eval(this.responseText);
+		if(html == undefined) return;
 		//var ulsf = create('ul');
 		//	ulsf.id = 'suggestionsf';
 		input.inputField.parentNode.appendChild(input.suggestions);
 
-		for(var i = 0; i < htmlf.length; i++){
+		for(var i = 0; i < html.length; i++){
 
-			var eachf = htmlf[i]['NICKNAME'];
-			var idUserf = htmlf[i]['ID_USER'];
+			var each = html[i]['NICKNAME'];
+			var idUser = html[i]['ID_USER'];
 
-			if(eachf.substring(0, typing) == vars){
+			if(each.substring(0, typing) == vars){
 
-				if(byid(eachf) === null){
+				if(byid(each) === null){
 
-					var lisf = create('li');
-						lisf.id = 'userf_'+ idUserf;
-						lisf.innerHTML = eachf;
-						input.suggestions.appendChild(lisf);
+					var lis = create('li');
+						lis.id = 'user_'+ idUser;
+						lis.innerHTML = each;
+						input.suggestions.appendChild(lis);
 					
-					lisf.onclick = function(){
+					lis.onclick = function(){
 						
-						var indexf = this.id.indexOf('-');
-					  		indexf ++;
-					  		byid('id-recipientf').value = this.id.substr(indexf);
+						//var index = this.id.indexOf('-');
+					  	//	index ++;
+					  		//byid('id-recipientf').value = this.id.substr(index);
 							input.inputField.value = this.innerHTML;
 							input.suggestions.parentNode.removeChild(input.suggestions);
 					}
@@ -176,10 +178,15 @@ function autoSearch(inputId)
 
 						document.body.onclick = function(){
 
-							if(input.suggestions != null){
+							try
+							{
 
 								input.suggestions.parentNode.removeChild(input.suggestions);
-								input.inputField.value = '';
+								//input.inputField.value = '';
+							}
+							catch(e)
+							{
+								//wtf
 							}
 						}
 				}

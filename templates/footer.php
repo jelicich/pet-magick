@@ -16,11 +16,12 @@
 	</div>
 <!-- END footer -->
 
-
+<script type="text/javascript" src="js/autosearch.js"></script>
 <script type="text/javascript" id="jslogout">
 
 	
-	//searchFieldf('finder');
-
+	//autoSearch('inputId')
+	var f = autoSearch('finder');
+	f.ini();
 
 </script>

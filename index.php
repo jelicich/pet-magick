@@ -20,7 +20,6 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/lib.js"></script>
-<script type="text/javascript" src="js/objeto.js"></script>
 
 </head>
 
@@ -324,19 +323,7 @@
 </div>
 <!-- END wrapper-->
 
-<form>
-	<input type="text" id="blabla">
-</form>
-<script type="text/javascript">
-	var rr = autoSearch('blabla');
-	rr.ini();
 
-	var s = autoSearch('finder');
-	s.ini();
-
-	
-
-</script>
 
 </body>
 </html>

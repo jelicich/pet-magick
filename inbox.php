@@ -91,6 +91,7 @@
 <script type="text/javascript" id="jslogout">
 
 	inbox(); //============= Carga los mensajes
+	
 	var i = new autoSearch('inputTo');
 	i.ini({
 		'hidden':true

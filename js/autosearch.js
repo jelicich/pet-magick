@@ -1,5 +1,28 @@
 //OBJETO BUSCADOR CON AUTOCOMPLETE
+/*
 
+INFO
+se instancia:
+var bla = autoSearch('id-del-input');
+
+se inicia:
+#1:
+	bla.ini();	
+	//al iniciarlo asi arranca como default como buscador. las opciones son falase por default
+
+#2
+	bla.ini({
+		'hidden':false;
+	}); 
+	//idem arriba solo que aca le pasas q es false
+
+#3
+	bla.ini({
+		'hiden': true;
+	});
+	//crea un input hidden y la funcionalidad del componente es seleccionar usuarios para mandar mensaje.
+
+*/
 function autoSearch(inputId)
 {
 	var config = 
@@ -65,7 +88,19 @@ function autoSearch(inputId)
 					//wtf
 				}
 	 			break;
-
+	 		//other keys
+	 		case 9:
+	 		case 16:
+	 		case 17:
+	 		case 18:
+	 		case 20:
+	 		case 33:
+	 		case 34:
+	 		case 35: 
+	 		case 36:
+	 		case 45:
+	 			e.preventDefault();
+	 			break;
 	 		default:
 	 			var cont = input.inputField.parentNode;
 	 			var ul = cont.getElementsByTagName('ul');
@@ -144,6 +179,11 @@ function autoSearch(inputId)
 			index++;
 			input.hidden.value = user.substr(index);
 			input.inputField.value = lis[input.currentLi].innerHTML;
+			while(input.suggestions.hasChildNodes())
+			{	
+				input.suggestions.removeChild(input.suggestions.lastChild);
+			}
+			input.suggestions.parentNode.removeChild(input.suggestions);
 		}
 		
 	}
@@ -200,12 +240,16 @@ function autoSearch(inputId)
 					  		//byid('id-recipientf').value = this.id.substr(index);
 							input.inputField.value = this.innerHTML;
 							input.suggestions.parentNode.removeChild(input.suggestions);
-							if(config.hidden)
+							var user = this.id;
+							var index = user.indexOf('_');
+					  		index ++;
+					  		user = user.substr(index);	
+							if(!config.hidden)
 							{
-								var user = this.id;
-								var index = user.indexOf('_');
-						  		index ++;
-						  		user = user.substr(index);	
+								window.location.href = "profile.php?u="+user;
+							}
+							else
+							{
 								input.hidden.value = user;
 							}
 					}
@@ -275,6 +319,8 @@ function autoSearch(inputId)
 			 					config.hidden = true;
 			 					input.hidden = document.createElement('input');
 			 					input.hidden.type = 'hidden';
+			 					input.hidden.name = 'recipient';
+			 					input.hidden.id = 'id-recipient';
 			 					input.inputField.parentNode.appendChild(input.hidden);
 			 				} 
 			 				else

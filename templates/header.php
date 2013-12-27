@@ -51,7 +51,7 @@
 						</li>
 				</ul>
 				<div class="grid_2" id='searchF'>
-					<input type="text" placeholder="Find pet lovers" id='finder'/>
+					<input type="text" placeholder="Find pet lovers" id='finder' autocomplete="off"/>
 					<input type='hidden' id='id-recipientf' name='recipient'/> 
 				</div>
 			</div>

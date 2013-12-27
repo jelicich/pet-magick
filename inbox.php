@@ -76,8 +76,7 @@
 				
 
 	<div id='searchField' class="grid_3">
-			<input type='text' placeholder='To' id='inputTo' name='inputTo'/>
-			<input type='hidden' id='id-recipient' name='recipient'/> 
+			<input type='text' placeholder='To' id='inputTo' name='inputTo' autocomplete='off'/>
 	</div>
 	
 	<textarea rows='5' cols='30' name='new-message' id='new-message'></textarea>
@@ -92,7 +91,10 @@
 <script type="text/javascript" id="jslogout">
 
 	inbox(); //============= Carga los mensajes
-
+	var i = new autoSearch('inputTo');
+	i.ini({
+		'hidden':true
+	});
 </script>
 
 

@@ -49,7 +49,21 @@ function autoSearch(inputId)
 	 			break;
 	 		//enter
 	 		case 13:
+	 			e.preventDefault(); 
 	 			goTo(input.currentLi);
+	 			break;
+	 		//escape
+	 		case 27:
+	 			try
+				{
+
+					input.suggestions.parentNode.removeChild(input.suggestions);
+					//input.inputField.value = '';
+				}
+				catch(e)
+				{
+					//wtf
+				}
 	 			break;
 
 	 		default:
@@ -104,21 +118,34 @@ function autoSearch(inputId)
 
 	function goTo(current)
 	{
-		if(current== -1)
+		if(!config.hidden)
 		{
-			//var val = byid('finder').value
-			var val = input.inputField.value;
-			window.location.href = "search.php?q="+val;
+			if(current== -1)
+			{
+				//var val = byid('finder').value
+				var val = input.inputField.value;
+				window.location.href = "search.php?q="+val;
+			}
+			else
+			{
+				var lis = input.suggestions.getElementsByTagName('li');
+				var user = lis[input.currentLi].id
+				var index = user.indexOf('_');
+		  		index ++;
+		  		user = user.substr(index);
+				window.location.href = "profile.php?u="+user;
+			}	
 		}
 		else
 		{
 			var lis = input.suggestions.getElementsByTagName('li');
 			var user = lis[input.currentLi].id
 			var index = user.indexOf('_');
-	  		index ++;
-	  		user = user.substr(index);
-			window.location.href = "profile.php?u="+user;
+			index++;
+			input.hidden.value = user.substr(index);
+			input.inputField.value = lis[input.currentLi].innerHTML;
 		}
+		
 	}
 
 	function lookFor(compareCounter){
@@ -173,6 +200,14 @@ function autoSearch(inputId)
 					  		//byid('id-recipientf').value = this.id.substr(index);
 							input.inputField.value = this.innerHTML;
 							input.suggestions.parentNode.removeChild(input.suggestions);
+							if(config.hidden)
+							{
+								var user = this.id;
+								var index = user.indexOf('_');
+						  		index ++;
+						  		user = user.substr(index);	
+								input.hidden.value = user;
+							}
 					}
 
 
@@ -227,6 +262,34 @@ function autoSearch(inputId)
 		 		}
 		 	}
 		 	*/
+		 	if(arguments.length > 0)
+		 	{
+		 		var obj = arguments[0];
+		 		for(var prop in obj)
+			 	{
+			 		switch(prop)
+			 		{
+			 			case 'hidden':
+			 				if(obj[prop] == true)
+			 				{
+			 					config.hidden = true;
+			 					input.hidden = document.createElement('input');
+			 					input.hidden.type = 'hidden';
+			 					input.inputField.parentNode.appendChild(input.hidden);
+			 				} 
+			 				else
+			 				{
+			 					config.hidden = false;
+			 				}
+			 				break;
+			 
+			 			default:
+			 				break;
+
+			 		}
+			 	}	
+		 	}
+
 			config.initialize();
 		}
 		

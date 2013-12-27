@@ -11,7 +11,7 @@ $pics = new BOPics;
    //var_dump($size);
 
 $count = count($_FILES['file']['name']);
-
+/*
 if($count <= 1){ // Provisorio para IE 7
 	
 	$path = "../img";
@@ -29,12 +29,12 @@ if($count <= 1){ // Provisorio para IE 7
 	$pics->upload_img(array('pic'=>$path, 'caption'=>$caption));
 
 }else{// Esta es la posta, lo q va dentro del for
-
+*/	var_dump($_FILES);
 		for($i = 0; $i < $count; $i++)
 		{
 			$path = "../img";
 			$file = $_FILES['file']['tmp_name'][$i];
-			$fileName = $_FILES['file']['name'][$i];// averiguar sobre esta funcion
+			$fileName = $_FILES['file']['name'][$i];
 			$rand = rand(1000,9999);
 			$ext = pathinfo($fileName, PATHINFO_EXTENSION);
 			$newName = $rand . "_" . time() .'.' . $ext;  
@@ -48,7 +48,7 @@ if($count <= 1){ // Provisorio para IE 7
 
 		}
 
-}
+//}
 /*	
 
 	<?php

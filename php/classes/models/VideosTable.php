@@ -16,4 +16,20 @@ class VideosTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Videos');
     }
+
+    public function getVideosByPet($id)
+    { // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
+
+        $q = Doctrine_Query::create()
+			->from('Videos v') 
+			->AndWhere('v.PET_ID = ?', $id);
+
+		$videos = $q->execute();
+       
+       if(sizeof($videos) > 0){
+       		return $videos->toArray();
+       }else{
+       		return false;
+       }
+   } 
 }

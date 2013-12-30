@@ -67,10 +67,10 @@
 			</div>
 			<ul class="mod-content clearfix">
 				<?php 
-					if($p->getPets()) 
+					if($p->getPetList()) 
 					{
-						$pets = $p->getPets();
-						$petProfiles = '';
+						$pets = $p->getPetList();
+						
 						for($i = 0; $i < sizeof($pets); $i++)
 						{
 
@@ -99,20 +99,28 @@
 				<h2>My Recent News</h2>
 			</div>
 			<ul class="mod-content clearfix">
-				<li class="recent-news">
-					<span>September 21, 2012</span>
-					<p>El gobernador de San Juan arribó este mediodía a la Ciudad y ya <p>
-				</li>
+				<?php 
+					
+					if($p->getNews())
+					{
+						$n = $p->getNews();
+						
+						for($i = 0; $i<sizeof($n); $i++)
+						{
+				?>
+							<li class="recent-news">
+								<span><?php echo $n[$i]['DATE']?></span>
+								<p><?php echo $n[$i]['NEWS']; ?><p>
+							</li>
 
-				<li class="recent-news">
-					<span>September 21, 2012</span>
-					<p>El gobernador de San Juan arribó este mediodía a la Ciudad y ya se encuentra alojado en el este mediodía a la Ciudad y ya se este mediodía a la Ciudad y ya s<p>
-				</li>
-
-				<li class="recent-news">
-					<span>September 21, 2012</span>
-					<p>El gobernador de San Juan arribó este mediodía a la Ciudad y ya se encuentra alojado en el este mediodía a la Ciudad y ya se este mediodía a la Ciudad y ya s<p>
-				</li>
+				<?php 
+						}//END FOR
+					}//END IF
+					else
+					{
+						echo '<li class="recent-news">The user does not have any update yet</li>';
+					}
+				?>
 			</ul>
 		</div>
 		<!-- END news -->
@@ -123,49 +131,63 @@
 		<!-- pet profile -->
 		<div class="mod grid_7 profiles-mod nogrid-mod ">
 			<?php 
-				if($p->getPets())
-				{
-			?>
+				if($p->getPetList())
+				{	
+					$pet = $p->getPet($pets[0]['ID_PET']);
+			?>		
 					<div class="mod-header">
-						<h2><strong class="nickname"><?php echo $pets[0]['NAME'] ?> </strong>My pet story</h2>
+						<h2><strong class="nickname"><?php echo $pet['NAME'] ?> </strong>My pet story</h2>
 					</div>
 
 
 					<div class="mod-content clearfix">
 						
 						<div class="pic-caption pet-info">
-							<a href=<?php echo '"'.$pets[0]['PIC'].'"'; ?> ><img src=<?php echo '"'.$pets[0]['THUMB'].'"'; ?> class="thumb-mid"/></a>
-							<span><strong>Traits: </strong><?php echo $pets[0]['TRAITS'];?></span>
+							<a href=<?php echo '"'.$pet['PIC'].'"'; ?> ><img src=<?php echo '"'.$pet['THUMB'].'"'; ?> class="thumb-mid"/></a>
+							<span><strong>Traits: </strong><?php echo $pet['TRAITS'];?></span>
 						</div>
 						
 						<div class="bg-txt corregir">
-							<p><?php echo $pets[0]['STORY'];?></p>
+							<p><?php echo $pet['STORY'];?></p>
 						</div>
 						
 						<div class="slider-small">
-							<ul class="clearfix">
-								<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
-								<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
-								<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
-							</ul>	
+							<?php
+								if($pet['ALBUM_ID'])
+								{
+									//CREAR FUNCION GET ALBUM!!!
+							?>
+									<ul class="clearfix">
+										<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
+										<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
+										<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
+									</ul>
+							<?php
+								}//END IF
+							?>
 						</div>
 
 						<div class='video'>
-							
-							<div class='wrapper-play'>
-								<div class="play"></div>
-								<img src="" class="thumb-big video-thumb"/>
-							</div>
+							<?php
+								if($pet['VIDEO'])
+								{
+							?>
+									<div class='wrapper-play'>
+										<div class="play"></div>
+										<img src=<?php echo '"'.$pets['VIDEO']['THUMB'].'"'; ?> class="thumb-big video-thumb"/>
+									</div>
 
-							<div class="video-last-caption">
-								<h3>Hey! let me pass - <span>2:12</span></h3>
-								<span><strong>By: </strong> Petter Putter</span>
-							</div>
-							
+									<div class="video-last-caption">
+										<h3><?php echo $pets['VIDEO']['TITLE'] ?><span>2:12</span></h3>
+										<!--<span><strong>By: </strong> Petter Putter</span>-->
+									</div>
+							<?php
+								} //end if videos
+							?>
 						</div>
 					</div>
 			<?php 
-				}//END IF
+				}//END IF pets
 			?>
 	
 		</div>

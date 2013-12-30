@@ -7,6 +7,9 @@ include_once('models/PetsTable.php');
 include_once('models/CountriesTable.php');
 include_once('models/RegionsTable.php');
 include_once('models/CitiesTable.php');
+include_once('models/NewsTable.php');
+include_once('models/VideosTable.php');
+include_once('models/AlbumsTable.php');
 
 
 
@@ -20,8 +23,11 @@ class BOProfiles{
     var $thumb;
     var $about;
     var $location;
+    var $news;
+    var $videos;
     var $albumId;
-    var $pets;
+    var $petList;
+
 
     function __construct($id)
     {
@@ -31,6 +37,9 @@ class BOProfiles{
         $this->countriesTable = Doctrine_Core::getTable('Countries');
         $this->regionsTable = Doctrine_Core::getTable('Regions');
         $this->citiesTable = Doctrine_Core::getTable('Cities');
+        $this->newsTable = Doctrine_Core::getTable('News');
+        $this->videosTable = Doctrine_Core::getTable('Videos');
+        $this->albumsTable = Doctrine_Core::getTable('Albums');
         $this->userId = $id;
         $this->getUserData($id);
     }
@@ -99,10 +108,25 @@ class BOProfiles{
            $this->location = "Nowhere"; //!!!!!!!PROVISORIO ??? Q PONER??? 
         }
 
-        
-        //===PETS
+        //===NEWS 
 
-        $pets = $this->petsTable->getPetsByUser($id);
+        $news = $this->newsTable->getNewsByUser($id);
+        if(!empty($news))
+        {
+            $this->news = $news;
+        }
+        else
+        {
+            $this->news = false;
+        }
+
+        
+      
+
+        
+        //===PETLIST
+
+        $pets = $this->petsTable->getPetListByUser($id); // optimizar para traer solo lo que necesito
         $petsArray = $pets->toArray();
         if(!empty($petsArray))
         {
@@ -119,18 +143,76 @@ class BOProfiles{
                     $petsArray[$i]['PIC'] = 'img/pets/' . $p->PIC; 
                     $petsArray[$i]['THUMB'] = 'img/pets/thumb/' . $p->PIC; 
                 }
+                
+                /*
+                //== VIDEO
+                $videos = $this->videosTable->getVideosByPet($petsArray[$i]['ID_PET']);
+                
+                if(!empty($videos))
+                {
+                    $petsArray[$i]['VIDEO'] = $videos[0]; //GUARDO LA POSICIón 0 ya que solo permitiremos guardar un solo video
+                    $t = $this->picsTable->find($videos[0]['THUMB_ID']);
+                    $petsArray[$i]['VIDEO']['THUMB'] = $t->PIC;
+                }
+                else
+                {
+                    $petsArray[$i]['VIDEO'] = false;
+                }
+                */
+
             }
 
-            $this->pets = $petsArray;
+
+
+
+            $this->petList = $petsArray;
             //var_dump($petsArray);
         }
         else
         {
-            $this->pets = false;
+            $this->petList = false;
         }
     }
 
     
+    //===PET
+    function getPet($id)
+    {
+        $p = $this->petsTable->find($id);
+        $pet = $p->toArray();
+        
+        if($pet['PIC_ID'] == null)
+        {
+            $pet['PIC'] = 'img/pets/default.jpg';
+            $pet['THUMB'] = 'img/pets/thumb/default.jpg';
+        }
+        else
+        {
+            $p = $this->picsTable->find($pet['PIC_ID']);
+            $pet['PIC'] = 'img/pets/' . $p->PIC; 
+            $pet['THUMB'] = 'img/pets/thumb/' . $p->PIC; 
+        }
+
+        //$vid = $this->videosTable->find($pet['VIDEO_ID'])
+
+        $videos = $this->videosTable->getVideosByPet($pet['ID_PET']);
+                
+        if(!empty($videos))
+        {
+            $pet['VIDEO'] = $videos[0]; //GUARDO LA POSICIón 0 ya que solo permitiremos guardar un solo video
+            $t = $this->picsTable->find($videos[0]['THUMB_ID']);
+            $pet['VIDEO']['THUMB'] = $t->PIC;
+        }
+        else
+        {
+            $pet['VIDEO'] = false;
+        }
+
+
+
+        //$this->pet = $pet;
+        return $pet;
+    }
     
 
     //==== GETS
@@ -159,20 +241,26 @@ class BOProfiles{
         return $this->about;
     }
 
+    function getNews()
+    {
+        return $this->news;
+    }
+
     function getLocation()
     {
         return $this->location;
     }
 
-    function getPets()
+    function getPetList()
     {
-        return $this->pets;
+        return $this->petList;
     }
 
 }
 
 
-//$p = new BOProfiles(5);
+$p = new BOProfiles(5);
+
 
 //echo $p->getName().' '. $p->getNickName().' '. $p->getProfilePic().' '. $p->getThumb().' '. $p->getAbout().' '. $p->getLocation();
 ?>

@@ -18,6 +18,17 @@ class PetsTable extends Doctrine_Table
     }
 
 
+    public function getPetListByUser($id)
+    {
+        $q = Doctrine_Query::create()
+            ->select('p.ID_PET, p.NAME, p.BREED, p.PIC_ID')
+            ->from('Pets p') 
+            ->AndWhere('p.USER_ID = ?',$id);
+        $rta = $q->execute(); //devuelvo el objeto doctrine
+        
+        return $rta;
+    }
+
     public function getPetsByUser($id)
     {
     	$q = Doctrine_Query::create()

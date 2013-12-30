@@ -9,9 +9,10 @@ $pics = new BOPics;
 //$size = getimagesize($_FILES['file']['tmp_name']);
 //$mime = array('image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png');
    //var_dump($size);
-
+var_dump($_FILES);
 $count = count($_FILES['file']['name']);
 /*
+////
 if($count <= 1){ // Provisorio para IE 7
 	
 	$path = "../img";
@@ -29,7 +30,7 @@ if($count <= 1){ // Provisorio para IE 7
 	$pics->upload_img(array('pic'=>$path, 'caption'=>$caption));
 
 }else{// Esta es la posta, lo q va dentro del for
-*/	var_dump($_FILES);
+*/	
 		for($i = 0; $i < $count; $i++)
 		{
 			$path = "../img";

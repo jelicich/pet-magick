@@ -72,7 +72,7 @@ function ajax(metodo,url, unaFuncion, mensaje, async) {
 	xhr = createXMLHTTPObject();
 	//xhr.upload.addEventListener('loadstart', onloadstartHandler, false);
     //xhr.upload.addEventListener('progress', onprogressHandler, false);
-	xhr.upload.addEventListener('load', onloadHandler, false);
+	xhr.upload.addEventListener('load', onloadHandler, false); !!!
 	//xhr.addEventListener('readystatechange', onreadystatechangeHandler, false);
 
 	xhr.open(metodo, url, async);
@@ -102,8 +102,18 @@ function whilst(s){
 
 //===================================================== UPLOAD IMGS FUNCTIONS
 var file_id = byid('file-id');
+var filesSelected = []; // Utilizo este array pq no encontre la forma de resetear formdata (no tengo internet), tal vez pueda optiimzarse....
+var filesSelectedPosition = 0;
+//var stopUploading = false;
+
+
+/*
+BARRA DE PROGRESO  
+-----------------
+La barra de progreso queda pendiente para cuando ande todo mas o menos homogeneamente en todos los navegadores
 var progress = create('div'); 
-var bar = create('div'); 
+var bar = create('div');
+*/  
 
 
 function support(){
@@ -134,35 +144,97 @@ if(support()){
 
 	  var formData = new FormData();
 
-	  var file_id = byid('file-id');
       var uploadBtn = create('input');
 	  	  uploadBtn.type = 'button';
 	  	  uploadBtn.value = 'Upload';
-	      uploadBtn.id = 'upload-button-id';
 
-	      file_id.parentNode.appendChild(uploadBtn);
+	  	  file_id.parentNode.appendChild(uploadBtn);
 		  
 		  file_id.onchange = function(){ 
 
-	        	progress.id = 'progress';
-	        	progress.style.width = '100px';
-	        	progress.style.height = '5px';
-	        	progress.style.backgroundColor = 'gray';
-	        	progress.style.position = 'relative';
+		        	/*
+					BARRA DE PROGRESO  
+		         	 -----------------
 
-	        	bar.style.backgroundColor = 'lightblue';
-			    bar.style.height = '5px';
-			    bar.style.position = 'absolute';
+		        	progress.id = 'progress';
+		        	progress.style.width = '100px';
+		        	progress.style.height = '5px';
+		        	progress.style.backgroundColor = 'gray';
+		        	progress.style.position = 'relative';
 
-			    byid('imgContainer').appendChild(progress);
-			    progress.appendChild(bar);
+		        	bar.style.backgroundColor = 'lightblue';
+				    bar.style.height = '5px';
+				    bar.style.position = 'absolute';
 
-			    formData.append("file[]", file_id.files[0]);
-			  	showSelected(this); 
-			  	file_id.value = '';
-		  }
+				    byid('imgContainer').appendChild(progress);
+				    progress.appendChild(bar);*/
 
-		  ajaxSubmition(formData);
+				    //stopUploading = false;
+				  if (this.files && this.files[0]) {
+	            
+			            var reader = new FileReader();
+
+			         /*  BARRA DE PROGRESO  
+			         	 ---------------------
+
+			         	reader.onprogress = function(data) {
+
+				            if (data.lengthComputable) {                                            
+				                
+				                var percent = parseInt(((data.loaded / data.total) * 100), 10 );
+									bar.style.width =  percent + '%';
+
+								if(percent == 100){ byid('progress').parentNode.removeChild(byid('progress'));}
+								//console.log(percent);
+							}
+				        }*/
+
+				        reader.onload = function(e) {
+			              
+			          		var selectedImg = create('img');
+			          			selectedImg.id = 'img_' + filesSelectedPosition;
+			                    selectedImg.setAttribute('src', e.target.result);
+			                    selectedImg.setAttribute('alt', e.target.result);
+			                    selectedImg.style.width = '20%';
+			                    selectedImg.style.height = '20%';
+			                    selectedImg.style.margin = '10px 10px';
+			                    selectedImg.style.float = 'left';
+			                    byid('imgContainer').appendChild(selectedImg);
+
+			                    selectedImg.onclick = function(){
+
+				                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+				                    	this.parentNode.removeChild(this);
+				                    	filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
+				                    	//console.log('onclick: ' + ImgPosition);
+				                    }
+			            }
+
+			            reader.readAsDataURL(this.files[0]);
+			      }// end if
+
+		      	  filesSelectedPosition++;
+		      	  //console.log(filesSelectedPosition);
+			  	  filesSelected[filesSelectedPosition] = file_id.files[0];
+			  	  file_id.value = '';
+   		  }// end onchange
+
+		   uploadBtn.onclick = function (evt) {
+		   		
+		   			//console.log(filesSelected);
+			   		for (var i = 0; i < filesSelected.length; i++) {
+			   			
+			   			formData.append("file[]", filesSelected[i]);
+			   		}
+
+			   		ajax('POST', 'ajax/insertar.php', vardump, formData, true); // cambiar la function vurdump
+			   		
+			   		//stopUploading = true; // necesito resetear formData. este flag buguea....
+			   	}
+		   		
+
+		   }
+
 }else{
 
 	fallBackIE();
@@ -170,19 +242,6 @@ if(support()){
 }// end else
 
 // =============== Submition
-
-
-function ajaxSubmition(formData) {
- 
-  var uploadBtn = byid('upload-button-id');
- 
-	  uploadBtn.onclick = function (evt) {
-
-	  		var action = 'ajax/insertar.php';
-
-	  		ajax('POST', action, vardump , formData, true);
-	  }
-}// end ajaxSubmition
 
 function fallBackIE(){
  
@@ -210,40 +269,6 @@ function fallBackIE(){
 
 // =============== Handlers
 
-function showSelected(input){
-
-        if (input.files && input.files[0]) {
-            
-	            var reader = new FileReader();
-
-	            reader.onprogress = function(data) {
-
-		            if (data.lengthComputable) {                                            
-		                
-		                var percent = parseInt(((data.loaded / data.total) * 100), 10 );
-							bar.style.width =  percent + '%';
-
-						if(percent == 100){ byid('progress').parentNode.removeChild(byid('progress'));}
-						//console.log(percent);
-					}
-		        }
-
-		        reader.onload = function(e) {
-	              
-	          		var selectedImg = create('img');
-
-	                    selectedImg.setAttribute('src', e.target.result);
-	                    selectedImg.setAttribute('alt', e.target.result);
-	                    selectedImg.style.width = '20%';
-	                    selectedImg.style.height = '20%';
-	                    selectedImg.style.margin = '10px 10px';
-	                    selectedImg.style.float = 'left';
-	                    byid('imgContainer').appendChild(selectedImg);
-	            }
-	            
-	            reader.readAsDataURL(input.files[0]);
-	    }
-}// end showSelected
 
 function showSelectedIE(imgFile){
 
@@ -253,10 +278,11 @@ function showSelectedIE(imgFile){
 	    newPreview.style.height = "120px";
 }// end showSelectedIE    
 
-function onloadHandler(evt) {
+function onloadHandler(evt){
   
   var div = byid('upload-status');
   	  whilst(byid('imgContainer'));
+
 }// end onloadHandler
 
 
@@ -285,11 +311,11 @@ TUTORIALES UTILIZADOS
 
 PENDIENTE
 
-- Adaptar todo a IE 9 e inferior (pasar src correctamente)
-- Estilo a todo
-- Seleccionar multiples imagenes
-- Validar tamano y demas (php)
 - Eliminar imagen seleccionada si ya no quiero enviarla
+- Seleccionar multiples imagenes en IE7, 8 y 9 (ver como enviar el array)
+- Mostrar imagenes seleccionadas en Safari 5.algo
+- Barra de progreso y/o gif
+- Validar tamano y demas (php)
 - Ver si queremos caption o q mas ademas de la img queremos levantar
 
 

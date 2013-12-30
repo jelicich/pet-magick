@@ -47,7 +47,7 @@ abstract class BasePics extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE', 'date', null, array(
+        $this->hasColumn('DATE', 'datetime', null, array(
              'type' => 'date',
              'fixed' => false,
              'unsigned' => false,
@@ -70,7 +70,7 @@ abstract class BasePics extends Doctrine_Record
              'fixed' => false,
              'unsigned' => true,
              'primary' => false,
-             'notnull' => true,
+             'notnull' => false,
              'autoincrement' => false,
              ));
         $this->hasColumn('ALBUM_ID', 'integer', 4, array(

@@ -131,7 +131,7 @@ class UsersTable extends Doctrine_Table
 		return $rta;
 	}
 
-	 public function findByMail($mail)
+	public function findByMail($mail)
     {
     	$q = Doctrine_Query::create()
 			->from('Users u') 
@@ -164,4 +164,12 @@ class UsersTable extends Doctrine_Table
          $rta = json_encode($json);
          return $rta;
     }
+
+
+    //=================== PROFILE METHODS
+    public function getUserName($id)
+    {
+
+    }
+
 }//end class

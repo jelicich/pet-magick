@@ -897,7 +897,7 @@ p,span{
 	height: 136px;
 }
 
-#nickname{
+.nickname{
 	display: inline-block;
 	width: 135.5px;
 }

@@ -3,6 +3,9 @@
 	//session_destroy();
 	$_SESSION['token'] = sha1(uniqid()); 
 	//var_dump($_SESSION);
+
+	include_once "php/classes/BOProfiles.php";
+	$p = new BOProfiles($_GET['u']);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -34,16 +37,16 @@
 		<!-- about module -->
 		<div class="mod grid_12 profiles-mod nogrid-mod">
 			<div class="mod-header">
-				<h2><strong id="nickname">Mike</strong>About me</h2>
+				<h2><strong class="nickname"><?php echo $p->getNickname() ?></strong>About me</h2>
 			</div>
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
-					<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					<h3>Michael Perez</h3>
-					<span>Kaikoura, New Zealand</span>
+					<a href= <?php echo '"'.$p->getProfilePic().'"'; ?> ><img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/></a>
+					<h3><?php echo $p->getName() ?></h3>
+					<span><?php echo $p->getLocation() ?></span>
 				</div>
 				<div class="bg-txt">
-					<p>El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15. El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15</p>
+					<p><?php echo $p->getAbout() ?></p>
 				</div>
 				<div id="user-extra">
 					<ul>
@@ -62,14 +65,31 @@
 			<div class="mod-header">
 				<h2>My Pets</h2>
 			</div>
-			<div class="mod-content clearfix">
-				<div class="pet-info">
-					<a href="#"><img src="img/users/thumb/1.jpg" class="thumb-small"/></a>
-					<h3><a href="#">Pepe</a></h3>
-					<span>Bengali</span>
-				</div>
+			<ul class="mod-content clearfix">
+				<?php 
+					if($p->getPets()) 
+					{
+						$pets = $p->getPets();
+						$petProfiles = '';
+						for($i = 0; $i < sizeof($pets); $i++)
+						{
 
-			</div>
+
+				?>
+							<li class="pet-info">
+								<a href=<?php echo '"'.$pets[$i]['ID_PET'].'"' ?>><img src=<?php echo '"'.$pets[$i]['THUMB'].'"'?> class="thumb-small"/></a>
+								<h3><a href=<?php echo '"'.$pets[$i]['ID_PET'].'"' ?> > <?php echo $pets[$i]['NAME'] ?> </a></h3>
+								<span><?php echo $pets[$i]['BREED'] ?></span>
+							</li>
+						
+				<?php
+						
+						}//END FOR
+					
+					}//END IF 
+				
+				?>
+			</ul>
 		</div>
 		<!-- END my pets -->
 
@@ -102,44 +122,52 @@
 
 		<!-- pet profile -->
 		<div class="mod grid_7 profiles-mod nogrid-mod ">
-
-			<div class="mod-header">
-				<h2><strong id="nickname">Pepe</strong>My pet story</h2>
-			</div>
-
-			<div class="mod-content clearfix">
-				
-				<div class="pic-caption pet-info">
-					<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					<span>Loyal, smart, quiet, lovely, etc</span>
-				</div>
-				
-				<div class="bg-txt corregir">
-					<p>El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15. El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15</p>
-				</div>
-				
-				<div class="slider-small">
-					<ul class="clearfix">
-						<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
-						<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
-						<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
-					</ul>	
-				</div>
-
-				<div class='video'>
-					<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
-					<div class='wrapper-play'>
-						<div class="play"></div>
-						<img src="" class="thumb-big video-thumb"/>
+			<?php 
+				if($p->getPets())
+				{
+			?>
+					<div class="mod-header">
+						<h2><strong class="nickname"><?php echo $pets[0]['NAME'] ?> </strong>My pet story</h2>
 					</div>
 
-					<div class="video-last-caption">
-						<h3>Hey! let me pass - <span>2:12</span></h3>
-						<span><strong>By: </strong> Petter Putter</span>
+
+					<div class="mod-content clearfix">
+						
+						<div class="pic-caption pet-info">
+							<a href=<?php echo '"'.$pets[0]['PIC'].'"'; ?> ><img src=<?php echo '"'.$pets[0]['THUMB'].'"'; ?> class="thumb-mid"/></a>
+							<span><strong>Traits: </strong><?php echo $pets[0]['TRAITS'];?></span>
+						</div>
+						
+						<div class="bg-txt corregir">
+							<p><?php echo $pets[0]['STORY'];?></p>
+						</div>
+						
+						<div class="slider-small">
+							<ul class="clearfix">
+								<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
+								<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
+								<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
+							</ul>	
+						</div>
+
+						<div class='video'>
+							
+							<div class='wrapper-play'>
+								<div class="play"></div>
+								<img src="" class="thumb-big video-thumb"/>
+							</div>
+
+							<div class="video-last-caption">
+								<h3>Hey! let me pass - <span>2:12</span></h3>
+								<span><strong>By: </strong> Petter Putter</span>
+							</div>
+							
+						</div>
 					</div>
-					
-				</div>
-			</div>
+			<?php 
+				}//END IF
+			?>
+	
 		</div>
 		<!-- END my pet profile -->
 

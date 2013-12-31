@@ -67,8 +67,8 @@ class BOProfiles{
         if(!empty($data->PIC_ID))
         {
             $p = $this->picsTable->find($data->PIC_ID);
-            $this->profilePic = 'img/users/'.$p->PIC;
-            $this->thumb = 'img/users/thumb/'.$p->PIC;
+            $this->profilePic = $p->PIC;
+            $this->thumb = $p->THUMB;
         }
         else
         {
@@ -126,7 +126,7 @@ class BOProfiles{
         
         //===PETLIST
 
-        $pets = $this->petsTable->getPetListByUser($id); // optimizar para traer solo lo que necesito
+        $pets = $this->petsTable->getPetListByUser($id); 
         $petsArray = $pets->toArray();
         if(!empty($petsArray))
         {
@@ -140,8 +140,8 @@ class BOProfiles{
                 else
                 {
                     $p = $this->picsTable->find($petsArray[$i]['PIC_ID']);
-                    $petsArray[$i]['PIC'] = 'img/pets/' . $p->PIC; 
-                    $petsArray[$i]['THUMB'] = 'img/pets/thumb/' . $p->PIC; 
+                    $petsArray[$i]['PIC'] = $p->PIC; 
+                    $petsArray[$i]['THUMB'] = $p->THUMB; 
                 }
                 
                 /*
@@ -189,8 +189,8 @@ class BOProfiles{
         else
         {
             $p = $this->picsTable->find($pet['PIC_ID']);
-            $pet['PIC'] = 'img/pets/' . $p->PIC; 
-            $pet['THUMB'] = 'img/pets/thumb/' . $p->PIC; 
+            $pet['PIC'] = $p->PIC; 
+            $pet['THUMB'] = $p->THUMB; 
         }
 
         //$vid = $this->videosTable->find($pet['VIDEO_ID'])
@@ -212,6 +212,12 @@ class BOProfiles{
 
         //$this->pet = $pet;
         return $pet;
+    }
+
+    function getAlbum($id)
+    {
+        $a = $this->picsTable->getPicsByAlbum($id);
+        return $a;
     }
     
 
@@ -256,10 +262,17 @@ class BOProfiles{
         return $this->petList;
     }
 
+    function getAlbumId()
+    {
+        return $this->albumId;
+    }
+
 }
 
 
 $p = new BOProfiles(5);
+
+$p->getAlbum(1);
 
 
 //echo $p->getName().' '. $p->getNickName().' '. $p->getProfilePic().' '. $p->getThumb().' '. $p->getAbout().' '. $p->getLocation();

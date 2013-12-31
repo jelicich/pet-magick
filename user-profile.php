@@ -144,7 +144,10 @@
 						
 						<div class="pic-caption pet-info">
 							<a href=<?php echo '"'.$pet['PIC'].'"'; ?> ><img src=<?php echo '"'.$pet['THUMB'].'"'; ?> class="thumb-mid"/></a>
-							<span><strong>Traits: </strong><?php echo $pet['TRAITS'];?></span>
+							<ul>
+								<li><span><strong>Breed: </strong><?php echo $pet['BREED'];?></span></li>
+								<li><span><strong>Traits: </strong><?php echo $pet['TRAITS'];?></span></li>
+							</ul>
 						</div>
 						
 						<div class="bg-txt corregir">
@@ -155,12 +158,20 @@
 							<?php
 								if($pet['ALBUM_ID'])
 								{
-									//CREAR FUNCION GET ALBUM!!!
+									$album = $p->getAlbum($pet['ALBUM_ID'])
 							?>
 									<ul class="clearfix">
-										<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
-										<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
-										<li><img class="thumb-small" src="img/users/thumb/1.jpg"/></li>
+							<?php
+
+									for($i=0;$i<sizeof($album);$i++)
+									{
+							?>
+									
+										<li><a href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a></li>
+										
+							<?php
+									}//end for
+							?>
 									</ul>
 							<?php
 								}//END IF
@@ -198,63 +209,25 @@
 			<div class="mod-header">
 				<h2>My album</h2>
 			</div>
-			<ul class="grid-thumbs clearfix mod-content">
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					</a>
-				</li>
-				<!-- END user -->
-			</ul>
+			<?php
+				$aId = $p->getAlbumId();
+				if($aId)
+				{
+			?>
+					<ul class="grid-thumbs clearfix mod-content">
+			<?php
+					$a = $p->getAlbum($aId);
+					for($i = 0; $i<sizeof($a); $i++)
+					{
+			?>
+						<li><a href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> ><img class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> /></a></li>
+			<?php
+					}//END FOR
+			?>
+					</ul>
+			<?php
+				}//END IF
+			?>
 		</div>
 		<!-- END user album -->
 

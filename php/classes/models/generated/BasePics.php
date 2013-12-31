@@ -47,6 +47,15 @@ abstract class BasePics extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
+        $this->hasColumn('THUMB', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
         $this->hasColumn('DATE', 'datetime', null, array(
              'type' => 'date',
              'fixed' => false,

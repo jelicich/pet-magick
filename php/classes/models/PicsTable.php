@@ -30,4 +30,15 @@ class PicsTable extends Doctrine_Table
 	           
 	            $Pics->save();
 	 }// end upload_img
+
+     public function getPicsByAlbum($id)
+     {
+
+        $q = Doctrine_Query::create()
+            ->from('Pics p') 
+            ->AndWhere('p.ALBUM_ID = ?',$id);
+        $rta = $q->execute(); 
+        
+        return $rta->toArray();
+     }
 }

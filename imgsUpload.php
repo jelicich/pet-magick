@@ -6,22 +6,21 @@
 "http://www.w3.org/TR/html4/strict.dtd">
 
 <![endif]-->
+
 <html>
 <head>
+
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
+
 <style>
 
 #imgContainer{
+	
 	width: 200px;
 	height: 200px;
 	border: 2px solid gray;
 }
-
-
- #preview_ie {
-    FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)
-  }  
 
 </style>
 
@@ -31,13 +30,12 @@
 
 	
 	<div id='imgContainer'></div>
-	<div id="preview_ie"></div>
 
-	<iframe name="iframe_IE" src="" style="display: none;"></iframe> 
+	<iframe name="iframe_IE" src="" style='display:none'></iframe> 
 
 	<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 		 
-		  <p><input id="file-id" type="file" name="file" />
+		 <!-- <input id="file-id" type="file" name="file" /> -->
 
 		  <p id="upload-status"></p>
 		  
@@ -101,9 +99,12 @@ function whilst(s){
 }//end whilst
 
 //===================================================== UPLOAD IMGS FUNCTIONS
-var file_id = byid('file-id');
+var file_id = create('input');
+    file_id.type = 'file';
+
 var filesSelected = []; // Utilizo este array pq no encontre la forma de resetear formdata (no tengo internet), tal vez pueda optiimzarse....
 var filesSelectedPosition = 0;
+var formData;
 //var stopUploading = false;
 
 
@@ -118,7 +119,7 @@ var bar = create('div');
 
 function support(){
  
-	  return supportFileAPI() && supportEvents() && supportFormData();
+	  return supportFileAPI() && supportEvents() && supportFormData() && supportfileReader();
 
 	  function supportFileAPI() {
 	   
@@ -138,12 +139,32 @@ function support(){
 
 	    	return !! window.FormData;
 	  }
+
+	  function supportfileReader(){
+
+	    	return !! window.FileReader;
+	  }
 }// end support
+
 
 if(support()){
 
-	  var formData = new FormData();
+	normalWay();
+	
+}else{
 
+	fallBack();
+
+}// end else
+
+
+function normalWay(){
+
+
+		 file_id.id = 'file_id';
+		 file_id.name = 'file';
+		 byid('form-id').appendChild(file_id);
+		 
       var uploadBtn = create('input');
 	  	  uploadBtn.type = 'button';
 	  	  uploadBtn.value = 'Upload';
@@ -207,7 +228,7 @@ if(support()){
 				                    	this.parentNode.removeChild(this);
 				                    	filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
 				                    	//console.log('onclick: ' + ImgPosition);
-				                    }
+				                }
 			            }
 
 			            reader.readAsDataURL(this.files[0]);
@@ -217,72 +238,109 @@ if(support()){
 		      	  //console.log(filesSelectedPosition);
 			  	  filesSelected[filesSelectedPosition] = file_id.files[0];
 			  	  file_id.value = '';
-   		  }// end onchange
+		  }// end onchange
 
 		   uploadBtn.onclick = function (evt) {
-		   		
+		   			
+		   			formData = new FormData();
 		   			//console.log(filesSelected);
 			   		for (var i = 0; i < filesSelected.length; i++) {
 			   			
 			   			formData.append("file[]", filesSelected[i]);
+			   			 filesSelected[i] = '';
 			   		}
 
 			   		ajax('POST', 'ajax/insertar.php', vardump, formData, true); // cambiar la function vurdump
-			   		
-			   		//stopUploading = true; // necesito resetear formData. este flag buguea....
-			   	}
-		   		
+		  }
+}// end NormalWay
 
-		   }
 
-}else{
 
-	fallBackIE();
 
-}// end else
 
-// =============== Submition
 
-function fallBackIE(){
- 
-	 var submit_IE = create('input');
+function fallBack(){
+		
+		 var submit_IE = create('input');
 	  	 submit_IE.type = 'submit';
 	  	 submit_IE.value = 'Upload as usual';
 	     submit_IE.id = 'upload-submit-id';
-	     file_id.parentNode.appendChild(submit_IE);
+	     byid('form-id').appendChild(submit_IE);
 
-	     file_id.onchange = function(){ 
+	     function crearId(id){
+	
+			var id = create('input');
+		    	id.type = 'file';
+		    	id.name = 'file_' + filesSelectedPosition;
+		    	id.id = 'file_id_' + filesSelectedPosition;
+		    	byid('form-id').appendChild(id);
+		}
 
-	     		showSelectedIE(this);
-	     	  //byid('file-id').parentNode.innerHTML =  byid('file-id').parentNode.innerHTML;
-	     		
-	     }
+	    (function newInput(){
+
+	    	 crearId('file_id_' + filesSelectedPosition);
+		     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
+
+		     	var selectedImg = create('div');
+				  	selectedImg.id = 'img_' + filesSelectedPosition;
+				  	selectedImg.style.width = "60px";
+					selectedImg.style.height = "60px";
+
+				  	byid('imgContainer').appendChild(selectedImg);
+
+				  	 selectedImg.onclick = function(){
+
+	                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+	                    	this.parentNode.removeChild(this);
+	                    	byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
+	                    	console.log('onclick: ' + ImgPosition);
+	                }
+
+			    var newPreview = byid('img_' + filesSelectedPosition);
+			    	newPreview.style.FILTER = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
+				    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
+				    //byid('file-id').parentNode.innerHTML =  byid('file-id').parentNode.innerHTML;
+				    
+				    byid('file_id_' + filesSelectedPosition).style.display = 'none';
+				    console.log(filesSelectedPosition);
+				    filesSelectedPosition++;
+				    newInput();
+				    	 
+		     }
+		})();
+
+		byid('form-id').onsubmit = function(){
+			
+			// Elegir cual de estos dos metodos es mejor. O en su defecto adaptarlos una vez este definido el orden dentro del form. 
+			// Los dos funcionan
+			// Como no tengo internet no pude ver como capturar el evento cuando el submit esta listo y por eso no pude hacer q el input se mantenga 
+			// una vez pueda averiguar eso ya reseteo el form y dejo un input limpio
+			// La otra opcion es recibir una posicion vacia en php en el array q envia submit 
+
+			var borrar = byid('form-id').lastChild;
+				borrar.parentNode.removeChild(borrar);
+			/*var inputsSubmit = byid('form-id').getElementsByTagName('input');
+			
+			for(i = 0; i < inputsSubmit.length; i++){
+
+				console.log(inputsSubmit[i].value);
+
+				if(inputsSubmit[i].type == 'file' && inputsSubmit[i].value == ''){
+
+					byid(inputsSubmit[i].id).parentNode.removeChild(byid(inputsSubmit[i].id));
+				}
+			}*/
+			whilst(byid('imgContainer'));
+		}
+
+}// end fallBack
 
 
-	    /* var iframe = create('iframe');
-	 	 iframe.id = 'iframe_IE';	
-	  	 iframe.name = 'iframe_IE';
-	  	 iframe.src = '';
-	     iframe.style.display = 'none';
-	     document.body.appendChild(iframe);*/
-}// end fallBackIE
-
-// =============== Handlers
-
-
-function showSelectedIE(imgFile){
-
-    var newPreview = byid("preview_ie");
-	    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgFile.value;
-	    newPreview.style.width = "160px";
-	    newPreview.style.height = "120px";
-}// end showSelectedIE    
 
 function onloadHandler(evt){
   
   var div = byid('upload-status');
   	  whilst(byid('imgContainer'));
-
 }// end onloadHandler
 
 
@@ -300,6 +358,7 @@ function onloadHandler(evt){
 <!--
 
 TUTORIALES UTILIZADOS
+=====================
 
 -	http://new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata
 -   http://stackoverflow.com/questions/12368910/html-display-image-after-selecting-filename
@@ -310,59 +369,26 @@ TUTORIALES UTILIZADOS
 
 
 PENDIENTE
+=========
 
-- Eliminar imagen seleccionada si ya no quiero enviarla
-- Seleccionar multiples imagenes en IE7, 8 y 9 (ver como enviar el array)
-- Mostrar imagenes seleccionadas en Safari 5.algo
+- solucionar input final en IE7 o enviar una posicion vacia en el array q va a php
+- bloquear el envio repetido una vez q ya aprete submit (necesito saber como capturar q el submit ya termino o algo asi)
+- Mostrar imagenes seleccionadas en Safari 5.algo (buscar paralelo a lo q hice con IE7)
+
 - Barra de progreso y/o gif
 - Validar tamano y demas (php)
 - Ver si queremos caption o q mas ademas de la img queremos levantar
 
+A tener en cuenta:
+==================
 
-function onloadstartHandler(evt) {
-  
-  var div = byid('upload-status');
-  	  div.innerHTML = 'Upload started!';
-}// end onloadstartHandler
+- para q sea cross-browser necesitamos el condicional para IE y los meta del header. Osea q estaria bueno ver como los metemos con js 
+asi podemos crear el objeto piola.
 
-function onloadHandler(evt) {
-  
-  var div = byid('upload-status');
-  	  div.innerHTML = 'Upload successful!';
-}// end onloadHandler
-/*
-function onprogressHandler(evt) {
-  
-  var progress = byid('progress');
-  var bar = create('div');
-  var percent = evt.loaded/evt.total*100;
- 	  progress.appendChild(bar);
- 	  //progress.innerHTML =  percent;
+- todo el html q esta ahora, una vez andando esto, tenemos q ver tambien de poder generarlo. (no pude hacerlo con el iframe pq IE refresca la pagina si no esta desde antes en el html)
 
-	  bar.style.backgroundColor = 'red';
-	  bar.style.height = '10px';
-	  bar.style.width =  percent + '%';
-	  bar.style.position = 'absolute';
-}// end onprogressHandler
-*/
-function onreadystatechangeHandler(evt) {
- 
-	  var status = null;
 
-	  try {
-	   
-	    status = evt.target.status;
-	  }
-	  catch(e) {
-	   
-	    return;
-	  }
 
-	  if (status == '200' && evt.target.responseText) {
 
-	    var result = byid('result');
-	   		result.innerHTML = evt.target.responseText;
-	  }
-}// end onreadystatechangeHandler
 
 -->

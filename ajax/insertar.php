@@ -3,8 +3,34 @@
 session_start();
 include_once "../php/classes/BOPics.php";
 $pics = new BOPics;
+$mime = array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png');
 
-var_dump($_FILES);
+
+//var_dump( $_FILES['file']['size'][0]);
+if(!isset($_FILES['file']['tmp_name'][0]))
+{
+	echo 'debe seleccionar algo';
+	return;
+}
+if($_FILES['file']['size'][0] > 90000 ) 
+{
+	echo 'muy grande';
+	return;
+}
+if(!in_array($_FILES['file']['type'][0], $mime )){
+	
+	echo 'formato invalido';
+	return;
+}
+
+
+
+
+
+
+
+
+
 if(isset($_FILES['file'])){
 	$t = count($_FILES['file']['name']); // normalWay();
 }else{

@@ -87,6 +87,15 @@ function whilst(s){
 	}
 }//end whilst
 
+function fileFormat(value, character) // agregue esta funcion pq la repeti en otro lado, como para achicar codigo
+{
+	var extention = value;
+	var index = value.indexOf(character);
+  		index ++;
+  		value = value.substr(index);
+  		return value;
+}
+
 //=============================================================================== LOGIN FUNCTIONS
 
 var source; //variable para poder hacer el switch en print user menu 
@@ -442,7 +451,7 @@ function printHeaders(){
 	  			}
 		    	
 		    	e.preventDefault();
-		  		var index = this.href.indexOf('=');
+		  		var index = this.href.indexOf('='); // reemplazar por function fileFormat()
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
 		  		//console.log(fromId);

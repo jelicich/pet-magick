@@ -35,8 +35,15 @@
 	<!-- site content -->
 	<div class="container_12" id="content">
 		
+
 		<!-- about module -->
 		<div class="mod grid_12 profiles-mod nogrid-mod">
+			<?php
+				if($p->isOwn())
+				{
+					echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+				}
+			?>	
 			<div class="mod-header">
 				<h2><strong class="nickname"><?php echo $p->getNickname() ?></strong>About me</h2>
 			</div>
@@ -62,75 +69,94 @@
 
 		<!-- my pets -->
 		<div class="grid_5">
-		<div class="mod  profiles-mod">
-			<div class="mod-header">
-				<h2>My Pets</h2>
-			</div>
-			<ul class="mod-content clearfix">
-				<?php 
-					if($p->getPetList()) 
-					{
-						$pets = $p->getPetList();
-						
-						for($i = 0; $i < sizeof($pets); $i++)
-						{
-
-
-				?>
-							<li class="pet-info">
-								<a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <img src=<?php echo '"'.$pets[$i]['THUMB'].'"'?> class="thumb-small"/> </a>
-								<h3><a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <?php echo $pets[$i]['NAME'] ?> </a></h3>
-								<span><?php echo $pets[$i]['BREED'] ?></span>
-							</li>
-						
+			<div class="mod  profiles-mod">
 				<?php
-						
-						}//END FOR
-					
-					}//END IF 
-				
-				?>
-			</ul>
-		</div>
-		<!-- END my pets -->
-
-		<!-- news -->
-		<div class="mod profiles-mod nogrid-mod" id="news-mod">
-			<div class="mod-header">
-				<h2>My Recent News</h2>
-			</div>
-			<ul class="mod-content clearfix">
-				<?php 
-					
-					if($p->getNews())
+					if($p->isOwn())
 					{
-						$n = $p->getNews();
-						
-						for($i = 0; $i<sizeof($n); $i++)
-						{
-				?>
-							<li class="recent-news">
-								<span><?php echo $n[$i]['DATE']?></span>
-								<p><?php echo $n[$i]['NEWS']; ?><p>
-							</li>
-
-				<?php 
-						}//END FOR
-					}//END IF
-					else
-					{
-						echo '<li class="recent-news">The user does not have any update yet</li>';
+						echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
 					}
-				?>
-			</ul>
-		</div>
-		<!-- END news -->
+				?>	
+				<div class="mod-header">
+					<h2>My Pets</h2>
+				</div>
+				<ul class="mod-content clearfix">
+					<?php 
+						if($p->getPetList()) 
+						{
+							$pets = $p->getPetList();
+							
+							for($i = 0; $i < sizeof($pets); $i++)
+							{
+
+
+					?>
+								<li class="pet-info">
+									<a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <img src=<?php echo '"'.$pets[$i]['THUMB'].'"'?> class="thumb-small"/> </a>
+									<h3><a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <?php echo $pets[$i]['NAME'] ?> </a></h3>
+									<span><?php echo $pets[$i]['BREED'] ?></span>
+								</li>
+							
+					<?php
+							
+							}//END FOR
+						
+						}//END IF 
+					
+					?>
+				</ul>
+			</div>
+			<!-- END my pets -->
+
+			<!-- news -->
+			<div class="mod profiles-mod nogrid-mod" id="news-mod">
+				<?php
+					if($p->isOwn())
+					{
+						echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+					}
+				?>	
+				<div class="mod-header">
+					<h2>My Recent News</h2>
+				</div>
+				<ul class="mod-content clearfix">
+					<?php 
+						
+						if($p->getNews())
+						{
+							$n = $p->getNews();
+							
+							for($i = 0; $i<sizeof($n); $i++)
+							{
+					?>
+								<li class="recent-news">
+									<span><?php echo $n[$i]['DATE']?></span>
+									<p><?php echo $n[$i]['NEWS']; ?><p>
+								</li>
+
+					<?php 
+							}//END FOR
+						}//END IF
+						else
+						{
+							echo '<li class="recent-news">The user does not have any update yet</li>';
+						}
+					?>
+				</ul>
+			</div>
+			<!-- END news -->
 		</div>
 		<!-- END left -->
 
 
 		<!-- pet profile -->
 		<div id="pet-profile"class="mod grid_7 profiles-mod nogrid-mod ">
+			<?php
+				if($p->isOwn())
+				{
+					echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+				}
+			?>	
+
 			<?php 
 				if($p->getPetList())
 				{	
@@ -207,6 +233,12 @@
 
 		<!-- user album -->
 		<div class="mod grid_12 profiles-mod ">
+			<?php
+				if($p->isOwn())
+				{
+					echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+				}
+			?>	
 			<div class="mod-header">
 				<h2>My album</h2>
 			</div>

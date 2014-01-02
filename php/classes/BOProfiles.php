@@ -214,6 +214,19 @@ class BOProfiles{
         return $pet;
     }
 
+    //==== Own profile
+    function isOwn()
+    {
+        if($_GET['u'] == $_SESSION['id'])
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     function getAlbum($id)
     {
         $a = $this->picsTable->getPicsByAlbum($id);

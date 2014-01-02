@@ -162,6 +162,7 @@ p,span{
 
 .mod{
 	margin-bottom: 20px;
+	position: relative;
 }
 
 .mod a{

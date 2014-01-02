@@ -173,9 +173,6 @@ para los saltos de linea existe nl2br y para los acentos nosé q habrá q hacer
     }// End getChat
 
 
-
-
-
     function getMsgSent()
     {
         return $this->msgSent;

@@ -31,7 +31,7 @@
 	
 	<div id='imgContainer'></div>
 
-	<iframe name="iframe_IE" src="" style='display:none;'></iframe> 
+	<iframe name="iframe_IE" src="" style='display:none'></iframe> 
 
 	<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 		 
@@ -64,6 +64,7 @@ function createXMLHTTPObject() {
 	}
 	return xmlhttp;
 }// end createXMLHTTPObject
+
 function ajax(metodo,url, unaFuncion, mensaje, async) {
 	
 	xhr = createXMLHTTPObject();
@@ -71,7 +72,7 @@ function ajax(metodo,url, unaFuncion, mensaje, async) {
 	/*if (metodo ==  'POST'){
 		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	}*/
-	//xhr.upload.addEventListener('load', onloadHandler, false); 
+	xhr.upload.addEventListener('load', onloadHandler, false); 
 	//xhr.upload.addEventListener('loadstart', onloadstartHandler, false);
     //xhr.upload.addEventListener('progress', onprogressHandler, false);
 	//xhr.addEventListener('readystatechange', onreadystatechangeHandler, false);
@@ -86,7 +87,6 @@ function ajax(metodo,url, unaFuncion, mensaje, async) {
 	}
 	xhr.send(mensaje);
 }// end ajax
-
 
 function byid(s){
 	
@@ -114,12 +114,6 @@ function onloadHandler(evt){
   var div = byid('upload-status');
   	  whilst(byid('imgContainer'));
 }// end onloadHandler
-
-
-
-
-
-
 
 function imgVideoUploader(format){
 
@@ -165,6 +159,7 @@ function imgVideoUploader(format){
 		}// end support
 
 		function errMsg(msg){
+			removeErr();
 			var errorMsg = create('span');
 			errorMsg.id = 'err';
 			errorMsg.innerHTML = msg;
@@ -173,12 +168,19 @@ function imgVideoUploader(format){
 			return;
 		}//end errMsg
 
-		 function removeErr(){
+		function printErr(){
+   			errMsg(this.responseText);
+   		}
 
-	        	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
-	     } // tal vez se pueda hacer mejor esto. Lo hago funtion pq lo utilizo mas de una vez
+		function removeErr(){
+
+        	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
+        } // tal vez se pueda hacer mejor esto. Lo hago funtion pq lo utilizo mas de una vez
 
 	    /*
+	    Estos metas andan, pero como el <head> se parsea antes q el js, en firefox no camina. Va, tira un mensaje en consola
+	    Hay q evaluar si nos sirve generarlos desde aca. Pero todo indica q no jajaj
+
 		var meta_1 = create('meta');
 			meta_1.setAttribute('content', "text/html;charset=utf-8");
 			meta_1.setAttribute('http-equiv', "Content-Type");
@@ -235,11 +237,11 @@ function imgVideoUploader(format){
 
 						  	if(mime.indexOf(this.files[0].type) == -1){ // el default era ! -1, recordar por las dudas!!
 			            			
-			            		//errMsg('formato invalido');
+			            		errMsg('formato invalido desde js');
 			            			
-		            		}else if(this.files[0].size >= 500000){ // Ver q numero necesitamos
+		            		}else if(this.files[0].size >= 900000000){ // Ver q numero necesitamos
 
-		            			//errMsg('Exede el peso');
+		            			errMsg('Exede el peso desde js');
 		            			
 		            		}
 		            		
@@ -280,6 +282,7 @@ function imgVideoUploader(format){
 						                    	this.parentNode.removeChild(this);
 						                    	filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
 						                    	//console.log('onclick: ' + ImgPosition);
+						                    	
 						                }
 					            }// end onload
 					            reader.readAsDataURL(this.files[0]);
@@ -298,16 +301,19 @@ function imgVideoUploader(format){
 					   		for (var i = 0; i < filesSelected.length; i++) {
 					   			
 					   			formData.append("file[]", filesSelected[i]);
-					   			 filesSelected[i] = '';
+					   			filesSelected[i] = '';
 					   		}
 
-					   		if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
+					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
 					   			
-					   		//	errMsg('Debe seleccionar una img'); 
-					   		//	return;
-					   		}
+					   			errMsg('Debe seleccionar una img desde js'); 
+					   			//console.log(filesSelected);
+					   			return;
+					   		}*/
 
-					   		ajax('POST', 'ajax/insertar.php', vardump, formData, true); // cambiar la function vurdump
+					   		ajax('POST', 'ajax/insertar.php', printErr, formData, true); // cambiar la function vurdump
+					   		
+
 				  }// end onclick
 		}// end NormalWay
 
@@ -402,12 +408,15 @@ function imgVideoUploader(format){
 							var ext = fileFormat(this.value, '.');
 
 							if(in_array('image/' + ext, mime) == -1){
-		            			
-			            		errMsg('Formato invalido');
+
+								errMsg('Formato invalido desde js');
+								return;
+								// borar el src del input en el navegador
 			            	}
 
 			            	// ============================= END VALIDACIOM
-
+			            	
+			            	removeErr();
 						  	byid('imgContainer').appendChild(selectedImg);
 
 						  	selectedImg.onclick = function(){
@@ -468,8 +477,13 @@ TUTORIALES UTILIZADOS
 PENDIENTE
 =========
 
+- Videos!
 - Mando array con una posicion vacia a php, puede quedar asi o ver de mandarlo bien
 - Mostrar imagenes seleccionadas en Safari 5.algo (buscar paralelo a lo q hice con IE7)
+- ver si validar cuando presiono upload sin seleccionar nada. No lo hice pq no se si va a haber boton siquiera
+- IE borar el src del input en el navegador cuando vvalido formato invalido
+- Imprimir el span q manda php cuando valida en IE7. Pq ahora lo manda al iframe y no se como sacarlo de ahi para mostrarlo donde corresponde
+
 
 - Barra de progreso y/o gif
 - Validar tamano y demas (php)
@@ -482,11 +496,5 @@ A tener en cuenta:
 asi podemos crear el objeto piola.
 
 - todo el html q esta ahora, una vez andando esto, tenemos q ver tambien de poder generarlo. (no pude hacerlo con el iframe pq IE refresca la pagina si no esta desde antes en el html)
-  /* 	var img = new Image();
-			              	img.src = e.target.result;
-							img.onload = function() {
-								if(this.width >= 100){alert('culo'); }
-							  alert(this.width + 'x' + this.height);
-							  return;
-							}*/
+
 -->

@@ -6,6 +6,7 @@
 
 	include_once "php/classes/BOProfiles.php";
 	$p = new BOProfiles($_GET['u']);
+	$_SESSION['current-profile'] = $_GET['u'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -77,8 +78,8 @@
 
 				?>
 							<li class="pet-info">
-								<a href=<?php echo '"'.$pets[$i]['ID_PET'].'"' ?>><img src=<?php echo '"'.$pets[$i]['THUMB'].'"'?> class="thumb-small"/></a>
-								<h3><a href=<?php echo '"'.$pets[$i]['ID_PET'].'"' ?> > <?php echo $pets[$i]['NAME'] ?> </a></h3>
+								<a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <img src=<?php echo '"'.$pets[$i]['THUMB'].'"'?> class="thumb-small"/> </a>
+								<h3><a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <?php echo $pets[$i]['NAME'] ?> </a></h3>
 								<span><?php echo $pets[$i]['BREED'] ?></span>
 							</li>
 						
@@ -129,7 +130,7 @@
 
 
 		<!-- pet profile -->
-		<div class="mod grid_7 profiles-mod nogrid-mod ">
+		<div id="pet-profile"class="mod grid_7 profiles-mod nogrid-mod ">
 			<?php 
 				if($p->getPetList())
 				{	
@@ -241,5 +242,9 @@
 
 </div>
 <!-- END wrapper-->
+
+<script type="text/javascript">
+	profile();
+</script>
 </body>
 </html>

@@ -557,9 +557,33 @@ function printUpdates(){
 }//end printUpdates
 
 
-//============================= AUTOCOMPLETE FUNCTIONS
+//============================= PROFILE
 
 
+
+function profile()
+{
+	var as = document.querySelectorAll('.pet-link');
+	for(var i = 0; i< as.length; i++)
+	{
+		as[i].onclick = function(e)		
+		{
+			e.preventDefault();
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+			ajax_pvt('GET', 'ajax/getPetProfile.php?p='+p, printPetProfile, null, true);
+		}
+	}
+	
+	function printPetProfile()
+	{
+		var html = this.responseText;
+		var cont = byid('pet-profile');
+		cont.innerHTML = html;
+	}
+}	
 
 //=============================================================================== BIN
 /*

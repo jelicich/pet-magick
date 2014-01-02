@@ -573,7 +573,12 @@ function profile()
 			var index = p.indexOf('#');
 	  		index ++;
 	  		p = p.substr(index);
-			ajax_pvt('GET', 'ajax/getPetProfile.php?p='+p, printPetProfile, null, true);
+	  		var cont = byid('pet-profile');
+	  		var loading = create('img');
+			loading.src = 'img/loading.gif'; 
+	  		cont.innerHTML = "";
+	  		cont.appendChild(loading);
+			ajax('GET', 'ajax/getPetProfile.php?p='+p, printPetProfile, null, true);
 		}
 	}
 	

@@ -1,4 +1,11 @@
-
+			
+			<?php
+			//NO ANDA VER COMO VERIFICAR SI ESTA EN EL PERFIL DEL USUARIO CUANDO SE PIDEN LAS MASCOTAS POR AJAX
+				if($p->isOwn())
+				{
+					echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+				}
+			?>	
 			<?php 
 					$pet = $p->getPet($_GET['p']);
 			?>		

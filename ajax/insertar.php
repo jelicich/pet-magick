@@ -5,6 +5,75 @@ include_once "../php/classes/BOPics.php";
 $pics = new BOPics;
 $mime = array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png');
 
+$video = $_FILES['file']['type'][0];
+if( $video == "video/mp4"){ // aca va un mime pero de videos
+
+	extension_loaded('ffmpeg') or die('Error in loading ffmpeg');
+		
+		$vid = realpath('../video/a.mp4');
+		function getThumbImage($videoPath){
+
+			$movie = new ffmpeg_movie($videoPath,false);
+			$videoDuration = $movie->getDuration();
+			$frameCount = $movie->getFrameCount();
+			$frameRate = $movie->getFrameRate();
+			$videoTitle = $movie->getTitle();
+			$author = $movie->getAuthor() ;
+			$copyright = $movie->getCopyright();
+			$frameHeight = $movie->getFrameHeight();
+			$frameWidth = $movie->getFrameWidth();
+
+			$capPos = ceil($frameCount/4);
+
+			if($frameWidth>120)
+			{
+				$cropWidth = ceil(($frameWidth-120)/2);
+			}
+			else
+			{
+				$cropWidth =0;
+			}
+			if($frameHeight>90)
+			{
+				$cropHeight = ceil(($frameHeight-90)/2);
+			}
+			else
+			{
+				$cropHeight = 0;
+			}
+			if($cropWidth%2!=0)
+			{
+				$cropWidth = $cropWidth-1;
+			}
+			if($cropHeight%2!=0)
+			{
+				$cropHeight = $cropHeight-1;
+			}
+
+				$frameObject = $movie->getFrame($capPos);
+
+
+			if($frameObject)
+			{
+				$imageName = "../img/video_thumb/pijita.jpg";
+				$tmbPath = $imageName;
+				$frameObject->resize(120,90,0,0,0,0);
+				imagejpeg($frameObject->toGDImage(),$tmbPath);
+			}
+			else
+			{
+				$imageName="";
+			}
+
+
+			return $imageName;
+
+		}
+
+		getThumbImage($vid);
+
+}else{
+
 
 if(isset($_FILES['file'])){
 	$t = count($_FILES['file']['name']); // normalWay();
@@ -17,7 +86,7 @@ for($i = 0; $i < $t; $i++){
 
 	if(isset($_FILES['file'])){// normalWay();
 
-			if($_FILES['file']['size'][$i] > 9000000000000) 
+			if($_FILES['file']['size'][$i] > 90000000000000000) 
 			{
 				echo '<span>muy grande desde php</span>';
 				return;
@@ -30,6 +99,7 @@ for($i = 0; $i < $t; $i++){
 
 			$file = $_FILES['file']['tmp_name'][$i];
 			$fileName = $_FILES['file']['name'][$i];
+
 
 	}else{// fallback();
 
@@ -97,4 +167,4 @@ for($i = 0; $i < $t; $i++){
 
 	$pics->upload_img(array('pic'=>$path, /*'thumb'=>$path2,*/ 'caption'=>$caption));
 }
-		
+}

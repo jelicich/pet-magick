@@ -237,11 +237,11 @@ function imgVideoUploader(format){
 
 						  	if(mime.indexOf(this.files[0].type) == -1){ // el default era ! -1, recordar por las dudas!!
 			            			
-			            		errMsg('formato invalido desde js');
+			            	//	errMsg('formato invalido desde js');
 			            			
 		            		}else if(this.files[0].size >= 900000000){ // Ver q numero necesitamos
 
-		            			errMsg('Exede el peso desde js');
+		            			//errMsg('Exede el peso desde js');
 		            			
 		            		}
 		            		

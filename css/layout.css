@@ -1222,4 +1222,9 @@ Tunear!!!
 	background: #ea574c;
 }
 
-
+.btn-edit{
+	position:absolute; 
+	z-index:100; 
+	right:10px; 
+	top:10px;
+}

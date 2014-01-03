@@ -37,11 +37,11 @@
 		
 
 		<!-- about module -->
-		<div class="mod grid_12 profiles-mod nogrid-mod">
+		<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">
 			<?php
 				if($p->isOwn())
 				{
-					echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+					echo '<a href="#" class="btn btn-edit" id="edit-user-info">Edit</a>';	
 				}
 			?>	
 			<div class="mod-header">
@@ -50,7 +50,7 @@
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
 					<a href= <?php echo '"'.$p->getProfilePic().'"'; ?> ><img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/></a>
-					<h3><?php echo $p->getName() ?></h3>
+					<h3><?php echo $p->getNameComp() ?></h3>
 					<span><?php echo $p->getLocation() ?></span>
 				</div>
 				<div class="bg-txt">
@@ -73,7 +73,7 @@
 				<?php
 					if($p->isOwn())
 					{
-						echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+						echo '<a href="#" class="btn btn-edit">Edit</a>';	
 					}
 				?>	
 				<div class="mod-header">
@@ -112,7 +112,7 @@
 				<?php
 					if($p->isOwn())
 					{
-						echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+						echo '<a href="#" class="btn btn-edit">Edit</a>';	
 					}
 				?>	
 				<div class="mod-header">
@@ -153,7 +153,7 @@
 			<?php
 				if($p->isOwn())
 				{
-					echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+					echo '<a href="#" class="btn btn-edit">Edit</a>';	
 				}
 			?>	
 
@@ -236,7 +236,7 @@
 			<?php
 				if($p->isOwn())
 				{
-					echo '<a href="#" class="btn" style="position:absolute; z-index:100; right:10px; top:10px;">Edit</a>';	
+					echo '<a href="#" class="btn btn-edit">Edit</a>';	
 				}
 			?>	
 			<div class="mod-header">
@@ -277,6 +277,25 @@
 
 <script type="text/javascript">
 	profile();
+
+	var editUser = byid('edit-user-info');
+	editUser.onclick = function()
+	{
+		ajax('GET', 'ajax/getEditUser.php', printEditUser, null, true);
+	}
+
+	function printEdit(idModule, html)
+	{		
+		var cont = byid(idModule);
+		cont.innerHTML = html;
+	}
+
+	function printEditUser()
+	{
+		printEdit('user-about', this.responseText);
+	}
+
+
 </script>
 </body>
 </html>

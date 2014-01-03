@@ -18,6 +18,8 @@ class BOProfiles{
     var $err;
     var $userId;
     var $name;
+    var $lastname;
+    var $nameComp;
     var $nickname;
     var $profilePic;
     var $thumb;
@@ -49,7 +51,9 @@ class BOProfiles{
     {
         $data = $this->usersTable->find($id);
         //var_dump($data);
-        $this->name = $data->NAME . ' ' . $data->LASTNAME;
+        $this->nameComp = $data->NAME . ' ' . $data->LASTNAME;
+        $this->name = $data->NAME;
+        $this->lastname = $data->LASTNAME;
         if(!empty($data->NICKNAME))
             $this->nickname = $data->NICKNAME;
         else
@@ -217,7 +221,7 @@ class BOProfiles{
     //==== Own profile
     function isOwn()
     {
-        if($_GET['u'] == $_SESSION['id'])
+        if(isset($_SESSION['id']) && $_GET['u'] == $_SESSION['id'])
         {
             return true;
         }
@@ -237,7 +241,17 @@ class BOProfiles{
     //==== GETS
     function getName()
     {
-        return $this->name;
+        return $this->name;   
+    }
+
+    function getLastname()
+    {
+        return $this->lastname;   
+    }
+    
+    function getNameComp()
+    {
+        return $this->nameComp;
     }
 
     function getNickName()

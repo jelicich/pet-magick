@@ -2,18 +2,86 @@
 
 session_start();
 include_once "../php/classes/BOPics.php";
+include_once "../php/classes/BOVideos.php";
 $pics = new BOPics;
-$mime = array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png');
+$videos = new BOVideos;
 
-$video = $_FILES['file']['type'][0];
-if( $video == "video/mp4"){ // aca va un mime pero de videos
+//$mimeImg = array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png');
+$mimeVideo = array('video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');
+$mime = array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
+			  'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');
+/*$mime = array('img' => array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
+			  'video' => array('video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');*/
 
-	extension_loaded('ffmpeg') or die('Error in loading ffmpeg');
+//================================================= VALIDATIONS
+
+if(isset($_FILES['file'])){
+	$t = count($_FILES['file']['name']); // normalWay();
+}else{
+	$t = sizeof($_FILES); // fallback();
+}
+
+$flagProvisorio = 0;
+
+for($i = 0; $i < $t; $i++){
+
+	if(isset($_FILES['file'])){// normalWay();
+
+			if($_FILES['file']['size'][$i] > 90000000000000000) 
+			{// ver q medidas necesito aca para cada formato, tal vez separarlos
+				echo '<span>muy grande desde php</span>';
+				return;
+			}
+			if(!in_array($_FILES['file']['type'][$i], $mime)){
+				// ver si esto lo junto  o lo evaluo separado
+				echo '<span>formato invalido desde php</span>';
+				return;
+			}
+
+			$file = $_FILES['file']['tmp_name'][$i];
+			$fileName = $_FILES['file']['name'][$i];
+			if(in_array($_FILES['file']['type'][$i], $mimeVideo)){  $flagProvisorio = 1; } // modificar
+
+
+	}else{// fallback();
+
+			//var_dump($_FILES);
+			if($_FILES['file_'. $i]['size'] > 90000000000) 
+			{
+				echo '<span>muy grande desde php</span>';
+				return;
+			}
+			if(!in_array($_FILES['file_'. $i]['type'], $mime )){
+				
+				echo '<span>formato invalido desde php</span>';
+				return;
+			}
+
+			$file = $_FILES['file_'. $i]['tmp_name'];
+			$fileName = $_FILES['file_'. $i]['name'];
+			if( in_array($_FILES['file_'. $i]['type'], $mimeVideo)){ $flagProvisorio = 1; } // modificar
+	}
+
+//================================================= SHOW IMG & BD
+
+	
 		
-		$vid = realpath('../video/a.mp4');
-		function getThumbImage($videoPath){
+		
+		if($flagProvisorio == 1 || $flagProvisorio == 2){ // modificar
 
-			$movie = new ffmpeg_movie($videoPath,false);
+		extension_loaded('ffmpeg') or die('Error in loading ffmpeg');
+		$ext = pathinfo($fileName, PATHINFO_EXTENSION);
+		$rand = rand(1000,9999);
+		$path = "../video";
+		$newName = $rand . "_" . time() .'.' . $ext; 
+		$thumbName =  $rand . "_" . time() .'.jpg';
+		move_uploaded_file($file, $path.'/'.$newName);
+		$path = realpath($path.'/'.$newName); // averiguar bien q hace esta funcion
+		$thumbPath = '../video/thumb/'.$thumbName;
+		
+		function getThumbImage($route, $thumbRoute){ // ver pq se ejecuta antes de instanciarla esta puta function
+
+			$movie = new ffmpeg_movie($route,false);
 			$videoDuration = $movie->getDuration();
 			$frameCount = $movie->getFrameCount();
 			$frameRate = $movie->getFrameRate();
@@ -55,7 +123,7 @@ if( $video == "video/mp4"){ // aca va un mime pero de videos
 
 			if($frameObject)
 			{
-				$imageName = "../img/video_thumb/pijita.jpg";
+				$imageName = $thumbRoute;
 				$tmbPath = $imageName;
 				$frameObject->resize(120,90,0,0,0,0);
 				imagejpeg($frameObject->toGDImage(),$tmbPath);
@@ -64,107 +132,63 @@ if( $video == "video/mp4"){ // aca va un mime pero de videos
 			{
 				$imageName="";
 			}
-
-
 			return $imageName;
-
 		}
 
-		getThumbImage($vid);
-
-}else{
-
-
-if(isset($_FILES['file'])){
-	$t = count($_FILES['file']['name']); // normalWay();
-}else{
-	$t = sizeof($_FILES); // fallback();
-}
+		getThumbImage($path, $thumbPath);
+		$caption = 'provisorio!!!!!!';
+		//$videos->upload_video(array('video'=>$path, /*'thumb'=>$path2,*/ 'caption'=>$caption));
 
 
-for($i = 0; $i < $t; $i++){
+	}else{
 
-	if(isset($_FILES['file'])){// normalWay();
+		$ext = pathinfo($fileName, PATHINFO_EXTENSION);
+		$rand = rand(1000,9999);
+		$path = "../img";
+		
+		$newName = $rand . "_" . time() .'.' . $ext;  
+		move_uploaded_file($file, $path.'/'.$newName);
+		$path = $path.'/'.$newName;
+		$path2= "img/thumb".$newName; //para thumb
+		//$caption = $_POST['caption'];
+		$caption = 'provisorio!!!!!!';
 
-			if($_FILES['file']['size'][$i] > 90000000000000000) 
-			{
-				echo '<span>muy grande desde php</span>';
-				return;
-			}
-			if(!in_array($_FILES['file']['type'][$i], $mime )){
-				
-				echo '<span>formato invalido desde php</span>';
-				return;
-			}
+		$imgOriginal = "../img/". $newName ;
 
-			$file = $_FILES['file']['tmp_name'][$i];
-			$fileName = $_FILES['file']['name'][$i];
+		//creo una nueva foto a partir de la anterior
+		$img_original = imagecreatefromjpeg( $imgOriginal ) ;
+		// maximo ancho y alto
+		$max_ancho = 220;
+		$max_alto = 2000;
 
+		// separo alto y ancho de la imgOriginal en dos variables
+		list( $anchoImgOriginal, $altoImgOriginal ) = getimagesize( $imgOriginal ) ;
 
-	}else{// fallback();
+		$x_ratio = $max_ancho / $anchoImgOriginal ;
+		$y_ratio = $max_alto / $altoImgOriginal ;
 
-			//var_dump($_FILES);
-			if($_FILES['file_'. $i]['size'] > 90000000000) 
-			{
-				echo '<span>muy grande desde php</span>';
-				return;
-			}
-			if(!in_array($_FILES['file_'. $i]['type'], $mime )){
-				
-				echo '<span>formato invalido desde php</span>';
-				return;
-			}
+		if( $anchoImgOriginal <= $max_ancho){
+			$anchoFinal = $anchoImgOriginal ;
+			$altoFinal = $altoImgOriginal ;
+		}
+		elseif( $anchoImgOriginal > $max_ancho ){
+			$altoFinal = ceil( $x_ratio * $altoImgOriginal ) ;
+			$anchoFinal = $max_ancho ; 
+		} elseif( $altoImgOriginal > $max_alto ){
+			$anchoFinal = ceil( $y_ratio * $anchoImgOriginal ) ;
+			$altoFinal = $max_alto ; 
+		}
 
-			$file = $_FILES['file_'. $i]['tmp_name'];
-			$fileName = $_FILES['file_'. $i]['name'];
-	}
+		$imgNueva = imagecreatetruecolor( $anchoFinal, $altoFinal ) ;
+		//ACA HABRIA Q VER COMO CROPEAR debe ser una gilada
+		imagecopyresampled( $imgNueva, $img_original, 0, 0, 0, 0, $anchoFinal, $altoFinal, $anchoImgOriginal, $altoImgOriginal );
 
-	$path = "../img";
-	$rand = rand(1000,9999);
-	$ext = pathinfo($fileName, PATHINFO_EXTENSION);
-	$newName = $rand . "_" . time() .'.' . $ext;  
-	move_uploaded_file($file, $path.'/'.$newName);
-	$path = $path.'/'.$newName;
-	$path2= "img/thumb".$newName; //para thumb
-	//$caption = $_POST['caption'];
-	$caption = 'provisorio!!!!!!';
+		//imagedestroy( $img_original );
 
-	$imgOriginal = "../img/". $newName ;
+		$calidad = 100 ;
 
-	//creo una nueva foto a partir de la anterior
-	$img_original = imagecreatefromjpeg( $imgOriginal ) ;
-	// maximo ancho y alto
-	$max_ancho = 220 ;
-	$max_alto = 2000 ;
+		imagejpeg( $imgNueva, '../img/thumb/' . $newName, $calidad ) ;
 
-	// separo alto y ancho de la imgOriginal en dos variables
-	list( $anchoImgOriginal, $altoImgOriginal ) = getimagesize( $imgOriginal ) ;
-
-	$x_ratio = $max_ancho / $anchoImgOriginal ;
-	$y_ratio = $max_alto / $altoImgOriginal ;
-
-	if( $anchoImgOriginal <= $max_ancho){
-		$anchoFinal = $anchoImgOriginal ;
-		$altoFinal = $altoImgOriginal ;
-	}
-	elseif( $anchoImgOriginal > $max_ancho ){
-		$altoFinal = ceil( $x_ratio * $altoImgOriginal ) ;
-		$anchoFinal = $max_ancho ; 
-	} elseif( $altoImgOriginal > $max_alto ){
-		$anchoFinal = ceil( $y_ratio * $anchoImgOriginal ) ;
-		$altoFinal = $max_alto ; 
-	}
-
-	$imgNueva = imagecreatetruecolor( $anchoFinal, $altoFinal ) ;
-	//ACA HABRIA Q VER COMO CROPEAR debe ser una gilada
-	imagecopyresampled( $imgNueva, $img_original, 0, 0, 0, 0, $anchoFinal, $altoFinal, $anchoImgOriginal, $altoImgOriginal );
-
-	//imagedestroy( $img_original );
-
-	$calidad = 100 ;
-
-	imagejpeg( $imgNueva, '../img/thumb/' . $newName, $calidad ) ;
-
-	$pics->upload_img(array('pic'=>$path, /*'thumb'=>$path2,*/ 'caption'=>$caption));
-}
+		$pics->upload_img(array('pic'=>$path, /*'thumb'=>$path2,*/ 'caption'=>$caption));
+		}
 }

@@ -31,7 +31,7 @@
 	
 	<div id='imgContainer'></div>
 
-	<iframe name="iframe_IE" src="" style='display:none'></iframe> 
+	<iframe name="iframe_IE" src="" ></iframe> 
 
 	<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 		 
@@ -115,11 +115,10 @@ function onloadHandler(evt){
   	  whilst(byid('imgContainer'));
 }// end onloadHandler
 
-function imgVideoUploader(format){
+function imgVideoUploader(){
 
 
-	if(format == 'img'){ // estos if estan provisoriamente solo en caso de q haga falta diferencialo. Puede q sea al pedo...
-		
+
 		// ===========================COMMON VARs & FUNCTIONS
 		var file_id = create('input');
 		    file_id.type = 'file';
@@ -127,7 +126,8 @@ function imgVideoUploader(format){
 		var filesSelected = []; 
 		var filesSelectedPosition = 0;
 		var formData;
-		var mime = ['image/JPG', 'image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
+		var mime = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
+			  		'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
 
 		function support(){
 	 
@@ -169,6 +169,7 @@ function imgVideoUploader(format){
 		}//end errMsg
 
 		function printErr(){
+   			
    			errMsg(this.responseText);
    		}
 
@@ -237,11 +238,11 @@ function imgVideoUploader(format){
 
 						  	if(mime.indexOf(this.files[0].type) == -1){ // el default era ! -1, recordar por las dudas!!
 			            			
-			            	//	errMsg('formato invalido desde js');
+			            		errMsg('formato invalido desde js');
 			            			
 		            		}else if(this.files[0].size >= 900000000){ // Ver q numero necesitamos
 
-		            			//errMsg('Exede el peso desde js');
+		            			errMsg('Exede el peso desde js');
 		            			
 		            		}
 		            		
@@ -263,7 +264,7 @@ function imgVideoUploader(format){
 						        }*/
 
 						        reader.onload = function(e) {
-
+						        	//console.log(e.target.result);
 						        	var selectedImg = create('img');
 					          			selectedImg.id = 'img_' + filesSelectedPosition;
 					                    selectedImg.setAttribute('src', e.target.result);
@@ -311,9 +312,7 @@ function imgVideoUploader(format){
 					   			return;
 					   		}*/
 
-					   		ajax('POST', 'ajax/insertar.php', printErr, formData, true); // cambiar la function vurdump
-					   		
-
+					   		ajax('POST', 'ajax/insertar.php', printErr, formData, true);
 				  }// end onclick
 		}// end NormalWay
 
@@ -339,6 +338,7 @@ function imgVideoUploader(format){
 					    	byid('form-id').appendChild(id);
 				}// end createInput
 
+				/*
 				function in_array(value, anArray){
 				   
 					    var found = 0;
@@ -350,6 +350,7 @@ function imgVideoUploader(format){
 					    }
 					    return -1;
 				}// end in_array
+				*/
 
 				function formSubmit(){
 
@@ -405,37 +406,37 @@ function imgVideoUploader(format){
 
 							// ============================= FORMAT VALIDATION
 
-							var ext = fileFormat(this.value, '.');
+							/*	var ext = fileFormat(this.value, '.');
 
-							if(in_array('image/' + ext, mime) == -1){
+								if(in_array('image/' + ext, mime) == -1){
 
-								errMsg('Formato invalido desde js');
-								return;
-								// borar el src del input en el navegador
-			            	}
-
-			            	// ============================= END VALIDACIOM
+									errMsg('Formato invalido desde js');
+									return;
+									// borar el src del input en el navegador
+				            	}*/
+			            		// ============================= END VALIDACIOM
 			            	
-			            	removeErr();
-						  	byid('imgContainer').appendChild(selectedImg);
+					            	removeErr();
+								  	byid('imgContainer').appendChild(selectedImg);
 
-						  	selectedImg.onclick = function(){
+									selectedImg.onclick = function(){
 
-				                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-				                    	this.parentNode.removeChild(this);
-				                    	byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
-				                    	console.log('onclick: ' + ImgPosition);
-				            }// end onclick
+					                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+					                    	this.parentNode.removeChild(this);
+					                    	byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
+					                    	console.log('onclick: ' + ImgPosition);
+						            }// end onclick
 
-						    var newPreview = byid('img_' + filesSelectedPosition);
-						    	newPreview.style.FILTER = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
-							    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
+								    var newPreview = byid('img_' + filesSelectedPosition);
+								    	newPreview.style.FILTER = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
+									    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
 
-							    byid('file_id_' + filesSelectedPosition).style.display = 'none';
-							    console.log(filesSelectedPosition);
-							    filesSelectedPosition++;
-							    newInput();
-					}// end onchange
+									    byid('file_id_' + filesSelectedPosition).style.display = 'none';
+									    console.log(filesSelectedPosition);
+									    filesSelectedPosition++;
+									    newInput();
+							
+			            }// end onchange
 			    })();
 
 				byid('form-id').attachEvent('onsubmit', afterSubmit);
@@ -446,14 +447,9 @@ function imgVideoUploader(format){
 		}else{ 
 			fallBack(); 
 		}// end else
-
-	}else if(format == 'video'){
-
-		alert('video');
-	}
 }// end imgVideoUploader
 
-imgVideoUploader('img');
+imgVideoUploader();
 
 </script>
 
@@ -477,16 +473,15 @@ TUTORIALES UTILIZADOS
 PENDIENTE
 =========
 
-- Videos!
+- mostrar thumb de video
+- poner valores correctos para las validaciones (los q estan son de prueba)
 - Mando array con una posicion vacia a php, puede quedar asi o ver de mandarlo bien
 - Mostrar imagenes seleccionadas en Safari 5.algo (buscar paralelo a lo q hice con IE7)
 - ver si validar cuando presiono upload sin seleccionar nada. No lo hice pq no se si va a haber boton siquiera
-- IE borar el src del input en el navegador cuando vvalido formato invalido
 - Imprimir el span q manda php cuando valida en IE7. Pq ahora lo manda al iframe y no se como sacarlo de ahi para mostrarlo donde corresponde
 
 
 - Barra de progreso y/o gif
-- Validar tamano y demas (php)
 - Ver si queremos caption o q mas ademas de la img queremos levantar
 
 A tener en cuenta:

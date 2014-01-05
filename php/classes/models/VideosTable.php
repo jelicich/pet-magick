@@ -17,6 +17,24 @@ class VideosTable extends Doctrine_Table
         return Doctrine_Core::getTable('Videos');
     }
 
+    
+    public function upload_video($ref){
+
+            $now = date('Y-m-d');
+
+            $Videos = new Videos();
+            $Videos->VIDEO = $ref['video'];
+           // $Videos->TITLE = $ref['title']
+            $Videos->CAPTION = $ref['caption'];
+            //$Videos->THUMBNAIL = $ref['thumbnail']; // Lo puse not null para hacer pruebas en mi BD
+            $Videos->DATE = $now;
+            //$VideosPET_ID = $ref['pet_id'];
+
+                $Videos->save();
+   }// end upload_img
+
+
+
     public function getVideosByPet($id)
     { // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
 

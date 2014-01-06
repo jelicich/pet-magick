@@ -23,10 +23,11 @@ class PicsTable extends Doctrine_Table
 
      		    $Pics = new Pics();
 	            $Pics->PIC = $ref['pic'];
+                $Pics->THUMB = $ref['thumb'];
 	            $Pics->DATE = $now;
 	            $Pics->CAPTION = $ref['caption'];
-	            //$Pics->THUMB = $ref['thumb']; // Lo puse not null para hacer pruebas en mi BD
-	            //$Pics->ALBUM_ID = $ref['album_id'];
+                $Pics->THUMBNAIL = null;
+                $Pics->ALBUM_ID = null;
 
                 $Pics->save();
 	 }// end upload_img

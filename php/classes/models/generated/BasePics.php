@@ -7,7 +7,8 @@
  * 
  * @property integer $ID_PIC
  * @property string $PIC
- * @property date $DATE
+ * @property string $THUMB
+ * @property timestamp $DATE
  * @property string $CAPTION
  * @property integer $THUMBNAIL
  * @property integer $ALBUM_ID
@@ -56,8 +57,8 @@ abstract class BasePics extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE', 'datetime', null, array(
-             'type' => 'date',
+        $this->hasColumn('DATE', 'timestamp', null, array(
+             'type' => 'timestamp',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

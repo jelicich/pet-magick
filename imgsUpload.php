@@ -31,7 +31,7 @@
 	
 	<div id='imgContainer'></div>
 
-	<iframe name="iframe_IE" src="" ></iframe> 
+	<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 
 	<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 		 
@@ -122,7 +122,9 @@ function imgVideoUploader(){
 		// ===========================COMMON VARs & FUNCTIONS
 		var file_id = create('input');
 		    file_id.type = 'file';
-
+		
+		//var allCaption = [];
+		//var caption;
 		var filesSelected = []; 
 		var filesSelectedPosition = 0;
 		var formData;
@@ -206,10 +208,11 @@ function imgVideoUploader(){
 				  file_id.id = 'file_id';
 				  file_id.name = 'file';
 				  byid('form-id').appendChild(file_id);
+
 				 
 		      	  var uploadBtn = create('input');
-			  	  uploadBtn.type = 'button';
-			  	  uploadBtn.value = 'Upload';
+				  	  uploadBtn.type = 'button';
+				  	  uploadBtn.value = 'Upload';
 
 			  	  file_id.parentNode.appendChild(uploadBtn);
 				  
@@ -238,11 +241,11 @@ function imgVideoUploader(){
 
 						  	if(mime.indexOf(this.files[0].type) == -1){ // el default era ! -1, recordar por las dudas!!
 			            			
-			            		errMsg('formato invalido desde js');
+			            		//errMsg('formato invalido desde js');
 			            			
 		            		}else if(this.files[0].size >= 900000000){ // Ver q numero necesitamos
 
-		            			errMsg('Exede el peso desde js');
+		            			//errMsg('Exede el peso desde js');
 		            			
 		            		}
 		            		
@@ -272,14 +275,23 @@ function imgVideoUploader(){
 					                    //alert(selectedImg.width + 'x' + selectedImg.height); //funca
 					                    selectedImg.style.width = '20%';
 					                    selectedImg.style.height = '20%';
-					                    selectedImg.style.margin = '10px 10px';
+					                    selectedImg.style.margin = '5px 5px';
 					                    selectedImg.style.float = 'left';
-					                    removeErr();
+				                    	//caption = create('input');
+										//caption.type = 'text';
+				                    	//caption.id = 'caption_' + filesSelectedPosition;
+								    	//caption.name = 'caption';
+
+									    removeErr();
+					                    //byid('form-id').appendChild(caption);
 					                    byid('imgContainer').appendChild(selectedImg);
+
 
 					                    selectedImg.onclick = function(){
 
 						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                   // var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                 //   byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
 						                    	this.parentNode.removeChild(this);
 						                    	filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
 						                    	//console.log('onclick: ' + ImgPosition);
@@ -292,17 +304,27 @@ function imgVideoUploader(){
 			      	  filesSelectedPosition++;
 			      	  //console.log(filesSelectedPosition);
 				  	  filesSelected[filesSelectedPosition] = file_id.files[0];
+				  	  
 				  	  file_id.value = '';
 				 }// end onchange
 
+
+
 				  uploadBtn.onclick = function (evt) {
+
+
 				   			
 				   			formData = new FormData();
 				   			//console.log(filesSelected);
 					   		for (var i = 0; i < filesSelected.length; i++) {
-					   			
+
+					   			//allCaption[i] = byid('caption_' + j).value;
+
+					   			//console.log(byid('caption_' + j).value);
 					   			formData.append("file[]", filesSelected[i]);
+					   			//formData.append("caption[]", allCaption[i]);
 					   			filesSelected[i] = '';
+					   			
 					   		}
 
 					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
@@ -479,7 +501,7 @@ PENDIENTE
 - Mostrar imagenes seleccionadas en Safari 5.algo (buscar paralelo a lo q hice con IE7)
 - ver si validar cuando presiono upload sin seleccionar nada. No lo hice pq no se si va a haber boton siquiera
 - Imprimir el span q manda php cuando valida en IE7. Pq ahora lo manda al iframe y no se como sacarlo de ahi para mostrarlo donde corresponde
-
+- Modificar la ruta del video thumb pq como deberia ser la BD no lo acepta, no tengo idea pq. Igual anda....
 
 - Barra de progreso y/o gif
 - Ver si queremos caption o q mas ademas de la img queremos levantar

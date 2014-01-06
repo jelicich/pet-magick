@@ -6,6 +6,8 @@
 -- Generation Time: Dec 31, 2013 at 04:01 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
+CREATE DATABASE pet_magick;
+USE pet_magick;
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -44552,10 +44554,10 @@ CREATE TABLE IF NOT EXISTS `vet_talk` (
 
 CREATE TABLE IF NOT EXISTS `videos` (
   `ID_VIDEO` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `VIDEO` char(30) NOT NULL,
+  `VIDEO` varchar(100) NOT NULL,
   `TITLE` varchar(100) NOT NULL,
   `CAPTION` varchar(300) NOT NULL,
-  `THUMBNAIL` char(30) NOT NULL,
+  `THUMBNAIL` varchar(100) NOT NULL,
   `DATE` date NOT NULL,
   `PET_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_VIDEO`),

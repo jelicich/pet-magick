@@ -24,13 +24,13 @@ class VideosTable extends Doctrine_Table
 
             $Videos = new Videos();
             $Videos->VIDEO = $ref['video'];
-           // $Videos->TITLE = $ref['title']
+            $Videos->TITLE = $ref['title'];
             $Videos->CAPTION = $ref['caption'];
-            //$Videos->THUMBNAIL = $ref['thumbnail']; // Lo puse not null para hacer pruebas en mi BD
+            $Videos->THUMBNAIL = $ref['thumbnail']; 
             $Videos->DATE = $now;
-            //$VideosPET_ID = $ref['pet_id'];
+            $Videos->PET_ID = null;
 
-                $Videos->save();
+            $Videos->save();
    }// end upload_img
 
 

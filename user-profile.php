@@ -6,7 +6,7 @@
 
 	include_once "php/classes/BOProfiles.php";
 	$p = new BOProfiles($_GET['u']);
-	$_SESSION['current-profile'] = $_GET['u'];
+	//$_SESSION['current-profile'] = $_GET['u'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -45,7 +45,17 @@
 				}
 			?>	
 			<div class="mod-header">
-				<h2><strong class="nickname"><?php echo $p->getNickname() ?></strong>About me</h2>
+				<h2>
+					<strong class="nickname">
+						<?php 
+							$nick = $p->getNickname();
+							if(empty($nick))
+								echo $p->getName();
+							else
+								echo $nick;
+						?>
+					</strong>About me
+				</h2>
 			</div>
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
@@ -54,7 +64,15 @@
 					<span><?php echo $p->getLocation() ?></span>
 				</div>
 				<div class="bg-txt">
-					<p><?php echo $p->getAbout() ?></p>
+					<p>
+						<?php 
+							$about = $p->getAbout();
+							if(empty($about))
+								echo 'The user has not entered any description yet';
+							else
+								echo $about;
+						?>
+					</p>
 				</div>
 				<div id="user-extra">
 					<ul>
@@ -81,13 +99,12 @@
 				</div>
 				<ul class="mod-content clearfix">
 					<?php 
-						if($p->getPetList()) 
+						$pets = $p->getPetList();
+						if($pets) 
 						{
-							$pets = $p->getPetList();
 							
 							for($i = 0; $i < sizeof($pets); $i++)
 							{
-
 
 					?>
 								<li class="pet-info">
@@ -288,6 +305,14 @@
 	{		
 		var cont = byid(idModule);
 		cont.innerHTML = html;
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
 	}
 
 	function printEditUser()

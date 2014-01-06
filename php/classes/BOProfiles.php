@@ -29,6 +29,9 @@ class BOProfiles{
     var $videos;
     var $albumId;
     var $petList;
+    var $countryId;
+    var $regionId;
+    var $cityId;
 
 
     function __construct($id)
@@ -54,18 +57,9 @@ class BOProfiles{
         $this->nameComp = $data->NAME . ' ' . $data->LASTNAME;
         $this->name = $data->NAME;
         $this->lastname = $data->LASTNAME;
-        if(!empty($data->NICKNAME))
-            $this->nickname = $data->NICKNAME;
-        else
-            $this->nickname = $data->NAME;
-        if(!empty($data->ABOUT))
-        {
-            $this->about = $data->ABOUT;
-        }
-        else
-        {
-            $this->about = 'The user has not entered a description yet.';
-        }
+        $this->nickname = $data->NICKNAME;        
+        $this->about = $data->ABOUT;
+        
 
         //no puedo traer todo de una como hizo vidaurri asiq voy trayendo de a poco
         if(!empty($data->PIC_ID))
@@ -91,26 +85,26 @@ class BOProfiles{
 
         if(!empty($data->COUNTRY_ID))
         {
+            $this->countryId = $data->COUNTRY_ID;
             $c = $this->countriesTable->find($data->COUNTRY_ID);
             $this->location = $c->Country;
 
             if(!empty($data->REGION_ID))
             {
+                $this->regionId = $data->REGION_ID;
                 $r = $this->regionsTable->find($data->REGION_ID);
                 $this->location .= ', '.$r->Region;
 
                 if(!empty($data->CITY_ID))
                 {
+                    $this->cityId = $data->CITY_ID;
                     $c = $this->citiesTable->find($data->CITY_ID);
                     $this->location .= ', '.$c->City;
                 }
 
             }
         }
-        else
-        {
-           $this->location = "Nowhere"; //!!!!!!!PROVISORIO ??? Q PONER??? 
-        }
+       
 
         //===NEWS 
 
@@ -292,6 +286,21 @@ class BOProfiles{
     function getAlbumId()
     {
         return $this->albumId;
+    }
+
+    function getCountryId()
+    {
+        return $this->countryId;
+    }
+
+    function getRegionId()
+    {
+        return $this->regionId;
+    }
+
+    function getCityId()
+    {
+        return $this->cityId;
     }
 
 }

@@ -38,8 +38,8 @@
 		 <!-- <input id="file-id" type="file" name="file" /> -->
 
 		  <p id="upload-status"></p>
-		  
 		  <pre id="result"></pre>
+
 	</form>
 
 <script type="text/javascript">
@@ -115,9 +115,10 @@ function onloadHandler(evt){
   	  whilst(byid('imgContainer'));
 }// end onloadHandler
 
+
+
+
 function imgVideoUploader(){
-
-
 
 		// ===========================COMMON VARs & FUNCTIONS
 		var file_id = create('input');
@@ -312,9 +313,7 @@ function imgVideoUploader(){
 
 				  uploadBtn.onclick = function (evt) {
 
-
-				   			
-				   			formData = new FormData();
+				  			formData = new FormData();
 				   			//console.log(filesSelected);
 					   		for (var i = 0; i < filesSelected.length; i++) {
 

@@ -20,6 +20,12 @@ class BOPics{
 
 function val_pics($query){
 
+   /*   if( !isset($query['file']) )
+      {
+        throw new Exception('<span>esta vacio desde php images</span>');
+        return;
+      }*/
+
       if($query['fileSize'] > 900000000) 
       {// ver q medidas necesito aca para cada formato, tal vez separarlos
         throw new Exception('<span>muy grande desde php images</span>');
@@ -48,13 +54,14 @@ function upload_img($query){
               move_uploaded_file($query['file'], $path.'/'.$newName);
               $path = $path.'/'.$newName;
               $path2= "../img/thumb/".$newName; //para thumb
-              $caption = $query['caption'];
+             // $caption = $query['caption'];
+              // $caption = $query['caption'];
               
 
               $imgOriginal = "../img/". $newName ;
 
               //creo una nueva foto a partir de la anterior
-              $img_original = imagecreatefromjpeg( $imgOriginal ) ;
+              $img_original = imagecreatefromjpeg( $imgOriginal );
               // maximo ancho y alto
               $max_ancho = 220;
               $max_alto = 2000;
@@ -89,8 +96,8 @@ function upload_img($query){
               
               $query = array(
                  'pic'=>$path, 
-                 'thumb'=>$path2, 
-                 'caption'=>$caption
+                 'thumb'=>$path2,
+                 'caption'=>'hola'
               );
 
               $this->table->upload_img($query);

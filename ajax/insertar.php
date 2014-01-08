@@ -6,8 +6,50 @@ include_once "../php/classes/BOVideos.php";
 $pics = new BOPics;
 $videos = new BOVideos;
 
-//var_dump($_POST);
+var_dump($_POST);
+//PUTOOOO FORM DATA
+/*
+Post no lo manda normal, lo manda con una sola posición y toda esta basura adentro q no se q es. no pude manejarlo, me ganó.
+
+array(1) {
+  ["------WebKitFormBoundary7Ke69n0I2FWxAV9I
+Content-Disposition:_form-data;_name"]=>
+  string(645) ""name"
+
+esteban
+------WebKitFormBoundary7Ke69n0I2FWxAV9I
+Content-Disposition: form-data; name="lastname"
+
+jelicich
+------WebKitFormBoundary7Ke69n0I2FWxAV9I
+Content-Disposition: form-data; name="nickname"
+
+esteban
+------WebKitFormBoundary7Ke69n0I2FWxAV9I
+Content-Disposition: form-data; name="country"
+
+Country
+------WebKitFormBoundary7Ke69n0I2FWxAV9I
+Content-Disposition: form-data; name="region"
+
+
+------WebKitFormBoundary7Ke69n0I2FWxAV9I
+Content-Disposition: form-data; name="city"
+
+
+------WebKitFormBoundary7Ke69n0I2FWxAV9I
+Content-Disposition: form-data; name="about"
+
+
+------WebKitFormBoundary7Ke69n0I2FWxAV9I--
+"
+}
+
+*/
+
 //var_dump($_FILES);
+
+/*
 
 $mimeVideo = array('video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');
 $flagVideo = false;
@@ -62,3 +104,4 @@ for($i = 0; $i < $t; $i++){
 
 		}//end else
 }//end for
+*/

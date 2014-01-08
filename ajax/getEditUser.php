@@ -1,9 +1,10 @@
 <?php
 session_start();
-include_once "../php/classes/BOProfiles.php";
+include_once "../php/classes/BOUsers.php";
 include_once('../php/classes/BOLocation.php');
 
-$p = new BOProfiles($_SESSION['id']);
+$p = new BOUsers;
+$p->getUserData($_SESSION['id']);
 
 $location = new BOLocation;
 $countries = $location->countryList();

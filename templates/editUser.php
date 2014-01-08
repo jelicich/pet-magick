@@ -4,7 +4,7 @@
 
 				//if($p->isOwn())
 				//{
-					echo '<a href="#" class="btn btn-edit">Save</a>';	
+					echo '<a href="#" class="btn btn-edit" id="save-edit-user">Save</a>';	
 				//}
 			?>	
 			<div class="mod-header">
@@ -13,7 +13,26 @@
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
 					<img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/>
-					<input type="file" id="profile-pic"/>
+					<a href="#">Delete</a>
+					
+
+					<!-- IMG UPLOADER -->
+					<div id='imgContainer'></div>
+
+					<iframe name="iframe_IE" src="" style="display: none"></iframe> 
+
+					<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
+						 
+						 <!-- <input id="file-id" type="file" name="file" /> -->
+
+						  <p id="upload-status"></p>
+						  <pre id="result"></pre>
+
+					</form>
+					<!-- END IMG UPLOADER -->
+
+
+
 					<label for="usr-name">Name</label><input type="text" value=<?php echo '"'.$p->getName().'"' ?> id="usr-name"/>
 					<label for="usr-lastname">Lastname</label><input type="text" value=<?php echo '"'.$p->getLastname().'"' ?> id="usr-lastname"/>
 					<label for="usr-nickname">Nickname</label><input type="text" value=<?php echo '"'.$p->getNickname().'"' ?> id="usr-nickname"/>
@@ -168,4 +187,6 @@
 			<script type="text/javascript">
 				countriesCombo(); //====================== DESPLIEGA COMBOS
 				regionsCombo(); //====================== DESPLIEGA REGIONES
+
+				imgVideoUploader(); // SUBIR IMG
 			</script>

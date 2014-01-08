@@ -2,6 +2,10 @@
 
 include_once('tools/bootstrap.php');
 include_once('models/UsersTable.php');
+include_once('models/PicsTable.php');
+include_once('models/CountriesTable.php');
+include_once('models/RegionsTable.php');
+include_once('models/CitiesTable.php');
 
 
 class BOUsers{
@@ -13,6 +17,10 @@ class BOUsers{
   function __construct(){
 
     $this->table = Doctrine_Core::getTable('Users');
+    $this->picsTable = Doctrine_Core::getTable('Pics');
+    $this->countriesTable = Doctrine_Core::getTable('Countries');
+    $this->regionsTable = Doctrine_Core::getTable('Regions');
+    $this->citiesTable = Doctrine_Core::getTable('Cities');
   }
 
 //=============================================================================== VALIDATION FUNCTIONS
@@ -191,6 +199,143 @@ class BOUsers{
        return $this->complete;
     }// End getInbox
 
+
+
+
+
+
+    //===== PROFILE
+
+    function getUserData($id)
+    {
+        $data = $this->table->find($id);
+        //var_dump($data);
+        $this->nameComp = $data->NAME . ' ' . $data->LASTNAME;
+        $this->name = $data->NAME;
+        $this->lastname = $data->LASTNAME;
+        $this->nickname = $data->NICKNAME;        
+        $this->about = $data->ABOUT;
+        
+
+        //no puedo traer todo de una como hizo vidaurri asiq voy trayendo de a poco
+        if(!empty($data->PIC_ID))
+        {
+            $p = $this->picsTable->find($data->PIC_ID);
+            $this->profilePic = $p->PIC;
+            $this->thumb = $p->THUMB;
+        }
+        else
+        {
+            $this->profilePic = 'img/users/default.jpg';
+            $this->thumb = 'img/users/thumb/default.jpg';
+        }
+
+        if(!empty($data->ALBUM_ID))
+        {
+            $this->albumId = $data->ALBUM_ID;
+        }
+        else
+        {
+            $this->albumId = false;
+        }
+
+        if(!empty($data->COUNTRY_ID))
+        {
+            $this->countryId = $data->COUNTRY_ID;
+            $c = $this->countriesTable->find($data->COUNTRY_ID);
+            $this->location = $c->Country;
+
+            if(!empty($data->REGION_ID))
+            {
+                $this->regionId = $data->REGION_ID;
+                $r = $this->regionsTable->find($data->REGION_ID);
+                $this->location .= ', '.$r->Region;
+
+                if(!empty($data->CITY_ID))
+                {
+                    $this->cityId = $data->CITY_ID;
+                    $c = $this->citiesTable->find($data->CITY_ID);
+                    $this->location .= ', '.$c->City;
+                }
+
+            }
+        }
+    
+        
+        
+    }
+    
+    
+    //$id = album ID
+    function getAlbum($id)
+    {
+        $a = $this->picsTable->getPicsByAlbum($id);
+        return $a;
+    }
+
+
+
+
+
+
+    //==== Own profile
+    function isOwn()
+    {
+        if(isset($_SESSION['id']) && $_GET['u'] == $_SESSION['id'])
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //GETS PROFILE
+    function getName()
+    {
+        return $this->name;   
+    }
+
+    function getLastname()
+    {
+        return $this->lastname;   
+    }
+    
+    function getNameComp()
+    {
+        return $this->nameComp;
+    }
+
+    function getNickName()
+    {
+        return $this->nickname;
+    }
+
+    function getProfilePic()
+    {
+        return $this->profilePic;
+    }
+
+    function getThumb()
+    {
+        return $this->thumb;
+    }
+
+    function getAbout()
+    {
+        return $this->about;
+    }
+
+    function getLocation()
+    {
+        return $this->location;
+    }
+
+    function getAlbumId()
+    {
+        return $this->albumId;
+    }
 
 }//End class BOUsers
 

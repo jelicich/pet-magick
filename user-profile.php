@@ -4,9 +4,18 @@
 	$_SESSION['token'] = sha1(uniqid()); 
 	//var_dump($_SESSION);
 
-	include_once "php/classes/BOProfiles.php";
-	$p = new BOProfiles($_GET['u']);
-	//$_SESSION['current-profile'] = $_GET['u'];
+	
+	include_once "php/classes/BOUsers.php";
+	include_once "php/classes/BONews.php";
+	include_once "php/classes/BOPets.php";
+	
+	
+	$u = new BOUsers;
+	$n = new BONews;
+	$p = new BOPets;
+	
+
+	$u->getUserData($_GET['u']);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -39,7 +48,7 @@
 		<!-- about module -->
 		<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">
 			<?php
-				if($p->isOwn())
+				if($u->isOwn())
 				{
 					echo '<a href="#" class="btn btn-edit" id="edit-user-info">Edit</a>';	
 				}
@@ -48,9 +57,9 @@
 				<h2>
 					<strong class="nickname">
 						<?php 
-							$nick = $p->getNickname();
+							$nick = $u->getNickname();
 							if(empty($nick))
-								echo $p->getName();
+								echo $u->getName();
 							else
 								echo $nick;
 						?>
@@ -59,14 +68,14 @@
 			</div>
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
-					<a href= <?php echo '"'.$p->getProfilePic().'"'; ?> ><img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/></a>
-					<h3><?php echo $p->getNameComp() ?></h3>
-					<span><?php echo $p->getLocation() ?></span>
+					<a href= <?php echo '"'.$u->getProfilePic().'"'; ?> ><img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/></a>
+					<h3><?php echo $u->getNameComp() ?></h3>
+					<span><?php echo $u->getLocation() ?></span>
 				</div>
 				<div class="bg-txt">
 					<p>
 						<?php 
-							$about = $p->getAbout();
+							$about = $u->getAbout();
 							if(empty($about))
 								echo 'The user has not entered any description yet';
 							else
@@ -89,7 +98,7 @@
 		<div class="grid_5">
 			<div class="mod  profiles-mod">
 				<?php
-					if($p->isOwn())
+					if($u->isOwn())
 					{
 						echo '<a href="#" class="btn btn-edit">Edit</a>';	
 					}
@@ -98,8 +107,9 @@
 					<h2>My Pets</h2>
 				</div>
 				<ul class="mod-content clearfix">
-					<?php 
-						$pets = $p->getPetList();
+					<?php
+
+						$pets = $p->getPetList($_GET['u']);
 						if($pets) 
 						{
 							
@@ -127,7 +137,7 @@
 			<!-- news -->
 			<div class="mod profiles-mod nogrid-mod" id="news-mod">
 				<?php
-					if($p->isOwn())
+					if($u->isOwn())
 					{
 						echo '<a href="#" class="btn btn-edit">Edit</a>';	
 					}
@@ -138,16 +148,16 @@
 				<ul class="mod-content clearfix">
 					<?php 
 						
-						if($p->getNews())
+						if($n->getNews($_GET['u']))
 						{
-							$n = $p->getNews();
+							$nw = $n->getNews();
 							
-							for($i = 0; $i<sizeof($n); $i++)
+							for($i = 0; $i<sizeof($nw); $i++)
 							{
 					?>
 								<li class="recent-news">
-									<span><?php echo $n[$i]['DATE']?></span>
-									<p><?php echo $n[$i]['NEWS']; ?><p>
+									<span><?php echo $nw[$i]['DATE']?></span>
+									<p><?php echo $nw[$i]['NEWS']; ?><p>
 								</li>
 
 					<?php 
@@ -168,41 +178,42 @@
 		<!-- pet profile -->
 		<div id="pet-profile"class="mod grid_7 profiles-mod nogrid-mod ">
 			<?php
-				if($p->isOwn())
+				if($u->isOwn())
 				{
 					echo '<a href="#" class="btn btn-edit">Edit</a>';	
 				}
 			?>	
 
 			<?php 
-				if($p->getPetList())
+				if($p->getPetList($_GET['u']))
 				{	
-					$pet = $p->getPet($pets[0]['ID_PET']);
+					$p->getPetData($pets[0]['ID_PET']);
+					//$pet = $p->getPet($pets[0]['ID_PET']);
 			?>		
 					<div class="mod-header">
-						<h2><strong class="nickname"><?php echo $pet['NAME'] ?> </strong>My pet story</h2>
+						<h2><strong class="nickname"><?php echo $p->getName(); ?> </strong>My pet story</h2>
 					</div>
 
 
 					<div class="mod-content clearfix">
 						
 						<div class="pic-caption pet-info">
-							<a href=<?php echo '"'.$pet['PIC'].'"'; ?> ><img src=<?php echo '"'.$pet['THUMB'].'"'; ?> class="thumb-mid"/></a>
+							<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
 							<ul>
-								<li><span><strong>Breed: </strong><?php echo $pet['BREED'];?></span></li>
-								<li><span><strong>Traits: </strong><?php echo $pet['TRAITS'];?></span></li>
+								<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
+								<li><span><strong>Traits: </strong><?php echo $p->getTraits();?></span></li>
 							</ul>
 						</div>
 						
 						<div class="bg-txt corregir">
-							<p><?php echo $pet['STORY'];?></p>
+							<p><?php echo $p->getStory();?></p>
 						</div>
 						
 						<div class="slider-small">
 							<?php
 								if($pet['ALBUM_ID'])
 								{
-									$album = $p->getAlbum($pet['ALBUM_ID'])
+									$album = $p->getAlbum($p->getAlbumId());
 							?>
 									<ul class="clearfix">
 							<?php
@@ -251,7 +262,7 @@
 		<!-- user album -->
 		<div class="mod grid_12 profiles-mod ">
 			<?php
-				if($p->isOwn())
+				if($u->isOwn())
 				{
 					echo '<a href="#" class="btn btn-edit">Edit</a>';	
 				}
@@ -260,13 +271,13 @@
 				<h2>My album</h2>
 			</div>
 			<?php
-				$aId = $p->getAlbumId();
+				$aId = $u->getAlbumId();
 				if($aId)
 				{
 			?>
 					<ul class="grid-thumbs clearfix mod-content">
 			<?php
-					$a = $p->getAlbum($aId);
+					$a = $u->getAlbum($aId);
 					for($i = 0; $i<sizeof($a); $i++)
 					{
 			?>

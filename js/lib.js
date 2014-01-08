@@ -862,7 +862,7 @@ function imgVideoUploader(){
 				   			//var inputsText = byid('form-id').getElementsByTagName('input');
 				   			//LO MODIFICO PARA LEVANTAR TODOS LOS ELEMENTOS DEL FORM POR CLASE, !!!! QUERYSELECTOR funciona en IE 8 en adelante !!! ¿? 
 				   			var inputsText = byid('form-id').querySelectorAll('.form-element');
-							console.log(inputsText);
+							//console.log(inputsText);
 							for(i = 0; i < inputsText.length; i++){ //tal vez meter todo en un solo for, no me salio
 
 								if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){

@@ -44497,8 +44497,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `EMAIL` varchar(45) NOT NULL,
   `PASSWORD` char(40) NOT NULL,
   `ABOUT` varchar(45) DEFAULT NULL,
-  `COUNTRY_ID` int(11) DEFAULT NULL,
-  `REGION_ID` int(11) DEFAULT NULL,
+  `COUNTRY_ID` smallint(6) DEFAULT NULL,
+  `REGION_ID` smallint(6) DEFAULT NULL,
   `CITY_ID` int(11) DEFAULT NULL,
   `PIC_ID` int(10) unsigned DEFAULT NULL,
   `ALBUM_ID` int(10) unsigned DEFAULT NULL,
@@ -44509,8 +44509,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `EMAIL` (`EMAIL`),
   KEY `PIC_ID` (`PIC_ID`),
   KEY `ALBUM_ID` (`ALBUM_ID`),
-  KEY `COUNTRY_ID` (`CITY_ID`),
-  KEY `REGION_ID` (`CITY_ID`),
+  KEY `COUNTRY_ID` (`COUNTRY_ID`),
+  KEY `REGION_ID` (`REGION_ID`),
   KEY `CITY_ID` (`CITY_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
@@ -44658,7 +44658,9 @@ ALTER TABLE `tributes`
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`),
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`),
-  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`CITY_ID`) REFERENCES `cities` (`CityId`);
+  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`COUNTRY_ID`) REFERENCES `countries` (`CountryId`),
+  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`REGION_ID`) REFERENCES `regions` (`RegionID`),
+  ADD CONSTRAINT `users_ibfk_5` FOREIGN KEY (`CITY_ID`) REFERENCES `cities` (`CityId`);
 
 --
 -- Constraints for table `vet_talk`

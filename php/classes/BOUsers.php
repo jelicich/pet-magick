@@ -215,6 +215,7 @@ class BOUsers{
         $this->lastname = $data->LASTNAME;
         $this->nickname = $data->NICKNAME;        
         $this->about = $data->ABOUT;
+        $this->email = $data->EMAIL;
         
 
         //no puedo traer todo de una como hizo vidaurri asiq voy trayendo de a poco
@@ -260,6 +261,10 @@ class BOUsers{
 
             }
         }
+        else
+        {
+            $this->location = false;
+        }
     
         
         
@@ -271,24 +276,6 @@ class BOUsers{
     {
         $a = $this->picsTable->getPicsByAlbum($id);
         return $a;
-    }
-
-
-
-
-
-
-    //==== Own profile
-    function isOwn()
-    {
-        if(isset($_SESSION['id']) && $_GET['u'] == $_SESSION['id'])
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     //GETS PROFILE
@@ -310,6 +297,11 @@ class BOUsers{
     function getNickName()
     {
         return $this->nickname;
+    }
+
+    function getEmail()
+    {
+        return $this->email;
     }
 
     function getProfilePic()
@@ -351,6 +343,52 @@ class BOUsers{
     {
         return $this->cityId;
     }
+
+ //==== Own profile
+    function isOwn()
+    {
+        if(isset($_SESSION['id']) && $_GET['u'] == $_SESSION['id'])
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+    // ==== UPDATE / SAVE 
+
+    function updateInfo($array)
+    {
+        var_dump($array);
+        $this->val_updateInfo($array);
+        $r = $this->table->updateInfo($array);
+        echo $r;
+            /*
+        try
+        {
+            $this->val_updateInfo($array);
+            $r = $this->table->updateInfo($array);
+            echo $r;
+            return true;
+        }
+
+        catch(Exception $e)
+        {
+            echo 'no guardo';
+            $this->err = array('Error:'=> $e->getMessage());
+            return false;
+        }*/
+    }
+
+    function val_updateInfo($array)
+    {
+        //HACER!!!
+    }
+
 
 }//End class BOUsers
 

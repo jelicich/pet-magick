@@ -167,9 +167,40 @@ class UsersTable extends Doctrine_Table
 
 
     //=================== PROFILE METHODS
-    public function getUserName($id)
+    public function updateInfo($array)
     {
 
+        
+       
+
+    	$q = Doctrine_Query::create()
+		            ->update('Users u')
+		            ->set('u.NAME', '?', $array['name'] )
+		            ->set('u.LASTNAME', '?', $array['lastname'] )
+		            ->set('u.NICKNAME', '?', $array['nickname'] )
+		            ->set('u.EMAIL', '?', $array['email'] )
+		            ->set('u.ABOUT', '?', $array['about'] );
+
+    	if(!empty($array['country']) && is_numeric($array['country']))
+          	$q->set('u.COUNTRY_ID', '?', $array['country'] );
+
+        
+        if(!empty($array['region']) && is_numeric($array['region']))
+        	$q->set('u.REGION_ID', '?', $array['region'] );
+        
+        if(!empty($array['city']) && is_numeric($array['city']))
+        	$q->set('u.CITY_ID', '?', $array['city'] );
+		            
+
+
+
+		            //->set('u.COUNTRY_ID', '?', $array['country'] )
+		            //->set('u.REGION_ID', '?', $array['region'] )
+		            //->set('u.CITY_ID', '?', $array['city'] )
+		            
+		            $q->where('u.ID_USER = ?', $_SESSION['id']);
+		    $rta = $q->execute();
+		    return $rta; 
     }
 
 }//end class

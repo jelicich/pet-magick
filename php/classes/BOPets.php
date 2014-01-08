@@ -83,7 +83,7 @@ class BOPets{
         $this->breed = $p->BREED;
         $this->traits = $p->TRAITS;
         $this->story = $p->STORY;
-        $this->albumId = $p->ALBUM_ID;
+        
 
 
         
@@ -101,13 +101,20 @@ class BOPets{
 
         //$vid = $this->videosTable->find($pet['VIDEO_ID'])
 
+        if(!empty($p->ALBUM_ID))
+        {
+            $this->albumId = $p->ALBUM_ID;
+        }
+        else
+        {
+            $this->albumId = false;
+        }
+
         $videos = $this->videosTable->getVideosByPet($p->ID_PET);
                 
         if(!empty($videos))
         {
             $this->video = $videos[0]; //GUARDO LA POSICIón 0 ya que solo permitiremos guardar un solo video
-            $t = $this->picsTable->find($videos[0]['THUMB_ID']);
-            $this->videoThumb = $t->PIC;
         }
         else
         {
@@ -153,11 +160,6 @@ class BOPets{
     function getVideo()
     {
         return $this->video;
-    }
-
-    function getVideoThumb()
-    {
-        return $this->videoThumb;
     }
 
     function getAlbumId()

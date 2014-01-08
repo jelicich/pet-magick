@@ -211,7 +211,7 @@
 						
 						<div class="slider-small">
 							<?php
-								if($pet['ALBUM_ID'])
+								if($p->getAlbumId())
 								{
 									$album = $p->getAlbum($p->getAlbumId());
 							?>
@@ -235,16 +235,17 @@
 
 						<div class='video'>
 							<?php
-								if($pet['VIDEO'])
+								$v = $p->getVideo();
+								if($v)
 								{
 							?>
 									<div class='wrapper-play'>
 										<div class="play"></div>
-										<img src=<?php echo '"'.$pets['VIDEO']['THUMB'].'"'; ?> class="thumb-big video-thumb"/>
+										<img src=<?php echo '"'.$v['THUMBNAIL'].'"'; ?> class="thumb-big video-thumb"/>
 									</div>
 
 									<div class="video-last-caption">
-										<h3><?php echo $pets['VIDEO']['TITLE'] ?><span>2:12</span></h3>
+										<h3><?php echo $v['TITLE'] ?><span>2:12</span></h3>
 										<!--<span><strong>By: </strong> Petter Putter</span>-->
 									</div>
 							<?php

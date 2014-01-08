@@ -636,17 +636,49 @@ function upload_img(){
 IMG UPLOAD
 
 				*/
+
+function ajaxx(metodo,url, unaFuncion, mensaje, async) {
+	
+	xhr = createXMLHTTPObject();
+	xhr.open(metodo, url, async);
+	/*if (metodo ==  'POST'){
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+	}*/
+	xhr.upload.addEventListener('load', onloadHandler, false); 
+	//xhr.upload.addEventListener('loadstart', onloadstartHandler, false);
+    //xhr.upload.addEventListener('progress', onprogressHandler, false);
+	//xhr.addEventListener('readystatechange', onreadystatechangeHandler, false);
+	
+	xhr.onreadystatechange = function () {
+		console.log(new Date(),  this.readyState);
+		if (this.readyState!=4 ) {
+			//console.log('esperando');
+		} else {
+			unaFuncion.call(xhr);
+		}
+	}
+	xhr.send(mensaje);
+}// end ajax	
+
+
+function onloadHandler(evt){
+  
+  var div = byid('upload-status');
+  	  whilst(byid('imgContainer'));
+}// end onloadHandler
+
+
+
 				
-
-
 function imgVideoUploader(){
 
 		// ===========================COMMON VARs & FUNCTIONS
 		var file_id = create('input');
 		    file_id.type = 'file';
 		
-		//var allCaption = [];
-		//var caption;
+		var allCaption = [];
+		var allElementos = []; // PRUEBA PARA ELEMENTOS DE PERFIL
+		var caption;
 		var filesSelected = []; 
 		var filesSelectedPosition = 0;
 		var formData;
@@ -702,20 +734,6 @@ function imgVideoUploader(){
         	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
         } // tal vez se pueda hacer mejor esto. Lo hago funtion pq lo utilizo mas de una vez
 
-	    /*
-	    Estos metas andan, pero como el <head> se parsea antes q el js, en firefox no camina. Va, tira un mensaje en consola
-	    Hay q evaluar si nos sirve generarlos desde aca. Pero todo indica q no jajaj
-
-		var meta_1 = create('meta');
-			meta_1.setAttribute('content', "text/html;charset=utf-8");
-			meta_1.setAttribute('http-equiv', "Content-Type");
-		var meta_2 = create('meta');
-			meta_2.setAttribute('content', "utf-8");
-			meta_2.setAttribute('http-equiv', "encoding");
-			document.getElementsByTagName('head')[0].appendChild(meta_1);
-			document.getElementsByTagName('head')[0].appendChild(meta_2);
-		*/
-
 		/*
 		BARRA DE PROGRESO  
 		-----------------
@@ -731,17 +749,16 @@ function imgVideoUploader(){
 				  file_id.name = 'file';
 				  byid('form-id').appendChild(file_id);
 
-//	ESTEBAN >
-				/*
+// ESTEBAN >				 
+		      	  /*
 		      	  var uploadBtn = create('input');
 				  	  uploadBtn.type = 'button';
 				  	  uploadBtn.value = 'Upload';
-				*/
-				// TOMO AL BOTON SAVE DE LA INTERFAZ
-				var uploadBtn = byid('save-edit-user');
 
 			  	  file_id.parentNode.appendChild(uploadBtn);
-				  
+			  	  */
+				  var uploadBtn = byid('save-edit-user');
+// < ESTEBAN 				 				  
 				  file_id.onchange = function(){ 
 
 			        	/*
@@ -803,25 +820,26 @@ function imgVideoUploader(){
 					                    selectedImg.style.height = '20%';
 					                    selectedImg.style.margin = '5px 5px';
 					                    selectedImg.style.float = 'left';
-				                    	//caption = create('input');
-										//caption.type = 'text';
-				                    	//caption.id = 'caption_' + filesSelectedPosition;
-								    	//caption.name = 'caption';
+				                    	
+				                    	caption = create('input');
+										caption.type = 'text';
+				                    	caption.id = 'caption_' + filesSelectedPosition;
+								    	caption.name = 'caption';
 
 									    removeErr();
-					                    //byid('form-id').appendChild(caption);
+					                    
+					                    byid('form-id').appendChild(caption);
 					                    byid('imgContainer').appendChild(selectedImg);
 
 
 					                    selectedImg.onclick = function(){
 
 						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                   // var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                 //   byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
+						                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
 						                    	this.parentNode.removeChild(this);
 						                    	filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
 						                    	//console.log('onclick: ' + ImgPosition);
-						                    	
 						                }
 					            }// end onload
 					            reader.readAsDataURL(this.files[0]);
@@ -839,86 +857,41 @@ function imgVideoUploader(){
 				  uploadBtn.onclick = function (evt) {
 
 				  			formData = new FormData();
-				   			//console.log(filesSelected);
+
+// ESTEBAN >
+				   			//var inputsText = byid('form-id').getElementsByTagName('input');
+				   			//LO MODIFICO PARA LEVANTAR TODOS LOS ELEMENTOS DEL FORM POR CLASE, !!!! QUERYSELECTOR funciona en IE 8 en adelante !!! ¿? 
+				   			var inputsText = byid('form-id').querySelectorAll('.form-element');
+							console.log(inputsText);
+							for(i = 0; i < inputsText.length; i++){ //tal vez meter todo en un solo for, no me salio
+
+								if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
+
+									allCaption.push(inputsText[i].value);
+// ESTEBAN >
+								}
+								else
+									//allElementos.push(inputsText[i].value); // PRUEBA PARA ELEMENTOS DE PERFIL
+									formData.append(inputsText[i].name, inputsText[i].value);
+// < ESTEBAN
+								
+							}
+
 					   		for (var i = 0; i < filesSelected.length; i++) {
 
-					   			//allCaption[i] = byid('caption_' + j).value;
-
-					   			//console.log(byid('caption_' + j).value);
 					   			formData.append("file[]", filesSelected[i]);
-					   			//formData.append("caption[]", allCaption[i]);
+					   			formData.append("caption[]", allCaption[i]);
+// ESTEBAN >		   			//formData.append("elementos[]", allElementos[i]); // PRUEBA PARA ELEMENTOS DE PERFIL
 					   			filesSelected[i] = '';
-					   			
 					   		}
-// ESTEBAN >			
-							//LE AGREGO LOS ELEMENTOS DEL MODULO A GUARDAR
-							/*  		var name = byid('usr-name').value;
-								formData.append('name', name);
-
-								var lastname = byid('usr-lastname').value;
-								formData.append('lastname', lastname);
-
-								var nickname = byid('usr-nickname').value;
-								formData.append('nickname',nickname);
-
-								var country = byid('country').value;
-								formData.append('country', country);
-
-								var region = byid('region').value;
-								formData.append('region', region);
-
-								var city = byid('city').value;
-								formData.append('city', city);
-
-								var about = byid('usr-about').innerHTML;
-								formData.append('about',about);
-
-
-
-
-							Esto tenes q hacerlo todo adentro de este onclick, aca deberias capturar todos los valores (tal vez por medio de una clase) y meternlos en un array 
-							como yo hice con los captions. Ejemplo:
-
-								MisElementos = []; // este iria declarado afuera
-								var TodosLosElementos = byid('form-id').getElementsByTagName('input');
-					
-								for(i = 0; i < TodosLosElementos.length; i++){ //tal vez meter todo en un solo for, no me salio
-
-									if(TodosLosElementos[i].type == 'text' && TodosLosElementos[i].name == 'caption'){
-
-										TodosLosElementos.push(inputsText[i].value);
-									}
-								}
-
-								Una vez q tenes todo en los valores en un array los metes en una posicion  del formData. ejemplo:
-
-								for (var i = 0; i < filesSelected.length; i++) {
-
-						   			formData.append("file[]", filesSelected[i]);
-						   			formData.append("caption[]", allCaption[i]);
-						   			formData.append("ElementosArnviar[]", MisElementos[i]);
-						   			filesSelected[i] = '';
-						   		}
-
-						   		Ahi ya tenes todo en un array y lo mandas. Despues desde insertar lo mismo de lo q ya esta hecho dentro del for. Ejemplo:
-
-						   		$query['usr-name'] = $_POST['ElementosArnviar']['usr-name'][$i];
-
-						   		Ojo, no lo probe pq no me anda el user-profile y no pude testearlo. Pero yo lo haria de esa forma.
-						   		En IE es otro  mambo, tenemos q ver como envie los captions y seguir esa modalidad...
-
-
-
-
-
-						   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
+					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
 					   			
 					   			errMsg('Debe seleccionar una img desde js'); 
 					   			//console.log(filesSelected);
 					   			return;
 					   		}*/
 
-					   		ajax('POST', 'ajax/insertar.php', printErr, formData, true);
+					   		ajaxx('POST', 'ajax/insertar.php', printErr, formData, true);
 				  }// end onclick
 		}// end NormalWay
 
@@ -940,7 +913,7 @@ function imgVideoUploader(){
 				     	var id = create('input');
 					    	id.type = 'file';
 					    	id.name = 'file_' + filesSelectedPosition;
-					    	id.id = 'file_id_' + filesSelectedPosition;
+					    	id.id = 'file_id_' + filesSelectedPosition;					    	
 					    	byid('form-id').appendChild(id);
 				}// end createInput
 
@@ -1010,6 +983,11 @@ function imgVideoUploader(){
 						  	selectedImg.style.width = "60px";
 							selectedImg.style.height = "60px";
 
+							caption = create('input');
+							caption.type = 'text';
+	                    	caption.id = 'caption_' + filesSelectedPosition;
+					    	caption.name = 'caption_' + filesSelectedPosition;
+
 							// ============================= FORMAT VALIDATION
 
 							/*	var ext = fileFormat(this.value, '.');
@@ -1024,10 +1002,13 @@ function imgVideoUploader(){
 			            	
 					            	removeErr();
 								  	byid('imgContainer').appendChild(selectedImg);
+								  	byid('form-id').appendChild(caption);
 
 									selectedImg.onclick = function(){
 
 					                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+					                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
 					                    	this.parentNode.removeChild(this);
 					                    	byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
 					                    	console.log('onclick: ' + ImgPosition);
@@ -1038,12 +1019,12 @@ function imgVideoUploader(){
 									    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
 
 									    byid('file_id_' + filesSelectedPosition).style.display = 'none';
-									    console.log(filesSelectedPosition);
+									    //console.log(filesSelectedPosition);
 									    filesSelectedPosition++;
 									    newInput();
 							
 			            }// end onchange
-			    })();
+			     })();
 
 				byid('form-id').attachEvent('onsubmit', afterSubmit);
 		}// end fallBack
@@ -1053,5 +1034,4 @@ function imgVideoUploader(){
 		}else{ 
 			fallBack(); 
 		}// end else
-}// end imgVideoUploader		
-
+}// end imgVideoUploader

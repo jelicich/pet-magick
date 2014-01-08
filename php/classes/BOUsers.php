@@ -337,6 +337,21 @@ class BOUsers{
         return $this->albumId;
     }
 
+    function getCountryId()
+    {
+        return $this->countryId;
+    }
+
+    function getRegionId()
+    {
+        return $this->regionId;
+    }
+
+    function getCityId()
+    {
+        return $this->cityId;
+    }
+
 }//End class BOUsers
 
 

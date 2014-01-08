@@ -4,8 +4,9 @@ session_start();
 include_once "../php/classes/BOPics.php";
 include_once "../php/classes/BOVideos.php";
 
-//var_dump($_POST); // PRUEBA PARA ELEMENTOS DE PERFIL (aca se ve el array y su contenido)
-
+var_dump($_POST); // PRUEBA PARA ELEMENTOS DE PERFIL (aca se ve el array y su contenido)
+var_dump($_FILES);
+/*
 $pics = new BOPics;
 $videos = new BOVideos;
 $query = array();

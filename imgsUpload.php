@@ -31,7 +31,7 @@
 	
 	<div id='imgContainer'></div>
 
-	<iframe name="iframe_IE" src="" style="display: none"></iframe> 
+	<iframe name="iframe_IE" src="" style="display: "></iframe> 
 
 	<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 		 
@@ -124,8 +124,9 @@ function imgVideoUploader(){
 		var file_id = create('input');
 		    file_id.type = 'file';
 		
-		//var allCaption = [];
-		//var caption;
+		var allCaption = [];
+		//var allElementos = []; // PRUEBA PARA ELEMENTOS DE PERFIL
+		var caption;
 		var filesSelected = []; 
 		var filesSelectedPosition = 0;
 		var formData;
@@ -180,20 +181,6 @@ function imgVideoUploader(){
 
         	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
         } // tal vez se pueda hacer mejor esto. Lo hago funtion pq lo utilizo mas de una vez
-
-	    /*
-	    Estos metas andan, pero como el <head> se parsea antes q el js, en firefox no camina. Va, tira un mensaje en consola
-	    Hay q evaluar si nos sirve generarlos desde aca. Pero todo indica q no jajaj
-
-		var meta_1 = create('meta');
-			meta_1.setAttribute('content', "text/html;charset=utf-8");
-			meta_1.setAttribute('http-equiv', "Content-Type");
-		var meta_2 = create('meta');
-			meta_2.setAttribute('content', "utf-8");
-			meta_2.setAttribute('http-equiv', "encoding");
-			document.getElementsByTagName('head')[0].appendChild(meta_1);
-			document.getElementsByTagName('head')[0].appendChild(meta_2);
-		*/
 
 		/*
 		BARRA DE PROGRESO  
@@ -278,25 +265,26 @@ function imgVideoUploader(){
 					                    selectedImg.style.height = '20%';
 					                    selectedImg.style.margin = '5px 5px';
 					                    selectedImg.style.float = 'left';
-				                    	//caption = create('input');
-										//caption.type = 'text';
-				                    	//caption.id = 'caption_' + filesSelectedPosition;
-								    	//caption.name = 'caption';
+				                    	
+				                    	caption = create('input');
+										caption.type = 'text';
+				                    	caption.id = 'caption_' + filesSelectedPosition;
+								    	caption.name = 'caption';
 
 									    removeErr();
-					                    //byid('form-id').appendChild(caption);
+					                    
+					                    byid('form-id').appendChild(caption);
 					                    byid('imgContainer').appendChild(selectedImg);
 
 
 					                    selectedImg.onclick = function(){
 
 						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                   // var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                 //   byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
+						                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
 						                    	this.parentNode.removeChild(this);
 						                    	filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
 						                    	//console.log('onclick: ' + ImgPosition);
-						                    	
 						                }
 					            }// end onload
 					            reader.readAsDataURL(this.files[0]);
@@ -314,18 +302,25 @@ function imgVideoUploader(){
 				  uploadBtn.onclick = function (evt) {
 
 				  			formData = new FormData();
-				   			//console.log(filesSelected);
+
+				   			var inputsText = byid('form-id').getElementsByTagName('input');
+					
+							for(i = 0; i < inputsText.length; i++){ //tal vez meter todo en un solo for, no me salio
+
+								if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
+
+									allCaption.push(inputsText[i].value);
+									//allElementos.push(inputsText[i].value); // PRUEBA PARA ELEMENTOS DE PERFIL
+								}
+							}
+
 					   		for (var i = 0; i < filesSelected.length; i++) {
 
-					   			//allCaption[i] = byid('caption_' + j).value;
-
-					   			//console.log(byid('caption_' + j).value);
 					   			formData.append("file[]", filesSelected[i]);
-					   			//formData.append("caption[]", allCaption[i]);
+					   			formData.append("caption[]", allCaption[i]);
+					   			//formData.append("elementos[]", allElementos[i]); // PRUEBA PARA ELEMENTOS DE PERFIL
 					   			filesSelected[i] = '';
-					   			
 					   		}
-
 					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
 					   			
 					   			errMsg('Debe seleccionar una img desde js'); 
@@ -425,6 +420,11 @@ function imgVideoUploader(){
 						  	selectedImg.style.width = "60px";
 							selectedImg.style.height = "60px";
 
+							caption = create('input');
+							caption.type = 'text';
+	                    	caption.id = 'caption_' + filesSelectedPosition;
+					    	caption.name = 'caption_' + filesSelectedPosition;
+
 							// ============================= FORMAT VALIDATION
 
 							/*	var ext = fileFormat(this.value, '.');
@@ -439,10 +439,13 @@ function imgVideoUploader(){
 			            	
 					            	removeErr();
 								  	byid('imgContainer').appendChild(selectedImg);
+								  	byid('form-id').appendChild(caption);
 
 									selectedImg.onclick = function(){
 
 					                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+					                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
 					                    	this.parentNode.removeChild(this);
 					                    	byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
 					                    	console.log('onclick: ' + ImgPosition);
@@ -453,12 +456,12 @@ function imgVideoUploader(){
 									    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
 
 									    byid('file_id_' + filesSelectedPosition).style.display = 'none';
-									    console.log(filesSelectedPosition);
+									    //console.log(filesSelectedPosition);
 									    filesSelectedPosition++;
 									    newInput();
 							
 			            }// end onchange
-			    })();
+			     })();
 
 				byid('form-id').attachEvent('onsubmit', afterSubmit);
 		}// end fallBack

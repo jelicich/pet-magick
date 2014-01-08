@@ -852,30 +852,66 @@ function imgVideoUploader(){
 					   		}
 // ESTEBAN >			
 							//LE AGREGO LOS ELEMENTOS DEL MODULO A GUARDAR
-							var name = byid('usr-name').value;
-							formData.append('name', name);
+							/*  		var name = byid('usr-name').value;
+								formData.append('name', name);
 
-							var lastname = byid('usr-lastname').value;
-							formData.append('lastname', lastname);
+								var lastname = byid('usr-lastname').value;
+								formData.append('lastname', lastname);
 
-							var nickname = byid('usr-nickname').value;
-							formData.append('nickname',nickname);
+								var nickname = byid('usr-nickname').value;
+								formData.append('nickname',nickname);
 
-							var country = byid('country').value;
-							formData.append('country', country);
+								var country = byid('country').value;
+								formData.append('country', country);
 
-							var region = byid('region').value;
-							formData.append('region', region);
+								var region = byid('region').value;
+								formData.append('region', region);
 
-							var city = byid('city').value;
-							formData.append('city', city);
+								var city = byid('city').value;
+								formData.append('city', city);
 
-							var about = byid('usr-about').innerHTML;
-							formData.append('about',about);
+								var about = byid('usr-about').innerHTML;
+								formData.append('about',about);
 
 
 
-					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
+
+							Esto tenes q hacerlo todo adentro de este onclick, aca deberias capturar todos los valores (tal vez por medio de una clase) y meternlos en un array 
+							como yo hice con los captions. Ejemplo:
+
+								MisElementos = []; // este iria declarado afuera
+								var TodosLosElementos = byid('form-id').getElementsByTagName('input');
+					
+								for(i = 0; i < TodosLosElementos.length; i++){ //tal vez meter todo en un solo for, no me salio
+
+									if(TodosLosElementos[i].type == 'text' && TodosLosElementos[i].name == 'caption'){
+
+										TodosLosElementos.push(inputsText[i].value);
+									}
+								}
+
+								Una vez q tenes todo en los valores en un array los metes en una posicion  del formData. ejemplo:
+
+								for (var i = 0; i < filesSelected.length; i++) {
+
+						   			formData.append("file[]", filesSelected[i]);
+						   			formData.append("caption[]", allCaption[i]);
+						   			formData.append("ElementosArnviar[]", MisElementos[i]);
+						   			filesSelected[i] = '';
+						   		}
+
+						   		Ahi ya tenes todo en un array y lo mandas. Despues desde insertar lo mismo de lo q ya esta hecho dentro del for. Ejemplo:
+
+						   		$query['usr-name'] = $_POST['ElementosArnviar']['usr-name'][$i];
+
+						   		Ojo, no lo probe pq no me anda el user-profile y no pude testearlo. Pero yo lo haria de esa forma.
+						   		En IE es otro  mambo, tenemos q ver como envie los captions y seguir esa modalidad...
+
+
+
+
+
+						   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
 					   			
 					   			errMsg('Debe seleccionar una img desde js'); 
 					   			//console.log(filesSelected);

@@ -17,7 +17,7 @@ class PicsTable extends Doctrine_Table
         return Doctrine_Core::getTable('Pics');
     }
 
-     public function upload_img($ref){
+     public function upload($ref){
 
      			$now = date('Y-m-d');
 

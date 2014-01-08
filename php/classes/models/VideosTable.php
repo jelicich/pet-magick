@@ -18,7 +18,7 @@ class VideosTable extends Doctrine_Table
     }
 
     
-    public function upload_video($ref){
+    public function upload($ref){
 
             $now = date('Y-m-d');
 

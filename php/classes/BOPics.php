@@ -18,7 +18,7 @@ class BOPics{
 //=============================================================================== VALIDATIONS
 
 
-function val_pics($query){
+function val($query){
 
    /*   if( !isset($query['file']) )
       {
@@ -26,7 +26,7 @@ function val_pics($query){
         return;
       }*/
 
-      if($query['fileSize'] > 900000000) 
+      if($query['fileSize'] > 900000000000) 
       {// ver q medidas necesito aca para cada formato, tal vez separarlos
         throw new Exception('<span>muy grande desde php images</span>');
         return;
@@ -40,11 +40,11 @@ function val_pics($query){
  
 //=============================================================================== FUNCTIONS
 
-function upload_img($query){
+function upload($query){
 
         try
             {    
-              $this->val_pics($query);
+              $this->val($query);
 
               $ext = pathinfo($query['fileName'], PATHINFO_EXTENSION);
               $rand = rand(1000,9999);
@@ -54,8 +54,7 @@ function upload_img($query){
               move_uploaded_file($query['file'], $path.'/'.$newName);
               $path = $path.'/'.$newName;
               $path2= "../img/thumb/".$newName; //para thumb
-             // $caption = $query['caption'];
-              // $caption = $query['caption'];
+              $caption = $query['caption'];
               
 
               $imgOriginal = "../img/". $newName ;
@@ -97,10 +96,10 @@ function upload_img($query){
               $query = array(
                  'pic'=>$path, 
                  'thumb'=>$path2,
-                 'caption'=>'hola'
+                 'caption'=>$caption
               );
 
-              $this->table->upload_img($query);
+              $this->table->upload($query);
                return true;
             }
 

@@ -17,9 +17,9 @@ class BOVideos{
 
 //=============================================================================== VALIDATIONS
 
-  function val_videos($query){
+  function val($query){
 
-        if($query['fileSize'] > 9) 
+        if($query['fileSize'] > 900000) 
         {// ver q medidas necesito aca para cada formato, tal vez separarlos
           throw new Exception('<span>muy grande desde php videos</span>');
           return;
@@ -33,11 +33,11 @@ class BOVideos{
  
 //=============================================================================== FUNCTIONS
 
-  function upload_video($query){
+  function upload($query){
 
       try
           {  
-            $this->val_videos($query);
+            $this->val($query);
 
             extension_loaded('ffmpeg') or die('Error in loading ffmpeg');
             $ext = pathinfo($query['fileName'], PATHINFO_EXTENSION);

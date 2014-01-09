@@ -40,7 +40,7 @@ function val($query){
  
 //=============================================================================== FUNCTIONS
 
-function upload($query){
+function upload($query,$path){
 
         try
             {    
@@ -48,16 +48,16 @@ function upload($query){
 
               $ext = pathinfo($query['fileName'], PATHINFO_EXTENSION);
               $rand = rand(1000,9999);
-              $path = "../img";
+              //$path = "../img";
               
               $newName = $rand . "_" . time() .'.' . $ext;  
               move_uploaded_file($query['file'], $path.'/'.$newName);
-              $path = $path.'/'.$newName;
-              $path2= "../img/thumb/".$newName; //para thumb
+              $fullpath = $path.$newName;
+              $thumbpath = $path."thumb/".$newName; //para thumb
               $caption = $query['caption'];
               
 
-              $imgOriginal = "../img/". $newName ;
+              $imgOriginal = $fullpath ;
 
               //creo una nueva foto a partir de la anterior
               $img_original = imagecreatefromjpeg( $imgOriginal );
@@ -91,11 +91,11 @@ function upload($query){
 
               $calidad = 100 ;
 
-              imagejpeg( $imgNueva, '../img/thumb/' . $newName, $calidad ) ;
+              imagejpeg( $imgNueva, $thumbpath, $calidad ) ;
               
               $query = array(
-                 'pic'=>$path, 
-                 'thumb'=>$path2,
+                 'pic'=>$fullpath, 
+                 'thumb'=>$thumbpath,
                  'caption'=>$caption
               );
 

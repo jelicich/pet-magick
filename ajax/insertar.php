@@ -15,11 +15,12 @@ $query = array();
 $mimeVideo = array('video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');
 $flagVideo = false;
 
-function createQuery($query, $class){
+function createQuery($query, $path, $class){
 
-	$class->upload($query);
+	$class->upload($query, $path);
 	echo $class->getErrors();
 }//create query
+
 
 if(isset($_FILES['file'])){ // normalWay();
 
@@ -36,14 +37,15 @@ if(isset($_FILES['file'])){ // normalWay();
 		if( in_array($query['fileType'], $mimeVideo)){  
 			
 			$obj = $videos; 
-
+			createQuery($query, '../img/videos/', $obj);
 		}else{
 
 			$obj = $pics; 
+			createQuery($query, '../img/users/', $obj);
 
 		} // tratar de optimizar par ano repetir 
 		
-		createQuery($query, $obj);
+		//createQuery($query, $path, $obj);
 	}// end for
 }else{ // fallBack();
 	
@@ -74,6 +76,6 @@ if(isset($_FILES['file'])){ // normalWay();
 
 
 //var_dump($_POST);
-//$user->updateInfo($_POST);
+$user->updateInfo($_POST);
 
 

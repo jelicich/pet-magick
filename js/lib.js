@@ -669,21 +669,44 @@ function onloadHandler(evt){
 
 
 
-				
-function imgVideoUploader(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Parametros a pasar:
+						// 'profile'
+						// 'video'
+						// 'album'
+
+function imgVideoUploader(whatFor){
+		
+		var amount = whatFor;
 
 		// ===========================COMMON VARs & FUNCTIONS
 		var file_id = create('input');
 		    file_id.type = 'file';
 		
 		var allCaption = [];
-		var allElementos = []; // PRUEBA PARA ELEMENTOS DE PERFIL
+		//var allElementos = []; // PRUEBA PARA ELEMENTOS DE PERFIL
 		var caption;
 		var filesSelected = []; 
 		var filesSelectedPosition = 0;
 		var formData;
 		var mime = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
 			  		'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
+		  var mimeImg = [ 'image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
+		  var mimeVideo= [ 'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
 
 		function support(){
 	 
@@ -716,11 +739,13 @@ function imgVideoUploader(){
 
 		function errMsg(msg){
 			removeErr();
+			
 			var errorMsg = create('span');
 			errorMsg.id = 'err';
 			errorMsg.innerHTML = msg;
 			byid('imgContainer').appendChild(errorMsg);
 			file_id.value = '';
+
 			return;
 		}//end errMsg
 
@@ -743,12 +768,13 @@ function imgVideoUploader(){
 		var bar = create('div');
 		*/  	
 
-		function normalWay(){
+		function normalWay(whatFor){
 
 				  file_id.id = 'file_id';
 				  file_id.name = 'file';
 				  byid('form-id').appendChild(file_id);
 
+				 
 // ESTEBAN >				 
 		      	  /*
 		      	  var uploadBtn = create('input');
@@ -758,7 +784,10 @@ function imgVideoUploader(){
 			  	  file_id.parentNode.appendChild(uploadBtn);
 			  	  */
 				  var uploadBtn = byid('save-edit-user');
-// < ESTEBAN 				 				  
+// < ESTEBAN 
+
+			  	  file_id.parentNode.appendChild(uploadBtn);
+				  
 				  file_id.onchange = function(){ 
 
 			        	/*
@@ -790,6 +819,15 @@ function imgVideoUploader(){
 
 		            			//errMsg('Exede el peso desde js');
 		            			
+		            		}if( amount != 'video' && mimeImg.indexOf(this.files[0].type) == -1){
+
+		            			errMsg('Pasale el parametro para video desde js');
+		            			var noRemoveInput = true;
+
+		            		}if( amount == 'video' && mimeVideo.indexOf(this.files[0].type) == -1){
+
+		            			errMsg('Pasale el parametro para video desde js');
+		            			var noRemoveInput = true;
 		            		}
 		            		
 		            		var reader = new FileReader();
@@ -820,26 +858,42 @@ function imgVideoUploader(){
 					                    selectedImg.style.height = '20%';
 					                    selectedImg.style.margin = '5px 5px';
 					                    selectedImg.style.float = 'left';
-				                    	
-				                    	caption = create('input');
-										caption.type = 'text';
-				                    	caption.id = 'caption_' + filesSelectedPosition;
-								    	caption.name = 'caption';
+				                    	 
+				                    	  if (amount != 'profile'){
+
+						                    	caption = create('input');
+												caption.type = 'text';
+						                    	caption.id = 'caption_' + filesSelectedPosition;
+										    	caption.name = 'caption';
+										    	 byid('form-id').appendChild(caption);
+										   }
 
 									    removeErr();
 					                    
-					                    byid('form-id').appendChild(caption);
+					                   
 					                    byid('imgContainer').appendChild(selectedImg);
 
 
 					                    selectedImg.onclick = function(){
 
 						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
-						                    	this.parentNode.removeChild(this);
-						                    	filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
-						                    	//console.log('onclick: ' + ImgPosition);
+						                  	
+						                  	if (amount != 'profile'){
+							                    
+							                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+							                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
+							                    	
+							                    	//console.log('onclick: ' + ImgPosition);
+							                 }
+							                 this.parentNode.removeChild(this);
+							                 filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
+
+							                  if (amount != 'album'){
+				  	  		
+										  	  		file_id.id = 'file_id';
+													file_id.name = 'file';
+													byid('form-id').appendChild(file_id);;
+										  	  }
 						                }
 					            }// end onload
 					            reader.readAsDataURL(this.files[0]);
@@ -848,11 +902,13 @@ function imgVideoUploader(){
 			      	  filesSelectedPosition++;
 			      	  //console.log(filesSelectedPosition);
 				  	  filesSelected[filesSelectedPosition] = file_id.files[0];
-				  	  
 				  	  file_id.value = '';
-				 }// end onchange
 
-
+				  	  if (filesSelectedPosition >= 1 && amount != 'album' && noRemoveInput  != true){
+				  	  		
+				  	  		file_id.parentNode.removeChild(file_id);
+				  	  }
+				  }// end onchange
 
 				  uploadBtn.onclick = function (evt) {
 
@@ -862,26 +918,26 @@ function imgVideoUploader(){
 				   			//var inputsText = byid('form-id').getElementsByTagName('input');
 				   			//LO MODIFICO PARA LEVANTAR TODOS LOS ELEMENTOS DEL FORM POR CLASE, !!!! QUERYSELECTOR funciona en IE 8 en adelante !!! ¿? 
 				   			var inputsText = byid('form-id').querySelectorAll('.form-element');
-							//console.log(inputsText);
+// < ESTEBAN
 							for(i = 0; i < inputsText.length; i++){ //tal vez meter todo en un solo for, no me salio
 
 								if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
 
 									allCaption.push(inputsText[i].value);
-// ESTEBAN >
 								}
+// ESTEBAN >							
 								else
 									//allElementos.push(inputsText[i].value); // PRUEBA PARA ELEMENTOS DE PERFIL
 									formData.append(inputsText[i].name, inputsText[i].value);
 // < ESTEBAN
-								
 							}
 
+							//inputsText.parentNode.removeChild(inputsText)
 					   		for (var i = 0; i < filesSelected.length; i++) {
 
 					   			formData.append("file[]", filesSelected[i]);
 					   			formData.append("caption[]", allCaption[i]);
-// ESTEBAN >		   			//formData.append("elementos[]", allElementos[i]); // PRUEBA PARA ELEMENTOS DE PERFIL
+					   			//formData.append("elementos[]", allElementos[i]); // PRUEBA PARA ELEMENTOS DE PERFIL
 					   			filesSelected[i] = '';
 					   		}
 					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
@@ -891,7 +947,15 @@ function imgVideoUploader(){
 					   			return;
 					   		}*/
 
+// ESTEBAN >				RENOMBRE TU FUNCION DE AJAX a AJAXX para no pisar la otra
 					   		ajaxx('POST', 'ajax/insertar.php', printErr, formData, true);
+
+					   		 	if (amount == 'profile' || amount == 'video'){
+
+					   		 		  file_id.id = 'file_id';
+									  file_id.name = 'file';
+									  byid('form-id').appendChild(file_id);
+								} 
 				  }// end onclick
 		}// end NormalWay
 
@@ -913,7 +977,7 @@ function imgVideoUploader(){
 				     	var id = create('input');
 					    	id.type = 'file';
 					    	id.name = 'file_' + filesSelectedPosition;
-					    	id.id = 'file_id_' + filesSelectedPosition;					    	
+					    	id.id = 'file_id_' + filesSelectedPosition;
 					    	byid('form-id').appendChild(id);
 				}// end createInput
 

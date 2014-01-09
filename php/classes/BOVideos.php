@@ -119,7 +119,7 @@ class BOVideos{
                  'album_id'=> null 
             );
 
-            $this->table->upload_video($query);
+            $this->table->upload($query);
             return true;
           }
 

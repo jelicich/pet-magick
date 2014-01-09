@@ -11,7 +11,6 @@ $pics = new BOPics;
 $videos = new BOVideos;
 $user = new BOUsers;
 
-/*
 $query = array();
 $mimeVideo = array('video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');
 $flagVideo = false;
@@ -48,7 +47,6 @@ if(isset($_FILES['file'])){ // normalWay();
 	}// end for
 }else{ // fallBack();
 	
-	//var_dump($_POST);
 	foreach ($_FILES as $key => $eachFile) {
 
 		foreach ($_POST as $keyCaption => $eachCaption){
@@ -57,7 +55,7 @@ if(isset($_FILES['file'])){ // normalWay();
 				$query['fileName'] = $eachFile['name'];
 				$query['fileSize'] =$eachFile['size'];
 				$query['fileType'] = $eachFile['type'];
-				$query['caption'] = $eachCaption;
+				$query['caption'] = $eachCaption; // RESOLVER!!!!!!!!!!!!!!!!!!!!
 
 				if( in_array($query['fileType'], $mimeVideo)){  
 				
@@ -68,16 +66,14 @@ if(isset($_FILES['file'])){ // normalWay();
 					$obj = $pics; 
 
 				} // tratar de optimizar par ano repetir 
-				
-				createQuery($query, $obj);
-				
 		}
+		createQuery($query, $obj);
 	}// end foreach
 }// end else
 
 
-*/
+
 //var_dump($_POST);
-$user->updateInfo($_POST);
+//$user->updateInfo($_POST);
 
 

@@ -58,40 +58,87 @@ function upload($query,$path){
               
 
               $imgOriginal = $fullpath ;
-
-              //creo una nueva foto a partir de la anterior
+              
+              //CROPPPP !!!
+              list($org_ancho, $org_alto) = getimagesize($imgOriginal);
               $img_original = imagecreatefromjpeg( $imgOriginal );
-              // maximo ancho y alto
-              $max_ancho = 220;
-              $max_alto = 2000;
 
+              if ($org_ancho > $org_alto) //si el ancho es mayor al alto, es del tipo apaisada.
+              {
+                $nue_ancho = $org_alto;
+                $nue_alto = $org_alto;
+                $ratio = $org_alto / $nue_alto;
+                $tmp_ancho = round($nue_ancho * $ratio);
+                $dif_ancho = round(($org_ancho / 2) - ($tmp_ancho / 2));
+
+                $nueva = imagecreatetruecolor($nue_ancho, $nue_alto);
+                imagecopyresampled($nueva, $img_original, 0, 0, $dif_ancho, 0, $nue_ancho, $nue_alto, $tmp_ancho, $org_alto);
+              }
+              else //si el ancho es menor o igual al alto, es del tipo retrato o cuadrada
+              {
+                $nue_ancho = $org_ancho;
+                $nue_alto = $org_ancho;
+                $ratio = $org_ancho / $nue_ancho;
+                $tmp_alto = round($nue_alto * $ratio);
+                $dif_alto = round(($org_alto / 2) - ($tmp_alto / 2));
+
+                $nueva = imagecreatetruecolor($nue_ancho, $nue_alto);
+                imagecopyresampled($nueva, $img_original, 0, 0, 0, $dif_alto, $nue_ancho, $nue_alto, $org_ancho, $tmp_alto);
+              }
+
+              //imageinterlace($nueva, 1); //hacemos que la imagen sea progresiva
+              imagejpeg( $nueva, '../img/temp/'.$newName, '100' ) ;
+
+              
+
+              //RESIZE !!!!
+              $imgOriginal = '../img/temp/'.$newName ;
               // separo alto y ancho de la imgOriginal en dos variables
               list( $anchoImgOriginal, $altoImgOriginal ) = getimagesize( $imgOriginal ) ;
+              //creo una nueva foto a partir de la anterior
 
+              $img_original = imagecreatefromjpeg( $imgOriginal );
+              // maximo ancho y alto
+              $max_ancho = 123;
+              $max_alto = 123;
+
+              // separo alto y ancho de la imgOriginal en dos variables
+              
+              //list( $anchoImgOriginal, $altoImgOriginal ) = getimagesize( $img_original ) ;
+              /*
               $x_ratio = $max_ancho / $anchoImgOriginal ;
               $y_ratio = $max_alto / $altoImgOriginal ;
 
               if( $anchoImgOriginal <= $max_ancho){
                 $anchoFinal = $anchoImgOriginal ;
                 $altoFinal = $altoImgOriginal ;
+                echo 'paso 1';
               }
               elseif( $anchoImgOriginal > $max_ancho ){
                 $altoFinal = ceil( $x_ratio * $altoImgOriginal ) ;
                 $anchoFinal = $max_ancho ; 
+                echo 'paso 2';
               } elseif( $altoImgOriginal > $max_alto ){
                 $anchoFinal = ceil( $y_ratio * $anchoImgOriginal ) ;
                 $altoFinal = $max_alto ; 
+                echo 'paso 3';
               }
+              */
 
-              $imgNueva = imagecreatetruecolor( $anchoFinal, $altoFinal ) ;
-              //ACA HABRIA Q VER COMO CROPEAR debe ser una gilada
-              imagecopyresampled( $imgNueva, $img_original, 0, 0, 0, 0, $anchoFinal, $altoFinal, $anchoImgOriginal, $altoImgOriginal );
+              $imgNueva = imagecreatetruecolor( $max_ancho, $max_alto ) ;
+              
+              imagecopyresampled( $imgNueva, $img_original, 0, 0, 0, 0, $max_ancho, $max_alto, $anchoImgOriginal, $altoImgOriginal );
 
               //imagedestroy( $img_original );
 
               $calidad = 100 ;
-
+              imageinterlace($imgNueva, 1); //hacemos que la imagen sea progresiva
               imagejpeg( $imgNueva, $thumbpath, $calidad ) ;
+              
+
+              //BORRO LA TEMPORAL
+              unlink($imgOriginal);
+
               
               $query = array(
                  'pic'=>$fullpath, 

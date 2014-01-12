@@ -51,7 +51,7 @@ function upload($query,$path){
               //$path = "../img";
               
               $newName = $rand . "_" . time() .'.' . $ext;  
-              move_uploaded_file($query['file'], $path.'/'.$newName);
+              move_uploaded_file($query['file'], $path.$newName);
               $fullpath = $path.$newName;
               $thumbpath = $path."thumb/".$newName; //para thumb
               $caption = $query['caption'];

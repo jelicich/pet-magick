@@ -19,7 +19,7 @@ $id_last_insert;
 function createQuery($query, $path, $class){
 
 	$id_last_insert = $class->upload($query, $path);
-	var_dump($id_last_insert);
+	//var_dump($id_last_insert);
 	$_POST['pic']=$id_last_insert;
 	//echo $class->getErrors();
 }//create query
@@ -90,3 +90,4 @@ if(isset($_FILES['file'])){ // normalWay();
 $user->updateInfo($_POST);
 
 
+include_once "../templates/userAbout.php";

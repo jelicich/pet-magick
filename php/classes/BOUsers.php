@@ -222,8 +222,8 @@ class BOUsers{
         if(!empty($data->PIC_ID))
         {
             $p = $this->picsTable->find($data->PIC_ID);
-            $this->profilePic = $p->PIC;
-            $this->thumb = $p->THUMB;
+            $this->profilePic = 'img/users/'.$p->PIC;
+            $this->thumb = 'img/users/thumb/'.$p->PIC;
         }
         else
         {

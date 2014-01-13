@@ -30,6 +30,8 @@ class PicsTable extends Doctrine_Table
                 $Pics->ALBUM_ID = null;
 
                 $Pics->save();
+                $id_last = $Pics->ID_PIC;
+                return $id_last;
 	 }// end upload_img
 
      public function getPicsByAlbum($id)

@@ -196,7 +196,10 @@ class UsersTable extends Doctrine_Table
         	$q->set('u.CITY_ID', '?', $array['city'] );
         else
         	$q->set('u.CITY_ID',  'null' );
-		            
+		
+		if(!empty($array['pic']) && is_numeric($array['pic']))
+        	$q->set('u.PIC_ID', '?', $array['pic'] );
+       
 
 
 

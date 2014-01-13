@@ -736,7 +736,8 @@ function imgVideoUploader(whatFor){
 			var errorMsg = create('span');
 			errorMsg.id = 'err';
 			errorMsg.innerHTML = msg;
-			byid('imgContainer').appendChild(errorMsg);
+			//COMENTO ESTA LINEA PARA Q NO IMPRIMA EL ARRAY DE LO QUE SE CARGA
+			byid('upload-status').appendChild(errorMsg);
 			file_id.value = '';
 
 			return;
@@ -941,7 +942,7 @@ function imgVideoUploader(whatFor){
 					   		}*/
 
 // ESTEBAN >				RENOMBRE TU FUNCION DE AJAX a AJAXX para no pisar la otra
-					   		ajaxx('POST', 'ajax/insertar.php', printErr, formData, true);
+					   		ajaxx('POST', 'ajax/updateUserAbout.php', printUpdates, formData, true);
 
 					   		 	if (amount == 'profile' || amount == 'video'){
 
@@ -951,6 +952,13 @@ function imgVideoUploader(whatFor){
 								} 
 				  }// end onclick
 		}// end NormalWay
+
+		function printUpdates()
+		{
+			//aca iria con ajax para que cargue el contenido.
+			//por ahora le pongo para que refresque la pagina lo cual no está tan mal
+			document.location.reload(true);
+		}
 
 		function fallBack(){
 

@@ -562,7 +562,7 @@ function imgVideoUploader(whatFor){
 		}// end else
 }// end imgVideoUploader
 
-imgVideoUploader('profile');
+imgVideoUploader('album');
 
 </script>
 

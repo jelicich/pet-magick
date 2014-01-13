@@ -50,15 +50,17 @@ if(isset($_FILES['file'])){ // normalWay();
 	}// end for
 }else{ // fallBack();
 	
-	foreach ($_FILES as $key => $eachFile) {
-
-		//foreach ($_POST as $keyCaption => $eachCaption){
+	$counter = 0;
+	foreach ($_FILES as $key => $eachFile) 
+	{
+				$captionpos = 'caption_'.$counter;
+		
 				
 				$query['file'] = $eachFile['tmp_name'];
 				$query['fileName'] = $eachFile['name'];
 				$query['fileSize'] =$eachFile['size'];
 				$query['fileType'] = $eachFile['type'];
-				//$query['caption'] = $eachCaption; // RESOLVER!!!!!!!!!!!!!!!!!!!!
+				$query['caption'] = $_POST[$captionpos]; // RESOLVER!!!!!!!!!!!!!!!!!!!!
 
 				if( in_array($query['fileType'], $mimeVideo)){  
 				
@@ -71,14 +73,15 @@ if(isset($_FILES['file'])){ // normalWay();
 					$path = '../img/users/';
 
 				} // tratar de optimizar par ano repetir 
-		//}
+		
 		createQuery($query, $path, $obj);
+		$counter++;
 	}// end foreach
 }// end else
 
 
 
 //var_dump($_POST);
-//$user->updateInfo($_POST);
+$user->updateInfo($_POST);
 
 

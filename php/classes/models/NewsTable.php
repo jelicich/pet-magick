@@ -17,6 +17,19 @@ class NewsTable extends Doctrine_Table
         return Doctrine_Core::getTable('News');
     }
 
+
+    public function insertNews($ref){
+     
+            $now = date('Y-m-d');
+
+            $News = new News();
+            $News->NEWS = $ref['news'];
+            $News->DATE = $now;
+            $News->USER_ID = $ref['user_id'];
+
+            $News->save();
+    }// end upload_img
+
     public function getNewsByUser($id){ // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
 
 	        $q = Doctrine_Query::create()

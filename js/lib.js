@@ -559,10 +559,7 @@ function printUpdates(){
 
 //============================= PROFILE
 
-
-
-function profile()
-{
+function profile(){
 	var as = document.querySelectorAll('.pet-link');
 	for(var i = 0; i< as.length; i++)
 	{
@@ -589,6 +586,18 @@ function profile()
 		cont.innerHTML = html;
 	}
 }	
+
+function postNews(){
+
+	byid('news_button').onclick = function(){
+
+		var newsContent = byid('news_content').value;
+		var vars = 'news='+newsContent;
+			ajax('POST', 'ajax/postNews.php', vardump, vars, true);	
+	}
+}
+
+
 
 //=============================================================================== BIN
 /*
@@ -666,22 +675,6 @@ function onloadHandler(evt){
   var div = byid('upload-status');
   	  whilst(byid('imgContainer'));
 }// end onloadHandler
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Parametros a pasar:
@@ -961,7 +954,7 @@ function imgVideoUploader(whatFor){
 
 		function fallBack(){
 
-				// ======================= FallBack functions
+// ======================= FallBack functions
 
 				function createSubmit(){
 
@@ -981,7 +974,7 @@ function imgVideoUploader(whatFor){
 					    	byid('form-id').appendChild(id);
 				}// end createInput
 
-				/*
+				
 				function in_array(value, anArray){
 				   
 					    var found = 0;
@@ -993,7 +986,7 @@ function imgVideoUploader(whatFor){
 					    }
 					    return -1;
 				}// end in_array
-				*/
+				
 
 				function formSubmit(){
 
@@ -1039,43 +1032,74 @@ function imgVideoUploader(whatFor){
 
 			     (function newInput(){
 
-			    	 createInput('file_id_' + filesSelectedPosition);
-				     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
+					    	 createInput('file_id_' + filesSelectedPosition);
 
-				     	var selectedImg = create('div');
-						  	selectedImg.id = 'img_' + filesSelectedPosition;
-						  	selectedImg.style.width = "60px";
-							selectedImg.style.height = "60px";
+						     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
 
-							caption = create('input');
-							caption.type = 'text';
-	                    	caption.id = 'caption_' + filesSelectedPosition;
-					    	caption.name = 'caption_' + filesSelectedPosition;
+								     removeErr();
+								     // ============================= FORMAT VALIDATION
 
-							// ============================= FORMAT VALIDATION
+									var ext = fileFormat(this.value, '.');
 
-							/*	var ext = fileFormat(this.value, '.');
+									if( amount != 'video' && in_array('image/' + ext, mimeImg) == -1){
 
-								if(in_array('image/' + ext, mime) == -1){
+				            			errMsg('Pasale el parametro para img desde js');
+				            			var noRemoveInput = true;
+				            			this.parentNode.removeChild(this);
+				            			newInput();
 
-									errMsg('Formato invalido desde js');
-									return;
-									// borar el src del input en el navegador
-				            	}*/
-			            		// ============================= END VALIDACIOM
-			            	
-					            	removeErr();
-								  	byid('imgContainer').appendChild(selectedImg);
-								  	byid('form-id').appendChild(caption);
+
+				            		}if( amount == 'video' && in_array('video/' + ext, mimeVideo) == -1){
+
+				            			errMsg('Pasale el parametro para video desde js');
+				            			var noRemoveInput = true;
+				            			this.parentNode.removeChild(this);
+				            			newInput();
+				            		}
+
+				            		// ============================= END VALIDACIOM
+
+				            		if(noRemoveInput != true){
+
+										
+										var selectedImg = create('div');
+										  	selectedImg.id = 'img_' + filesSelectedPosition;
+										  	selectedImg.style.width = "60px";
+											selectedImg.style.height = "60px";
+											byid('imgContainer').appendChild(selectedImg);
+
+										if(amount != 'profile'){
+
+											caption = create('input');
+											caption.type = 'text';
+					                    	caption.id = 'caption_' + filesSelectedPosition;
+									    	caption.name = 'caption_' + filesSelectedPosition;
+									    	byid('form-id').appendChild(caption);
+									    }
+								    
+
+							    	
+								  	
 
 									selectedImg.onclick = function(){
 
-					                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-					                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
-					                    	this.parentNode.removeChild(this);
-					                    	byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
-					                    	console.log('onclick: ' + ImgPosition);
+						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+
+						                    if (amount != 'profile'){
+
+						                    	var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+							                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
+						                    }
+
+						                    this.parentNode.removeChild(this);
+
+						                    byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
+
+						                    if (amount != 'album'){
+
+						                    	newInput();
+						                    }
+
 						            }// end onclick
 
 								    var newPreview = byid('img_' + filesSelectedPosition);
@@ -1083,9 +1107,14 @@ function imgVideoUploader(whatFor){
 									    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
 
 									    byid('file_id_' + filesSelectedPosition).style.display = 'none';
-									    //console.log(filesSelectedPosition);
-									    filesSelectedPosition++;
-									    newInput();
+
+									    filesSelectedPosition++; 
+									    
+									    if (amount == 'album' /*&& noRemoveInput != true*/){
+				  	  		
+									  	  		newInput();
+									  	 }
+									   }// end if(noRemoveInput != true)
 							
 			            }// end onchange
 			     })();

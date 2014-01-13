@@ -21,6 +21,7 @@
  * @property integer $Population
  * @property string $Title
  * @property string $Comment
+ * @property Doctrine_Collection $Users
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -180,6 +181,8 @@ abstract class BaseCountries extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('Users', array(
+             'local' => 'CountryId',
+             'foreign' => 'COUNTRY_ID'));
     }
 }

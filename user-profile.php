@@ -134,6 +134,14 @@
 			</div>
 			<!-- END my pets -->
 
+
+
+
+
+
+
+
+
 			<!-- news -->
 			<div class="mod profiles-mod nogrid-mod" id="news-mod">
 				<?php
@@ -150,7 +158,7 @@
 						
 						if($n->getNews($_GET['u']))
 						{
-							$nw = $n->getNews();
+							$nw = $n->getNews($_GET['u']);
 							
 							for($i = 0; $i<sizeof($nw); $i++)
 							{
@@ -169,8 +177,30 @@
 						}
 					?>
 				</ul>
+				<?php
+					if($u->isOwn())
+					{
+						echo "	
+								<textarea id='news_content'></textarea>
+								<input type='button' name='news' value='Post' id='news_button' />
+						";	
+					}
+				?>	
 			</div>
 			<!-- END news -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</div>
 		<!-- END left -->
 
@@ -306,8 +336,10 @@
 
 <script type="text/javascript">
 	profile();
+	postNews();
 
 	var editUser = byid('edit-user-info');
+	
 	editUser.onclick = function()
 	{
 		ajax('GET', 'ajax/getEditUser.php', printEditUser, null, true);

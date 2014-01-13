@@ -21,6 +21,8 @@
  * @property string $TOKEN
  * @property Pics $Pics
  * @property Albums $Albums
+ * @property Countries $Countries
+ * @property Regions $Regions
  * @property Cities $Cities
  * @property Doctrine_Collection $Blogs
  * @property Doctrine_Collection $Comments
@@ -108,18 +110,18 @@ abstract class BaseUsers extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
-        $this->hasColumn('COUNTRY_ID', 'integer', 4, array(
+        $this->hasColumn('COUNTRY_ID', 'integer', 2, array(
              'type' => 'integer',
-             'length' => 4,
+             'length' => 2,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
              ));
-        $this->hasColumn('REGION_ID', 'integer', 4, array(
+        $this->hasColumn('REGION_ID', 'integer', 2, array(
              'type' => 'integer',
-             'length' => 4,
+             'length' => 2,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
@@ -183,6 +185,14 @@ abstract class BaseUsers extends Doctrine_Record
         $this->hasOne('Albums', array(
              'local' => 'ALBUM_ID',
              'foreign' => 'ID_ALBUM'));
+
+        $this->hasOne('Countries', array(
+             'local' => 'COUNTRY_ID',
+             'foreign' => 'CountryId'));
+
+        $this->hasOne('Regions', array(
+             'local' => 'REGION_ID',
+             'foreign' => 'RegionID'));
 
         $this->hasOne('Cities', array(
              'local' => 'CITY_ID',

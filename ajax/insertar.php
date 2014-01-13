@@ -36,46 +36,49 @@ if(isset($_FILES['file'])){ // normalWay();
 
 		if( in_array($query['fileType'], $mimeVideo)){  
 			
-			$obj = $videos; 
-			createQuery($query, '../img/videos/', $obj);
+			$obj = $videos;
+			$path = '../video/'; // Esto hay q hacerlo bien pq el path ya esta en la clase y este estaria quedando obsoleto....
+
 		}else{
 
 			$obj = $pics; 
-			createQuery($query, '../img/users/', $obj);
+			$path = '../img/users/';
 
 		} // tratar de optimizar par ano repetir 
 		
-		//createQuery($query, $path, $obj);
+		createQuery($query, $path, $obj);
 	}// end for
 }else{ // fallBack();
 	
 	foreach ($_FILES as $key => $eachFile) {
 
-		foreach ($_POST as $keyCaption => $eachCaption){
+		//foreach ($_POST as $keyCaption => $eachCaption){
 				
 				$query['file'] = $eachFile['tmp_name'];
 				$query['fileName'] = $eachFile['name'];
 				$query['fileSize'] =$eachFile['size'];
 				$query['fileType'] = $eachFile['type'];
-				$query['caption'] = $eachCaption; // RESOLVER!!!!!!!!!!!!!!!!!!!!
+				//$query['caption'] = $eachCaption; // RESOLVER!!!!!!!!!!!!!!!!!!!!
 
 				if( in_array($query['fileType'], $mimeVideo)){  
 				
-					$obj = $videos; 
+					$obj = $videos;
+					$path = '../img/videos/';
 
 				}else{
 
 					$obj = $pics; 
+					$path = '../img/users/';
 
 				} // tratar de optimizar par ano repetir 
-		}
-		createQuery($query, $obj);
+		//}
+		createQuery($query, $path, $obj);
 	}// end foreach
 }// end else
 
 
 
 //var_dump($_POST);
-$user->updateInfo($_POST);
+//$user->updateInfo($_POST);
 
 

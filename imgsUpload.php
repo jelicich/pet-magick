@@ -138,8 +138,8 @@ function imgVideoUploader(whatFor){
 		var formData;
 		var mime = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
 			  		'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
-		  var mimeImg = [ 'image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
-		  var mimeVideo= [ 'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
+		var mimeImg = [ 'image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
+		var mimeVideo= [ 'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
 
 		function support(){
 	 
@@ -275,32 +275,34 @@ function imgVideoUploader(whatFor){
 
 						        reader.onload = function(e) {
 						        	//console.log(e.target.result);
-						        	var selectedImg = create('img');
-					          			selectedImg.id = 'img_' + filesSelectedPosition;
-					                    selectedImg.setAttribute('src', e.target.result);
-					                    selectedImg.setAttribute('alt', e.target.result);
-					                    //alert(selectedImg.width + 'x' + selectedImg.height); //funca
-					                    selectedImg.style.width = '20%';
-					                    selectedImg.style.height = '20%';
-					                    selectedImg.style.margin = '5px 5px';
-					                    selectedImg.style.float = 'left';
-				                    	 
-				                    	  if (amount != 'profile'){
 
-						                    	caption = create('input');
-												caption.type = 'text';
-						                    	caption.id = 'caption_' + filesSelectedPosition;
-										    	caption.name = 'caption';
-										    	 byid('form-id').appendChild(caption);
-										   }
+					        	    if (amount != 'profile'){
 
-									    removeErr();
-					                    
-					                   
-					                    byid('imgContainer').appendChild(selectedImg);
+					                    	caption = create('input');
+											caption.type = 'text';
+					                    	caption.id = 'caption_' + filesSelectedPosition;
+									    	caption.name = 'caption';
+									    	byid('form-id').appendChild(caption);
+									}
 
 
-					                    selectedImg.onclick = function(){
+						        	if(amount != 'video'){
+							        	
+							        	var selectedImg = create('img');
+						          			selectedImg.id = 'img_' + filesSelectedPosition;
+						                    selectedImg.setAttribute('src', e.target.result);
+						                    selectedImg.setAttribute('alt', e.target.result);
+						                    //alert(selectedImg.width + 'x' + selectedImg.height); //funca
+						                    selectedImg.style.width = '20%';
+						                    selectedImg.style.height = '20%';
+						                    selectedImg.style.margin = '5px 5px';
+						                    selectedImg.style.float = 'left';
+
+						                    removeErr();
+						                    byid('imgContainer').appendChild(selectedImg);
+
+
+									    selectedImg.onclick = function(){
 
 						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
 						                  	
@@ -321,16 +323,23 @@ function imgVideoUploader(whatFor){
 													byid('form-id').appendChild(file_id);;
 										  	  }
 						                }
+					                  }// if != video
+				                    	 
+				                    	 
+
+									    
+										
+
+						            
 					            }// end onload
 					            reader.readAsDataURL(this.files[0]);
 				      }// end if
 
 			      	  filesSelectedPosition++;
-			      	  //console.log(filesSelectedPosition);
 				  	  filesSelected[filesSelectedPosition] = file_id.files[0];
 				  	  file_id.value = '';
 
-				  	  if (filesSelectedPosition >= 1 && amount != 'album' && noRemoveInput  != true){
+				  	  if (filesSelectedPosition >= 1 && amount != 'album' && noRemoveInput != true){
 				  	  		
 				  	  		file_id.parentNode.removeChild(file_id);
 				  	  }
@@ -342,21 +351,21 @@ function imgVideoUploader(whatFor){
 
 				   			var inputsText = byid('form-id').getElementsByTagName('input');
 
-							for(i = 0; i < inputsText.length; i++){ //tal vez meter todo en un solo for, no me salio
+							for(i = 0; i < inputsText.length; i++){ 
 
 								if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
 
 									allCaption.push(inputsText[i].value);
+
 								}
 							}
 
-							//inputsText.parentNode.removeChild(inputsText)
-					   		for (var i = 0; i < filesSelected.length; i++) {
+							for (var i = 0; i < filesSelected.length; i++) {
 
 					   			formData.append("file[]", filesSelected[i]);
 					   			formData.append("caption[]", allCaption[i]);
-					   			//formData.append("elementos[]", allElementos[i]); // PRUEBA PARA ELEMENTOS DE PERFIL
 					   			filesSelected[i] = '';
+					   			
 					   		}
 					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
 					   			
@@ -367,12 +376,12 @@ function imgVideoUploader(whatFor){
 
 					   		ajax('POST', 'ajax/insertar.php', printErr, formData, true);
 
-					   		 	if (amount == 'profile' || amount == 'video'){
+				   		 	if (amount != 'album'){
 
-					   		 		  file_id.id = 'file_id';
-									  file_id.name = 'file';
-									  byid('form-id').appendChild(file_id);
-								} 
+				   		 		  file_id.id = 'file_id';
+								  file_id.name = 'file';
+								  byid('form-id').appendChild(file_id);
+							} 
 				  }// end onclick
 		}// end NormalWay
 
@@ -398,7 +407,7 @@ function imgVideoUploader(whatFor){
 					    	byid('form-id').appendChild(id);
 				}// end createInput
 
-				/*
+				
 				function in_array(value, anArray){
 				   
 					    var found = 0;
@@ -410,7 +419,7 @@ function imgVideoUploader(whatFor){
 					    }
 					    return -1;
 				}// end in_array
-				*/
+				
 
 				function formSubmit(){
 
@@ -456,43 +465,74 @@ function imgVideoUploader(whatFor){
 
 			     (function newInput(){
 
-			    	 createInput('file_id_' + filesSelectedPosition);
-				     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
+					    	 createInput('file_id_' + filesSelectedPosition);
 
-				     	var selectedImg = create('div');
-						  	selectedImg.id = 'img_' + filesSelectedPosition;
-						  	selectedImg.style.width = "60px";
-							selectedImg.style.height = "60px";
+						     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
 
-							caption = create('input');
-							caption.type = 'text';
-	                    	caption.id = 'caption_' + filesSelectedPosition;
-					    	caption.name = 'caption_' + filesSelectedPosition;
+								     removeErr();
+								     // ============================= FORMAT VALIDATION
 
-							// ============================= FORMAT VALIDATION
+									var ext = fileFormat(this.value, '.');
 
-							/*	var ext = fileFormat(this.value, '.');
+									if( amount != 'video' && in_array('image/' + ext, mimeImg) == -1){
 
-								if(in_array('image/' + ext, mime) == -1){
+				            			errMsg('Pasale el parametro para img desde js');
+				            			var noRemoveInput = true;
+				            			this.parentNode.removeChild(this);
+				            			newInput();
 
-									errMsg('Formato invalido desde js');
-									return;
-									// borar el src del input en el navegador
-				            	}*/
-			            		// ============================= END VALIDACIOM
-			            	
-					            	removeErr();
-								  	byid('imgContainer').appendChild(selectedImg);
-								  	byid('form-id').appendChild(caption);
+
+				            		}if( amount == 'video' && in_array('video/' + ext, mimeVideo) == -1){
+
+				            			errMsg('Pasale el parametro para video desde js');
+				            			var noRemoveInput = true;
+				            			this.parentNode.removeChild(this);
+				            			newInput();
+				            		}
+
+				            		// ============================= END VALIDACIOM
+
+				            		if(noRemoveInput != true){
+
+										
+										var selectedImg = create('div');
+										  	selectedImg.id = 'img_' + filesSelectedPosition;
+										  	selectedImg.style.width = "60px";
+											selectedImg.style.height = "60px";
+											byid('imgContainer').appendChild(selectedImg);
+
+										if(amount != 'profile'){
+
+											caption = create('input');
+											caption.type = 'text';
+					                    	caption.id = 'caption_' + filesSelectedPosition;
+									    	caption.name = 'caption_' + filesSelectedPosition;
+									    	byid('form-id').appendChild(caption);
+									    }
+								    
+
+							    	
+								  	
 
 									selectedImg.onclick = function(){
 
-					                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-					                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
-					                    	this.parentNode.removeChild(this);
-					                    	byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
-					                    	console.log('onclick: ' + ImgPosition);
+						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+
+						                    if (amount != 'profile'){
+
+						                    	var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+							                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
+						                    }
+
+						                    this.parentNode.removeChild(this);
+
+						                    byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
+
+						                    if (amount != 'album'){
+
+						                    	newInput();
+						                    }
+
 						            }// end onclick
 
 								    var newPreview = byid('img_' + filesSelectedPosition);
@@ -500,9 +540,14 @@ function imgVideoUploader(whatFor){
 									    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
 
 									    byid('file_id_' + filesSelectedPosition).style.display = 'none';
-									    //console.log(filesSelectedPosition);
-									    filesSelectedPosition++;
-									    newInput();
+
+									    filesSelectedPosition++; 
+									    
+									    if (amount == 'album' /*&& noRemoveInput != true*/){
+				  	  		
+									  	  		newInput();
+									  	 }
+									   }// end if(noRemoveInput != true)
 							
 			            }// end onchange
 			     })();
@@ -517,7 +562,7 @@ function imgVideoUploader(whatFor){
 		}// end else
 }// end imgVideoUploader
 
-imgVideoUploader('album');
+imgVideoUploader('profile');
 
 </script>
 
@@ -542,8 +587,8 @@ PENDIENTE
 =========
 
 - eliminar captions al enviar 
-- IE: hacerlo funcionar de acuerdo al parametro q le paso
 - Resolver el POST en insertar.php fallback
+- Ver q onda la ruta de videos en insertar.php y las clases respectivas
 
 - poner valores correctos para las validaciones (los q estan son de prueba)
 - Mando array con una posicion vacia a php, puede quedar asi o ver de mandarlo bien

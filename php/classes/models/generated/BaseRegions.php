@@ -10,6 +10,7 @@
  * @property string $Region
  * @property string $Code
  * @property string $ADM1Code
+ * @property Doctrine_Collection $Users
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -70,6 +71,8 @@ abstract class BaseRegions extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('Users', array(
+             'local' => 'RegionID',
+             'foreign' => 'REGION_ID'));
     }
 }

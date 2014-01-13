@@ -32,10 +32,10 @@ abstract class BaseVideos extends Doctrine_Record
              'primary' => true,
              'autoincrement' => true,
              ));
-        $this->hasColumn('VIDEO', 'string', 30, array(
+        $this->hasColumn('VIDEO', 'string', 100, array(
              'type' => 'string',
-             'length' => 30,
-             'fixed' => true,
+             'length' => 100,
+             'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
@@ -59,10 +59,10 @@ abstract class BaseVideos extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('THUMBNAIL', 'string', 30, array(
+        $this->hasColumn('THUMBNAIL', 'string', 100, array(
              'type' => 'string',
-             'length' => 30,
-             'fixed' => true,
+             'length' => 100,
+             'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,

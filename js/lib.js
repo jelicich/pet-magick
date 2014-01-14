@@ -770,21 +770,24 @@ function imgVideoUploader(whatFor, modulo){
 				  		}
 
 				  		cont.innerHTML = this.responseText;
-						/*var scr = cont.getElementsByTagName('script');
+						//VER PQ NO ANDA ESTO! seguro es pq en el archivo userAbout no hay nada en sript o algo asi
+						var scr = cont.getElementsByTagName('script');
 						if(scr.length > 0)
 						{
 							for(var i = 0; i < scr.length; i++)
 							{
 								eval(scr[i].innerHTML);
 							}
-						}*/
+						}
 				  }// end modulPrintUpdates
 
 				  function getUpdates(){
+				  		console.log(this.responseText);
 				  		
 				  		if(modulo == 'about'){
-				  			
-				  			var ajaxGetFile = 'ajax/getUserAbout.php';
+				  			//mando el id del usuario como variable, que aca llega como responsetext para q no tire el error de q no sabe quien es el usuario ($get[u] / $post[u])
+				  			var ajaxGetFile = 'ajax/getUserAbout.php?u='+this.responseText;
+				  		
 
 				  		}else if(modulo == 'pet'){
 
@@ -944,8 +947,8 @@ function imgVideoUploader(whatFor, modulo){
 					  			var ajaxPostFile = 'ajax/ArchivoQueTraeAlbumProfile';
 					  		}
 
-					  		//ajaxx('POST', ajaxPostFile, getUpdates, formData, true);
-					  		ajaxx('POST', ajaxPostFile, printErr, formData, true);
+					  		ajaxx('POST', ajaxPostFile, getUpdates, formData, true);
+					  		//ajaxx('POST', ajaxPostFile, printErr, formData, true);
 
 
 				   		 	if (amount == 'profile' || amount == 'video'){

@@ -1,8 +1,13 @@
 		<?php
 		    
 			$u = new BOUsers;
+			if(isset($_GET['u']))
+				$userId = $_GET['u'];
+			elseif(isset($_POST['u']))
+				$userId = $_POST['u'];
+			//var_dump($_POST);
 			//$u->getUserData($_GET['u']);
-			$u->getUserData($_SESSION['id']);
+			$u->getUserData($userId);
 		?>
 		<!-- about module -->
 		<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">

@@ -364,7 +364,7 @@ class BOUsers{
 
     function updateInfo($array, $path)
     {
-        var_dump($array);
+        //var_dump($array);
         $this->val_updateInfo($array);
         
         $pic = new BOPics;
@@ -380,7 +380,7 @@ class BOUsers{
         }
 
 
-        echo $r;
+        //echo $r;
             /*
         try
         {

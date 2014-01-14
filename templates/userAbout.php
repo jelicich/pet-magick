@@ -1,6 +1,8 @@
 		<?php
+		    
 			$u = new BOUsers;
-			$u->getUserData($_GET['u']);
+			//$u->getUserData($_GET['u']);
+			$u->getUserData($_SESSION['id']);
 		?>
 		<!-- about module -->
 		<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">

@@ -43,19 +43,56 @@
 
 	<!-- site content -->
 	<div class="container_12" id="content">
-
 		
 
-			<!-- about module -->
-			<?php 
-				include_once 'templates/userAbout.php'; 
-			?>
-			<!-- END about module -->
-
-
-
-
-
+		<!-- about module -->
+		<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">
+			<?php
+				if($u->isOwn())
+				{
+					echo '<a href="#" class="btn btn-edit" id="edit-user-info">Edit</a>';	
+				}
+			?>	
+			<div class="mod-header">
+				<h2>
+					<strong class="nickname">
+						<?php 
+							$nick = $u->getNickname();
+							if(empty($nick))
+								echo $u->getName();
+							else
+								echo $nick;
+						?>
+					</strong>About me
+				</h2>
+			</div>
+			<div class="mod-content clearfix">
+				<div class="pic-caption">
+					<a href= <?php echo '"'.$u->getProfilePic().'"'; ?> ><img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/></a>
+					<h3><?php echo $u->getNameComp() ?></h3>
+					<span><?php echo $u->getLocation() ?></span>
+				</div>
+				<div class="bg-txt">
+					<p>
+						<?php 
+							$about = $u->getAbout();
+							if(empty($about))
+								echo 'The user has not entered any description yet';
+							else
+								echo $about;
+						?>
+					</p>
+				</div>
+				<div id="user-extra">
+					<ul>
+						<li><a href="#">Send me a message</a></li>
+						<li><a href="#">My projects</a></li>
+						<li><a href="#">My tributes</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- END about module -->
 
 		<!-- my pets -->
 		<div class="grid_5">
@@ -98,11 +135,70 @@
 			<!-- END my pets -->
 
 
+
+
+
+
+
+
+
 			<!-- news -->
-			<?php 
-				include_once 'templates/userNews.php'; 
-			?>
+			<div class="mod profiles-mod nogrid-mod" id="news-mod">
+				<?php
+					if($u->isOwn())
+					{
+						echo '<a href="#" class="btn btn-edit">Edit</a>';	
+					}
+				?>	
+				<div class="mod-header">
+					<h2>My Recent News</h2>
+				</div>
+				<ul class="mod-content clearfix">
+					<?php 
+						
+						if($n->getNews($_GET['u']))
+						{
+							$nw = $n->getNews($_GET['u']);
+							
+							for($i = 0; $i<sizeof($nw); $i++)
+							{
+					?>
+								<li class="recent-news">
+									<span><?php echo $nw[$i]['DATE']?></span>
+									<p><?php echo $nw[$i]['NEWS']; ?><p>
+								</li>
+
+					<?php 
+							}//END FOR
+						}//END IF
+						else
+						{
+							echo '<li class="recent-news">The user does not have any update yet</li>';
+						}
+					?>
+				</ul>
+				<?php
+					if($u->isOwn())
+					{
+						echo "	
+								<textarea id='news_content'></textarea>
+								<input type='button' name='news' value='Post' id='news_button' />
+						";	
+					}
+				?>	
+			</div>
 			<!-- END news -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 		</div>
@@ -195,7 +291,7 @@
 		<!-- END my pet profile -->
 
 		<!-- user album -->
-		<div id='user-album' class="mod grid_12 profiles-mod">
+		<div class="mod grid_12 profiles-mod ">
 			<?php
 				if($u->isOwn())
 				{
@@ -241,8 +337,34 @@
 <script type="text/javascript">
 	profile();
 	postNews();
-	editUserProfile();
-</script>
 
+	var editUser = byid('edit-user-info');
+	
+	editUser.onclick = function()
+	{
+		ajax('GET', 'ajax/getEditUser.php', printEditUser, null, true);
+	}
+
+	function printEdit(idModule, html)
+	{		
+		var cont = byid(idModule);
+		cont.innerHTML = html;
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
+	}
+
+	function printEditUser()
+	{
+		printEdit('user-about', this.responseText);
+	}
+
+
+</script>
 </body>
 </html>

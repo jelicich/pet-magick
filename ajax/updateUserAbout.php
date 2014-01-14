@@ -1,11 +1,10 @@
 <?php
 
 session_start();
+
 include_once "../php/classes/BOPics.php";
 include_once "../php/classes/BOVideos.php";
 include_once "../php/classes/BOUsers.php";
-
-//var_dump($_POST); // PRUEBA PARA ELEMENTOS DE PERFIL (aca se ve el array y su contenido)
 
 $pics = new BOPics;
 $videos = new BOVideos;
@@ -40,14 +39,14 @@ if(isset($_FILES['file'])){ // normalWay();
 		if( in_array($query['fileType'], $mimeVideo)){  
 			
 			$obj = $videos;
-			$path = '../video/'; // Esto hay q hacerlo bien pq el path ya esta en la clase y este estaria quedando obsoleto....
+			$path = '../video/'; 
 
 		}else{
 
 			$obj = $pics; 
 			$path = '../img/users/';
 
-		} // tratar de optimizar par ano repetir 
+		} 
 		
 		createQuery($query, $path, $obj);
 	}// end for
@@ -57,8 +56,7 @@ if(isset($_FILES['file'])){ // normalWay();
 	foreach ($_FILES as $key => $eachFile) 
 	{
 				$captionpos = 'caption_'.$counter;
-		
-				
+
 				$query['file'] = $eachFile['tmp_name'];
 				$query['fileName'] = $eachFile['name'];
 				$query['fileSize'] =$eachFile['size'];
@@ -75,7 +73,7 @@ if(isset($_FILES['file'])){ // normalWay();
 					$obj = $pics; 
 					$path = '../img/users/';
 
-				} // tratar de optimizar par ano repetir 
+				} 
 		
 		createQuery($query, $path, $obj);
 		$counter++;
@@ -89,5 +87,4 @@ if(isset($_FILES['file'])){ // normalWay();
 
 $user->updateInfo($_POST);
 
-
-include_once "../templates/userAbout.php";
+//include_once "../templates/userAbout.php";

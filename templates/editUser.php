@@ -193,5 +193,5 @@
 				countriesCombo(); //====================== DESPLIEGA COMBOS
 				regionsCombo(); //====================== DESPLIEGA REGIONES
 
-				imgVideoUploader('profile'); // SUBIR IMG
+				imgVideoUploader('profile', 'about'); // SUBIR IMG
 			</script>

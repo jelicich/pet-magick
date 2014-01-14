@@ -560,6 +560,7 @@ function printUpdates(){
 //============================= PROFILE
 
 function profile(){
+	
 	var as = document.querySelectorAll('.pet-link');
 	for(var i = 0; i< as.length; i++)
 	{
@@ -585,121 +586,104 @@ function profile(){
 		var cont = byid('pet-profile');
 		cont.innerHTML = html;
 	}
-}	
+}//end profile	
+
+function editUserProfile(){
+
+	var editUser = byid('edit-user-info');
+	
+	editUser.onclick = function()
+	{
+		ajax('GET', 'ajax/getEditUser.php', printEditUser, null, true);
+	}
+
+	function printEdit(idModule, html)
+	{		
+		var cont = byid(idModule);
+		cont.innerHTML = html;
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
+	}
+
+	function printEditUser()
+	{
+		printEdit('user-about', this.responseText);
+	}
+}//end editUserProfile
 
 function postNews(){
+
+	function getNews(){
+		
+		ajax('POST', 'ajax/getNews.php', printNews, null, true);
+		
+	}
+
+	function printNews(){
+	
+		var cont = byid("news-mod");
+		cont.innerHTML = this.responseText;
+		
+	}
 
 	byid('news_button').onclick = function(){
 
 		var newsContent = byid('news_content').value;
 		var vars = 'news='+newsContent;
-			ajax('POST', 'ajax/postNews.php', vardump, vars, true);	
+			ajax('POST', 'ajax/postNews.php', getNews, vars, true);	
 	}
-}
+}//end postNews
 
+//======================================================================== IMG UPLOAD
 
+// Parametros a pasar para tipo de uso: 'profile', 'video', 'album'
+// Parametros a pasar para modulo necesario: 'about', 'pet', 'albumProfile'
 
-//=============================================================================== BIN
-/*
-
-
-http://new-bamboo.co.uk/blog/2012/01/10/ridiculously-simple-ajax-uploads-with-formdata
-http://www.enricflorit.com/como-subir-multiples-archivos-usando-ajax/#sthash.MhDvBJqN.dpbs
-http://cafeconweb.net/subir-archivos-al-servidor-con-ajax-sin-plugin/
-
-
-PRUEBA:
-
-- lib.js
-- ajax/insertar.php
-- BOPics.php
-- PicsTable.php
-- crear html pq lo perdi jaja
-
-function upload_img(){
-
-	byid('upload').onclick = function(){ 
-		
-		var file = byid('file').name;
-		var caption = byid('caption').value;
-		var vars = 'img='+file+'&caption='+caption;
-		
-		ajax('POST', 'ajax/insertar.php', vardump, vars, true);
-	}
-}//end upload_img
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//========================================================================
-IMG UPLOAD
-
-				*/
-
-function ajaxx(metodo,url, unaFuncion, mensaje, async) {
-	
-	xhr = createXMLHTTPObject();
-	xhr.open(metodo, url, async);
-	/*if (metodo ==  'POST'){
-		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-	}*/
-	xhr.upload.addEventListener('load', onloadHandler, false); 
-	//xhr.upload.addEventListener('loadstart', onloadstartHandler, false);
-    //xhr.upload.addEventListener('progress', onprogressHandler, false);
-	//xhr.addEventListener('readystatechange', onreadystatechangeHandler, false);
-	
-	xhr.onreadystatechange = function () {
-		console.log(new Date(),  this.readyState);
-		if (this.readyState!=4 ) {
-			//console.log('esperando');
-		} else {
-			unaFuncion.call(xhr);
-		}
-	}
-	xhr.send(mensaje);
-}// end ajax	
-
-
-function onloadHandler(evt){
-  
-  var div = byid('upload-status');
-  	  whilst(byid('imgContainer'));
-}// end onloadHandler
-
-
-// Parametros a pasar:
-						// 'profile'
-						// 'video'
-						// 'album'
-
-function imgVideoUploader(whatFor){
-		
-		var amount = whatFor;
+function imgVideoUploader(whatFor, modulo){
 
 		// ===========================COMMON VARs & FUNCTIONS
+		var amount = whatFor;
 		var file_id = create('input');
 		    file_id.type = 'file';
 		
 		var allCaption = [];
-		//var allElementos = []; // PRUEBA PARA ELEMENTOS DE PERFIL
 		var caption;
 		var filesSelected = []; 
 		var filesSelectedPosition = 0;
 		var formData;
 		var mime = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
 			  		'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
-		  var mimeImg = [ 'image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
-		  var mimeVideo= [ 'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
+		var mimeImg = [ 'image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
+		var mimeVideo= [ 'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
+
+		function ajaxx(metodo,url, unaFuncion, mensaje, async) {
+	
+			xhr = createXMLHTTPObject();
+			xhr.open(metodo, url, async);
+			xhr.upload.addEventListener('load', onloadHandler, false); 
+			
+			xhr.onreadystatechange = function () {
+				console.log(new Date(),  this.readyState);
+				if (this.readyState!=4 ) {
+					//console.log('esperando');
+				} else {
+					unaFuncion.call(xhr);
+				}
+			}
+			xhr.send(mensaje);
+		}// end ajax	
+
+		function onloadHandler(evt){
+		  
+		  var div = byid('upload-status');
+		  	  whilst(byid('imgContainer'));
+		}// end onloadHandler
 
 		function support(){
 	 
@@ -746,42 +730,74 @@ function imgVideoUploader(whatFor){
 		function printErr(){
    			
    			errMsg(this.responseText);
-   		}
+   		} // end printErr
 
 		function removeErr(){
 
         	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
-        } // tal vez se pueda hacer mejor esto. Lo hago funtion pq lo utilizo mas de una vez
+        } // end removeErr
 
-		/*
-		BARRA DE PROGRESO  
-		-----------------
-		La barra de progreso queda pendiente para cuando ande todo mas o menos homogeneamente en todos los navegadores
-
-		var progress = create('div'); 
-		var bar = create('div');
-		*/  	
-
+		
+	    // ========================================= NORMAL WAY
+	
 		function normalWay(whatFor){
 
 				  file_id.id = 'file_id';
 				  file_id.name = 'file';
 				  byid('form-id').appendChild(file_id);
 
-				 
-// ESTEBAN >				 
-		      	  /*
-		      	  var uploadBtn = create('input');
-				  	  uploadBtn.type = 'button';
-				  	  uploadBtn.value = 'Upload';
-
-			  	  file_id.parentNode.appendChild(uploadBtn);
-			  	  */
 				  var uploadBtn = byid('save-edit-user');
-// < ESTEBAN 
+				  file_id.parentNode.appendChild(uploadBtn);
 
-			  	  file_id.parentNode.appendChild(uploadBtn);
-				  
+				/*  function printUpdates(){
+
+						document.location.reload(true);
+				  }// end printUpdates
+				*/
+
+				  function modulPrintUpdates(){
+
+				  		if(modulo == 'about'){
+
+					  			var cont = byid('user-about');
+					  	}else if(modulo == 'pet'){
+
+					  			var cont = byid("pet-profile");
+
+				  		}else if(modulo == 'albumProfile'){
+
+				  			var cont = byid('user-album');
+				  		}
+
+				  		cont.innerHTML = this.responseText;
+						/*var scr = cont.getElementsByTagName('script');
+						if(scr.length > 0)
+						{
+							for(var i = 0; i < scr.length; i++)
+							{
+								eval(scr[i].innerHTML);
+							}
+						}*/
+				  }// end modulPrintUpdates
+
+				  function getUpdates(){
+				  		
+				  		if(modulo == 'about'){
+				  			
+				  			var ajaxGetFile = 'ajax/getUserAbout.php';
+
+				  		}else if(modulo == 'pet'){
+
+				  			var ajaxGetFile = 'ajax/ArchivoQueTraePet';
+
+				  		}else if(modulo == 'albumProfile'){
+
+				  			var ajaxGetFile = 'ajax/ArchivoQueTraeAlbumProfile';
+				  		}
+
+						ajaxx('POST', ajaxGetFile, modulPrintUpdates, null, true);
+				  }// end getUpdates
+
 				  file_id.onchange = function(){ 
 
 			        	/*
@@ -807,11 +823,11 @@ function imgVideoUploader(whatFor){
 
 						  	if(mime.indexOf(this.files[0].type) == -1){ // el default era ! -1, recordar por las dudas!!
 			            			
-			            		//errMsg('formato invalido desde js');
+			            		errMsg('formato invalido desde js');
 			            			
 		            		}else if(this.files[0].size >= 900000000){ // Ver q numero necesitamos
 
-		            			//errMsg('Exede el peso desde js');
+		            			errMsg('Exede el peso desde js');
 		            			
 		            		}if( amount != 'video' && mimeImg.indexOf(this.files[0].type) == -1){
 
@@ -826,23 +842,8 @@ function imgVideoUploader(whatFor){
 		            		
 		            		var reader = new FileReader();
 
-					         /*  BARRA DE PROGRESO  
-					         	 ---------------------
+		            		 reader.onload = function(e) {
 
-					         	reader.onprogress = function(data) {
-
-						            if (data.lengthComputable) {                                            
-						                
-						                var percent = parseInt(((data.loaded / data.total) * 100), 10 );
-											bar.style.width =  percent + '%';
-
-										if(percent == 100){ byid('progress').parentNode.removeChild(byid('progress'));}
-										//console.log(percent);
-									}
-						        }*/
-
-						        reader.onload = function(e) {
-						        	//console.log(e.target.result);
 						        	var selectedImg = create('img');
 					          			selectedImg.id = 'img_' + filesSelectedPosition;
 					                    selectedImg.setAttribute('src', e.target.result);
@@ -870,15 +871,15 @@ function imgVideoUploader(whatFor){
 
 					                    selectedImg.onclick = function(){
 
-						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                    var ImgPosition = this.id.slice(4); 
 						                  	
 						                  	if (amount != 'profile'){
 							                    
-							                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+							                    var captionPosition = this.id.slice(4);
 							                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
 							                    	
-							                    	//console.log('onclick: ' + ImgPosition);
 							                 }
+
 							                 this.parentNode.removeChild(this);
 							                 filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
 
@@ -894,7 +895,6 @@ function imgVideoUploader(whatFor){
 				      }// end if
 
 			      	  filesSelectedPosition++;
-			      	  //console.log(filesSelectedPosition);
 				  	  filesSelected[filesSelectedPosition] = file_id.files[0];
 				  	  file_id.value = '';
 
@@ -907,62 +907,60 @@ function imgVideoUploader(whatFor){
 				  uploadBtn.onclick = function (evt) {
 
 				  			formData = new FormData();
-
-// ESTEBAN >
-				   			//var inputsText = byid('form-id').getElementsByTagName('input');
+				  			//var inputsText = byid('form-id').getElementsByTagName('input');
 				   			//LO MODIFICO PARA LEVANTAR TODOS LOS ELEMENTOS DEL FORM POR CLASE, !!!! QUERYSELECTOR funciona en IE 8 en adelante !!! ¿? 
 				   			var inputsText = byid('form-id').querySelectorAll('.form-element');
-// < ESTEBAN
-							for(i = 0; i < inputsText.length; i++){ //tal vez meter todo en un solo for, no me salio
+
+							for(i = 0; i < inputsText.length; i++){ 
 
 								if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
 
 									allCaption.push(inputsText[i].value);
-								}
-// ESTEBAN >							
-								else
-									//allElementos.push(inputsText[i].value); // PRUEBA PARA ELEMENTOS DE PERFIL
+
+								}else{
+
 									formData.append(inputsText[i].name, inputsText[i].value);
-// < ESTEBAN
+								}
+
 							}
 
-							//inputsText.parentNode.removeChild(inputsText)
 					   		for (var i = 0; i < filesSelected.length; i++) {
 
 					   			formData.append("file[]", filesSelected[i]);
 					   			formData.append("caption[]", allCaption[i]);
-					   			//formData.append("elementos[]", allElementos[i]); // PRUEBA PARA ELEMENTOS DE PERFIL
 					   			filesSelected[i] = '';
 					   		}
-					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
-					   			
-					   			errMsg('Debe seleccionar una img desde js'); 
-					   			//console.log(filesSelected);
-					   			return;
-					   		}*/
 
-// ESTEBAN >				RENOMBRE TU FUNCION DE AJAX a AJAXX para no pisar la otra
-					   		ajaxx('POST', 'ajax/updateUserAbout.php', printUpdates, formData, true);
+				   			if(modulo == 'about'){
+			  				
+					  			var ajaxPostFile = 'ajax/updateUserAbout.php';
 
-					   		 	if (amount == 'profile' || amount == 'video'){
+					  		}else if(modulo == 'pet'){
 
-					   		 		  file_id.id = 'file_id';
-									  file_id.name = 'file';
-									  byid('form-id').appendChild(file_id);
-								} 
+					  			var ajaxPostFile = 'ajax/ArchivoQueTraePet';
+
+					  		}else if(modulo == 'albumProfile'){
+
+					  			var ajaxPostFile = 'ajax/ArchivoQueTraeAlbumProfile';
+					  		}
+
+					  		ajaxx('POST', ajaxPostFile, getUpdates, formData, true);
+
+				   		 	if (amount == 'profile' || amount == 'video'){
+
+				   		 		  file_id.id = 'file_id';
+								  file_id.name = 'file';
+								  byid('form-id').appendChild(file_id);
+							} 
 				  }// end onclick
+
 		}// end NormalWay
 
-		function printUpdates()
-		{
-			//aca iria con ajax para que cargue el contenido.
-			//por ahora le pongo para que refresque la pagina lo cual no está tan mal
-			document.location.reload(true);
-		}
-
+		// ========================================= FALLBACK		
+		
 		function fallBack(){
 
-// ======================= FallBack functions
+				// ======================= FallBack functions
 
 				function createSubmit(){
 
@@ -982,7 +980,6 @@ function imgVideoUploader(whatFor){
 					    	byid('form-id').appendChild(id);
 				}// end createInput
 
-				
 				function in_array(value, anArray){
 				   
 					    var found = 0;
@@ -994,7 +991,6 @@ function imgVideoUploader(whatFor){
 					    }
 					    return -1;
 				}// end in_array
-				
 
 				function formSubmit(){
 
@@ -1023,8 +1019,6 @@ function imgVideoUploader(whatFor){
 					
 							for(i = 0; i < inputsSubmit.length; i++){
 
-								//console.log(inputsSubmit[i].value);
-
 								if(inputsSubmit[i].type == 'file' && inputsSubmit[i].value == ''){
 
 									byid(inputsSubmit[i].id).parentNode.removeChild(byid(inputsSubmit[i].id));
@@ -1044,8 +1038,8 @@ function imgVideoUploader(whatFor){
 
 						     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
 
-								     removeErr();
-								     // ============================= FORMAT VALIDATION
+								    removeErr();
+								    // ============================= FORMAT VALIDATION
 
 									var ext = fileFormat(this.value, '.');
 
@@ -1069,8 +1063,7 @@ function imgVideoUploader(whatFor){
 
 				            		if(noRemoveInput != true){
 
-										
-										var selectedImg = create('div');
+				            			var selectedImg = create('div');
 										  	selectedImg.id = 'img_' + filesSelectedPosition;
 										  	selectedImg.style.width = "60px";
 											selectedImg.style.height = "60px";
@@ -1084,18 +1077,14 @@ function imgVideoUploader(whatFor){
 									    	caption.name = 'caption_' + filesSelectedPosition;
 									    	byid('form-id').appendChild(caption);
 									    }
-								    
 
-							    	
-								  	
+									    selectedImg.onclick = function(){
 
-									selectedImg.onclick = function(){
-
-						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                    var ImgPosition = this.id.slice(4); 
 
 						                    if (amount != 'profile'){
 
-						                    	var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                    	var captionPosition = this.id.slice(4);
 							                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
 						                    }
 
@@ -1107,10 +1096,9 @@ function imgVideoUploader(whatFor){
 
 						                    	newInput();
 						                    }
+						                }// end onclick
 
-						            }// end onclick
-
-								    var newPreview = byid('img_' + filesSelectedPosition);
+								    	var newPreview = byid('img_' + filesSelectedPosition);
 								    	newPreview.style.FILTER = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
 									    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
 
@@ -1118,11 +1106,11 @@ function imgVideoUploader(whatFor){
 
 									    filesSelectedPosition++; 
 									    
-									    if (amount == 'album' /*&& noRemoveInput != true*/){
+									    if (amount == 'album'){
 				  	  		
 									  	  		newInput();
 									  	 }
-									   }// end if(noRemoveInput != true)
+									}// end if(noRemoveInput != true)
 							
 			            }// end onchange
 			     })();

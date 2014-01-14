@@ -44,4 +44,12 @@ class PicsTable extends Doctrine_Table
         
         return $rta->toArray();
      }
+
+     function deletePic($id)
+    {
+        $q = Doctrine_Query::create()
+            ->delete('Pics p')
+            ->where('p.ID_PIC = ?', $id );
+        $q->execute();
+    }
 }

@@ -6,7 +6,8 @@ include_once('models/PicsTable.php');
 include_once('models/CountriesTable.php');
 include_once('models/RegionsTable.php');
 include_once('models/CitiesTable.php');
-
+//lo agrego para poder borrar la imagen de perfil cuando sube otra
+include_once ('BOPics.php');
 
 class BOUsers{
 
@@ -361,11 +362,24 @@ class BOUsers{
 
     // ==== UPDATE / SAVE 
 
-    function updateInfo($array)
+    function updateInfo($array, $path)
     {
         var_dump($array);
         $this->val_updateInfo($array);
+        
+        $pic = new BOPics;
+        $dataPic = $this->table->find($_SESSION['id']);
+        $oldPic = $dataPic->PIC_ID;
         $r = $this->table->updateInfo($array);
+        
+        //borro la imagen original de perfil
+        if(!empty($array['pic']) && is_numeric($array['pic']))
+        {
+          if(!empty($oldPic))
+            $pic->unlinkProfilePic($oldPic, $path);
+        }
+
+
         echo $r;
             /*
         try

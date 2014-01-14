@@ -85,6 +85,6 @@ if(isset($_FILES['file'])){ // normalWay();
 //var_dump($_POST);
 //le agrego a post la imagen;
 
-$user->updateInfo($_POST);
+$user->updateInfo($_POST,'../img/users/');
 
 //include_once "../templates/userAbout.php";

@@ -158,6 +158,15 @@ function upload($query,$path){
             }
 }// End function upload_img
 
+function unlinkProfilePic($id, $path)
+{
+  $data = $this->table->find($id);
+  //$this->table->deletePicture($id);
+  unlink($path.$data->PIC);
+  unlink($path.'thumb/'.$data->PIC);
+  $this->table->deletePic($id);
+}
+
 function getErrors(){
 
     return  $this->err;

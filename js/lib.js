@@ -944,7 +944,9 @@ function imgVideoUploader(whatFor, modulo){
 					  			var ajaxPostFile = 'ajax/ArchivoQueTraeAlbumProfile';
 					  		}
 
-					  		ajaxx('POST', ajaxPostFile, getUpdates, formData, true);
+					  		//ajaxx('POST', ajaxPostFile, getUpdates, formData, true);
+					  		ajaxx('POST', ajaxPostFile, printErr, formData, true);
+
 
 				   		 	if (amount == 'profile' || amount == 'video'){
 

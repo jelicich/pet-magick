@@ -52,7 +52,7 @@ if(isset($_FILES['file'])){ // normalWay();
 		createQuery($query, $path, $obj);
 	}// end for
 }else{ // fallBack();
-	
+	$var_dump[$_POST];
 	$counter = 0;
 	foreach ($_FILES as $key => $eachFile) 
 	{
@@ -87,6 +87,6 @@ if(isset($_FILES['file'])){ // normalWay();
 //var_dump($_POST);
 //le agrego a post la imagen;
 
-$user->updateInfo($_POST);
+//$user->updateInfo($_POST);
 
 

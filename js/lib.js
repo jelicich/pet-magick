@@ -597,25 +597,50 @@ function editUserProfile(){
 		ajax('GET', 'ajax/getEditUser.php', printEditUser, null, true);
 	}
 
-	function printEdit(idModule, html)
-	{		
-		var cont = byid(idModule);
-		cont.innerHTML = html;
-		var scr = cont.getElementsByTagName('script');
-		if(scr.length > 0)
-		{
-			for(var i = 0; i < scr.length; i++)
-			{
-				eval(scr[i].innerHTML);
-			}
-		}
-	}
+	
 
 	function printEditUser()
 	{
 		printEdit('user-about', this.responseText);
 	}
 }//end editUserProfile
+
+function editPetProfile(){
+
+	var editPet = document.querySelectorAll('.edit-pet-profile');
+	
+	for(var i = 0; i < editPet.length; i++)
+	{
+		editPet[i].onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+			ajax('GET', 'ajax/getEditPet.php?p='+p, printEditPet, null, true);
+		}	
+	}
+
+	function printEditPet()
+	{
+		printEdit('pet-profile', this.responseText);
+	}
+}//end editPetProfile
+
+function printEdit(idModule, html)
+{		
+	var cont = byid(idModule);
+	cont.innerHTML = html;
+	var scr = cont.getElementsByTagName('script');
+	if(scr.length > 0)
+	{
+		for(var i = 0; i < scr.length; i++)
+		{
+			eval(scr[i].innerHTML);
+		}
+	}
+}//end printedit
+
 
 function postNews(){
 
@@ -647,6 +672,8 @@ function postNews(){
 	}
 
 }//end postNews
+
+
 
 //======================================================================== IMG UPLOAD
 

@@ -11,7 +11,7 @@
 			$u->getUserData($userId);
 		?>
 		<!-- about module -->
-		<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">
+		<!--<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">-->
 			<?php
 				if($u->isOwn())
 				{
@@ -56,7 +56,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		<!--</div>-->
 		
 		<script type="text/javascript">
 			editUserProfile();

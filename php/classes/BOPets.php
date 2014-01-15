@@ -37,8 +37,8 @@ class BOPets{
                 else
                 {
                     $p = $this->picsTable->find($petsArray[$i]['PIC_ID']);
-                    $petsArray[$i]['PIC'] = $p->PIC; 
-                    $petsArray[$i]['THUMB'] = $p->THUMB; 
+                    $petsArray[$i]['PIC'] = 'img/pets/'.$p->PIC; 
+                    $petsArray[$i]['THUMB'] = 'img/pets/thumb/'.$p->PIC; 
                 }
                 
                 /*
@@ -95,8 +95,8 @@ class BOPets{
         else
         {
             $pic = $this->picsTable->find($p->PIC_ID);
-            $this->pic = $pic->PIC; 
-            $this->thumb = $pic->THUMB; 
+            $this->pic = 'img/pets/'.$pic->PIC; 
+            $this->thumb = 'img/pets/thumb/'.$pic->PIC; 
         }
 
         //$vid = $this->videosTable->find($pet['VIDEO_ID'])
@@ -171,6 +171,12 @@ class BOPets{
     function getAlbum($id)
     {
         $a = $this->picsTable->getPicsByAlbum($id);
+        for($i=0; $i<sizeof($a); $i++)
+        {
+            $file=$a[$i]['PIC'];
+            $a[$i]['PIC'] = 'img/pets/' . $file;
+            $a[$i]['THUMB'] = 'img/pets/thumb/' . $file;
+        }
         return $a;
     }
 

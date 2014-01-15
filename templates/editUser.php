@@ -4,7 +4,7 @@
 
 				//if($p->isOwn())
 				//{
-					echo '<a href="#" class="btn btn-edit" id="save-edit-user">Save</a>';	
+					echo '<a href="#'.$_POST['u'].'" class="btn btn-edit" id="save-edit-user">Save</a><a href="#'.$_POST['u'].'" class="btn btn-cancel" id="cancel-edit-user">Cancel</a>';	
 				//}
 			?>	
 			<div class="mod-header">

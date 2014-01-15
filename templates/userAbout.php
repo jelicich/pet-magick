@@ -15,7 +15,7 @@
 			<?php
 				if($u->isOwn())
 				{
-					echo '<a href="#" class="btn btn-edit" id="edit-user-info">Edit</a>';	
+					echo '<a href="#'.$userId.'" class="btn btn-edit" id="edit-user-info">Edit</a>';	
 				}
 			?>	
 			<div class="mod-header">

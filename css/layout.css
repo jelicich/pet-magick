@@ -1207,7 +1207,6 @@ Tunear!!!
 
 }
 
-
 #searchField li, #searchF li {
 	color: #FFFFFF;
 	text-decoration: none;
@@ -1226,5 +1225,12 @@ Tunear!!!
 	position:absolute; 
 	z-index:100; 
 	right:10px; 
+	top:10px;
+}
+
+.btn-cancel{
+	position:absolute; 
+	z-index:100; 
+	right:70px; 
 	top:10px;
 }

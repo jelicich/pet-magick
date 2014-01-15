@@ -594,7 +594,12 @@ function editUserProfile(){
 	
 	editUser.onclick = function()
 	{
-		ajax('GET', 'ajax/getEditUser.php', printEditUser, null, true);
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = 'u='+p.substr(index);
+  		
+		ajax('POST', 'ajax/getEditUser.php', printEditUser, p, true);
 	}
 
 	
@@ -780,8 +785,20 @@ function imgVideoUploader(whatFor, modulo){
 				  file_id.id = 'file_id';
 				  file_id.name = 'file';
 				  byid('form-id').appendChild(file_id);
-
-				  var uploadBtn = byid('save-edit-user');
+				  //var uploadBtn = byid('save-edit-user');
+				    if(modulo == 'about')
+  				    {
+			  			var uploadBtn = byid('save-edit-user');
+				  	}
+				  	else if(modulo == 'pet')
+				  	{
+				  		var uploadBtn = byid('save-edit-pet');
+			  		}
+			  		else if(modulo == 'albumProfile')
+			  		{
+						var uploadBtn = byid('save-edit-album');
+			  		}
+				  
 				  file_id.parentNode.appendChild(uploadBtn);
 
 				/*  function printUpdates(){
@@ -962,6 +979,12 @@ function imgVideoUploader(whatFor, modulo){
 
 							}
 
+							var p = this.href;
+							var index = p.indexOf('#');
+					  		index ++;
+					  		p = p.substr(index);
+							formData.append("u", p);
+
 					   		for (var i = 0; i < filesSelected.length; i++) {
 
 					   			formData.append("file[]", filesSelected[i]);
@@ -994,6 +1017,25 @@ function imgVideoUploader(whatFor, modulo){
 				  }// end onclick
 
 		}// end NormalWay
+
+
+		//CANCEL SAVE
+		function cancelSave(){
+			if(modulo == 'about')
+			{
+	  			var btn = byid('cancel-edit-user');
+	  			var file = 'templates/userAbout.php?u='+this.href;
+		  	}
+		  	else if(modulo == 'pet')
+		  	{
+		  		var btn = byid('save-edit-pet');
+	  		}
+	  		else if(modulo == 'albumProfile')
+	  		{
+				var btn = byid('save-edit-album');
+	  		}
+			ajaxx('POST', file, modulPrintUpdates, null, true);
+		}
 
 		// ========================================= FALLBACK		
 		

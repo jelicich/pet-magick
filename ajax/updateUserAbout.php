@@ -2,13 +2,24 @@
 
 session_start();
 
+
+if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
+{
+	echo 'Session ERROR';
+	die;
+}
+
+
 include_once "../php/classes/BOPics.php";
 include_once "../php/classes/BOVideos.php";
 include_once "../php/classes/BOUsers.php";
 
+
+
 $pics = new BOPics;
 $videos = new BOVideos;
 $user = new BOUsers;
+//var_dump($_POST);
 
 $query = array();
 $mimeVideo = array('video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');

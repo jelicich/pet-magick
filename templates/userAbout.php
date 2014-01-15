@@ -56,4 +56,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+			editUserProfile();
+		</script>
 		<!-- END about module -->

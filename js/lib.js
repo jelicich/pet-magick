@@ -620,15 +620,22 @@ function editUserProfile(){
 function postNews(){
 
 	function getNews(){
-		
-		ajax('POST', 'ajax/getNews.php', printNews, null, true);
-		
+
+		ajax('POST', 'ajax/getNews.php?u=' + this.responseText, printNews, null, true);
 	}
 
 	function printNews(){
 	
 		var cont = byid("news-mod");
 		cont.innerHTML = this.responseText;
+		var scr = cont.getElementsByTagName('script');
+						if(scr.length > 0)
+						{
+							for(var i = 0; i < scr.length; i++)
+							{
+								eval(scr[i].innerHTML);
+							}
+						}
 		
 	}
 
@@ -638,6 +645,7 @@ function postNews(){
 		var vars = 'news='+newsContent;
 			ajax('POST', 'ajax/postNews.php', getNews, vars, true);	
 	}
+
 }//end postNews
 
 //======================================================================== IMG UPLOAD
@@ -760,6 +768,7 @@ function imgVideoUploader(whatFor, modulo){
 				  		if(modulo == 'about'){
 
 					  			var cont = byid('user-about');
+
 					  	}else if(modulo == 'pet'){
 
 					  			var cont = byid("pet-profile");
@@ -786,8 +795,7 @@ function imgVideoUploader(whatFor, modulo){
 				  		
 				  		if(modulo == 'about'){
 				  			//mando el id del usuario como variable, que aca llega como responsetext para q no tire el error de q no sabe quien es el usuario ($get[u] / $post[u])
-				  			var ajaxGetFile = 'ajax/getUserAbout.php?u='+this.responseText;
-				  		
+				  			var ajaxGetFile = 'ajax/getUserAbout.php?u=' + this.responseText;
 
 				  		}else if(modulo == 'pet'){
 
@@ -948,7 +956,6 @@ function imgVideoUploader(whatFor, modulo){
 					  		}
 
 					  		ajaxx('POST', ajaxPostFile, getUpdates, formData, true);
-					  		//ajaxx('POST', ajaxPostFile, printErr, formData, true);
 
 
 				   		 	if (amount == 'profile' || amount == 'video'){

@@ -32,16 +32,22 @@ class NewsTable extends Doctrine_Table
 
     public function getNewsByUser($id){ // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
 
-	        $q = Doctrine_Query::create()
+	       $q = Doctrine_Query::create()
 				->from('News n') 
 				->AndWhere('n.USER_ID = ?', $id);
 
-			$news = $q->execute();
+			   $news = $q->execute();
            
            if(sizeof($news) > 0){
            		return $news->toArray();
            }else{
            		return false;
            }
-   }// 
+   }
+
+    public function deleteNews(){ // completar esta funcion para eliminar las news
+
+  
+   }
+
 }

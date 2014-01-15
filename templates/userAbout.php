@@ -1,6 +1,7 @@
 		<?php
 		    
 			$u = new BOUsers;
+			
 			if(isset($_GET['u']))
 				$userId = $_GET['u'];
 			elseif(isset($_POST['u']))

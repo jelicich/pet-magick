@@ -1,18 +1,24 @@
 
 		<?php
-		    
+
 			$u = new BOUsers;
 			$n = new BONews;
-			//$u->getUserData($_GET['u']);
+			if(isset($_GET['u']))
+				$userId = $_GET['u'];
+			elseif(isset($_POST['u']))
+				$userId = $_POST['u'];
 			$u->getUserData($_SESSION['id']);
+
 		?>
 
 <div class="mod profiles-mod nogrid-mod" id="news-mod">
 				<?php
+				/*
 					if($u->isOwn())
 					{
 						echo '<a href="#" class="btn btn-edit">Edit</a>';	
 					}
+					*/
 				?>	
 				<div class="mod-header">
 					<h2>My Recent News</h2>
@@ -30,6 +36,8 @@
 								<li class="recent-news">
 									<span><?php echo $nw[$i]['DATE']?></span>
 									<p><?php echo $nw[$i]['NEWS']; ?><p>
+										<?php echo $nw[$i]['ID_NEWS']; // ese es el id de la novedad q lo voy a usar para eliminar lso comentarios ?>
+									<input type='button' value='delete' name='deleteNews'>
 								</li>
 
 					<?php 
@@ -42,14 +50,17 @@
 					?>
 				</ul>
 				<?php
-					if($u->isOwn())
-					{
+					//if($u->isOwn())
+					//{
 						echo "	
 								<textarea id='news_content'></textarea>
 								<input type='button' name='news' value='Post' id='news_button' />
 						";	
-					}
+					//}
 				?>	
 			</div>
 
 
+<script type="text/javascript">
+			postNews();
+		</script>

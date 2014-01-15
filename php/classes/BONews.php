@@ -42,6 +42,10 @@ class BONews{
         return $this->news;
     }
 
+    function deleteNews(){ // completar esta funcion
+
+    }
+
     function getErrors(){
 
         return  $this->err;

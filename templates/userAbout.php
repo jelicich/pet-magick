@@ -12,10 +12,10 @@
 		<!-- about module -->
 		<!--<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">-->
 			<?php
-				//if($u->isOwn())
-				//{
+				if($u->isOwn())
+				{
 					echo '<a href="#'.$userId.'" class="btn btn-edit" id="edit-user-info">Edit</a>';	
-				//}
+				}
 			?>	
 			<div class="mod-header">
 				<h2>

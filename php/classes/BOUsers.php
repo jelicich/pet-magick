@@ -348,14 +348,18 @@ class BOUsers{
  //==== Own profile
     function isOwn()
     {
-        if(isset($_SESSION['id']) && $_GET['u'] == $_SESSION['id'])
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+      if(isset($_POST['u']))
+        $id = $_POST['u'];
+      elseif(isset($_GET['u']))
+        $id = $_GET['u'];
+      if(isset($_SESSION['id']) && $_GET['u'] == $_SESSION['id'])
+      {
+          return true;
+      }
+      else
+      {
+          return false;
+      }
     }
 
 

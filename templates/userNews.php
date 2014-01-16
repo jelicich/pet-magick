@@ -36,7 +36,10 @@
 								<li class="recent-news">
 									<span><?php echo $nw[$i]['DATE']?></span>
 									<p><?php echo $nw[$i]['NEWS']; ?><p>
-									<?php echo "<a href='#". $nw[$i]['ID_NEWS'] ."' class='deleteNews btn btn-danger'>Delete</a> "; ?>
+									<?php 
+									if($u->isOwn())
+										echo "<a href='#". $nw[$i]['ID_NEWS'] ."' class='deleteNews btn btn-danger'>Delete</a> "; 
+									?>
 								</li>
 
 					<?php 
@@ -49,13 +52,13 @@
 					?>
 				</ul>
 				<?php
-					//if($u->isOwn())
-					//{
+					if($u->isOwn())
+					{
 						echo "	
 								<textarea id='news_content'></textarea>
 								<input type='button' name='news' value='Post' id='news_button' />
 						";	
-					//}
+					}
 				?>	
 			</div>
 

@@ -56,14 +56,25 @@ if(isset($_FILES['file'])){ // normalWay();
 	$counter = 0;
 	foreach ($_FILES as $key => $eachFile) 
 	{
-				$captionpos = 'caption_'.$counter;
-		
+				//var_dump($eachFile);
+				//var_dump($key);
+				//$captionpos = 'caption_'.$counter;
+					
+				$index = strpos($key, "_");
+		  		$index++;
+		  		$p = substr($key, $index);
 				
+				//var_dump($_POST);
+				//var_dump($_FILES); 
+
 				$query['file'] = $eachFile['tmp_name'];
 				$query['fileName'] = $eachFile['name'];
 				$query['fileSize'] =$eachFile['size'];
 				$query['fileType'] = $eachFile['type'];
-				$query['caption'] = $_POST[$captionpos]; // RESOLVER!!!!!!!!!!!!!!!!!!!!
+				
+
+
+				$query['caption'] = $_POST["caption_".$p]; // RESOLVER!!!!!!!!!!!!!!!!!!!!
 
 				if( in_array($query['fileType'], $mimeVideo)){  
 				

@@ -1,6 +1,6 @@
 
 		<?php
-
+			
 			$u = new BOUsers;
 			$n = new BONews;
 			if(isset($_GET['u']))
@@ -36,8 +36,7 @@
 								<li class="recent-news">
 									<span><?php echo $nw[$i]['DATE']?></span>
 									<p><?php echo $nw[$i]['NEWS']; ?><p>
-										<?php echo $nw[$i]['ID_NEWS']; // ese es el id de la novedad q lo voy a usar para eliminar lso comentarios ?>
-									<input type='button' value='delete' name='deleteNews'>
+									<?php echo "<a href='#". $nw[$i]['ID_NEWS'] ."' class='deleteNews btn btn-danger'>Delete</a> "; ?>
 								</li>
 
 					<?php 
@@ -62,5 +61,5 @@
 
 
 <script type="text/javascript">
-			postNews();
-		</script>
+	news();
+</script>

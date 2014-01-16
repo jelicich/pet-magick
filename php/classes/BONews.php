@@ -42,7 +42,12 @@ class BONews{
         return $this->news;
     }
 
-    function deleteNews(){ // completar esta funcion
+    function deleteNews($newsId){ 
+
+       $q = doctrine_query:: create()
+        ->delete('News n')
+        ->where('n.ID_NEWS = ?', $newsId);
+        $q->execute();
 
     }
 
@@ -55,11 +60,5 @@ class BONews{
 }//End class BOUsers
 
 
-/*
-$news = new BONews;
-$query = array('news'=> 'novedad 1', 'user_id'=> 5);
-var_dump($news->insertNews($query));
-//var_dump($news->getErrors());
-*/
 
 ?>

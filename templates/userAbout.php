@@ -6,17 +6,16 @@
 				$userId = $_GET['u'];
 			elseif(isset($_POST['u']))
 				$userId = $_POST['u'];
-			//var_dump($_POST);
-			//$u->getUserData($_GET['u']);
+
 			$u->getUserData($userId);
 		?>
 		<!-- about module -->
 		<!--<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">-->
 			<?php
-				if($u->isOwn())
-				{
+				//if($u->isOwn())
+				//{
 					echo '<a href="#'.$userId.'" class="btn btn-edit" id="edit-user-info">Edit</a>';	
-				}
+				//}
 			?>	
 			<div class="mod-header">
 				<h2>

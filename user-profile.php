@@ -111,13 +111,13 @@
 				include_once 'templates/userNews.php'; 
 			?>
 			<!-- END news -->
-
-
 		</div>
 		<!-- END left -->
 
 
 		<!-- pet profile -->
+
+
 		<div id="pet-profile"class="mod grid_7 profiles-mod nogrid-mod ">
 			<?php
 				/*
@@ -250,7 +250,7 @@
 
 <script type="text/javascript">
 	profile();
-	postNews();
+	news();
 	//editUserProfile();
 </script>
 

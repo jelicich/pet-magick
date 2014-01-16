@@ -52,7 +52,7 @@ if(isset($_FILES['file'])){ // normalWay();
 		createQuery($query, $path, $obj);
 	}// end for
 }else{ // fallBack();
-	$var_dump[$_POST];
+	
 	$counter = 0;
 	foreach ($_FILES as $key => $eachFile) 
 	{

@@ -1,7 +1,10 @@
 <?php
 
 session_start();
+
+include_once "../php/classes/BOUsers.php";
 include_once "../php/classes/BONews.php";
+
 $news = new BONews;
 
 	if(isset($_POST)){
@@ -11,6 +14,8 @@ $news = new BONews;
 		);
 
 		$news->insertNews($query);
+		include_once "../templates/userNews.php";
+
 		
 	 }else{
 

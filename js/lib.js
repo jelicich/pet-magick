@@ -610,7 +610,7 @@ function editUserProfile(){
 	}
 }//end editUserProfile
 
-function editPetProfile(){
+function editPetProfile(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
 	var editPet = document.querySelectorAll('.edit-pet-profile');
 	
@@ -632,8 +632,7 @@ function editPetProfile(){
 	}
 }//end editPetProfile
 
-function printEdit(idModule, html)
-{		
+function printEdit(idModule, html){		
 	var cont = byid(idModule);
 	cont.innerHTML = html;
 	var scr = cont.getElementsByTagName('script');
@@ -646,13 +645,7 @@ function printEdit(idModule, html)
 	}
 }//end printedit
 
-
-function postNews(){
-
-	function getNews(){
-
-		ajax('POST', 'ajax/getNews.php?u=' + this.responseText, printNews, null, true);
-	}
+function news(){
 
 	function printNews(){
 	
@@ -666,19 +659,31 @@ function postNews(){
 								eval(scr[i].innerHTML);
 							}
 						}
-		
-	}
+	}//end printNews
 
 	byid('news_button').onclick = function(){
 
 		var newsContent = byid('news_content').value;
-		var vars = 'news='+newsContent;
-			ajax('POST', 'ajax/postNews.php', getNews, vars, true);	
-	}
+		var vars = 'news='+ newsContent;
+			ajax('POST', 'ajax/postNews.php', printNews, vars, true);	
+	}//end byid('news_button').onclick
 
+	var deleteNews = document.querySelectorAll('.deleteNews'); 
+	//var deleteNews = getByClass(deleteNews);
+
+	for(var i = 0; i < deleteNews.length; i++){
+
+		deleteNews[i].onclick = function()
+		{
+				var p = this.href;
+				var index = p.indexOf('#');
+		  		index ++;
+		  		p = 'n='+p.substr(index);
+		  		
+				ajax('POST', 'ajax/deleteNews.php', printNews, p, true);// Mando por aca el id del user?????
+		}// end deleteNews[i].onclick	
+	}//end for
 }//end postNews
-
-
 
 //======================================================================== IMG UPLOAD
 
@@ -777,6 +782,25 @@ function imgVideoUploader(whatFor, modulo){
         	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
         } // end removeErr
 
+		function cancelSave(){
+			
+			if(modulo == 'about')
+			{
+	  			var btn = byid('cancel-edit-user');
+	  			var file = 'templates/userAbout.php?u='+this.href;
+		  	}
+		  	else if(modulo == 'pet')
+		  	{
+		  		var btn = byid('save-edit-pet');
+	  		}
+	  		else if(modulo == 'albumProfile')
+	  		{
+				var btn = byid('save-edit-album');
+	  		}
+			ajaxx('POST', file, modulPrintUpdates, null, true);
+		} // end cancelSave
+
+
 		
 	    // ========================================= NORMAL WAY
 	
@@ -823,18 +847,21 @@ function imgVideoUploader(whatFor, modulo){
 				  		}
 
 				  		cont.innerHTML = this.responseText;
-						//VER PQ NO ANDA ESTO! seguro es pq en el archivo userAbout no hay nada en sript o algo asi
-						var scr = cont.getElementsByTagName('script');
-						if(scr.length > 0)
-						{
-							for(var i = 0; i < scr.length; i++)
+				  		/*
+					  		VER PQ NO ANDA ESTO! seguro es pq en el archivo userAbout no hay nada en sript o algo asi
+							var scr = cont.getElementsByTagName('script');
+							if(scr.length > 0)
 							{
-								eval(scr[i].innerHTML);
+								for(var i = 0; i < scr.length; i++)
+								{
+									eval(scr[i].innerHTML);
+								}
 							}
-						}
+						*/
+						
 				  }// end modulPrintUpdates
 
-				  function getUpdates(){
+				/*  function getUpdates(){
 				  		console.log(this.responseText);
 				  		
 				  		if(modulo == 'about'){
@@ -852,6 +879,7 @@ function imgVideoUploader(whatFor, modulo){
 
 						ajaxx('POST', ajaxGetFile, modulPrintUpdates, null, true);
 				  }// end getUpdates
+				 */
 
 				  file_id.onchange = function(){ 
 
@@ -1005,7 +1033,7 @@ function imgVideoUploader(whatFor, modulo){
 					  			var ajaxPostFile = 'ajax/ArchivoQueTraeAlbumProfile';
 					  		}
 
-					  		ajaxx('POST', ajaxPostFile, getUpdates, formData, true);
+					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
 
 
 				   		 	if (amount == 'profile' || amount == 'video'){
@@ -1019,23 +1047,6 @@ function imgVideoUploader(whatFor, modulo){
 		}// end NormalWay
 
 
-		//CANCEL SAVE
-		function cancelSave(){
-			if(modulo == 'about')
-			{
-	  			var btn = byid('cancel-edit-user');
-	  			var file = 'templates/userAbout.php?u='+this.href;
-		  	}
-		  	else if(modulo == 'pet')
-		  	{
-		  		var btn = byid('save-edit-pet');
-	  		}
-	  		else if(modulo == 'albumProfile')
-	  		{
-				var btn = byid('save-edit-album');
-	  		}
-			ajaxx('POST', file, modulPrintUpdates, null, true);
-		}
 
 		// ========================================= FALLBACK		
 		
@@ -1205,3 +1216,21 @@ function imgVideoUploader(whatFor, modulo){
 			fallBack(); 
 		}// end else
 }// end imgVideoUploader
+
+/*
+function getByClass(className)
+{
+    var matchingItems = [];
+    var allElements = document.getElementsByTagName("*");
+
+    for(var i=0; i < allElements.length; i++)
+    {
+        if(allElements [i].className == className)
+        {
+            matchingItems.push(allElements[i]);
+        }
+    }
+
+    return matchingItems;
+}
+*/

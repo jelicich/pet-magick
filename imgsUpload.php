@@ -598,7 +598,6 @@ PENDIENTE
 - Modificar la ruta del video thumb pq como deberia ser la BD no lo acepta, no tengo idea pq. Igual anda....
 
 - Barra de progreso y/o gif
-- Ver si queremos caption o q mas ademas de la img queremos levantar
 
 A tener en cuenta:
 ==================

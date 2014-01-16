@@ -33,7 +33,8 @@ class NewsTable extends Doctrine_Table
     public function getNewsByUser($id){ // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
 
 	       $q = Doctrine_Query::create()
-				->from('News n') 
+				
+        ->from('News n') 
 				->AndWhere('n.USER_ID = ?', $id);
 
 			   $news = $q->execute();
@@ -45,9 +46,6 @@ class NewsTable extends Doctrine_Table
            }
    }
 
-    public function deleteNews(){ // completar esta funcion para eliminar las news
 
-  
-   }
 
 }

@@ -77,6 +77,26 @@
 					</li>
 				</ul>
 			</div>
+
+
+
+
+			<?php
+			
+				include_once "php/classes/BOPets.php";
+				
+				
+				
+				$p = new BOPets;
+
+				$array = $p->getPetsByCat($_GET['c']);
+				var_dump($array);
+
+			?>
+
+
+
+
 			<ul class="grid-thumbs clearfix mod-content spacer10">
 				<!-- user -->
 				<li>

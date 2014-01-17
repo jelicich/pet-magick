@@ -167,6 +167,8 @@ class BOPets{
         return $this->albumId;
     }
 
+
+
     //$id = album ID
     function getAlbum($id)
     {
@@ -178,6 +180,13 @@ class BOPets{
             $a[$i]['THUMB'] = 'img/pets/thumb/' . $file;
         }
         return $a;
+    }
+
+
+    function getPetsByCat($id)
+    {
+        $array = $this->table->getPetsByCat($id);
+        return $array;
     }
 
 

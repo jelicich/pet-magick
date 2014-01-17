@@ -4,16 +4,12 @@
 				
 				//if($p->getPetList($_GET['p']))
 				//{	
-					echo '<a href="#" class="btn btn-edit" id="save-edit-user">Save</a>';	
+					//echo '<a href="#" class="btn btn-edit" id="save-edit-user">Save</a>';
+					echo '<a href="#'.$_GET['p'].'" class="btn btn-edit" id="save-edit-user">Save</a><a href="#'.$_GET['p'].'" class="btn btn-cancel" id="cancel-edit-user">Cancel</a>';		
 					$p->getPetData($_GET['p']);
 					//$pet = $p->getPet($pets[0]['ID_PET']);
 			?>		
-					<div class="mod-header">
-						<h2>My pet story</h2>
-					</div>
-
-
-					<div class="mod-content clearfix">
+					
 						
 						<div class="pic-caption pet-info">
 							<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
@@ -34,33 +30,9 @@
 							<label for="pet-story"><textarea class="form-element" name="story"><?php echo $p->getStory();?></textarea>
 						</div>
 						
-						<div class="slider-small">
-							<?php
-								if($p->getAlbumId())
-								{
-									$album = $p->getAlbum($p->getAlbumId());
-							?>
-									<ul class="clearfix">
-							<?php
+						
 
-									for($i=0;$i<sizeof($album);$i++)
-									{
-							?>
-									
-										<li>
-											<a href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a>
-											<a href=<?php echo '"'.$album[$i]['ID_PIC'].'"'; ?> >Delete</a>
-										</li>
-										
-							<?php
-									}//end for
-							?>
-									</ul>
-							<?php
-								}//END IF
-							?>
-						</div>
-
+						<!-- VIDEO!!!
 						<div class='video'>
 							<?php
 								$v = $p->getVideo();
@@ -74,13 +46,14 @@
 
 									<div class="video-last-caption">
 										<h3><?php echo $v['TITLE'] ?><span>2:12</span></h3>
-										<!--<span><strong>By: </strong> Petter Putter</span>-->
+										
 									</div>
 							<?php
 								} //end if videos
 							?>
 						</div>
-					</div>
+						-->
+					
 			<?php 
 				//}//END IF pets
 			?>

@@ -630,23 +630,23 @@ function editUserProfile(){
 
 function editPetProfile(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
-	var editPet = document.querySelectorAll('.edit-pet-profile');
+	var editPet = byid('edit-pet-profile');
 	
-	for(var i = 0; i < editPet.length; i++)
+	
+	
+	editPet.onclick = function()
 	{
-		editPet[i].onclick = function()
-		{
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = p.substr(index);
-			ajax('GET', 'ajax/getEditPet.php?p='+p, printEditPet, null, true);
-		}	
-	}
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+		ajax('GET', 'ajax/getEditPetAbout.php?p='+p, printEditPet, null, true);
+	}	
+
 
 	function printEditPet()
 	{
-		printEdit('pet-profile', this.responseText);
+		printEdit('pet-about', this.responseText);
 	}
 }//end editPetProfile
 

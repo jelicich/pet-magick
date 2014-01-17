@@ -85,7 +85,7 @@
 					<?php
 										if($u->isOwn())
 										{
-											echo '<a href="#'.$pets[$i]['ID_PET'].'" class="btn edit-pet-profile">Edit</a><a href="#" class="btn btn-danger">Delete</a>';	
+											echo '<a href="#" class="btn btn-danger">Delete</a>';	
 										}
 					?>	
 								</li>
@@ -133,31 +133,52 @@
 				{	
 					$p->getPetData($pets[0]['ID_PET']);
 					//$pet = $p->getPet($pets[0]['ID_PET']);
+					
 			?>		
 					<div class="mod-header">
-						<h2><strong class="nickname"><?php echo $p->getName(); ?> </strong>My pet story</h2>
+						<h2>My pet story</h2>
 					</div>
 
 
 					<div class="mod-content clearfix">
+						<?php 
+						if($u->isOwn())
+						{
+							echo '<a href="#'.$pets[0]['ID_PET'].'" class="btn btn-edit" id="edit-pet-profile">Edit</a>';
+						}
+						?>
 						
-						<div class="pic-caption pet-info">
-							<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
-							<ul>
-								<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
-								<li><span><strong>Traits: </strong><?php echo $p->getTraits();?></span></li>
-							</ul>
-						</div>
+						<div id="pet-about">
+							<div class="pic-caption pet-info">
+								<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
+								<strong class="nickname"><?php echo $p->getName(); ?></strong>
+								<ul>
+									<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
+									<li><span><strong>Traits: </strong><?php echo $p->getTraits();?></span></li>
+								</ul>
+							</div>
+							
+							<div class="bg-txt corregir">
+								<p><?php echo $p->getStory();?></p>
+							</div>
+						</div><!-- END PET ABOUT-->
 						
-						<div class="bg-txt corregir">
-							<p><?php echo $p->getStory();?></p>
-						</div>
+
+						<!-- =========== -->
+
+
 						
 						<div class="slider-small">
 							<?php
 								if($p->getAlbumId())
 								{
 									$album = $p->getAlbum($p->getAlbumId());
+								
+									if($u->isOwn())
+									{
+										echo '<a href="#'.$pets[0]['ID_PET'].'" class="btn" id="edit-pet-album">Edit album</a>';
+									}
+								
 							?>
 									<ul class="clearfix">
 							<?php
@@ -182,6 +203,11 @@
 								$v = $p->getVideo();
 								if($v)
 								{
+
+									if($u->isOwn())
+									{
+										echo '<a href="#'.$pets[0]['ID_PET'].'" class="btn" id="edit-pet-album">Edit Video</a>';
+									}
 							?>
 									<div class='wrapper-play'>
 										<div class="play"></div>
@@ -251,7 +277,8 @@
 <script type="text/javascript">
 	profile();
 	news();
-	//editUserProfile();
+	
+	editPetProfile();
 </script>
 
 </body>

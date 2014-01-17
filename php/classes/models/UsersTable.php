@@ -151,7 +151,6 @@ class UsersTable extends Doctrine_Table
     		->select('*')
 			->from('Users u');
 
-		
 		$rta = $q->execute();
 		
         $json = array();
@@ -210,6 +209,25 @@ class UsersTable extends Doctrine_Table
 		    		$q->where('u.ID_USER = ?', $_SESSION['id']);
 		    $rta = $q->execute();
 		    return $rta; 
+    }
+
+     public function getUserList()
+    {
+        $q = Doctrine_Query::create()
+            //->select('p.USER_ID, u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
+            ->select('u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
+            ->from('Users u')
+            //->innerJoin('p.Users u')
+            ->leftJoin('u.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+            ->leftJoin('u.Countries k')
+            ->leftJoin('u.Regions r')
+            ->leftJoin('u.Cities c')
+            //->where('p.ANIMAL_CATEGORY_ID = ?', $id)
+            ->groupBy('u.ID_USER');
+        
+        $r = $q->execute();    
+        
+        return $r->toArray();
     }
 
 }//end class

@@ -96,6 +96,24 @@ function fileFormat(value, character) // agregue esta funcion pq la repeti en ot
   		return value;
 }
 
+/*
+function getByClass(className)
+{
+    var matchingItems = [];
+    var allElements = document.getElementsByTagName("*");
+
+    for(var i=0; i < allElements.length; i++)
+    {
+        if(allElements [i].className == className)
+        {
+            matchingItems.push(allElements[i]);
+        }
+    }
+
+    return matchingItems;
+}
+*/
+
 //=============================================================================== LOGIN FUNCTIONS
 
 var source; //variable para poder hacer el switch en print user menu 
@@ -847,8 +865,8 @@ function imgVideoUploader(whatFor, modulo){
 				  		}
 
 				  		cont.innerHTML = this.responseText;
-				  		/*
-					  		VER PQ NO ANDA ESTO! seguro es pq en el archivo userAbout no hay nada en sript o algo asi
+				  		
+					  	//	VER PQ NO ANDA ESTO! seguro es pq en el archivo userAbout no hay nada en sript o algo asi
 							var scr = cont.getElementsByTagName('script');
 							if(scr.length > 0)
 							{
@@ -857,7 +875,7 @@ function imgVideoUploader(whatFor, modulo){
 									eval(scr[i].innerHTML);
 								}
 							}
-						*/
+						
 						
 				  }// end modulPrintUpdates
 
@@ -1217,20 +1235,4 @@ function imgVideoUploader(whatFor, modulo){
 		}// end else
 }// end imgVideoUploader
 
-/*
-function getByClass(className)
-{
-    var matchingItems = [];
-    var allElements = document.getElementsByTagName("*");
 
-    for(var i=0; i < allElements.length; i++)
-    {
-        if(allElements [i].className == className)
-        {
-            matchingItems.push(allElements[i]);
-        }
-    }
-
-    return matchingItems;
-}
-*/

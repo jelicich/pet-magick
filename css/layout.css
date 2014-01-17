@@ -106,10 +106,12 @@ p,span{
 	padding:5px;
 	margin-top: 10px;
 }
-
+/*
 .spacer10{
-	padding-top: 20px !important; /*Para agregar mas espacio entre los menues. Pero solo se lo agrega a los q tienen dsps fotitos y en el home no queda bien que lo tenga.*/
+	padding-top: 20px !important; /*Para agregar mas espacio entre los menues. Pero solo se lo agrega a los q tienen dsps fotitos y en el home no queda bien que lo tenga.
 }
+*/
+
 
 .grid-thumbs li{
 	float: left;
@@ -598,6 +600,10 @@ p,span{
 	/* PARA EQUILIBRAR LA GRILLA */
 	padding-right: 0;
 	padding-bottom: 0;
+}
+
+#profiles-mod > ul {
+		padding-top: 20px !important; /*Para agregar mas espacio entre los menues. Pero solo se lo agrega a los q tienen dsps fotitos y en el home no queda bien que lo tenga.*/
 }
 
 .projects-mod{

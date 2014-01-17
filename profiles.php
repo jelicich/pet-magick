@@ -31,438 +31,57 @@
 	<div class="container_12" id="content">
 		
 		<!-- profiles module -->
-		<div id="profiles-mod" class="mod grid_12">
-			<div class="mod-header">
-				<ul class="clearfix mod-menu">
+		<div id='profiles-mod' class='mod grid_12'>
+			<div class='mod-header'>
+				<ul class='clearfix mod-menu'>
 					<li id='dog'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
 							Dog
 							<div id='arrow-dog'></div>
 						</a>
 					</li>
 
 					<li id='cat'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
 							Cat
 							<div id='arrow-cat'></div>
 						</a>
 					</li>
 
 					<li id='bird'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
 							Bird
 							<div id='arrow-bird'></div>
 						</a>
 					</li>
 
 					<li id='rabbit'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
 							Rabbit
 							<div id='arrow-rabbit'></div>
 						</a>
 					</li>
 
 					<li id='ferret'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
 							Ferret
 							<div id='arrow-ferret'></div>
 						</a>
 					</li>
 
 					<li id='others'>
-						<a href="#"> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
 							Others
 							<div id='arrow-others'></div>
 						</a>
 					</li>
 				</ul>
 			</div>
-
-
-
-
-			<?php
 			
-				include_once "php/classes/BOPets.php";
+				<?php 
+					include_once 'templates/profilesModule.php'; 
+				?>
 				
-				
-				
-				$p = new BOPets;
-
-				$array = $p->getPetsByCat($_GET['c']);
-				var_dump($array);
-
-			?>
-
-
-
-
-			<ul class="grid-thumbs clearfix mod-content spacer10">
-				<!-- user -->
-				<li>
-					<a href="user-profiles.html">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Mt Maunganui, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-				<!-- user -->
-				<li>
-					<a href="#">
-						<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-						<dl class="hidden">
-							<dt>Anna Simpson</dt>
-							<dd>Rotorua, New Zealand</dd>
-							<dd><strong>Pets: </strong>Dog Cat</dd>
-						</dl>
-					</a>
-				</li>
-				<!-- END user -->
-
-			</ul>
 		</div>
 		<!-- END profiles module -->
 

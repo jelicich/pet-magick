@@ -270,6 +270,12 @@ class BOUsers{
         
         
     }
+
+    function getUserList()
+    {
+        $array = $this->table->getUserList();
+        return $array;
+    }
     
     
     //$id = album ID

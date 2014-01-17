@@ -587,8 +587,7 @@ PENDIENTE
 =========
 
 - eliminar captions al enviar 
-- Resolver el POST en insertar.php fallback
-- Ver q onda la ruta de videos en insertar.php y las clases respectivas
+- agregar title a video
 
 - poner valores correctos para las validaciones (los q estan son de prueba)
 - Mando array con una posicion vacia a php, puede quedar asi o ver de mandarlo bien

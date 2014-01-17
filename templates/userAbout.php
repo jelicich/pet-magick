@@ -6,7 +6,7 @@
 				$userId = $_GET['u'];
 			elseif(isset($_POST['u']))
 				$userId = $_POST['u'];
-
+			
 			$u->getUserData($userId);
 		?>
 		<!-- about module -->

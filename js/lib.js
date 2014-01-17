@@ -800,24 +800,6 @@ function imgVideoUploader(whatFor, modulo){
         	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
         } // end removeErr
 
-		function cancelSave(){
-			
-			if(modulo == 'about')
-			{
-	  			var btn = byid('cancel-edit-user');
-	  			var file = 'templates/userAbout.php?u='+this.href;
-		  	}
-		  	else if(modulo == 'pet')
-		  	{
-		  		var btn = byid('save-edit-pet');
-	  		}
-	  		else if(modulo == 'albumProfile')
-	  		{
-				var btn = byid('save-edit-album');
-	  		}
-			ajaxx('POST', file, modulPrintUpdates, null, true);
-		} // end cancelSave
-
 
 		
 	    // ========================================= NORMAL WAY
@@ -831,6 +813,7 @@ function imgVideoUploader(whatFor, modulo){
 				    if(modulo == 'about')
   				    {
 			  			var uploadBtn = byid('save-edit-user');
+			  			var cancelBtn = byid('cancel-edit-user');
 				  	}
 				  	else if(modulo == 'pet')
 				  	{
@@ -878,6 +861,39 @@ function imgVideoUploader(whatFor, modulo){
 						
 						
 				  }// end modulPrintUpdates
+
+				// CANCEL SAVE
+				cancelBtn.onclick = function(){
+			
+					if(modulo == 'about')
+					{
+			  			var file = 'ajax/getUserAbout.php';
+				  	}
+				  	else if(modulo == 'pet')
+				  	{
+				  		var btn = byid('save-edit-pet');
+			  		}
+			  		else if(modulo == 'albumProfile')
+			  		{
+						var btn = byid('save-edit-album');
+			  		}
+
+			  		
+		  			//alert();
+		  			var p = this.href;
+					var index = p.indexOf('#');
+			  		index ++;
+			  		p = p.substr(index);
+			  		var vars = '?u='+p;
+			  		
+			  		file+=vars;
+			  		//si le paso la variable por argumento no la manda. se la tengo q agregar al archivo al final ?var=bla
+			  		ajaxx('POST', file, modulPrintUpdates, null, true);	
+			  		
+			  		
+		  		
+					
+				}; // end cancelSave
 
 				/*  function getUpdates(){
 				  		console.log(this.responseText);
@@ -1061,6 +1077,10 @@ function imgVideoUploader(whatFor, modulo){
 								  byid('form-id').appendChild(file_id);
 							} 
 				  }// end onclick
+
+
+
+				
 
 		}// end NormalWay
 

@@ -9,6 +9,7 @@ ANTRIORES
 
 ACTUAL
 ======
+- Compatibilidad con diferentes navegadores en general
 - Mostrar la foto del user en el header cuando esta logueado
 - Empezar a linkear secciones correctamente
 - Cancenl en about user

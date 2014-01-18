@@ -1,0 +1,3 @@
+PENDIENTES:
+-Borrar la imagen de perfil al editar.
+-Validar funcion updateInfo en BOUSer y BOpets

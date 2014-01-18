@@ -4,7 +4,7 @@ include_once('tools/bootstrap.php');
 include_once('models/PetsTable.php');
 include_once('models/PicsTable.php');
 include_once('models/VideosTable.php');
-
+include_once ('BOPics.php');
 
 
 class BOPets{
@@ -214,6 +214,31 @@ class BOPets{
       }
     }
 
+
+    function updateInfo($array, $path)
+    {
+        //var_dump($array);
+        $this->val_updateInfo($array);
+        
+        $pic = new BOPics;
+        $dataPic = $this->table->find($_POST['p']);
+        $oldPic = $dataPic->PIC_ID;
+        $r = $this->table->updateInfo($array);
+        
+        //borro la imagen original de perfil
+        if(!empty($array['pic']) && is_numeric($array['pic']))
+        {
+          if(!empty($oldPic))
+            $pic->unlinkProfilePic($oldPic, $path);
+        }
+
+
+    }
+
+    function val_updateInfo($array)
+    {
+        //HACER!!!
+    }
 
 }//End class BOUsers
 

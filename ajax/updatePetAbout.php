@@ -3,23 +3,26 @@
 session_start();
 
 
-if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
+
+
+if(!isset($_POST['p']) || $_POST['owner'] != $_SESSION['id'])
 {
 	echo 'Session ERROR';
 	die;
 }
 
-
+include_once "../php/classes/BOPets.php";
 include_once "../php/classes/BOPics.php";
 include_once "../php/classes/BOVideos.php";
-include_once "../php/classes/BOUsers.php";
 
 
 
+$pet = new BOPets;
 $pics = new BOPics;
 $videos = new BOVideos;
-$user = new BOUsers;
 //var_dump($_POST);
+
+
 
 $query = array();
 $mimeVideo = array('video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');
@@ -56,7 +59,7 @@ if(isset($_FILES['file'])){ // normalWay();
 		}else{
 
 			$obj = $pics; 
-			$path = '../img/users/';
+			$path = '../img/pets/';
 
 		} 
 		
@@ -64,7 +67,6 @@ if(isset($_FILES['file'])){ // normalWay();
 	}// end for
 }else{ // fallBack();
 	
-
 	foreach ($_FILES as $key => $eachFile) 
 	{
 				$index = strpos($key, "_");
@@ -85,7 +87,7 @@ if(isset($_FILES['file'])){ // normalWay();
 				}else{
 
 					$obj = $pics; 
-					$path = '../img/users/';
+					$path = '../img/pets/';
 
 				} 
 		
@@ -96,12 +98,12 @@ if(isset($_FILES['file'])){ // normalWay();
 
 
 
-//var_dump($_POST);
+var_dump($_POST);
 
 
-$user->updateInfo($_POST,'../img/users/');
-//imprimo esto para poder tener un response.text con el id del usuario y que deje de tirar el error de la variable U
-//echo $_SESSION['id'];
-$_GET['u'] = $_SESSION['id'];
-include_once "../templates/userAbout.php";
+$pet->updateInfo($_POST,'../img/pets/');
+
+//$_GET['u'] = $_SESSION['id'];
+//include_once "../templates/userAbout.php";
+
 

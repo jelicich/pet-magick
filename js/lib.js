@@ -1052,11 +1052,7 @@ function imgVideoUploader(whatFor, modulo){
 
 							}
 
-							var p = this.href;
-							var index = p.indexOf('#');
-					  		index ++;
-					  		p = p.substr(index);
-							formData.append("u", p);
+							
 
 					   		for (var i = 0; i < filesSelected.length; i++) {
 
@@ -1068,10 +1064,20 @@ function imgVideoUploader(whatFor, modulo){
 				   			if(modulo == 'about'){
 			  				
 					  			var ajaxPostFile = 'ajax/updateUserAbout.php';
+						  		var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("u", p);
 
-					  		}else if(modulo == 'pet'){
+					  		}else if(modulo == 'pet-about'){
 
-					  			var ajaxPostFile = 'ajax/ArchivoQueTraePet';
+					  			var ajaxPostFile = 'ajax/updatePetAbout.php';
+						  		var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("p", p);
 
 					  		}else if(modulo == 'albumProfile'){
 

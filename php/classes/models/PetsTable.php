@@ -58,6 +58,27 @@ class PetsTable extends Doctrine_Table
         return $r->toArray();
     }
 
+
+    //UPDATE
+    public function updateInfo($array)
+    {
+
+
+        $q = Doctrine_Query::create()
+                    ->update('Pets p')
+                    ->set('p.NAME', '?', $array['name'] )
+                    ->set('p.BREED', '?', $array['breed'] )
+                    ->set('p.TRAITS', '?', $array['traits'] )
+                    ->set('p.STORY', '?', $array['story'] );
+                    
+        if(!empty($array['pic']) && is_numeric($array['pic']))
+            $q->set('p.PIC_ID', '?', $array['pic'] );
+       
+
+                    $q->where('p.ID_PET = ?', $array['p']);
+            $rta = $q->execute();
+            return $rta; 
+    }
        
     
 

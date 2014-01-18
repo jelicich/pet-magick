@@ -358,7 +358,7 @@ class BOUsers{
         $id = $_POST['u'];
       elseif(isset($_GET['u']))
         $id = $_GET['u'];
-      if(isset($_SESSION['id']) && $_GET['u'] == $_SESSION['id'])
+      if(isset($_SESSION['id']) && $id == $_SESSION['id'])
       {
           return true;
       }

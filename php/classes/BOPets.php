@@ -83,6 +83,8 @@ class BOPets{
         $this->breed = $p->BREED;
         $this->traits = $p->TRAITS;
         $this->story = $p->STORY;
+        $this->owner = $p->USER_ID;
+        $this->id = $id;
         
 
 
@@ -167,6 +169,16 @@ class BOPets{
         return $this->albumId;
     }
 
+    function getOwner()
+    {
+        return $this->owner;
+    }
+
+    function getId()
+    {
+        return $this->id;
+    }
+
 
 
     //$id = album ID
@@ -189,6 +201,18 @@ class BOPets{
         return $array;
     }
 
+
+    function isOwn()
+    {
+      if(isset($_SESSION['id']) && $this->owner == $_SESSION['id'])
+      {
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+    }
 
 
 }//End class BOUsers

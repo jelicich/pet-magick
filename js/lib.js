@@ -603,6 +603,15 @@ function profile(){
 		var html = this.responseText;
 		var cont = byid('pet-profile');
 		cont.innerHTML = html;
+
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
 	}
 }//end profile	
 
@@ -631,7 +640,6 @@ function editUserProfile(){
 function editPetProfile(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
 	var editPet = byid('edit-pet-profile');
-	
 	
 	
 	editPet.onclick = function()
@@ -815,9 +823,10 @@ function imgVideoUploader(whatFor, modulo){
 			  			var uploadBtn = byid('save-edit-user');
 			  			var cancelBtn = byid('cancel-edit-user');
 				  	}
-				  	else if(modulo == 'pet')
+				  	else if(modulo == 'pet-about')
 				  	{
-				  		var uploadBtn = byid('save-edit-pet');
+				  		var uploadBtn = byid('save-edit-pet-about');
+				  		var cancelBtn = byid('cancel-edit-pet-about');
 			  		}
 			  		else if(modulo == 'albumProfile')
 			  		{
@@ -838,9 +847,9 @@ function imgVideoUploader(whatFor, modulo){
 
 					  			var cont = byid('user-about');
 
-					  	}else if(modulo == 'pet'){
+					  	}else if(modulo == 'pet-about'){
 
-					  			var cont = byid("pet-profile");
+					  			var cont = byid("pet-about");
 
 				  		}else if(modulo == 'albumProfile'){
 
@@ -868,14 +877,16 @@ function imgVideoUploader(whatFor, modulo){
 					if(modulo == 'about')
 					{
 			  			var file = 'ajax/getUserAbout.php';
+			  			var vars = '?u=';
 				  	}
-				  	else if(modulo == 'pet')
+				  	else if(modulo == 'pet-about')
 				  	{
-				  		var btn = byid('save-edit-pet');
+				  		var file = 'ajax/getPetAbout.php';
+				  		var vars = '?p='
 			  		}
 			  		else if(modulo == 'albumProfile')
 			  		{
-						var btn = byid('save-edit-album');
+						var file = '';
 			  		}
 
 			  		
@@ -884,7 +895,7 @@ function imgVideoUploader(whatFor, modulo){
 					var index = p.indexOf('#');
 			  		index ++;
 			  		p = p.substr(index);
-			  		var vars = '?u='+p;
+			  		vars += p;
 			  		
 			  		file+=vars;
 			  		//si le paso la variable por argumento no la manda. se la tengo q agregar al archivo al final ?var=bla

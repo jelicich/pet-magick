@@ -24,3 +24,9 @@
 								}//END IF
 							?>
 						</div>
+
+						<script type="text/javascript">
+							imgVideoUploader('album', 'pet-album'); // SUBIR IMG
+
+							//imgVideoUploader('profile', 'about'); // SUBIR IMG
+						</script>

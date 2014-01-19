@@ -37,36 +37,38 @@
 						<!-- =========== -->
 
 
-						
-						<div class="slider-small">
-							<?php
-								if($p->getAlbumId())
-								{
-									$album = $p->getAlbum($p->getAlbumId());
-								
-									if($p->isOwn())
+						<div id="pet-album">
+							<div class="slider-small">
+								<?php
+									if($p->getAlbumId())
 									{
-										echo '<a href="#'.$pets[0]['ID_PET'].'" class="btn" id="edit-pet-album">Edit album</a>';
-									}
-								
-							?>
-									<ul class="clearfix">
-							<?php
-
-									for($i=0;$i<sizeof($album);$i++)
-									{
-							?>
+										$album = $p->getAlbum($p->getAlbumId());
 									
-										<li><a href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a></li>
+										if($p->isOwn())
+										{
+											echo '<a href="#'.$pets[0]['ID_PET'].'" class="btn" id="edit-pet-album">Edit album</a>';
+										}
+									
+								?>
+										<ul class="clearfix">
+								<?php
+
+										for($i=0;$i<sizeof($album);$i++)
+										{
+								?>
 										
-							<?php
-									}//end for
-							?>
-									</ul>
-							<?php
-								}//END IF
-							?>
+											<li><a href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a></li>
+											
+								<?php
+										}//end for
+								?>
+										</ul>
+								<?php
+									}//END IF
+								?>
+							</div>
 						</div>
+
 
 						<div class='video'>
 							<?php
@@ -96,6 +98,7 @@
 
 					<script type="text/javascript">
 						editPetProfile();
+						editPetAlbum();
 					</script>
 	
 

@@ -1240,3 +1240,7 @@ Tunear!!!
 	right:70px; 
 	top:10px;
 }
+
+#pet-album, #pet-about{
+	overflow: hidden;
+}

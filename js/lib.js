@@ -658,6 +658,27 @@ function editPetProfile(){ // esto se repite, podemos hacer una sola function co
 	}
 }//end editPetProfile
 
+function editPetAlbum(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
+
+	var editPet = byid('edit-pet-album');
+	
+	
+	editPet.onclick = function()
+	{
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+		ajax('GET', 'ajax/getEditPetAlbum.php?p='+p, printEditPet, null, true);
+	}	
+
+
+	function printEditPet()
+	{
+		printEdit('pet-album', this.responseText);
+	}
+}//end editPetProfile
+
 function printEdit(idModule, html){		
 	var cont = byid(idModule);
 	cont.innerHTML = html;
@@ -829,6 +850,11 @@ function imgVideoUploader(whatFor, modulo){
 				  		var uploadBtn = byid('save-edit-pet-about');
 				  		var cancelBtn = byid('cancel-edit-pet-about');
 			  		}
+			  		else if(modulo == 'pet-album')
+				  	{
+				  		var uploadBtn = byid('save-edit-pet-album');
+				  		var cancelBtn = byid('cancel-edit-pet-album');
+			  		}
 			  		else if(modulo == 'albumProfile')
 			  		{
 						var uploadBtn = byid('save-edit-album');
@@ -851,6 +877,10 @@ function imgVideoUploader(whatFor, modulo){
 					  	}else if(modulo == 'pet-about'){
 
 					  			var cont = byid("pet-about");
+
+						}else if(modulo == 'pet-album'){
+
+					  			var cont = byid("pet-album");
 
 				  		}else if(modulo == 'albumProfile'){
 
@@ -882,6 +912,11 @@ function imgVideoUploader(whatFor, modulo){
 				  	else if(modulo == 'pet-about')
 				  	{
 				  		var file = 'ajax/getPetAbout.php';
+				  		var vars = '?p='
+			  		}
+			  		else if(modulo == 'pet-albm')
+				  	{
+				  		var file = 'ajax/getPetAlbum.php';
 				  		var vars = '?p='
 			  		}
 			  		else if(modulo == 'albumProfile')
@@ -1073,6 +1108,15 @@ function imgVideoUploader(whatFor, modulo){
 					  		}else if(modulo == 'pet-about'){
 
 					  			var ajaxPostFile = 'ajax/updatePetAbout.php';
+						  		var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("p", p);
+
+							}else if(modulo == 'pet-album'){
+
+					  			var ajaxPostFile = 'ajax/updatePetAlbum.php';
 						  		var p = this.href;
 								var index = p.indexOf('#');
 						  		index ++;

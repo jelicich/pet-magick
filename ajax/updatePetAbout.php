@@ -98,12 +98,12 @@ if(isset($_FILES['file'])){ // normalWay();
 
 
 
-var_dump($_POST);
+//var_dump($_POST);
 
 
 $pet->updateInfo($_POST,'../img/pets/');
 
-//$_GET['u'] = $_SESSION['id'];
-//include_once "../templates/userAbout.php";
+//$_GET['p'] = $_SESSION['id'];
+include_once "../templates/petAbout.php";
 
 

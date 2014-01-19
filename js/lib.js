@@ -859,7 +859,6 @@ function imgVideoUploader(whatFor, modulo){
 
 				  		cont.innerHTML = this.responseText;
 				  		
-					  	//	VER PQ NO ANDA ESTO! seguro es pq en el archivo userAbout no hay nada en sript o algo asi
 							var scr = cont.getElementsByTagName('script');
 							if(scr.length > 0)
 							{

@@ -1,3 +1,14 @@
+							<?php
+								$p = new BOPets;
+								
+								if(isset($_GET['p']))
+									$userId = $_GET['p'];
+								elseif(isset($_POST['p']))
+									$userId = $_POST['p'];
+								
+								$p->getPetData($userId);
+							?>
+
 							<div class="pic-caption pet-info">
 								<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
 								<strong class="nickname"><?php echo $p->getName(); ?></strong>

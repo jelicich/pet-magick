@@ -10,8 +10,13 @@
 					//$pet = $p->getPet($pets[0]['ID_PET']);
 			?>		
 					
+							<!-- IMG UPLOADER -->
+						<div id='imgContainer'></div>
+
+						<iframe name="iframe_IE" src="" style="display: none"></iframe> 
+						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
-							<input type="hidden" value=<?php echo '"'.$p->getOwner().'"';?> name="owner" class="form-element"/>
+							
 							<p id="upload-status"></p>
 						  	<pre id="result"></pre>
 							
@@ -57,7 +62,8 @@
 								?>
 							</div>
 							-->
-						</div>
+							<input type="hidden" value=<?php echo '"'.$p->getOwner().'"';?> name="owner" class="form-element"/>
+						</form>
 			<?php 
 				//}//END IF pets
 			?>

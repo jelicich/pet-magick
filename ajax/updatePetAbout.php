@@ -77,7 +77,7 @@ if(isset($_FILES['file'])){ // normalWay();
 				$query['fileName'] = $eachFile['name'];
 				$query['fileSize'] =$eachFile['size'];
 				$query['fileType'] = $eachFile['type'];
-				$query['caption'] = $_POST["caption_".$p]; // LISTO!!!!!!!!!!!!!!!!!!!!
+				$query['caption'] = $_POST["caption_".$p]; 
 
 				if( in_array($query['fileType'], $mimeVideo)){  
 				

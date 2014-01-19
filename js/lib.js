@@ -575,7 +575,7 @@ function printUpdates(){
 }//end printUpdates
 
 
-//============================= PROFILE
+//============================= USER-PROFILE
 
 function profile(){
 	
@@ -678,13 +678,13 @@ function news(){
 		var cont = byid("news-mod");
 		cont.innerHTML = this.responseText;
 		var scr = cont.getElementsByTagName('script');
-						if(scr.length > 0)
-						{
-							for(var i = 0; i < scr.length; i++)
-							{
-								eval(scr[i].innerHTML);
-							}
-						}
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
 	}//end printNews
 
 	byid('news_button').onclick = function(){
@@ -699,14 +699,15 @@ function news(){
 
 	for(var i = 0; i < deleteNews.length; i++){
 
-		deleteNews[i].onclick = function()
-		{
+		deleteNews[i].onclick = function(e)
+		{		
 				var p = this.href;
 				var index = p.indexOf('#');
 		  		index ++;
 		  		p = 'n='+p.substr(index);
 		  		
 				ajax('POST', 'ajax/deleteNews.php', printNews, p, true);// Mando por aca el id del user?????
+
 		}// end deleteNews[i].onclick	
 	}//end for
 }//end postNews
@@ -1271,5 +1272,40 @@ function imgVideoUploader(whatFor, modulo){
 			fallBack(); 
 		}// end else
 }// end imgVideoUploader
+
+
+//============================= PROFILEs
+
+function usersByPet(){
+
+	var pets = byid('menuByPet').getElementsByTagName('a');
+	for(var i = 0; i < pets.length; i++){
+
+			pets[i].onclick = function(e)
+			{		
+					var p = this.href;
+					var index = p.indexOf('#');
+			  		index ++;
+			  		p = 'c='+p.substr(index);
+					ajax('POST', 'ajax/profilesModuleByPet.php', printByPet, p, true);
+
+			}// end pets[i].onclick
+	}// end for
+
+	function printByPet(){
+
+		var cont = byid("profilesModuleByPet");
+		cont.innerHTML = this.responseText;
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
+	}// end printByPet
+}// end userByPet
+
 
 

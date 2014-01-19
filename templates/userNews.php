@@ -1,30 +1,14 @@
-
-		<?php
-			
-			$u = new BOUsers;
-			$n = new BONews;
-			if(isset($_GET['u']))
-				$userId = $_GET['u'];
-			elseif(isset($_POST['u']))
-				$userId = $_POST['u'];
-			$u->getUserData($_SESSION['id']);
-
-		?>
-
 <div class="mod profiles-mod nogrid-mod" id="news-mod">
-				<?php
-				/*
-					if($u->isOwn())
-					{
-						echo '<a href="#" class="btn btn-edit">Edit</a>';	
-					}
-					*/
-				?>	
+
 				<div class="mod-header">
 					<h2>My Recent News</h2>
 				</div>
+
 				<ul class="mod-content clearfix">
 					<?php 
+
+						$u = new BOUsers;
+						$n = new BONews;
 						
 						if($n->getNews($_SESSION['id']))
 						{
@@ -37,9 +21,11 @@
 									<span><?php echo $nw[$i]['DATE']?></span>
 									<p><?php echo $nw[$i]['NEWS']; ?><p>
 									<?php 
+									
 									if($u->isOwn())
 										echo "<a href='#". $nw[$i]['ID_NEWS'] ."' class='deleteNews btn btn-danger'>Delete</a> "; 
 									?>
+
 								</li>
 
 					<?php 

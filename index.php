@@ -41,9 +41,11 @@
 					<span>Connect with other pet lovers in your area, age group, or pet type</span>
 				</div>
 					<!-- user -->
-					<?php 
-						include_once 'templates/profilesModule.php'; 
-					?>
+					<ul class='grid-thumbs clearfix mod-content' id='profilesModuleByPet'> 
+						<?php 
+							include_once 'templates/profilesModule.php'; 
+						?>
+					</ul>
 			</div>
 			<!-- END profiles module -->
 

@@ -33,54 +33,57 @@
 		<!-- profiles module -->
 		<div id='profiles-mod' class='mod grid_12'>
 			<div class='mod-header'>
-				<ul class='clearfix mod-menu'>
-					<li id='dog'>
-						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+				<ul class='clearfix mod-menu' id='menuByPet'>
+					
+					<li id='dog'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#1'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 							Dog
 							<div id='arrow-dog'></div>
 						</a>
 					</li>
 
-					<li id='cat'>
-						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+					<li id='cat'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#2'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 							Cat
 							<div id='arrow-cat'></div>
 						</a>
 					</li>
 
-					<li id='bird'>
-						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+					<li id='bird'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#3'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 							Bird
 							<div id='arrow-bird'></div>
 						</a>
 					</li>
 
-					<li id='rabbit'>
-						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+					<li id='rabbit'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#rabbit'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 							Rabbit
 							<div id='arrow-rabbit'></div>
 						</a>
 					</li>
 
-					<li id='ferret'>
-						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+					<li id='ferret'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#ferret'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 							Ferret
 							<div id='arrow-ferret'></div>
 						</a>
 					</li>
 
-					<li id='others'>
-						<a href='#'> <!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+					<li id='others'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
+						<a href='#'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 							Others
 							<div id='arrow-others'></div>
 						</a>
 					</li>
 				</ul>
 			</div>
-			
-				<?php 
-					include_once 'templates/profilesModule.php'; 
-				?>
+				<ul class='grid-thumbs clearfix mod-content' id='profilesModuleByPet'> 
+					<?php 
+						
+						include_once 'templates/profilesModule.php'; 
+					?>
+				</ul>	
 				
 		</div>
 		<!-- END profiles module -->
@@ -101,5 +104,8 @@
 
 </div>
 <!-- END wrapper-->
+<script type="text/javascript">
+	usersByPet();
+</script>
 </body>
 </html>

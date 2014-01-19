@@ -109,6 +109,7 @@
 				include_once 'templates/userNews.php'; 
 			?>
 			<!-- END news -->
+			
 		</div>
 		<!-- END left -->
 

@@ -4,12 +4,12 @@ session_start();
 
 
 
-
 if(!isset($_POST['p']) || $_POST['owner'] != $_SESSION['id'])
 {
 	echo 'Session ERROR';
 	die;
 }
+
 
 include_once "../php/classes/BOPets.php";
 include_once "../php/classes/BOPics.php";
@@ -98,12 +98,12 @@ if(isset($_FILES['file'])){ // normalWay();
 
 
 
-//var_dump($_POST);
+var_dump($_POST);
 
 
-//$pet->updateInfo($_POST,'../img/pets/');
+$pet->updateAlbum($_POST,'../img/pets/');
 
 //$_GET['p'] = $_SESSION['id'];
-include_once "../templates/petAlbum.php";
+//include_once "../templates/petAlbum.php";
 
 

@@ -1076,6 +1076,13 @@ function imgVideoUploader(whatFor, modulo){
 
 							for(i = 0; i < inputsText.length; i++){ 
 
+								// para eliminar los checkbox q no estan seleccionados, ya que esto levanta todo, seleccionado y no seleccionado
+								if(inputsText[i].type == 'checkbox' && inputsText[i].checked == false)
+								{
+									continue;
+								}
+								
+
 								if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
 
 									allCaption.push(inputsText[i].value);

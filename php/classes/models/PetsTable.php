@@ -80,6 +80,27 @@ class PetsTable extends Doctrine_Table
             return $rta; 
     }
        
-    
+    public function getAlbumIdByPet($id)
+    {   
+        $q = Doctrine_Query::create()
+            ->select('p.ALBUM_ID')
+            ->from('Pets p')
+            ->where('p.ID_PET = ?',$id);
+
+        $r = $q->execute();
+        $r = $r->toArray();
+        return $r[0]['ALBUM_ID'];
+
+    }
+
+    public function setAlbum($albumId, $petId)
+    {
+        $q = Doctrine_Query::create()
+            ->update('Pets p')
+            ->set('p.ALBUM_ID', '?', $albumId )
+            ->where('p.ID_PET = ?', $petId);
+
+        $rta = $q->execute();
+    }   
 
 }

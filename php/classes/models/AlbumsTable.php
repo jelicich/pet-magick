@@ -16,4 +16,14 @@ class AlbumsTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Albums');
     }
+
+    public function createAlbum()
+    {
+    	$a = new Albums();
+    	$a->ID_ALBUM = NULL;
+    	$a->save();
+
+    	$albumId = $a->ID_ALBUM;
+    	return $albumId;
+    }
 }

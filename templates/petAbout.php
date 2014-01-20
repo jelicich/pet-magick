@@ -9,6 +9,13 @@
 								$p->getPetData($userId);
 							?>
 
+							<?php 
+							if($p->isOwn())
+							{
+								echo '<a href="#'.$p->getId().'" class="btn btn-edit" id="edit-pet-profile">Edit</a>';
+							}
+							?>
+							
 							<div class="pic-caption pet-info">
 								<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
 								<strong class="nickname"><?php echo $p->getName(); ?></strong>
@@ -21,3 +28,7 @@
 							<div class="bg-txt corregir">
 								<p><?php echo $p->getStory();?></p>
 							</div>
+
+							<script type="text/javascript">
+								editPetProfile();
+							</script>

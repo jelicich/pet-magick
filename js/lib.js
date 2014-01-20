@@ -912,7 +912,7 @@ function imgVideoUploader(whatFor, modulo){
 				  		var file = 'ajax/getPetAbout.php';
 				  		var vars = '?p='
 			  		}
-			  		else if(modulo == 'pet-albm')
+			  		else if(modulo == 'pet-album')
 				  	{
 				  		var file = 'ajax/getPetAlbum.php';
 				  		var vars = '?p='

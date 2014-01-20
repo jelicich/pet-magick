@@ -11,14 +11,15 @@
 
 
 					<div class="mod-content clearfix">
-						<?php 
-						if($p->isOwn())
-						{
-							echo '<a href="#'.$p->getId().'" class="btn btn-edit" id="edit-pet-profile">Edit</a>';
-						}
-						?>
+						
 						
 						<div id="pet-about">
+							<?php 
+							if($p->isOwn())
+							{
+								echo '<a href="#'.$p->getId().'" class="btn btn-edit" id="edit-pet-profile">Edit</a>';
+							}
+							?>
 							<div class="pic-caption pet-info">
 								<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
 								<strong class="nickname"><?php echo $p->getName(); ?></strong>
@@ -38,16 +39,21 @@
 
 
 						<div id="pet-album">
+							<?php
+									if($p->isOwn())
+									{
+										echo '<a href="#'.$p->getId().'" class="btn" id="edit-pet-album">Edit album</a>';
+									}
+							?>
 							<div class="slider-small">
 								<?php
+									
+
 									if($p->getAlbumId())
 									{
 										$album = $p->getAlbum($p->getAlbumId());
 									
-										if($p->isOwn())
-										{
-											echo '<a href="#'.$pets[0]['ID_PET'].'" class="btn" id="edit-pet-album">Edit album</a>';
-										}
+										
 									
 								?>
 										<ul class="clearfix">

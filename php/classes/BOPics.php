@@ -147,6 +147,17 @@ function upload($query,$path){
                  'caption'=>$caption
               );
 
+              //me fijo si paso el id del album, por argumento.
+              $numargs = func_num_args();
+              if ($numargs >= 3) {
+                 $args = func_get_args();
+                 //lo pongo en query
+                 $query['album-id'] = $args[2];
+                 //var_dump($args[2]);
+              }
+              
+
+
               $id_last = $this->table->upload($query);
               return $id_last;
             }

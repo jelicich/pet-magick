@@ -14,6 +14,7 @@ if(!isset($_POST['p']) || $_POST['owner'] != $_SESSION['id'])
 include_once "../php/classes/BOPets.php";
 include_once "../php/classes/BOPics.php";
 include_once "../php/classes/BOVideos.php";
+include_once "../php/classes/BOAlbums.php";
 
 
 
@@ -39,7 +40,21 @@ function createQuery($query, $path, $class){
 }//create query
 
 
+
+
+
 if(isset($_FILES['file'])){ // normalWay();
+	//busco si tiene album
+	$albumId = $pet->getAlbumIdByPet($_POST['p']);
+	//si no tiene creo uno
+	if(empty($albumId))
+	{
+		$a = new BOAlbums;
+		$id = $a->createAlbum();
+		//setAlbum(ALBUM-ID , ID-PET)
+		$pet->setAlbum($id, $_POST['p']);
+		$albumId = $id;
+	}
 
 	$t = count($_FILES['file']['name']); 
 
@@ -55,15 +70,14 @@ if(isset($_FILES['file'])){ // normalWay();
 			
 			$obj = $videos;
 			$path = '../video/'; 
-
-		}else{
-
-			$obj = $pics; 
+			
+			createQuery($query, $path, $obj);
+		}else{		
 			$path = '../img/pets/';
-
+			$pics->upload($query,$path,$albumId);
 		} 
 		
-		createQuery($query, $path, $obj);
+		
 	}// end for
 }else{ // fallBack();
 	
@@ -98,12 +112,11 @@ if(isset($_FILES['file'])){ // normalWay();
 
 
 
-var_dump($_POST);
+//var_dump($_POST);
 
 
 $pet->updateAlbum($_POST,'../img/pets/');
 
 //$_GET['p'] = $_SESSION['id'];
-//include_once "../templates/petAlbum.php";
-
+include_once "../templates/petAlbum.php";
 

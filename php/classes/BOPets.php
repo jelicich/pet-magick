@@ -278,6 +278,17 @@ class BOPets{
         //HACER!!!
     }
 
+    function getAlbumIdByPet($id)
+    {
+        return $this->table->getAlbumIdByPet($id);
+    }
+
+
+    function setAlbum($albumId, $petId)
+    {
+        $this->table->setAlbum($albumId, $petId);
+    }
+
 }//End class BOUsers
 
 

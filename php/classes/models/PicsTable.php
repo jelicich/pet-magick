@@ -27,7 +27,8 @@ class PicsTable extends Doctrine_Table
 	            $Pics->DATE = $now;
 	            $Pics->CAPTION = $ref['caption'];
                 $Pics->THUMBNAIL = null;
-                $Pics->ALBUM_ID = null;
+                if(isset($ref['album-id']))
+                    $Pics->ALBUM_ID = $ref['album-id'];
 
                 $Pics->save();
                 $id_last = $Pics->ID_PIC;

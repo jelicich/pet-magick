@@ -39,6 +39,7 @@
 								?>
 							</div>
 							<input type="hidden" value=<?php echo '"'.$p->getOwner().'"';?> name="owner" class="form-element"/>
+							
 						</form>
 							
 							

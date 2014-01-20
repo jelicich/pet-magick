@@ -143,7 +143,7 @@ function upload($query,$path){
               $query = array(
                  //'pic'=>$fullpath, //Cambio esto, porque esta guardando en la base de datos la ruta "../img/blabla" lo cual está mal, ya que cuando entras a (por ej) user-profile.php intenta subir un nivel para encontrar la carpeta img, cuando la carpeta img está en el mismo nivel que user-profile (y todas las paginas).
                  'pic'=>$newName, 
-                 'thumb'=>$thumbpath,
+                 'thumb'=>$newName, //modifico esta ruta por la misma razon q arriba
                  'caption'=>$caption
               );
 

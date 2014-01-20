@@ -246,7 +246,7 @@ function autoSearch(inputId)
 					  		user = user.substr(index);	
 							if(!config.hidden)
 							{
-								window.location.href = "profile.php?u="+user;
+								window.location.href = "user-profile.php?u="+user;
 							}
 							else
 							{

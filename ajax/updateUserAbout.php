@@ -98,6 +98,9 @@ if(isset($_FILES['file'])){ // normalWay();
 
 //var_dump($_POST);
 
+$user->getUserData($_SESSION['id']);
+$_SESSION['thumb'] = $user->getThumb();
+//include_once "../templates/userMenu.php";
 
 $user->updateInfo($_POST,'../img/users/');
 $_GET['u'] = $_SESSION['id']; //imprimo esto para poder tener un response.text con el id del usuario y que deje de tirar el error de la variable U

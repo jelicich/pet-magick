@@ -10,6 +10,7 @@
 
 			$name = $usersList[$i]['NAME'];
 			$lastName = $usersList[$i]['LASTNAME'];
+			$userId = $usersList[$i]['ID_USER'];
 
 			if(!isset($usersList[$i]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
 			else{ $srcImg = 'img/users/thumb/'.$usersList[$i]['Pics']['PIC']; }
@@ -20,7 +21,7 @@
 ?>
 
 			<li>
-				<a href='user-profiles.html'>
+				<a href= <?php echo "user-profile.php?u=".$userId; ?> >
 					<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 					<dl class='hidden'>
 						<dt><?php echo $name." ".$lastName; ?> </dt>
@@ -44,6 +45,7 @@
 		
 			$name = $usersList[$i]['Users']['NAME'];
 			$lastName = $usersList[$i]['Users']['LASTNAME'];
+			$userId = $usersList[$i]['USER_ID'];
 
 			if(!isset($usersList[$i]['Users']['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
 			else{ $srcImg = 'img/users/thumb/'.$usersList[$i]['Users']['Pics']['PIC']; }
@@ -54,7 +56,7 @@
 	?>
 
 		<li>
-			<a href='user-profiles.html'>
+			<a href= <?php echo "user-profile.php?u=".$userId; ?> >
 				<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 				<dl class='hidden'>
 					<dt><?php echo $name." ".$lastName; ?> </dt>

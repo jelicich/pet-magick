@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
 
-<script src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<!-- <script src="http://code.jquery.com/jquery.js"></script> -->
+<!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
 <script type="text/javascript" src="js/lib.js"></script>
 
 </head>

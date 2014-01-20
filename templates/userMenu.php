@@ -1,6 +1,7 @@
 				
 			
 				<!-- user menu -->
+
 				<ul class="grid_4 push_6 clearfix" id="user-menu">
 					<li>
 						<a href="ajax/logout.php" id="logout">Log out</a>
@@ -9,11 +10,24 @@
 						<a href="inbox.php">Inbox</a>
 					</li>
 					<li>
-						<img src="img/users/thumb/1.jpg" />
-						<a href="#"><?php echo $_SESSION['name'].' '.$_SESSION['lastname'] ?></a>
+						<img src=<?php echo '"'. $_SESSION['thumb'] .'"'; ?> />
+						<a href=<?php echo "user-profile.php?u=". $_SESSION['id'] ?> ><?php echo $_SESSION['name'].' '.$_SESSION['lastname'] ?></a>
 					</li>
 				</ul>
 				<!-- END user menu -->
+
+
+
+
+
+				
+			
+				<!-- 
+					//include_once "php/classes/BOUsers.php";
+					//$u = new BOUsers;
+					//$u->getUserData($_SESSION['id']); ?>
+					 <img src= <?php //echo '"'.  $u->getThumb() .'"'; ?> /> 
+				-->
 
 
 

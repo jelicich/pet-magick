@@ -897,8 +897,6 @@ function imgVideoUploader(whatFor, modulo){
 									eval(scr[i].innerHTML);
 								}
 							}
-						
-						
 				  }// end modulPrintUpdates
 
 				// CANCEL SAVE
@@ -1331,7 +1329,7 @@ function usersByPet(){
 	var pets = byid('menuByPet').getElementsByTagName('a');
 	for(var i = 0; i < pets.length; i++){
 
-			pets[i].onclick = function(e)
+			pets[i].onclick = function()
 			{		
 					var p = this.href;
 					var index = p.indexOf('#');

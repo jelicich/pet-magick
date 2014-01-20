@@ -138,7 +138,6 @@ class BOUsers{
             }
     }// End login
 
-   
 
     function checklogin(){
 

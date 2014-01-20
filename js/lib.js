@@ -577,6 +577,7 @@ function printUpdates(){
 
 //============================= USER-PROFILE
 
+//profile cambia las mascotas x ajax
 function profile(){
 	
 	var as = document.querySelectorAll('.pet-link');
@@ -634,6 +635,26 @@ function editUserProfile(){
 	function printEditUser()
 	{
 		printEdit('user-about', this.responseText);
+	}
+}//end editUserProfile
+
+function editUserAlbum(){
+
+	var editUser = byid('edit-user-album');
+	
+	editUser.onclick = function()
+	{
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+  		
+		ajax('GET', 'ajax/getEditUserAlbum.php?u='+p, printEditUserAlbum, null, true);
+	}
+
+	function printEditUserAlbum()
+	{
+		printEdit('user-album', this.responseText);
 	}
 }//end editUserProfile
 
@@ -858,6 +879,7 @@ function imgVideoUploader(whatFor, modulo){
 			  		else if(modulo == 'albumProfile')
 			  		{
 						var uploadBtn = byid('save-edit-album');
+						var cancelBtn = byid('cancel-edit-album');
 			  		}
 				  
 				  file_id.parentNode.appendChild(uploadBtn);
@@ -910,16 +932,17 @@ function imgVideoUploader(whatFor, modulo){
 				  	else if(modulo == 'pet-about')
 				  	{
 				  		var file = 'ajax/getPetAbout.php';
-				  		var vars = '?p='
+				  		var vars = '?p=';
 			  		}
-			  		else if(modulo == 'pet-album')
+			  		else if(modulo == 'pet-albm')
 				  	{
 				  		var file = 'ajax/getPetAlbum.php';
-				  		var vars = '?p='
+				  		var vars = '?p=';
 			  		}
 			  		else if(modulo == 'albumProfile')
 			  		{
-						var file = '';
+						var file = 'ajax/getUserAlbum.php';
+						var vars = '?u=';
 			  		}
 
 			  		
@@ -1130,7 +1153,12 @@ function imgVideoUploader(whatFor, modulo){
 
 					  		}else if(modulo == 'albumProfile'){
 
-					  			var ajaxPostFile = 'ajax/ArchivoQueTraeAlbumProfile';
+					  			var ajaxPostFile = 'ajax/updateUserAlbum.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("u", p);
 					  		}
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);

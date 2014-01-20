@@ -231,6 +231,7 @@ class BOUsers{
             $this->thumb = 'img/users/thumb/default.jpg';
         }
 
+
         if(!empty($data->ALBUM_ID))
         {
             $this->albumId = $data->ALBUM_ID;
@@ -239,6 +240,7 @@ class BOUsers{
         {
             $this->albumId = false;
         }
+
 
         if(!empty($data->COUNTRY_ID))
         {
@@ -280,7 +282,14 @@ class BOUsers{
     //$id = album ID
     function getAlbum($id)
     {
+
         $a = $this->picsTable->getPicsByAlbum($id);
+        for($i=0; $i<sizeof($a); $i++)
+        {
+            $file=$a[$i]['PIC'];
+            $a[$i]['PIC'] = 'img/user/' . $file;
+            $a[$i]['THUMB'] = 'img/users/thumb/' . $file;
+        }
         return $a;
     }
 

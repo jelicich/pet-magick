@@ -7,10 +7,10 @@
 				<ul class="mod-content clearfix">
 					<?php 
 
-						$u = new BOUsers;
+						//$u = new BOUsers;
 						$n = new BONews;
 						
-						if($n->getNews($_SESSION['id']))
+						if($n->getNews($_GET['u']))
 						{
 							$nw = $n->getNews($_SESSION['id']);
 							

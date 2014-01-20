@@ -137,32 +137,7 @@
 		<!-- user album -->
 		<div id='user-album' class="mod grid_12 profiles-mod">
 			<?php
-				if($u->isOwn())
-				{
-					echo '<a href="#" class="btn btn-edit">Edit</a>';	
-				}
-			?>	
-			<div class="mod-header">
-				<h2>My album</h2>
-			</div>
-			<?php
-				$aId = $u->getAlbumId();
-				if($aId)
-				{
-			?>
-					<ul class="grid-thumbs clearfix mod-content">
-			<?php
-					$a = $u->getAlbum($aId);
-					for($i = 0; $i<sizeof($a); $i++)
-					{
-			?>
-						<li><a href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> ><img class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> /></a></li>
-			<?php
-					}//END FOR
-			?>
-					</ul>
-			<?php
-				}//END IF
+				include_once 'templates/userAlbum.php'; 
 			?>
 		</div>
 		<!-- END user album -->

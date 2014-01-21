@@ -242,4 +242,28 @@ class UsersTable extends Doctrine_Table
         return $r->toArray();
     }
 
+
+    public function getAlbumIdByUser($id)
+    {   
+        $q = Doctrine_Query::create()
+            ->select('u.ALBUM_ID')
+            ->from('Users u')
+            ->where('u.ID_USER = ?',$id);
+
+        $r = $q->execute();
+        $r = $r->toArray();
+        return $r[0]['ALBUM_ID'];
+
+    }
+
+    public function setAlbum($albumId, $userId)
+    {
+        $q = Doctrine_Query::create()
+            ->update('Users u')
+            ->set('u.ALBUM_ID', '?', $albumId )
+            ->where('u.ID_USER = ?', $userId);
+
+        $rta = $q->execute();
+    }   
+
 }//end class

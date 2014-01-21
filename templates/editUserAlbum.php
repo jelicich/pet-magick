@@ -48,7 +48,7 @@
 							
 
 						<script type="text/javascript">
-							imgVideoUploader('album', 'pet-album'); // SUBIR IMG
+							imgVideoUploader('album', 'albumProfile'); // SUBIR IMG
 
 							//imgVideoUploader('profile', 'about'); // SUBIR IMG
 						</script>

@@ -423,6 +423,58 @@ class BOUsers{
     }
 
 
+
+    function updateAlbum($array, $path)
+    {
+        //var_dump($array);
+        $this->val_updateAlbum($array);
+        
+        $pic = new BOPics;
+        
+        if(isset($array['delete-pic']))
+        {
+            for($i = 0; $i < sizeof($array['delete-pic']); $i++)
+            {
+                $pic->unlinkProfilePic($array['delete-pic'][$i], $path);    
+            }
+            
+        }
+
+        /*
+        $dataPic = $this->table->find($_POST['p']);
+        $oldPic = $dataPic->PIC_ID;
+        
+        $r = $this->table->updateInfo($array);
+        
+        //borro la imagen original de perfil
+        if(!empty($array['pic']) && is_numeric($array['pic']))
+        {
+          if(!empty($oldPic))
+            $pic->unlinkProfilePic($oldPic, $path);
+        }
+        */
+
+
+    }
+
+    function val_updateAlbum($array)
+    {
+        //HACER!!!
+    }
+
+    function getAlbumIdByUser($id)
+    {
+        return $this->table->getAlbumIdByUser($id);
+    }
+
+
+    function setAlbum($albumId, $userId)
+    {
+        $this->table->setAlbum($albumId, $userId);
+    }
+
+
+
 }//End class BOUsers
 
 

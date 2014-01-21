@@ -1,5 +1,6 @@
 PENDIENTES:
 -Borrar la imagen de perfil al editar.
--Validar funcion updateInfo en BOUSer y BOpets
+-Validar funcion updateInfo en BOUSer y BOpets // ver si hace falta?
+-Validar funcion updateAlbum en Bouser y Bopets // ver si hace falta?
 -Captions en album -guardar, editar, etc.
 -Optimizar las consultas de getData (hacer joins)

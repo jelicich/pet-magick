@@ -222,11 +222,14 @@ class BOUsers{
         if(!empty($data->PIC_ID))
         {
             $p = $this->picsTable->find($data->PIC_ID);
+            $this->picId = $data->PIC_ID;
             $this->profilePic = 'img/users/'.$p->PIC;
             $this->thumb = 'img/users/thumb/'.$p->PIC;
+            $this->hasPic = true;
         }
         else
         {
+            $this->hasPic = false;
             $this->profilePic = 'img/users/default.jpg';
             $this->thumb = 'img/users/thumb/default.jpg';
         }
@@ -359,6 +362,16 @@ class BOUsers{
         return $this->cityId;
     }
 
+    function getPicId()
+    {
+      return $this->picId;
+    }
+
+    function hasPic()
+    {
+      return $this->hasPic;
+    }
+
  //==== Own profile
     function isOwn()
     {
@@ -396,6 +409,14 @@ class BOUsers{
         {
           if(!empty($oldPic))
             $pic->unlinkProfilePic($oldPic, $path);
+        }
+        elseif(isset($array['delete-pic']))
+        {
+           
+           for($i = 0; $i < sizeof($array['delete-pic']); $i++)
+           {
+              $pic->unlinkProfilePic($array['delete-pic'][$i], $path);    
+           }
         }
 
 

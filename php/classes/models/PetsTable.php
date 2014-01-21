@@ -71,6 +71,9 @@ class PetsTable extends Doctrine_Table
                     ->set('p.TRAITS', '?', $array['traits'] )
                     ->set('p.STORY', '?', $array['story'] );
                     
+        if(isset($array['delete-pic']))
+            $q->set('p.PIC_ID', 'null');
+
         if(!empty($array['pic']) && is_numeric($array['pic']))
             $q->set('p.PIC_ID', '?', $array['pic'] );
        

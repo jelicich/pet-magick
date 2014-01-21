@@ -21,8 +21,18 @@
 						  	<pre id="result"></pre>
 							
 							<div class="pic-caption pet-info">
-								<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
-								<a href="#">Delete</a>
+								<img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/>
+								<?php
+									if($p->hasPic())
+									{
+								?>
+									<label>
+										<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$p->getPicId().'"'; ?> />
+										Delete
+									</label>
+								<?php
+									}
+								?>
 
 								<label for="pet-name">Name</label>
 								<input type="text" class="form-element" name="name" id="pet-name" value=<?php echo '"'.$p->getName().'"' ?> />

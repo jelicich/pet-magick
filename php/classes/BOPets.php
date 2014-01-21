@@ -93,12 +93,15 @@ class BOPets{
         {
             $this->pic = 'img/pets/default.jpg';
             $this->thumb = 'img/pets/thumb/default.jpg';
+            $this->hasPic = false;
         }
         else
         {
             $pic = $this->picsTable->find($p->PIC_ID);
+            $this->picId = $p->PIC_ID;
             $this->pic = 'img/pets/'.$pic->PIC; 
             $this->thumb = 'img/pets/thumb/'.$pic->PIC; 
+            $this->hasPic = true;
         }
 
         //$vid = $this->videosTable->find($pet['VIDEO_ID'])
@@ -179,7 +182,15 @@ class BOPets{
         return $this->id;
     }
 
+    function getPicId()
+    {
+      return $this->picId;
+    }
 
+    function hasPic()
+    {
+      return $this->hasPic;
+    }
 
     //$id = album ID
     function getAlbum($id)
@@ -230,6 +241,14 @@ class BOPets{
         {
           if(!empty($oldPic))
             $pic->unlinkProfilePic($oldPic, $path);
+        }
+        elseif(isset($array['delete-pic']))
+        {
+           
+           for($i = 0; $i < sizeof($array['delete-pic']); $i++)
+           {
+              $pic->unlinkProfilePic($array['delete-pic'][$i], $path);    
+           }
         }
 
 

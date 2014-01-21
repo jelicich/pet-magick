@@ -12,9 +12,7 @@
 			</div>
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
-					<img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/>
-					<a href="#">Delete</a>
-					
+
 
 					<!-- IMG UPLOADER -->
 					<div id='imgContainer'></div>
@@ -30,7 +28,18 @@
 
 					<!--</form>-->
 					<!-- END IMG UPLOADER -->
-
+						<img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/>
+						<?php
+							if($p->hasPic())
+							{
+						?>
+							<label>
+								<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$p->getPicId().'"'; ?> />
+								Delete
+							</label>
+						<?php
+							}
+						?>
 
 
 						<label for="usr-name">Name</label><input class="form-element" type="text" value=<?php echo '"'.$p->getName().'"' ?> name="name" id="usr-name"/>

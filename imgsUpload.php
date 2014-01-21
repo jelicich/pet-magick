@@ -278,11 +278,16 @@ function imgVideoUploader(whatFor){
 
 					        	    if (amount != 'profile'){
 
+					        	    		var contCap = create('div');
+					        	    		contCap.id = 'contCap';
+					        	    		byid('form-id').appendChild(contCap);
+
+
 					                    	caption = create('input');
 											caption.type = 'text';
 					                    	caption.id = 'caption_' + filesSelectedPosition;
 									    	caption.name = 'caption';
-									    	byid('form-id').appendChild(caption);
+									    	byid('contCap').appendChild(caption);
 									}
 
 
@@ -349,15 +354,17 @@ function imgVideoUploader(whatFor){
 
 				  			formData = new FormData();
 
-				   			var inputsText = byid('form-id').getElementsByTagName('input');
+				   			//var inputsText = byid('form-id').getElementsByTagName('input');
+				   			var inputsText = document.getElementsByName('caption');
 
 							for(i = 0; i < inputsText.length; i++){ 
 
-								if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
+								//if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
 
 									allCaption.push(inputsText[i].value);
+									
 
-								}
+								//}
 							}
 
 							for (var i = 0; i < filesSelected.length; i++) {
@@ -365,7 +372,6 @@ function imgVideoUploader(whatFor){
 					   			formData.append("file[]", filesSelected[i]);
 					   			formData.append("caption[]", allCaption[i]);
 					   			filesSelected[i] = '';
-					   			
 					   		}
 					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
 					   			
@@ -375,6 +381,7 @@ function imgVideoUploader(whatFor){
 					   		}*/
 
 					   		ajax('POST', 'ajax/insertar.php', printErr, formData, true);
+					   		byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
 
 				   		 	if (amount != 'album'){
 

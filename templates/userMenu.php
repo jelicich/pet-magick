@@ -10,6 +10,7 @@
 						<a href="inbox.php">Inbox</a>
 					</li>
 					<li>
+						
 						<img src=<?php echo '"'. $_SESSION['thumb'] .'"'; ?> />
 						<a href=<?php echo "user-profile.php?u=". $_SESSION['id'] ?> ><?php echo $_SESSION['name'].' '.$_SESSION['lastname'] ?></a>
 					</li>

@@ -6,6 +6,7 @@ include_once "../php/classes/BOUsers.php";
 include_once "../php/classes/BONews.php";
 
 $news = new BONews;
+$u = new BOUsers; // lo instancio aca para q ande news y no joda album. Testealo por las dudas....
 
 	if(isset($_POST)){
 

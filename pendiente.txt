@@ -10,11 +10,11 @@ ANTRIORES
 ACTUAL
 ======
 - Compatibilidad con diferentes navegadores en general
-- Mostrar la foto del user en el header cuando esta logueado
-- Empezar a linkear secciones correctamente
-- Cancenl en about user
+- Mostrar la foto del user en el header cuando esta logueado - Listo !!!!!!!!!!!
+- Empezar a linkear secciones correctamente - Listo !!!!!!!!!!!
+- Cancenl en about user - Listo !!!!!!!!!!!
 - buscador key sensitive
-- busccador // traer solo los datos necesarios (no password, etc)
+- busccador / traer solo los datos necesarios (no password, etc)
 - BOusers: get userdata() // traer toda la info en una sola consulta
 
 

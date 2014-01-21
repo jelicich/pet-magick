@@ -4,6 +4,7 @@ session_start();
 include_once "../php/classes/BOUsers.php";
 include_once "../php/classes/BONews.php";
 
+$u = new BOUsers; // lo instancio aca para q ande news y no joda album. Testealo por las dudas....
 $news = new BONews;
 $news->deleteNews($_POST['n']);
 

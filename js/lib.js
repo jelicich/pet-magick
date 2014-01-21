@@ -851,6 +851,10 @@ function imgVideoUploader(whatFor, modulo){
         	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
         } // end removeErr
 
+         function refreshHeader(){
+         	
+		  	 byid('login-reg').innerHTML = this.responseText;
+		 }// end refreshHeader
 
 		
 	    // ========================================= NORMAL WAY
@@ -895,6 +899,7 @@ function imgVideoUploader(whatFor, modulo){
 				  		if(modulo == 'about'){
 
 					  			var cont = byid('user-about');
+					  			ajaxx('POST', 'ajax/refreshHeader.php', refreshHeader, null, true);;
 
 					  	}else if(modulo == 'pet-about'){
 
@@ -956,11 +961,7 @@ function imgVideoUploader(whatFor, modulo){
 			  		file+=vars;
 			  		//si le paso la variable por argumento no la manda. se la tengo q agregar al archivo al final ?var=bla
 			  		ajaxx('POST', file, modulPrintUpdates, null, true);	
-			  		
-			  		
-		  		
-					
-				}; // end cancelSave
+			  	}; // end cancelSave
 
 				/*  function getUpdates(){
 				  		console.log(this.responseText);
@@ -1040,11 +1041,15 @@ function imgVideoUploader(whatFor, modulo){
 				                    	 
 				                    	  if (amount != 'profile'){
 
+				                    	  		var contCap = create('div');
+						        	    		contCap.id = 'contCap';
+						        	    		byid('form-id').appendChild(contCap);
+
 						                    	caption = create('input');
 												caption.type = 'text';
 						                    	caption.id = 'caption_' + filesSelectedPosition;
 										    	caption.name = 'caption';
-										    	 byid('form-id').appendChild(caption);
+										    	byid('contCap').appendChild(caption);
 										   }
 
 									    removeErr();
@@ -1162,6 +1167,8 @@ function imgVideoUploader(whatFor, modulo){
 					  		}
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
+					  		byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
+					  		
 
 
 				   		 	if (amount == 'profile' || amount == 'video'){

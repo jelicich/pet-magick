@@ -1405,7 +1405,7 @@ function deletePet()
 				var index = p.indexOf('#');
 		  		index ++;
 		  		p = 'p='+p.substr(index);
-				ajax('POST', 'ajax/deletePet.php', vardump, p, true);
+				ajax('POST', 'ajax/deletePet.php', refresh, p, true);
 			}
 		}
 	}
@@ -1413,7 +1413,7 @@ function deletePet()
 
 function refresh()
 {
-	//location.reload(true);
+	location.reload(true);
 }
 
 //============================= PROFILEs

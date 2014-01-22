@@ -53,4 +53,12 @@ class PicsTable extends Doctrine_Table
             ->where('p.ID_PIC = ?', $id );
         $q->execute();
     }
+
+    function deleteAllPics($id)
+    {
+        $q = Doctrine_Query::create()
+            ->delete('Pics p')
+            ->where('p.ALBUM_ID = ?', $id );
+        $q->execute();
+    }
 }

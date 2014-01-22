@@ -5,6 +5,7 @@ include_once('models/PetsTable.php');
 include_once('models/PicsTable.php');
 include_once('models/VideosTable.php');
 include_once ('BOPics.php');
+include_once ('BOAlbums.php');
 
 
 class BOPets{
@@ -309,6 +310,38 @@ class BOPets{
     {
         $p = $this->table->find($id);
         return $p->USER_ID;
+    }
+
+    function setPicNull($id)
+    {
+        $this->table->setPicNull($id);
+    }
+
+    function setAlbumNull($id)
+    {
+        $this->table->setAlbumNull($id);   
+    }
+
+    function deleteAllData($id)
+    {
+        //borro todas las fotos del album
+        $petData = $this->table->find($id);
+        $pics = new BOPics;
+        $pics->deleteAllPics($petData->ALBUM_ID, '../img/pets/');
+
+        //seteo la foto de perfil en null para que me deje borrrarla de la base
+        $this->setPicNull($id); 
+
+        //borro la foto de perfil
+        $pics->unlinkProfilePic($petData->PIC_ID, '../img/pets/');
+
+        //borro el album
+        $this->setAlbumNull($id);
+        $album = new BOAlbums;
+        $album->deleteAlbum($petData->ALBUM_ID);
+
+        //borro la mascota
+        $this->table->deletePet($id);
     }
 
 }//End class BOUsers

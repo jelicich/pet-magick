@@ -104,6 +104,34 @@ class PetsTable extends Doctrine_Table
             ->where('p.ID_PET = ?', $petId);
 
         $rta = $q->execute();
-    }   
+    }  
+
+    public function setPicNull($id)
+    {
+        $q = Doctrine_Query::create()
+            ->update('Pets p')
+            ->set('p.PIC_ID', 'NULL' )
+            ->where('p.ID_PET = ?', $id);
+
+        $rta = $q->execute();
+    }
+
+    public function setAlbumNull($id)
+    {
+        $q = Doctrine_Query::create()
+            ->update('Pets p')
+            ->set('p.ALBUM_ID', 'NULL' )
+            ->where('p.ID_PET = ?', $id);
+
+        $rta = $q->execute();
+    } 
+
+    public function deletePet($id)
+    {
+        $q = Doctrine_Query::create()
+            ->delete('Pets p')
+            ->where('p.ID_PET = ?', $id );
+        $q->execute();
+    }
 
 }

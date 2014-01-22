@@ -26,4 +26,12 @@ class AlbumsTable extends Doctrine_Table
     	$albumId = $a->ID_ALBUM;
     	return $albumId;
     }
+
+    public function deleteAlbum($id)
+    {
+        $q = Doctrine_Query::create()
+            ->delete('Albums a')
+            ->where('a.ID_ALBUM = ?', $id );
+        $q->execute();
+    }
 }

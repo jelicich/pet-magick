@@ -33,9 +33,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	// borrar mascotas
 
-	
 
-	var_dump($_POST);
+	$p->deleteAllData($_POST['p']);
+
+	
 
 }
 

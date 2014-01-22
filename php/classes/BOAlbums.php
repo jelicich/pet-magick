@@ -18,6 +18,11 @@ class BOAlbums{
         return $this->table->createAlbum();
     }
 
+    function deleteAlbum($id)
+    {
+    	return $this->table->deleteAlbum($id);
+    }
+
 
 }//End class BOUsers
 

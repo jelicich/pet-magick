@@ -1362,6 +1362,59 @@ function imgVideoUploader(whatFor, modulo){
 		}// end else
 }// end imgVideoUploader
 
+//============================= DELETE PET
+
+function deletePet()
+{
+	var btns = document.querySelectorAll('.delete-pet');
+	console.log(btns);
+	for(var i = 0; i < btns.length; i++)
+	{
+		btns[i].onclick = function()
+		{
+			var alertCont = create('div');
+			alertCont.id = 'alert-container';
+			var alertWin = create('div');
+			alertWin.id = 'alert-window';
+			var alertTxt = create('p');
+			alertTxt.id = 'alert-text';
+			alertTxt.innerHTML = 'You are about to delete all the information related to your pet. This action can\'t be undone. Do you want to contine?';
+			var btnClose = create('a');
+			btnClose.className = 'btn';
+			btnClose.innerHTML = 'Cancel';
+			var btnDelete = create('a');
+			btnDelete.className = 'btn btn-danger';
+			btnDelete.innerHTML = 'Delete';
+			btnDelete.href = this.href;
+			btnDelete.id = 'delete-ok';
+
+			document.body.appendChild(alertCont);
+			alertCont.appendChild(alertWin);
+			alertWin.appendChild(alertTxt);
+			alertWin.appendChild(btnClose);
+			alertWin.appendChild(btnDelete);
+
+			btnClose.onclick = function()
+			{
+				document.body.removeChild(alertCont);
+			}
+
+			btnDelete.onclick = function()
+			{
+				var p = this.href;
+				var index = p.indexOf('#');
+		  		index ++;
+		  		p = 'p='+p.substr(index);
+				ajax('POST', 'ajax/deletePet.php', vardump, p, true);
+			}
+		}
+	}
+}
+
+function refresh()
+{
+	//location.reload(true);
+}
 
 //============================= PROFILEs
 

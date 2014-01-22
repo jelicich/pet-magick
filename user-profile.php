@@ -83,7 +83,7 @@
 					<?php
 										if($u->isOwn())
 										{
-											echo '<a href="#" class="btn btn-danger">Delete</a>';	
+											echo '<a href=' . '"#'.$pets[$i]['ID_PET'] .'" class="btn btn-danger delete-pet">Delete</a>';
 										}
 					?>	
 								</li>
@@ -154,7 +154,7 @@
 <script type="text/javascript">
 	profile();
 	news();
-	
+	deletePet();
 	
 </script>
 

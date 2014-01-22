@@ -305,6 +305,12 @@ class BOPets{
         $this->table->setAlbum($albumId, $petId);
     }
 
+    function getOwnerId($id)
+    {
+        $p = $this->table->find($id);
+        return $p->USER_ID;
+    }
+
 }//End class BOUsers
 
 

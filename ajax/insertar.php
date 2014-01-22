@@ -24,7 +24,7 @@ function createQuery($query, $path, $class){
 	//echo $class->getErrors();
 }//create query
 
-
+var_dump($_POST);
 if(isset($_FILES['file'])){ // normalWay();
 
 	$t = count($_FILES['file']['name']); 
@@ -36,11 +36,11 @@ if(isset($_FILES['file'])){ // normalWay();
 		$query['fileSize'] = $_FILES['file']['size'][$i];
 		$query['fileType'] = $_FILES['file']['type'][$i];
 		$query['caption']  = $_POST['caption'][$i];
-
+		//echo $query['caption'];
 		if( in_array($query['fileType'], $mimeVideo)){  
 			
 			$obj = $videos;
-			$path = '../video/'; // Esto hay q hacerlo bien pq el path ya esta en la clase y este estaria quedando obsoleto....
+			$path = ''; // Esto hay q hacerlo bien pq el path ya esta en la clase y este estaria quedando obsoleto....
 
 		}else{
 

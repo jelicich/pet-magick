@@ -21,11 +21,10 @@ ACTUAL
 IMGUPLOADER
 ===========
 - Modificar la ruta del video thumb pq como deberia ser la BD no lo acepta, no tengo idea pq. Igual anda....
-- eliminar captions al enviar 
+- eliminar captions al enviar - Listo !!!!!!!!!!!
 - agregar title a video
 - poner valores correctos para las validaciones (los q estan son de prueba)
 - Mando array con una posicion vacia a php, puede quedar asi o ver de mandarlo bien
 - Mostrar imagenes seleccionadas en Safari 5.algo (buscar paralelo a lo q hice con IE7)
 - ver si validar cuando presiono upload sin seleccionar nada. No lo hice pq no se si va a haber boton siquiera
 - Imprimir el span q manda php cuando valida en IE7. Pq ahora lo manda al iframe y no se como sacarlo de ahi para mostrarlo donde corresponde
-- Modificar la ruta del video thumb pq como deberia ser la BD no lo acepta, no tengo idea pq. Igual anda....

@@ -12,7 +12,7 @@
 						
 						if($n->getNews($_GET['u']))
 						{
-							$nw = $n->getNews($_SESSION['id']);
+							$nw = $n->getNews($_GET['u']);
 							
 							for($i = 0; $i<sizeof($nw); $i++)
 							{

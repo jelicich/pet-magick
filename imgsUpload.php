@@ -282,8 +282,7 @@ function imgVideoUploader(whatFor){
 					        	    		contCap.id = 'contCap';
 					        	    		byid('form-id').appendChild(contCap);
 
-
-					                    	caption = create('input');
+					        	    		caption = create('input');
 											caption.type = 'text';
 					                    	caption.id = 'caption_' + filesSelectedPosition;
 									    	caption.name = 'caption';
@@ -316,8 +315,8 @@ function imgVideoUploader(whatFor){
 							                    var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
 							                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
 							                    	
-							                    	//console.log('onclick: ' + ImgPosition);
 							                 }
+
 							                 this.parentNode.removeChild(this);
 							                 filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
 
@@ -327,15 +326,8 @@ function imgVideoUploader(whatFor){
 													file_id.name = 'file';
 													byid('form-id').appendChild(file_id);;
 										  	  }
-						                }
-					                  }// if != video
-				                    	 
-				                    	 
-
-									    
-										
-
-						            
+					                }
+				                  }// if != video
 					            }// end onload
 					            reader.readAsDataURL(this.files[0]);
 				      }// end if
@@ -354,25 +346,27 @@ function imgVideoUploader(whatFor){
 
 				  			formData = new FormData();
 
-				   			//var inputsText = byid('form-id').getElementsByTagName('input');
 				   			var inputsText = document.getElementsByName('caption');
-
+				   			
+							
 							for(i = 0; i < inputsText.length; i++){ 
 
-								//if(inputsText[i].type == 'text' && inputsText[i].name == 'caption'){
-
-									allCaption.push(inputsText[i].value);
-									
-
-								//}
+								allCaption.push(inputsText[i].value);
 							}
 
 							for (var i = 0; i < filesSelected.length; i++) {
 
 					   			formData.append("file[]", filesSelected[i]);
-					   			formData.append("caption[]", allCaption[i]);
+					   			if(amount != 'video'){
+						   			formData.append("caption[]", allCaption[i]);
+						   		}
 					   			filesSelected[i] = '';
 					   		}
+
+					   			if(amount == 'video'){
+					   				formData.append("caption", inputsText[0].value);
+					   			}
+					   	
 					   		/*if(filesSelected == ''){ // ============================= EMPTY FILE VALIDATION
 					   			
 					   			errMsg('Debe seleccionar una img desde js'); 
@@ -382,6 +376,7 @@ function imgVideoUploader(whatFor){
 
 					   		ajax('POST', 'ajax/insertar.php', printErr, formData, true);
 					   		byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
+					   		
 
 				   		 	if (amount != 'album'){
 
@@ -569,7 +564,7 @@ function imgVideoUploader(whatFor){
 		}// end else
 }// end imgVideoUploader
 
-imgVideoUploader('album');
+imgVideoUploader('video');
 
 </script>
 

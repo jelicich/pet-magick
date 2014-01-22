@@ -19,7 +19,7 @@ class BOVideos{
 
   function val($query){
 
-        if($query['fileSize'] > 900000) 
+        if($query['fileSize'] > 9000000000000) 
         {// ver q medidas necesito aca para cada formato, tal vez separarlos
           throw new Exception('<span>muy grande desde php videos</span>');
           return;
@@ -108,8 +108,11 @@ class BOVideos{
             getThumbImage($path, $thumbPath);
 
             $title = 'provisorio!!!!!!';
-            $caption = 'provisorio!!!!!!';
-            $path = '../video/'.$newName;
+            $caption = $query['caption'];
+            $path = $newName;
+            $thumbPath = $thumbName;
+
+
             
             $query = array(
                  'video'=>$path, 
@@ -129,6 +132,12 @@ class BOVideos{
             return false;
           }
   }// End upload_video
+
+  function getVideosList(){
+
+    $array = $this->table->getVideosList();
+        return $array;
+  }
 
   function getErrors(){
 

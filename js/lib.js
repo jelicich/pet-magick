@@ -1125,9 +1125,15 @@ function imgVideoUploader(whatFor, modulo){
 					   		for (var i = 0; i < filesSelected.length; i++) {
 
 					   			formData.append("file[]", filesSelected[i]);
-					   			formData.append("caption[]", allCaption[i]);
+					   			//if(amount != 'video'){
+						   			formData.append("caption[]", allCaption[i]);
+						   		//}
 					   			filesSelected[i] = '';
 					   		}
+
+					   		/*if(amount == 'video'){
+					   				formData.append("caption", inputsText[0].value);
+					   			}*/
 
 				   			if(modulo == 'about'){
 			  				
@@ -1390,5 +1396,31 @@ function usersByPet(){
 	}// end printByPet
 }// end userByPet
 
+//============================= antics
+
+function playVideo(){
+
+ var eachVideo = byid('culo').getElementsByTagName('a');;
+
+for(var i = 0; i < eachVideo.length; i++){
+
+			eachVideo[i].onclick = function(e)
+			{		
+				//e.preventDefault();
+				/*	var p = this.href;
+					var index = p.indexOf('#');
+			  		index ++;
+			  		p = 'c='+p.substr(index);
+					ajax('POST', 'ajax/profilesModuleByPet.php', printByPet, p, true);*/
+					byid('modalPlayer').style.display = 'block';
+
+					byid('modalPlayer').onclick = function(){
+						byid('modalPlayer').style.display = 'none'; // crear elemento para cerrar la ventana modal
+					}
+
+			}// end pets[i].onclick
+	}// end for
+
+}
 
 

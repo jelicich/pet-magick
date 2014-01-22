@@ -85,10 +85,7 @@ class BOPets{
         $this->story = $p->STORY;
         $this->owner = $p->USER_ID;
         $this->id = $id;
-        
 
-
-        
         if($p->PIC_ID == null)
         {
             $this->pic = 'img/pets/default.jpg';

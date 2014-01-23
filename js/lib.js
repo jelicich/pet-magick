@@ -754,6 +754,27 @@ function news(){
 	}//end for
 }//end postNews
 
+
+function addPet()
+{
+	var btn = byid('add-pet');
+	
+	
+	btn.onclick = function()
+	{
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+		ajax('GET', 'ajax/getAddPet.php?u='+p, printEditPet, null, true);
+	}	
+
+
+	function printEditPet()
+	{
+		printEdit('pet-profile', this.responseText);
+	}
+}//end addPet
 //======================================================================== IMG UPLOAD
 
 // Parametros a pasar para tipo de uso: 'profile', 'video', 'album'
@@ -885,6 +906,11 @@ function imgVideoUploader(whatFor, modulo){
 						var uploadBtn = byid('save-edit-album');
 						var cancelBtn = byid('cancel-edit-album');
 			  		}
+			  		else if(modulo == 'add-pet')
+			  		{
+						var uploadBtn = byid('save-new-pet');
+						var cancelBtn = byid('cancel-new-pet');
+			  		}
 				  
 				  file_id.parentNode.appendChild(uploadBtn);
 
@@ -912,6 +938,10 @@ function imgVideoUploader(whatFor, modulo){
 				  		}else if(modulo == 'albumProfile'){
 
 				  			var cont = byid('user-album');
+				  		
+				  		}else if(modulo == 'add-pet'){
+
+				  			var cont = byid('pet-profile');
 				  		}
 
 				  		cont.innerHTML = this.responseText;
@@ -946,6 +976,14 @@ function imgVideoUploader(whatFor, modulo){
 			  		}
 			  		else if(modulo == 'albumProfile')
 			  		{
+						var file = 'ajax/getUserAlbum.php';
+						var vars = '?u=';
+			  		}
+			  		else if(modulo == 'add-pet')
+			  		{
+						//VER Q HACER ACA!!!!
+						//VER Q HACER ACA!!!!
+						//VER Q HACER ACA!!!!
 						var file = 'ajax/getUserAlbum.php';
 						var vars = '?u=';
 			  		}
@@ -1183,6 +1221,15 @@ function imgVideoUploader(whatFor, modulo){
 					  		}else if(modulo == 'albumProfile'){
 
 					  			var ajaxPostFile = 'ajax/updateUserAlbum.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("u", p);
+					  		
+					  		}else if(modulo == 'add-pet'){
+
+					  			var ajaxPostFile = 'ajax/uploadPet.php';
 					  			var p = this.href;
 								var index = p.indexOf('#');
 						  		index ++;

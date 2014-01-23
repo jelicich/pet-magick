@@ -94,7 +94,12 @@
 						
 						}//END IF 
 					
+						if($u->isOwn())
+						{
+							echo '<li><a href="#'.$userId.'" class="btn" id="add-pet">Add pet!</a></li>';
+						}
 					?>
+					
 				</ul>
 
 				
@@ -155,7 +160,7 @@
 	profile();
 	news();
 	deletePet();
-	
+	addPet();
 </script>
 
 </body>

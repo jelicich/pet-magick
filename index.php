@@ -171,6 +171,11 @@
 </div>
 <!-- END wrapper-->
 
+<!--
+<?php 
+	//include_once 'templates/player.php'; 
+?>
+-->
 
 
 </body>

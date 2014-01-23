@@ -46,15 +46,19 @@ if(isset($_FILES['file'])){ // normalWay();
 		$query['fileName'] = $_FILES['file']['name'][$i];
 		$query['fileSize'] = $_FILES['file']['size'][$i];
 		$query['fileType'] = $_FILES['file']['type'][$i];
-		$query['caption']  = $_POST['caption'][$i];
 
 		if( in_array($query['fileType'], $mimeVideo)){  
+
+			$query['caption']  = $_POST['caption'];
+			$query['title']  = $_POST['title'];
 			
 			$obj = $videos;
 			$path = '../video/'; 
 
 		}else{
 
+			$query['caption']  = $_POST['caption'][$i];
+				
 			$obj = $pics; 
 			$path = '../img/users/';
 
@@ -78,7 +82,7 @@ if(isset($_FILES['file'])){ // normalWay();
 				$query['caption'] = $_POST["caption_".$p]; // LISTO!!!!!!!!!!!!!!!!!!!!
 
 				if( in_array($query['fileType'], $mimeVideo)){  
-				
+					$query['title'] = $_POST["title"]; // LISTO!!!!!!!!!!!!!!!!!!!!
 					$obj = $videos;
 					$path = '../img/videos/';
 
@@ -90,7 +94,7 @@ if(isset($_FILES['file'])){ // normalWay();
 				} 
 		
 		createQuery($query, $path, $obj);
-		$counter++;
+		//$counter++;
 	}// end foreach
 }// end else
 

@@ -33,24 +33,38 @@ class VideosTable extends Doctrine_Table
             $Videos->save();
    }// end upload_img
 
-        public function getVideosList()
+       
+
+       public function getVideosList()
     {
         $q = Doctrine_Query::create()
-            //->select('p.USER_ID, u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
             ->select('v.THUMBNAIL, v.CAPTION, v.TITLE, v.VIDEO')
             ->from('Videos v');
-            //->innerJoin('p.Users u')
-           // ->leftJoin('u.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
-            //->leftJoin('u.Countries k')
-            //->leftJoin('u.Regions r')
-            //->leftJoin('u.Cities c')
-            //->where('p.ANIMAL_CATEGORY_ID = ?', $id)
-           // ->groupBy('u.ID_USER');
         
         $r = $q->execute();    
         
         return $r->toArray();
     }
+
+     
+
+     public function getVideosByCategory($id)
+    {
+        $q = Doctrine_Query::create()
+
+            ->select('p.ID_PET, p.ANIMAL_CATEGORY_ID, p.NAME, v.THUMBNAIL, v.CAPTION, v.TITLE, v.VIDEO')
+            ->from('Pets p')
+            ->innerJoin('p.Videos v')
+            ->where('p.ANIMAL_CATEGORY_ID = ?', $id);
+
+        
+        $r = $q->execute();    
+        
+        return $r->toArray();
+    }
+
+
+
 
     public function getVideosByPet($id)
     { // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php

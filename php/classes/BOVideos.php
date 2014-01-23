@@ -107,7 +107,7 @@ class BOVideos{
             
             getThumbImage($path, $thumbPath);
 
-            $title = 'provisorio!!!!!!';
+            $title = $query['title'];
             $caption = $query['caption'];
             $path = $newName;
             $thumbPath = $thumbName;
@@ -138,6 +138,14 @@ class BOVideos{
     $array = $this->table->getVideosList();
         return $array;
   }
+
+  function getVideosByCategory($id){
+
+    $array = $this->table->getVideosByCategory($id);
+        return $array;
+  }
+
+
 
   function getErrors(){
 

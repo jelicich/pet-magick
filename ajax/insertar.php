@@ -35,15 +35,21 @@ if(isset($_FILES['file'])){ // normalWay();
 		$query['fileName'] = $_FILES['file']['name'][$i];
 		$query['fileSize'] = $_FILES['file']['size'][$i];
 		$query['fileType'] = $_FILES['file']['type'][$i];
-		$query['caption']  = $_POST['caption'][$i];
+		
 		//echo $query['caption'];
+
 		if( in_array($query['fileType'], $mimeVideo)){  
 			
+			$query['caption']  = $_POST['caption'];
+			$query['title']  = $_POST['title'];
+
 			$obj = $videos;
 			$path = ''; // Esto hay q hacerlo bien pq el path ya esta en la clase y este estaria quedando obsoleto....
 
 		}else{
 
+			$query['caption']  = $_POST['caption'][$i];
+			
 			$obj = $pics; 
 			$path = '../img/users/';
 
@@ -53,31 +59,20 @@ if(isset($_FILES['file'])){ // normalWay();
 	}// end for
 }else{ // fallBack();
 	
-	$counter = 0;
 	foreach ($_FILES as $key => $eachFile) 
 	{
-				//var_dump($eachFile);
-				//var_dump($key);
-				//$captionpos = 'caption_'.$counter;
-					
 				$index = strpos($key, "_");
 		  		$index++;
 		  		$p = substr($key, $index);
-				
-				//var_dump($_POST);
-				//var_dump($_FILES); 
 
 				$query['file'] = $eachFile['tmp_name'];
 				$query['fileName'] = $eachFile['name'];
 				$query['fileSize'] =$eachFile['size'];
 				$query['fileType'] = $eachFile['type'];
-				
-
-
-				$query['caption'] = $_POST["caption_".$p]; // RESOLVER!!!!!!!!!!!!!!!!!!!!
+				$query['caption'] = $_POST["caption_".$p]; // LISTO!!!!!!!!!!!!!!!!!!!!
 
 				if( in_array($query['fileType'], $mimeVideo)){  
-				
+					$query['title'] = $_POST["title"]; // LISTO!!!!!!!!!!!!!!!!!!!!
 					$obj = $videos;
 					$path = '../img/videos/';
 
@@ -86,10 +81,10 @@ if(isset($_FILES['file'])){ // normalWay();
 					$obj = $pics; 
 					$path = '../img/users/';
 
-				} // tratar de optimizar par ano repetir 
+				} 
 		
 		createQuery($query, $path, $obj);
-		$counter++;
+		//$counter++;
 	}// end foreach
 }// end else
 

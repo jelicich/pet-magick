@@ -1045,6 +1045,16 @@ function imgVideoUploader(whatFor, modulo){
 						        	    		contCap.id = 'contCap';
 						        	    		byid('form-id').appendChild(contCap);
 
+						        	    	if(amount == 'video'){
+
+									    		title = create('input');
+												title.type = 'text';
+						                    	title.id = 'title_' + filesSelectedPosition;
+										    	title.name = 'title';
+										    	byid('contCap').appendChild(title);
+									    	}
+
+
 						                    	caption = create('input');
 												caption.type = 'text';
 						                    	caption.id = 'caption_' + filesSelectedPosition;
@@ -1120,15 +1130,23 @@ function imgVideoUploader(whatFor, modulo){
 
 							}
 
-							
-
-					   		for (var i = 0; i < filesSelected.length; i++) {
+							for (var i = 0; i < filesSelected.length; i++) {
 
 					   			formData.append("file[]", filesSelected[i]);
-					   			//if(amount != 'video'){
+					   			
+					   			if(amount == 'album'){
 						   			formData.append("caption[]", allCaption[i]);
-						   		//}
+						   		}
+
 					   			filesSelected[i] = '';
+					   		}
+
+					   		if(amount == 'video'){
+					   				
+					   				var inputsTitle = document.getElementsByName('title');
+					   				formData.append("caption", inputsText[0].value);
+					   				formData.append("title", inputsTitle[0].value);
+
 					   		}
 
 					   		/*if(amount == 'video'){
@@ -1416,7 +1434,10 @@ function refresh()
 	location.reload(true);
 }
 
-//============================= PROFILEs
+//============================= MODULS
+
+// Las dos funcinoes de aca abajo hay q hacerlas en una sola pq son casi iguales. Estan duplicadas provisoriamente
+// Tambien comparten el mismo id antics y profiles en sus modulos....
 
 function usersByPet(){
 
@@ -1436,7 +1457,7 @@ function usersByPet(){
 
 	function printByPet(){
 
-		var cont = byid("profilesModuleByPet");
+		var cont = byid("ModulesByPet");
 		cont.innerHTML = this.responseText;
 		var scr = cont.getElementsByTagName('script');
 		if(scr.length > 0)
@@ -1449,31 +1470,36 @@ function usersByPet(){
 	}// end printByPet
 }// end userByPet
 
-//============================= antics
 
-function playVideo(){
+function listByCategory(){
 
- var eachVideo = byid('culo').getElementsByTagName('a');;
+	var pets = byid('menuByPet').getElementsByTagName('a');
+	for(var i = 0; i < pets.length; i++){
 
-for(var i = 0; i < eachVideo.length; i++){
-
-			eachVideo[i].onclick = function(e)
+			pets[i].onclick = function()
 			{		
-				//e.preventDefault();
-				/*	var p = this.href;
+					var p = this.href;
 					var index = p.indexOf('#');
 			  		index ++;
 			  		p = 'c='+p.substr(index);
-					ajax('POST', 'ajax/profilesModuleByPet.php', printByPet, p, true);*/
-					byid('modalPlayer').style.display = 'block';
-
-					byid('modalPlayer').onclick = function(){
-						byid('modalPlayer').style.display = 'none'; // crear elemento para cerrar la ventana modal
-					}
+					ajax('POST', 'ajax/anticsModuleByCategory.php', printByCategory, p, true);
 
 			}// end pets[i].onclick
 	}// end for
 
-}
+	function printByCategory(){
+
+		var cont = byid("ModulesByPet");
+		cont.innerHTML = this.responseText;
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
+	}// end printByPet
+}// end userByPet
 
 

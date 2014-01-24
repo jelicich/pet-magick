@@ -5,4 +5,4 @@ PENDIENTES:
 -Captions en album -guardar, editar, etc.
 -Optimizar las consultas de getData (hacer joins)
 -Subir, editar, borrar videos y agregar a la funcionalidad de Delete Pet
--Agregar +crear mascota
+-Actualizar PET LIST cuando se edita la mascota o se crea una nueva

@@ -26,6 +26,15 @@
 								<div class="pic-caption pet-info">
 									<img src="img/pets/thumb/default.jpg" class="thumb-mid"/>
 									
+									<select name="animal-category" class="form-element">
+										<?php
+										$cats = $ac->getCategories();
+										for($i = 0; $i<sizeof($cats); $i++)
+										{
+											echo '<option value="'.$cats[$i]['ID_ANIMAL_CATEGORY'].'">'.$cats[$i]['NAME'].'</option>';
+										}
+										?>
+									</select>
 
 									<label for="pet-name">Name</label>
 									<input type="text" class="form-element" name="name" id="pet-name" />

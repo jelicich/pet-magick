@@ -141,6 +141,7 @@ class PetsTable extends Doctrine_Table
         $p->BREED = $array['breed'];
         $p->TRAITS = $array['traits'];
         $p->STORY = $array['story'];
+        $p->ANIMAL_CATEGORY_ID = $array['animal-category'];
         if(!empty($array['pic']) && is_numeric($array['pic']))
             $p->PIC_ID = $array['pic'];
         $p->USER_ID = $array['u'];

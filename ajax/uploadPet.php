@@ -18,7 +18,7 @@ include_once "../php/classes/BOVideos.php";
 
 
 
-$pet = new BOPets;
+$p = new BOPets;
 $pics = new BOPics;
 $videos = new BOVideos;
 //var_dump($_POST);
@@ -102,9 +102,9 @@ if(isset($_FILES['file'])){ // normalWay();
 //var_dump($_POST);
 
 
-$idPet = $pet->addPet($_POST);
+$idPet = $p->addPet($_POST);
 
-$pet->getPetData($idPet);
+$p->getPetData($idPet);
 
 
 include_once "../templates/petProfile.php";

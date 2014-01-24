@@ -5,13 +5,13 @@ include_once('models/AnimalCategoriesTable.php');
 
 
 
-class BOAnimalCateogries{
+class BOAnimalCategories{
   
   var $err;
 
   function __construct()
   {
-    $this->country_table = Doctrine_Core::getTable('AnimalCategories');
+    $this->table = Doctrine_Core::getTable('AnimalCategories');
   }
 
 //======================= nombres de todos los paises

@@ -21,7 +21,7 @@ class AnimalCategoriesTable extends Doctrine_Table
     {
     	$q = Doctrine_Query::create()
     		->select('c.*')
-    		->from('AnimalCategories');
+    		->from('AnimalCategories c');
     	$rta = $q->execute();
     	return $rta->toArray();
     }

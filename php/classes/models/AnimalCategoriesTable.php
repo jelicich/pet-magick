@@ -16,4 +16,13 @@ class AnimalCategoriesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('AnimalCategories');
     }
+
+    public function getCategories()
+    {
+    	$q = Doctrine_Query::create()
+    		->select('c.*')
+    		->from('AnimalCategories');
+    	$rta = $q->execute();
+    	return $rta->toArray();
+    }
 }

@@ -344,6 +344,24 @@ class BOPets{
         $this->table->deletePet($id);
     }
 
+    function addPet($array)
+    {
+
+        //var_dump($array);
+        $this->val_addPet($array);
+        
+
+        $r = $this->table->addPet($array);
+        return $r;
+
+    
+    }
+
+    function val_addPet($array)
+    {
+        //HACER
+    }
+
 }//End class BOUsers
 
 

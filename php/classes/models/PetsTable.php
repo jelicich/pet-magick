@@ -134,4 +134,18 @@ class PetsTable extends Doctrine_Table
         $q->execute();
     }
 
+    public function addPet($array)
+    {
+        $p = new Pets();
+        $p->NAME = $array['name'];
+        $p->BREED = $array['breed'];
+        $p->TRAITS = $array['traits'];
+        $p->STORY = $array['story'];
+        if(!empty($array['pic']) && is_numeric($array['pic']))
+            $p->PIC_ID = $array['pic'];
+        $p->USER_ID = $array['u'];
+        $p->save();
+        return $p->ID_PET;
+    }
+
 }

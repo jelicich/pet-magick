@@ -8,7 +8,7 @@
 				//if($p->getPetList($_GET['p']))
 				//{	
 					//echo '<a href="#" class="btn btn-edit" id="save-edit-user">Save</a>';
-						echo '<a href="#'.$_GET['u'].'" class="btn btn-edit" id="save-new-pet">Save</a><a href="#'.$_GET['u'].'" class="btn btn-cancel" id="cancel-new-pet-">Cancel</a>';		
+						echo '<a href="#'.$_GET['u'].'" class="btn btn-edit" id="save-new-pet">Save</a><a href="#'.$_GET['u'].'" class="btn btn-cancel" id="cancel-new-pet">Cancel</a>';		
 					
 					//$pet = $p->getPet($pets[0]['ID_PET']);
 			?>		
@@ -54,7 +54,7 @@
 					</div><!--content mod-->
 
 			<script type="text/javascript">
-				imgVideoUploader('profile', 'pet-about'); // SUBIR IMG
+				imgVideoUploader('profile', 'add-pet'); // SUBIR IMG
 
 				//imgVideoUploader('profile', 'about'); // SUBIR IMG
 			</script>

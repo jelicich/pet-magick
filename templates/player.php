@@ -1,4 +1,10 @@
+
 <div id="modalPlayer">
+
+  <div id='closeBlock'>
+  <a id='close' href='#'><img src='img/close.png' alt='close' id='close' /></a>
+
+
   <div id="jp_container_1" class="jp-video">
     <div class="jp-type-single">
       <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -34,9 +40,9 @@
             </ul>
           </div>
           <div class="jp-title">
-            <ul>
-              <li><?php echo $title; ?></li>
-            </ul>
+          <!--  <ul> esto es para poner el titulo del video en el reproductor. Imprime siempre el mismo title y es medio al dope, asi q lo saco....
+              <li><?php //echo $title; ?></li>
+            </ul> -->
           </div>
         </div>
       </div>
@@ -46,8 +52,11 @@
       </div>
     </div>
   </div>
+
+
+  </div>
 </div>
 
 <?php 
     include_once 'templates/Jquery_player.php'; 
-  ?>
+?>

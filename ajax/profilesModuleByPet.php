@@ -72,5 +72,5 @@
 ?>
 
 <script type="text/javascript">
-	usersByPet();
+	listByCategory('profilesModuleByPet.php');
 </script>

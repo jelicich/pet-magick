@@ -32,6 +32,10 @@ function autoSearch(inputId)
 			input.inputField.addEventListener("keypress", handler, false); 
 			input.inputField.addEventListener("paste", handler, false);
 			input.inputField.addEventListener("keydown", handler, false); 
+
+			//input.inputField.attachEvent('keypress', handler);
+			//input.inputField.attachEvent('paste', handler);
+			//input.inputField.attachEvent('keydown', handler);
 		}
 	}
 

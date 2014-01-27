@@ -95,7 +95,7 @@ class BOVideos{
               {
                 $imageName = $thumbRoute;
                 $tmbPath = $imageName;
-                $frameObject->resize(120,90,0,0,0,0);
+                $frameObject->resize(480,270,0,0,0,0); //120 x90
                 imagejpeg($frameObject->toGDImage(),$tmbPath);
               }
               else
@@ -145,7 +145,11 @@ class BOVideos{
         return $array;
   }
 
+  function getVideosRamdom(){
 
+      $array = $this->table->getVideosRamdom();
+        return $array;
+  }
 
   function getErrors(){
 

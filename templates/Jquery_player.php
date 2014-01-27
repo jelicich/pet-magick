@@ -6,43 +6,51 @@
 
 <script type="text/javascript">
 
+
 $(document).ready(function(){
 
-    $("#jquery_jplayer_1").jPlayer({
-        
-         ready: function () {
-         
-          $(this).jPlayer("setMedia", {
-           
-            m4v: "video/8607_1390385159.mp4",
-            ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer_480x270.ogv", // ver q onda esto
-            poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+      function runVideo(videoSrc, imgSrc){
 
-        })
-         },
+          $("#jquery_jplayer_1").jPlayer({
+              
+               ready: function () {
+               
+                $(this).jPlayer("setMedia", {
+                 
+                  m4v: videoSrc,
+                  ogg: videoSrc,// ver q onda esto de los diferentes formatos
+                  webm: videoSrc,// ver q onda esto de los diferentes formatos
+                  poster: imgSrc
 
-         swfPath: "js",
-        supplied: "m4v, ogv"
-    });
+                }).jPlayer('play');
+               },
 
-       $(".petVideo").click(function(eve){
+               swfPath: "js",
+               supplied: "m4v, ogg, webm"
+          });
+      }// end runVideo
 
-          eve.preventDefault();
+       
+       $(".petVideo").click(function(e){
 
-          var thumb = $(this).children('img').attr('src');
+            e.preventDefault();
+            
+            var thumb = $(this).find('img').attr('src');
+            var video  = $(this).attr("href");
+           // $("#jquery_jplayer_1").jPlayer("setMedia", {m4v: video}, {poster: thumb}).jPlayer("play");
+            $("#modalPlayer").css('display', 'block');
 
-          $("#modalPlayer").css('display', 'block');
-          $("#jquery_jplayer_1").jPlayer("setMedia", {
+               $("#close").click(function(){ 
+                   
+                    $("#modalPlayer").css('display', 'none');  
+                    $("#jquery_jplayer_1").jPlayer('destroy');
+                    
+               });
 
-              m4v: $(this).attr("href"),
-              poster: thumb
+            runVideo(video, thumb);
 
-           });
-
-         return false;
-    });
-
+            return false;
+       });
 });
-    
-listByCategory();
+
 </script>

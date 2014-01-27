@@ -843,14 +843,24 @@ p,span{
 	top:0;     
 	left:0;     
 	z-index:999;
-
 }
 
+#close{
+	margin-left: 229px;
+}
+
+#closeBlock{
+	width: 480px;
+	height: auto;
+	margin: 100px auto;
+	position: relative;
+}
+/*
 #jp_container_1{
-margin: 100px auto;
+//margin: 100px auto;
 
 }
-
+*/
 
 /* ---------------------------- profiles */
 

@@ -57,39 +57,14 @@
 			<div class="mod-header">
 				<h2>Latest videos</h2>
 			</div>
-			
+
 			<ul class='mod-content clearfix'>
-
-				<li class='video'>
-					<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
-					<div class='wrapper-play'>
-						<div class="play"></div>
-						<img src="" class="thumb-big video-thumb"/>
-					</div>
-
-					<div class="video-last-caption">
-						<h3>Hey! let me pass - <span>2:12</span></h3>
-						<span><strong>By: </strong> Petter Putter</span>
-					</div>
-					
-				</li>
-
-
-				<li class='video'>
-					<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
-					<div class='wrapper-play'>
-						<div class="play"></div>
-						<img src="" class="thumb-big video-thumb"/>
-					</div>
-
-					<div class="video-last-caption">
-						<h3>Hey! let me pass - <span>2:12</span></h3>
-						<span><strong>By: </strong> Petter Putter</span>
-					</div>
-					
-				</li>
-
+				<?php 
+					$s = 'antics'; // esta variable define cuantas fotos habra en el modulo	
+					include_once 'templates/latestVideosModule.php';
+				?>
 			</ul>
+	
 
 		</div>
 		<!-- End lastest videos -->
@@ -130,6 +105,10 @@
 	<?php 
 		include_once 'templates/player.php'; 
 	?>
+	
+<script type="text/javascript">
+	listByCategory('anticsModuleByCategory.php');
+</script>
 
 
 </body>

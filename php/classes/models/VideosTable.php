@@ -35,7 +35,7 @@ class VideosTable extends Doctrine_Table
 
        
 
-       public function getVideosList()
+    public function getVideosList()
     {
         $q = Doctrine_Query::create()
             ->select('v.THUMBNAIL, v.CAPTION, v.TITLE, v.VIDEO')
@@ -63,22 +63,32 @@ class VideosTable extends Doctrine_Table
         return $r->toArray();
     }
 
+     public function getVideosRamdom() // revisar esta funcion pq no me queda claro q carajo me trae, aunque anda
+    {      
+        $userCount = Doctrine::getTable('Videos')->count();
+        $user = Doctrine::getTable('Videos')
+      ->createQuery()
+      //->limit(2)
+      ->offset(rand(0, $userCount - 1))
+      ->fetchOne();
+
+       return $user->toArray();
+    }
 
 
+     public function getVideosByPet($id)
+     { // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
 
-    public function getVideosByPet($id)
-    { // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
+            $q = Doctrine_Query::create()
+    			->from('Videos v') 
+    			->AndWhere('v.PET_ID = ?', $id);
 
-        $q = Doctrine_Query::create()
-			->from('Videos v') 
-			->AndWhere('v.PET_ID = ?', $id);
-
-		$videos = $q->execute();
-       
-       if(sizeof($videos) > 0){
-       		return $videos->toArray();
-       }else{
-       		return false;
-       }
-   } 
-}
+    		$videos = $q->execute();
+           
+           if(sizeof($videos) > 0){
+           		return $videos->toArray();
+           }else{
+           		return false;
+           }
+     } 
+    }

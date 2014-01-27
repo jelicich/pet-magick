@@ -237,7 +237,7 @@ function showForms(link, show, hide){
 		{
 			if(!over)
 			{
-				byid(show).style.display = "none";
+				byid(show).style.display = "none"; // esto es lo q hace q en ie 7 se oculte el form al seleccionar algo en el combo
 				flag = 0;
 			}
 		}
@@ -295,7 +295,7 @@ function countriesCombo(){
 		loading.src = 'img/loading.gif'; 
 		loading.id='loading-location';
 		byid('country-wrapper').appendChild(loading);
-		ajax('GET', 'ajax/selectRegions.php?'+vars, printRegions, false, true);
+		ajax('GET', 'ajax/selectRegions.php?'+vars, printRegions, null, true);
 	};
 }//end countriesCombo
 
@@ -312,7 +312,7 @@ function regionsCombo(){
 		loading.src = 'img/loading.gif'; 
 		loading.id='loading-location';
 		byid('region-wrapper').appendChild(loading);
-		ajax('GET', 'ajax/selectCities.php?'+vars, printCities, false, true);
+		ajax('GET', 'ajax/selectCities.php?'+vars, printCities, null, true);
 
 	};
 }//end regionsCombo
@@ -775,6 +775,93 @@ function addPet()
 		printEdit('pet-profile', this.responseText);
 	}
 }//end addPet
+
+//============================= DELETE PET
+
+function deletePet()
+{
+	var btns = document.querySelectorAll('.delete-pet');
+	console.log(btns);
+	for(var i = 0; i < btns.length; i++)
+	{
+		btns[i].onclick = function()
+		{
+			var alertCont = create('div');
+			alertCont.id = 'alert-container';
+			var alertWin = create('div');
+			alertWin.id = 'alert-window';
+			var alertTxt = create('p');
+			alertTxt.id = 'alert-text';
+			alertTxt.innerHTML = 'You are about to delete all the information related to your pet. This action can\'t be undone. Do you want to contine?';
+			var btnClose = create('a');
+			btnClose.className = 'btn';
+			btnClose.innerHTML = 'Cancel';
+			var btnDelete = create('a');
+			btnDelete.className = 'btn btn-danger';
+			btnDelete.innerHTML = 'Delete';
+			btnDelete.href = this.href;
+			btnDelete.id = 'delete-ok';
+
+			document.body.appendChild(alertCont);
+			alertCont.appendChild(alertWin);
+			alertWin.appendChild(alertTxt);
+			alertWin.appendChild(btnClose);
+			alertWin.appendChild(btnDelete);
+
+			btnClose.onclick = function()
+			{
+				document.body.removeChild(alertCont);
+			}
+
+			btnDelete.onclick = function()
+			{
+				var p = this.href;
+				var index = p.indexOf('#');
+		  		index ++;
+		  		p = 'p='+p.substr(index);
+				ajax('POST', 'ajax/deletePet.php', refresh, p, true);
+			}
+		}
+	}
+}
+
+function refresh()
+{
+	location.reload(true);
+}
+
+//============================= MODULS
+
+function listByCategory(ajaxFile){
+
+	var pets = byid('menuByPet').getElementsByTagName('a');
+	for(var i = 0; i < pets.length; i++){
+
+			pets[i].onclick = function()
+			{		
+					var p = this.href;
+					var index = p.indexOf('#');
+			  		index ++;
+			  		p = 'c='+p.substr(index);
+					ajax('POST', 'ajax/' + ajaxFile, printByCategory, p, true);
+
+			}// end pets[i].onclick
+	}// end for
+
+	function printByCategory(){
+
+		var cont = byid("ModulesByPet");
+		cont.innerHTML = this.responseText;
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
+	}// end printByPet
+}// end userByPet
 //======================================================================== IMG UPLOAD
 
 // Parametros a pasar para tipo de uso: 'profile', 'video', 'album'
@@ -794,7 +881,7 @@ function imgVideoUploader(whatFor, modulo){
 		var formData;
 		var mime = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
 			  		'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
-		var mimeImg = [ 'image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
+		var mimeImg = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
 		var mimeVideo= [ 'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
 
 		function ajaxx(metodo,url, unaFuncion, mensaje, async) {
@@ -880,7 +967,7 @@ function imgVideoUploader(whatFor, modulo){
 		
 	    // ========================================= NORMAL WAY
 	
-		function normalWay(whatFor){
+		function normalWay(whatFor){ // Hay q pasar la referencia aca ????
 
 				  file_id.id = 'file_id';
 				  file_id.name = 'file';
@@ -911,6 +998,11 @@ function imgVideoUploader(whatFor, modulo){
 						var uploadBtn = byid('save-new-pet');
 						var cancelBtn = byid('cancel-new-pet');
 			  		}
+			  		else if(modulo == 'organization')			// org: desde aca 1
+			  		{
+						var uploadBtn = byid('save-new-org');
+						var cancelBtn = byid('cancel-new-org');
+			  		}											// org: hasta aca 1
 				  
 				  file_id.parentNode.appendChild(uploadBtn);
 
@@ -1001,25 +1093,6 @@ function imgVideoUploader(whatFor, modulo){
 			  		ajaxx('POST', file, modulPrintUpdates, null, true);	
 			  	}; // end cancelSave
 
-				/*  function getUpdates(){
-				  		console.log(this.responseText);
-				  		
-				  		if(modulo == 'about'){
-				  			//mando el id del usuario como variable, que aca llega como responsetext para q no tire el error de q no sabe quien es el usuario ($get[u] / $post[u])
-				  			var ajaxGetFile = 'ajax/getUserAbout.php?u=' + this.responseText;
-
-				  		}else if(modulo == 'pet'){
-
-				  			var ajaxGetFile = 'ajax/ArchivoQueTraePet';
-
-				  		}else if(modulo == 'albumProfile'){
-
-				  			var ajaxGetFile = 'ajax/ArchivoQueTraeAlbumProfile';
-				  		}
-
-						ajaxx('POST', ajaxGetFile, modulPrintUpdates, null, true);
-				  }// end getUpdates
-				 */
 
 				  file_id.onchange = function(){ 
 
@@ -1079,25 +1152,25 @@ function imgVideoUploader(whatFor, modulo){
 				                    	 
 				                    	  if (amount != 'profile'){
 
-				                    	  		var contCap = create('div');
-						        	    		contCap.id = 'contCap';
-						        	    		byid('form-id').appendChild(contCap);
+					                    	  		var contCap = create('div');
+							        	    		contCap.id = 'contCap';
+							        	    		byid('form-id').appendChild(contCap);
 
-						        	    	if(amount == 'video'){
+							        	    	if(amount == 'video'){
 
-									    		title = create('input');
-												title.type = 'text';
-						                    	title.id = 'title_' + filesSelectedPosition;
-										    	title.name = 'title';
-										    	byid('contCap').appendChild(title);
-									    	}
+										    		title = create('input');
+													title.type = 'text';
+							                    	title.id = 'title_' + filesSelectedPosition;
+											    	title.name = 'title';
+											    	byid('contCap').appendChild(title);
+										    	}
 
 
-						                    	caption = create('input');
-												caption.type = 'text';
-						                    	caption.id = 'caption_' + filesSelectedPosition;
-										    	caption.name = 'caption';
-										    	byid('contCap').appendChild(caption);
+							                    	caption = create('input');
+													caption.type = 'text';
+							                    	caption.id = 'caption_' + filesSelectedPosition;
+											    	caption.name = 'caption';
+											    	byid('contCap').appendChild(caption);
 										   }
 
 									    removeErr();
@@ -1141,7 +1214,7 @@ function imgVideoUploader(whatFor, modulo){
 				  	  }
 				  }// end onchange
 
-				  uploadBtn.onclick = function (evt) {
+				  uploadBtn.onclick = function (evt) { // este parametro creo q no va...
 
 				  			formData = new FormData();
 				  			//var inputsText = byid('form-id').getElementsByTagName('input');
@@ -1236,6 +1309,15 @@ function imgVideoUploader(whatFor, modulo){
 						  		p = p.substr(index);
 								formData.append("u", p);
 					  		}
+					  		else if(modulo == 'organization'){
+
+					  			var ajaxPostFile = 'ajax/uploadOrganization.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("u", p);
+					  		}
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
 					  		byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
@@ -1249,20 +1331,203 @@ function imgVideoUploader(whatFor, modulo){
 								  byid('form-id').appendChild(file_id);
 							} 
 				  }// end onclick
+			}// end NormalWay
 
 
 
+	// ========================================= FALLBACK		
+	
+	function fallBack(){
+
+		// ======================= FallBack functions
+
+			function createSubmit(){
+
+		     	 var submit_IE = create('input');
+				  	 submit_IE.type = 'submit';
+				  	 submit_IE.value = 'Upload as usual';
+				     submit_IE.id = 'upload-submit-id';
+				     byid('form-id').appendChild(submit_IE);
+		    }// end createSubmit
+
+		    function createInput(id){
+
+			     	var id = create('input');
+				    	id.type = 'file';
+				    	id.name = 'file_' + filesSelectedPosition;
+				    	id.id = 'file_id_' + filesSelectedPosition;
+				    	byid('form-id').appendChild(id);
+			}// end createInput
+
+			
+			function in_array(value, anArray){
+			   
+				    var found = 0;
+
+				    for (var i=0, len=anArray.length;i<len;i++) {
+
+					        if (anArray[i] == value) return i;
+					            found++;
+				    }
+				    return -1;
+			}// end in_array
+			
+
+			function formSubmit(){
+
+					whilst(byid('form-id'));
+					whilst(byid('imgContainer'));
+
+					createSubmit();
+
+					if(filesSelectedPosition > 0){ filesSelectedPosition = 0; }
+					newInput(); 
+					console.log('form refresh');
+			}// end formSubmit
+
+			function fileFormat(value, character){
+
+				var extention = value;
+				var index = value.indexOf(character);
+			  		index ++;
+			  		value = value.substr(index);
+			  		return value;
+			}//end fileFormat
+
+			function afterSubmit(){
+
+						var inputsSubmit = byid('form-id').getElementsByTagName('input');
 				
+						for(i = 0; i < inputsSubmit.length; i++){
 
-		}// end NormalWay
+							//console.log(inputsSubmit[i].value);
+
+							if(inputsSubmit[i].type == 'file' && inputsSubmit[i].value == ''){
+
+								byid(inputsSubmit[i].id).parentNode.removeChild(byid(inputsSubmit[i].id));
+							}
+						}
+
+						setTimeout(formSubmit,100);
+	        }// end afterSubmit
+
+			// ======================= fallback starts running
+			 
+			 createSubmit();
+
+		     (function newInput(){
+
+				    	 createInput('file_id_' + filesSelectedPosition);
+
+					     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
+
+							     removeErr();
+							     // ============================= FORMAT VALIDATION
+
+								var ext = fileFormat(this.value, '.');
+
+								if( amount != 'video' && in_array('image/' + ext, mimeImg) == -1){
+
+			            			errMsg('Pasale el parametro para img desde js');
+			            			var noRemoveInput = true;
+			            			this.parentNode.removeChild(this);
+			            			newInput();
 
 
+			            		}if( amount == 'video' && in_array('video/' + ext, mimeVideo) == -1){
 
-		// ========================================= FALLBACK		
-		
-		function fallBack(){
+			            			errMsg('Pasale el parametro para video desde js');
+			            			var noRemoveInput = true;
+			            			this.parentNode.removeChild(this);
+			            			newInput();
+			            		}
 
-				// ======================= FallBack functions
+			            		// ============================= END VALIDACIOM
+
+			            		if(noRemoveInput != true){
+
+									
+									var selectedImg = create('div');
+									  	selectedImg.id = 'img_' + filesSelectedPosition;
+									  	selectedImg.style.width = "60px";
+										selectedImg.style.height = "60px";
+										byid('imgContainer').appendChild(selectedImg);
+
+									if(amount != 'profile'){
+
+										if(amount == 'video'){
+
+								    		title = create('input');
+											title.type = 'text';
+					                    	title.id = 'title_' + filesSelectedPosition;
+									    	title.name = 'title';
+									    	byid('form-id').appendChild(title);
+								    	}
+
+										caption = create('input');
+										caption.type = 'text';
+				                    	caption.id = 'caption_' + filesSelectedPosition;
+								    	caption.name = 'caption_' + filesSelectedPosition;
+								    	byid('form-id').appendChild(caption);
+								    }
+							    
+
+						    	
+							  	
+
+								selectedImg.onclick = function(){
+
+					                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+
+					                    if (amount != 'profile'){
+
+					                    	var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+						                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
+					                    }
+
+					                    this.parentNode.removeChild(this);
+
+					                    byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
+
+					                    if (amount != 'album'){
+
+					                    	newInput();
+					                    }
+
+					            }// end onclick
+
+							    var newPreview = byid('img_' + filesSelectedPosition);
+							    	newPreview.style.FILTER = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
+								    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
+
+								    byid('file_id_' + filesSelectedPosition).style.display = 'none';
+
+								    filesSelectedPosition++; 
+								    
+								    if (amount == 'album' /*&& noRemoveInput != true*/){
+			  	  		
+								  	  		newInput();
+								  	 }
+								   }// end if(noRemoveInput != true)
+						
+		            }// end onchange
+		     })();
+
+			byid('form-id').attachEvent('onsubmit', afterSubmit);
+			
+	}// end fallBack
+
+		if(support()){ 
+			normalWay();
+		}else{ 
+			fallBack(); 
+		}// end else
+}// end imgVideoUploader
+
+
+/*
+
+// ======================= BACKUP FALLBACK (lopuse pq lo cambien por el de imgUpload. solo por si habia algo q no me di cuenta)
 
 				function createSubmit(){
 
@@ -1418,135 +1683,10 @@ function imgVideoUploader(whatFor, modulo){
 			     })();
 
 				byid('form-id').attachEvent('onsubmit', afterSubmit);
-		}// end fallBack
 
-		if(support()){ 
-			normalWay();
-		}else{ 
-			fallBack(); 
-		}// end else
-}// end imgVideoUploader
-
-//============================= DELETE PET
-
-function deletePet()
-{
-	var btns = document.querySelectorAll('.delete-pet');
-	console.log(btns);
-	for(var i = 0; i < btns.length; i++)
-	{
-		btns[i].onclick = function()
-		{
-			var alertCont = create('div');
-			alertCont.id = 'alert-container';
-			var alertWin = create('div');
-			alertWin.id = 'alert-window';
-			var alertTxt = create('p');
-			alertTxt.id = 'alert-text';
-			alertTxt.innerHTML = 'You are about to delete all the information related to your pet. This action can\'t be undone. Do you want to contine?';
-			var btnClose = create('a');
-			btnClose.className = 'btn';
-			btnClose.innerHTML = 'Cancel';
-			var btnDelete = create('a');
-			btnDelete.className = 'btn btn-danger';
-			btnDelete.innerHTML = 'Delete';
-			btnDelete.href = this.href;
-			btnDelete.id = 'delete-ok';
-
-			document.body.appendChild(alertCont);
-			alertCont.appendChild(alertWin);
-			alertWin.appendChild(alertTxt);
-			alertWin.appendChild(btnClose);
-			alertWin.appendChild(btnDelete);
-
-			btnClose.onclick = function()
-			{
-				document.body.removeChild(alertCont);
-			}
-
-			btnDelete.onclick = function()
-			{
-				var p = this.href;
-				var index = p.indexOf('#');
-		  		index ++;
-		  		p = 'p='+p.substr(index);
-				ajax('POST', 'ajax/deletePet.php', refresh, p, true);
-			}
-		}
-	}
-}
-
-function refresh()
-{
-	location.reload(true);
-}
-
-//============================= MODULS
-
-// Las dos funcinoes de aca abajo hay q hacerlas en una sola pq son casi iguales. Estan duplicadas provisoriamente
-// Tambien comparten el mismo id antics y profiles en sus modulos....
-
-function usersByPet(){
-
-	var pets = byid('menuByPet').getElementsByTagName('a');
-	for(var i = 0; i < pets.length; i++){
-
-			pets[i].onclick = function()
-			{		
-					var p = this.href;
-					var index = p.indexOf('#');
-			  		index ++;
-			  		p = 'c='+p.substr(index);
-					ajax('POST', 'ajax/profilesModuleByPet.php', printByPet, p, true);
-
-			}// end pets[i].onclick
-	}// end for
-
-	function printByPet(){
-
-		var cont = byid("ModulesByPet");
-		cont.innerHTML = this.responseText;
-		var scr = cont.getElementsByTagName('script');
-		if(scr.length > 0)
-		{
-			for(var i = 0; i < scr.length; i++)
-			{
-				eval(scr[i].innerHTML);
-			}
-		}
-	}// end printByPet
-}// end userByPet
+				*/
 
 
-function listByCategory(){
 
-	var pets = byid('menuByPet').getElementsByTagName('a');
-	for(var i = 0; i < pets.length; i++){
-
-			pets[i].onclick = function()
-			{		
-					var p = this.href;
-					var index = p.indexOf('#');
-			  		index ++;
-			  		p = 'c='+p.substr(index);
-					ajax('POST', 'ajax/anticsModuleByCategory.php', printByCategory, p, true);
-
-			}// end pets[i].onclick
-	}// end for
-
-	function printByCategory(){
-
-		var cont = byid("ModulesByPet");
-		cont.innerHTML = this.responseText;
-		var scr = cont.getElementsByTagName('script');
-		if(scr.length > 0)
-		{
-			for(var i = 0; i < scr.length; i++)
-			{
-				eval(scr[i].innerHTML);
-			}
-		}
-	}// end printByPet
-}// end userByPet
 
 

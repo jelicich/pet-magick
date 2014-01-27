@@ -99,17 +99,10 @@
 				</div>
 				
 				<div class='video mod-content'>
-					<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
-					<div class='wrapper-play'>
-						<div class="play"></div>
-						<img src="" class="thumb-big video-thumb"/>
-					</div>
-
-					<div class="video-last-caption">
-						<h3>Hey! let me pass - <span>2:12</span></h3>
-						<span><strong>By: </strong> Petter Putter</span>
-					</div>
-					
+					<?php 
+						$s = 'index'; // esta variable define cuantas fotos habra en el modulo	
+						include_once 'templates/latestVideosModule.php';
+					?>
 				</div>
 
 			</div>
@@ -171,12 +164,9 @@
 </div>
 <!-- END wrapper-->
 
-<!--
 <?php 
-	//include_once 'templates/player.php'; 
+	include_once 'templates/player.php'; 
 ?>
--->
-
 
 </body>
 </html>

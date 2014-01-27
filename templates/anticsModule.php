@@ -16,16 +16,24 @@
 
 	<li>
 		<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
-			<img src= <?php  echo 'video/'.$srcImg; ?> class='thumb-mid'/>
-			<dl class='hidden'>
-				<dt><?php echo $title; ?> </dt>
-				<dd><?php echo  $caption; ?></dd>
-			<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
-			</dl>
+			
+			<span class='wrapper-play'>
+				
+				<span class="play"></span>
+				
+					<img src= <?php  echo 'video/'.$srcImg; ?> class='thumb-mid'/>
+
+					<dl class='hidden'>
+						<dt><?php echo $title; ?> </dt>
+						<dd><?php echo  $caption; ?></dd>
+					<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
+					</dl>
+
+			</span>
 		</a>
 	</li>
 
 <?php
 
-	}
+	}// end for
 

@@ -16,4 +16,82 @@ class ProjectsTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Projects');
     }
+
+    public function insertProjects($ref){
+
+    		$Projects = new Projects();
+            $Projects->TITLE = $ref['title'];
+            $Projects->DESCRIPTION = $ref['description'];
+            $Projects->USER_ID = $ref['user_id'];
+            $Projects->ALBUM_ID = $ref['album_id'];
+
+            $Projects->save();
+    }// end insertProjects
+
+    public function getAllProjects(){
+        $q = Doctrine_Query::create()
+
+            ->select('p.ID_PROJECT, p.TITLE, p.DESCRIPTION, u.ID_USER, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->from('Projects p')
+            ->innerJoin('p.Users u')
+            ->leftJoin('u.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+             //->where('p.ANIMAL_CATEGORY_ID = ?', $id)
+            ->groupBy('u.ID_USER');
+        
+        $r = $q->execute();    
+        
+        return $r->toArray();
+    }// end getAllProjects
+
+    public function getProjectsByUser($id){ // Ver si puedo hacer estas dos consultas en una sola. Linea 32 y 33 BOusers.php
+
+         $q = Doctrine_Query::create()
+
+            ->select('p.ID_PROJECT, p.TITLE, p.DESCRIPTION, u.ID_USER, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->from('Projects p')
+            ->innerJoin('p.Users u')
+            ->leftJoin('u.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+            ->where('p.USER_ID = ?', $id)
+            ->groupBy('u.ID_USER');
+        
+            $p = $q->execute();    
+       
+           if(sizeof($p) > 0){
+               
+                return $p->toArray();
+
+           }else{
+
+                return false;
+           }
+    }// end getProjectsByUser
+
+
+    public function getAlbumIdByProject($id){
+
+        $q = Doctrine_Query::create()
+            ->select('p.ALBUM_ID')
+            ->from('Projects p')
+            ->where('p.ID_PROJECT = ?',$id);
+
+        $r = $q->execute();
+        $r = $r->toArray();
+        return $r[0]['ALBUM_ID'];
+
+    }
+
+    public function setAlbum($albumId, $projectId){
+    	
+        $q = Doctrine_Query::create()
+            ->update('Projects p')
+            ->set('p.ALBUM_ID', '?', $albumId )
+            ->where('p.ID_PROJECT = ?', $projectId);
+
+        $rta = $q->execute();
+    }
+
+
+
+
+
 }

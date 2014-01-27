@@ -16,4 +16,56 @@ class OrganizationsTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Organizations');
     }
+
+    public function insertOrganizations($ref){
+
+    		$Organizations = new Organizations();
+            $Organizations->NAME = $ref['name'];
+            $Organizations->DESCRIPTION = $ref['description'];
+            $Organizations->USER_ID = $ref['user_id'];
+            $Organizations->PIC_ID = $ref['pic_id'];
+
+            $Organizations->save();
+    }// end insertOrganizations
+
+    public function getAllOrganizations(){
+       
+	       $q = Doctrine_Query::create()
+
+	            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+	            ->from('Organizations o')
+	            //->innerJoin('o.Users u')
+	            ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+	             //->where('p.ANIMAL_CATEGORY_ID = ?', $id)
+	            ->groupBy('o.USER_ID');
+	        
+	        $r = $q->execute();    
+	        
+	        return $r->toArray();
+    }// end getAllProjects
+
+    public function getOrganizationsByUser($id){ 
+
+         $q = Doctrine_Query::create()
+
+            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->from('Organizations o')
+            //->innerJoin('o.Users u')
+            ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+            ->where('o.USER_ID = ?', $id);
+            //->groupBy('u.ID_USER');
+        
+            $p = $q->execute();    
+       
+           if(sizeof($p) > 0){
+               
+                return $p->toArray();
+
+           }else{
+
+                return false;
+           }
+    }// end getOrganizationsByUser
+
+
 }

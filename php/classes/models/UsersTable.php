@@ -131,7 +131,7 @@ class UsersTable extends Doctrine_Table
 		return $rta;
 	}
 
-	/*public function findByMail($mail)
+	public function findByMail($mail)
     {
     	$q = Doctrine_Query::create()
 			->from('Users u') 
@@ -139,9 +139,9 @@ class UsersTable extends Doctrine_Table
 		$rta = $q->execute()->toArray();
 		
 		return $rta;
-    }*/
+    }
     
-    public function findByMail($mail)
+    public function findByMailLog($mail)
     {
     	$q = Doctrine_Query::create()
     		->select('u.ID_USER, u.NAME, u.LASTNAME, U.NICKNAME, u.EMAIL, p.THUMB')

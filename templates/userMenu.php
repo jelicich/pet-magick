@@ -10,8 +10,17 @@
 						<a href="inbox.php">Inbox</a>
 					</li>
 					<li>
-						
-						<img src=<?php echo '"'. $_SESSION['thumb'] .'"'; ?> />
+						<?php 
+							if(!isset($_SESSION['thumb'])){
+
+								$thumReg = 'img/users/thumb/default.jpg';
+
+							}else{
+
+								$thumReg = $_SESSION['thumb'];
+							}
+						?>
+						<img src=<?php echo '"'. $thumReg  .'"'; ?> />
 						<a href=<?php echo "user-profile.php?u=". $_SESSION['id'] ?> ><?php echo $_SESSION['name'].' '.$_SESSION['lastname'] ?></a>
 					</li>
 				</ul>

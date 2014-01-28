@@ -203,10 +203,28 @@ function reg(){
 }//end reg
 
 var flag = 0; // showForms(), -- public --
+function logRegOnclick(){
+
+	var logButton = byid("link-login");
+	var regButton = byid("link-reg");
+
+	logButton.onclick = function(){
+
+		showForms('link-login', 'log-form', 'reg-form');
+
+	}
+
+	regButton.onclick = function(){
+
+		showForms('link-reg', 'reg-form', 'log-form');
+	}
+}// reemplace los onclick dentro de la function siguiente por esta function asi lo declaro solo una vez
+
+
 function showForms(link, show, hide){
     
-	byid(link).onclick = function()
-	{
+	//byid(link).onclick = function()
+	//{
 		if(flag == 0)
 		{
 			byid(show).style.display = "block";
@@ -237,15 +255,103 @@ function showForms(link, show, hide){
 		{
 			if(!over)
 			{
-				byid(show).style.display = "none"; // esto es lo q hace q en ie 7 se oculte el form al seleccionar algo en el combo
+				//byid(show).style.display = "none"; // esto es lo q hace q en ie 7 se oculte el form al seleccionar algo en el combo
 				flag = 0;
 			}
 		}
-	}
+	//}
 }//end showLogin
 
 //============================= COMBO FUNCTIONS
 
+function printRegions(){
+
+        var code_evaled = this.responseText;
+        var selectRegions = byid('region');
+		
+		function eval_ie(codetoeval) {
+
+		    if (window.execScript){
+		    	
+		    	// window.execScript('code_evaled = ' + '(' + codetoeval + ')',''); 
+		      	var code_evaled = JSON.parse(codetoeval);
+
+		    }else{
+
+		        code_evaled = eval(codetoeval);
+		     }
+
+		    return code_evaled;
+		}
+
+		var options = eval_ie(code_evaled);
+
+		if(options.length > 1){
+			
+			byid('region').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
+		}
+		else
+		{
+			byid('region').style.display = 'none';
+		}
+
+        whilst(selectRegions);
+
+        for(var i = 0; i < options.length; i++) {
+
+            var newOption = document.createElement('option');
+            newOption.value = options[i]['RegionID'];
+            newOption.innerHTML = options[i]['Region'];
+            selectRegions.appendChild(newOption);
+        }
+
+        var loading = byid('loading-location');
+	    loading.parentNode.removeChild(loading);
+}//end printRegions
+
+
+function printCities(){
+
+        var code_evaled = this.responseText;
+        var selectCity = byid('city');
+		
+		function eval_ie(codetoeval) {
+
+		    if (window.execScript){
+		    	
+		    	// window.execScript('code_evaled = ' + '(' + codetoeval + ')',''); 
+		      	var code_evaled = JSON.parse(codetoeval);
+
+		    }else{
+
+		        code_evaled = eval(codetoeval);
+		     }
+
+		    return code_evaled;
+		}
+
+		var options = eval_ie(code_evaled);
+
+		if(options.length > 1){
+			
+			selectCity.style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
+		}
+
+        whilst(selectCity);
+
+        for(var i = 0; i < options.length; i++) {
+
+            var newOption = document.createElement('option');
+            newOption.value = options[i]['CityId'];
+            newOption.innerHTML = options[i]['City'];
+            selectCity.appendChild(newOption);
+        }
+
+        var loading = byid('loading-location');
+	    loading.parentNode.removeChild(loading);
+}//end printCities
+
+/*
 function printRegions(){
 	
 	var html = this.responseText;
@@ -278,7 +384,7 @@ function printCities(){
 	var loading = byid('loading-location');
 	loading.parentNode.removeChild(loading);
 }//end printCities
-
+*/
 function countriesCombo(){
 
 	var country = byid('country');
@@ -318,12 +424,12 @@ function regionsCombo(){
 }//end regionsCombo
 
 
-// =============================================================================== INBOX FUNCTIONS
+// =============================================================================== INselectRegions FUNCTIONS
 
 var fromId;
 var flagNM = 0; 
 
-function inbox(){
+function inselectRegions(){
 
 	 ajax_pvt('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
@@ -387,7 +493,7 @@ function inbox(){
 	 		byid('suggestions').parentNode.removeChild(byid('suggestions'));
 	 	}
 	  }
-}//end inbox
+}//end inselectRegions
 
 function printHeaders(){
 	//si no viene nada por arguments es q esta ejecutada por ajax
@@ -398,7 +504,7 @@ function printHeaders(){
 		var html = eval(this.responseText);	
 		if(html == undefined)
 		{
-			refreshInbox();
+			refreshInselectRegions();
 			return;
 		}	
 	}
@@ -489,7 +595,7 @@ function printHeaders(){
 	 }//end for
 	 
 	 //empiezo a chequear si hay nuevos mensajes
-	 refreshInbox();
+	 refreshInselectRegions();
 }//end printHeaders
 
 function printMessages(){
@@ -514,19 +620,19 @@ function printMessages(){
 	}//end for
 }//end printMessages
 
-function refreshInbox(){
+function refreshInselectRegions(){
 				
 	if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
 	{
 		//hay una petición en curso;
-		setTimeout(refreshInbox,2000);		
+		setTimeout(refreshInselectRegions,2000);		
 	}
 	else
 	{	
 		ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);	
-		setTimeout(refreshInbox,2000);
+		setTimeout(refreshInselectRegions,2000);
 	}
-}//end refreshInbox
+}//end refreshInselectRegions
 
 function printUpdates(){
 	//console.log(this.responseText);
@@ -1223,8 +1329,8 @@ function imgVideoUploader(whatFor, modulo){
 
 							for(i = 0; i < inputsText.length; i++){ 
 
-								// para eliminar los checkbox q no estan seleccionados, ya que esto levanta todo, seleccionado y no seleccionado
-								if(inputsText[i].type == 'checkbox' && inputsText[i].checked == false)
+								// para eliminar los checkselectRegions q no estan seleccionados, ya que esto levanta todo, seleccionado y no seleccionado
+								if(inputsText[i].type == 'checkselectRegions' && inputsText[i].checked == false)
 								{
 									continue;
 								}

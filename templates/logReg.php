@@ -15,7 +15,7 @@
 
 			?>
 
-			<form class="clearfix" id="form-login">
+			<form class="clearfix form-login" > <!-- removi un id q se repetia con el de id="form-login" y lo converti en class-->
 				
 				<div class="clearfix">
 					<div class="half">
@@ -93,7 +93,7 @@
 		<a href="#" id="link-login" class="btn btn-danger btn-small">Login</a>
 		<!-- hidden -->
 		<div id="log-form">
-			<form class="clearfix" id="form-login">
+			<form class="clearfix form-login" >
 				
 				<div>
 					<label for="email-log">e-mail</label>
@@ -113,11 +113,13 @@
 		</div>
 	</li>
 </ul>
-
+<script type="text/javascript" src="js/json.js"></script>
 <script type="text/javascript">
 
-	showForms('link-reg', 'reg-form', 'log-form'); //====================== DESPLIEGA REGISTRO
-	showForms('link-login', 'log-form', 'reg-form'); //====================== DESPLIEGA LOGIN
+	//showForms('link-reg', 'reg-form', 'log-form'); //====================== DESPLIEGA REGISTRO
+	//showForms('link-login', 'log-form', 'reg-form'); //====================== DESPLIEGA LOGIN
+	
+	logRegOnclick();
 	
 	reg(); //====================== PARA REGISTRARSE
 	countriesCombo(); //====================== DESPLIEGA COMBOS

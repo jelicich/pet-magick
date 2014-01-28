@@ -8,7 +8,7 @@ $user = new BOUsers;
 if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) // Fijate q tuve q cambiar esto para q imprimiera un sha, pero no se bien q onda.
 {
 	// busco el nombre de usuario
-	$datosU = $user->table->findByMail($_POST['email']);
+	$datosU = $user->table->findByMailLog($_POST['email']);
 	//$profilePic =  $user->table->getProfilePic($datosU[0]["PIC_ID"]);
     //var_dump($datosU);
 	//guardo en sesion datos q pueda llegar a necesitar

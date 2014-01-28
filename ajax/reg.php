@@ -5,7 +5,7 @@ session_start();
 include_once('../php/classes/BOUsers.php');
 
 $user = new BOUsers;
-
+//var_dump($_POST);
 $dato = array(
 	'name' => $_POST['name'],
 	'lastname' => $_POST['lastname'],
@@ -29,7 +29,7 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 
 	// busco el nombre de usuario
 	$datosU = $user->table->findByMail($_POST['email']);
-
+//var_dump($datosU);
 	//guardo en sesion datos q pueda llegar a necesitar
 	$_SESSION['id'] = $datosU[0]['ID_USER'];
 	$_SESSION['datelog'] = date('Y-m-d H:i:s');

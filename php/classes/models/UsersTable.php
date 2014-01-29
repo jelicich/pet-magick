@@ -244,8 +244,7 @@ class UsersTable extends Doctrine_Table
         
         return $r->toArray();
     }
-
-
+    
     public function getAlbumIdByUser($id)
     {   
         $q = Doctrine_Query::create()

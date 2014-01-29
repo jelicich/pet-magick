@@ -60,7 +60,7 @@
 								?>
 										<div class='wrapper-play'>
 											<div class="play"></div>
-											<img src=<?php echo '"'.$v['THUMBNAIL'].'"'; ?> class="thumb-big video-thumb"/>
+									<img src=<?php echo '"'.$v['THUMBNAIL'].'"'; ?> class="thumb-big video-thumb"/>
 										</div>
 
 										<div class="video-last-caption">

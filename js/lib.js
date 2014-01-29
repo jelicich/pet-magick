@@ -96,6 +96,22 @@ function fileFormat(value, character) // agregue esta funcion pq la repeti en ot
   		return value;
 }
 
+// IE7 support for querySelectorAll. 
+if (!document.querySelector){
+(function(d, s) {
+	d=document, s=d.createStyleSheet();
+	d.querySelectorAll = function(r, c, i, j, a) {
+		a=d.all, c=[], r = r.replace(/\[for\b/gi, '[htmlFor').split(',');
+		for (i=r.length; i--;) {
+			s.addRule(r[i], 'k:v');
+			/* -a.addRule(e,'f:b', 0); */
+			for (j=a.length; j--;) a[j].currentStyle.k && c.push(a[j]);
+			s.removeRule(0);
+		}
+		return c;
+	}
+})();
+}
 /*
 function getByClass(className)
 {
@@ -309,7 +325,6 @@ function printRegions(){
 	    loading.parentNode.removeChild(loading);
 }//end printRegions
 
-
 function printCities(){
 
         var code_evaled = this.responseText;
@@ -351,40 +366,6 @@ function printCities(){
 	    loading.parentNode.removeChild(loading);
 }//end printCities
 
-/*
-function printRegions(){
-	
-	var html = this.responseText;
-	var wrap = byid('region');
-		wrap.innerHTML = html;
-	var options = wrap.getElementsByTagName('option');
-		
-		if(options.length > 1){
-			
-			byid('region').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
-		}
-		else
-		{
-			byid('region').style.display = 'none';
-		}
-	var loading = byid('loading-location');
-	loading.parentNode.removeChild(loading);
-}//end printRegions
-
-function printCities(){
-	var html = this.responseText;
-	var wrap = byid('city');
-		wrap.innerHTML = html;
-	var options = wrap.getElementsByTagName('option');
-	//console.log(options)
-	if(options.length > 1){
-		
-		byid('city').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
-	}
-	var loading = byid('loading-location');
-	loading.parentNode.removeChild(loading);
-}//end printCities
-*/
 function countriesCombo(){
 
 	var country = byid('country');
@@ -424,12 +405,12 @@ function regionsCombo(){
 }//end regionsCombo
 
 
-// =============================================================================== INselectRegions FUNCTIONS
+// =============================================================================== INBOX FUNCTIONS
 
 var fromId;
 var flagNM = 0; 
 
-function inselectRegions(){
+function inbox(){
 
 	 ajax_pvt('GET', 'ajax/getHeaders.php', printHeaders, null, true);
 
@@ -437,7 +418,7 @@ function inselectRegions(){
 	 byid('btn-new-message').onclick = function(){
 
 	 		byid('write-new-message').style.display = "block";
-	 		searchField('inputTo');
+	 		//searchField('inputTo');
 	 		//searchField('finder') = function(){return;}
 	 }
 
@@ -504,7 +485,7 @@ function printHeaders(){
 		var html = eval(this.responseText);	
 		if(html == undefined)
 		{
-			refreshInselectRegions();
+			refreshInbox();
 			return;
 		}	
 	}
@@ -595,7 +576,7 @@ function printHeaders(){
 	 }//end for
 	 
 	 //empiezo a chequear si hay nuevos mensajes
-	 refreshInselectRegions();
+	 refreshInbox();
 }//end printHeaders
 
 function printMessages(){
@@ -620,17 +601,17 @@ function printMessages(){
 	}//end for
 }//end printMessages
 
-function refreshInselectRegions(){
+function refreshInbox(){
 				
 	if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
 	{
 		//hay una petición en curso;
-		setTimeout(refreshInselectRegions,2000);		
+		setTimeout(refreshInbox,2000);		
 	}
 	else
 	{	
 		ajax('POST', 'ajax/checkNewMsgs.php', printUpdates, fromId, true);	
-		setTimeout(refreshInselectRegions,2000);
+		setTimeout(refreshInbox,2000);
 	}
 }//end refreshInselectRegions
 
@@ -1077,6 +1058,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				  file_id.id = 'file_id';
 				  file_id.name = 'file';
+
 				  byid('form-id').appendChild(file_id);
 				  //var uploadBtn = byid('save-edit-user');
 				    if(modulo == 'about')
@@ -1103,12 +1085,7 @@ function imgVideoUploader(whatFor, modulo){
 			  		{
 						var uploadBtn = byid('save-new-pet');
 						var cancelBtn = byid('cancel-new-pet');
-			  		}
-			  		else if(modulo == 'organization')			// org: desde aca 1
-			  		{
-						var uploadBtn = byid('save-new-org');
-						var cancelBtn = byid('cancel-new-org');
-			  		}											// org: hasta aca 1
+			  		}											
 				  
 				  file_id.parentNode.appendChild(uploadBtn);
 
@@ -1118,7 +1095,7 @@ function imgVideoUploader(whatFor, modulo){
 				  }// end printUpdates
 				*/
 
-				  function modulPrintUpdates(){
+				function modulPrintUpdates(){
 
 				  		if(modulo == 'about'){
 
@@ -1152,11 +1129,11 @@ function imgVideoUploader(whatFor, modulo){
 									eval(scr[i].innerHTML);
 								}
 							}
-				  }// end modulPrintUpdates
+				}// end modulPrintUpdates
 
 				// CANCEL SAVE
 				cancelBtn.onclick = function(){
-			
+
 					if(modulo == 'about')
 					{
 			  			var file = 'ajax/getUserAbout.php';
@@ -1197,7 +1174,7 @@ function imgVideoUploader(whatFor, modulo){
 			  		file+=vars;
 			  		//si le paso la variable por argumento no la manda. se la tengo q agregar al archivo al final ?var=bla
 			  		ajaxx('POST', file, modulPrintUpdates, null, true);	
-			  	}; // end cancelSave
+			  	} // end cancelSave
 
 
 				  file_id.onchange = function(){ 
@@ -1441,194 +1418,209 @@ function imgVideoUploader(whatFor, modulo){
 
 
 
-	// ========================================= FALLBACK		
-	
-	function fallBack(){
+		// ========================================= FALLBACK		
+		
+		function fallBack(){
 
-		// ======================= FallBack functions
+			// ======================= FallBack functions
 
-			function createSubmit(){
+				function createSubmit(){
 
-		     	 var submit_IE = create('input');
-				  	 submit_IE.type = 'submit';
-				  	 submit_IE.value = 'Upload as usual';
-				     submit_IE.id = 'upload-submit-id';
-				     byid('form-id').appendChild(submit_IE);
-		    }// end createSubmit
+			     	 var submit_IE = create('input');
+					  	 submit_IE.type = 'submit';
+					  	 submit_IE.value = 'Upload as usual';
+					     submit_IE.id = 'upload-submit-id';
+					     byid('form-id').appendChild(submit_IE);
+			    }// end createSubmit
 
-		    function createInput(id){
+			    function createInput(id){
 
-			     	var id = create('input');
-				    	id.type = 'file';
-				    	id.name = 'file_' + filesSelectedPosition;
-				    	id.id = 'file_id_' + filesSelectedPosition;
-				    	byid('form-id').appendChild(id);
-			}// end createInput
+				     	var id = create('input');
+					    	id.type = 'file';
+					    	id.name = 'file_' + filesSelectedPosition;
+					    	id.id = 'file_id_' + filesSelectedPosition;
+					    	byid('form-id').appendChild(id);
+				}// end createInput
 
-			
-			function in_array(value, anArray){
-			   
-				    var found = 0;
+				function in_array(value, anArray){
+				   
+					    var found = 0;
 
-				    for (var i=0, len=anArray.length;i<len;i++) {
+					    for (var i=0, len=anArray.length;i<len;i++) {
 
-					        if (anArray[i] == value) return i;
-					            found++;
-				    }
-				    return -1;
-			}// end in_array
-			
+						        if (anArray[i] == value) return i;
+						            found++;
+					    }
+					    return -1;
+				}// end in_array
 
-			function formSubmit(){
+				function formSubmit(){
 
-					whilst(byid('form-id'));
-					whilst(byid('imgContainer'));
+						whilst(byid('form-id'));
+						whilst(byid('imgContainer'));
 
-					createSubmit();
+						createSubmit();
 
-					if(filesSelectedPosition > 0){ filesSelectedPosition = 0; }
-					newInput(); 
-					console.log('form refresh');
-			}// end formSubmit
+						if(filesSelectedPosition > 0){ filesSelectedPosition = 0; }
+						newInput(); 
+						console.log('form refresh');
+				}// end formSubmit
 
-			function fileFormat(value, character){
+				function fileFormat(value, character){
 
-				var extention = value;
-				var index = value.indexOf(character);
-			  		index ++;
-			  		value = value.substr(index);
-			  		return value;
-			}//end fileFormat
+					var extention = value;
+					var index = value.indexOf(character);
+				  		index ++;
+				  		value = value.substr(index);
+				  		return value;
+				}//end fileFormat
 
-			function afterSubmit(){
+				function afterSubmit(){
 
-						var inputsSubmit = byid('form-id').getElementsByTagName('input');
-				
-						for(i = 0; i < inputsSubmit.length; i++){
+							var inputsSubmit = byid('form-id').getElementsByTagName('input');
+					
+							for(i = 0; i < inputsSubmit.length; i++){
 
-							//console.log(inputsSubmit[i].value);
+								//console.log(inputsSubmit[i].value);
 
-							if(inputsSubmit[i].type == 'file' && inputsSubmit[i].value == ''){
+								if(inputsSubmit[i].type == 'file' && inputsSubmit[i].value == ''){
 
-								byid(inputsSubmit[i].id).parentNode.removeChild(byid(inputsSubmit[i].id));
+									byid(inputsSubmit[i].id).parentNode.removeChild(byid(inputsSubmit[i].id));
+								}
 							}
-						}
 
-						setTimeout(formSubmit,100);
-	        }// end afterSubmit
+							setTimeout(formSubmit,100);
+		        }// end afterSubmit
 
-			// ======================= fallback starts running
-			 
-			 createSubmit();
+				// ======================= fallback starts running
+				 
+				 createSubmit();
 
-		     (function newInput(){
+				 (function newInput(){
 
-				    	 createInput('file_id_' + filesSelectedPosition);
+					    	 createInput('file_id_' + filesSelectedPosition);
 
-					     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
+						     byid('file_id_' + filesSelectedPosition).onchange = function(){ 
 
-							     removeErr();
-							     // ============================= FORMAT VALIDATION
+								     removeErr();
+								     // ============================= FORMAT VALIDATION
 
-								var ext = fileFormat(this.value, '.');
+									var ext = fileFormat(this.value, '.');
 
-								if( amount != 'video' && in_array('image/' + ext, mimeImg) == -1){
+									if( amount != 'video' && in_array('image/' + ext, mimeImg) == -1){
 
-			            			errMsg('Pasale el parametro para img desde js');
-			            			var noRemoveInput = true;
-			            			this.parentNode.removeChild(this);
-			            			newInput();
+				            			errMsg('Pasale el parametro para img desde js');
+				            			var noRemoveInput = true;
+				            			this.parentNode.removeChild(this);
+				            			newInput();
 
 
-			            		}if( amount == 'video' && in_array('video/' + ext, mimeVideo) == -1){
+				            		}if( amount == 'video' && in_array('video/' + ext, mimeVideo) == -1){
 
-			            			errMsg('Pasale el parametro para video desde js');
-			            			var noRemoveInput = true;
-			            			this.parentNode.removeChild(this);
-			            			newInput();
-			            		}
+				            			errMsg('Pasale el parametro para video desde js');
+				            			var noRemoveInput = true;
+				            			this.parentNode.removeChild(this);
+				            			newInput();
+				            		}
 
-			            		// ============================= END VALIDACIOM
+				            		// ============================= END VALIDACIOM
 
-			            		if(noRemoveInput != true){
+				            		if(noRemoveInput != true){
 
-									
-									var selectedImg = create('div');
-									  	selectedImg.id = 'img_' + filesSelectedPosition;
-									  	selectedImg.style.width = "60px";
-										selectedImg.style.height = "60px";
-										byid('imgContainer').appendChild(selectedImg);
+										
+										var selectedImg = create('div');
+										  	selectedImg.id = 'img_' + filesSelectedPosition;
+										  	selectedImg.style.width = "60px";
+											selectedImg.style.height = "60px";
+											byid('imgContainer').appendChild(selectedImg);
 
-									if(amount != 'profile'){
+										if(amount != 'profile'){
 
-										if(amount == 'video'){
+											if(amount == 'video'){
 
-								    		title = create('input');
-											title.type = 'text';
-					                    	title.id = 'title_' + filesSelectedPosition;
-									    	title.name = 'title';
-									    	byid('form-id').appendChild(title);
-								    	}
+									    		title = create('input');
+												title.type = 'text';
+						                    	title.id = 'title_' + filesSelectedPosition;
+										    	title.name = 'title';
+										    	byid('form-id').appendChild(title);
+									    	}
 
-										caption = create('input');
-										caption.type = 'text';
-				                    	caption.id = 'caption_' + filesSelectedPosition;
-								    	caption.name = 'caption_' + filesSelectedPosition;
-								    	byid('form-id').appendChild(caption);
-								    }
-							    
-
-						    	
-							  	
-
-								selectedImg.onclick = function(){
-
-					                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-
-					                    if (amount != 'profile'){
-
-					                    	var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
-						                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
-					                    }
-
-					                    this.parentNode.removeChild(this);
-
-					                    byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
-
-					                    if (amount != 'album'){
-
-					                    	newInput();
-					                    }
-
-					            }// end onclick
-
-							    var newPreview = byid('img_' + filesSelectedPosition);
-							    	newPreview.style.FILTER = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
-								    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
-
-								    byid('file_id_' + filesSelectedPosition).style.display = 'none';
-
-								    filesSelectedPosition++; 
+											caption = create('input');
+											caption.type = 'text';
+					                    	caption.id = 'caption_' + filesSelectedPosition;
+									    	caption.name = 'caption_' + filesSelectedPosition;
+									    	byid('form-id').appendChild(caption);
+									    }
 								    
-								    if (amount == 'album' /*&& noRemoveInput != true*/){
-			  	  		
-								  	  		newInput();
-								  	 }
-								   }// end if(noRemoveInput != true)
-						
-		            }// end onchange
-		     })();
 
-			byid('form-id').attachEvent('onsubmit', afterSubmit);
-			
-	}// end fallBack
+							    	
+								  	
 
-		if(support()){ 
-			normalWay();
-		}else{ 
-			fallBack(); 
-		}// end else
+									selectedImg.onclick = function(){
+
+						                    var ImgPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+
+						                    if (amount != 'profile'){
+
+						                    	var captionPosition = this.id.slice(4); // busccar mejor metodo para obtener el numero
+							                    byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
+						                    }
+
+						                    this.parentNode.removeChild(this);
+
+						                    byid('file_id_' + ImgPosition).parentNode.removeChild(byid('file_id_' + ImgPosition));
+
+						                    if (amount != 'album'){
+
+						                    	newInput();
+						                    }
+
+						            }// end onclick
+
+								    var newPreview = byid('img_' + filesSelectedPosition);
+								    	newPreview.style.FILTER = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
+									    newPreview.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
+
+									    byid('file_id_' + filesSelectedPosition).style.display = 'none';
+
+									    filesSelectedPosition++; 
+									    
+									    if (amount == 'album' /*&& noRemoveInput != true*/){
+				  	  		
+									  	  		newInput();
+									  	 }
+									   }// end if(noRemoveInput != true)
+							
+			            }// end onchange
+			     })();
+
+				byid('form-id').attachEvent('onsubmit', afterSubmit);
+				
+		}// end fallBack
+
+			if(support()){ 
+				normalWay();
+			}else{ 
+				fallBack(); 
+			}// end else
 }// end imgVideoUploader
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -1793,6 +1785,41 @@ function imgVideoUploader(whatFor, modulo){
 				*/
 
 
+// ======================= BACKUP printregions 
 
+/*
+function printRegions(){
+	
+	var html = this.responseText;
+	var wrap = byid('region');
+		wrap.innerHTML = html;
+	var options = wrap.getElementsByTagName('option');
+		
+		if(options.length > 1){
+			
+			byid('region').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
+		}
+		else
+		{
+			byid('region').style.display = 'none';
+		}
+	var loading = byid('loading-location');
+	loading.parentNode.removeChild(loading);
+}//end printRegions
+
+function printCities(){
+	var html = this.responseText;
+	var wrap = byid('city');
+		wrap.innerHTML = html;
+	var options = wrap.getElementsByTagName('option');
+	//console.log(options)
+	if(options.length > 1){
+		
+		byid('city').style.display = 'block';// Ver pq no puedo hacer esto sobre e wrapper, como en regions....
+	}
+	var loading = byid('loading-location');
+	loading.parentNode.removeChild(loading);
+}//end printCities
+*/
 
 

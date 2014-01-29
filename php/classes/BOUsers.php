@@ -138,7 +138,7 @@ class BOUsers{
             }
     }// End login
 
-/*
+
     function checklogin(){
 
       if(!isset($_SESSION['email'])){// Ver si mail es el valor correcto
@@ -149,7 +149,7 @@ class BOUsers{
 
     }//end checklogin()
 
-*/ 
+
 
     //======================== LOGOUT
 

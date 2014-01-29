@@ -113,14 +113,15 @@
 		</div>
 	</li>
 </ul>
-<script type="text/javascript" src="js/json.js"></script>
+
+
+
 <script type="text/javascript">
 
 	//showForms('link-reg', 'reg-form', 'log-form'); //====================== DESPLIEGA REGISTRO
 	//showForms('link-login', 'log-form', 'reg-form'); //====================== DESPLIEGA LOGIN
 	
-	logRegOnclick();
-	
+	logRegOnclick(); //====================== DESPLIEGA REGISTRO y LOGIN
 	reg(); //====================== PARA REGISTRARSE
 	countriesCombo(); //====================== DESPLIEGA COMBOS
 	regionsCombo(); //====================== DESPLIEGA REGIONES

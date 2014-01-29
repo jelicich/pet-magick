@@ -60,3 +60,8 @@
 		<!-- END navbar -->
 	</div>
 	<!-- END header -->
+
+	<!-- Esta libreria es para interpretar JSON en navegadores viejos (IE) -->
+	<!--[if lt IE 9]>
+	      <script type="text/javascript" src="js/json.js"></script>
+	<![endif]-->

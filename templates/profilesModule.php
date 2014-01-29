@@ -6,19 +6,31 @@
 
 	$usersList = $p->getUserList();
 	$t = sizeof($usersList);
-	//var_dump($usersList);
+	$noRepeat = array();
+	
 	for($i=0; $i<$t; $i++){
 
-		$name = $usersList[$i]['NAME'];
-		$lastName = $usersList[$i]['LASTNAME'];
-		$userId = $usersList[$i]['ID_USER'];
+		$j = mt_rand(0, $t -1);
+		
+		if(isset($noRepeat) && in_array($j, $noRepeat) ){
+			
+			$i--;
 
-		if(!isset($usersList[$i]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
-		else{ $srcImg = 'img/users/thumb/'.$usersList[$i]['Pics']['PIC']; }
-		if(!isset($usersList[$i]['Cities']['City'])){ $city = '?'; }
-		else{ $city = $usersList[$i]['Cities']['City']; }
-		if(!isset( $usersList[$i]['Countries']['Country'])){ $country =  '?'; }
-		else{ $country =  $usersList[$i]['Countries']['Country']; }
+		}else{
+
+			$name = $usersList[$j]['NAME'];
+			$lastName = $usersList[$j]['LASTNAME'];
+			$userId = $usersList[$j]['ID_USER'];
+
+			if(!isset($usersList[$j]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
+			else{ $srcImg = 'img/users/thumb/'.$usersList[$j]['Pics']['PIC']; }
+			if(!isset($usersList[$j]['Cities']['City'])){ $city = '?'; }
+			else{ $city = $usersList[$j]['Cities']['City']; }
+			if(!isset( $usersList[$j]['Countries']['Country'])){ $country =  '?'; }
+			else{ $country =  $usersList[$j]['Countries']['Country']; }
+
+			array_push($noRepeat, $j);
+		
 ?>
 
 	<li>
@@ -32,7 +44,7 @@
 		</a>
 	</li>
 <?php
-				
+	}// end else		
 		}// end for
 		//var_dump($usersList);
 ?>

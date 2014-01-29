@@ -197,10 +197,9 @@
 					-->
 				</div>
 			</div>
-
+			
 			<script type="text/javascript">
 				countriesCombo(); //====================== DESPLIEGA COMBOS
 				regionsCombo(); //====================== DESPLIEGA REGIONES
-
 				imgVideoUploader('profile', 'about'); // SUBIR IMG
 			</script>

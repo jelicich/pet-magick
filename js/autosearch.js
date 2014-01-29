@@ -29,13 +29,18 @@ function autoSearch(inputId)
 	{
 		initialize:function()
 		{
-			input.inputField.addEventListener("keypress", handler, false); 
-			input.inputField.addEventListener("paste", handler, false);
-			input.inputField.addEventListener("keydown", handler, false); 
+			if(window.addEventListener){
+				
+				input.inputField.addEventListener("keypress", handler, false); 
+				input.inputField.addEventListener("paste", handler, false);
+				input.inputField.addEventListener("keydown", handler, false); 
 
-			//input.inputField.attachEvent('keypress', handler);
-			//input.inputField.attachEvent('paste', handler);
-			//input.inputField.attachEvent('keydown', handler);
+			}else{
+				
+				input.inputField.attachEvent('keypress', handler);
+				input.inputField.attachEvent('paste', handler);
+				input.inputField.attachEvent('keydown', handler);
+			}
 		}
 	}
 
@@ -172,7 +177,7 @@ function autoSearch(inputId)
 				var index = user.indexOf('_');
 		  		index ++;
 		  		user = user.substr(index);
-				window.location.href = "profile.php?u="+user;
+				window.location.href = "user-profile.php?u="+user;
 			}	
 		}
 		else

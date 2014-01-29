@@ -30,6 +30,10 @@
 													<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$album[$i]['ID_PIC'].'"'; ?> />
 													Delete
 												</label>
+												<label>
+													Caption
+													<input type="text" class="form-element" name="edit-caption" data-img=<?php echo '"'.$album[$i]['ID_PIC'].'"'; ?> value=<?php echo '"'.$album[$i]['CAPTION'].'"';?> />
+												</label>
 												
 											</li>
 											

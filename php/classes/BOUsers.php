@@ -290,7 +290,7 @@ class BOUsers{
         for($i=0; $i<sizeof($a); $i++)
         {
             $file=$a[$i]['PIC'];
-            $a[$i]['PIC'] = 'img/user/' . $file;
+            $a[$i]['PIC'] = 'img/users/' . $file;
             $a[$i]['THUMB'] = 'img/users/thumb/' . $file;
         }
         return $a;

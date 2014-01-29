@@ -49,7 +49,7 @@ if(isset($_FILES['file'])){ // normalWay();
 		$query['fileName'] = $_FILES['file']['name'][$i];
 		$query['fileSize'] = $_FILES['file']['size'][$i];
 		$query['fileType'] = $_FILES['file']['type'][$i];
-		$query['caption']  = $_POST['caption'][$i];
+		$query['caption']  = '';
 
 		if( in_array($query['fileType'], $mimeVideo)){  
 			

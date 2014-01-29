@@ -23,7 +23,10 @@
 									for($i = 0; $i<sizeof($a); $i++)
 									{
 							?>
-										<li><a href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> ><img class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> /></a></li>
+										<li>
+											<a href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> ><img class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> /></a>
+											<p class="img-caption"><?php echo $a[$i]['CAPTION'] ?></p>
+										</li>
 							<?php
 									}//END FOR
 							?>

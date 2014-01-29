@@ -21,7 +21,10 @@ include_once "../php/classes/BOAlbums.php";
 $pet = new BOPets;
 $pics = new BOPics;
 $videos = new BOVideos;
+
 //var_dump($_POST);
+
+
 
 
 

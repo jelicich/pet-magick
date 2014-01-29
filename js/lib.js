@@ -1051,6 +1051,11 @@ function imgVideoUploader(whatFor, modulo){
 		  	 byid('login-reg').innerHTML = this.responseText;
 		 }// end refreshHeader
 
+		 function refreshPets(){
+         	
+		  	 byid('pet-list').innerHTML = this.responseText;
+		 }// end refreshHeader
+
 		
 	    // ========================================= NORMAL WAY
 	
@@ -1100,11 +1105,12 @@ function imgVideoUploader(whatFor, modulo){
 				  		if(modulo == 'about'){
 
 					  			var cont = byid('user-about');
-					  			ajaxx('POST', 'ajax/refreshHeader.php', refreshHeader, null, true);;
+					  			ajaxx('POST', 'ajax/refreshHeader.php', refreshHeader, null, true);
 
 					  	}else if(modulo == 'pet-about'){
 
 					  			var cont = byid("pet-about");
+					  			ajaxx('POST', 'ajax/refreshPets.php', refreshPets, null, true);
 
 						}else if(modulo == 'pet-album'){
 
@@ -1253,6 +1259,7 @@ function imgVideoUploader(whatFor, modulo){
 													caption.type = 'text';
 							                    	caption.id = 'caption_' + filesSelectedPosition;
 											    	caption.name = 'caption';
+											    	caption.className = 'form-element';
 											    	byid('contCap').appendChild(caption);
 										   }
 
@@ -1306,8 +1313,8 @@ function imgVideoUploader(whatFor, modulo){
 
 							for(i = 0; i < inputsText.length; i++){ 
 
-								// para eliminar los checkselectRegions q no estan seleccionados, ya que esto levanta todo, seleccionado y no seleccionado
-								if(inputsText[i].type == 'checkselectRegions' && inputsText[i].checked == false)
+								// para eliminar los checkbox q no estan seleccionados, ya que esto levanta todo, seleccionado y no seleccionado
+								if(inputsText[i].type == 'checkbox' && inputsText[i].checked == false)
 								{
 									continue;
 								}
@@ -1317,7 +1324,19 @@ function imgVideoUploader(whatFor, modulo){
 
 									allCaption.push(inputsText[i].value);
 
-								}else{
+								}
+								/*
+								else if(inputsText[i].type == 'text' && inputsText[i].name == 'edit-caption')
+								{
+									var cap = new Array();
+									cap['caption'] = inputsText[i].value;
+									var dataImg = inputsText[i].getAttribute('data-img');
+									cap['img'] = dataImg;
+									formData.append('edit-caption[]', cap);
+								}
+								*/
+								else
+								{
 
 									formData.append(inputsText[i].name, inputsText[i].value);
 								}
@@ -1549,6 +1568,7 @@ function imgVideoUploader(whatFor, modulo){
 											caption.type = 'text';
 					                    	caption.id = 'caption_' + filesSelectedPosition;
 									    	caption.name = 'caption_' + filesSelectedPosition;
+									    	caption.className = 'form-element';
 									    	byid('form-id').appendChild(caption);
 									    }
 								    

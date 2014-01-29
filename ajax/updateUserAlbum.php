@@ -22,8 +22,8 @@ include_once "../php/classes/BOAlbums.php";
 $u = new BOUsers;
 $pics = new BOPics;
 $videos = new BOVideos;
-//var_dump($_POST);
 
+//var_dump($_POST);
 
 
 $query = array();

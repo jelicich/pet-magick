@@ -63,7 +63,10 @@
 										{
 								?>
 										
-											<li><a href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a></li>
+											<li>
+												<a href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a>
+												<p class="img-caption"><?php echo $album[$i]['CAPTION']; ?></p>
+											</li>
 											
 								<?php
 										}//end for

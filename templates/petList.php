@@ -38,3 +38,10 @@
 					?>
 					
 				</ul>
+
+				<script type="text/javascript">
+	profile();
+
+	deletePet();
+	addPet();
+</script>

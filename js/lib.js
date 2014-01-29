@@ -1054,6 +1054,11 @@ function imgVideoUploader(whatFor, modulo){
 		 function refreshPets(){
          	
 		  	 byid('pet-list').innerHTML = this.responseText;
+		  	 var s = byid('pet-list').getElementsByTagName('script');
+		  	 for(var i = 0; i < s.length; i++)
+		  	 {
+		  	 	eval(s[i].innerHTML);
+		  	 }
 		 }// end refreshHeader
 
 		
@@ -1123,6 +1128,7 @@ function imgVideoUploader(whatFor, modulo){
 				  		}else if(modulo == 'add-pet'){
 
 				  			var cont = byid('pet-profile');
+				  			ajaxx('POST', 'ajax/refreshPets.php', refreshPets, null, true);
 				  		}
 
 				  		cont.innerHTML = this.responseText;
@@ -1162,10 +1168,7 @@ function imgVideoUploader(whatFor, modulo){
 			  		}
 			  		else if(modulo == 'add-pet')
 			  		{
-						//VER Q HACER ACA!!!!
-						//VER Q HACER ACA!!!!
-						//VER Q HACER ACA!!!!
-						var file = 'ajax/getUserAlbum.php';
+						var file = 'ajax/getPetDefault.php';
 						var vars = '?u=';
 			  		}
 

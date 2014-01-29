@@ -86,6 +86,7 @@ class BOPets{
         $this->story = $p->STORY;
         $this->owner = $p->USER_ID;
         $this->id = $id;
+        $this->category = $p->ANIMAL_CATEGORY_ID;
 
         if($p->PIC_ID == null)
         {
@@ -180,6 +181,11 @@ class BOPets{
         return $this->id;
     }
 
+    function getCategory()
+    {
+        return $this->category;
+    }
+
     function getPicId()
     {
       return $this->picId;
@@ -227,40 +233,60 @@ class BOPets{
     function updateInfo($array, $path)
     {
         //var_dump($array);
-        $this->val_updateInfo($array);
-        
-        $pic = new BOPics;
-        $dataPic = $this->table->find($_POST['p']);
-        $oldPic = $dataPic->PIC_ID;
-        $r = $this->table->updateInfo($array);
-        
-        //borro la imagen original de perfil
-        if(!empty($array['pic']) && is_numeric($array['pic']))
+        if($this->val_updateInfo($array))
         {
-          if(!empty($oldPic))
-            $pic->unlinkProfilePic($oldPic, $path);
-        }
-        elseif(isset($array['delete-pic']))
+            $pic = new BOPics;
+            $dataPic = $this->table->find($_POST['p']);
+            $oldPic = $dataPic->PIC_ID;
+            $r = $this->table->updateInfo($array);
+            
+            //borro la imagen original de perfil
+            if(!empty($array['pic']) && is_numeric($array['pic']))
+            {
+              if(!empty($oldPic))
+                $pic->unlinkProfilePic($oldPic, $path);
+            }
+            elseif(isset($array['delete-pic']))
+            {
+               
+               for($i = 0; $i < sizeof($array['delete-pic']); $i++)
+               {
+                  $pic->unlinkProfilePic($array['delete-pic'][$i], $path);    
+               }
+            }
+            return true;
+        }// end if
+        else
         {
-           
-           for($i = 0; $i < sizeof($array['delete-pic']); $i++)
-           {
-              $pic->unlinkProfilePic($array['delete-pic'][$i], $path);    
-           }
+            return false;
         }
-
 
     }
 
     function val_updateInfo($array)
     {
-        //HACER!!!
+        if(empty($array['name']) || empty($array['animal-category']))
+        {
+          $er = '<ul class="update-err">';
+          
+          if(empty($array['name']))
+            $er .= '<li>The name field is mandatory</li>';
+          if(empty($array['animal-category']))
+            $er .= '<li>The animal category field is mandatory</li>';
+          
+          $er .= '</ul>';
+          $this->err = $er;
+          return false;
+        }
+        else
+        {
+          return true;
+        }
     }
 
     function updateAlbum($array, $path)
     {
-        //var_dump($array);
-        $this->val_updateAlbum($array);
+       
         
         $pic = new BOPics;
         
@@ -290,9 +316,10 @@ class BOPets{
 
     }
 
-    function val_updateAlbum($array)
+
+    function getErr()
     {
-        //HACER!!!
+        return $this->err;
     }
 
     function getAlbumIdByPet($id)

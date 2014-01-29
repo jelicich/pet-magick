@@ -1,8 +1,7 @@
 PENDIENTES:
 
--Validar funcion updateInfo en BOUSer y BOpets // ver si hace falta?
--Validar funcion updateAlbum en Bouser y Bopets // ver si hace falta?
--Captions en album -guardar, editar, etc.
+-Captions en albums al editar. //NO PUEDO PASAR LOS CAPTIONS CUANDO SE EDITA LINEA 1331 de lib.js está comentado lo q hice pero no funciona
+
 -Optimizar las consultas de getData (hacer joins)
+
 -Subir, editar, borrar videos y agregar a la funcionalidad de Delete Pet
--Actualizar PET LIST cuando se edita la mascota o se crea una nueva

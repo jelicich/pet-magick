@@ -5,8 +5,14 @@
 				//if($p->getPetList($_GET['p']))
 				//{	
 					//echo '<a href="#" class="btn btn-edit" id="save-edit-user">Save</a>';
-					echo '<a href="#'.$_GET['p'].'" class="btn btn-edit" id="save-edit-pet-about">Save</a><a href="#'.$_GET['p'].'" class="btn btn-cancel" id="cancel-edit-pet-about">Cancel</a>';		
-					$p->getPetData($_GET['p']);
+					if(isset($_GET['p']))
+						$userId = $_GET['p'];
+					elseif(isset($_POST['p']))
+						$userId = $_POST['p'];
+
+					echo '<a href="#'.$userId.'" class="btn btn-edit" id="save-edit-pet-about">Save</a><a href="#'.$userId.'" class="btn btn-cancel" id="cancel-edit-pet-about">Cancel</a>';		
+					$p->getPetData($userId);
+
 					//$pet = $p->getPet($pets[0]['ID_PET']);
 			?>		
 					
@@ -33,6 +39,22 @@
 								<?php
 									}
 								?>
+								<select name="animal-category" class="form-element">
+									<?php
+									$cats = $ac->getCategories();
+									for($i = 0; $i<sizeof($cats); $i++)
+									{
+										if($cats[$i]['ID_ANIMAL_CATEGORY'] == $p->getCategory())
+										{
+											echo '<option value="'.$cats[$i]['ID_ANIMAL_CATEGORY'].'" selected="selected">'.$cats[$i]['NAME'].'</option>';
+										}
+										else
+										{
+											echo '<option value="'.$cats[$i]['ID_ANIMAL_CATEGORY'].'">'.$cats[$i]['NAME'].'</option>';
+										}
+									}
+									?>
+								</select>
 
 								<label for="pet-name">Name</label>
 								<input type="text" class="form-element" name="name" id="pet-name" value=<?php echo '"'.$p->getName().'"' ?> />

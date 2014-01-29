@@ -397,28 +397,37 @@ class BOUsers{
     function updateInfo($array, $path)
     {
         //var_dump($array);
-        $this->val_updateInfo($array);
-        
-        $pic = new BOPics;
-        $dataPic = $this->table->find($_SESSION['id']);
-        $oldPic = $dataPic->PIC_ID;
-        $r = $this->table->updateInfo($array);
-        
-        //borro la imagen original de perfil
-        if(!empty($array['pic']) && is_numeric($array['pic']))
-        {
-          if(!empty($oldPic))
-            $pic->unlinkProfilePic($oldPic, $path);
-        }
-        elseif(isset($array['delete-pic']))
-        {
-           
-           for($i = 0; $i < sizeof($array['delete-pic']); $i++)
-           {
-              $pic->unlinkProfilePic($array['delete-pic'][$i], $path);    
-           }
-        }
+       if($this->val_updateInfo($array))
+       {
+          
+          $pic = new BOPics;
+          $dataPic = $this->table->find($_SESSION['id']);
+          $oldPic = $dataPic->PIC_ID;
+          $r = $this->table->updateInfo($array);
+          
+          //borro la imagen original de perfil
+          if(!empty($array['pic']) && is_numeric($array['pic']))
+          {
+            if(!empty($oldPic))
+              $pic->unlinkProfilePic($oldPic, $path);
+          }
+          elseif(isset($array['delete-pic']))
+          {
+             
+             for($i = 0; $i < sizeof($array['delete-pic']); $i++)
+             {
+                $pic->unlinkProfilePic($array['delete-pic'][$i], $path);    
+             }
+          }
 
+          return true;
+
+        } //end if
+
+        else
+        {
+          return false;
+        }
 
         //echo $r;
             /*
@@ -440,15 +449,37 @@ class BOUsers{
 
     function val_updateInfo($array)
     {
-        //HACER!!!
+        if(empty($array['name']) || empty($array['lastname']) || empty($array['email']))
+        {
+          $er = '<ul class="update-err">';
+          
+          if(empty($array['name']))
+            $er .= '<li>The name field is mandatory</li>';
+          if(empty($array['lastname']))
+            $er .= '<li>The lastname field is mandatory</li>';
+          if(empty($array['email']))
+            $er .= '<li>The e-mail field is mandatory</li>';
+          
+          $er .= '</ul>';
+          $this->err = $er;
+          return false;
+        }
+        else
+        {
+          return true;
+        }
     }
 
+    function getErr()
+    {
+      return $this->err;
+    }
 
 
     function updateAlbum($array, $path)
     {
         //var_dump($array);
-        $this->val_updateAlbum($array);
+      
         
         $pic = new BOPics;
         
@@ -476,11 +507,6 @@ class BOUsers{
         */
 
 
-    }
-
-    function val_updateAlbum($array)
-    {
-        //HACER!!!
     }
 
     function getAlbumIdByUser($id)

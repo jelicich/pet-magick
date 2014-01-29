@@ -101,9 +101,29 @@ if(isset($_FILES['file'])){ // normalWay();
 //var_dump($_POST);
 
 
+/*
 $pet->updateInfo($_POST,'../img/pets/');
 
-//$_GET['p'] = $_SESSION['id'];
+
 include_once "../templates/petAbout.php";
+*/
+
+
+if( $pet->updateInfo($_POST,'../img/pets/') )
+{
+	include_once "../templates/petAbout.php";
+}
+else
+{
+	include_once "../php/classes/BOAnimalCategories.php";
+	$ac = new BOAnimalCategories;
+	$_GET['p'] = $_POST['p'];
+	echo $pet->getErr();
+	$p = new BOPets;
+	
+
+	include_once "../templates/editPetAbout.php";
+
+}
 
 

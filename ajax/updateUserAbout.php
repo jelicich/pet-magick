@@ -98,8 +98,22 @@ if(isset($_FILES['file'])){ // normalWay();
 	}// end foreach
 }// end else
 
-$user->updateInfo($_POST,'../img/users/');
 
-$_GET['u'] = $_SESSION['id']; //imprimo esto para poder tener un response.text con el id del usuario y que deje de tirar el error de la variable U
-include_once "../templates/userAbout.php";
+if( $user->updateInfo($_POST,'../img/users/') )
+{
+	$_GET['u'] = $_SESSION['id']; //imprimo esto para poder tener un response.text con el id del usuario y que deje de tirar el error de la variable U
+	include_once "../templates/userAbout.php";
+}
+else
+{
+	//$_POST['u'] = $_SESSION['id'];
+	$p = $user;
+	$p->getUserData($_SESSION['id']);
+	echo $p->getErr();
 
+	include_once '../php/classes/BOLocation.php';
+	$location = new BOLocation;
+	$countries = $location->countryList();
+	include_once "../templates/editUser.php";
+
+}

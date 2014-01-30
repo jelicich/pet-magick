@@ -35,9 +35,9 @@ class OrganizationsTable extends Doctrine_Table
 	            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
 	            ->from('Organizations o')
 	            //->innerJoin('o.Users u')
-	            ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+	            ->leftJoin('o.Pics ph'); // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
 	             //->where('p.ANIMAL_CATEGORY_ID = ?', $id)
-	            ->groupBy('o.USER_ID');
+	            //->groupBy('o.USER_ID');
 	        
 	        $r = $q->execute();    
 	        
@@ -66,6 +66,47 @@ class OrganizationsTable extends Doctrine_Table
                 return false;
            }
     }// end getOrganizationsByUser
+
+    public function getOrganizationsById($id){ 
+
+         $q = Doctrine_Query::create()
+
+            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->from('Organizations o')
+            //->innerJoin('o.Users u')
+            ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+            ->where('o.ID_ORGANIZATION = ?', $id)
+            ->groupBy('o.ID_ORGANIZATION');
+        
+            $p = $q->execute();    
+       
+           if(sizeof($p) > 0){
+               
+                return $p->toArray();
+
+           }else{
+
+                return false;
+           }
+    }// end getOrganizationsByUser
+
+
+
+    
+    public function getOrganizationsRamdom() // revisar esta funcion pq no me queda claro q carajo me trae, aunque anda
+    {      
+        $userCount = Doctrine::getTable('Organizations')->count();
+        $user = Doctrine::getTable('Organizations')
+        ->createQuery()
+        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+        ->from('Organizations o')
+        ->leftJoin('o.Pics ph') 
+        ->limit(1)
+        ->offset(rand(0, $userCount - 1))
+        ->fetchOne();
+
+       return $user->toArray();
+    }// end getOrganizationsRamdom
 
 
 }

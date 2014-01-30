@@ -93,7 +93,7 @@ if(isset($_FILES['file'])){ // normalWay();
 				} 
 		
 		createQuery($query, $path, $obj);
-		$counter++;
+		$counter++; //esta variable creo q esta de mas 
 	}// end foreach
 }// end else
 

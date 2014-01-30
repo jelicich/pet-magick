@@ -841,7 +841,6 @@ function news(){
 	}//end for
 }//end postNews
 
-
 function addPet()
 {
 	var btn = byid('add-pet');
@@ -862,8 +861,6 @@ function addPet()
 		printEdit('pet-profile', this.responseText);
 	}
 }//end addPet
-
-//============================= DELETE PET
 
 function deletePet()
 {
@@ -912,11 +909,50 @@ function deletePet()
 	}
 }
 
-function refresh()
-{
+function refresh(){
+	
 	location.reload(true);
 }
 
+//============================= ORGANIZATIONS
+
+function selectedOrg(){ // esta function y profile pueden ser una sola si le paso parametro
+	
+	var as = document.querySelectorAll('.org-link');
+	for(var i = 0; i< as.length; i++)
+	{
+		as[i].onclick = function(e)		
+		{
+			e.preventDefault();
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+	  		var cont = byid('featured-org');
+	  		var loading = create('img');
+			loading.src = 'img/loading.gif'; 
+	  		cont.innerHTML = ""; // modificar esto
+	  		cont.appendChild(loading);
+			ajax('GET', 'ajax/getSelectedOrg.php?p='+p, printSelectedOrg, null, true);
+		}
+	}
+	
+	function printSelectedOrg()
+	{
+		var html = this.responseText;
+		var cont = byid('featured-org');
+		cont.innerHTML = html;
+
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
+	}
+}//end selectedOrg
 //============================= MODULS
 
 function listByCategory(ajaxFile){
@@ -949,6 +985,8 @@ function listByCategory(ajaxFile){
 		}
 	}// end printByPet
 }// end userByPet
+
+
 //======================================================================== IMG UPLOAD
 
 // Parametros a pasar para tipo de uso: 'profile', 'video', 'album'
@@ -1049,6 +1087,7 @@ function imgVideoUploader(whatFor, modulo){
          function refreshHeader(){
          	
 		  	 byid('login-reg').innerHTML = this.responseText;
+		  	// vardump(this.responseText);
 		 }// end refreshHeader
 
 		 function refreshPets(){
@@ -1095,6 +1134,10 @@ function imgVideoUploader(whatFor, modulo){
 			  		{
 						var uploadBtn = byid('save-new-pet');
 						var cancelBtn = byid('cancel-new-pet');
+			  		}else if(modulo == 'organization')
+			  		{
+						var uploadBtn = byid('save-edit-user'); // igual a about, modificar
+			  			var cancelBtn = byid('cancel-edit-user');
 			  		}											
 				  
 				  file_id.parentNode.appendChild(uploadBtn);
@@ -1129,6 +1172,11 @@ function imgVideoUploader(whatFor, modulo){
 
 				  			var cont = byid('pet-profile');
 				  			ajaxx('POST', 'ajax/refreshPets.php', refreshPets, null, true);
+
+				  		}else if(modulo == 'organization'){
+
+				  			var cont = byid('organization');
+				  			//ajaxx('POST', 'ajax/uploadOrganization.php', vardump, null, true);
 				  		}
 
 				  		cont.innerHTML = this.responseText;
@@ -1169,6 +1217,11 @@ function imgVideoUploader(whatFor, modulo){
 			  		else if(modulo == 'add-pet')
 			  		{
 						var file = 'ajax/getPetDefault.php';
+						var vars = '?u=';
+
+			  		}else if(modulo == 'organization')
+			  		{
+						var file = 'ajax/getOrganizationDefault.php';
 						var vars = '?u=';
 			  		}
 
@@ -1413,8 +1466,8 @@ function imgVideoUploader(whatFor, modulo){
 						  		index ++;
 						  		p = p.substr(index);
 								formData.append("u", p);
-					  		}
-					  		else if(modulo == 'organization'){
+
+					  		}else if(modulo == 'organization'){
 
 					  			var ajaxPostFile = 'ajax/uploadOrganization.php';
 					  			var p = this.href;
@@ -1425,11 +1478,10 @@ function imgVideoUploader(whatFor, modulo){
 					  		}
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
-					  		byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
-					  		
-
-
-				   		 	if (amount == 'profile' || amount == 'video'){
+						  	if (amount != 'profile'){
+						  		byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
+						  	}
+					  		if (amount == 'profile' || amount == 'video'){
 
 				   		 		  file_id.id = 'file_id';
 								  file_id.name = 'file';

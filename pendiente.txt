@@ -10,7 +10,6 @@ ANTRIORES
 ACTUAL
 ======
 - Cuando entras al perfil q no es el tuyo hay muchos errores pq no existen los botones cancel - save
-- Compatibilidad con diferentes navegadores en general
 - buscador key sensitive
 - busccador / traer solo los datos necesarios (no password, etc)
 - BOusers: get userdata() // traer toda la info en una sola consulta

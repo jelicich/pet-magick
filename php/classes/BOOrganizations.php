@@ -39,6 +39,19 @@ class BOOrganizations{
          return $array;
     }// end getOrganizationsByUser
 
+    function getOrganizationsRamdom(){ 
+
+         $array = $this->table-> getOrganizationsRamdom();
+         return $array;
+    }// end getOrganizationsByUser
+
+    function getOrganizationsById($id){ 
+
+     $array = $this->table-> getOrganizationsById($id);
+     return $array;
+    }// end getOrganizationsByUser
+
+
     function getErrors(){
 
         return  $this->err;

@@ -54,7 +54,12 @@ function upload($query,$path){
               move_uploaded_file($query['file'], $path.$newName);
               $fullpath = $path.$newName;
               $thumbpath = $path."thumb/".$newName; //para thumb
-              $caption = $query['caption'];
+
+            //  if(isset($query['caption'])){
+
+                  $caption = $query['caption'];
+             // }
+              
               
 
               $imgOriginal = $fullpath ;

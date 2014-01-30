@@ -3,6 +3,12 @@
 	//session_destroy();
 	$_SESSION['token'] = sha1(uniqid()); 
 	//var_dump($_SESSION);
+
+	include_once "php/classes/BOOrganizations.php";
+	include_once "php/classes/BOPics.php";
+
+	$org = new BOOrganizations;
+	$pics = new BOPics;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -46,91 +52,20 @@
 	</div>
 
 	<!-- featured project module -->
-		<div class="mod grid_12 org-mod nogrid-mod">
-			
-			<div class="mod-header">
-				<h2>Featured organization</h2>
-			</div>
-			
-			<div class="mod-content clearfix">
-				
-				<div class="pic-caption">
-					<img src="img/users/thumb/1.jpg" class="thumb-mid"/>
-					<h3>Kali</h3>
-					<span>Kelpy X</span> <br>
-					<span>1998 - 2010</span>
-			
-				</div>
-				
-				<div class="bg-txt txt-wider">
-					
-					<p>
-						El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15. El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. Recibirá al elenco de Floresta, que tendrá el debut de Ricardo Rodríguez como DT. Desde las 18:15
-						El equipo de Carlos Bianchi debe ganar para aprovechar la oportunidad de quedar a un punto de la cima tras el empate de San Lorenzo. 
-					</p>
-
-				</div>
-				
-			</div>
-
-				<!--
-				No sabemos si lleva fotos aca!
-
-				<div class="slider-small">
-					<ul class="clearfix">
-						<li><img class="thumb-mid" src="img/users/thumb/1.jpg"/></li>
-						<li><img class="thumb-mid" src="img/users/thumb/1.jpg"/></li>
-						<li><img class="thumb-mid" src="img/users/thumb/1.jpg"/></li>
-					</ul>	
-				</div>
-			-->
-		</div>
-		<!-- END featured project module -->
+	<div class="mod grid_12 org-mod nogrid-mod" id='featured-org'>
+		<?php 
+			include_once 'templates/featuredOrganizationsModule.php'; 
+		?>
+	</div>
+	<!-- END featured project module -->
 
 
-		<!-- Current projects module -->
-		<div class="mod grid_8 org-mod">
-			<div class="mod-header">
-				<h2>Organization list</h2>
-			</div>
-			<!-- talks -->
-			<ul class="mod-content pet-loss-mod-list talks-list">
-				<li class="clearfix">
-					<img src="img/pet-loss/thumb/1.jpg" class="thumb-small side-img"/>
-					<div class="content-description bg-txt ">
-						<h3>We will mis you</h3>
-						<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						<a href="#">View post</a>
-					</div>
-				</li>
-				<li class="clearfix">
-					<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-					<div class="content-description bg-txt">
-						<h3>Forever</h3>
-						<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						<a href="#">View post</a>
-					</div>
-				</li>
-				<li class="clearfix">
-					<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-					<div class="content-description bg-txt">
-						<h3>Coco</h3>
-						<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						<a href="#">View post</a>
-					</div>
-				</li>
-				<li class="clearfix">
-					<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-					<div class="content-description bg-txt">
-						<h3>Coco</h3>
-						<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						<a href="#">View post</a>
-					</div>
-				</li>
-			</ul>
-			<!-- END talks -->
-		</div>
-		<!-- END Current projects module -->
+	<!-- Current projects module -->
+		<?php 
+			include_once 'templates/organizationListModule.php'; 
+		?>
+	<!-- END Current projects module -->
+
 
 		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
 		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
@@ -144,5 +79,11 @@
 
 </div>
 <!-- END wrapper-->
+
+
+
+<script type="text/javascript">
+selectedOrg();
+</script>
 </body>
 </html>

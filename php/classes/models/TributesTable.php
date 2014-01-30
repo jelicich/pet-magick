@@ -16,4 +16,39 @@ class TributesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Tributes');
     }
+
+    public function createTribute($array)
+    {
+    	var_dump($array);
+    	$t = new Tributes;
+    	$t->TITLE = $array['title'];
+    	$t->CONTENT = $array['content'];
+    	$t->NAME = $array['name'];
+    	if(!empty($array['breed']))
+    		$t->BREED = $array['breed'];
+    	if(!empty($array['since']))
+    		$t->SINCE = $array['since'];
+    	if(!empty($array['thru']))
+    		$t->THRU = $array['thru'];
+    	if(!empty($array['pic_id']))
+    		$t->PIC_ID = $array['pic_id'];
+    	$t->USER_ID = $array['u'];
+    	if(!empty($array['pet']))
+    		$t->PET_ID = $array['pet'];
+
+    	$t->save();
+    	return $t->ID_TRIBUTE;
+    }
+
+    public function getTribute($id)
+    {
+    	$q = Doctrine_Query::create()
+    		->select('t.*, p.PIC')
+    		->from('Tributes t')
+    		->leftJoin('t.Pics p')
+    		->where('t.ID_TRIBUTE = ?', $id);
+    	$r = $q->execute();
+    	return $r->toArray();
+
+    }
 }

@@ -78,7 +78,7 @@ abstract class BaseTributes extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => true,
+             'notnull' => false,
              'autoincrement' => false,
              ));
         $this->hasColumn('THRU', 'date', null, array(
@@ -86,7 +86,7 @@ abstract class BaseTributes extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => true,
+             'notnull' => false,
              'autoincrement' => false,
              ));
         $this->hasColumn('PIC_ID', 'integer', 4, array(

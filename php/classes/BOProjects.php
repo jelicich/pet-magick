@@ -47,7 +47,6 @@ class BOProjects{
     function setAlbum($albumId, $projectId){
 
         $this->table->setAlbum($albumId, $projectId);
-
     }// end setAlbum
 
     function getErrors(){

@@ -3,6 +3,8 @@
 						<h2>My pet story</h2>
 					</div>
 					<div class="mod-content clearfix">
+
+						<div id='culo'></div>
 			<?php 
 				
 				//if($p->getPetList($_GET['p']))

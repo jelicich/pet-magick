@@ -23,7 +23,7 @@
 							<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 								
 								<p id="upload-status"></p>
-							  	<pre id="result"></pre>
+							  	
 								
 								<div class="pic-caption pet-info">
 									<img src="img/pets/thumb/default.jpg" class="thumb-mid"/>
@@ -52,6 +52,10 @@
 								<div class="bg-txt corregir">
 									<label for="pet-story"><textarea class="form-element" name="story"></textarea>
 								</div>
+
+								<label for="create-tribute">Create Tribute</label>
+								<input type="checkbox" id="create-tribute" class="form-element" name="create-tribute" />
+
 
 							</form>
 				<?php 

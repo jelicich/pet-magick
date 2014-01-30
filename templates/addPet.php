@@ -4,7 +4,7 @@
 					</div>
 					<div class="mod-content clearfix">
 
-						<div id='culo'></div>
+						<div id='culo'>Sucio</div>
 			<?php 
 				
 				//if($p->getPetList($_GET['p']))

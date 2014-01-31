@@ -78,6 +78,11 @@ class BOTributes{
         $this->table->deleteTribute($id);
     }
 
+    function deleteTributeByPet($id)
+    {
+        $this->table->deleteTributeByPet($id);
+    }
+
 
     function getErr(){
 

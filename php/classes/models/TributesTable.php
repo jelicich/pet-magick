@@ -78,4 +78,12 @@ class TributesTable extends Doctrine_Table
             ->where('t.ID_TRIBUTE = ?', $id );
         $q->execute();
     }
+
+    public function deleteTributeByPet($id)
+    {
+        $q = Doctrine_Query::create()
+            ->delete('Tributes t')
+            ->where('t.PET_ID = ?', $id );
+        $q->execute();
+    }
 }

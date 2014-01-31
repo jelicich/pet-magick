@@ -7,6 +7,7 @@ include_once('models/VideosTable.php');
 include_once('models/TributesTable.php');
 include_once ('BOPics.php');
 include_once ('BOAlbums.php');
+include_once ('BOTributes.php');
 
 
 class BOPets{
@@ -357,11 +358,18 @@ class BOPets{
         $pics = new BOPics;
         $pics->deleteAllPics($petData->ALBUM_ID, '../img/pets/');
 
+        if($this->hasTribute($id))
+        {
+            $tr = new BOTributes;
+            $tr->deleteTributeByPet($id);
+        }
+
         //seteo la foto de perfil en null para que me deje borrrarla de la base
         $this->setPicNull($id); 
 
         //borro la foto de perfil
-        $pics->unlinkProfilePic($petData->PIC_ID, '../img/pets/');
+        if($petData->PIC_ID)
+            $pics->unlinkProfilePic($petData->PIC_ID, '../img/pets/');
 
         //borro el album
         $this->setAlbumNull($id);

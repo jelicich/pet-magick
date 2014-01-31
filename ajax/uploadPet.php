@@ -108,12 +108,13 @@ if(!$idPet)
 	include_once "../php/classes/BOAnimalCategories.php";
 	$ac = new BOAnimalCategories;
 	$err = $p->getErr();
-	echo '<p>Error creating the tribute</p><ul class="error upload-pet">';
+	echo '<p>Error creating new pet</p><ul class="error upload-pet">';
 	for($i=0; $i < sizeof($err); $i++)
 	{
 		echo '<li>'.$err[$i].'</li>';
 	}
 	echo '</ul>';
+	$_GET['u'] = $_POST['u'];
 	include_once "../templates/addPet.php";
 	
 }

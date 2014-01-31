@@ -81,21 +81,23 @@
 								$ar = $tr->getTribute($p->getTributeId());
 							?>
 								<div id="create-tribute">
-									<label for="del-tribute"><input type="checkbox" id="del-tribute" class="form-element" name="delete-tribute" value=<?php echo '"'. $ar['ID_TRIBUTE'] .'"';?> /> Delete Tribute</label>
+									<label for="del-tribute"><input type="checkbox" id="del-tribute" class="form-element" name="delete-tribute" class="form-element" value=<?php echo '"'. $ar['ID_TRIBUTE'] .'"';?> /> Delete Tribute</label>
 									
 									<div id="hide-tribute">
 										<label for="tr-title">Tribute title</label>
-										<input type="text" name="tr-title" id="tr-title" value=<?php echo '"'.$ar['TITLE'].'"'; ?> />
+										<input type="text" name="tr-title" id="tr-title" value=<?php echo '"'.$ar['TITLE'].'"'; ?> class="form-element" />
 
 										<label for="tr-msg">Message</label>
-										<textarea name="tr-msg" id="tr-msg"><?php echo $ar['CONTENT'];?></textarea>
+										<textarea name="tr-msg" id="tr-msg" class="form-element"><?php echo $ar['CONTENT'];?></textarea>
 
 										<label for="tr-since">Since</label>
-										<input type="text" name="tr-since" id="tr-since" readonly="readonly" value=<?php echo '"'.$ar['SINCE'].'"';?> />
+										<input type="text" name="tr-since" id="tr-since" readonly="readonly" value=<?php echo '"'.$ar['SINCE'].'"';?> class="form-element" />
 
 										<label for="tr-thru">Gone</label>
-										<input type="text" name="tr-thru" id="tr-thru" readonly="readonly" value=<?php echo '"'.$ar['THRU'].'"'; ?> />
+										<input type="text" name="tr-thru" id="tr-thru" readonly="readonly" value=<?php echo '"'.$ar['THRU'].'"'; ?> class="form-element" />
 
+										<input type="hidden" name="tr-user" value=<?php echo '"'.$ar['USER_ID'].'"';?> class="form-element"/>
+										<input type="hidden" name="tr-id" value=<?php echo '"'.$ar['ID_TRIBUTE'].'"';?> class="form-element" />
 									</div>
 								</div>
 							<?php
@@ -167,27 +169,30 @@
 					var ins = div.getElementsByTagName('input');
 					var txa = div.getElementsByTagName('textarea');
 
-					chkTribute.onchange = function()
+					if(chkTribute)
 					{
-						if(this.checked)
+						chkTribute.onchange = function()
 						{
-							div.style.display = 'block';
-							for(var i = 0; i < ins.length; i++)
+							if(this.checked)
 							{
-								ins[i].className = 'form-element';
+								div.style.display = 'block';
+								for(var i = 0; i < ins.length; i++)
+								{
+									ins[i].className = 'form-element';
+								}
+								txa[0].className = 'form-element';
 							}
-							txa[0].className = 'form-element';
-						}
-						else
-						{
-							div.style.display = 'none';
-							for(var i = 0; i < ins.length; i++)
+							else
 							{
-								ins[i].removeAttribute('class');
+								div.style.display = 'none';
+								for(var i = 0; i < ins.length; i++)
+								{
+									ins[i].removeAttribute('class');
+								}
+								txa[0].removeAttribute('class');
 							}
-							txa[0].removeAttribute('class');
+								
 						}
-							
 					}	
 				}
 

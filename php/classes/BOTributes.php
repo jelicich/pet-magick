@@ -44,6 +44,40 @@ class BOTributes{
         }
     }
 
+    function updateTribute($array)
+    {
+        if($this->val_updateTribute($array))
+        {
+            $this->table->updateTribute($array);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    function val_updateTribute($array)
+    {
+        if(empty($array['tr-title']) || empty($array['tr-msg']) )
+        {
+            
+            if(empty($array['tr-title']))
+                $this->err[]= 'The title field is mandatory';
+            if(empty($array['tr-msg']))
+                $this->err[]= 'The content field is mandatory';
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    function deleteTribute($id)
+    {
+        $this->table->deleteTribute($id);
+    }
+
 
     function getErr(){
 

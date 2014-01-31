@@ -19,7 +19,7 @@ class TributesTable extends Doctrine_Table
 
     public function createTribute($array)
     {
-    	var_dump($array);
+    	//var_dump($array);
     	$t = new Tributes;
     	$t->TITLE = $array['tr-title'];
     	$t->CONTENT = $array['tr-msg'];
@@ -34,6 +34,21 @@ class TributesTable extends Doctrine_Table
 
     	$t->save();
     	return $t->ID_TRIBUTE;
+    }
+
+    public function updateTribute($array)
+    {
+        $q = Doctrine_Query::create()
+            ->update('Tributes t')
+            ->set('t.TITLE', '?', $array['tr-title'] )
+            ->set('t.CONTENT', '?', $array['tr-msg'] );
+            if(!empty($array['tr-since']))
+                $q->set('t.SINCE','?',$array['tr-since']);
+            if(!empty($array['tr-thru']))
+                $q->set('t.THRU','?',$array['tr-thru']);
+            $q->where('t.ID_TRIBUTE =?',$array['tr-id']);
+
+        $q->execute();
     }
 
     public function getTribute($id)
@@ -54,5 +69,13 @@ class TributesTable extends Doctrine_Table
 
         $r = $q->execute();
         return $r->toArray();
+    }
+
+    public function deleteTribute($id)
+    {
+        $q = Doctrine_Query::create()
+            ->delete('Tributes t')
+            ->where('t.ID_TRIBUTE = ?', $id );
+        $q->execute();
     }
 }

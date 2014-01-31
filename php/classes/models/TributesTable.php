@@ -54,7 +54,10 @@ class TributesTable extends Doctrine_Table
     public function getTribute($id)
     {
     	$q = Doctrine_Query::create()
-    		->from('Tributes t')
+    		->select('t.*,p.NAME, p.BREED, f.PIC')
+            ->from('Tributes t')
+            ->leftJoin('t.Pets p')
+            ->leftJoin('p.Pics f')
     		->where('t.ID_TRIBUTE = ?', $id);
     	$r = $q->execute();
     	return $r->toArray();

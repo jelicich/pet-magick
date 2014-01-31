@@ -92,7 +92,18 @@ class BOTributes{
     function getTribute($id)
     {
         $obj = $this->table->getTribute($id);
-       
+        
+        if(isset($obj[0]['Pets']['Pics']['PIC']))
+        {
+            $pic = $obj[0]['Pets']['Pics']['PIC'];
+            $obj[0]['Pets']['Pics']['PIC'] = 'img/pets/'.$pic;
+            $obj[0]['Pets']['Pics']['THUMB'] = 'img/pets/thumb/'.$pic;
+        }
+        else
+        {
+            $obj[0]['Pets']['Pics']['PIC'] = 'img/pets/default.jpg';
+            $obj[0]['Pets']['Pics']['THUMB'] = 'img/pets/thumb/default.jpg';
+        }
         return $obj[0];
     }
 

@@ -26,12 +26,19 @@
 								<ul>
 									<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
 									<li><span><strong>Traits: </strong><?php echo $p->getTraits();?></span></li>
+									<?php
+										if($p->hasTribute($p->getId()))
+										{
+											echo '<li><a href="pet-tribute.php?t='.$p->getTributeId().'" >View tribute</a></li>';
+										}
+									?>
 								</ul>
 							</div>
 							
 							<div class="bg-txt corregir">
 								<p><?php echo $p->getStory();?></p>
 							</div>
+							
 						</div><!-- END PET ABOUT-->
 						
 

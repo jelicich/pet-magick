@@ -36,26 +36,26 @@
 		<!-- about module -->
 		<div class="mod grid_12 pet-loss-mod nogrid-mod">
 			<div class="mod-header">
-				<h2><?php echo $a[0]['TITLE']; ?></h2>
+				<h2><?php echo $a['TITLE']; ?></h2>
 			</div>
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
 					
-					<a href=<?php echo '"'.$a[0]['PIC'] .'"' ?>><img src=<?php echo '"'.$a[0]['THUMB'].'"' ?> class="thumb-mid"/></a>
+					<a href=<?php echo '"'.$a['Pets']['Pics']['PIC'] .'"' ?>><img src=<?php echo '"'.$a['Pets']['Pics']['THUMB'].'"' ?> class="thumb-mid"/></a>
 					
-					<h3><?php echo $a[0]['NAME']; ?></h3>
+					<h3><?php echo $a['Pets']['NAME']; ?></h3>
 					<ul>
-						<li>Breed: <?php echo $a[0]['BREED']?></li> 
-						<li>Birth: <?php echo $a[0]['SINCE'] ?></li>
-						<li>Gone: <?php echo $a[0]['THRU'] ?></li>
+						<li>Breed: <?php echo $a['Pets']['BREED']?></li> 
+						<li>Birth: <?php echo $a['SINCE'] ?></li>
+						<li>Gone: <?php echo $a['THRU'] ?></li>
 					</ul>
 				</div>
 				
 				<div class="bg-txt txt-wider">
-					<p><?php echo $a[0]['CONTENT'] ?></p>
+					<p><?php echo $a['CONTENT'] ?></p>
 				</div>
 
-				<a href=<?php echo '"user-profile.php?u='. $a[0]['USER_ID'] .'"';?> id='visit-member'><span>View member profile >></span></a> <!-- provisorio -->
+				<a href=<?php echo '"user-profile.php?u='. $a['USER_ID'] .'"';?> id='visit-member'><span>View member profile >></span></a> <!-- provisorio -->
 				
 			</div>
 		</div>

@@ -21,20 +21,16 @@ class TributesTable extends Doctrine_Table
     {
     	var_dump($array);
     	$t = new Tributes;
-    	$t->TITLE = $array['title'];
-    	$t->CONTENT = $array['content'];
-    	$t->NAME = $array['name'];
-    	if(!empty($array['breed']))
-    		$t->BREED = $array['breed'];
-    	if(!empty($array['since']))
-    		$t->SINCE = $array['since'];
-    	if(!empty($array['thru']))
-    		$t->THRU = $array['thru'];
-    	if(!empty($array['pic_id']))
-    		$t->PIC_ID = $array['pic_id'];
+    	$t->TITLE = $array['tr-title'];
+    	$t->CONTENT = $array['tr-msg'];
+
+    	if(!empty($array['tr-since']))
+    		$t->SINCE = $array['tr-since'];
+    	if(!empty($array['tr-thru']))
+    		$t->THRU = $array['tr-thru'];
+    	
     	$t->USER_ID = $array['u'];
-    	if(!empty($array['pet']))
-    		$t->PET_ID = $array['pet'];
+    	$t->PET_ID = $array['p'];
 
     	$t->save();
     	return $t->ID_TRIBUTE;
@@ -43,12 +39,20 @@ class TributesTable extends Doctrine_Table
     public function getTribute($id)
     {
     	$q = Doctrine_Query::create()
-    		->select('t.*, p.PIC')
     		->from('Tributes t')
-    		->leftJoin('t.Pics p')
     		->where('t.ID_TRIBUTE = ?', $id);
     	$r = $q->execute();
     	return $r->toArray();
 
+    }
+
+    public function getTributeByPet($id)
+    {
+        $q = Doctrine_Query::create()
+            ->from('Tributes')
+            ->where('PET_ID =?',$id);
+
+        $r = $q->execute();
+        return $r->toArray();
     }
 }

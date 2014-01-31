@@ -4,6 +4,7 @@ include_once('tools/bootstrap.php');
 include_once('models/PetsTable.php');
 include_once('models/PicsTable.php');
 include_once('models/VideosTable.php');
+include_once('models/TributesTable.php');
 include_once ('BOPics.php');
 include_once ('BOAlbums.php');
 
@@ -19,6 +20,7 @@ class BOPets{
         $this->table = Doctrine_Core::getTable('Pets');
         $this->picsTable = Doctrine_Core::getTable('Pics');
         $this->videosTable = Doctrine_Core::getTable('Videos');
+        $this->tributesTable = Doctrine_Core::getTable('Tributes');
     }
 
     //$id = user ID
@@ -232,7 +234,6 @@ class BOPets{
 
     function updateInfo($array, $path)
     {
-        //var_dump($array);
         if($this->val_updateInfo($array))
         {
             $pic = new BOPics;
@@ -265,7 +266,7 @@ class BOPets{
 
     function val_updateInfo($array)
     {
-        if(empty($array['name']) || empty($array['animal-category']))
+        if( empty($array['name']) || empty($array['animal-category']) )
         {
           $er = '<ul class="update-err">';
           
@@ -374,21 +375,57 @@ class BOPets{
     function addPet($array)
     {
 
-        //var_dump($array);
-        $this->val_addPet($array);
+        if($this->val_addPet($array))
+        {
+            $this->val_addPet($array);
         
 
-        $r = $this->table->addPet($array);
-        return $r;
+            $r = $this->table->addPet($array);
+            return $r;    
+        }
+        else
 
+            return false;
     
     }
 
     function val_addPet($array)
     {
-        //HACER
+        if( empty($array['name']) || empty($array['animal-category']) )
+        {
+          
+          if(empty($array['name']))
+            $this->err[] = 'The name field is mandatory';
+          if(empty($array['animal-category']))
+            $this->err[] = 'The animal category field is mandatory';
+          
+          return false;
+        }
+        else
+        {
+          return true;
+        }
     }
 
+    function hasTribute($id)
+    {
+        $r=$this->tributesTable->getTributeByPet($id);
+        if(empty($r[0]['ID_TRIBUTE']))
+        {
+            return false;
+        }
+        else
+        {
+            $this->tribute = $r[0]['ID_TRIBUTE'];
+            return true;
+        }
+
+    }
+
+    function getTributeId()
+    {
+        return $this->tribute;
+    }
 }//End class BOUsers
 
 

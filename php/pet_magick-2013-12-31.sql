@@ -44465,15 +44465,11 @@ CREATE TABLE IF NOT EXISTS `tributes` (
   `ID_TRIBUTE` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(100) NOT NULL,
   `CONTENT` text NOT NULL,
-  `NAME` varchar(45) NOT NULL,
-  `BREED` varchar(45) DEFAULT NULL,
-  `SINCE` date NOT NULL,
-  `THRU` date NOT NULL,
-  `PIC_ID` int(10) unsigned DEFAULT NULL,
+  `SINCE` date DEFAULT NULL,
+  `THRU` date DEFAULT NULL,
   `USER_ID` int(10) unsigned NOT NULL,
   `PET_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_TRIBUTE`),
-  KEY `PIC_ID` (`PIC_ID`),
   KEY `USER_ID` (`USER_ID`),
   KEY `PET_ID` (`PET_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -44648,9 +44644,8 @@ ALTER TABLE `qas`
 -- Constraints for table `tributes`
 --
 ALTER TABLE `tributes`
-  ADD CONSTRAINT `tributes_ibfk_1` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`),
-  ADD CONSTRAINT `tributes_ibfk_2` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `tributes_ibfk_3` FOREIGN KEY (`PET_ID`) REFERENCES `pets` (`ID_PET`);
+  ADD CONSTRAINT `tributes_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
+  ADD CONSTRAINT `tributes_ibfk_2` FOREIGN KEY (`PET_ID`) REFERENCES `pets` (`ID_PET`);
 
 --
 -- Constraints for table `users`

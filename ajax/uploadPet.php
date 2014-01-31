@@ -2,7 +2,7 @@
 
 session_start();
 
-
+//var_dump($_POST);
 
 if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
 {
@@ -21,7 +21,7 @@ include_once "../php/classes/BOVideos.php";
 $p = new BOPets;
 $pics = new BOPics;
 $videos = new BOVideos;
-//var_dump($_POST);
+
 
 
 
@@ -103,10 +103,53 @@ if(isset($_FILES['file'])){ // normalWay();
 
 
 $idPet = $p->addPet($_POST);
+if(!$idPet)
+{
+	include_once "../php/classes/BOAnimalCategories.php";
+	$ac = new BOAnimalCategories;
+	$err = $p->getErr();
+	echo '<p>Error creating the tribute</p><ul class="error upload-pet">';
+	for($i=0; $i < sizeof($err); $i++)
+	{
+		echo '<li>'.$err[$i].'</li>';
+	}
+	echo '</ul>';
+	include_once "../templates/addPet.php";
+	
+}
+else
+{
+	$p->getPetData($idPet);
 
-$p->getPetData($idPet);
+
+	include_once "../templates/petProfile.php";	
+
+	if(isset($_POST['create-tribute']))
+	{
+		include_once '../php/classes/BOTributes.php';
+		$t = new BOTributes;
+		$_POST['p'] = $idPet;
+		$idTr = $t->createTribute($_POST);
+		if(!$idTr)
+		{
+			$err = $t->getErr();
+			echo '<p>Error creating the tribute</p><ul class="error upload-tribute">';
+			for($i=0; $i < sizeof($err); $i++)
+			{
+				echo '<li>'.$err[$i].'</li>';
+			}
+			echo '</ul>';
+		}
+	}
 
 
-include_once "../templates/petProfile.php";
+}
+
+
+
+
+
+
+
 
 

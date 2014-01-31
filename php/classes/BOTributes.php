@@ -29,16 +29,13 @@ class BOTributes{
 
     function val_createTribute($array)
     {
-        if(empty($array['title']) || empty($array['content']) || empty($array['name']))
+        if(empty($array['tr-title']) || empty($array['tr-msg']) )
         {
-            var_dump($array);
-            die;
-            if(empty($array['title']))
-                $this->err[]= '&ti=1';
-            if(empty($array['content']))
-                $this->err[]= '&co=1';
-            if(empty($array['name']))
-                $this->err[]= '&na=1';
+            
+            if(empty($array['tr-title']))
+                $this->err[]= 'The title field is mandatory';
+            if(empty($array['tr-msg']))
+                $this->err[]= 'The content field is mandatory';
             return false;
         }
         else
@@ -56,18 +53,8 @@ class BOTributes{
     function getTribute($id)
     {
         $obj = $this->table->getTribute($id);
-        $p = $obj[0]['PIC'];
-        if($p == NULL)
-        {
-            $obj[0]['PIC'] = 'img/tributes/default.jpg';
-            $obj[0]['THUMB'] = 'img/tributes/thumb/default.jpg';
-        }
-        else
-        {
-            $obj[0]['PIC'] = 'img/tributes/'.$p;
-            $obj[0]['THUMB'] = 'img/tributes/thumb/'.$p;
-        }
-        return $obj;
+       
+        return $obj[0];
     }
 
 }//End class BOUsers

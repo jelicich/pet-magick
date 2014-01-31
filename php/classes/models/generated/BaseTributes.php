@@ -55,24 +55,6 @@ abstract class BaseTributes extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('NAME', 'string', 45, array(
-             'type' => 'string',
-             'length' => 45,
-             'fixed' => false,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => true,
-             'autoincrement' => false,
-             ));
-        $this->hasColumn('BREED', 'string', 45, array(
-             'type' => 'string',
-             'length' => 45,
-             'fixed' => false,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             ));
         $this->hasColumn('SINCE', 'date', null, array(
              'type' => 'date',
              'fixed' => false,
@@ -85,15 +67,6 @@ abstract class BaseTributes extends Doctrine_Record
              'type' => 'date',
              'fixed' => false,
              'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             ));
-        $this->hasColumn('PIC_ID', 'integer', 4, array(
-             'type' => 'integer',
-             'length' => 4,
-             'fixed' => false,
-             'unsigned' => true,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,

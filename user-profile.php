@@ -40,14 +40,7 @@
 		'<link rel="stylesheet" type="text/css" href="datepicker/css/ui-lightness/datepicker.css" />
 		<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
 		<script type="text/javascript" src="datepicker/js/jquery-ui-1.10.3.custom.min.js"></script>
-		<script type="text/javascript">	
-			$(document).ready(function() {
-			   $("#tr-since").datepicker({dateFormat: "yy-mm-dd"});
-			   $("#tr-thru").datepicker({dateFormat: "yy-mm-dd"});
-			   $("#tr-since").css("cursor","pointer");
-			   $("#tr-thru").css("cursor","pointer");
-			});
-		</script>';
+		';
 	}
 ?>
 
@@ -141,88 +134,7 @@
 					<div class="mod-header">
 						<h2>Admin</h2>
 					</div>
-					<div id="tribute">
-						<h3>Create tribute</h3>
-						<?php
-							if(isset($_GET['error']))
-							{	
-								var_dump($_GET);
-								echo '<ul class="error-tribute">';
-								foreach ($_GET as $key => $value) 
-								{
-									switch ($key)
-									{
-										case 'ti':
-											echo '<li>The title filed is mandatory</li>';
-											break;
-										
-										case 'co':
-											echo '<li>The message field is mandatory</li>';
-											break;
-
-										case 'na':
-											echo '<li>The name filed is mandatory</li>';
-											break;
-
-										default:
-											break;
-									}
-								}
-								echo '</ul>';
-							}
-						?>
-						<form method="post" action="php/createTribute.php">
-							<label for="tr-title">Tribute title*</label>
-							<input type="text" name="title" id="tr-title"/>
-
-							<label for="tr-img">Image</label>
-							<input type="file" id="tr-img" name="img"/>
-
-							<label for="tr-content">Message*</label>
-							<textarea name="content"></textarea>
-
-							<label for="tr-name">Pet Name*</label>
-							<input type="text" name="name" id="tr-name"/>
-
-							<label for="tr-breed">Breed</label>
-							<input type="text" name="breed" id="tr-breed"/>
-
-							<label for="tr-since">Since</label>
-							<input type="text" name="since" id="tr-since" readonly="readonly"/>
-
-							<label for="tr-thru">Thru</label>
-							<input type="text" name="thru" id="tr-thru" readonly="readonly" />
-
-							<label for="tr-pet">Is this one of your pets in your profile?</label>
-							<select name="pet" id="tr-pet">
-								<option></option>
-								<?php
-
-									
-									if($pets) 
-									{
-										
-										for($i = 0; $i < sizeof($pets); $i++)
-										{	
-											
-
-								?>
-											<option value=<?php echo '"'.$pets[$i]['ID_PET'].'"' ?>>
-												<?php echo $pets[$i]['NAME'] ?> 
-											</option>
-								<?php
-										
-										}//END FOR
-									
-									}//END IF 
-								?>
-							</select>
-							<p>* Mandatory fields</p>
-							<input type="hidden" name="u" value=<?php echo '"'.$_GET['u'].'"'?> />
-							<input type="submit" value="Create" />
-
-						</form>
-					</div><!-- end tribute -->
+					
 				</div><!-- end admin -->
 		<?php 
 			}

@@ -4,7 +4,6 @@
 					</div>
 					<div class="mod-content clearfix">
 
-						<div id='culo'>Sucio</div>
 			<?php 
 				
 				//if($p->getPetList($_GET['p']))
@@ -25,36 +24,55 @@
 								<p id="upload-status"></p>
 							  	
 								
-								<div class="pic-caption pet-info">
-									<img src="img/pets/thumb/default.jpg" class="thumb-mid"/>
-									
-									<select name="animal-category" class="form-element">
-										<?php
-										$cats = $ac->getCategories();
-										for($i = 0; $i<sizeof($cats); $i++)
-										{
-											echo '<option value="'.$cats[$i]['ID_ANIMAL_CATEGORY'].'">'.$cats[$i]['NAME'].'</option>';
-										}
-										?>
-									</select>
+								<div class="clearfix">
+									<div class="pic-caption pet-info">
+										<img src="img/pets/thumb/default.jpg" class="thumb-mid"/>
+										
+										<select name="animal-category" class="form-element">
+											<?php
+											$cats = $ac->getCategories();
+											for($i = 0; $i<sizeof($cats); $i++)
+											{
+												echo '<option value="'.$cats[$i]['ID_ANIMAL_CATEGORY'].'">'.$cats[$i]['NAME'].'</option>';
+											}
+											?>
+										</select>
 
-									<label for="pet-name">Name</label>
-									<input type="text" class="form-element" name="name" id="pet-name" />
-									
-									<label for="pet-breed">Breed</label>
-									<input type="text" class="form-element" name="breed" id="pet-breed" />
+										<label for="pet-name">Name</label>
+										<input type="text" class="form-element" name="name" id="pet-name" />
+										
+										<label for="pet-breed">Breed</label>
+										<input type="text" class="form-element" name="breed" id="pet-breed" />
 
-									<label for="pet-traits">Traits</label>
-									<input type="text" class="form-element" name="traits" id="pet-traits" />
+										<label for="pet-traits">Traits</label>
+										<input type="text" class="form-element" name="traits" id="pet-traits" />
+										
+									</div>
 									
+									<div class="bg-txt corregir">
+										<label for="pet-story"><textarea class="form-element" name="story"></textarea>
+									</div>
+
 								</div>
-								
-								<div class="bg-txt corregir">
-									<label for="pet-story"><textarea class="form-element" name="story"></textarea>
-								</div>
 
-								<label for="create-tribute">Create Tribute</label>
-								<input type="checkbox" id="create-tribute" class="form-element" name="create-tribute" />
+								<div id="create-tribute">
+									<label for="chk-tribute"><input type="checkbox" id="chk-tribute" class="form-element" name="create-tribute"/> Create Tribute</label>
+									
+									<div id="hide-tribute" style="display:none">
+										<label for="tr-title">Tribute title</label>
+										<input type="text" name="tr-title" id="tr-title"/>
+
+										<label for="tr-msg">Message</label>
+										<textarea name="tr-msg" id="tr-msg"></textarea>
+
+										<label for="tr-since">Since</label>
+										<input type="text" name="tr-since" id="tr-since" readonly="readonly"/>
+
+										<label for="tr-thru">Gone</label>
+										<input type="text" name="tr-thru" id="tr-thru" readonly="readonly"/>
+
+									</div>
+								</div>
 
 
 							</form>
@@ -71,5 +89,47 @@
 			<script type="text/javascript">
 				imgVideoUploader('profile', 'add-pet'); // SUBIR IMG
 
-				//imgVideoUploader('profile', 'about'); // SUBIR IMG
+				showTribute();
+				//PASAR A LIB
+				function showTribute()
+				{
+					var chkTribute = byid('chk-tribute');
+					var div = byid('hide-tribute');
+					var ins = div.getElementsByTagName('input');
+					var txa = div.getElementsByTagName('textarea');
+
+					chkTribute.onchange = function()
+					{
+						if(this.checked)
+						{
+							div.style.display = 'block';
+							for(var i = 0; i < ins.length; i++)
+							{
+								ins[i].className = 'form-element';
+							}
+							txa[0].className = 'form-element';
+						}
+						else
+						{
+							div.style.display = 'none';
+							for(var i = 0; i < ins.length; i++)
+							{
+								ins[i].removeAttribute('class');
+							}
+							txa[0].removeAttribute('class');
+						}
+							
+					}	
+				}
+
+		
+			
+			   $("#tr-since").datepicker({dateFormat: "yy-mm-dd"});
+			   $("#tr-thru").datepicker({dateFormat: "yy-mm-dd"});
+			   $("#tr-since").css("cursor","pointer");
+			   $("#tr-thru").css("cursor","pointer");
+			   
+			
+		
+				
 			</script>

@@ -61,7 +61,18 @@ class TributesTable extends Doctrine_Table
     		->where('t.ID_TRIBUTE = ?', $id);
     	$r = $q->execute();
     	return $r->toArray();
+    }
 
+    public function getAllTributes()
+    {
+        $q = Doctrine_Query::create()
+            ->select('t.SINCE, t.THRU, p.NAME, f.PIC')
+            ->from('Tributes t')
+            ->leftJoin('t.Pets p')
+            ->leftJoin('p.Pics f');
+            //LIMIT para traer los primeros
+        $r = $q->execute();
+        return $r->toArray();
     }
 
     public function getTributeByPet($id)

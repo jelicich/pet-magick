@@ -107,6 +107,12 @@ class BOTributes{
         return $obj[0];
     }
 
+    function getAllTributes()
+    {
+        $r = $this->table->getAllTributes();
+        return $r;
+    }
+
 }//End class BOUsers
 
 

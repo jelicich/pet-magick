@@ -1305,6 +1305,28 @@ Tunear!!!
 	margin: 100px auto;
 	position: relative;
 }
+
+#pop-up{
+	display: none;
+	position: absolute;
+	right: -10px;
+	top: 15px;
+	z-index: 9999;
+	overflow: hidden;
+}
+
+#leave-comment{
+	cursor: pointer;
+	font-weight: bold;
+	-webkit-user-select: none;  
+	-moz-user-select: none;    
+	-ms-user-select: none;      
+	user-select: none;
+}
+
+#leave-comment:hover{
+	text-decoration: underline;
+}
 /*
 #jp_container_1{
 //margin: 100px auto;

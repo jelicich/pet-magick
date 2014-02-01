@@ -16,4 +16,14 @@ class CommentsTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Comments');
     }
+
+    public function post($array)
+    {
+    	$c = new Comments;
+        $c->COMMENT = $array['comment'];
+        $c->DATE = date('Y-m-d H:i:s');
+        $c->USER_ID = $_SESSION['id'];
+        $c->TRIBUTE_ID = $array['tribute'];
+        $c->save();
+    }
 }

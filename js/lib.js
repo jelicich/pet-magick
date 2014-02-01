@@ -1758,10 +1758,77 @@ function imgVideoUploader(whatFor, modulo){
 
 
 
+function showTribute()
+{
+	var chkTribute = byid('chk-tribute');
+	var div = byid('hide-tribute');
+	var ins = div.getElementsByTagName('input');
+	var txa = div.getElementsByTagName('textarea');
+
+	if(chkTribute)
+	{
+		chkTribute.onchange = function()
+		{
+			if(this.checked)
+			{
+				div.style.display = 'block';
+				for(var i = 0; i < ins.length; i++)
+				{
+					ins[i].className = 'form-element';
+				}
+				txa[0].className = 'form-element';
+			}
+			else
+			{
+				div.style.display = 'none';
+				for(var i = 0; i < ins.length; i++)
+				{
+					ins[i].removeAttribute('class');
+				}
+				txa[0].removeAttribute('class');
+			}
+				
+		}
+	}	
+}
+
+function tributeComments()
+{
+	(function showComment()
+	{
+		var btnCom = byid('leave-comment');
+		var pop = byid('pop-up');
+		var fl = 0;
+		btnCom.onclick = function()
+		{
+			if(fl == 0)
+			{
+				pop.style.display = 'block';
+				fl = 1;
+			}
+			else
+			{
+				pop.style.display = 'none';
+				fl = 0;
+			}
+		}
+	})();
 
 
+	(function postComment()
+	{
+		var submit = byid('send-comment');
+		submit.onclick = function()
+		{
+			var comment = byid('comment-txt');
+			var idTr = byid('tr-id');
 
+			var vars = 'comment=' + comment.value + '&tribute=' + idTr.value;
+			ajax('POST', 'ajax/postComment.php', vardump, vars, true);	
 
+		}
+	})();
+}
 
 
 

@@ -90,39 +90,6 @@
 				imgVideoUploader('profile', 'add-pet'); // SUBIR IMG
 
 				showTribute();
-				//PASAR A LIB
-				function showTribute()
-				{
-					var chkTribute = byid('chk-tribute');
-					var div = byid('hide-tribute');
-					var ins = div.getElementsByTagName('input');
-					var txa = div.getElementsByTagName('textarea');
-
-					chkTribute.onchange = function()
-					{
-						if(this.checked)
-						{
-							div.style.display = 'block';
-							for(var i = 0; i < ins.length; i++)
-							{
-								ins[i].className = 'form-element';
-							}
-							txa[0].className = 'form-element';
-						}
-						else
-						{
-							div.style.display = 'none';
-							for(var i = 0; i < ins.length; i++)
-							{
-								ins[i].removeAttribute('class');
-							}
-							txa[0].removeAttribute('class');
-						}
-							
-					}	
-				}
-
-		
 			
 			   $("#tr-since").datepicker({dateFormat: "yy-mm-dd"});
 			   $("#tr-thru").datepicker({dateFormat: "yy-mm-dd"});

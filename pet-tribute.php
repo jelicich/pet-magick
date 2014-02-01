@@ -69,25 +69,22 @@
 				<h2>Support mesagges</h2>
 
 				<div id='what' class='ask-qa'> <!-- invertir clase y id aca -->
-					<a href="#"><p>Leave your coment</p></a>
-					<div class='active'>
+					<span id="leave-comment">Leave your comment</span>
 						<div id='pop-up' class='mod grid_4 '>
 
 							<form class="form" >  
 
 							    <p class="text">  
-							        <textarea placeholder="Your question..." ></textarea>  
+							        <textarea id="comment-txt" placeholder="Your question..." ></textarea>  
 							    </p>  
 
 							    <p class="submit">  
-							        <input type="submit" value="Submit" />  
+							        <input type="button" id="send-comment" value="Submit" />  
 							    </p>  
-
+							    	<input type="hidden" id="tr-id" value=<?php echo '"'.$_GET['t'].'"'; ?> />
 						    </form> 
-s
 						</div>
-						<div class=' arrow-top'></div>
-					</div>
+						
 				</div>
 			</div>
 
@@ -141,5 +138,9 @@ s
 
 </div>
 <!-- END wrapper-->
+
+<script type="text/javascript">
+	tributeComments();
+</script>
 </body>
 </html>

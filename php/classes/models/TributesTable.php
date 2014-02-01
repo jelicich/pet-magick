@@ -66,7 +66,7 @@ class TributesTable extends Doctrine_Table
     public function getAllTributes()
     {
         $q = Doctrine_Query::create()
-            ->select('t.SINCE, t.THRU, p.NAME, f.PIC')
+            ->select('t.SINCE, t.THRU, t.ID_TRIBUTE, p.NAME, f.PIC')
             ->from('Tributes t')
             ->leftJoin('t.Pets p')
             ->leftJoin('p.Pics f');

@@ -9,9 +9,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	include_once "../php/classes/BOComments.php";
 
 	$c = new BOComments;
-	var_dump($_POST);
-	$c->post($_POST);
+	if($c->post($_POST))
+	{
+		echo $c->getSentComment();
+	}
 	
+}
+else
+{
+	echo "Request method error";
 }
 
 

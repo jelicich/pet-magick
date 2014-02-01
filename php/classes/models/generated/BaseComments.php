@@ -41,7 +41,7 @@ abstract class BaseComments extends Doctrine_Record
              'autoincrement' => false,
              ));
         $this->hasColumn('DATE', 'date', null, array(
-             'type' => 'date',
+             'type' => 'datetime',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

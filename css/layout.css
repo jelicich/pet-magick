@@ -46,7 +46,7 @@ p,span{
 .bg-txt{ /* bg-txt reemplaza user-about para standarizarlo */
 	background: rgba(255, 255, 255, 0.3);
 	width: 620px;
-	height: 150px;
+	/*height: 150px;*/
 	padding: 10px 15px 10px 10px;
 }
 
@@ -57,7 +57,7 @@ p,span{
 }
 
 .content-description{ 
-	height: 80px;
+	min-height: 80px;
 }
 
 

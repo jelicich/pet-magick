@@ -3,9 +3,12 @@
 	//session_destroy();
 	//var_dump($_SESSION);
 	include_once 'php/classes/BOTributes.php';
+	include_once 'php/classes/BOComments.php';
 	$t = new BOTributes;
 	$a = $t->getTribute($_GET['t']);
-	
+	$c = new BOComments;
+	$com = $c->getComments($_GET['t']);
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -72,58 +75,57 @@
 					<span id="leave-comment">Leave your comment</span>
 						<div id='pop-up' class='mod grid_4 '>
 
+							<?php
+							if(isset($_SESSION['id']))
+							{
+							?>
 							<form class="form" >  
 
 							    <p class="text">  
-							        <textarea id="comment-txt" placeholder="Your question..." ></textarea>  
+							        <textarea id="comment-txt" placeholder="Your comment..." ></textarea>  
 							    </p>  
 
 							    <p class="submit">  
-							        <input type="button" id="send-comment" value="Submit" />  
+							        <input type="button" id="send-comment" value="Submit" class="btn" />  
 							    </p>  
 							    	<input type="hidden" id="tr-id" value=<?php echo '"'.$_GET['t'].'"'; ?> />
 						    </form> 
+							<?php 
+							}
+							else
+							{
+							?>
+								<p>You must be logged in to comment</p>
+							<?php
+							}
+							?>
 						</div>
 						
 				</div>
 			</div>
 
-			<!-- talks -->
-			<ul class="mod-content pet-loss-mod-list talks-list">
-				<li class="clearfix">
-					<img src="img/pet-loss/thumb/1.jpg" class="thumb-small side-img"/>
-					<div class="content-description bg-txt">
-						<h3>We will mis you</h3>
-						<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						<a href="#">View post</a>
-					</div>
-				</li>
-				<li class="clearfix">
-					<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-					<div class="content-description bg-txt">
-						<h3>Forever</h3>
-						<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						<a href="#">View post</a>
-					</div>
-				</li>
-				<li class="clearfix">
-					<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-					<div class="content-description bg-txt">
-						<h3>Coco</h3>
-						<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						<a href="#">View post</a>
-					</div>
-				</li>
-				<li class="clearfix">
-					<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-					<div class="content-description bg-txt">
-						<h3>Coco</h3>
-						<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						<a href="#">View post</a>
-					</div>
-				</li>
+			<!-- comments -->
+
+			<ul class="mod-content pet-loss-mod-list talks-list" id="comments-wrapper">
+				<?php 
+					for($i = 0; $i<sizeof($com); $i++)
+					{						
+				?>
+
+						<li class="clearfix">
+							<a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$com[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
+							<div class="content-description bg-txt">
+								<h3><a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?>><?php echo $com[$i]['Users']['NAME'].' '.$com[$i]['Users']['LASTNAME'] ?></a></h3>
+								<p><?php echo $com[$i]['COMMENT']?></p>
+								<span><?php echo $com[$i]['DATE']?></span>
+							</div>
+						</li>
+
+				<?php 
+					}//end for
+				?>
 			</ul>
-			<!-- END talks -->
+			<!-- END comments -->
 		</div>
 		<!-- END Current projects module -->
 

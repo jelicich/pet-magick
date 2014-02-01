@@ -12,6 +12,7 @@
 	for($i=0; $i<$t; $i++){
 
 		$petId = $allTributes[$i]['Pets']['ID_PET'];
+		$trId = $allTributes[$i]['ID_TRIBUTE'];
 		//$srcImg = $allTributes[$i]['Pets']['Pics']['PIC'];
 
         if(!isset($allTributes[$i]['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
@@ -25,7 +26,7 @@
 ?>
 
 	<li>
-		<a href= <?php echo "pet-tribute.php?p=".$petId; ?> >
+		<a href= <?php echo "pet-tribute.php?t=".$trId; ?> >
 			<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 			<dl class='hidden'>
 				<dt><?php echo $name; ?> </dt>

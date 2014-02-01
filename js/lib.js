@@ -1794,11 +1794,12 @@ function showTribute()
 
 function tributeComments()
 {
+	var fl = 0;
 	(function showComment()
 	{
 		var btnCom = byid('leave-comment');
 		var pop = byid('pop-up');
-		var fl = 0;
+		
 		btnCom.onclick = function()
 		{
 			if(fl == 0)
@@ -1817,17 +1818,54 @@ function tributeComments()
 
 	(function postComment()
 	{
+		
+		var comment = byid('comment-txt');
 		var submit = byid('send-comment');
+		submit.disabled = 'disabled';
+		comment.onchange = block;
+		comment.onkeyup = block; 
+		function block()
+		{
+			if(comment.value != '')
+				submit.removeAttribute('disabled');
+			else
+				submit.disabled = 'disabled';
+		}
+		
+
 		submit.onclick = function()
 		{
-			var comment = byid('comment-txt');
 			var idTr = byid('tr-id');
 
 			var vars = 'comment=' + comment.value + '&tribute=' + idTr.value;
-			ajax('POST', 'ajax/postComment.php', vardump, vars, true);	
+			ajax('POST', 'ajax/postComment.php', printCommentSent, vars, true);	
 
 		}
 	})();
+
+	function printCommentSent()
+	{
+
+		var html = eval(this.responseText);
+
+		if(html == undefined)
+			return;
+
+		li = create('li');
+		li.className = 'clearfix';
+		li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span>'+ html[0]['DATE'] +'</span></div>';
+		
+		byid('comments-wrapper').appendChild(li);
+		fl = 0;
+		var pop = byid('pop-up');
+		pop.style.display = 'none';
+		var comment = byid('comment-txt');
+		comment.value = '';
+		var submit = byid('send-comment');
+		submit.disabled = 'disabled';
+
+	}
+
 }
 
 

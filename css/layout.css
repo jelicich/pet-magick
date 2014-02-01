@@ -832,36 +832,6 @@ p,span{
 }
 
 
-
-
-#modalPlayer{
-	display: none ;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.5);
-	top:0;     
-	left:0;     
-	z-index:999;
-}
-
-#close{
-	margin-left: 229px;
-}
-
-#closeBlock{
-	width: 480px;
-	height: auto;
-	margin: 100px auto;
-	position: relative;
-}
-/*
-#jp_container_1{
-//margin: 100px auto;
-
-}
-*/
-
 /* ---------------------------- profiles */
 
 
@@ -1309,3 +1279,35 @@ Tunear!!!
 	margin-bottom: 20px;
 	font-weight: bold;
 }
+
+
+
+/* ventanas modales para imagenes y video*/
+
+.modalWindows{
+	display: none ;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	top:0;     
+	left:0;     
+	z-index:999;
+}
+
+#close{
+	margin-left: 229px;
+}
+
+#closeBlock{
+	width: 480px;
+	height: auto;
+	margin: 100px auto;
+	position: relative;
+}
+/*
+#jp_container_1{
+//margin: 100px auto;
+
+}
+*/

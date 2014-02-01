@@ -81,9 +81,9 @@
 <!-- END wrapper-->
 
 
-
 <script type="text/javascript">
-selectedOrg();
+	selectedFromList('featured-org', 'ajax/getSelectedOrg.php?p=')
 </script>
+
 </body>
 </html>

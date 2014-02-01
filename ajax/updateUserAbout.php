@@ -57,8 +57,15 @@ if(isset($_FILES['file'])){ // normalWay();
 
 		}else{
 
-			$query['caption']  = $_POST['caption'][$i];
-				
+			if(isset($query['caption'])){
+
+				$query['caption']  = $_POST['caption'][$i];
+			}else{
+
+				$query['caption'] = null;
+			}
+
+			
 			$obj = $pics; 
 			$path = '../img/users/';
 

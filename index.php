@@ -53,33 +53,9 @@
 					<h2>Current projects</h2>
 					<span>Make a positive contribution to this community</span>
 				</div>
-				<ul class="mod-content projects-mod-list">
-					<li class="clearfix">
-						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description bg-txt">
-							<h3>Looking for pet owners to visit people in...</h3>
-							<!-- a estos <p> habria q ponerle un limite de caracteres desde la consulta sql y un "seguir leyendo" o algo asi. Yo lo hice en el home de induser, por si queres ver a q me refiero... -->
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<a href="#">View project</a>
-						</div>
-					</li>
-					<li class="clearfix">
-						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description bg-txt">
-							<h3>Looking for pet owners to visit people in...</h3>
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<a href="#">View project</a>
-						</div>
-					</li>
-					<li class="clearfix">
-						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description bg-txt">
-							<h3>Looking for pet owners to visit people in...</h3>
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<a href="#">View project</a>
-						</div>
-					</li>
-				</ul>
+				<?php 
+					include_once 'templates/projectListModule.php'; 
+				?>
 			</div>
 			<!-- END projects module -->
 

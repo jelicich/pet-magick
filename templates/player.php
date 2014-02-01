@@ -1,8 +1,8 @@
 
-<div id="modalPlayer">
+<div class='modalWindows'>
 
   <div id='closeBlock'>
-  <a id='close' href='#'><img src='img/close.png' alt='close' id='close' /></a>
+  <a id='close' href='#'><img src='img/close.png' alt='close' /></a>
 
 
   <div id="jp_container_1" class="jp-video">

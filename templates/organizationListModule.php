@@ -49,7 +49,7 @@
 					<div class="content-description bg-txt ">
 						<h3><?php echo $name ?></h3>
 						<p><?php echo $description ?></p>
-						<a href=<?php echo '#'.$orgId ?> class='org-link'>View post</a>
+						<a href=<?php echo '#'.$orgId ?> class='linkToModule'>View post</a>
 					</div>
 				</li>
 				

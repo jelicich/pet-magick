@@ -96,39 +96,30 @@ function fileFormat(value, character) // agregue esta funcion pq la repeti en ot
   		return value;
 }
 
-// IE7 support for querySelectorAll. 
+// ======================================================= IE7 support. 
 if (!document.querySelector){
-(function(d, s) {
-	d=document, s=d.createStyleSheet();
-	d.querySelectorAll = function(r, c, i, j, a) {
-		a=d.all, c=[], r = r.replace(/\[for\b/gi, '[htmlFor').split(',');
-		for (i=r.length; i--;) {
-			s.addRule(r[i], 'k:v');
-			/* -a.addRule(e,'f:b', 0); */
-			for (j=a.length; j--;) a[j].currentStyle.k && c.push(a[j]);
-			s.removeRule(0);
+	
+	(function(d, s) {
+		d=document, s=d.createStyleSheet();
+		d.querySelectorAll = function(r, c, i, j, a) {
+			a=d.all, c=[], r = r.replace(/\[for\b/gi, '[htmlFor').split(',');
+			for (i=r.length; i--;) {
+				s.addRule(r[i], 'k:v');
+				/* -a.addRule(e,'f:b', 0); */
+				for (j=a.length; j--;) a[j].currentStyle.k && c.push(a[j]);
+				s.removeRule(0);
+			}
+			return c;
 		}
-		return c;
-	}
-})();
+	})();
 }
-/*
-function getByClass(className)
-{
-    var matchingItems = [];
-    var allElements = document.getElementsByTagName("*");
 
-    for(var i=0; i < allElements.length; i++)
-    {
-        if(allElements [i].className == className)
-        {
-            matchingItems.push(allElements[i]);
-        }
-    }
+function preventEventsDefault(){
 
-    return matchingItems;
+	event.preventDefault ? event.preventDefault() : event.returnValue = false;
 }
-*/
+
+
 
 //=============================================================================== LOGIN FUNCTIONS
 
@@ -547,7 +538,7 @@ function printHeaders(){
 	  			byid('wrap-conversations').insertBefore(lis,arguments[1]);
 	  		}
 
-	  		as.onclick = function(e)
+	  		as.onclick = function()
 	  		{
 	  			//me fijo en el objeto xhr publico si existe y si esta procesando algo y lo borro.
 	  			if(xhr && xhr.readyState > 0 && xhr.readyState < 4)
@@ -555,7 +546,8 @@ function printHeaders(){
 	  				xhr.abort();
 	  			}
 		    	
-		    	e.preventDefault();
+		    	//e.preventDefault();
+		    	preventEventsDefault();
 		  		var index = this.href.indexOf('='); // reemplazar por function fileFormat()
 		  		index ++;
 		  		fromId = 'fromId=' + this.href.substr(index);
@@ -665,14 +657,16 @@ function printUpdates(){
 //============================= USER-PROFILE
 
 //profile cambia las mascotas x ajax
+// esta function es igual a selectedFromList(), la otra es reutilizable. Asi q habria q adaptar esta
 function profile(){
 	
 	var as = document.querySelectorAll('.pet-link');
 	for(var i = 0; i< as.length; i++)
 	{
-		as[i].onclick = function(e)		
+		as[i].onclick = function()		
 		{
-			e.preventDefault();
+			//e.preventDefault();
+			preventEventsDefault();
 			var p = this.href;
 			var index = p.indexOf('#');
 	  		index ++;
@@ -841,8 +835,8 @@ function news(){
 	}//end for
 }//end postNews
 
-function addPet()
-{
+function addPet(){
+
 	var btn = byid('add-pet');
 	
 	
@@ -862,8 +856,8 @@ function addPet()
 	}
 }//end addPet
 
-function deletePet()
-{
+function deletePet(){
+
 	var btns = document.querySelectorAll('.delete-pet');
 	console.log(btns);
 	for(var i = 0; i < btns.length; i++)
@@ -916,31 +910,33 @@ function refresh(){
 
 //============================= ORGANIZATIONS
 
-function selectedOrg(){ // esta function y profile pueden ser una sola si le paso parametro
+function selectedFromList(divCont, ajaxFile){ // ver si necesito pasar el div o meto una clase y ya
 	
-	var as = document.querySelectorAll('.org-link');
+	var as = document.querySelectorAll('.linkToModule'); // '.org-link'
 	for(var i = 0; i< as.length; i++)
 	{
-		as[i].onclick = function(e)		
+		as[i].onclick = function()		
 		{
-			e.preventDefault();
+			//e.preventDefault();
+			preventEventsDefault();
 			var p = this.href;
 			var index = p.indexOf('#');
 	  		index ++;
 	  		p = p.substr(index);
-	  		var cont = byid('featured-org');
+	  		var cont = byid(divCont); // 'featured-org'
 	  		var loading = create('img');
 			loading.src = 'img/loading.gif'; 
-	  		cont.innerHTML = ""; // modificar esto
+			whilst(cont);
+	  		//cont.innerHTML = ""; // modificar esto
 	  		cont.appendChild(loading);
-			ajax('GET', 'ajax/getSelectedOrg.php?p='+p, printSelectedOrg, null, true);
+			ajax('GET', ajaxFile + p, printSelectedOrg, null, true); // 'ajax/getSelectedOrg.php?p='
 		}
 	}
 	
 	function printSelectedOrg()
 	{
 		var html = this.responseText;
-		var cont = byid('featured-org');
+		var cont = byid(divCont); //'featured-org'
 		cont.innerHTML = html;
 
 		var scr = cont.getElementsByTagName('script');
@@ -952,7 +948,51 @@ function selectedOrg(){ // esta function y profile pueden ser una sola si le pas
 			}
 		}
 	}
-}//end selectedOrg
+}//end selectedFromList
+
+function modalImg(){ // en Jquery_player.php hay una funcion parecida en jquery. Ver si se puede optimizar...
+
+	var modalImgs = document.querySelectorAll('.link-img'); 
+
+	for(var i = 0; i < modalImgs.length; i++){
+
+		modalImgs[i].onclick = function(){
+			
+			preventEventsDefault();
+			var modalBg = create('div');
+				modalBg.id = 'modalBg';
+				modalBg.className = 'modalWindows';
+				modalBg.style.display = 'block';
+				document.body.appendChild(modalBg);
+
+			var closeBlock = create('div');
+				closeBlock.id = 'closeBlock';
+				byid('modalBg').appendChild(closeBlock);
+
+			var closeA = create('a');
+				closeA.id = 'closeA';
+				closeA.href = '#';
+				byid('closeBlock').appendChild(closeA);
+
+			var closeImg = create('img');
+				closeImg.src = 'img/close.png';
+				closeImg.alt = 'closeImg';
+				byid('closeA').appendChild(closeImg);
+
+			var modalImg = create('img');
+				modalImg.src = this.href;
+				modalImg.alt = this.href;
+				byid('closeBlock').appendChild(modalImg);
+
+			closeA.onclick = function(){
+
+				preventEventsDefault();
+				modalBg.parentNode.removeChild(modalBg);
+			}
+		}
+	}
+}// end modalImg
+
 //============================= MODULS
 
 function listByCategory(ajaxFile){
@@ -985,7 +1025,6 @@ function listByCategory(ajaxFile){
 		}
 	}// end printByPet
 }// end userByPet
-
 
 //======================================================================== IMG UPLOAD
 
@@ -1085,10 +1124,8 @@ function imgVideoUploader(whatFor, modulo){
         } // end removeErr
 
          function refreshHeader(){
-         	
-		  	 byid('login-reg').innerHTML = this.responseText;
-		  	// vardump(this.responseText);
-		 }// end refreshHeader
+         	 byid('login-reg').innerHTML = this.responseText;
+         }// end refreshHeader
 
 		 function refreshPets(){
          	
@@ -1101,6 +1138,16 @@ function imgVideoUploader(whatFor, modulo){
 		 }// end refreshHeader
 
 		
+		function index(param){
+
+			var p = param;
+			var index = p.indexOf('#');
+				index ++;
+				p = p.substr(index);
+			formData.append("u", p);
+		}
+
+		
 	    // ========================================= NORMAL WAY
 	
 		function normalWay(whatFor){ // Hay q pasar la referencia aca ????
@@ -1110,7 +1157,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				  byid('form-id').appendChild(file_id);
 				  //var uploadBtn = byid('save-edit-user');
-				    if(modulo == 'about')
+				    if(modulo == 'about' || modulo == 'organization' || modulo == 'project')// tal vez deba poner un nombre para todos y ya
   				    {
 			  			var uploadBtn = byid('save-edit-user');
 			  			var cancelBtn = byid('cancel-edit-user');
@@ -1134,11 +1181,12 @@ function imgVideoUploader(whatFor, modulo){
 			  		{
 						var uploadBtn = byid('save-new-pet');
 						var cancelBtn = byid('cancel-new-pet');
-			  		}else if(modulo == 'organization')
+					}
+			  	 /*	else if(modulo == 'organization')
 			  		{
 						var uploadBtn = byid('save-edit-user'); // igual a about, modificar
 			  			var cancelBtn = byid('cancel-edit-user');
-			  		}											
+			  		}	*/										
 				  
 				  file_id.parentNode.appendChild(uploadBtn);
 
@@ -1176,6 +1224,11 @@ function imgVideoUploader(whatFor, modulo){
 				  		}else if(modulo == 'organization'){
 
 				  			var cont = byid('organization');
+				  			//ajaxx('POST', 'ajax/uploadOrganization.php', vardump, null, true);
+				  		}
+				  		else if(modulo == 'project'){
+
+				  			var cont = byid('project');
 				  			//ajaxx('POST', 'ajax/uploadOrganization.php', vardump, null, true);
 				  		}
 
@@ -1219,10 +1272,16 @@ function imgVideoUploader(whatFor, modulo){
 						var file = 'ajax/getPetDefault.php';
 						var vars = '?u=';
 
-			  		}else if(modulo == 'organization')
+			  		}
+			  		else if(modulo == 'organization')
 			  		{
-						var file = 'ajax/getOrganizationDefault.php';
-						var vars = '?u=';
+						var file = 'ajax/getOrganizationDefault.php'; // completar esto en org
+						var vars = '?u='; // IMPORTANTE  !!!!!! tengo q revisar esto pq en en php tengo p, no u
+			  		}
+			  		else if(modulo == 'project')
+			  		{
+						var file = 'ajax/getProjectDefault.php';
+						var vars = '?p=';
 			  		}
 
 			  		
@@ -1404,6 +1463,7 @@ function imgVideoUploader(whatFor, modulo){
 					   			formData.append("file[]", filesSelected[i]);
 					   			
 					   			if(amount == 'album'){
+						   			
 						   			formData.append("caption[]", allCaption[i]);
 						   		}
 
@@ -1466,8 +1526,8 @@ function imgVideoUploader(whatFor, modulo){
 						  		index ++;
 						  		p = p.substr(index);
 								formData.append("u", p);
-
-					  		}else if(modulo == 'organization'){
+					  		}
+					  		else if(modulo == 'organization'){
 
 					  			var ajaxPostFile = 'ajax/uploadOrganization.php';
 					  			var p = this.href;
@@ -1475,10 +1535,21 @@ function imgVideoUploader(whatFor, modulo){
 						  		index ++;
 						  		p = p.substr(index);
 								formData.append("u", p);
+
+					  		}else if(modulo == 'project'){
+
+					  			var ajaxPostFile = 'ajax/uploadProject.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("p", p);
 					  		}
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
+
 						  	if (amount != 'profile'){
+
 						  		byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
 						  	}
 					  		if (amount == 'profile' || amount == 'video'){
@@ -1489,7 +1560,6 @@ function imgVideoUploader(whatFor, modulo){
 							} 
 				  }// end onclick
 			}// end NormalWay
-
 
 
 		// ========================================= FALLBACK		

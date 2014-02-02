@@ -1,7 +1,7 @@
 <?php
-	//if(isset($_POST['c']) && $_POST['c'] == 3){
+	if(isset($_POST['c']) && $_POST['c'] == 3){
 
-		include_once "php/classes/BOTributes.php";
+		include_once "../php/classes/BOTributes.php";
 		$tribute = new BOTributes;
 
 		$allTributes = $tribute->getAllTributes();
@@ -18,10 +18,9 @@
 
 			}else{
 
-			$petId = $allTributes[$i]['Pets']['ID_PET'];
-			//$srcImg = $allTributes[$i]['Pets']['Pics']['PIC'];
+			$trId = $allTributes[$i]['ID_TRIBUTE'];
 
-	        if(!isset($allTributes[$i]['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
+			if(!isset($allTributes[$i]['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
 			else{ $srcImg = 'img/pets/thumb/'.$allTributes[$i]['Pets']['Pics']['PIC']; }
 			if(!isset($allTributes[$i]['Pets']['NAME'])){ $name = '?'; }
 			else{ $name = $name = $allTributes[$i]['Pets']['NAME'];; }
@@ -34,11 +33,12 @@
 ?>
 
 			<li>
-				<a href= <?php echo "pet-tribute.php?u=".$userId; ?> >
+				<a href= <?php echo "pet-tribute.php?t=".$trId; ?> >
 					<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 					<dl class='hidden'>
-						<dt><?php echo $name." ".$lastName; ?> </dt>
-						<dd><?php echo  $city.", ".$country; ?></dd>
+						<dt><?php echo $name; ?> </dt>
+						<dd><?php echo  $since; ?></dd>
+						<dd><?php echo  $thru; ?></dd>
 					<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 					</dl>
 				</a>
@@ -47,13 +47,15 @@
 	}//end else
 		}// end for
 		
-   // }else{
-/*
+}else{
+
 		include_once "../php/classes/BOTributes.php";
 		$tribute = new BOTributes;
 
-		$allTributes = $tribute->getAllTributes();
+		$allTributes = $tribute->getTributesByCat($_POST['c']);
 		$t = sizeof($allTributes);
+		$noRepeat = array();
+		//var_dump($allTributes);
 
 		for($i=0; $i<$t; $i++){
 
@@ -65,8 +67,8 @@
 
 			}else{
 
-			$petId = $allTributes[$i]['Pets']['ID_PET'];
-			//$srcImg = $allTributes[$i]['Pets']['Pics']['PIC'];
+			$trId = $allTributes[$i]['ID_TRIBUTE'];
+			
 
 	        if(!isset($allTributes[$i]['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
 			else{ $srcImg = 'img/pets/thumb/'.$allTributes[$i]['Pets']['Pics']['PIC']; }
@@ -81,7 +83,7 @@
 	?>
 
 		<li>
-			<a href= <?php echo "pet-tribute.php?p=".$petId; ?> >
+			<a href= <?php echo "pet-tribute.php?t=".$trId; ?> >
 				<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 				<dl class='hidden'>
 					<dt><?php echo $name; ?> </dt>
@@ -94,9 +96,9 @@
 <?php
 		}// end else		
 			}// end for
-	}//end else*/
+	}//end else
 ?>
 
 <script type="text/javascript">
-	listByCategory('profilesModuleByPet.php');
+	listByCategory('tributesModuleByPets.php');
 </script>

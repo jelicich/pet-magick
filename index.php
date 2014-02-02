@@ -88,39 +88,14 @@
 					<h2>Visit wall of rememerance</h2>
 					<span>Leave a message of support for other pet lovers</span>
 				</div>
+
+
+
+
 				<ul class="mod-content pet-loss-mod-list">
-					<li class="clearfix">
-						<img src="img/pet-loss/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description bg-txt corregir">
-							<h3>We will mis you</h3>
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<!-- <a href="#">Suppor this fellow</a> -->
-						</div>
-					</li>
-					<li class="clearfix">
-						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description bg-txt corregir">
-							<h3>Forever</h3>
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<!-- <a href="#">Suppor this fellow</a> -->
-						</div>
-					</li>
-					<li class="clearfix">
-						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description bg-txt corregir">
-							<h3>Coco</h3>
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<!-- <a href="#">Suppor this fellow</a> -->
-						</div>
-					</li>
-					<li class="clearfix">
-						<img src="img/projects/thumb/1.jpg" class="thumb-small side-img"/>
-						<div class="content-description bg-txt corregir">
-							<h3>Coco</h3>
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-							<!-- <a href="#">Suppor this fellow</a> -->
-						</div>
-					</li>
+					<?php 
+					include_once 'templates/petLossIndexModule.php'; 
+				?>
 				</ul>
 			</div>
 			<!-- END pet loss module -->

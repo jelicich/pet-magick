@@ -85,7 +85,7 @@
 <!-- END wrapper-->
 
 <script type="text/javascript">
-	listByCategory('profilesModuleByPet.php'); // ACA HAY Q HACER UN ajax/php para traer mascotas muertas (tributos)
+	listByCategory('tributesModuleByPets.php'); // ACA HAY Q HACER UN ajax/php para traer mascotas muertas (tributos)
 </script>
 
 </body>

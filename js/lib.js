@@ -86,16 +86,16 @@ function whilst(s){
 	  s.removeChild(s.firstChild);
 	}
 }//end whilst
+/*
+function fileFormat(value, character){ // agregue esta funcion pq la repeti en otro lado, como para achicar codigo
 
-function fileFormat(value, character) // agregue esta funcion pq la repeti en otro lado, como para achicar codigo
-{
 	var extention = value;
 	var index = value.indexOf(character);
   		index ++;
   		value = value.substr(index);
   		return value;
 }
-
+*/
 // ======================================================= IE7 support. 
 if (!document.querySelector){
 	
@@ -118,8 +118,6 @@ function preventEventsDefault(){
 
 	event.preventDefault ? event.preventDefault() : event.returnValue = false;
 }
-
-
 
 //=============================================================================== LOGIN FUNCTIONS
 
@@ -226,7 +224,6 @@ function logRegOnclick(){
 		showForms('link-reg', 'reg-form', 'log-form');
 	}
 }// reemplace los onclick dentro de la function siguiente por esta function asi lo declaro solo una vez
-
 
 function showForms(link, show, hide){
     
@@ -394,7 +391,6 @@ function regionsCombo(){
 
 	};
 }//end regionsCombo
-
 
 // =============================================================================== INBOX FUNCTIONS
 
@@ -654,7 +650,7 @@ function printUpdates(){
 }//end printUpdates
 
 
-//============================= USER-PROFILE
+//========================================================================  USER-PROFILE FUNCTIONS
 
 //profile cambia las mascotas x ajax
 // esta function es igual a selectedFromList(), la otra es reutilizable. Asi q habria q adaptar esta
@@ -901,14 +897,125 @@ function deletePet(){
 			}
 		}
 	}
-}
+}//end deletePet
 
 function refresh(){
 	
 	location.reload(true);
-}
+}//end addPet
 
-//============================= ORGANIZATIONS
+//======================================================================== TRIBUTES FUNCTIONS
+
+function showTribute(){
+
+	var chkTribute = byid('chk-tribute');
+	var div = byid('hide-tribute');
+	var ins = div.getElementsByTagName('input');
+	var txa = div.getElementsByTagName('textarea');
+
+	if(chkTribute)
+	{
+		chkTribute.onchange = function()
+		{
+			if(this.checked)
+			{
+				div.style.display = 'block';
+				for(var i = 0; i < ins.length; i++)
+				{
+					ins[i].className = 'form-element';
+				}
+				txa[0].className = 'form-element';
+			}
+			else
+			{
+				div.style.display = 'none';
+				for(var i = 0; i < ins.length; i++)
+				{
+					ins[i].removeAttribute('class');
+				}
+				txa[0].removeAttribute('class');
+			}
+				
+		}
+	}	
+}//end showTribute
+
+function tributeComments(){
+
+	var fl = 0;
+	(function showComment()
+	{
+		var btnCom = byid('leave-comment');
+		var pop = byid('pop-up');
+		
+		btnCom.onclick = function()
+		{
+			if(fl == 0)
+			{
+				pop.style.display = 'block';
+				fl = 1;
+			}
+			else
+			{
+				pop.style.display = 'none';
+				fl = 0;
+			}
+		}
+	})();
+
+
+	(function postComment()
+	{
+		
+		var comment = byid('comment-txt');
+		var submit = byid('send-comment');
+		submit.disabled = 'disabled';
+		comment.onchange = block;
+		comment.onkeyup = block; 
+		function block()
+		{
+			if(comment.value != '')
+				submit.removeAttribute('disabled');
+			else
+				submit.disabled = 'disabled';
+		}
+		
+
+		submit.onclick = function()
+		{
+			var idTr = byid('tr-id');
+
+			var vars = 'comment=' + comment.value + '&tribute=' + idTr.value;
+			ajax('POST', 'ajax/postComment.php', printCommentSent, vars, true);	
+
+		}
+	})();
+
+	function printCommentSent()
+	{
+
+		var html = eval(this.responseText);
+
+		if(html == undefined)
+			return;
+
+		li = create('li');
+		li.className = 'clearfix';
+		li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span>'+ html[0]['DATE'] +'</span></div>';
+		
+		byid('comments-wrapper').appendChild(li);
+		fl = 0;
+		var pop = byid('pop-up');
+		pop.style.display = 'none';
+		var comment = byid('comment-txt');
+		comment.value = '';
+		var submit = byid('send-comment');
+		submit.disabled = 'disabled';
+
+	}
+}//end tributeComments
+
+//======================================================================== COMMON FUNCTIONS
 
 function selectedFromList(divCont, ajaxFile){ // ver si necesito pasar el div o meto una clase y ya
 	
@@ -993,8 +1100,6 @@ function modalImg(){ // en Jquery_player.php hay una funcion parecida en jquery.
 	}
 }// end modalImg
 
-//============================= MODULS
-
 function listByCategory(ajaxFile){
 
 	var pets = byid('menuByPet').getElementsByTagName('a');
@@ -1025,11 +1130,6 @@ function listByCategory(ajaxFile){
 		}
 	}// end printByPet
 }// end userByPet
-
-//======================================================================== IMG UPLOAD
-
-// Parametros a pasar para tipo de uso: 'profile', 'video', 'album'
-// Parametros a pasar para modulo necesario: 'about', 'pet', 'albumProfile'
 
 function imgVideoUploader(whatFor, modulo){
 
@@ -1123,9 +1223,10 @@ function imgVideoUploader(whatFor, modulo){
         	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
         } // end removeErr
 
-         function refreshHeader(){
+        function refreshHeader(){
+
          	 byid('login-reg').innerHTML = this.responseText;
-         }// end refreshHeader
+        }// end refreshHeader
 
 		 function refreshPets(){
          	
@@ -1138,6 +1239,7 @@ function imgVideoUploader(whatFor, modulo){
 		 }// end refreshHeader
 
 		
+		/* ESTA FUNCION ESTA LISTA< SOLO Q HAY Q VER SI MANDAMOS u,p, y u otro param
 		function index(param){
 
 			var p = param;
@@ -1145,7 +1247,7 @@ function imgVideoUploader(whatFor, modulo){
 				index ++;
 				p = p.substr(index);
 			formData.append("u", p);
-		}
+		}*/
 
 		
 	    // ========================================= NORMAL WAY
@@ -1157,7 +1259,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				  byid('form-id').appendChild(file_id);
 				  //var uploadBtn = byid('save-edit-user');
-				    if(modulo == 'about' || modulo == 'organization' || modulo == 'project')// tal vez deba poner un nombre para todos y ya
+				    if(modulo == 'about' || modulo == 'organization' || modulo == 'project' || modulo == 'vetTalk')// tal vez deba poner un nombre para todos y ya
   				    {
 			  			var uploadBtn = byid('save-edit-user');
 			  			var cancelBtn = byid('cancel-edit-user');
@@ -1230,6 +1332,11 @@ function imgVideoUploader(whatFor, modulo){
 
 				  			var cont = byid('project');
 				  			//ajaxx('POST', 'ajax/uploadOrganization.php', vardump, null, true);
+
+				  		}else if(modulo == 'vetTalk'){
+
+				  			var cont = byid('vetTalk');
+				  			//ajaxx('POST', 'ajax/uploadOrganization.php', vardump, null, true);
 				  		}
 
 				  		cont.innerHTML = this.responseText;
@@ -1275,17 +1382,21 @@ function imgVideoUploader(whatFor, modulo){
 			  		}
 			  		else if(modulo == 'organization')
 			  		{
-						var file = 'ajax/getOrganizationDefault.php'; // completar esto en org
+						var file = 'ajax/getOrganizationDefault.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?u='; // IMPORTANTE  !!!!!! tengo q revisar esto pq en en php tengo p, no u
 			  		}
 			  		else if(modulo == 'project')
 			  		{
-						var file = 'ajax/getProjectDefault.php';
+						var file = 'ajax/getProjectDefault.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
+						var vars = '?p=';
+			  		}
+			  		else if(modulo == 'vetTalk')
+			  		{
+						var file = 'ajax/getVetTalkDefault.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?p=';
 			  		}
 
-			  		
-		  			//alert();
+
 		  			var p = this.href;
 					var index = p.indexOf('#');
 			  		index ++;
@@ -1544,6 +1655,15 @@ function imgVideoUploader(whatFor, modulo){
 						  		index ++;
 						  		p = p.substr(index);
 								formData.append("p", p);
+
+					  		}else if(modulo == 'vetTalk'){
+
+					  			var ajaxPostFile = 'ajax/uploadVetTalk.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("p", p);
 					  		}
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
@@ -1758,6 +1878,7 @@ function imgVideoUploader(whatFor, modulo){
 
 
 
+<<<<<<< HEAD
 function showTribute()
 {
 	var chkTribute = byid('chk-tribute');
@@ -1876,6 +1997,8 @@ function tributeComments()
 	}
 
 }
+=======
+>>>>>>> 06ad47a205b0f2eb82d88a5d5f4022bf9d307b80
 
 
 

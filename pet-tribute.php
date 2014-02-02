@@ -36,6 +36,7 @@
 	<!-- site content -->
 	<div class="container_12" id="content">
 		
+<<<<<<< HEAD
 		<!-- about module -->
 		<div class="mod grid_12 pet-loss-mod nogrid-mod">
 			<div class="mod-header">
@@ -139,19 +140,35 @@
 		<!-- END Current projects module -->
 
 		
+=======
+			<!-- about module -->
+			<?php 
+				include_once 'templates/petTributeModule.php'; 
+			?>
+			<!-- END about module -->
+
+			<!-- Messages module-->
+			<?php 
+				include_once 'templates/tributeMsgModule.php'; 
+			?>
+			<!-- END Current projects module -->
+>>>>>>> 06ad47a205b0f2eb82d88a5d5f4022bf9d307b80
 
 	</div>
 	<!-- END site content -->
 	
-	<?php 
-		include_once 'templates/footer.php'; 
-	?>
+			<?php 
+				include_once 'templates/footer.php'; 
+			?>
 
 </div>
 <!-- END wrapper-->
 
 <script type="text/javascript">
+
+	modalImg();
 	tributeComments();
+
 </script>
 </body>
 </html>

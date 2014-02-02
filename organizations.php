@@ -82,7 +82,7 @@
 
 
 <script type="text/javascript">
-	selectedFromList('featured-org', 'ajax/getSelectedOrg.php?p=')
+	selectedFromList('featured-org', 'ajax/getSelectedOrg.php?p=');
 </script>
 
 </body>

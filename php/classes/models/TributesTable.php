@@ -66,7 +66,8 @@ class TributesTable extends Doctrine_Table
     public function getAllTributes()
     {
         $q = Doctrine_Query::create()
-            ->select('t.SINCE, t.THRU, t.ID_TRIBUTE, p.NAME, f.PIC')
+            //->select('t.SINCE, t.THRU, t.ID_TRIBUTE, p.NAME, f.PIC')
+            ->select('t.*, p.NAME, f.PIC')
             ->from('Tributes t')
             ->leftJoin('t.Pets p')
             ->leftJoin('p.Pics f');
@@ -99,5 +100,20 @@ class TributesTable extends Doctrine_Table
             ->delete('Tributes t')
             ->where('t.PET_ID = ?', $id );
         $q->execute();
+    }
+
+    public function getTributesByCat($id)
+    {
+        $q = Doctrine_Query::create()
+            ->select('t.SINCE, t.THRU, t.ID_TRIBUTE, p.NAME, f.PIC')
+            ->from('Tributes t')
+            ->leftJoin('t.Pets p')
+            ->leftJoin('p.Pics f')
+            ->where('p.ANIMAL_CATEGORY_ID = ?', $id);
+            //->groupBy('p.USER_ID');
+        
+        $r = $q->execute();    
+        
+        return $r->toArray();
     }
 }

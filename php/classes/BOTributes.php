@@ -113,6 +113,13 @@ class BOTributes{
         return $r;
     }
 
+    function getTributesByCat($id)
+    {
+     
+          $r = $this->table->getTributesByCat($id);
+        return $r;
+    }
+
 }//End class BOUsers
 
 

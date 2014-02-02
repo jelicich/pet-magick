@@ -1856,6 +1856,15 @@ function tributeComments()
 		li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span>'+ html[0]['DATE'] +'</span></div>';
 		
 		byid('comments-wrapper').appendChild(li);
+		try
+		{
+			var fc = byid('first-comment');
+			fc.parentNode.removeChild(fc);
+		}
+		catch(e)
+		{
+			//
+		}
 		fl = 0;
 		var pop = byid('pop-up');
 		pop.style.display = 'none';

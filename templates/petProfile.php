@@ -13,7 +13,7 @@
 					<div class="mod-content clearfix">
 						
 						
-						<div id="pet-about">
+						<div id="pet-about" class="clearfix">
 							<?php 
 							if($p->isOwn())
 							{
@@ -45,7 +45,7 @@
 						<!-- =========== -->
 
 
-						<div id="pet-album">
+						<div id="pet-album" class="clearfix">
 							<?php
 									if($p->isOwn())
 									{
@@ -86,7 +86,7 @@
 						</div>
 
 
-						<div class='video'>
+						<div class='video' class="clearfix">
 							<?php
 								$v = $p->getVideo();
 								if($v)
@@ -94,7 +94,7 @@
 
 									if($p->isOwn())
 									{
-										echo '<a href="#'.$pets[0]['ID_PET'].'" class="btn" id="edit-pet-album">Edit Video</a>';
+										echo '<a href="#'.$pets[0]['ID_PET'].'" class="btn" id="delete-video">Delete Video</a>';
 									}
 							?>
 									<div class='wrapper-play'>
@@ -108,6 +108,31 @@
 									</div>
 							<?php
 								} //end if videos
+								else
+								{
+									if($p->isOwn())
+									{
+							?>
+									<a href="#" id="add-video">Add Video</a>;
+									<div id="vid-up" style="display:none">
+
+										<div id='imgContainer'></div>
+
+										<iframe name="iframe_IE" src="" style="display: none"></iframe> 
+
+										<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
+											 
+											 <!-- <input id="file-id" type="file" name="file" /> -->
+											  <p id="upload-status"></p>
+										</form>
+
+									</div>
+									<script type="text/javascript">
+										imgVideoUploader('video', 'vid-up');
+									</script>
+							<?php
+									}
+								} 
 							?>
 						</div>
 					</div>
@@ -115,6 +140,8 @@
 					<script type="text/javascript">
 						editPetProfile();
 						editPetAlbum();
+
+
 					</script>
 	
 

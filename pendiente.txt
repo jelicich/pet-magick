@@ -56,3 +56,14 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 
 - inbox: no funciona
 
+
+LOGIN
+===================================================================
+-Refrescar el sitio cuando el usuario esta en user-profile.php
+
+
+
+NOTIFICACIONES
+===============================
+-Cuando se es vet y hay preguntas en vet talk
+-Cuando hay msgs nuevos (inbox)

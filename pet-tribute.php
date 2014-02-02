@@ -107,24 +107,33 @@
 			<!-- comments -->
 
 			<ul class="mod-content pet-loss-mod-list talks-list" id="comments-wrapper">
-				<?php 
-					for($i = 0; $i<sizeof($com); $i++)
-					{						
+				<?php
+					if(sizeof($com)>0)
+					{			
+						for($i = 0; $i<sizeof($com); $i++)
+						{						
 				?>
 
-						<li class="clearfix">
-							<a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$com[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
-							<div class="content-description bg-txt">
-								<h3><a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?>><?php echo $com[$i]['Users']['NAME'].' '.$com[$i]['Users']['LASTNAME'] ?></a></h3>
-								<p><?php echo $com[$i]['COMMENT']?></p>
-								<span><?php echo $com[$i]['DATE']?></span>
-							</div>
-						</li>
+							<li class="clearfix">
+								<a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$com[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
+								<div class="content-description bg-txt">
+									<h3><a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?>><?php echo $com[$i]['Users']['NAME'].' '.$com[$i]['Users']['LASTNAME'] ?></a></h3>
+									<p><?php echo $com[$i]['COMMENT']?></p>
+									<span><?php echo $com[$i]['DATE']?></span>
+								</div>
+							</li>
 
 				<?php 
-					}//end for
+						}//end for
+					}//end if
+					else
+					{
 				?>
-			</ul>
+							<li class="clearfix" id="first-comment">This tribute does not have comments yet. Be the first one!</li>
+				<?php
+					}//end else
+				?>
+				</ul>
 			<!-- END comments -->
 		</div>
 		<!-- END Current projects module -->

@@ -38,7 +38,8 @@ class VetTalkTable extends Doctrine_Table
 
               ->select('v.*, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
               ->from('VetTalk v')
-              ->leftJoin('v.Pics ph'); 
+              ->leftJoin('v.Pics ph')
+              ->orderBy('v.date DESC'); 
           
         $r = $q->execute();    
           
@@ -67,7 +68,7 @@ class VetTalkTable extends Doctrine_Table
 
          $q = Doctrine_Query::create()
 
-             ->select('v.*, ph.PIC, ph.thumb, u.NAME, u.LASTNAME') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->select('v.*, ph.PIC, ph.thumb, u.NAME, u.LASTNAME') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
             ->from('VetTalk v')
             ->innerJoin('v.Users u')
             ->leftJoin('v.Pics ph')

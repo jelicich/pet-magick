@@ -1274,6 +1274,11 @@ function imgVideoUploader(whatFor, modulo){
 				  		var uploadBtn = byid('save-edit-pet-album');
 				  		var cancelBtn = byid('cancel-edit-pet-album');
 			  		}
+			  		else if(modulo == 'pet-video')/////////////////////////////////////
+				  	{
+				  		var uploadBtn = byid('save-edit-pet-video');//////////////////////
+				  		var cancelBtn = byid('cancel-edit-pet-video');/////////////////////
+			  		}/////////////////////////////////////////////////////////////////
 			  		else if(modulo == 'albumProfile')
 			  		{
 						var uploadBtn = byid('save-edit-album');
@@ -1314,6 +1319,10 @@ function imgVideoUploader(whatFor, modulo){
 
 					  			var cont = byid("pet-album");
 
+				  		}else if(modulo == 'pet-video'){//////////////////////////////
+
+					  			var cont = byid("pet-video");///////////////////////////
+
 				  		}else if(modulo == 'albumProfile'){
 
 				  			var cont = byid('user-album');
@@ -1326,17 +1335,14 @@ function imgVideoUploader(whatFor, modulo){
 				  		}else if(modulo == 'organization'){
 
 				  			var cont = byid('organization');
-				  			//ajaxx('POST', 'ajax/uploadOrganization.php', vardump, null, true);
 				  		}
 				  		else if(modulo == 'project'){
 
 				  			var cont = byid('project');
-				  			//ajaxx('POST', 'ajax/uploadOrganization.php', vardump, null, true);
 
 				  		}else if(modulo == 'vetTalk'){
 
 				  			var cont = byid('vetTalk');
-				  			//ajaxx('POST', 'ajax/uploadOrganization.php', vardump, null, true);
 				  		}
 
 				  		cont.innerHTML = this.responseText;
@@ -1369,6 +1375,11 @@ function imgVideoUploader(whatFor, modulo){
 				  		var file = 'ajax/getPetAlbum.php';
 				  		var vars = '?p=';
 			  		}
+			  		else if(modulo == 'pet-video')////////////////////////////////
+				  	{
+				  		var file = 'ajax/getPetVideo.php';////////////////////////
+				  		var vars = '?p=';////////////////////////////////////////
+			  		}/////////////////////////////////////////////////////////////////
 			  		else if(modulo == 'albumProfile')
 			  		{
 						var file = 'ajax/getUserAlbum.php';
@@ -1619,6 +1630,15 @@ function imgVideoUploader(whatFor, modulo){
 						  		index ++;
 						  		p = p.substr(index);
 								formData.append("p", p);
+
+					  		}else if(modulo == 'pet-video'){////////////////////////////////
+
+					  			var ajaxPostFile = 'ajax/updatePetVideo.php';////////////////
+						  		var p = this.href;///////////////////////////////////////////
+								var index = p.indexOf('#');///////////////////////////////////
+						  		index ++;///////////////////////////////////////////////////
+						  		p = p.substr(index);///////////////////////////////////////
+								formData.append("p", p);////////////////////////////////////////
 
 					  		}else if(modulo == 'albumProfile'){
 
@@ -1878,127 +1898,6 @@ function imgVideoUploader(whatFor, modulo){
 
 
 
-<<<<<<< HEAD
-function showTribute()
-{
-	var chkTribute = byid('chk-tribute');
-	var div = byid('hide-tribute');
-	var ins = div.getElementsByTagName('input');
-	var txa = div.getElementsByTagName('textarea');
-
-	if(chkTribute)
-	{
-		chkTribute.onchange = function()
-		{
-			if(this.checked)
-			{
-				div.style.display = 'block';
-				for(var i = 0; i < ins.length; i++)
-				{
-					ins[i].className = 'form-element';
-				}
-				txa[0].className = 'form-element';
-			}
-			else
-			{
-				div.style.display = 'none';
-				for(var i = 0; i < ins.length; i++)
-				{
-					ins[i].removeAttribute('class');
-				}
-				txa[0].removeAttribute('class');
-			}
-				
-		}
-	}	
-}
-
-function tributeComments()
-{
-	var fl = 0;
-	(function showComment()
-	{
-		var btnCom = byid('leave-comment');
-		var pop = byid('pop-up');
-		
-		btnCom.onclick = function()
-		{
-			if(fl == 0)
-			{
-				pop.style.display = 'block';
-				fl = 1;
-			}
-			else
-			{
-				pop.style.display = 'none';
-				fl = 0;
-			}
-		}
-	})();
-
-
-	(function postComment()
-	{
-		
-		var comment = byid('comment-txt');
-		var submit = byid('send-comment');
-		submit.disabled = 'disabled';
-		comment.onchange = block;
-		comment.onkeyup = block; 
-		function block()
-		{
-			if(comment.value != '')
-				submit.removeAttribute('disabled');
-			else
-				submit.disabled = 'disabled';
-		}
-		
-
-		submit.onclick = function()
-		{
-			var idTr = byid('tr-id');
-
-			var vars = 'comment=' + comment.value + '&tribute=' + idTr.value;
-			ajax('POST', 'ajax/postComment.php', printCommentSent, vars, true);	
-
-		}
-	})();
-
-	function printCommentSent()
-	{
-
-		var html = eval(this.responseText);
-
-		if(html == undefined)
-			return;
-
-		li = create('li');
-		li.className = 'clearfix';
-		li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span>'+ html[0]['DATE'] +'</span></div>';
-		
-		byid('comments-wrapper').appendChild(li);
-		try
-		{
-			var fc = byid('first-comment');
-			fc.parentNode.removeChild(fc);
-		}
-		catch(e)
-		{
-			//
-		}
-		fl = 0;
-		var pop = byid('pop-up');
-		pop.style.display = 'none';
-		var comment = byid('comment-txt');
-		comment.value = '';
-		var submit = byid('send-comment');
-		submit.disabled = 'disabled';
-
-	}
-
-}
-=======
->>>>>>> 06ad47a205b0f2eb82d88a5d5f4022bf9d307b80
 
 
 

@@ -5,3 +5,7 @@ PENDIENTES:
 -Optimizar las consultas de getData (hacer joins)
 
 -Subir, editar, borrar videos y agregar a la funcionalidad de Delete Pet
+
+-Cuando se borra un tributo, si tiene comentarios tira error de contraint, hay q borrar los comentarios y dsps el tributo.
+
+-Hacer que coments y questions se vean de mas nueva a mas vieja (cambiar appendChilde por appendBefore en lib y poner order desc al traer los comentarios en tributo y las preguntas en vet talk)

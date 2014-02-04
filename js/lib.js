@@ -940,7 +940,7 @@ function showTribute(){
 	}	
 }//end showTribute
 
-function tributeComments(){
+function comments(ajaxFile){
 
 	var fl = 0;
 	(function showComment()
@@ -986,7 +986,7 @@ function tributeComments(){
 			var idTr = byid('tr-id');
 
 			var vars = 'comment=' + comment.value + '&tribute=' + idTr.value;
-			ajax('POST', 'ajax/postComment.php', printCommentSent, vars, true);	
+			ajax('POST', 'ajax/'+ajaxFile+'.php', printCommentSent, vars, true);	
 
 		}
 	})();

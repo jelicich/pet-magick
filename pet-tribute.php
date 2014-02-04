@@ -44,7 +44,7 @@
 
 			<!-- Messages module-->
 			<?php 
-				include_once 'templates/tributeMsgModule.php'; 
+				include_once 'templates/petTributeMsgModule.php'; 
 			?>
 			<!-- END Current projects module -->
 
@@ -61,7 +61,7 @@
 <script type="text/javascript">
 
 	modalImg();
-	tributeComments();
+	comments('postComment');
 
 </script>
 </body>

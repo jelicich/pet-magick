@@ -7,7 +7,7 @@
  * 
  * @property integer $ID_COMMENT
  * @property string $COMMENT
- * @property date $DATE
+ * @property timestamp $DATE
  * @property integer $USER_ID
  * @property integer $TRIBUTE_ID
  * @property Users $Users
@@ -40,8 +40,8 @@ abstract class BaseComments extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE', 'date', null, array(
-             'type' => 'datetime',
+        $this->hasColumn('DATE', 'timestamp', null, array(
+             'type' => 'timestamp',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

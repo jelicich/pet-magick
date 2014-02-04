@@ -81,7 +81,6 @@
 
 <script type="text/javascript">
 	selectedFromList('mainArticle', 'ajax/getSelectedArticle.php?p=');
-	comments('postQuestion');
 </script>
 
 </body>

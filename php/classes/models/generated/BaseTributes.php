@@ -8,10 +8,14 @@
  * @property integer $ID_TRIBUTE
  * @property string $TITLE
  * @property string $CONTENT
+ * @property string $NAME
+ * @property string $BREED
  * @property date $SINCE
  * @property date $THRU
+ * @property integer $PIC_ID
  * @property integer $USER_ID
  * @property integer $PET_ID
+ * @property Pics $Pics
  * @property Users $Users
  * @property Pets $Pets
  * @property Doctrine_Collection $Comments
@@ -90,6 +94,10 @@ abstract class BaseTributes extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Pics', array(
+             'local' => 'PIC_ID',
+             'foreign' => 'ID_PIC'));
+
         $this->hasOne('Users', array(
              'local' => 'USER_ID',
              'foreign' => 'ID_USER'));

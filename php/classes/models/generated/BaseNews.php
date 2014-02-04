@@ -7,7 +7,7 @@
  * 
  * @property integer $ID_NEWS
  * @property string $NEWS
- * @property timestamp $DATE
+ * @property date $DATE
  * @property integer $USER_ID
  * @property Users $Users
  * 
@@ -38,8 +38,8 @@ abstract class BaseNews extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE', 'timestamp', null, array(
-             'type' => 'timestamp',
+        $this->hasColumn('DATE', 'date', null, array(
+             'type' => 'date',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

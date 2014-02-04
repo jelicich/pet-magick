@@ -40435,39 +40435,20 @@ CREATE TABLE IF NOT EXISTS `proxynetworks` (
 
 -- --------------------------------------------------------
 
-
---
--- Table structure for table `answers`
---
-
-CREATE TABLE IF NOT EXISTS `answers` (
-  `ID_ANSWER` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ANSWER` text NOT NULL,
-  `DATE` datetime NOT NULL,
-  `USER_ID` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`ID_ANSWER`),
-  KEY `USER_ID` (`USER_ID`),
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `qas`
---
-
-
--- --------------------------------------------------------
-
-
 --
 -- Table structure for table `qas`
 --
 
-CREATE TABLE IF NOT EXISTS `questions` (
-  `ID_QUESTION` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `qas` (
+  `ID_QA` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `QUESTION` text NOT NULL,
-  `DATE` datetime NOT NULL,
+  `ANSWER` text,
+  `DATE` date NOT NULL,
   `USER_ID` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`ID_QUESTION`),
+  `VET_ID` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID_QA`),
   KEY `USER_ID` (`USER_ID`),
+  KEY `VET_ID` (`VET_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --

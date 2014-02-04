@@ -24,7 +24,6 @@
  * @property Countries $Countries
  * @property Regions $Regions
  * @property Cities $Cities
- * @property Doctrine_Collection $Answers
  * @property Doctrine_Collection $Blogs
  * @property Doctrine_Collection $Comments
  * @property Doctrine_Collection $Conversations
@@ -34,7 +33,8 @@
  * @property Doctrine_Collection $Organizations
  * @property Doctrine_Collection $Pets
  * @property Doctrine_Collection $Projects
- * @property Doctrine_Collection $Questions
+ * @property Doctrine_Collection $Qas
+ * @property Doctrine_Collection $Qas_2
  * @property Doctrine_Collection $Tributes
  * @property Doctrine_Collection $VetTalk
  * 
@@ -198,10 +198,6 @@ abstract class BaseUsers extends Doctrine_Record
              'local' => 'CITY_ID',
              'foreign' => 'CityId'));
 
-        $this->hasMany('Answers', array(
-             'local' => 'ID_USER',
-             'foreign' => 'USER_ID'));
-
         $this->hasMany('Blogs', array(
              'local' => 'ID_USER',
              'foreign' => 'USER_ID'));
@@ -238,9 +234,13 @@ abstract class BaseUsers extends Doctrine_Record
              'local' => 'ID_USER',
              'foreign' => 'USER_ID'));
 
-        $this->hasMany('Questions', array(
+        $this->hasMany('Qas', array(
              'local' => 'ID_USER',
              'foreign' => 'USER_ID'));
+
+        $this->hasMany('Qas as Qas_2', array(
+             'local' => 'ID_USER',
+             'foreign' => 'VET_ID'));
 
         $this->hasMany('Tributes', array(
              'local' => 'ID_USER',

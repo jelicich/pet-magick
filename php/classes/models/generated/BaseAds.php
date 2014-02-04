@@ -8,9 +8,9 @@
  * @property integer $ID_AD
  * @property string $AD
  * @property integer $LINK
- * @property timestamp $DATE
- * @property timestamp $DATE_FROM
- * @property timestamp $DATE_TO
+ * @property date $DATE
+ * @property date $DATE_FROM
+ * @property date $DATE_TO
  * @property integer $STATUS
  * 
  * @package    ##PACKAGE##
@@ -49,24 +49,24 @@ abstract class BaseAds extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE', 'timestamp', null, array(
-             'type' => 'timestamp',
+        $this->hasColumn('DATE', 'date', null, array(
+             'type' => 'date',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE_FROM', 'timestamp', null, array(
-             'type' => 'timestamp',
+        $this->hasColumn('DATE_FROM', 'date', null, array(
+             'type' => 'date',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE_TO', 'timestamp', null, array(
-             'type' => 'timestamp',
+        $this->hasColumn('DATE_TO', 'date', null, array(
+             'type' => 'date',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

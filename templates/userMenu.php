@@ -22,6 +22,28 @@
 						?>
 						<img src=<?php echo '"'. $thumReg  .'"'; ?> />
 						<a href=<?php echo "user-profile.php?u=". $_SESSION['id'] ?> ><?php echo $_SESSION['name'].' '.$_SESSION['lastname'] ?></a>
+						<?php
+
+						if(isset($_SESSION['rank']) && $_SESSION['rank'] == 1)
+						{
+							if($_SERVER['REQUEST_METHOD'] == 'POST')
+								include_once "../php/classes/BOQuestions.php";
+							else
+								include_once "php/classes/BOQuestions.php";
+							$q = new BOQuestions;
+							$n = $q->qtyNewQuestions();
+						?>
+							<i id="notification"><?php echo $n[0]['COUNT']?></i>
+							<div id="notification-box">
+								<p>There are <strong><?php echo $n[0]['COUNT']?></strong> unanswered questions in Vet Talk</p>
+							</div>
+							<script type="text/javascript">
+								showNotification();
+							</script>
+						<?php
+						}
+						?>
+
 					</li>
 				</ul>
 				<!-- END user menu -->

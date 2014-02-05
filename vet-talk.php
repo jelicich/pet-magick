@@ -6,9 +6,13 @@
 
 	include_once "php/classes/BOVettalk.php";
 	include_once "php/classes/BOPics.php";
+	include_once "php/classes/BOQuestions.php";
 
 	$vetTalk = new BOVettalk;
+	$ques = new BOQuestions;
 	$pics = new BOPics;
+
+	$aq = $ques->getQuestions();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -56,7 +60,6 @@
 		<!-- talks module -->
 
 		<?php 
-
 			include_once 'templates/vetTalkListModule.php'; 
 		?>
 		<!-- END talks module -->
@@ -81,6 +84,7 @@
 
 <script type="text/javascript">
 	selectedFromList('mainArticle', 'ajax/getSelectedArticle.php?p=');
+	comments('postQuestion');
 </script>
 
 </body>

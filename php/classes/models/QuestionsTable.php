@@ -57,6 +57,31 @@ class QuestionsTable extends Doctrine_Table
 
         return $ob;
 
+    }
 
+    public function getQuestions()
+    {
+        $q = Doctrine_Query::create()
+            ->select('q.*, u.NAME, u.LASTNAME, p.PIC, a.*, h.Name, h.LASTNAME, f.PIC')
+            ->from('Questions q')
+            ->leftJoin('q.Users u')
+            ->leftJoin('q.Answers a')
+            ->leftJoin('u.Pics p')
+            ->leftJoin('a.Users h')
+            ->leftJoin('h.Pics f');
+        $ob = $q->execute();
+
+        return $ob->toArray();
+    }
+
+    public function qtyNewQuestions()
+    {
+        $q = Doctrine_Query::create()
+            ->select('COUNT(q.ID_QUESTION)')
+            ->from('Questions q')
+            ->where('q.ANSWER_ID is NULL');
+        $n = $q->execute();
+
+        return $n->toArray();
     }
 }

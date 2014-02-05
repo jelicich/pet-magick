@@ -79,6 +79,10 @@ p,span{
 	width: 73% !important;
 }
 
+.profiles-mod .bg-txt{
+	height: 150px;
+}
+
 /* ------------------------------------- end background textos */
 
 
@@ -997,9 +1001,13 @@ p,span{
 }
 
 .vet-a{
-	margin-left: 10px;
+	margin-left: 90px;
 	margin-top: 10px;
 	font-style: italic;
+}
+
+.vet-a .bg-txt{
+	width: 740px;
 }
 
 .qa-list ul{
@@ -1011,8 +1019,6 @@ textarea {
     line-height: 150%;  
 
 }  
-
-
 
 /* -------------------------------------- organizations */
 
@@ -1333,3 +1339,25 @@ Tunear!!!
 
 }
 */
+
+#notification-box{
+	display: none;
+	position: absolute;
+	z-index: 500;
+	background: #d95248;
+	color: #ffffff;
+	padding:5px 10px;
+	border:1px solid rgba(0,0,0,0.2);
+}
+
+#notification{
+	background:#d95248;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	text-align: center;
+	font-style: normal;
+	color: #e7cd00;
+	cursor: pointer;
+}

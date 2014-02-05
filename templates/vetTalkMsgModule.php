@@ -37,27 +37,35 @@
 
 			<ul class="mod-content pet-loss-mod-list qa-list" id="comments-wrapper">
 				<?php 
-					for($i = 0; $i<sizeof($com); $i++)
+					for($i = 0; $i<sizeof($aq); $i++)
 					{						
 				?>
 
 						<li class="clearfix">
 							<ul>
-								<li class="vet-q">
-									<a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$com[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
+								<li class="vet-q clearfix">
+									<a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$aq[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
 									<div class="content-description bg-txt">
-										<h3><a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?>><?php echo $com[$i]['Users']['NAME'].' '.$com[$i]['Users']['LASTNAME'] ?></a></h3>
-										<p><?php echo $com[$i]['COMMENT']?></p>
-										<span><?php echo $com[$i]['DATE']?></span>
+										<h3><a href=<?php echo '"user-profile.php?u='.$sq[$i]['Users']['ID_USER'] .'"' ?>><?php echo $aq[$i]['Users']['NAME'].' '.$aq[$i]['Users']['LASTNAME'] ?></a></h3>
+										<p><?php echo $aq[$i]['QUESTION']?></p>
+										<span><?php echo $aq[$i]['DATE']?></span>
 									</div>
 								</li>
-								<li class="vet-a">
+								<li class="vet-a clearfix">
 									<p>
 										<?php 
-										if(!empty($com[$i]['ANSWER']))
+										if(!empty($aq[$i]['Answers']))
 										{
-											echo $com[$i]['ANSWER'];
-											echo "<p>" . "</p>";
+										?>
+											<a href=<?php echo '"user-profile.php?u='.$aq[$i]['Answers']['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$aq[$i]['Answers']['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
+											<div class="content-description bg-txt">
+												<h3><a href=<?php echo '"user-profile.php?u='.$sq[$i]['Answers']['Users']['ID_USER'] .'"' ?>><?php echo $aq[$i]['Answers']['Users']['NAME'].' '.$aq[$i]['Answers']['Users']['LASTNAME'] ?></a></h3>
+												<p><?php echo $aq[$i]['Answers']['ANSWER'] ?></p>
+												<span><?php echo $aq[$i]['Answers']['DATE']?></span>
+											</div>
+											
+
+										<?php
 										}
 										else
 										{
@@ -73,33 +81,5 @@
 					}//end for
 				?>
 
-				<li>
-					<ul>
-						<li class="vet-q">
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						</li>
-						<li class="vet-a">
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñkdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñkdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						</li>
-						
-					</ul>
-				</li>
-				<li>
-					<ul>
-						<li class="vet-q">
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						</li>
-						<li class="vet-a">
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld sñfdk sñkdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<ul>
-						<li class="vet-q">
-							<p>asdlk aslkd lakdlakd dsk skdsld skdk dslkdkdf kfdlfdk fdfkdlfk ldkf dfñsdfkwoer sdl spdlfld fsñfdk sñf</p>
-						</li>
-					</ul>
-				</li>
 			</ul>
 		</div>

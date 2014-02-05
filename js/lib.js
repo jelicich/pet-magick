@@ -1891,7 +1891,18 @@ function imgVideoUploader(whatFor, modulo){
 }// end imgVideoUploader
 
 
-
+function showNotification()
+{
+	var btn = byid('notification');
+	btn.onmouseover = function()
+	{
+		byid('notification-box').style.display = 'block';
+	}
+	btn.onmouseout = function()
+	{
+		byid('notification-box').style.display = 'none';
+	}
+}
 
 
 

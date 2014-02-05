@@ -141,7 +141,7 @@ class BOUsers{
 
     function checklogin(){
 
-      if(!isset($_SESSION['email'])){// Ver si mail es el valor correcto
+      if(!isset($_SESSION['id'])){
         
         header('Location: index.php');
 

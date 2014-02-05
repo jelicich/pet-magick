@@ -33,9 +33,9 @@ class BOQuestions{
     	return $this->sentComment;
     }
 
-    function getComments($id)
+    function getQuestions()
     {
-    	$ar = $this->table->getComments($id);
+    	$ar = $this->table->getQuestions($id);
     	for($i = 0; $i<sizeof($ar); $i++)
     	{
     		if(isset($ar[$i]['Users']['Pics']['PIC']))
@@ -49,9 +49,29 @@ class BOQuestions{
 	            $ar[$i]['Users']['Pics']['PIC'] = 'img/users/default.jpg';
 	            $ar[$i]['Users']['Pics']['THUMB'] = 'img/users/thumb/default.jpg';
 	        }	
+            if(isset($ar[$i]['Answers']))
+            { 
+                if(isset($ar[$i]['Answers']['Users']['Pics']['PIC']))
+                {
+                    $pic = $ar[$i]['Answers']['Users']['Pics']['PIC'];
+                    $ar[$i]['Answers']['Users']['Pics']['PIC'] = 'img/users/'.$pic;
+                    $ar[$i]['Answers']['Users']['Pics']['THUMB'] = 'img/users/thumb/'.$pic;
+                }
+                else
+                {
+                    $ar[$i]['Answers']['Users']['Pics']['PIC'] = 'img/users/default.jpg';
+                    $ar[$i]['Answers']['Users']['Pics']['THUMB'] = 'img/users/thumb/default.jpg';
+                }  
+            }     
     	}
     	
     	return $ar;
+    }
+
+    function qtyNewQuestions()
+    {
+        $q = $this->table->qtyNewQuestions();
+        return $q;
     }
 
 

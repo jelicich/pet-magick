@@ -855,7 +855,7 @@ function addPet(){
 function deletePet(){
 
 	var btns = document.querySelectorAll('.delete-pet');
-	console.log(btns);
+	//console.log(btns);
 	for(var i = 0; i < btns.length; i++)
 	{
 		btns[i].onclick = function()

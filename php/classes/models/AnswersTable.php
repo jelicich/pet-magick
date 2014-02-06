@@ -16,4 +16,17 @@ class AnswersTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Answers');
     }
+
+    public function post($array)
+    {
+    	$c = new Answers;
+        $c->ANSWER = $array['a'];
+        $c->DATE = date('Y-m-d H:i:s');
+        $c->USER_ID = $_SESSION['id'];
+        $c->save();
+
+        $lm = $c->ID_ANSWER;
+
+        return $lm;
+    }
 }

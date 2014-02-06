@@ -32,6 +32,8 @@
 								include_once "php/classes/BOQuestions.php";
 							$q = new BOQuestions;
 							$n = $q->qtyNewQuestions();
+							if(sizeof($n)>0)
+							{
 						?>
 							<i id="notification"><?php echo $n[0]['COUNT']?></i>
 							<div id="notification-box">
@@ -41,6 +43,7 @@
 								showNotification();
 							</script>
 						<?php
+							}//end if sizeof
 						}
 						?>
 

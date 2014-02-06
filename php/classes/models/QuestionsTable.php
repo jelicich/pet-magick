@@ -74,6 +74,19 @@ class QuestionsTable extends Doctrine_Table
         return $ob->toArray();
     }
 
+    public function getNewQuestions()
+    {
+        $q = Doctrine_Query::create()
+            ->select('q.*, u.NAME, u.LASTNAME, p.PIC')
+            ->from('Questions q')
+            ->leftJoin('q.Users u')
+            ->leftJoin('u.Pics p')
+            ->where('q.ANSWER_ID is NULL');
+        $ob = $q->execute();
+
+        return $ob->toArray();
+    }
+
     public function qtyNewQuestions()
     {
         $q = Doctrine_Query::create()
@@ -83,5 +96,14 @@ class QuestionsTable extends Doctrine_Table
         $n = $q->execute();
 
         return $n->toArray();
+    }
+
+    public function addAnswerId($a,$q)
+    {
+        $q= Doctrine_Query::create()
+            ->update('Questions q')
+            ->set('q.ANSWER_ID','?',$a)
+            ->where('q.ID_QUESTION = ?',$q);
+        $q->execute();
     }
 }

@@ -74,6 +74,30 @@ class BOQuestions{
         return $q;
     }
 
+    function getNewQuestions()
+    {
+        $q = $this->table->getNewQuestions();
+        return $q;
+    }
+
+    function addAnswerId($a,$q)
+    {
+        try
+        {
+            $this->table->addAnswerId($a,$q);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            $this->err = $e->getMessage();
+            return false;
+        }
+    }
+
+    function getErr()
+    {
+        return $this->err;
+    }
 
 }//End class BOUsers
 

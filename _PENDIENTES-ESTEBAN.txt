@@ -9,3 +9,5 @@ PENDIENTES:
 -Cuando se borra un tributo, si tiene comentarios tira error de contraint, hay q borrar los comentarios y dsps el tributo.
 
 -Hacer que coments y questions se vean de mas nueva a mas vieja (cambiar appendChilde por appendBefore en lib y poner order desc al traer los comentarios en tributo y las preguntas en vet talk)
+
+-BUG: Cuando se hace una pregunta en vet talk anda ok, cuando preguntas denuevo sin refrescar dice "undefined" (si refrescas la pag se cargan ok las preguntas);

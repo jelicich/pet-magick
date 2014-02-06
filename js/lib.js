@@ -993,7 +993,7 @@ function comments(ajaxFile){
 
 	function printCommentSent()
 	{
-
+		//console.log(this.responseText);
 		var html = eval(this.responseText);
 
 		if(html == undefined)
@@ -1001,7 +1001,15 @@ function comments(ajaxFile){
 
 		li = create('li');
 		li.className = 'clearfix';
-		li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span>'+ html[0]['DATE'] +'</span></div>';
+		if(ajaxFile == 'postQuestion')
+		{
+			li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['QUESTION'] +'</p><span>'+ html[0]['DATE'] +'</span></div>';
+		}
+		else
+		{
+			li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span>'+ html[0]['DATE'] +'</span></div>';
+		}
+		
 		
 		byid('comments-wrapper').appendChild(li);
 		fl = 0;
@@ -1904,7 +1912,49 @@ function showNotification()
 	}
 }
 
+function vetTalkAnswer()
+{
+	var btns = document.querySelectorAll('.submit-answer');
+	for(var i = 0; i<btns.length; i++)
+	{
+		btns[i].onclick = function()
+		{
+			id = this.previousElementSibling;
+			txt = id.previousElementSibling;
+			//publica
+			tmpLi = this.parentNode.parentNode.parentNode.parentNode;
+			var vars= 'id='+id.value+'&a='+txt.value;
+			ajax('POST', 'ajax/answerQuestion.php', removeQuestion, vars, true)
+		}
+	}
 
+	function removeQuestion()
+	{
+		var html = this.responseText;
+		if(html == '' || html == undefined)
+		{
+			tmpLi.parentNode.removeChild(tmpLi);
+			updateNotification();
+		}
+		else
+		{
+			var e = document.createElement(p);
+			e.innerHTML = html;
+			tmpLi.appendChild(e);
+		}
+	}
+
+	function updateNotification()
+	{
+		var a = byid('notification');
+		var n = parseInt(a.innerHTML) - 1;
+		a.innerHTML = n;
+		var b = byid('notification-box').getElementsByTagName('strong')[0];
+		var n = parseInt(b.innerHTML) - 1;
+		b.innerHTML = n;
+	}
+
+}
 
 
 

@@ -26,6 +26,7 @@ class QuestionsTable extends Doctrine_Table
         $c->save();
 
         $lm = $c->ID_QUESTION;
+        
 
         $q = Doctrine_Query::create()
             ->select('q.*, u.NAME, u.LASTNAME, p.PIC')
@@ -38,6 +39,7 @@ class QuestionsTable extends Doctrine_Table
 
     
         $ar = $ob->toArray();
+    
         
         if(isset($ar[0]['Users']['Pics']['PIC']))
         {

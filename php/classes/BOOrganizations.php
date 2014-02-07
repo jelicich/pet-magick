@@ -31,7 +31,7 @@ class BOOrganizations{
        
          $q = Doctrine_Query::create()
 
-              ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+              ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
               ->from('Organizations o')
               ->leftJoin('o.Pics ph'); 
           
@@ -44,7 +44,7 @@ class BOOrganizations{
 
          $q = Doctrine_Query::create()
 
-            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
             ->from('Organizations o')
             ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
             ->where('o.USER_ID = ?', $id);
@@ -66,7 +66,7 @@ class BOOrganizations{
         $userCount = Doctrine::getTable('Organizations')->count();
         $user = Doctrine::getTable('Organizations')
         ->createQuery()
-        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
         ->from('Organizations o')
         ->leftJoin('o.Pics ph') 
         ->limit(1)
@@ -80,7 +80,7 @@ class BOOrganizations{
 
          $q = Doctrine_Query::create()
 
-            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
             ->from('Organizations o')
             //->innerJoin('o.Users u')
             ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
@@ -98,6 +98,41 @@ class BOOrganizations{
                 return false;
            }
     }// end getOrganizationsByUser
+
+    function getOrgListByUser($id)
+    {
+      $q = Doctrine_Query::create()
+        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC')
+        ->from('Organizations o')
+        ->leftJoin('o.Pics ph')
+        ->where('o.USER_ID = ?', $id);
+      $ob = $q->execute();
+      $ar = $ob->toArray();
+      if(sizeof($ar) > 0)
+      {
+               
+          for($i=0; $i < sizeof($ar); $i++)
+          {
+            if(isset($ar[$i]['Pics']['PIC']))
+            {
+                $pic = $ar[$i]['Pics']['PIC'];
+                $ar[$i]['Pics']['PIC'] = 'img/organizations/'.$pic;
+                $ar[$i]['Pics']['THUMB'] = 'img/organizations/thumb/'.$pic;
+            }
+            else
+            {
+                $ar[$i]['Pics']['PIC'] = 'img/organizations/default.jpg';
+                $ar[$i]['Pics']['THUMB'] = 'img/organizations/thumb/default.jpg';
+            }   
+          }
+          return $ar;
+       }
+       else
+       {
+
+            return false;
+       }
+    }
 
     function getErrors(){
 

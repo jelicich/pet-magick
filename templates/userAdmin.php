@@ -21,14 +21,62 @@
 
 
 						<div class="tab-content">
-							<div class="tab-pane active" id="organizations">Orgs</div>
-							<div class="tab-pane" id="projects">Proj</div>
+							<!-- ORGSS HERE -->
+							<div class="tab-pane active" id="organizations">
+								<?php
+									echo '<a href="#'.$_SESSION['id'].'" class="btn btn-edit" id="save-edit-user">Save</a>
+									<a href="#'.$_SESSION['id'].'" class="btn btn-cancel" id="cancel-edit-user">Cancel</a>';	
+									include_once 'php/classes/BOOrganizations.php';
+									$org = new BOOrganizations;
+									$list = $org->getOrgListByUser($_SESSION['id']);
+									if($list)
+									{
+										for($i=0; $i<sizeof($list); $i++)
+										{
+								?>
+										<li class="vet-q clearfix">
+											<img src=<?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
+											<div class="content-description bg-txt">
+												<h3><?php echo $list[$i]['NAME']?></h3>
+												<p><?php echo $list[$i]['DESCRIPTION'] //hacerle un substr?></p>
+												<a href=<?php echo '"#'.$list[$i]['ID_ORGANIZATION'].'"'?> class="btn btn-danger">Delete</a>
+											</div>
+										</li>
+								<?php
+										}//end for
+									}//end if
+								?>
+								<div id='organization'></div>
+								<div id='imgContainer'></div>
+
+								<iframe name="iframe_IE" src="" style="display: none"></iframe> 
+
+								<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
+
+									<input type='text' class = 'form-element' name='name' />
+									<textarea class = 'form-element' name='description'></textarea>
+									<script type="text/javascript">
+										imgVideoUploader('profile', 'organization'); 
+									</script>
+
+								</form>
+							</div>
+							
+
+							<!-- PROJECTS HERE -->
+							<div class="tab-pane" id="projects">
+							</div>
 							
 						<?php
 						if($_SESSION['rank'] == 1)
 						{
 						?>
-							<div class="tab-pane" id="vtarticles">Arts</div>
+							<!-- VET ARTICLES HERE -->
+							<div class="tab-pane" id="vtarticles">
+							</div>
+							
+
+							<!-- VET QUESTIONS HERE -->
 							<div class="tab-pane" id="vtquestions">
 								<?php
 									include_once "php/classes/BOQuestions.php";

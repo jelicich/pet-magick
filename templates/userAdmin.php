@@ -6,7 +6,7 @@
 					
 					<div class="mod-content clearfix">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#organizations" data-toggle="tab">Organizations</a></li>
+							<li class="active"><a href="#organization" data-toggle="tab">Organizations</a></li>
 							<li><a href="#projects" data-toggle="tab">Projects</a></li>
 						<?php
 						if($_SESSION['rank'] == 1)
@@ -22,15 +22,15 @@
 
 						<div class="tab-content">
 							<!-- ORGSS HERE -->
-							<div class="tab-pane active" id="organizations">
+							<div class="tab-pane active" id="organization">
 								<?php
-									echo '<a href="#'.$_SESSION['id'].'" class="btn btn-edit" id="save-edit-user">Save</a>
-									<a href="#'.$_SESSION['id'].'" class="btn btn-cancel" id="cancel-edit-user">Cancel</a>';	
+									echo '<a href="#'.$_SESSION['id'].'" class="btn btn-edit" id="save-edit-user">Save</a>';	
 									include_once 'php/classes/BOOrganizations.php';
 									$org = new BOOrganizations;
 									$list = $org->getOrgListByUser($_SESSION['id']);
 									if($list)
 									{
+										echo '<ul>';
 										for($i=0; $i<sizeof($list); $i++)
 										{
 								?>
@@ -44,9 +44,10 @@
 										</li>
 								<?php
 										}//end for
+										echo '</ul>';
 									}//end if
 								?>
-								<div id='organization'></div>
+								
 								<div id='imgContainer'></div>
 
 								<iframe name="iframe_IE" src="" style="display: none"></iframe> 

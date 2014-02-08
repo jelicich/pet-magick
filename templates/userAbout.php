@@ -47,6 +47,7 @@
 						?>
 					</p>
 				</div>
+				<!--
 				<div id="user-extra">
 					<ul>
 						<li><a href="#">Send me a message</a></li>
@@ -54,6 +55,7 @@
 						<li><a href="#">My tributes</a></li>
 					</ul>
 				</div>
+				-->
 			</div>
 		<!--</div>-->
 		

@@ -817,11 +817,10 @@ function deleteVideo(){
 
 		  		
 		  			//alert(t);
-		  		ajax('POST', 'ajax/deleteVideo.php', vardump, p, true);
+		  		ajax('POST', 'ajax/deleteVideo.php', refresh, p, true);
 			}
 		}
 }
-
 
 function printEdit(idModule, html){		
 	var cont = byid(idModule);

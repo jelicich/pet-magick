@@ -131,45 +131,4 @@
 				<script type="text/javascript">
 
 
-					function uploadOrganization()
-					{
-
-						var editPet = byid('upload-organization');
-						
-						
-						editPet.onclick = function()
-						{
-							var p = this.href;
-							var index = p.indexOf('#');
-					  		index ++;
-					  		p = p.substr(index);
-							ajax('GET', 'ajax/getUploadOrganization.php?u='+p, printEditPet, null, true);
-						}	
-
-
-						function printEditPet()
-						{
-							printEdit('organization', this.responseText);
-						}
-					}//end editPetProfile
-
-					function deleteOrganization()
-					{
-						var btn = document.querySelectorAll('.delete-org'); 
-
-						for(var i = 0; i < btn.length; i++)
-						{
-							btn[i].onclick = function(e)
-							{		
-								var p = this.href;
-								var index = p.indexOf('#');
-						  		index ++;
-						  		p = 'o='+p.substr(index);
-						  		
-								ajax('POST', 'ajax/deleteOrganization.php', vardump, p, true);// Mando por aca el id del user?????
-
-							}// end deleteNews[i].onclick		
-						}
-					}	
-					
 				</script>

@@ -1267,7 +1267,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				  byid('form-id').appendChild(file_id);
 				  //var uploadBtn = byid('save-edit-user');
-				    if(modulo == 'about' || modulo == 'organization' || modulo == 'project' || modulo == 'vetTalk')// tal vez deba poner un nombre para todos y ya
+				    if(modulo == 'about' || modulo == 'project' || modulo == 'vetTalk')// tal vez deba poner un nombre para todos y ya
   				    {
 			  			var uploadBtn = byid('save-edit-user');
 			  			var cancelBtn = byid('cancel-edit-user');
@@ -1297,13 +1297,13 @@ function imgVideoUploader(whatFor, modulo){
 						var uploadBtn = byid('save-new-pet');
 						var cancelBtn = byid('cancel-new-pet');
 					}
-			  	 /*	else if(modulo == 'organization')
+			  	 	else if(modulo == 'organization')
 			  		{
 						var uploadBtn = byid('save-edit-user'); // igual a about, modificar
 			  			var cancelBtn = byid('cancel-edit-user');
-			  		}	*/										
+			  		}	
 				  
-				  file_id.parentNode.appendChild(uploadBtn);
+				  //file_id.parentNode.appendChild(uploadBtn);
 
 				/*  function printUpdates(){
 
@@ -1956,6 +1956,68 @@ function vetTalkAnswer()
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function uploadOrganization()
+{
+
+	var editPet = byid('upload-organization');
+	
+	
+	editPet.onclick = function()
+	{
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+		ajax('GET', 'ajax/getUploadOrganization.php?u='+p, printEditPet, null, true);
+	}	
+
+
+	function printEditPet()
+	{
+		printEdit('organization', this.responseText);
+	}
+}//end editPetProfile
+
+function deleteOrganization()
+{
+	var btn = document.querySelectorAll('.delete-org'); 
+
+	for(var i = 0; i < btn.length; i++)
+	{
+		btn[i].onclick = function(e)
+		{		
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = 'o='+p.substr(index);
+	  		
+			ajax('POST', 'ajax/deleteOrganization.php', vardump, p, true);// Mando por aca el id del user?????
+
+		}// end deleteNews[i].onclick		
+	}
+}	
 
 
 

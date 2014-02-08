@@ -21,61 +21,57 @@
 
 
 						<div class="tab-content">
+							
+
+
+
+
 							<!-- ORGSS HERE -->
 							<div class="tab-pane active" id="organization">
+
+								
+
 								<?php
-									echo '<a href="#'.$_SESSION['id'].'" class="btn btn-edit" id="save-edit-user">Save</a>';	
 									include_once 'php/classes/BOOrganizations.php';
 									$org = new BOOrganizations;
-									$list = $org->getOrgListByUser($_SESSION['id']);
-									if($list)
-									{
-										echo '<ul>';
-										for($i=0; $i<sizeof($list); $i++)
-										{
-								?>
-										<li class="vet-q clearfix">
-											<img src=<?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
-											<div class="content-description bg-txt">
-												<h3><?php echo $list[$i]['NAME']?></h3>
-												<p><?php echo $list[$i]['DESCRIPTION'] //hacerle un substr?></p>
-												<a href=<?php echo '"#'.$list[$i]['ID_ORGANIZATION'].'"'?> class="btn btn-danger">Delete</a>
-											</div>
-										</li>
-								<?php
-										}//end for
-										echo '</ul>';
-									}//end if
+									include_once 'templates/adminOrganizations.php';
 								?>
 								
-								<div id='imgContainer'></div>
-
-								<iframe name="iframe_IE" src="" style="display: none"></iframe> 
-
-								<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
-
-									<input type='text' class = 'form-element' name='name' />
-									<textarea class = 'form-element' name='description'></textarea>
-									<script type="text/javascript">
-										imgVideoUploader('profile', 'organization'); 
-									</script>
-
-								</form>
+								
+								
 							</div>
 							
+
+
+
 
 							<!-- PROJECTS HERE -->
 							<div class="tab-pane" id="projects">
 							</div>
-							
+						
+
+
+
+
+
+
 						<?php
 						if($_SESSION['rank'] == 1)
 						{
 						?>
+							
+
+
+
 							<!-- VET ARTICLES HERE -->
 							<div class="tab-pane" id="vtarticles">
 							</div>
 							
+
+							
+
+
+
 
 							<!-- VET QUESTIONS HERE -->
 							<div class="tab-pane" id="vtquestions">
@@ -131,3 +127,49 @@
 					</div><!-- end mod contet -->
 					
 				</div><!-- end admin -->
+
+				<script type="text/javascript">
+
+
+					function uploadOrganization()
+					{
+
+						var editPet = byid('upload-organization');
+						
+						
+						editPet.onclick = function()
+						{
+							var p = this.href;
+							var index = p.indexOf('#');
+					  		index ++;
+					  		p = p.substr(index);
+							ajax('GET', 'ajax/getUploadOrganization.php?u='+p, printEditPet, null, true);
+						}	
+
+
+						function printEditPet()
+						{
+							printEdit('organization', this.responseText);
+						}
+					}//end editPetProfile
+
+					function deleteOrganization()
+					{
+						var btn = document.querySelectorAll('.delete-org'); 
+
+						for(var i = 0; i < btn.length; i++)
+						{
+							btn[i].onclick = function(e)
+							{		
+								var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = 'o='+p.substr(index);
+						  		
+								ajax('POST', 'ajax/deleteOrganization.php', vardump, p, true);// Mando por aca el id del user?????
+
+							}// end deleteNews[i].onclick		
+						}
+					}	
+					
+				</script>

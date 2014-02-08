@@ -1267,7 +1267,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				  byid('form-id').appendChild(file_id);
 				  //var uploadBtn = byid('save-edit-user');
-				    if(modulo == 'about' || modulo == 'organization' || modulo == 'project' || modulo == 'vetTalk')// tal vez deba poner un nombre para todos y ya
+				    if(modulo == 'about' || modulo == 'project' || modulo == 'vetTalk')// tal vez deba poner un nombre para todos y ya
   				    {
 			  			var uploadBtn = byid('save-edit-user');
 			  			var cancelBtn = byid('cancel-edit-user');
@@ -1297,13 +1297,13 @@ function imgVideoUploader(whatFor, modulo){
 						var uploadBtn = byid('save-new-pet');
 						var cancelBtn = byid('cancel-new-pet');
 					}
-			  	 /*	else if(modulo == 'organization')
+			  	 	else if(modulo == 'organization')
 			  		{
-						var uploadBtn = byid('save-edit-user'); // igual a about, modificar
-			  			var cancelBtn = byid('cancel-edit-user');
-			  		}	*/										
+						var uploadBtn = byid('save-organization'); // igual a about, modificar
+			  			var cancelBtn = byid('cancel-organization');
+			  		}	
 				  
-				  file_id.parentNode.appendChild(uploadBtn);
+				  //file_id.parentNode.appendChild(uploadBtn); <- hija de puta no sirve para nada 
 
 				/*  function printUpdates(){
 

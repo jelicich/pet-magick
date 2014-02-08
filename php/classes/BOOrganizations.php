@@ -139,6 +139,21 @@ class BOOrganizations{
         return  $this->err;
     }// end getErrors
 
+    function deleteOrganization($id)
+    {
+      try
+      {
+        $this->table->deleteOrganization($id);
+        return true;
+      } 
+      catch (Exception $e)
+      {
+        $this->err = $e->getMessage();
+        return false;
+      }
+
+    }
+
 
 }//End class BOUsers
 

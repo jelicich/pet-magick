@@ -759,8 +759,7 @@ function editPetProfile(){ // esto se repite, podemos hacer una sola function co
 function editPetAlbum(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
 	var editPet = byid('edit-pet-album');
-	
-	
+
 	editPet.onclick = function()
 	{
 		var p = this.href;
@@ -777,7 +776,52 @@ function editPetAlbum(){ // esto se repite, podemos hacer una sola function con 
 	}
 }//end editPetProfile
 
+function UploadPetVideo(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
+
+	if(byid('upload-pet-video')){
+
+		var editPet = byid('upload-pet-video');
+		editPet.onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+			ajax('GET', 'ajax/getUploadPetVideo.php?p='+p, printEditPet, null, true);
+		}	
+
+
+		function printEditPet()
+		{
+			printEdit('pet-video', this.responseText);
+		}
+	}
+}//end editPetProfile
+
+function deleteVideo(){
+
+	if(byid('delete-pet-video')){
+	
+			var btns = byid('delete-pet-video');
+
+			  btns.onclick = function()
+			{
+				var p = this.href;
+				var index = p.indexOf('#');
+		  		index ++;
+		  		//var t=byid('unlinkPath');
+		  		//	t=t.href;
+		  		p = 'p='+ p.substr(index);
+
+		  		
+		  			//alert(t);
+		  		ajax('POST', 'ajax/deleteVideo.php', vardump, p, true);
+			}
+		}
+}
+
 function printEdit(idModule, html){		
+	
 	var cont = byid(idModule);
 	cont.innerHTML = html;
 	var scr = cont.getElementsByTagName('script');
@@ -1303,7 +1347,7 @@ function imgVideoUploader(whatFor, modulo){
 			  			var cancelBtn = byid('cancel-edit-user');
 			  		}	*/										
 				  
-				  file_id.parentNode.appendChild(uploadBtn);
+				  //file_id.parentNode.appendChild(uploadBtn);
 
 				/*  function printUpdates(){
 
@@ -1641,7 +1685,7 @@ function imgVideoUploader(whatFor, modulo){
 
 					  		}else if(modulo == 'pet-video'){////////////////////////////////
 
-					  			var ajaxPostFile = 'ajax/updatePetVideo.php';////////////////
+					  			var ajaxPostFile = 'ajax/uploadPetVideo.php';////////////////
 						  		var p = this.href;///////////////////////////////////////////
 								var index = p.indexOf('#');///////////////////////////////////
 						  		index ++;///////////////////////////////////////////////////
@@ -1953,7 +1997,6 @@ function vetTalkAnswer()
 		var n = parseInt(b.innerHTML) - 1;
 		b.innerHTML = n;
 	}
-
 }
 
 

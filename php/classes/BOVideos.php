@@ -164,8 +164,8 @@ class BOVideos{
           ->where('PET_ID = ?', $ref['bd']);
       $q->execute();
 
-     unlink($ref['video']);
-     unlink($ref['thumb']);
+    // unlink($ref['video']);
+     //unlink($ref['thumb']);
 
      echo $ref['video'];
 

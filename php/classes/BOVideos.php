@@ -109,6 +109,7 @@ class BOVideos{
 
             $title = $query['title'];
             $caption = $query['caption'];
+            $pet_id  = $query['pet_id'];
             $path = $newName;
             $thumbPath = $thumbName;
 
@@ -119,7 +120,7 @@ class BOVideos{
                  'title'=>$title, 
                  'caption'=>$caption, 
                  'thumbnail'=>$thumbPath, //tuve q modificar la ruta pq si no no lo guardaba en la BD , no se pq...
-                 'album_id'=> null 
+                 'pet_id'=> $pet_id
             );
 
             $this->table->upload($query);
@@ -150,6 +151,25 @@ class BOVideos{
       $array = $this->table->getVideosRamdom();
         return $array;
   }
+
+  function getVideosByPet($id){
+      $array = $this->table->getVideosRamdom();
+        return $array;
+  }
+
+  function delete($ref){
+
+      $q = doctrine_query:: create()
+          ->delete('Videos v')
+          ->where('PET_ID = ?', $ref['bd']);
+      $q->execute();
+
+    // unlink($ref['video']);
+     //unlink($ref['thumb']);
+
+     echo $ref['video'];
+
+  }// End delete
 
   function getErrors(){
 

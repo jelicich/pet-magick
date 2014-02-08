@@ -18,7 +18,7 @@ class VideosTable extends Doctrine_Table
     }
 
     
-    public function upload($ref){
+   public function upload($ref){
 
             $now = date('Y-m-d');
 
@@ -28,7 +28,7 @@ class VideosTable extends Doctrine_Table
             $Videos->CAPTION = $ref['caption'];
             $Videos->THUMBNAIL = $ref['thumbnail']; 
             $Videos->DATE = $now;
-            $Videos->PET_ID = null;
+            $Videos->PET_ID = $ref['pet_id'];
 
             $Videos->save();
    }// end upload_img
@@ -84,11 +84,10 @@ class VideosTable extends Doctrine_Table
     			->AndWhere('v.PET_ID = ?', $id);
 
     		$videos = $q->execute();
-           
-           if(sizeof($videos) > 0){
            		return $videos->toArray();
-           }else{
-           		return false;
-           }
+          
      } 
+
+
+     
     }

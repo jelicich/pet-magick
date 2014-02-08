@@ -18,11 +18,7 @@ var_dump($_POST);
 		die;
 	}*/
 
-	$dato = array(
-			'id_v' => $_POST['p']
-			//'video' => $_POST['video'],
-			//'thumb' => $_POST['thumb']
-	);
+	
 
 	$v->delete($_POST['p']);
 

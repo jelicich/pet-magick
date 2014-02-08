@@ -152,23 +152,16 @@ class BOVideos{
         return $array;
   }
 
-  function getVideosByPet($id){
-      $array = $this->table->getVideosRamdom();
-        return $array;
-  }
-
   function delete($ref){
-
+     
+      $vPath =  $this->table->getVideosByPet($ref);
       $q = doctrine_query:: create()
           ->delete('Videos v')
-          ->where('PET_ID = ?', $ref['bd']);
+          ->where('PET_ID = ?', $ref);
       $q->execute();
-
-    // unlink($ref['video']);
-     //unlink($ref['thumb']);
-
-     echo $ref['video'];
-
+       
+     unlink('../video/'.$vPath[0]['VIDEO']);
+     unlink('../video/'.$vPath[0]['THUMBNAIL']);
   }// End delete
 
   function getErrors(){

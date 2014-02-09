@@ -2,19 +2,18 @@
 
 session_start();
 
-//echo $_POST['p'];
 
-if(!isset($_POST['p']))
-{
-	echo 'Session ERROR';
-	die;
-}
+if(isset($_POST['p']))
+	$idPet = $_POST['p'];
+elseif(isset($_GET['p']))
+	$idPet = $_GET['p'];
+
 
 include_once "../php/classes/BOPets.php";
 include_once "../php/classes/BOVideos.php";
 
 $pet = new BOPets;
-$videos = new BOVideos;
+$v = new BOVideos;
 
 $query = array();
 $mimeVideo = array('video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav');
@@ -42,14 +41,14 @@ if(isset($_FILES['file'])){ // normalWay();
 		$query['fileSize'] = $_FILES['file']['size'][$i];
 		$query['fileType'] = $_FILES['file']['type'][$i];
 		//$query['caption']  = $_POST['caption'][$i];
-		$query['pet_id']  = $_POST['p'];
+		$query['pet_id']  = $idPet;
 
 		if( in_array($query['fileType'], $mimeVideo)){  
 			
 			$query['caption']  = $_POST['caption'];
 			$query['title']  = $_POST['title'];
 
-			$obj = $videos;
+			$obj = $v;
 			$path = '../video/'; 
 			
 			createQuery($query, $path, $obj);
@@ -96,6 +95,6 @@ if(isset($_FILES['file'])){ // normalWay();
 }// end else
 
 
-$_GET['p'] = $_SESSION['id'];
-include_once "../templates/petVideo.php";
+$_GET['p'] = $idPet;
+include_once "../templates/videoPosta.php";
 

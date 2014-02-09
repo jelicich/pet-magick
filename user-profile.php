@@ -8,6 +8,7 @@
 	include_once "php/classes/BOUsers.php";
 	include_once "php/classes/BONews.php";
 	include_once "php/classes/BOPets.php";
+	include_once "php/classes/BOVideos.php";
 	include_once "php/classes/BOAnimalCategories.php";
 	
 	
@@ -15,6 +16,7 @@
 	$n = new BONews;
 	$p = new BOPets;
 	$ac = new BOAnimalCategories;
+	$v = new BOVideos;
 
 	$u->getUserData($_GET['u']);
 ?>

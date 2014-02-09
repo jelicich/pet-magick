@@ -42,7 +42,7 @@
 
 
 							<!-- PROJECTS HERE -->
-							<div class="tab-pane" id="projects">
+							<div class="tab-pane" id="project">
 
 								<?php
 									include_once 'php/classes/BOProjects.php';

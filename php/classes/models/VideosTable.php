@@ -67,10 +67,10 @@ class VideosTable extends Doctrine_Table
     {      
         $userCount = Doctrine::getTable('Videos')->count();
         $user = Doctrine::getTable('Videos')
-      ->createQuery()
-      //->limit(2)
-      ->offset(rand(0, $userCount - 1))
-      ->fetchOne();
+       ->createQuery()
+       //->limit(2)
+       ->offset(rand(0, $userCount - 1))
+       ->fetchOne();
 
        return $user->toArray();
     }

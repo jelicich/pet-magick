@@ -97,5 +97,5 @@ if(isset($_FILES['file'])){ // normalWay();
 
 
 $_GET['p'] = $_SESSION['id'];
-include_once "../templates/PetProfileVideo.php";
+include_once "../templates/petVideo.php";
 

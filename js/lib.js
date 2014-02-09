@@ -822,6 +822,7 @@ function deleteVideo(){
 		}
 }
 
+
 function printEdit(idModule, html){		
 	var cont = byid(idModule);
 	cont.innerHTML = html;

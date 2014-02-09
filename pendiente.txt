@@ -27,18 +27,20 @@ IMGUPLOADER
 - ver si validar cuando presiono upload sin seleccionar nada. No lo hice pq no se si va a haber boton siquiera
 - Imprimir el span q manda php cuando valida en IE7. Pq ahora lo manda al iframe y no se como sacarlo de ahi para mostrarlo      donde corresponde
 
-
+PET VIDEO
+=========
+- Refresh despues de cargar
+- reproductor redirecciona salvo en la primer mascota
 
 PENDIENTES VIDEO (INDEX Y ANTICS)
 =================================
 
-- pasar el id de la mascota a cada video para poder categorizarlo
+- Se rompe la seccion si hay un solo video en la BD
 - modheader: revisar la semantica de las <a>
 - La semantica de los li de cada video es cualquier cosa. Haccerlo bien....
 - getElementByRandom: esta funcion esta mal hecha pq trato de traer un limit pero a la vez en latesVideos.....php uso un  
 	for q imprime dos veces. Asi q hay algo al pedo en todo eso...
 - ver bien el tema del tamano de cada thumb de video
-- Decidir si queremos q arranque solo o q muestre unthumb en el player y arrancarlo manual (andan las dos opciones)
 - ver los formatos de video q vamos a usar
 - poner size correctamente en el validador de php
 

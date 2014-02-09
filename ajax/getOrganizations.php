@@ -2,13 +2,9 @@
 
 session_start();
 include_once "../php/classes/BOOrganizations.php";
-
 $org = new BOOrganizations;
-if(!$org->deleteOrganization($_POST['o']))
-{
-	echo $org->getErrors();
-}
-
 include_once "../templates/adminOrganizations.php";
 
-	
+
+
+?>

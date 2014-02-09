@@ -28,16 +28,12 @@
 
 							<!-- ORGSS HERE -->
 							<div class="tab-pane active" id="organization">
-
 								
-
 								<?php
 									include_once 'php/classes/BOOrganizations.php';
 									$org = new BOOrganizations;
 									include_once 'templates/adminOrganizations.php';
 								?>
-								
-								
 								
 							</div>
 							
@@ -47,6 +43,13 @@
 
 							<!-- PROJECTS HERE -->
 							<div class="tab-pane" id="projects">
+
+								<?php
+									include_once 'php/classes/BOProjects.php';
+									$pro = new BOProjects;
+									include_once 'templates/adminProjects.php';
+								?>
+
 							</div>
 						
 

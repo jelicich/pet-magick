@@ -110,6 +110,47 @@ class BOProjects{
     }// end getErrors
 
 
+    function getProjectListByUser($id)
+    {
+      $q = Doctrine_Query::create()
+        ->select('p.ID_PROJECT, p.TITLE, p.DESCRIPTION, p.USER_ID, p.ALBUM_ID, a.ID_ALBUM, f.PIC')
+        ->from('Projects p')
+        ->leftJoin('p.Albums a')
+        ->leftJoin('a.Pics f')
+        ->where('p.USER_ID = ?', $id);
+      $ob = $q->execute();
+      $ar = $ob->toArray();
+      var_dump($ar);
+      /*
+      if(sizeof($ar) > 0)
+      {
+               
+          for($i=0; $i < sizeof($ar); $i++)
+          {
+            if(isset($ar[$i]['Pics']['PIC']))
+            {
+                $pic = $ar[$i]['Pics']['PIC'];
+                $ar[$i]['Pics']['PIC'] = 'img/organizations/'.$pic;
+                $ar[$i]['Pics']['THUMB'] = 'img/organizations/thumb/'.$pic;
+            }
+            else
+            {
+                $ar[$i]['Pics']['PIC'] = 'img/organizations/default.jpg';
+                $ar[$i]['Pics']['THUMB'] = 'img/organizations/thumb/default.jpg';
+            }   
+          }
+          return $ar;
+       }
+       else
+       {
+
+            return false;
+       }
+       */
+    }
+
+
+
 }//End class BOUsers
 
 

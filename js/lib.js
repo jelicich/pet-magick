@@ -1345,8 +1345,8 @@ function imgVideoUploader(whatFor, modulo){
 					}
 			  	 	else if(modulo == 'organization')
 			  		{
-						var uploadBtn = byid('save-edit-user'); // igual a about, modificar
-			  			var cancelBtn = byid('cancel-edit-user');
+						var uploadBtn = byid('save-organization'); // igual a about, modificar
+			  			var cancelBtn = byid('cancel-organization');
 			  		}	
 				  
 				  //file_id.parentNode.appendChild(uploadBtn);
@@ -1414,6 +1414,8 @@ function imgVideoUploader(whatFor, modulo){
 				// CANCEL SAVE
 				cancelBtn.onclick = function(){
 
+					preventEventsDefault();
+
 					if(modulo == 'about')
 					{
 			  			var file = 'ajax/getUserAbout.php';
@@ -1447,7 +1449,7 @@ function imgVideoUploader(whatFor, modulo){
 			  		}
 			  		else if(modulo == 'organization')
 			  		{
-						var file = 'ajax/getOrganizationDefault.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
+						var file = 'ajax/getOrganizations.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?u='; // IMPORTANTE  !!!!!! tengo q revisar esto pq en en php tengo p, no u
 			  		}
 			  		else if(modulo == 'project')
@@ -2032,18 +2034,14 @@ function uploadOrganization()
 	
 	editPet.onclick = function()
 	{
+		preventEventsDefault();
 		var p = this.href;
 		var index = p.indexOf('#');
   		index ++;
   		p = p.substr(index);
-		ajax('GET', 'ajax/getUploadOrganization.php?u='+p, printEditPet, null, true);
+		ajax('GET', 'ajax/getUploadOrganization.php?u='+p, printEditOrg, null, true);
 	}	
 
-
-	function printEditPet()
-	{
-		printEdit('organization', this.responseText);
-	}
 }//end editPetProfile
 
 function deleteOrganization()
@@ -2059,12 +2057,16 @@ function deleteOrganization()
 	  		index ++;
 	  		p = 'o='+p.substr(index);
 	  		
-			ajax('POST', 'ajax/deleteOrganization.php', vardump, p, true);// Mando por aca el id del user?????
+			ajax('POST', 'ajax/deleteOrganization.php', printEditOrg, p, true);// Mando por aca el id del user?????
 
 		}// end deleteNews[i].onclick		
 	}
 }	
 
+function printEditOrg()
+{
+	printEdit('organization', this.responseText);
+}
 
 
 

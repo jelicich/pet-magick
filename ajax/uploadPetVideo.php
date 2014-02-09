@@ -95,6 +95,6 @@ if(isset($_FILES['file'])){ // normalWay();
 }// end else
 
 
-$_GET['p'] = $idPet;
+//$_GET['p'] = $idPet;
 include_once "../templates/videoPosta.php";
 

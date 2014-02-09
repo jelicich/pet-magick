@@ -169,5 +169,20 @@ class BOVideos{
       return  $this->err;
   }// End getErrors
 
+  function getVideoByPet($id)
+  {
+    $q = Doctrine_Query::create()
+      ->from('Videos')
+      ->where('PET_ID = ?', $id);
+
+    $r = $q->execute();
+    $r = $r->toArray();
+    if($r)
+      return $r;
+    else
+      return false;
+
+  }
+
 }//end class
 

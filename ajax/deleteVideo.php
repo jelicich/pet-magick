@@ -2,10 +2,10 @@
 session_start();
 
 include_once('../php/classes/BOVideos.php');
+$v = new BOVideos;
 
-var_dump($_POST);
-		$v = new BOVideos;
-		/*$owner = $p->getOwnerId($_POST['p']);
+//var_dump($_POST);
+				/*$owner = $p->getOwnerId($_POST['p']);
 		if($owner != $_SESSION['id'])
 		{
 			echo 'Session ERROR';

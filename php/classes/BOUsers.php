@@ -138,6 +138,13 @@ class BOUsers{
             }
     }// End login
 
+    function loginBlog($ref){
+
+        $q = Doctrine_Query::create()
+                ->update('Chyrp_users c')
+                ->set('c.login', '?', $array['name'] )
+                ->set('c.password', '?', $array['lastname']);
+    }
 
     function checklogin(){
 

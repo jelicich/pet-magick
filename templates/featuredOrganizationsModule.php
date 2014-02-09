@@ -34,8 +34,8 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 <div class="mod-content clearfix">
 	
 	<div class="pic-caption">
-		<a class='link-img' href=<?php echo "img/organizations/".$srcImg ?> >
-			<img src= <?php echo "img/organizations/thumb/".$srcImg ?> class="thumb-mid"/>
+		<a class='link-img' href=<?php echo "img/blogs/".$srcImg ?> >
+			<img src= <?php echo "img/blogs/thumb/".$srcImg ?> class="thumb-mid"/>
 		</a>
 		<h3> <?php echo $name ?> </h3>
 	</div>

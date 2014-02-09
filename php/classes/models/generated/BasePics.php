@@ -17,7 +17,6 @@
  * @property Doctrine_Collection $Blogs
  * @property Doctrine_Collection $Organizations
  * @property Doctrine_Collection $Pets
- * @property Doctrine_Collection $Tributes
  * @property Doctrine_Collection $Users
  * @property Doctrine_Collection $VetTalk
  * 
@@ -114,10 +113,6 @@ abstract class BasePics extends Doctrine_Record
              'foreign' => 'PIC_ID'));
 
         $this->hasMany('Pets', array(
-             'local' => 'ID_PIC',
-             'foreign' => 'PIC_ID'));
-
-        $this->hasMany('Tributes', array(
              'local' => 'ID_PIC',
              'foreign' => 'PIC_ID'));
 

@@ -10,7 +10,7 @@
  * @property string $TITLE
  * @property string $CAPTION
  * @property string $THUMBNAIL
- * @property date $DATE
+ * @property timestamp $DATE
  * @property integer $PET_ID
  * @property Pets $Pets
  * 
@@ -68,8 +68,8 @@ abstract class BaseVideos extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE', 'date', null, array(
-             'type' => 'date',
+        $this->hasColumn('DATE', 'timestamp', null, array(
+             'type' => 'timestamp',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

@@ -8,7 +8,7 @@
  * @property integer $ID_VET_TALK
  * @property string $TITLE
  * @property string $CONTENT
- * @property date $DATE
+ * @property timestamp $DATE
  * @property integer $USER_ID
  * @property integer $PIC_ID
  * @property Users $Users
@@ -49,8 +49,8 @@ abstract class BaseVetTalk extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('DATE', 'date', null, array(
-             'type' => 'date',
+        $this->hasColumn('DATE', 'timestamp', null, array(
+             'type' => 'timestamp',
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

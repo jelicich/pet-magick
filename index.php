@@ -30,6 +30,8 @@
 
 	<!-- site content -->
 	<div class="container_12" id="content">
+		
+
 		<!-- left wrapper -->
 		<div class="grid_7" id="left-wrapper">
 			<!-- profiles module -->

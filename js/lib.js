@@ -1346,6 +1346,11 @@ function imgVideoUploader(whatFor, modulo){
 			  		{
 						var uploadBtn = byid('save-organization'); // igual a about, modificar
 			  			var cancelBtn = byid('cancel-organization');
+			  		}
+			  	 	else if(modulo == 'blog')
+			  		{
+						var uploadBtn = byid('save-blog'); // igual a about, modificar
+			  			var cancelBtn = byid('cancel-blog');
 			  		}	
 				  
 				  //file_id.parentNode.appendChild(uploadBtn);
@@ -1396,6 +1401,10 @@ function imgVideoUploader(whatFor, modulo){
 				  		}else if(modulo == 'vetTalk'){
 
 				  			var cont = byid('vetTalk');
+
+				  		}else if(modulo == 'blog'){
+
+				  			var cont = byid('blog');
 				  		}
 
 				  		cont.innerHTML = this.responseText;
@@ -1459,6 +1468,11 @@ function imgVideoUploader(whatFor, modulo){
 			  		else if(modulo == 'vetTalk')
 			  		{
 						var file = 'ajax/getVetTalkDefault.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
+						var vars = '?p=';
+			  		}
+			  		else if(modulo == 'blog')
+			  		{
+						var file = 'ajax/getBlogDefault.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?p=';
 			  		}
 
@@ -1734,6 +1748,15 @@ function imgVideoUploader(whatFor, modulo){
 					  		}else if(modulo == 'vetTalk'){
 
 					  			var ajaxPostFile = 'ajax/uploadVetTalk.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("p", p);
+
+					  		}else if(modulo == 'blog'){
+
+					  			var ajaxPostFile = 'ajax/uploadBlog.php';
 					  			var p = this.href;
 								var index = p.indexOf('#');
 						  		index ++;

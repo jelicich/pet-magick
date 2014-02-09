@@ -7,11 +7,11 @@ sql:
   database: "pet_magick"
   prefix: "chyrp_"
   adapter: "mysql"
-name: "My Awesome Site"
+name: "Pet Magick"
 description: 
-url: "http://localhost/pet-magick-2/chyrp"
-chyrp_url: "http://localhost/pet-magick-2/chyrp"
-email: "saudadeh@hotmail.co.nz"
+url: "http://localhost/pet-magick/chyrp"
+chyrp_url: "http://localhost/pet-magick/chyrp"
+email: "saudadeh@gmail.com"
 timezone: "Pacific/Auckland"
 locale: "en_US"
 check_updates: true
@@ -38,7 +38,6 @@ enabled_modules:
 enabled_feathers: 
   - "text"
   - "photo"
-  - "video"
   - "link"
 routes: 
-secure_hashkey: "b5eab7572b5abff759f54d12adae6b00"
+secure_hashkey: "409f22ef1c94ce474005f1f18c0f41b9"

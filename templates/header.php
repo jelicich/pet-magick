@@ -41,7 +41,7 @@
 						<li class="btn btn-small btn-danger"><a href="organizations.php">Organizations</a></li>
 						<li class="btn btn-small btn-danger"><a href="pet-loss.php">Pet Loss</a></li>
 						<li class="btn btn-small btn-danger"><a href="vetTalkTest.php">Forum</a></li>
-						<li class="btn btn-small btn-danger"><a href="#">Blog</a></li>
+						<li class="btn btn-small btn-danger"><a href="chyrp/">Blog</a></li>
 						<li class="btn btn-small btn-danger">
 							<a href="#" class="btn dropdown-toggle btn-small btn-danger" id="dd" data-toggle="dropdown">Groups <span class="caret"></span></a>
 							<ul class="dropdown-menu">

@@ -2094,52 +2094,6 @@ function printEditOrg()
 
 
 
-function uploadProject()
-{
-
-	var editPet = byid('upload-organization');
-	
-	
-	editPet.onclick = function()
-	{
-		preventEventsDefault();
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
-		ajax('GET', 'ajax/getUploadProject.php?u='+p, printEditOrg, null, true);
-	}	
-
-}//end editPetProfile
-
-function deleteProject()
-{
-	var btn = document.querySelectorAll('.delete-org'); 
-
-	for(var i = 0; i < btn.length; i++)
-	{
-		btn[i].onclick = function(e)
-		{		
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = 'o='+p.substr(index);
-	  		
-			ajax('POST', 'ajax/deleteProject.php', printEditOrg, p, true);// Mando por aca el id del user?????
-
-		}// end deleteNews[i].onclick		
-	}
-}	
-
-function printEditOrg()
-{
-	printEdit('project', this.responseText);
-}
-
-
-
-
-
 
 
 

@@ -30,7 +30,7 @@
 					?>
 					</ul>
 					<script type="text/javascript">
-						uploadProject();
-						deleteProject();
+						uploadOrganization();
+						deleteOrganization();
 						
 					</script>

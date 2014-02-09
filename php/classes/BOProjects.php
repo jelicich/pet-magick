@@ -120,8 +120,8 @@ class BOProjects{
         ->where('p.USER_ID = ?', $id);
       $ob = $q->execute();
       $ar = $ob->toArray();
-      var_dump($ar);
-      /*
+      
+      
       if(sizeof($ar) > 0)
       {
                
@@ -146,7 +146,7 @@ class BOProjects{
 
             return false;
        }
-       */
+       
     }
 
 

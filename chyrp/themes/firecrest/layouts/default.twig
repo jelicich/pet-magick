@@ -76,6 +76,9 @@
                                             <li><a href="#">Lazarillo</a></li>
                                         </ul>
                                     </li>
+                                    {% if visitor.group.can("change_settings", "toggle_extensions") %}
+                                    <li class="btn btn-small btn-danger"><a id="site_settings" href="$site.chyrp_url/admin/">${ "Admin" | translate }</a></li>
+                                    {% endif %}
                             </ul>
                             <div class="grid_2" id='searchF'>
                                 <input type="text" placeholder="Find pet lovers" id='finder' autocomplete="off"/>
@@ -85,10 +88,10 @@
                     </div>
                     <!-- END navbar -->
 
-             {% if visitor.group.can("add_post", "add_draft", "add_page", "view_own_draft", "view_draft", "change_settings", "toggle_extensions") %}
-            <div id="controls"{% if hide_admin %} style="display: block"{% endif %}>
+           <!--   {% if visitor.group.can("add_post", "add_draft", "add_page", "view_own_draft", "view_draft", "change_settings", "toggle_extensions") %}
+             <div id="controls"{% if hide_admin %} style="display: block"{% endif %}>
                 <ul>
-                    {% if visitor.group.can("add_post") %}
+                  {% if visitor.group.can("add_post") %}
                     <li class="btn btn-small btn-danger"><a id="add_post" href="{% admin "write_post" %}">${ "Write" | translate }</a></li>
                     {% elseif visitor.group.can("add_draft") %}
                     <li class="btn btn-small btn-danger"><a id="add_draft" href="{% admin "write_post" %}">${ "Write Draft" | translate }</a></li>
@@ -99,13 +102,15 @@
                     {% if visitor.group.can("view_own_draft", "view_draft") %}
                     <li class="btn btn-small btn-danger"><a id="your_drafts" href="{% url "drafts" %}">${ "Your Drafts" | translate }</a></li>
                     {% endif %}
+              
+
                     {% if visitor.group.can("change_settings", "toggle_extensions") %}
                     <li class="btn btn-small btn-danger"><a id="site_settings" href="$site.chyrp_url/admin/">${ "Admin" | translate }</a></li>
                     {% endif %}
-                  <!--  <li class="close"><a class="toggle_admin" href="{% url "toggle_admin" %}">${ "Close" | translate }</a></li> -->
+                <li class="close"><a class="toggle_admin" href="{% url "toggle_admin" %}">${ "Close" | translate }</a></li> 
                 </ul>
-            </div>
-            {% endif %}
+            </div> 
+            {% endif %}-->
             
         </div>
 
@@ -133,9 +138,8 @@
                     </h1>
                 </div>
             </div>
-            {% endif %}
+            {% endif %} -->
 
-        -->
             <div id="wrapper">
                 {% for type, messages in flash.all | items %}
                 {% for message in messages %}

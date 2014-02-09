@@ -6,7 +6,7 @@
 							$idUsr = $_GET['u'];
 					?>
 					
-					<a href=<?php echo '"#'.$idUsr.'"' ?> class="btn" id="create-project">Create Project</a>
+					<a href=<?php echo '"#'.$idUsr.'"' ?> class="btn" id="upload-project">Create Project</a>
 					<ul>	
 					
 						<?php
@@ -17,11 +17,20 @@
 							{
 					?>
 							<li class="vet-q clearfix">
-								<img src=<?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
+								<img src=<?php echo '"'.$list[$i]['Albums']['Pics'][0]['THUMB'] .'"'?> class="thumb-small side-img"/>
 								<div class="content-description bg-txt">
-									<h3><?php echo $list[$i]['NAME']?></h3>
+									<h3><?php echo $list[$i]['TITLE']?></h3>
 									<p><?php echo $list[$i]['DESCRIPTION'] //hacerle un substr?></p>
-									<a href=<?php echo '"#'.$list[$i]['ID_ORGANIZATION'].'"'?> class="btn btn-danger delete-org">Delete</a>
+									<a href=<?php echo '"#'.$list[$i]['ID_PROJECT'].'"'?> class="btn btn-danger delete-org">Delete</a>
+								</div>
+								<div>
+									<?php
+									for($j = 0; $j < sizeof($list[$i]['Albums']['Pics']); $j++)
+									{
+										
+										echo '<a href="'.$list[$i]['Albums']['Pics'][$j]['PIC'].'"><img src="'.$list[$i]['Albums']['Pics'][$j]['THUMB'].'"/></a>';
+									}
+									?>
 								</div>
 							</li>
 					<?php
@@ -30,7 +39,7 @@
 					?>
 					</ul>
 					<script type="text/javascript">
-						uploadOrganization();
-						deleteOrganization();
+						uploadProject();
+						deleteProject();
 						
 					</script>

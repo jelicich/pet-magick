@@ -42,5 +42,12 @@ class ProjectsTable extends Doctrine_Table
     }
     */
     
+    public function deleteProject($id)
+    {
+        $q= Doctrine_Query::create()
+            ->delete('Projects p')
+            ->where('p.ID_PROJECT =?', $id);
+        $q->execute();
+    }
 
 }

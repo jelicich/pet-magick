@@ -1,23 +1,22 @@
 <?php
 
+session_start();
 
 
-/*
-
-if(!isset($_POST['p']) || $_POST['owner'] != $_SESSION['id'])
+if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
 {
 	echo 'Session ERROR';
 	die;
-}*/
+}
 
 
-session_start();
+
 
 include_once "../php/classes/BOProjects.php";
 include_once "../php/classes/BOPics.php";
 include_once "../php/classes/BOAlbums.php";
 
-$project = new BOProjects;
+$pro = new BOProjects;
 $pics = new BOPics;
 $a = new BOAlbums;
 
@@ -58,14 +57,17 @@ $albumId = $a->createAlbum();
 
 $dato = array(
 
-	'title' => $_POST['title'],
+	'title' => $_POST['name'],
 	'description'=> $_POST['description'],
-	'user_id' => $_SESSION['id'],
+	'user_id' => $_POST['u'],
 	'album_id' => $albumId
 
 );
 
-$project->insertProjects($dato);
+
+
+$pro->insertProjects($dato);
+
 
 if(isset($_FILES['file'])){ // normalWay();
 
@@ -107,12 +109,6 @@ if(isset($_FILES['file'])){ // normalWay();
 }// end else
 
 
+include_once '../templates/adminProjects.php';
 
-//var_dump($_POST);
-
-
-//$pet->updateAlbum($_POST,'../img/pets/');
-
-//$_GET['p'] = $_SESSION['id'];
-//include_once "../templates/petAlbum.php";
 

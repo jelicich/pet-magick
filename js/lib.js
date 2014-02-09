@@ -1312,7 +1312,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				  byid('form-id').appendChild(file_id);
 				  //var uploadBtn = byid('save-edit-user');
-				    if(modulo == 'about' || modulo == 'project' || modulo == 'vetTalk')// tal vez deba poner un nombre para todos y ya
+				    if(modulo == 'about' || modulo == 'vetTalk')// tal vez deba poner un nombre para todos y ya
   				    {
 			  			var uploadBtn = byid('save-edit-user');
 			  			var cancelBtn = byid('cancel-edit-user');
@@ -1346,6 +1346,11 @@ function imgVideoUploader(whatFor, modulo){
 			  		{
 						var uploadBtn = byid('save-organization'); // igual a about, modificar
 			  			var cancelBtn = byid('cancel-organization');
+			  		}
+			  		else if(modulo == 'project')
+			  		{
+						var uploadBtn = byid('save-project'); // igual a about, modificar
+			  			var cancelBtn = byid('cancel-project');
 			  		}
 			  	 	else if(modulo == 'blog')
 			  		{
@@ -1457,13 +1462,13 @@ function imgVideoUploader(whatFor, modulo){
 			  		}
 			  		else if(modulo == 'organization')
 			  		{
-						var file = 'ajax/getOrganizations.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
-						var vars = '?u='; // IMPORTANTE  !!!!!! tengo q revisar esto pq en en php tengo p, no u
+						var file = 'ajax/getOrganizations.php'; 
+						var vars = '?u='; // 
 			  		}
 			  		else if(modulo == 'project')
 			  		{
-						var file = 'ajax/getProjectDefault.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
-						var vars = '?p=';
+						var file = 'ajax/getProjects.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
+						var vars = '?u=';
 			  		}
 			  		else if(modulo == 'vetTalk')
 			  		{
@@ -1743,7 +1748,7 @@ function imgVideoUploader(whatFor, modulo){
 								var index = p.indexOf('#');
 						  		index ++;
 						  		p = p.substr(index);
-								formData.append("p", p);
+								formData.append("u", p);
 
 					  		}else if(modulo == 'vetTalk'){
 
@@ -2019,9 +2024,16 @@ function vetTalkAnswer()
 		var a = byid('notification');
 		var n = parseInt(a.innerHTML) - 1;
 		a.innerHTML = n;
+
 		var b = byid('notification-box').getElementsByTagName('strong')[0];
 		var n = parseInt(b.innerHTML) - 1;
 		b.innerHTML = n;
+
+		if(a.innerHTML == 0)
+		{
+			a.parentNode.removeChild(a);
+			b.parentNode.removeChild(b);	
+		}
 	}
 
 }
@@ -2088,6 +2100,51 @@ function deleteOrganization()
 function printEditOrg()
 {
 	printEdit('organization', this.responseText);
+}
+
+
+
+
+function uploadProject()
+{
+
+	var editPet = byid('upload-project');
+	
+	
+	editPet.onclick = function()
+	{
+		preventEventsDefault();
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+		ajax('GET', 'ajax/getUploadProject.php?u='+p, printEditPro, null, true);
+	}	
+
+}//end editPetProfile
+
+function deleteProject()
+{
+	var btn = document.querySelectorAll('.delete-org'); 
+
+	for(var i = 0; i < btn.length; i++)
+	{
+		btn[i].onclick = function(e)
+		{		
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = 'pr='+p.substr(index);
+	  		
+			ajax('POST', 'ajax/deleteProject.php', printEditPro, p, true);// Mando por aca el id del user?????
+
+		}// end deleteNews[i].onclick		
+	}
+}	
+
+function printEditPro()
+{
+	printEdit('project', this.responseText);
 }
 
 

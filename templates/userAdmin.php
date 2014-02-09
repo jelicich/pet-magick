@@ -7,7 +7,7 @@
 					<div class="mod-content clearfix">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#organization" data-toggle="tab">Organizations</a></li>
-							<li><a href="#projects" data-toggle="tab">Projects</a></li>
+							<li><a href="#project" data-toggle="tab">Projects</a></li>
 						<?php
 						if($_SESSION['rank'] == 1)
 						{
@@ -42,7 +42,7 @@
 
 
 							<!-- PROJECTS HERE -->
-							<div class="tab-pane" id="projects">
+							<div class="tab-pane" id="project">
 
 								<?php
 									include_once 'php/classes/BOProjects.php';

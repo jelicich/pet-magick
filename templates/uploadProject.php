@@ -1,6 +1,6 @@
 						<?php
-							echo '<a href="#'.$_GET['u'].'" class="btn" id="save-organization">Save</a>';
-							echo '<a href="#'.$_GET['u'].'" class="btn" id="cancel-organization">Cancel</a>';
+							echo '<a href="#'.$_GET['u'].'" class="btn" id="save-project">Save</a>';
+							echo '<a href="#'.$_GET['u'].'" class="btn" id="cancel-project">Cancel</a>';
 						?>
 
 						<div id='imgContainer'></div>
@@ -15,7 +15,7 @@
 
 						</form>
 						<script type="text/javascript">
-							imgVideoUploader('profile', 'organization'); 
+							imgVideoUploader('album', 'project'); 
 						</script>
 
 				

@@ -24,7 +24,7 @@
 									{
 							?>
 										<li>
-											<a href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> ><img class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> /></a>
+											<a class='link-img' href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> ><img  class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> /></a>
 											<p class="img-caption"><?php echo $a[$i]['CAPTION'] ?></p>
 										</li>
 							<?php
@@ -38,4 +38,6 @@
 
 							<script type="text/javascript">
 								editUserAlbum();
+								modalImg();
+
 							</script>

@@ -695,85 +695,92 @@ function profile(){
 
 function editUserProfile(){
 
-	var editUser = byid('edit-user-info');
-	
-	editUser.onclick = function()
-	{
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = 'u='+p.substr(index);
-  		
-		ajax('POST', 'ajax/getEditUser.php', printEditUser, p, true);
-	}
+	if(byid('edit-user-info')){
+		var editUser = byid('edit-user-info');
+		
+		editUser.onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = 'u='+p.substr(index);
+	  		
+			ajax('POST', 'ajax/getEditUser.php', printEditUser, p, true);
+		}
 
-	
+		
 
-	function printEditUser()
-	{
-		printEdit('user-about', this.responseText);
+		function printEditUser()
+		{
+			printEdit('user-about', this.responseText);
+		}
 	}
 }//end editUserProfile
 
 function editUserAlbum(){
 
-	var editUser = byid('edit-user-album');
-	
-	editUser.onclick = function()
-	{
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
-  		
-		ajax('GET', 'ajax/getEditUserAlbum.php?u='+p, printEditUserAlbum, null, true);
-	}
+	if(byid('edit-user-album')){
+		var editUser = byid('edit-user-album');
+		
+		editUser.onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+	  		
+			ajax('GET', 'ajax/getEditUserAlbum.php?u='+p, printEditUserAlbum, null, true);
+		}
 
-	function printEditUserAlbum()
-	{
-		printEdit('user-album', this.responseText);
+		function printEditUserAlbum()
+		{
+			printEdit('user-album', this.responseText);
+		}
 	}
 }//end editUserProfile
 
 function editPetProfile(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
-	var editPet = byid('edit-pet-profile');
 	
-	
-	editPet.onclick = function()
-	{
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
-		ajax('GET', 'ajax/getEditPetAbout.php?p='+p, printEditPet, null, true);
-	}	
+	if(byid('edit-pet-profile')){
+		var editPet = byid('edit-pet-profile');
+
+		editPet.onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+			ajax('GET', 'ajax/getEditPetAbout.php?p='+p, printEditPet, null, true);
+		}	
 
 
-	function printEditPet()
-	{
-		printEdit('pet-about', this.responseText);
+		function printEditPet()
+		{
+			printEdit('pet-about', this.responseText);
+		}
 	}
 }//end editPetProfile
 
 function editPetAlbum(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
-	var editPet = byid('edit-pet-album');
-	
-	
-	editPet.onclick = function()
-	{
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
-		ajax('GET', 'ajax/getEditPetAlbum.php?p='+p, printEditPet, null, true);
-	}	
+	if(byid('edit-pet-album')){
+		var editPet = byid('edit-pet-album');
+
+		editPet.onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+			ajax('GET', 'ajax/getEditPetAlbum.php?p='+p, printEditPet, null, true);
+		}	
 
 
-	function printEditPet()
-	{
-		printEdit('pet-album', this.responseText);
+		function printEditPet()
+		{
+			printEdit('pet-album', this.responseText);
+		}
 	}
 }//end editPetProfile
 
@@ -850,50 +857,50 @@ function news(){
 			}
 		}
 	}//end printNews
+	if(byid('news_button')){
+		byid('news_button').onclick = function(){
 
-	byid('news_button').onclick = function(){
+			var newsContent = byid('news_content').value;
+			var vars = 'news='+ newsContent;
+				ajax('POST', 'ajax/postNews.php', printNews, vars, true);	
+		}//end byid('news_button').onclick
 
-		var newsContent = byid('news_content').value;
-		var vars = 'news='+ newsContent;
-			ajax('POST', 'ajax/postNews.php', printNews, vars, true);	
-	}//end byid('news_button').onclick
+		var deleteNews = document.querySelectorAll('.deleteNews'); 
+		//var deleteNews = getByClass(deleteNews);
 
-	var deleteNews = document.querySelectorAll('.deleteNews'); 
-	//var deleteNews = getByClass(deleteNews);
+		for(var i = 0; i < deleteNews.length; i++){
 
-	for(var i = 0; i < deleteNews.length; i++){
+			deleteNews[i].onclick = function()
+			{		//preventEventsDefault();
+					var p = this.href;
+					var index = p.indexOf('#');
+			  		index ++;
+			  		p = 'n='+p.substr(index);
+			  		
+					ajax('POST', 'ajax/deleteNews.php', printNews, p, true);// Mando por aca el id del user?????
 
-		deleteNews[i].onclick = function(e)
-		{		
-				var p = this.href;
-				var index = p.indexOf('#');
-		  		index ++;
-		  		p = 'n='+p.substr(index);
-		  		
-				ajax('POST', 'ajax/deleteNews.php', printNews, p, true);// Mando por aca el id del user?????
-
-		}// end deleteNews[i].onclick	
-	}//end for
+			}// end deleteNews[i].onclick	
+		}//end for
+	}
 }//end postNews
 
 function addPet(){
-
-	var btn = byid('add-pet');
-	
-	
-	btn.onclick = function()
-	{
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
-		ajax('GET', 'ajax/getAddPet.php?u='+p, printEditPet, null, true);
-	}	
+	if(byid('add-pet')){
+		var btn = byid('add-pet');
+		btn.onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+			ajax('GET', 'ajax/getAddPet.php?u='+p, printEditPet, null, true);
+		}	
 
 
-	function printEditPet()
-	{
-		printEdit('pet-profile', this.responseText);
+		function printEditPet()
+		{
+			printEdit('pet-profile', this.responseText);
+		}
 	}
 }//end addPet
 
@@ -1766,7 +1773,7 @@ function imgVideoUploader(whatFor, modulo){
 								var index = p.indexOf('#');
 						  		index ++;
 						  		p = p.substr(index);
-								formData.append("p", p);
+								formData.append("u", p);
 					  		}
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
@@ -2084,12 +2091,14 @@ function deleteOrganization()
 
 	for(var i = 0; i < btn.length; i++)
 	{
-		btn[i].onclick = function(e)
+		btn[i].onclick = function()
 		{		
+			//preventEventsDefault();
 			var p = this.href;
 			var index = p.indexOf('#');
 	  		index ++;
 	  		p = 'o='+p.substr(index);
+	  		
 	  		
 			ajax('POST', 'ajax/deleteOrganization.php', printEditOrg, p, true);// Mando por aca el id del user?????
 
@@ -2125,12 +2134,13 @@ function uploadProject()
 
 function deleteProject()
 {
-	var btn = document.querySelectorAll('.delete-org'); 
+	var btn = document.querySelectorAll('.delete-project'); 
 
 	for(var i = 0; i < btn.length; i++)
 	{
-		btn[i].onclick = function(e)
-		{		
+		btn[i].onclick = function()
+		{	
+			//preventEventsDefault();
 			var p = this.href;
 			var index = p.indexOf('#');
 	  		index ++;

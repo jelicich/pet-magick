@@ -154,7 +154,8 @@
 	//deletePet();
 	//addPet();
 	vetTalkAnswer();
-	
+
+
 	
 	$('.nav-tabs a').click(function (e)
 	{

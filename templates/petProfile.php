@@ -14,7 +14,7 @@
 							}
 							?>
 							<div class="pic-caption pet-info">
-								<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
+								<a class='link-img' href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
 								<strong class="nickname"><?php echo $p->getName(); ?></strong>
 								<ul>
 									<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
@@ -64,7 +64,7 @@
 								?>
 										
 											<li>
-												<a href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a>
+												<a class='link-img'  href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a>
 												<p class="img-caption"><?php echo $album[$i]['CAPTION']; ?></p>
 											</li>
 											
@@ -124,14 +124,13 @@
 
 					
 
+<script type="text/javascript">
+	editPetProfile();
+	editPetAlbum();
+	UploadPetVideo();
+	deleteVideo();
+	modalImg();
+</script>
 
-					<script type="text/javascript">
-						editPetProfile();
-						editPetAlbum();
-						UploadPetVideo();
-						deleteVideo();
-
-					</script>
-	
 
 

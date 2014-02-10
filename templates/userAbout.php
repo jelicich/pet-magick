@@ -32,7 +32,7 @@
 			</div>
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
-					<a href= <?php echo '"'.$u->getProfilePic().'"'; ?> ><img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/></a>
+					<a class='link-img'  href= <?php echo '"'.$u->getProfilePic().'"'; ?> ><img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/></a>
 					<h3><?php echo $u->getNameComp() ?></h3>
 					<span><?php echo $u->getLocation() ?></span>
 				</div>
@@ -61,5 +61,6 @@
 		
 		<script type="text/javascript">
 			editUserProfile();
+			modalImg();
 		</script>
 		<!-- END about module -->

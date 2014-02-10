@@ -19,6 +19,7 @@ ACTUAL
 - COMBO REGIONS: muestra el pais como primera opcion en la lista. Hay q modificarlo...
 - COMBO en IE: anda pero cuando clickeo para seleccionar se esconde. Tengo q resolverlo (lib.js // 257)
 - thumbnail en tabla users ???
+- En index no existe el footer hasta q no empiezan a completarse los modulos
 
 IMGUPLOADER
 ===========
@@ -57,4 +58,6 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 	- cancel/save: no funciona.
 
 - inbox: no funciona
+
+- poner todos los tagas necesarios para ie. Esta en img uploader
 

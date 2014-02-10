@@ -33,8 +33,8 @@
 
 			$orgId = $allOrg[$j]["ID_ORGANIZATION"];
 
-			if(!isset($allOrg[$j]['Pics']['THUMB'])){ $srcImg = 'img/users/thumb/default.jpg'; }
-			else{ $srcImg = 'img/organizations/thumb/'.$allOrg[$j]['Pics']['THUMB']; }
+			if(!isset($allOrg[$j]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
+			else{ $srcImg = 'img/organizations/thumb/'.$allOrg[$j]['Pics']['PIC']; }
 			if(!isset($allOrg[$j]['NAME'])){ $name = '?'; }
 			else{ $name = $allOrg[$j]['NAME']; }
 			if(!isset( $allOrg[$j]['DESCRIPTION'])){ $description =  '?'; }

@@ -1,14 +1,16 @@
 <?php
 
+
+
 if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 
 	$featuredOrg = $org->getOrganizationsRamdom();
-	//var_dump($featuredOrg);
+	var_dump($featuredOrg);
 	$userId = $featuredOrg['USER_ID'];
 	$name = $featuredOrg['NAME'];
 	$description = $featuredOrg['DESCRIPTION'];
-	if(!isset($featuredOrg['Pics']['THUMB'])){ $srcImg = 'default.jpg'; }
-	else{ $srcImg = $featuredOrg['Pics']['THUMB']; }
+	if(!isset($featuredOrg['Pics']['PIC'])){ $srcImg = 'default.jpg'; }
+	else{ $srcImg = $featuredOrg['Pics']['PIC']; }
 
 }else{
 
@@ -20,8 +22,8 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	$name = $featuredOrg[0]['NAME'];
 	$description = $featuredOrg[0]['DESCRIPTION'];
 
-	if(!isset($featuredOrg[0]['Pics']['THUMB'])){ $srcImg = 'default.jpg'; }
-	else{ $srcImg = $featuredOrg[0]['Pics']['THUMB']; }
+	if(!isset($featuredOrg[0]['Pics']['PIC'])){ $srcImg = 'default.jpg'; }
+	else{ $srcImg = $featuredOrg[0]['Pics']['PIC']; }
 	
 }
 ?>
@@ -34,8 +36,8 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 <div class="mod-content clearfix">
 	
 	<div class="pic-caption">
-		<a class='link-img' href=<?php echo "img/blogs/".$srcImg ?> >
-			<img src= <?php echo "img/blogs/thumb/".$srcImg ?> class="thumb-mid"/>
+		<a class='link-img' href=<?php echo "img/organizations/".$srcImg ?> >
+			<img src= <?php echo "img/organizations/thumb/".$srcImg ?> class="thumb-mid"/>
 		</a>
 		<h3> <?php echo $name ?> </h3>
 	</div>

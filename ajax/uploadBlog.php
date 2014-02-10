@@ -1,19 +1,19 @@
 <?php
 
 session_start();
-include_once "../php/classes/BOOrganizations.php";
+include_once "../php/classes/BOBlogs.php";
 include_once "../php/classes/BOPics.php";
-
-$org = new BOOrganizations;
+var_dump($_POST);
+$blog = new BOBlogs;
 $pics = new BOPics;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-	if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
+	/*if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
 	{
 		echo 'Session ERROR';
 		die;
-	}
+	}*/
 
 	function createQuery($query, $path, $class){
 
@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			$query['caption']  = '';
 
 			$obj = $pics; 
-			$path = '../img/organizations/';
+			$path = '../img/blogs/';
 
 			createQuery($query, $path, $obj);
 
@@ -57,9 +57,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					$query['caption'] = ''; 
 
 					$obj = $pics; 
-					$path = '../img/organizations/';
+					$path = '../img/blogs/';
 			
-					createQuery($query, $path, $obj);$counter++;
+					createQuery($query, $path, $obj);
+
 		}// end foreach
 	}// end else
 
@@ -69,17 +70,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 $dato = array(
 
-	'name' => $_POST['name'],
-	'description' => $_POST['description'],
+	'title' => $_POST['title'],
+	'content' => $_POST['content'],
 	'user_id' => $_POST['u'],
 	'pic_id' => $_POST['pic']
 );
 
 
-$org->insertOrganizations($dato);
+$blog->insertBlogs($dato);
 
 
-include_once '../templates/adminOrganizations.php'
+//include_once '../templates/featuredBlogModule.php'
 
 ?>
 				

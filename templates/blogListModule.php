@@ -29,7 +29,7 @@
 			$date = $allBlogs[$i]["DATE"];
 
 			if(!isset($allBlogs[$i]['Pics']['THUMB'])){ $srcImg = 'img/users/thumb/default.jpg'; }
-			else{ $srcImg = 'img/organizations/thumb/'.$allBlogs[$i]['Pics']['THUMB']; }
+			else{ $srcImg = 'img/blogs/thumb/'.$allBlogs[$i]['Pics']['THUMB']; }
 			if(!isset($allBlogs[$i]['TITLE'])){ $title = '?'; }
 			else{ $title = $allBlogs[$i]['TITLE']; }
 			if(!isset( $allBlogs[$i]['CONTENT'])){ $content =  '?'; }

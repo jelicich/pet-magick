@@ -12,7 +12,7 @@
 						if($_SESSION['rank'] == 1)
 						{
 						?>
-							<li><a href="#vtarticles" data-toggle="tab">Vet Talk Articles</a></li>
+							<li><a href="#vet-talk" data-toggle="tab">Vet Talk Articles</a></li>
 							<li><a href="#vtquestions" data-toggle="tab">Vet Talk Questions</a></li>
 						<?php
 						}
@@ -67,7 +67,7 @@
 
 
 							<!-- VET ARTICLES HERE -->
-							<div class="tab-pane" id="vtarticles">
+							<div class="tab-pane" id="vet-talk">
 								<?php
 									include_once 'php/classes/BOVettalk.php';
 									$vt = new BOVettalk;

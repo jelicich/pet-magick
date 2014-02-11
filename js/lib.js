@@ -1319,7 +1319,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				  byid('form-id').appendChild(file_id);
 				  //var uploadBtn = byid('save-edit-user');
-				    if(modulo == 'about' || modulo == 'vetTalk')// tal vez deba poner un nombre para todos y ya
+				    if(modulo == 'about')// tal vez deba poner un nombre para todos y ya
   				    {
 			  			var uploadBtn = byid('save-edit-user');
 			  			var cancelBtn = byid('cancel-edit-user');
@@ -1351,17 +1351,22 @@ function imgVideoUploader(whatFor, modulo){
 					}
 			  	 	else if(modulo == 'organization')
 			  		{
-						var uploadBtn = byid('save-organization'); // igual a about, modificar
+						var uploadBtn = byid('save-organization'); 
 			  			var cancelBtn = byid('cancel-organization');
 			  		}
 			  		else if(modulo == 'project')
 			  		{
-						var uploadBtn = byid('save-project'); // igual a about, modificar
+						var uploadBtn = byid('save-project');
 			  			var cancelBtn = byid('cancel-project');
+			  		}
+			  		else if(modulo == 'vet-talk')
+			  		{
+			  			var uploadBtn = byid('save-vet-talk'); 
+			  			var cancelBtn = byid('cancel-vet-talk');	
 			  		}
 			  	 	else if(modulo == 'blog')
 			  		{
-						var uploadBtn = byid('save-blog'); // igual a about, modificar
+						var uploadBtn = byid('save-blog');
 			  			var cancelBtn = byid('cancel-blog');
 			  		}	
 				  
@@ -1410,9 +1415,9 @@ function imgVideoUploader(whatFor, modulo){
 
 				  			var cont = byid('project');
 
-				  		}else if(modulo == 'vetTalk'){
+				  		}else if(modulo == 'vet-talk'){
 
-				  			var cont = byid('vetTalk');
+				  			var cont = byid('vet-talk');
 
 				  		}else if(modulo == 'blog'){
 
@@ -1477,9 +1482,9 @@ function imgVideoUploader(whatFor, modulo){
 						var file = 'ajax/getProjects.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?u=';
 			  		}
-			  		else if(modulo == 'vetTalk')
+			  		else if(modulo == 'vet-talk')
 			  		{
-						var file = 'ajax/getVetTalkDefault.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
+						var file = 'ajax/getVetTalk.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?p=';
 			  		}
 			  		else if(modulo == 'blog')
@@ -2054,6 +2059,58 @@ function vetTalkAnswer()
 
 
 
+
+
+
+
+
+
+
+
+
+function uploadVetTalk()
+{
+
+	var editPet = byid('upload-vet-talk');
+	
+	
+	editPet.onclick = function()
+	{
+		preventEventsDefault();
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+		ajax('GET', 'ajax/getUploadVetTalk.php?u='+p, printEditVet, null, true);
+	}	
+
+}//end editPetProfile
+
+function deleteVetTalk()
+{
+	var btn = document.querySelectorAll('.delete-org'); 
+
+	for(var i = 0; i < btn.length; i++)
+	{
+		btn[i].onclick = function()
+		{		
+			//preventEventsDefault();
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = 'o='+p.substr(index);
+	  		
+	  		
+			ajax('POST', 'ajax/deleteVetTalk.php', printEditVet, p, true);// Mando por aca el id del user?????
+
+		}// end deleteNews[i].onclick		
+	}
+}	
+
+function printEditVet()
+{
+	printEdit('organization', this.responseText);
+}
 
 
 

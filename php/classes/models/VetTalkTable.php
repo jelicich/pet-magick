@@ -80,6 +80,12 @@ class VetTalkTable extends Doctrine_Table
 
     }// end getOrganizationsByUser
 
-
+    public function deleteVetTalk($id)
+    {
+        $q= Doctrine_Query::create()
+            ->delete('VetTalk v')
+            ->where('v.ID_VET_TALK =?', $id);
+        $q->execute();
+    }
 
 }

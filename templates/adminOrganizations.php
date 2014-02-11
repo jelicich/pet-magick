@@ -19,8 +19,8 @@
 										<li class="vet-q clearfix">
 											<img src=<?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
 											<div class="content-description bg-txt">
-												<h3><?php echo $list[$i]['TITLE']?></h3>
-												<p><?php echo $list[$i]['CONTENT'] //hacerle un substr?></p>
+												<h3><?php echo $list[$i]['NAME']?></h3>
+												<p><?php echo $list[$i]['DESCRIPTION'] //hacerle un substr?></p>
 												<a href=<?php echo '"#'.$list[$i]['ID_ORGANIZATION'].'"'?> class="btn btn-danger delete-org">Delete</a>
 											</div>
 										</li>

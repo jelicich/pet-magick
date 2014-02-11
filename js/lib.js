@@ -998,7 +998,7 @@ function comments(ajaxFile){
 	(function showComment()
 	{
 		var btnCom = byid('leave-comment');
-		var pop = byid('pop-up');
+		var pop = byid('pop-up-click');
 		
 		btnCom.onclick = function()
 		{
@@ -1065,7 +1065,7 @@ function comments(ajaxFile){
 		
 		byid('comments-wrapper').appendChild(li);
 		fl = 0;
-		var pop = byid('pop-up');
+		var pop = byid('pop-up-click');
 		pop.style.display = 'none';
 		var comment = byid('comment-txt');
 		comment.value = '';

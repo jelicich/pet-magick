@@ -68,6 +68,11 @@
 
 							<!-- VET ARTICLES HERE -->
 							<div class="tab-pane" id="vtarticles">
+								<?php
+									include_once 'php/classes/BOVettalk.php';
+									$vt = new BOVettalk;
+									include_once 'templates/adminVettalk.php';
+								?>
 							</div>
 							
 

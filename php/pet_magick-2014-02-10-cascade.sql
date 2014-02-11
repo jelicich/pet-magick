@@ -1,16 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 16-12-2013 a las 19:24:45
--- Versión del servidor: 5.5.25a
--- Versión de PHP: 5.4.4
-CREATE DATABASE pet_magick;
-USE pet_magick;
+-- Host: localhost
+-- Generation Time: Feb 11, 2014 at 01:46 AM
+-- Server version: 5.1.44
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,60 +16,129 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `pet_magick`
+-- Database: `pet_magick`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ads`
+-- Table structure for table `ads`
 --
 
 CREATE TABLE IF NOT EXISTS `ads` (
   `ID_AD` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `AD` char(30) NOT NULL,
   `LINK` int(10) unsigned NOT NULL,
-  `DATE` date NOT NULL,
-  `DATE_FROM` date DEFAULT NULL,
-  `DATE_TO` date DEFAULT NULL,
+  `DATE` datetime NOT NULL,
+  `DATE_FROM` datetime DEFAULT NULL,
+  `DATE_TO` datetime DEFAULT NULL,
   `STATUS` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID_AD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `ads`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `albums`
+-- Table structure for table `albums`
 --
 
 CREATE TABLE IF NOT EXISTS `albums` (
   `ID_ALBUM` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID_ALBUM`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Dumping data for table `albums`
+--
+
+INSERT INTO `albums` (`ID_ALBUM`) VALUES
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10),
+(11),
+(12);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `animal_categories`
+-- Table structure for table `animal_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `animal_categories` (
   `ID_ANIMAL_CATEGORY` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `NAME` varchar(45) NOT NULL,
   PRIMARY KEY (`ID_ANIMAL_CATEGORY`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `animal_categories`
+--
+
+INSERT INTO `animal_categories` (`ID_ANIMAL_CATEGORY`, `NAME`) VALUES
+(1, 'Dog'),
+(2, 'Cat');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `blogs`
+-- Table structure for table `answers`
+--
+
+CREATE TABLE IF NOT EXISTS `answers` (
+  `ID_ANSWER` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ANSWER` text NOT NULL,
+  `DATE` datetime NOT NULL,
+  `USER_ID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`ID_ANSWER`),
+  KEY `USER_ID` (`USER_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`ID_ANSWER`, `ANSWER`, `DATE`, `USER_ID`) VALUES
+(1, 'alsdkl kds kdslk ksd kdls dksl ksldkld kkd kldk lskdlksdlksd lksd sdk sdlk slkdlksjdlkjd dk  dkj sd sldk lskd lskd ', '2014-02-05 19:58:16', 6),
+(16, 'putaso', '2014-02-06 02:44:37', 5),
+(17, 'espero', '2014-02-06 02:53:19', 5),
+(18, 'zizi', '2014-02-06 02:56:34', 5),
+(19, 'nono', '2014-02-06 02:56:39', 5),
+(20, 'sos re groso', '2014-02-06 23:47:58', 5),
+(21, 'si o no', '2014-02-06 23:48:40', 5),
+(22, 'deberia ser 8', '2014-02-06 23:49:57', 5),
+(23, 'asd', '2014-02-06 23:50:25', 5),
+(24, 'debe ser 6', '2014-02-06 23:51:36', 5),
+(25, 'si', '2014-02-08 20:42:48', 5),
+(26, 's', '2014-02-08 20:42:51', 5),
+(27, 's', '2014-02-08 20:42:54', 5),
+(28, 's', '2014-02-08 20:42:55', 5),
+(29, 's', '2014-02-08 20:42:57', 5),
+(30, 's', '2014-02-08 20:42:59', 5),
+(31, 'se', '2014-02-09 18:18:05', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogs`
 --
 
 CREATE TABLE IF NOT EXISTS `blogs` (
   `ID_BLOG` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(100) NOT NULL,
   `CONTENT` text NOT NULL,
-  `DATE` date NOT NULL,
+  `DATE` datetime NOT NULL,
   `USER_ID` int(10) unsigned NOT NULL,
   `PIC_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_BLOG`),
@@ -80,10 +146,15 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   KEY `PIC_ID` (`PIC_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `blogs`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cities`
+-- Table structure for table `cities`
 --
 
 CREATE TABLE IF NOT EXISTS `cities` (
@@ -101,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47912 ;
 
 --
--- Volcado de datos para la tabla `cities`
+-- Dumping data for table `cities`
 --
 
 INSERT INTO `cities` (`CityId`, `CountryID`, `RegionID`, `City`, `Latitude`, `Longitude`, `TimeZone`, `DmaId`, `County`, `Code`) VALUES
@@ -39612,24 +39683,32 @@ INSERT INTO `cities` (`CityId`, `CountryID`, `RegionID`, `City`, `Latitude`, `Lo
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comments`
+-- Table structure for table `comments`
 --
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `ID_COMMENT` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `COMMENT` varchar(300) NOT NULL,
-  `DATE` date NOT NULL,
+  `DATE` datetime NOT NULL,
   `USER_ID` int(10) unsigned NOT NULL,
   `TRIBUTE_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_COMMENT`),
   KEY `USER_ID` (`USER_ID`),
   KEY `TRIBUTE_ID` (`TRIBUTE_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`ID_COMMENT`, `COMMENT`, `DATE`, `USER_ID`, `TRIBUTE_ID`) VALUES
+(1, 'asdads', '2014-02-04 02:49:04', 5, 1),
+(2, 'miedrda', '2014-02-09 18:07:54', 8, 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `conversations`
+-- Table structure for table `conversations`
 --
 
 CREATE TABLE IF NOT EXISTS `conversations` (
@@ -39640,19 +39719,20 @@ CREATE TABLE IF NOT EXISTS `conversations` (
   PRIMARY KEY (`ID_CONVERSATION`),
   KEY `USER_1_ID` (`USER_1_ID`),
   KEY `USER_2_ID` (`USER_2_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `conversations`
+-- Dumping data for table `conversations`
 --
 
 INSERT INTO `conversations` (`ID_CONVERSATION`, `USER_1_ID`, `USER_2_ID`, `DATE`) VALUES
-(1, 5, 6, '2013-12-16 00:00:00');
+(1, 5, 6, '2013-12-19 02:55:09'),
+(2, 5, 7, '2013-12-19 04:18:11');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `countries`
+-- Table structure for table `countries`
 --
 
 CREATE TABLE IF NOT EXISTS `countries` (
@@ -39676,7 +39756,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=276 ;
 
 --
--- Volcado de datos para la tabla `countries`
+-- Dumping data for table `countries`
 --
 
 INSERT INTO `countries` (`CountryId`, `Country`, `FIPS104`, `ISO2`, `ISO3`, `ISON`, `Internet`, `Capital`, `MapReference`, `NationalitySingular`, `NationalityPlural`, `Currency`, `CurrencyCode`, `Population`, `Title`, `Comment`) VALUES
@@ -39959,7 +40039,7 @@ INSERT INTO `countries` (`CountryId`, `Country`, `FIPS104`, `ISO2`, `ISO3`, `ISO
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `dmas`
+-- Table structure for table `dmas`
 --
 
 CREATE TABLE IF NOT EXISTS `dmas` (
@@ -39970,7 +40050,7 @@ CREATE TABLE IF NOT EXISTS `dmas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `dmas`
+-- Dumping data for table `dmas`
 --
 
 INSERT INTO `dmas` (`DmaId`, `CountryId`, `DMA`, `Market`) VALUES
@@ -40189,7 +40269,7 @@ INSERT INTO `dmas` (`DmaId`, `CountryId`, `DMA`, `Market`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `messages`
+-- Table structure for table `messages`
 --
 
 CREATE TABLE IF NOT EXISTS `messages` (
@@ -40202,20 +40282,36 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`ID_MESSAGE`),
   KEY `CONVERSATION_ID` (`CONVERSATION_ID`),
   KEY `USER_ID` (`USER_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
--- Volcado de datos para la tabla `messages`
+-- Dumping data for table `messages`
 --
 
 INSERT INTO `messages` (`ID_MESSAGE`, `CONVERSATION_ID`, `USER_ID`, `MESSAGE`, `STATUS`, `DATE`) VALUES
-(3, 1, 5, 'Hola', 0, '2013-12-16 01:00:00'),
-(4, 1, 6, 'si que tal', 0, '2013-12-16 01:00:00');
+(3, 1, 5, 'Hola', 1, '2013-12-16 01:00:00'),
+(4, 1, 6, 'si que tal', 1, '2013-12-16 01:00:00'),
+(15, 1, 5, 'bien vos?', 1, '2013-12-18 03:19:11'),
+(16, 1, 6, 'genial todo cool', 1, '2013-12-18 03:28:08'),
+(17, 1, 6, 'caca', 1, '2013-12-18 03:31:28'),
+(18, 1, 6, 'qwqw', 1, '2013-12-18 03:34:19'),
+(19, 1, 6, 'asdasd', 1, '2013-12-18 03:34:28'),
+(20, 1, 5, 'a ver', 1, '2013-12-18 03:37:17'),
+(21, 1, 5, 'q onda', 1, '2013-12-18 03:39:50'),
+(22, 1, 5, 'vaga', 1, '2013-12-18 03:40:09'),
+(23, 1, 6, 'muy', 1, '2013-12-18 03:42:46'),
+(24, 1, 5, 'requete re', 1, '2013-12-18 03:43:06'),
+(25, 1, 6, 'piolangas', 1, '2013-12-18 03:47:01'),
+(26, 1, 5, 'hola', 0, '2013-12-19 02:55:09'),
+(27, 2, 5, 'hola', 1, '2013-12-19 03:11:45'),
+(28, 2, 5, 'blabla', 1, '2013-12-19 03:46:53'),
+(29, 2, 5, 'asdasd', 1, '2013-12-19 03:49:47'),
+(30, 2, 5, 'asdasd', 1, '2013-12-19 04:18:11');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `nbc`
+-- Table structure for table `nbc`
 --
 
 CREATE TABLE IF NOT EXISTS `nbc` (
@@ -40224,25 +40320,37 @@ CREATE TABLE IF NOT EXISTS `nbc` (
   `Distance` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `nbc`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
   `ID_NEWS` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `NEWS` varchar(300) NOT NULL,
-  `DATE` date NOT NULL,
+  `DATE` datetime NOT NULL,
   `USER_ID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`ID_NEWS`),
   KEY `USER_ID` (`USER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`ID_NEWS`, `NEWS`, `DATE`, `USER_ID`) VALUES
+(1, 'asd', '2014-02-08 00:00:00', 5);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `organizations`
+-- Table structure for table `organizations`
 --
 
 CREATE TABLE IF NOT EXISTS `organizations` (
@@ -40254,12 +40362,21 @@ CREATE TABLE IF NOT EXISTS `organizations` (
   PRIMARY KEY (`ID_ORGANIZATION`),
   KEY `USER_ID` (`USER_ID`),
   KEY `PIC_ID` (`PIC_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+
+--
+-- Dumping data for table `organizations`
+--
+
+INSERT INTO `organizations` (`ID_ORGANIZATION`, `NAME`, `DESCRIPTION`, `USER_ID`, `PIC_ID`) VALUES
+(4, 'lkjlkj', 'k', 6, 2),
+(28, 'asd', 'asd', 5, NULL),
+(29, 'Rescate de perros', 'Los perros que estan en la calle los rescatamos y cuidamos', 8, 12);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pets`
+-- Table structure for table `pets`
 --
 
 CREATE TABLE IF NOT EXISTS `pets` (
@@ -40277,30 +40394,61 @@ CREATE TABLE IF NOT EXISTS `pets` (
   KEY `ANIMAL_CATEGORY_ID` (`ANIMAL_CATEGORY_ID`),
   KEY `PIC_ID` (`PIC_ID`),
   KEY `ALBUM_ID` (`ALBUM_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `pets`
+--
+
+INSERT INTO `pets` (`ID_PET`, `NAME`, `BREED`, `TRAITS`, `STORY`, `USER_ID`, `ANIMAL_CATEGORY_ID`, `PIC_ID`, `ALBUM_ID`) VALUES
+(2, 'Cocos', 'Siames', 'Sleep', 'Coco was found in a box', 5, 2, NULL, NULL),
+(4, 'coco', 'ninguna', 'todos', 'es re piola', 8, 1, NULL, 3);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pics`
+-- Table structure for table `pics`
 --
 
 CREATE TABLE IF NOT EXISTS `pics` (
   `ID_PIC` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `PIC` varchar(100) NOT NULL,
-  `DATE` date NOT NULL,
+  `THUMB` varchar(100) NOT NULL,
+  `DATE` datetime NOT NULL,
   `CAPTION` varchar(100) DEFAULT NULL,
-  `THUMBNAIL` int(10) unsigned NOT NULL,
+  `THUMBNAIL` int(10) unsigned DEFAULT NULL,
   `ALBUM_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_PIC`),
   KEY `THUMBNAIL` (`THUMBNAIL`),
   KEY `ALBUM_ID` (`ALBUM_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
+--
+-- Dumping data for table `pics`
+--
+
+INSERT INTO `pics` (`ID_PIC`, `PIC`, `THUMB`, `DATE`, `CAPTION`, `THUMBNAIL`, `ALBUM_ID`) VALUES
+(1, '6261_1391733770.jpg', '6261_1391733770.jpg', '2014-02-07 00:00:00', '', NULL, NULL),
+(2, '2176_1391733897.jpg', '2176_1391733897.jpg', '2014-02-07 00:00:00', '', NULL, NULL),
+(3, '9512_1391734072.jpg', '9512_1391734072.jpg', '2014-02-07 00:00:00', '', NULL, NULL),
+(4, '7567_1391968843.jpg', '7567_1391968843.jpg', '2014-02-09 00:00:00', '', NULL, 2),
+(5, '7833_1391968843.jpg', '7833_1391968843.jpg', '2014-02-09 00:00:00', '', NULL, 2),
+(6, '3166_1391968863.jpg', '3166_1391968863.jpg', '2014-02-09 00:00:00', '', NULL, 3),
+(7, '4492_1391968863.jpg', '4492_1391968863.jpg', '2014-02-09 00:00:00', '', NULL, 3),
+(8, '5358_1391973270.jpg', '5358_1391973270.jpg', '2014-02-09 00:00:00', '', NULL, 4),
+(9, '2110_1391973272.jpg', '2110_1391973272.jpg', '2014-02-09 00:00:00', '', NULL, 4),
+(10, '8705_1391975189.jpg', '8705_1391975189.jpg', '2014-02-09 00:00:00', '', NULL, 11),
+(11, '8976_1391975190.jpg', '8976_1391975190.jpg', '2014-02-09 00:00:00', '', NULL, 11),
+(12, '9809_1391975476.jpg', '9809_1391975476.jpg', '2014-02-09 00:00:00', '', NULL, NULL),
+(13, '5848_1391975536.jpg', '5848_1391975536.jpg', '2014-02-09 00:00:00', '', NULL, 12),
+(14, '7431_1391975536.jpg', '7431_1391975536.jpg', '2014-02-09 00:00:00', '', NULL, 12),
+(15, '4958_1391975537.jpg', '4958_1391975537.jpg', '2014-02-09 00:00:00', '', NULL, 12),
+(17, '5591_1391980589.jpg', '5591_1391980589.jpg', '2014-02-09 00:00:00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `privateaddresses`
+-- Table structure for table `privateaddresses`
 --
 
 CREATE TABLE IF NOT EXISTS `privateaddresses` (
@@ -40308,10 +40456,15 @@ CREATE TABLE IF NOT EXISTS `privateaddresses` (
   PRIMARY KEY (`AddressPrefix`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `privateaddresses`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `projects`
+-- Table structure for table `projects`
 --
 
 CREATE TABLE IF NOT EXISTS `projects` (
@@ -40323,12 +40476,21 @@ CREATE TABLE IF NOT EXISTS `projects` (
   PRIMARY KEY (`ID_PROJECT`),
   KEY `USER_ID` (`USER_ID`),
   KEY `ALBUM_ID` (`ALBUM_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`ID_PROJECT`, `TITLE`, `DESCRIPTION`, `USER_ID`, `ALBUM_ID`) VALUES
+(1, 'proyecto', 'loco', 5, 3),
+(6, 'un projecto', 're loco', 5, 11),
+(7, 'Cuadrilla de rescate', 'Queremos formar una cuadrilla para ir a buscar perros de la calle', 8, 12);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `proxynetworks`
+-- Table structure for table `proxynetworks`
 --
 
 CREATE TABLE IF NOT EXISTS `proxynetworks` (
@@ -40337,28 +40499,55 @@ CREATE TABLE IF NOT EXISTS `proxynetworks` (
   `CityId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `proxynetworks`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `qas`
+-- Table structure for table `questions`
 --
 
-CREATE TABLE IF NOT EXISTS `qas` (
-  `ID_QA` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `questions` (
+  `ID_QUESTION` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `QUESTION` text NOT NULL,
-  `ANSWER` text,
-  `DATE` date NOT NULL,
+  `DATE` datetime NOT NULL,
   `USER_ID` int(10) unsigned NOT NULL,
-  `VET_ID` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`ID_QA`),
+  `ANSWER_ID` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID_QUESTION`),
   KEY `USER_ID` (`USER_ID`),
-  KEY `VET_ID` (`VET_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `ANSWER_ID` (`ANSWER_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`ID_QUESTION`, `QUESTION`, `DATE`, `USER_ID`, `ANSWER_ID`) VALUES
+(8, 'hola como te va?', '2014-02-05 22:27:28', 5, 1),
+(9, 'si queria saber si el perro ladra', '2014-02-18 22:27:49', 7, 16),
+(10, 'ultima', '2014-02-06 02:46:37', 5, 17),
+(11, 'zizi', '2014-02-06 02:46:58', 5, 18),
+(12, 'nono', '2014-02-06 02:47:06', 5, 19),
+(13, 'q onda todo?', '2014-02-06 23:12:24', 5, 20),
+(14, 'a ver la 2da?', '2014-02-06 23:12:38', 5, 21),
+(15, 'what is up?', '2014-02-06 23:13:11', 5, 22),
+(16, 'what the crack?', '2014-02-06 23:21:06', 5, 24),
+(17, 'asdadad', '2014-02-06 23:21:35', 5, 23),
+(18, 'asd', '2014-02-06 23:30:57', 5, 25),
+(19, 'puto', '2014-02-06 23:32:44', 5, 26),
+(20, 'putaso', '2014-02-06 23:33:19', 5, 27),
+(21, 'putasoasdasd', '2014-02-06 23:33:57', 5, 28),
+(22, 'ahora si hijo de puta', '2014-02-06 23:37:16', 5, 29),
+(23, 'la concha de tu madre', '2014-02-06 23:37:27', 5, 30),
+(24, 'q onda?', '2014-02-09 18:06:21', 5, 31);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `regions`
+-- Table structure for table `regions`
 --
 
 CREATE TABLE IF NOT EXISTS `regions` (
@@ -40371,7 +40560,7 @@ CREATE TABLE IF NOT EXISTS `regions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5400 ;
 
 --
--- Volcado de datos para la tabla `regions`
+-- Dumping data for table `regions`
 --
 
 INSERT INTO `regions` (`RegionID`, `CountryID`, `Region`, `Code`, `ADM1Code`) VALUES
@@ -44334,7 +44523,7 @@ INSERT INTO `regions` (`RegionID`, `CountryID`, `Region`, `Code`, `ADM1Code`) VA
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `subnets`
+-- Table structure for table `subnets`
 --
 
 CREATE TABLE IF NOT EXISTS `subnets` (
@@ -44349,33 +44538,42 @@ CREATE TABLE IF NOT EXISTS `subnets` (
   PRIMARY KEY (`SubNetAddress`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `subnets`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tributes`
+-- Table structure for table `tributes`
 --
 
 CREATE TABLE IF NOT EXISTS `tributes` (
   `ID_TRIBUTE` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(100) NOT NULL,
   `CONTENT` text NOT NULL,
-  `NAME` varchar(45) NOT NULL,
-  `BREED` varchar(45) DEFAULT NULL,
-  `SINCE` date NOT NULL,
-  `THRU` date NOT NULL,
-  `PIC_ID` int(10) unsigned DEFAULT NULL,
+  `SINCE` date DEFAULT NULL,
+  `THRU` date DEFAULT NULL,
   `USER_ID` int(10) unsigned NOT NULL,
   `PET_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_TRIBUTE`),
-  KEY `PIC_ID` (`PIC_ID`),
   KEY `USER_ID` (`USER_ID`),
   KEY `PET_ID` (`PET_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `tributes`
+--
+
+INSERT INTO `tributes` (`ID_TRIBUTE`, `TITLE`, `CONTENT`, `SINCE`, `THRU`, `USER_ID`, `PET_ID`) VALUES
+(1, 'asd', 'asd', '2014-02-11', '2014-02-21', 5, 2),
+(4, 'se fue', 'no esta mas', '2014-02-02', '2014-02-24', 8, 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -44386,8 +44584,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `EMAIL` varchar(45) NOT NULL,
   `PASSWORD` char(40) NOT NULL,
   `ABOUT` varchar(45) DEFAULT NULL,
-  `COUNTRY_ID` int(11) DEFAULT NULL,
-  `REGION_ID` int(11) DEFAULT NULL,
+  `COUNTRY_ID` smallint(6) DEFAULT NULL,
+  `REGION_ID` smallint(6) DEFAULT NULL,
   `CITY_ID` int(11) DEFAULT NULL,
   `PIC_ID` int(10) unsigned DEFAULT NULL,
   `ALBUM_ID` int(10) unsigned DEFAULT NULL,
@@ -44398,159 +44596,176 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `EMAIL` (`EMAIL`),
   KEY `PIC_ID` (`PIC_ID`),
   KEY `ALBUM_ID` (`ALBUM_ID`),
-  KEY `COUNTRY_ID` (`CITY_ID`),
-  KEY `REGION_ID` (`CITY_ID`),
+  KEY `COUNTRY_ID` (`COUNTRY_ID`),
+  KEY `REGION_ID` (`REGION_ID`),
   KEY `CITY_ID` (`CITY_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`ID_USER`, `NAME`, `LASTNAME`, `NICKNAME`, `EMAIL`, `PASSWORD`, `ABOUT`, `COUNTRY_ID`, `REGION_ID`, `CITY_ID`, `PIC_ID`, `ALBUM_ID`, `RANK`, `TOKEN`) VALUES
-(5, 'esteban', 'jelicich', 'esteban', 'jelicich.e@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'a3f27e169517d42bd3b4cdef9193ffb643b52054'),
-(6, 'prueba1', 'prueba1', 'p1', 'prueba@1.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'a6d6289f1a23f0ce41edbe60db1a9ae8dafcb125');
+(5, 'esteban', 'jelicich', 'estebansd', 'jelicich.e@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 14, 3, 3368, 17, 1, 1, '0'),
+(6, 'prueba1', 'prueba1', 'p1', 'prueba@1.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, '343f0ca6b0182229b8ea83ed31e094671e4082af'),
+(7, 'prueba2', 'prueba2', 'p2', 'prueba@2.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'd91fd6bee46671f93e3bdd3f285749c7dd7f9428'),
+(8, 'pedro', 'picapiedra', 'peter', 'pedro@picapiedra.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, 10, 1055, 14678, NULL, 2, 0, '89b807e30c0c9dbab1ed360a6e4a3d0b5a3870fa');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `vet_talk`
+-- Table structure for table `vet_talk`
 --
 
 CREATE TABLE IF NOT EXISTS `vet_talk` (
   `ID_VET_TALK` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(100) NOT NULL,
   `CONTENT` text NOT NULL,
-  `DATE` date NOT NULL,
+  `DATE` datetime NOT NULL,
   `USER_ID` int(10) unsigned NOT NULL,
   `PIC_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_VET_TALK`),
   KEY `USER_ID` (`USER_ID`),
   KEY `PIC_ID` (`PIC_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `vet_talk`
+--
+
+INSERT INTO `vet_talk` (`ID_VET_TALK`, `TITLE`, `CONTENT`, `DATE`, `USER_ID`, `PIC_ID`) VALUES
+(1, 'asd', 'asd', '2014-02-14 23:58:35', 5, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `videos`
+-- Table structure for table `videos`
 --
 
 CREATE TABLE IF NOT EXISTS `videos` (
   `ID_VIDEO` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `VIDEO` char(30) NOT NULL,
+  `VIDEO` varchar(100) NOT NULL,
   `TITLE` varchar(100) NOT NULL,
   `CAPTION` varchar(300) NOT NULL,
-  `THUMBNAIL` char(30) NOT NULL,
-  `DATE` date NOT NULL,
+  `THUMBNAIL` varchar(100) NOT NULL,
+  `DATE` datetime NOT NULL,
   `PET_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_VIDEO`),
   KEY `PET_ID` (`PET_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Restricciones para tablas volcadas
+-- Dumping data for table `videos`
+--
+
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `blogs`
+-- Constraints for table `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`);
+
+--
+-- Constraints for table `blogs`
 --
 ALTER TABLE `blogs`
   ADD CONSTRAINT `blogs_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `blogs_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`);
+  ADD CONSTRAINT `blogs_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `comments`
+-- Constraints for table `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`TRIBUTE_ID`) REFERENCES `tributes` (`ID_TRIBUTE`);
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`TRIBUTE_ID`) REFERENCES `tributes` (`ID_TRIBUTE`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `conversations`
+-- Constraints for table `conversations`
 --
 ALTER TABLE `conversations`
   ADD CONSTRAINT `conversations_ibfk_1` FOREIGN KEY (`USER_1_ID`) REFERENCES `users` (`ID_USER`),
   ADD CONSTRAINT `conversations_ibfk_2` FOREIGN KEY (`USER_2_ID`) REFERENCES `users` (`ID_USER`);
 
 --
--- Filtros para la tabla `messages`
+-- Constraints for table `messages`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`CONVERSATION_ID`) REFERENCES `conversations` (`ID_CONVERSATION`),
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`);
 
 --
--- Filtros para la tabla `news`
+-- Constraints for table `news`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `news_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`);
 
 --
--- Filtros para la tabla `organizations`
+-- Constraints for table `organizations`
 --
 ALTER TABLE `organizations`
   ADD CONSTRAINT `organizations_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `organizations_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`);
+  ADD CONSTRAINT `organizations_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `pets`
+-- Constraints for table `pets`
 --
 ALTER TABLE `pets`
   ADD CONSTRAINT `pets_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
   ADD CONSTRAINT `pets_ibfk_2` FOREIGN KEY (`ANIMAL_CATEGORY_ID`) REFERENCES `animal_categories` (`ID_ANIMAL_CATEGORY`),
-  ADD CONSTRAINT `pets_ibfk_3` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`),
-  ADD CONSTRAINT `pets_ibfk_4` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
+  ADD CONSTRAINT `pets_ibfk_3` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pets_ibfk_4` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `pics`
+-- Constraints for table `pics`
 --
 ALTER TABLE `pics`
   ADD CONSTRAINT `pics_ibfk_1` FOREIGN KEY (`THUMBNAIL`) REFERENCES `pics` (`ID_PIC`),
-  ADD CONSTRAINT `pics_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
+  ADD CONSTRAINT `pics_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `projects`
+-- Constraints for table `projects`
 --
 ALTER TABLE `projects`
   ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
+  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `qas`
+-- Constraints for table `questions`
 --
-ALTER TABLE `qas`
-  ADD CONSTRAINT `qas_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `qas_ibfk_2` FOREIGN KEY (`VET_ID`) REFERENCES `users` (`ID_USER`);
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
+  ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`ANSWER_ID`) REFERENCES `answers` (`ID_ANSWER`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `tributes`
+-- Constraints for table `tributes`
 --
 ALTER TABLE `tributes`
-  ADD CONSTRAINT `tributes_ibfk_1` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`),
-  ADD CONSTRAINT `tributes_ibfk_2` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `tributes_ibfk_3` FOREIGN KEY (`PET_ID`) REFERENCES `pets` (`ID_PET`);
+  ADD CONSTRAINT `tributes_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
+  ADD CONSTRAINT `tributes_ibfk_2` FOREIGN KEY (`PET_ID`) REFERENCES `pets` (`ID_PET`);
 
 --
--- Filtros para la tabla `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`CITY_ID`) REFERENCES `cities` (`CityId`),
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`),
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`COUNTRY_ID`) REFERENCES `countries` (`CountryId`),
+  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`REGION_ID`) REFERENCES `regions` (`RegionID`),
+  ADD CONSTRAINT `users_ibfk_5` FOREIGN KEY (`CITY_ID`) REFERENCES `cities` (`CityId`);
 
 --
--- Filtros para la tabla `vet_talk`
+-- Constraints for table `vet_talk`
 --
 ALTER TABLE `vet_talk`
   ADD CONSTRAINT `vet_talk_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `vet_talk_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`);
+  ADD CONSTRAINT `vet_talk_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `videos`
+-- Constraints for table `videos`
 --
 ALTER TABLE `videos`
   ADD CONSTRAINT `videos_ibfk_1` FOREIGN KEY (`PET_ID`) REFERENCES `pets` (`ID_PET`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

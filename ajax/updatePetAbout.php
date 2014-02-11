@@ -111,6 +111,67 @@ include_once "../templates/petAbout.php";
 
 if( $pet->updateInfo($_POST,'../img/pets/') )
 {
+	//create tribute
+	if(isset($_POST['create-tribute']))
+	{
+		include_once '../php/classes/BOTributes.php';
+		$t = new BOTributes;
+		$_POST['u'] = $_POST['owner'];
+
+		$idTr = $t->createTribute($_POST);
+		if(!$idTr)
+		{
+			$err = $t->getErr();
+			echo '<p>Error creating the tribute</p><ul class="error upload-tribute">';
+			for($i=0; $i < sizeof($err); $i++)
+			{
+				echo '<li>'.$err[$i].'</li>';
+			}
+			echo '</ul>';
+		}
+	}
+	//delete tribute
+	elseif(isset($_POST['delete-tribute']))
+	{
+		//var_dump($_POST);
+		if($_POST['tr-user'] != $_SESSION['id'])
+		{
+			echo "There was a problem with your session";
+			die;
+		}
+		else
+		{
+			include_once '../php/classes/BOTributes.php';
+			$t = new BOTributes;
+			$t->deleteTribute($_POST['delete-tribute']);
+		}
+	}
+	//edit tribute
+	elseif(isset($_POST['tr-id']))
+	{
+		if($_POST['tr-user'] != $_SESSION['id'])
+		{
+			echo "There was a problem with your session";
+			die;
+		}
+		else
+		{
+			include_once '../php/classes/BOTributes.php';
+			$t = new BOTributes;
+			if(!$t->updateTribute($_POST))
+			{
+				$err = $t->getErr();
+				echo '<p>Error creating the tribute</p><ul class="error upload-tribute">';
+				for($i=0; $i < sizeof($err); $i++)
+				{
+					echo '<li>'.$err[$i].'</li>';
+				}
+				echo '</ul>';
+			}
+		}
+	}
+
+
 	include_once "../templates/petAbout.php";
 
 }
@@ -127,62 +188,4 @@ else
 }
 
 
-//create tribute
-if(isset($_POST['create-tribute']))
-{
-	include_once '../php/classes/BOTributes.php';
-	$t = new BOTributes;
-	$_POST['u'] = $_POST['owner'];
 
-	$idTr = $t->createTribute($_POST);
-	if(!$idTr)
-	{
-		$err = $t->getErr();
-		echo '<p>Error creating the tribute</p><ul class="error upload-tribute">';
-		for($i=0; $i < sizeof($err); $i++)
-		{
-			echo '<li>'.$err[$i].'</li>';
-		}
-		echo '</ul>';
-	}
-}
-//delete tribute
-elseif(isset($_POST['delete-tribute']))
-{
-	//var_dump($_POST);
-	if($_POST['tr-user'] != $_SESSION['id'])
-	{
-		echo "There was a problem with your session";
-		die;
-	}
-	else
-	{
-		include_once '../php/classes/BOTributes.php';
-		$t = new BOTributes;
-		$t->deleteTribute($_POST['delete-tribute']);
-	}
-}
-//edit tribute
-elseif(isset($_POST['tr-id']))
-{
-	if($_POST['tr-user'] != $_SESSION['id'])
-	{
-		echo "There was a problem with your session";
-		die;
-	}
-	else
-	{
-		include_once '../php/classes/BOTributes.php';
-		$t = new BOTributes;
-		if(!$t->updateTribute($_POST))
-		{
-			$err = $t->getErr();
-			echo '<p>Error creating the tribute</p><ul class="error upload-tribute">';
-			for($i=0; $i < sizeof($err); $i++)
-			{
-				echo '<li>'.$err[$i].'</li>';
-			}
-			echo '</ul>';
-		}
-	}
-}

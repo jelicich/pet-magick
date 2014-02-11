@@ -4,7 +4,7 @@
 				
 				<div id='what' class='ask-qa'> <!-- invertir clase y id aca -->
 					<span id="leave-comment">Leave your comment</span>
-						<div id='pop-up' class='mod grid_4 '>
+						<div id='pop-up-click' class='mod grid_4 '>
 
 							<?php
 							if(isset($_SESSION['id']))
@@ -30,6 +30,7 @@
 							<?php
 							}
 							?>
+							<div class="arrow-top"></div>
 						</div>
 						
 				</div>

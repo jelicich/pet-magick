@@ -749,11 +749,10 @@ p,span{
 	position: relative;
 }
 
-#pop-up{
+#pop-up,#pop-up-click{
 	background-color: rgba(0, 0, 0, 0.8);
 	height: auto;
     margin-top: 10px;
-
 }
 
 #pop-up p{
@@ -790,7 +789,7 @@ p,span{
 	margin-top: -40px;
 }
 
-#what a:hover~.active {
+#what a:hover~ .active {
 	opacity: 1;
     height: auto;
 }
@@ -1312,13 +1311,19 @@ Tunear!!!
 	position: relative;
 }
 
-#pop-up{
+#pop-up-click{
 	display: none;
 	position: absolute;
 	right: -10px;
 	top: 15px;
 	z-index: 9999;
-	overflow: hidden;
+}
+
+#pop-up-click .arrow-top{
+	position: absolute;
+	right: 20px;
+	top: -10px;
+	z-index: 9999;
 }
 
 #leave-comment{

@@ -120,10 +120,7 @@ if(!$idPet)
 }
 else
 {
-	$p->getPetData($idPet);
-
-
-	include_once "../templates/petProfile.php";	
+	
 
 	if(isset($_POST['create-tribute']))
 	{
@@ -143,7 +140,8 @@ else
 		}
 	}
 
-
+	$p->getPetData($idPet);
+	include_once "../templates/petProfile.php";	
 }
 
 

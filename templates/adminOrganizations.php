@@ -6,7 +6,7 @@
 										$idUsr = $_GET['u'];
 								?>
 								
-								<a href=<?php echo '"#'.$idUsr.'"' ?> class="btn" id="upload-vettalk">Upload</a>
+								<a href=<?php echo '"#'.$idUsr.'"' ?> class="btn" id="upload-organization">Upload</a>
 								<ul>	
 								
 									<?php

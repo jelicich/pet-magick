@@ -9,8 +9,8 @@
 
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 
-							<input type='text' class = 'form-element' name='name' />
-							<textarea class = 'form-element' name='description'></textarea>
+							<input type='text' class = 'form-element' name='title' />
+		  					<textarea class = 'form-element' name='content'></textarea>
 							
 
 						</form>

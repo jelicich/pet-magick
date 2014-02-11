@@ -1762,14 +1762,14 @@ function imgVideoUploader(whatFor, modulo){
 						  		p = p.substr(index);
 								formData.append("u", p);
 
-					  		}else if(modulo == 'vetTalk'){
+					  		}else if(modulo == 'vet-talk'){
 
 					  			var ajaxPostFile = 'ajax/uploadVetTalk.php';
 					  			var p = this.href;
 								var index = p.indexOf('#');
 						  		index ++;
 						  		p = p.substr(index);
-								formData.append("p", p);
+								formData.append("u", p);
 
 					  		}else if(modulo == 'blog'){
 
@@ -2109,7 +2109,7 @@ function deleteVetTalk()
 
 function printEditVet()
 {
-	printEdit('organization', this.responseText);
+	printEdit('vet-talk', this.responseText);
 }
 
 

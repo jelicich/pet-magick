@@ -11,7 +11,7 @@
 								
 									<?php
 									$list = $vt->getVetTalkListByUser($idUsr);
-									var_dump($list);
+
 									if($list)
 									{
 										for($i=0; $i<sizeof($list); $i++)

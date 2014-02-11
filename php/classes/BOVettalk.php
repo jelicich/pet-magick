@@ -68,13 +68,13 @@ class BOVettalk{
             if(isset($ar[$i]['Pics']['PIC']))
             {
                 $pic = $ar[$i]['Pics']['PIC'];
-                $ar[$i]['Pics']['PIC'] = 'img/organizations/'.$pic;
-                $ar[$i]['Pics']['THUMB'] = 'img/organizations/thumb/'.$pic;
+                $ar[$i]['Pics']['PIC'] = 'img/vetTalk/'.$pic;
+                $ar[$i]['Pics']['THUMB'] = 'img/vetTalk/thumb/'.$pic;
             }
             else
             {
-                $ar[$i]['Pics']['PIC'] = 'img/organizations/default.jpg';
-                $ar[$i]['Pics']['THUMB'] = 'img/organizations/thumb/default.jpg';
+                $ar[$i]['Pics']['PIC'] = 'img/vetTalk/default.jpg';
+                $ar[$i]['Pics']['THUMB'] = 'img/vetTalk/thumb/default.jpg';
             }   
           }
           return $ar;

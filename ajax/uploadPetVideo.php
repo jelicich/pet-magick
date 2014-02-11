@@ -55,7 +55,7 @@ if(isset($_FILES['file'])){ // normalWay();
 		}else{		
 			
 			$path = '../img/pets/';
-			$pics->upload($query,$path,$albumId);
+			createQuery($query, $path, $obj);
 		} 
 		
 		
@@ -90,7 +90,7 @@ if(isset($_FILES['file'])){ // normalWay();
 				} 
 		
 		createQuery($query, $path, $obj);
-		$counter++;
+		//$counter++;
 	}// end foreach
 }// end else
 

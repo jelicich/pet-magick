@@ -41,8 +41,9 @@ class VetTalkTable extends Doctrine_Table
               ->leftJoin('v.Pics ph')
               ->orderBy('v.date DESC'); 
           
-        $r = $q->execute();    
-          
+        $r = $q->execute();
+
+        if($r != false)
         return $r->toArray();
     }//End getAllArticles
 
@@ -60,7 +61,8 @@ class VetTalkTable extends Doctrine_Table
         //->offset(rand(0, $userCount - 1))
         ->fetchOne();
 
-       return $user->toArray();
+        if($user != false)
+        return $user->toArray();
 
     }//End getLastArticles
 
@@ -76,7 +78,7 @@ class VetTalkTable extends Doctrine_Table
             ->groupBy('v.ID_VET_TALK');
         
             $p = $q->execute();  
-                return $p->toArray();
+             return $p->toArray();
 
     }// end getOrganizationsByUser
 

@@ -5,7 +5,7 @@
 if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 
 	$featuredOrg = $org->getOrganizationsRamdom();
-	var_dump($featuredOrg);
+	//var_dump($featuredOrg);
 	$userId = $featuredOrg['USER_ID'];
 	$name = $featuredOrg['NAME'];
 	$description = $featuredOrg['DESCRIPTION'];

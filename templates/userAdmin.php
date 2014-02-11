@@ -9,7 +9,15 @@
 							<li class="active"><a href="#organization" data-toggle="tab">Organizations</a></li>
 							<li><a href="#project" data-toggle="tab">Projects</a></li>
 						<?php
-						if($_SESSION['rank'] == 1)
+
+						if(isset($_SESSION['rank'] )){ 
+							$sessionRank = $_SESSION['rank'];
+						}else{
+							$sessionRank = 0;
+						}
+
+
+						if($sessionRank == 1)
 						{
 						?>
 							<li><a href="#vet-talk" data-toggle="tab">Vet Talk Articles</a></li>
@@ -59,7 +67,7 @@
 
 
 						<?php
-						if($_SESSION['rank'] == 1)
+						if($sessionRank == 1)
 						{
 						?>
 							

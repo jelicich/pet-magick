@@ -58,7 +58,8 @@ class VideosTable extends Doctrine_Table
             ->where('p.ANIMAL_CATEGORY_ID = ?', $id);
 
         
-        $r = $q->execute();    
+        $r = $q->execute();  
+       // if($r != false)  
         
         return $r->toArray();
     }
@@ -72,6 +73,7 @@ class VideosTable extends Doctrine_Table
        ->offset(rand(0, $userCount - 1))
        ->fetchOne();
 
+       if($user != false)
        return $user->toArray();
     }
 
@@ -84,7 +86,7 @@ class VideosTable extends Doctrine_Table
     			->AndWhere('v.PET_ID = ?', $id);
 
     		$videos = $q->execute();
-           		return $videos->toArray();
+           	return $videos->toArray();
           
      } 
 

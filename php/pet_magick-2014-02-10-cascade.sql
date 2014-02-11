@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `albums` (
 --
 -- Dumping data for table `albums`
 --
-
+/*
 INSERT INTO `albums` (`ID_ALBUM`) VALUES
 (1),
 (2),
@@ -69,7 +69,7 @@ INSERT INTO `albums` (`ID_ALBUM`) VALUES
 (10),
 (11),
 (12);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -88,7 +88,11 @@ CREATE TABLE IF NOT EXISTS `animal_categories` (
 
 INSERT INTO `animal_categories` (`ID_ANIMAL_CATEGORY`, `NAME`) VALUES
 (1, 'Dog'),
-(2, 'Cat');
+(2, 'Cat'),
+(3, 'Bird'),
+(4, 'Rabbit'),
+(5, 'Ferret'),
+(6, 'Others');
 
 -- --------------------------------------------------------
 
@@ -108,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `answers` (
 --
 -- Dumping data for table `answers`
 --
-
+/*
 INSERT INTO `answers` (`ID_ANSWER`, `ANSWER`, `DATE`, `USER_ID`) VALUES
 (1, 'alsdkl kds kdslk ksd kdls dksl ksldkld kkd kldk lskdlksdlksd lksd sdk sdlk slkdlksjdlkjd dk  dkj sd sldk lskd lskd ', '2014-02-05 19:58:16', 6),
 (16, 'putaso', '2014-02-06 02:44:37', 5),
@@ -127,7 +131,7 @@ INSERT INTO `answers` (`ID_ANSWER`, `ANSWER`, `DATE`, `USER_ID`) VALUES
 (29, 's', '2014-02-08 20:42:57', 5),
 (30, 's', '2014-02-08 20:42:59', 5),
 (31, 'se', '2014-02-09 18:18:05', 5);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -39700,11 +39704,11 @@ CREATE TABLE IF NOT EXISTS `comments` (
 --
 -- Dumping data for table `comments`
 --
-
+/*
 INSERT INTO `comments` (`ID_COMMENT`, `COMMENT`, `DATE`, `USER_ID`, `TRIBUTE_ID`) VALUES
 (1, 'asdads', '2014-02-04 02:49:04', 5, 1),
 (2, 'miedrda', '2014-02-09 18:07:54', 8, 4);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -39724,11 +39728,11 @@ CREATE TABLE IF NOT EXISTS `conversations` (
 --
 -- Dumping data for table `conversations`
 --
-
+/*
 INSERT INTO `conversations` (`ID_CONVERSATION`, `USER_1_ID`, `USER_2_ID`, `DATE`) VALUES
 (1, 5, 6, '2013-12-19 02:55:09'),
 (2, 5, 7, '2013-12-19 04:18:11');
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -40287,7 +40291,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 --
 -- Dumping data for table `messages`
 --
-
+/*
 INSERT INTO `messages` (`ID_MESSAGE`, `CONVERSATION_ID`, `USER_ID`, `MESSAGE`, `STATUS`, `DATE`) VALUES
 (3, 1, 5, 'Hola', 1, '2013-12-16 01:00:00'),
 (4, 1, 6, 'si que tal', 1, '2013-12-16 01:00:00'),
@@ -40307,7 +40311,7 @@ INSERT INTO `messages` (`ID_MESSAGE`, `CONVERSATION_ID`, `USER_ID`, `MESSAGE`, `
 (28, 2, 5, 'blabla', 1, '2013-12-19 03:46:53'),
 (29, 2, 5, 'asdasd', 1, '2013-12-19 03:49:47'),
 (30, 2, 5, 'asdasd', 1, '2013-12-19 04:18:11');
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -40343,10 +40347,10 @@ CREATE TABLE IF NOT EXISTS `news` (
 --
 -- Dumping data for table `news`
 --
-
+/*
 INSERT INTO `news` (`ID_NEWS`, `NEWS`, `DATE`, `USER_ID`) VALUES
 (1, 'asd', '2014-02-08 00:00:00', 5);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -40367,12 +40371,12 @@ CREATE TABLE IF NOT EXISTS `organizations` (
 --
 -- Dumping data for table `organizations`
 --
-
+/*
 INSERT INTO `organizations` (`ID_ORGANIZATION`, `NAME`, `DESCRIPTION`, `USER_ID`, `PIC_ID`) VALUES
 (4, 'lkjlkj', 'k', 6, 2),
 (28, 'asd', 'asd', 5, NULL),
 (29, 'Rescate de perros', 'Los perros que estan en la calle los rescatamos y cuidamos', 8, 12);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -40399,11 +40403,11 @@ CREATE TABLE IF NOT EXISTS `pets` (
 --
 -- Dumping data for table `pets`
 --
-
+/*
 INSERT INTO `pets` (`ID_PET`, `NAME`, `BREED`, `TRAITS`, `STORY`, `USER_ID`, `ANIMAL_CATEGORY_ID`, `PIC_ID`, `ALBUM_ID`) VALUES
 (2, 'Cocos', 'Siames', 'Sleep', 'Coco was found in a box', 5, 2, NULL, NULL),
 (4, 'coco', 'ninguna', 'todos', 'es re piola', 8, 1, NULL, 3);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -40426,6 +40430,7 @@ CREATE TABLE IF NOT EXISTS `pics` (
 --
 -- Dumping data for table `pics`
 --
+/*
 
 INSERT INTO `pics` (`ID_PIC`, `PIC`, `THUMB`, `DATE`, `CAPTION`, `THUMBNAIL`, `ALBUM_ID`) VALUES
 (1, '6261_1391733770.jpg', '6261_1391733770.jpg', '2014-02-07 00:00:00', '', NULL, NULL),
@@ -40444,7 +40449,7 @@ INSERT INTO `pics` (`ID_PIC`, `PIC`, `THUMB`, `DATE`, `CAPTION`, `THUMBNAIL`, `A
 (14, '7431_1391975536.jpg', '7431_1391975536.jpg', '2014-02-09 00:00:00', '', NULL, 12),
 (15, '4958_1391975537.jpg', '4958_1391975537.jpg', '2014-02-09 00:00:00', '', NULL, 12),
 (17, '5591_1391980589.jpg', '5591_1391980589.jpg', '2014-02-09 00:00:00', NULL, NULL, NULL);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -40481,12 +40486,12 @@ CREATE TABLE IF NOT EXISTS `projects` (
 --
 -- Dumping data for table `projects`
 --
-
+/*
 INSERT INTO `projects` (`ID_PROJECT`, `TITLE`, `DESCRIPTION`, `USER_ID`, `ALBUM_ID`) VALUES
 (1, 'proyecto', 'loco', 5, 3),
 (6, 'un projecto', 're loco', 5, 11),
 (7, 'Cuadrilla de rescate', 'Queremos formar una cuadrilla para ir a buscar perros de la calle', 8, 12);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -40524,7 +40529,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
 --
 -- Dumping data for table `questions`
 --
-
+/*
 INSERT INTO `questions` (`ID_QUESTION`, `QUESTION`, `DATE`, `USER_ID`, `ANSWER_ID`) VALUES
 (8, 'hola como te va?', '2014-02-05 22:27:28', 5, 1),
 (9, 'si queria saber si el perro ladra', '2014-02-18 22:27:49', 7, 16),
@@ -40543,7 +40548,7 @@ INSERT INTO `questions` (`ID_QUESTION`, `QUESTION`, `DATE`, `USER_ID`, `ANSWER_I
 (22, 'ahora si hijo de puta', '2014-02-06 23:37:16', 5, 29),
 (23, 'la concha de tu madre', '2014-02-06 23:37:27', 5, 30),
 (24, 'q onda?', '2014-02-09 18:06:21', 5, 31);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -44565,11 +44570,11 @@ CREATE TABLE IF NOT EXISTS `tributes` (
 --
 -- Dumping data for table `tributes`
 --
-
+/*
 INSERT INTO `tributes` (`ID_TRIBUTE`, `TITLE`, `CONTENT`, `SINCE`, `THRU`, `USER_ID`, `PET_ID`) VALUES
 (1, 'asd', 'asd', '2014-02-11', '2014-02-21', 5, 2),
 (4, 'se fue', 'no esta mas', '2014-02-02', '2014-02-24', 8, 4);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -44583,7 +44588,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `NICKNAME` varchar(45) NOT NULL,
   `EMAIL` varchar(45) NOT NULL,
   `PASSWORD` char(40) NOT NULL,
-  `ABOUT` varchar(45) DEFAULT NULL,
+  `ABOUT` varchar(2000) DEFAULT NULL,
   `COUNTRY_ID` smallint(6) DEFAULT NULL,
   `REGION_ID` smallint(6) DEFAULT NULL,
   `CITY_ID` int(11) DEFAULT NULL,
@@ -44604,13 +44609,13 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 -- Dumping data for table `users`
 --
-
+/*
 INSERT INTO `users` (`ID_USER`, `NAME`, `LASTNAME`, `NICKNAME`, `EMAIL`, `PASSWORD`, `ABOUT`, `COUNTRY_ID`, `REGION_ID`, `CITY_ID`, `PIC_ID`, `ALBUM_ID`, `RANK`, `TOKEN`) VALUES
 (5, 'esteban', 'jelicich', 'estebansd', 'jelicich.e@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 14, 3, 3368, 17, 1, 1, '0'),
 (6, 'prueba1', 'prueba1', 'p1', 'prueba@1.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, '343f0ca6b0182229b8ea83ed31e094671e4082af'),
 (7, 'prueba2', 'prueba2', 'p2', 'prueba@2.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'd91fd6bee46671f93e3bdd3f285749c7dd7f9428'),
 (8, 'pedro', 'picapiedra', 'peter', 'pedro@picapiedra.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, 10, 1055, 14678, NULL, 2, 0, '89b807e30c0c9dbab1ed360a6e4a3d0b5a3870fa');
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -44632,10 +44637,10 @@ CREATE TABLE IF NOT EXISTS `vet_talk` (
 --
 -- Dumping data for table `vet_talk`
 --
-
+/*
 INSERT INTO `vet_talk` (`ID_VET_TALK`, `TITLE`, `CONTENT`, `DATE`, `USER_ID`, `PIC_ID`) VALUES
 (1, 'asd', 'asd', '2014-02-14 23:58:35', 5, NULL);
-
+*/
 -- --------------------------------------------------------
 
 --

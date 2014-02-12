@@ -60,18 +60,13 @@ class VideosTable extends Doctrine_Table
             ->where('p.ANIMAL_CATEGORY_ID = ?', $id);
 
         
-<<<<<<< HEAD
+
         $r = $q->execute();    
         if($f)
             return $r->toArray();
         else
             return false;
-=======
-        $r = $q->execute();  
-       // if($r != false)  
-        
-        return $r->toArray();
->>>>>>> 9be1dd2f0fc5931b8b3ecf26f616789614c53fee
+
     }
 
      public function getVideosRamdom() // revisar esta funcion pq no me queda claro q carajo me trae, aunque anda
@@ -83,15 +78,12 @@ class VideosTable extends Doctrine_Table
        ->offset(rand(0, $userCount - 1))
        ->fetchOne();
 
-<<<<<<< HEAD
+
        if($user)
         return $user->toArray();
        else
         return false;
-=======
-       if($user != false)
-       return $user->toArray();
->>>>>>> 9be1dd2f0fc5931b8b3ecf26f616789614c53fee
+
     }
 
 
@@ -103,17 +95,14 @@ class VideosTable extends Doctrine_Table
     			->AndWhere('v.PET_ID = ?', $id);
 
     		$videos = $q->execute();
-<<<<<<< HEAD
+
             if($videos)
            		return $videos->toArray();
             else
                 return false;
-=======
-           	return $videos->toArray();
->>>>>>> 9be1dd2f0fc5931b8b3ecf26f616789614c53fee
           
      } 
 
 
      
-    }
+}

@@ -44,18 +44,15 @@ class BlogsTable extends Doctrine_Table
         ->orderBy('b.date DESC')
         //->offset(rand(0, $userCount - 1))
         ->fetchOne();
-<<<<<<< HEAD
+
 
         if($user)
             return $user->toArray();
         else
             return false;
        
-=======
-        
-        if($user != false)
-        return $user->toArray();
->>>>>>> 9be1dd2f0fc5931b8b3ecf26f616789614c53fee
+
+
 
     }//End getLastArticles
 

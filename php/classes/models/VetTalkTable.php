@@ -41,11 +41,18 @@ class VetTalkTable extends Doctrine_Table
               ->leftJoin('v.Pics ph')
               ->orderBy('v.date DESC'); 
           
+<<<<<<< HEAD
         $r = $q->execute();    
           if($r)
             return $r->toArray();
         else
             return false;
+=======
+        $r = $q->execute();
+
+        if($r != false)
+        return $r->toArray();
+>>>>>>> 9be1dd2f0fc5931b8b3ecf26f616789614c53fee
     }//End getAllArticles
 
     public function getLastArticle(){
@@ -61,10 +68,16 @@ class VetTalkTable extends Doctrine_Table
         ->orderBy('v.date DESC')
         //->offset(rand(0, $userCount - 1))
         ->fetchOne();
+<<<<<<< HEAD
         if($user)
             return $user->toArray();
         else
             return false;
+=======
+
+        if($user != false)
+        return $user->toArray();
+>>>>>>> 9be1dd2f0fc5931b8b3ecf26f616789614c53fee
 
     }//End getLastArticles
 
@@ -79,11 +92,16 @@ class VetTalkTable extends Doctrine_Table
             ->where('v.ID_VET_TALK = ?', $id)
             ->groupBy('v.ID_VET_TALK');
         
+<<<<<<< HEAD
             $p = $q->execute(); 
             if($p)
                 return $p->toArray();
             else
                 return false;
+=======
+            $p = $q->execute();  
+             return $p->toArray();
+>>>>>>> 9be1dd2f0fc5931b8b3ecf26f616789614c53fee
 
     }// end getOrganizationsByUser
 

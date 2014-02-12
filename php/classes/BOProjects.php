@@ -35,6 +35,8 @@ class BOProjects{
             ->from('Projects p');
         
         $r = $q->execute();
+
+        if($r != false)
         return $r->toArray();
     }// end getAllProjects
 
@@ -100,8 +102,9 @@ class BOProjects{
         ->limit(1)
         ->offset(rand(0, $userCount - 1))
         ->fetchOne();
-
-       return $user->toArray();
+        
+        if($user != false)
+        return $user->toArray();
     }// end getOrganizationsRamdom
 
     function getErrors(){

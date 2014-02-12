@@ -36,7 +36,8 @@ class BOOrganizations{
               ->leftJoin('o.Pics ph'); 
           
           $r = $q->execute();    
-          
+
+         // if($r != false)
           return $r->toArray();
     }// end getAllOrganizations
 
@@ -72,8 +73,9 @@ class BOOrganizations{
         ->limit(1)
         ->offset(rand(0, $userCount - 1))
         ->fetchOne();
-
-       return $user->toArray();
+        
+         if($user != false)
+         return $user->toArray();
     }// end getOrganizationsRamdom
 
     function getOrganizationsById($id){ 

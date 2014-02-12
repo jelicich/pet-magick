@@ -54,8 +54,10 @@ class PetsTable extends Doctrine_Table
             ->groupBy('p.USER_ID');
         
         $r = $q->execute();    
-        
-        return $r->toArray();
+        if($r)
+            return $r->toArray();
+        else
+            return false;
     }
 
 

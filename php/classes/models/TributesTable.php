@@ -60,7 +60,10 @@ class TributesTable extends Doctrine_Table
             ->leftJoin('p.Pics f')
     		->where('t.ID_TRIBUTE = ?', $id);
     	$r = $q->execute();
-    	return $r->toArray();
+        if($r)
+    	   return $r->toArray();
+        else
+            return false;
     }
 
     public function getAllTributes()
@@ -73,7 +76,10 @@ class TributesTable extends Doctrine_Table
             ->leftJoin('p.Pics f');
             //LIMIT para traer los primeros
         $r = $q->execute();
-        return $r->toArray();
+        if($r)
+            return $r->toArray();
+        else
+            return false;
     }
 
     public function getTributeByPet($id)
@@ -83,7 +89,10 @@ class TributesTable extends Doctrine_Table
             ->where('PET_ID =?',$id);
 
         $r = $q->execute();
-        return $r->toArray();
+        if($r)
+            return $r->toArray();
+        else
+            return false;
     }
 
     public function deleteTribute($id)
@@ -112,8 +121,10 @@ class TributesTable extends Doctrine_Table
             ->where('p.ANIMAL_CATEGORY_ID = ?', $id);
             //->groupBy('p.USER_ID');
         
-        $r = $q->execute();    
-        
-        return $r->toArray();
+        $r = $q->execute();  
+        if($r)  
+            return $r->toArray();
+        else
+            return false;
     }
 }

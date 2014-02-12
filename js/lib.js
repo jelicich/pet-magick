@@ -115,7 +115,6 @@ if (!document.querySelector){
 }
 
 function preventEventsDefault(){
-
 	event.preventDefault ? event.preventDefault() : event.returnValue = false;
 }
 
@@ -2088,7 +2087,7 @@ function uploadVetTalk()
 
 function deleteVetTalk()
 {
-	var btn = document.querySelectorAll('.delete-org'); 
+	var btn = document.querySelectorAll('.delete-vet-talk'); 
 
 	for(var i = 0; i < btn.length; i++)
 	{

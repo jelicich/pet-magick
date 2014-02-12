@@ -42,8 +42,10 @@ class PicsTable extends Doctrine_Table
             ->from('Pics p') 
             ->AndWhere('p.ALBUM_ID = ?',$id);
         $rta = $q->execute(); 
-        
-        return $rta->toArray();
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
      }
 
      function deletePic($id)

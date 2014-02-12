@@ -13,6 +13,7 @@
 						$list = $pro->getProjectListByUser($idUsr);
 						if($list)
 						{
+						
 							for($i=0; $i<sizeof($list); $i++)
 							{
 					?>

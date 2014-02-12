@@ -72,8 +72,10 @@ class QuestionsTable extends Doctrine_Table
             ->leftJoin('a.Users h')
             ->leftJoin('h.Pics f');
         $ob = $q->execute();
-
-        return $ob->toArray();
+        if($ob)
+            return $ob->toArray();
+        else
+            return false;
     }
 
     public function getNewQuestions()
@@ -85,8 +87,10 @@ class QuestionsTable extends Doctrine_Table
             ->leftJoin('u.Pics p')
             ->where('q.ANSWER_ID is NULL');
         $ob = $q->execute();
-
-        return $ob->toArray();
+        if($ob)
+            return $ob->toArray();
+        else
+            return false;
     }
 
     public function qtyNewQuestions()
@@ -96,8 +100,10 @@ class QuestionsTable extends Doctrine_Table
             ->from('Questions q')
             ->where('q.ANSWER_ID is NULL');
         $n = $q->execute();
-
-        return $n->toArray();
+        if($n)
+            return $n->toArray();
+        else
+            return false;
     }
 
     public function addAnswerId($a,$q)

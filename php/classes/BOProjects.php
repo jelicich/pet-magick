@@ -127,21 +127,25 @@ class BOProjects{
                
           for($i=0; $i < sizeof($ar); $i++)
           {
-            if(isset($ar[$i]['Albums']['Pics']))
-            {
+              if(sizeof($ar[$i]['Albums']['Pics']) > 0)
+              {
                 for($j = 0; $j < sizeof($ar[$i]['Albums']['Pics']); $j++)
                 {
+                    
                   $pic = $ar[$i]['Albums']['Pics'][$j]['PIC'];
                   $ar[$i]['Albums']['Pics'][$j]['PIC'] = 'img/projects/'.$pic;
-                  $ar[$i]['Albums']['Pics'][$j]['THUMB'] = 'img/projects/thumb/'.$pic;
+                  $ar[$i]['Albums']['Pics'][$j]['THUMB'] = 'img/projects/thumb/'.$pic;  
+                    
                 }
-            }
-            else
-            {
-                $ar[$i]['Albums']['Pics'][0]['PIC'] = 'img/projects/default.jpg';
-                $ar[$i]['Albums']['Pics'][0]['THUMB'] = 'img/projects/thumb/default.jpg';
-            }   
+              }
+              else
+              {
+                  
+                  $ar[$i]['Albums']['Pics'][0]['PIC'] = 'img/projects/default.jpg';
+                  $ar[$i]['Albums']['Pics'][0]['THUMB'] = 'img/projects/thumb/default.jpg';
+              }   
           }
+          
           return $ar;
        }
        else

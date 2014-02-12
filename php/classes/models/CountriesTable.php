@@ -24,8 +24,10 @@ class CountriesTable extends Doctrine_Table
 			->from('Countries c');
 
 			$country = $q->execute();
-
-			return $country->toArray();
+			if($country)
+				return $country->toArray();
+			else
+				return false;
 	 }
 
 
@@ -37,8 +39,10 @@ class CountriesTable extends Doctrine_Table
 			->AndWhere('r.CountryID = ?', $id);
 
 			$regions = $q->execute();
-
-			return $regions->toArray();
+			if($regions)
+				return $regions->toArray();
+			else 
+				return false;
 	}
 
 
@@ -50,8 +54,10 @@ class CountriesTable extends Doctrine_Table
 			->AndWhere('c.RegionID = ?', $id);
 
 			$regions = $q->execute();
-
-			return $regions->toArray();
+			if($regions)
+				return $regions->toArray();
+			else 
+				return false;
 	}
 
 

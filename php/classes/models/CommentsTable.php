@@ -71,6 +71,9 @@ class CommentsTable extends Doctrine_Table
             ->where('c.TRIBUTE_ID =?', $id);
         $ob = $q->execute();
 
-        return $ob->toArray();
+        if($ob)
+            return $ob->toArray();
+        else
+            return false;
     }
 }

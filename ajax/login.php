@@ -13,7 +13,7 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
 	//$profilePic =  $user->table->getProfilePic($datosU[0]["PIC_ID"]);
     //var_dump($datosU);
 	//guardo en sesion datos q pueda llegar a necesitar
-	var_dump($datosU);
+	//var_dump($datosU);
 	$_SESSION['id'] = $datosU[0]['ID_USER'];
 	$_SESSION['datelog'] = date('Y-m-d H:i:s');
 	$_SESSION['name'] = $datosU[0]['NAME'];

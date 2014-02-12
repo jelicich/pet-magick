@@ -20,7 +20,7 @@ include_once "../php/classes/BOVideos.php";
 
 $p = new BOPets;
 $pics = new BOPics;
-$videos = new BOVideos;
+$v = new BOVideos;
 
 
 

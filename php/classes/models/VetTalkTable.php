@@ -42,8 +42,10 @@ class VetTalkTable extends Doctrine_Table
               ->orderBy('v.date DESC'); 
           
         $r = $q->execute();    
-          
-        return $r->toArray();
+          if($r)
+            return $r->toArray();
+        else
+            return false;
     }//End getAllArticles
 
     public function getLastArticle(){
@@ -59,8 +61,10 @@ class VetTalkTable extends Doctrine_Table
         ->orderBy('v.date DESC')
         //->offset(rand(0, $userCount - 1))
         ->fetchOne();
-
-       return $user->toArray();
+        if($user)
+            return $user->toArray();
+        else
+            return false;
 
     }//End getLastArticles
 
@@ -75,8 +79,11 @@ class VetTalkTable extends Doctrine_Table
             ->where('v.ID_VET_TALK = ?', $id)
             ->groupBy('v.ID_VET_TALK');
         
-            $p = $q->execute();  
+            $p = $q->execute(); 
+            if($p)
                 return $p->toArray();
+            else
+                return false;
 
     }// end getOrganizationsByUser
 

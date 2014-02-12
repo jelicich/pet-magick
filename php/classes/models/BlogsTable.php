@@ -45,7 +45,11 @@ class BlogsTable extends Doctrine_Table
         //->offset(rand(0, $userCount - 1))
         ->fetchOne();
 
-       return $user->toArray();
+        if($user)
+            return $user->toArray();
+        else
+            return false;
+       
 
     }//End getLastArticles
 

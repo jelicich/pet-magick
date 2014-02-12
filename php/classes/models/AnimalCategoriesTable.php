@@ -23,6 +23,9 @@ class AnimalCategoriesTable extends Doctrine_Table
     		->select('c.*')
     		->from('AnimalCategories c');
     	$rta = $q->execute();
-    	return $rta->toArray();
+        if($rta)
+    	   return $rta->toArray();
+        else
+            return false;
     }
 }

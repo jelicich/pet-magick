@@ -22,7 +22,7 @@
 											<div class="content-description bg-txt">
 												<h3><?php echo $list[$i]['TITLE']?></h3>
 												<p><?php echo $list[$i]['CONTENT'] //hacerle un substr?></p>
-												<a href=<?php echo '"#'.$list[$i]['ID_VET_TALK'].'"'?> class="btn btn-danger delete-org">Delete</a>
+												<a href=<?php echo '"#'.$list[$i]['ID_VET_TALK'].'"'?> class="btn btn-danger delete-vet-talk">Delete</a>
 											</div>
 										</li>
 								<?php

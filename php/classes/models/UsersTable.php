@@ -43,7 +43,8 @@ class UsersTable extends Doctrine_Table
 	            	$Users->CITY_ID = null;
 	            $Users->TOKEN = $ref['token'];
 	            $Users->save();
-	           
+	           	
+	           	
 	            return $Users->toArray();
 	   }
 

@@ -17,14 +17,22 @@
 						}
 
 
-						if($sessionRank == 1)
+						if($sessionRank == 1 || $sessionRank == 2)
 						{
 						?>
 							<li><a href="#vet-talk" data-toggle="tab">Vet Talk Articles</a></li>
 							<li><a href="#vtquestions" data-toggle="tab">Vet Talk Questions</a></li>
 						<?php
 						}
+
+						if($sessionRank == 2)
+						{
 						?>
+							<li><a href="#blog" data-toggle="tab">Blog Posts</a></li>
+						<?php
+						}
+						?>
+
 						</ul><!-- end navtabs -->
 
 
@@ -67,7 +75,7 @@
 
 
 						<?php
-						if($sessionRank == 1)
+						if($sessionRank == 1 || $sessionRank == 2)
 						{
 						?>
 							
@@ -134,6 +142,20 @@
 									?>
 
 								</ul>
+							</div>
+						<?php
+						}
+
+						if($sessionRank == 2)
+						{
+						?>
+							<!-- VET ARTICLES HERE -->
+							<div class="tab-pane" id="blog">
+								<?php
+									include_once 'php/classes/BOBlogs.php';
+									$bl = new BOBlogs;
+									include_once 'templates/adminBlog.php';
+								?>
 							</div>
 						<?php
 						}

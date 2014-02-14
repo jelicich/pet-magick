@@ -8,12 +8,14 @@ class BOBlogs{
     var $table;
     var $err;
 
-    function __construct(){
+    function __construct()
+    {
 
         $this->table = Doctrine_Core::getTable('Blogs');
     }// end __construct
 
-    function insertBlogs($ref){
+    function insertBlogs($ref)
+    {
 
         try{ 
             
@@ -27,7 +29,8 @@ class BOBlogs{
         }
     }// end insertOrganizations
 
-    function getLastBlog(){
+    function getLastBlog()
+    {
 
 
        $array = $this->table->getLastBlog();
@@ -35,7 +38,8 @@ class BOBlogs{
     }//End getAllArticles
     
 
-    function getAllBlogs(){
+    function getAllBlogs()
+    {
        
          $q = Doctrine_Query::create()
 
@@ -49,7 +53,8 @@ class BOBlogs{
           return $r->toArray();
     }// end getAllOrganizations
 
-    function getBlogsById($id){ 
+    function getBlogsById($id)
+    { 
 
          $q = Doctrine_Query::create()
 
@@ -72,12 +77,14 @@ class BOBlogs{
            }
     }// end getOrganizationsByUser
 
-    function getErrors(){
+    function getErrors()
+    {
 
         return  $this->err;
     }// end getErrors
 
-    function deleteBlog($id){
+    function deleteBlog($id)
+    {
       try
       {
         $this->table->deleteBlog($id);
@@ -92,77 +99,25 @@ class BOBlogs{
 
 
 
- /*     function getOrganizationsByUser($id){ 
-
-         $q = Doctrine_Query::create()
-
-            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
-            ->from('Organizations o')
-            ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
-            ->where('o.USER_ID = ?', $id);
-        
-            $p = $q->execute();    
-       
-           if(sizeof($p) > 0){
-               
-                return $p->toArray();
-
-           }else{
-
-                return false;
-           }
-    }// end getOrganizationsByUser
-
-  function getOrganizationsRamdom(){ // revisar esta funcion pq no me queda claro q carajo me trae, aunque anda
-          
-        $userCount = Doctrine::getTable('Organizations')->count();
-        $user = Doctrine::getTable('Organizations')
-        ->createQuery()
-        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
-        ->from('Organizations o')
-        ->leftJoin('o.Pics ph') 
-        ->limit(1)
-        ->offset(rand(0, $userCount - 1))
-        ->fetchOne();
-
-       return $user->toArray();
-    }// end getOrganizationsRamdom
-
-    function getOrgListByUser($id)
+    function getArchive($id)
     {
-      $q = Doctrine_Query::create()
-        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC')
-        ->from('Organizations o')
-        ->leftJoin('o.Pics ph')
-        ->where('o.USER_ID = ?', $id);
-      $ob = $q->execute();
-      $ar = $ob->toArray();
-      if(sizeof($ar) > 0)
-      {
-               
-          for($i=0; $i < sizeof($ar); $i++)
-          {
-            if(isset($ar[$i]['Pics']['PIC']))
-            {
-                $pic = $ar[$i]['Pics']['PIC'];
-                $ar[$i]['Pics']['PIC'] = 'img/organizations/'.$pic;
-                $ar[$i]['Pics']['THUMB'] = 'img/organizations/thumb/'.$pic;
-            }
-            else
-            {
-                $ar[$i]['Pics']['PIC'] = 'img/organizations/default.jpg';
-                $ar[$i]['Pics']['THUMB'] = 'img/organizations/thumb/default.jpg';
-            }   
-          }
-          return $ar;
-       }
-       else
-       {
+      
+      
+        
 
-            return false;
-       }
+      $q = Doctrine_Query::create()
+
+          ->select("b.ID_BLOG, DATE_FORMAT(b.DATE, '%M') as MONTH, YEAR(b.DATE), DATE_FORMAT(b.DATE, '%Y-%m') as DATE") 
+          ->from('Blogs b')
+          ->orderBy('DATE ASC')
+          ->groupBy("MONTH(b.DATE)");
+      
+      $r = $q->execute();    
+      if($r)
+        return $r->toArray();
+      else
+        return false;
     }
-*/
     
 
 

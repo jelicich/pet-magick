@@ -34,7 +34,7 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 
-define('FTP_HOST', 'localhost');
+define('FTP_HOST', '127.0.0.1');
 define('FTP_USER', 'jelicich_e');
 define('FTP_PASS', 'xampp');
 

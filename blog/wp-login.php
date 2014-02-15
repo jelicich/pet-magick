@@ -1,4 +1,5 @@
 <?php
+header('Location: ../index.php');
 /**
  * WordPress User Page
  *

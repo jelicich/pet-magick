@@ -42,14 +42,7 @@
 						<li class="btn btn-small btn-danger"><a href="pet-loss.php">Pet Loss</a></li>
 						<li class="btn btn-small btn-danger"><a href="vetTalkTest.php">Forum</a></li>
 						<li class="btn btn-small btn-danger"><a href="blog.php">Blog</a></li>
-						<li class="btn btn-small btn-danger">
-							<a href="#" class="btn dropdown-toggle btn-small btn-danger" id="dd" data-toggle="dropdown">Groups <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Perro</a></li>
-								<li><a href="#">Gato con botas</a></li>
-								<li><a href="#">Lazarillo</a></li>
-							</ul>
-						</li>
+						
 				</ul>
 				<div class="grid_2" id='searchF'>
 					<input type="text" placeholder="Find pet lovers" id='finder' autocomplete="off"/>

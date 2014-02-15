@@ -178,6 +178,9 @@ function login(){
 	}
 }//end login
 
+
+
+
 //=============================================================================== REGISTRATION FUNCTIONS
 
 function reg(){
@@ -1368,7 +1371,7 @@ function imgVideoUploader(whatFor, modulo){
 						var uploadBtn = byid('save-blog');
 			  			var cancelBtn = byid('cancel-blog');
 			  		}
-			  		else if(modulo == 'admin')
+			  		else if(modulo == 'admin')/* NUEVO PARA ADMIN ================ */ 
 			  		{
 						var uploadBtn = byid('save-admin');
 			  			var cancelBtn = byid('cancel-admin');
@@ -1427,7 +1430,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				  			var cont = byid('blog');
 				  		}
-				  		else if(modulo == 'admnin'){
+				  		else if(modulo == 'admin'){/* NUEVO PARA ADMIN ================ */ 
 
 				  			var cont = byid('admin');
 				  		}
@@ -1500,7 +1503,7 @@ function imgVideoUploader(whatFor, modulo){
 						var file = 'ajax/getBlogDefault.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?p=';
 			  		}
-			  		else if(modulo == 'admin')
+			  		else if(modulo == 'admin') /* NUEVO PARA ADMIN ================ */ 
 			  		{
 						var file = 'ajax/getAdminDefault.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?p=';
@@ -1578,7 +1581,7 @@ function imgVideoUploader(whatFor, modulo){
 				                    	  if (amount != 'profile'){
 
 				                    	  		if(modulo != 'admin'){
-				                    	  			
+
 					                    	  		var contCap = create('div');
 							        	    		contCap.id = 'contCap';
 							        	    		byid('form-id').appendChild(contCap);
@@ -1593,7 +1596,7 @@ function imgVideoUploader(whatFor, modulo){
 											    	byid('contCap').appendChild(title);
 										    	}
 
-										    	if(modulo != 'admin'){
+										    	if(modulo != 'admin'){/* NUEVO PARA ADMIN ================ */ 
 
 							                    	caption = create('input');
 													caption.type = 'text';
@@ -1626,10 +1629,17 @@ function imgVideoUploader(whatFor, modulo){
 							                 filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
 
 							                  if (amount != 'album'){
-				  	  		
+				  	  						
 										  	  		file_id.id = 'file_id';
 													file_id.name = 'file';
-													byid('form-id').appendChild(file_id);;
+													byid('form-id').appendChild(file_id);
+										  	  }
+										  	  if ( modulo == 'admin'){/* NUEVO PARA ADMIN ================ */ 
+				  	  							
+				  	  								filesSelectedPosition--;
+										  	  		file_id.id = 'file_id';
+													file_id.name = 'file';
+													byid('form-id').appendChild(file_id);
 										  	  }
 						                }
 					            }// end onload
@@ -1639,6 +1649,12 @@ function imgVideoUploader(whatFor, modulo){
 			      	  filesSelectedPosition++;
 				  	  filesSelected[filesSelectedPosition] = file_id.files[0];
 				  	  file_id.value = '';
+
+				  	  if(filesSelectedPosition >= 2 && modulo == 'admin'  && noRemoveInput  != true){/* NUEVO PARA ADMIN ================ */ 
+
+				  	  	file_id.parentNode.removeChild(file_id);
+
+				  	  }
 
 				  	  if (filesSelectedPosition >= 1 && amount != 'album' && noRemoveInput  != true){
 				  	  		
@@ -1811,9 +1827,10 @@ function imgVideoUploader(whatFor, modulo){
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
 
-						  	if (amount != 'profile'){
-
-						  		byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
+						  	if (amount != 'profile'){ 
+						  		if( modulo != 'admin'){/* NUEVO PARA ADMIN */
+						  			byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
+						  		}
 						  	}
 					  		if (amount == 'profile' || amount == 'video'){
 

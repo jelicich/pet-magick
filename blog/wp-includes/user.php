@@ -23,6 +23,8 @@
  * @return object Either WP_Error on failure, or WP_User on success.
  */
 function wp_signon( $credentials = '', $secure_cookie = '' ) {
+	
+
 	if ( empty($credentials) ) {
 		if ( ! empty($_POST['log']) )
 			$credentials['user_login'] = $_POST['log'];
@@ -36,6 +38,16 @@ function wp_signon( $credentials = '', $secure_cookie = '' ) {
 		$credentials['remember'] = true;
 	else
 		$credentials['remember'] = false;
+
+	//login with email
+	
+	$user = get_user_by('email', $credentials['user_login']);
+	if(!empty($user->user_login))
+		$username = $user->user_login;
+	$credentials['user_login'] = $username;
+	
+	//end email login
+
 
 	// TODO do we deprecate the wp_authentication action?
 	do_action_ref_array('wp_authenticate', array(&$credentials['user_login'], &$credentials['user_password']));

@@ -22,7 +22,7 @@
  * @var array
  */
 
-$menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-first menu-icon-dashboard', 'menu-dashboard', 'none' );
+//$menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-first menu-icon-dashboard', 'menu-dashboard', 'none' );
 
 $submenu[ 'index.php' ][0] = array( __('Home'), 'read', 'index.php' );
 
@@ -77,10 +77,10 @@ $menu[15] = array( __('Links'), 'manage_links', 'link-manager.php', '', 'menu-to
 	/* translators: add new links */
 	$submenu['link-manager.php'][10] = array( _x('Add New', 'link'), 'manage_links', 'link-add.php' );
 	$submenu['link-manager.php'][15] = array( __('Link Categories'), 'manage_categories', 'edit-tags.php?taxonomy=link_category' );
-
+/*
 $menu[20] = array( __('Pages'), 'edit_pages', 'edit.php?post_type=page', '', 'menu-top menu-icon-page', 'menu-pages', 'none' );
 	$submenu['edit.php?post_type=page'][5] = array( __('All Pages'), 'edit_pages', 'edit.php?post_type=page' );
-	/* translators: add new page */
+	// translators: add new page 
 	$submenu['edit.php?post_type=page'][10] = array( _x('Add New', 'page'), get_post_type_object( 'page' )->cap->create_posts, 'post-new.php?post_type=page' );
 	$i = 15;
 	foreach ( get_taxonomies( array(), 'objects' ) as $tax ) {
@@ -90,7 +90,7 @@ $menu[20] = array( __('Pages'), 'edit_pages', 'edit.php?post_type=page', '', 'me
 		$submenu['edit.php?post_type=page'][$i++] = array( esc_attr( $tax->labels->menu_name ), $tax->cap->manage_terms, 'edit-tags.php?taxonomy=' . $tax->name . '&amp;post_type=page' );
 	}
 	unset($tax);
-
+*/
 $awaiting_mod = wp_count_comments();
 $awaiting_mod = $awaiting_mod->moderated;
 $menu[25] = array( sprintf( __('Comments %s'), "<span class='awaiting-mod count-$awaiting_mod'><span class='pending-count'>" . number_format_i18n($awaiting_mod) . "</span></span>" ), 'edit_posts', 'edit-comments.php', '', 'menu-top menu-icon-comments', 'menu-comments', 'none' );
@@ -142,6 +142,7 @@ unset($ptype, $ptype_obj, $ptype_class, $ptype_for_id, $ptype_menu_position, $me
 
 $menu[59] = array( '', 'read', 'separator2', '', 'wp-menu-separator' );
 
+/*
 $appearance_cap = current_user_can( 'switch_themes') ? 'switch_themes' : 'edit_theme_options';
 
 $menu[60] = array( __('Appearance'), $appearance_cap, 'themes.php', '', 'menu-top menu-icon-appearance', 'menu-appearance', 'div' );
@@ -151,7 +152,11 @@ $menu[60] = array( __('Appearance'), $appearance_cap, 'themes.php', '', 'menu-to
 		$submenu['themes.php'][10] = array(__( 'Menus' ), 'edit_theme_options', 'nav-menus.php');
 
 unset( $appearance_cap );
+*/
 
+
+//FROM HERE
+/*
 // Add 'Editor' to the bottom of the Appearance menu.
 if ( ! is_multisite() )
 	add_action('admin_menu', '_add_themes_utility_last', 101);
@@ -172,7 +177,7 @@ $menu[65] = array( sprintf( __('Plugins %s'), $count ), 'activate_plugins', 'plu
 $submenu['plugins.php'][5]  = array( __('Installed Plugins'), 'activate_plugins', 'plugins.php' );
 
 	if ( ! is_multisite() ) {
-		/* translators: add new plugin */
+		//translators: add new plugin 
 		$submenu['plugins.php'][10] = array( _x('Add New', 'plugin'), 'install_plugins', 'plugin-install.php' );
 		$submenu['plugins.php'][15] = array( _x('Editor', 'plugin editor'), 'edit_plugins', 'plugin-editor.php' );
 	}
@@ -244,5 +249,7 @@ $compat = array(
 	'options-general' => 'settings',
 	'themes' => 'appearance',
 	);
+*/
+//TO HERE
 
 require_once(ABSPATH . 'wp-admin/includes/menu.php');

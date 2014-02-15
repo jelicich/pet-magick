@@ -11,7 +11,7 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 
 /** Load WordPress dashboard API */
 require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
-
+/*
 wp_dashboard_setup();
 
 wp_enqueue_script( 'dashboard' );
@@ -88,14 +88,15 @@ $screen->set_help_sidebar(
 	'<p>' . __( '<a href="http://codex.wordpress.org/Dashboard_Screen" target="_blank">Documentation on Dashboard</a>' ) . '</p>' .
 	'<p>' . __( '<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
 );
-
+*/
 include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
-	<h2><?php echo esc_html( $title ); ?></h2>
-
-<?php if ( has_action( 'welcome_panel' ) && current_user_can( 'edit_theme_options' ) ) :
+	<!--<h2><?php echo esc_html( $title ); ?></h2>-->
+	<h2>Pet Magick Blog Administrator</h2>
+	<p>You can post new articles, edit old ones, and manage the comments</p>
+<?php /*if ( has_action( 'welcome_panel' ) && current_user_can( 'edit_theme_options' ) ) :
 	$classes = 'welcome-panel';
 
 	$option = get_user_meta( get_current_user_id(), 'show_welcome_panel', true );
@@ -115,15 +116,16 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 		 * <code>remove_action( 'welcome_panel', 'wp_welcome_panel' );</code>
 		 *
 		 * @since 3.5.0
-		 */
+		 * /
 		do_action( 'welcome_panel' );
 		?>
 	</div>
-<?php endif; ?>
+<?php endif;*/ ?>
 
 	<div id="dashboard-widgets-wrap">
-	<?php wp_dashboard(); ?>
+	<?php //wp_dashboard(); ?>
 	</div><!-- dashboard-widgets-wrap -->
+
 
 </div><!-- wrap -->
 

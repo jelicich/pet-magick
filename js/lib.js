@@ -1367,6 +1367,11 @@ function imgVideoUploader(whatFor, modulo){
 			  		{
 						var uploadBtn = byid('save-blog');
 			  			var cancelBtn = byid('cancel-blog');
+			  		}
+			  		else if(modulo == 'admin')
+			  		{
+						var uploadBtn = byid('save-admin');
+			  			var cancelBtn = byid('cancel-admin');
 			  		}	
 				  
 				  //file_id.parentNode.appendChild(uploadBtn);
@@ -1421,6 +1426,10 @@ function imgVideoUploader(whatFor, modulo){
 				  		}else if(modulo == 'blog'){
 
 				  			var cont = byid('blog');
+				  		}
+				  		else if(modulo == 'admnin'){
+
+				  			var cont = byid('admin');
 				  		}
 
 				  		cont.innerHTML = this.responseText;
@@ -1489,6 +1498,11 @@ function imgVideoUploader(whatFor, modulo){
 			  		else if(modulo == 'blog')
 			  		{
 						var file = 'ajax/getBlogDefault.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
+						var vars = '?p=';
+			  		}
+			  		else if(modulo == 'admin')
+			  		{
+						var file = 'ajax/getAdminDefault.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?p=';
 			  		}
 
@@ -1563,9 +1577,12 @@ function imgVideoUploader(whatFor, modulo){
 				                    	 
 				                    	  if (amount != 'profile'){
 
+				                    	  		if(modulo != 'admin'){
+				                    	  			
 					                    	  		var contCap = create('div');
 							        	    		contCap.id = 'contCap';
 							        	    		byid('form-id').appendChild(contCap);
+							        	    	}
 
 							        	    	if(amount == 'video'){
 
@@ -1576,6 +1593,7 @@ function imgVideoUploader(whatFor, modulo){
 											    	byid('contCap').appendChild(title);
 										    	}
 
+										    	if(modulo != 'admin'){
 
 							                    	caption = create('input');
 													caption.type = 'text';
@@ -1583,6 +1601,7 @@ function imgVideoUploader(whatFor, modulo){
 											    	caption.name = 'caption';
 											    	caption.className = 'form-element';
 											    	byid('contCap').appendChild(caption);
+											    }
 										   }
 
 									    removeErr();
@@ -1596,10 +1615,11 @@ function imgVideoUploader(whatFor, modulo){
 						                    var ImgPosition = this.id.slice(4); 
 						                  	
 						                  	if (amount != 'profile'){
+							                    if(modulo != 'admin'){
 							                    
-							                    var captionPosition = this.id.slice(4);
+							                    	var captionPosition = this.id.slice(4);
 							                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
-							                    	
+							                    }
 							                 }
 
 							                 this.parentNode.removeChild(this);
@@ -1773,6 +1793,15 @@ function imgVideoUploader(whatFor, modulo){
 					  		}else if(modulo == 'blog'){
 
 					  			var ajaxPostFile = 'ajax/uploadBlog.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("u", p);
+
+					  		}else if(modulo == 'admin'){
+
+					  			var ajaxPostFile = 'ajax/uploadAdmin.php';
 					  			var p = this.href;
 								var index = p.indexOf('#');
 						  		index ++;

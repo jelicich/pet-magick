@@ -7,6 +7,9 @@
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
+CREATE DATABASE pet_magick;
+USE pet_magick;
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
@@ -18,6 +21,25 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `pet_magick`
 --
+
+
+
+CREATE TABLE IF NOT EXISTS `popups` (
+  `ID_POPUPS` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `CONTENT` varchar(500) NOT NULL,
+  `SECTION` varchar(45) NOT NULL,
+   PRIMARY KEY (`ID_POPUPS`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO `popups` (`SECTION`) VALUES
+('profiles'),
+('antics'),
+('vet'),
+('projects'),
+('organizations'),
+('petloss'),
+('forum'),
+('blog');
 
 -- --------------------------------------------------------
 

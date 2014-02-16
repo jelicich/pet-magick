@@ -93,6 +93,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+	
 	<!--<h2><?php echo esc_html( $title ); ?></h2>-->
 	<h2>Pet Magick Blog Administrator</h2>
 	<p>You can post new articles, edit old ones, and manage the comments</p>

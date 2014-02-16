@@ -11,6 +11,7 @@ function checklogin(){
 }//end checklogin()
 checklogin();
 $_SESSION['token'] = sha1(uniqid()); 
+ 
 	
 ?>
 

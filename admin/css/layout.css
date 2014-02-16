@@ -9,6 +9,16 @@ h1{
 }
 
 
+/*//////////////////////// WORDPRESS /////////////////
+#just_wp{
+	margin-bottom: 67px !important;
+}
+
+.wp-submenu {
+	margin-left: -1px !important;
+}
+/////////////////////////////////////////*/
+
 	#pop-upsModule, #log-form{
 		margin-top: 10%;
 	}

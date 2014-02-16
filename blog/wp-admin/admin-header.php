@@ -155,7 +155,26 @@ if ( is_network_admin() )
 
 $admin_body_class .= ' no-customize-support no-svg';
 
-?>
+?>		<!-- ========================================================================== -->
+		<script src="../../js/jquery.js"></script> 
+	 	<script type="text/javascript" src="../../admin/bootstrap/js/bootstrap.js"></script> 
+    <!--    <script type="text/javascript" src="../../admin//js/lib.js"></script>  -->
+
+		<link rel="stylesheet" href="../../admin/bootstrap/css/bootstrap.css" type="text/css" />
+		<link href="../../admin/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="../../admin/css/layout.css" type="text/css" />
+		<!-- ========================================================================== -->
+<style type="text/css">
+
+#just_wp{
+	margin-bottom: 67px !important;
+}
+
+.wp-submenu {
+	margin-left: -1px !important;
+}
+</style>
+
 </head>
 <?php
 /**
@@ -175,6 +194,8 @@ $admin_body_class .= ' no-customize-support no-svg';
 	document.body.className = document.body.className.replace('no-js','js');
 </script>
 
+
+
 <?php
 // Make sure the customize body classes are correct as early as possible.
 if ( current_user_can( 'edit_theme_options' ) )
@@ -182,6 +203,14 @@ if ( current_user_can( 'edit_theme_options' ) )
 ?>
 
 <div id="wpwrap">
+
+<!--///////////////////////////////////////// -->
+<?php
+	include_once("../../admin/templates/header.php");
+?>
+<!--///////////////////////////////////////// -->
+
+
 <a tabindex="1" href="#wpbody-content" class="screen-reader-shortcut"><?php _e('Skip to main content'); ?></a>
 <?php require(ABSPATH . 'wp-admin/menu-header.php'); ?>
 <div id="wpcontent">

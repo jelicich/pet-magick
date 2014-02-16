@@ -68,6 +68,7 @@ $_SESSION['token'] = sha1(uniqid());
 			    	<form action="php/texts.php" method="post" id="profile_id" >
 				    	<label><b><small>Enter a text about Profile section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<input type="hidden" value="profiles" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('profile_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
@@ -76,6 +77,7 @@ $_SESSION['token'] = sha1(uniqid());
 			    	<form action="php/texts.php" method="post"  id="antics_id">
 				      	<label><b><small>Enter a text about Animal antics section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<input type="hidden" value="antics" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('antics_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
@@ -84,6 +86,7 @@ $_SESSION['token'] = sha1(uniqid());
 			    	<form action="php/texts.php" method="post" id="vet_id">
 				      	<label><b><small>Enter a text about Vet talk section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<input type="hidden" value="vet" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('vet_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
@@ -92,6 +95,7 @@ $_SESSION['token'] = sha1(uniqid());
 			    	<form action="php/texts.php" method="post" id="projects_id">
 				      	<label><b><small>Enter a text about Projects section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<input type="hidden" value="projects" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('projects_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
@@ -100,6 +104,7 @@ $_SESSION['token'] = sha1(uniqid());
 			    	<form action="php/texts.php" method="post" id="organizations_id">
 				      	<label><b><small>Enter a text about Organiztions section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<input type="hidden" value="organizations" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('organizations_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
@@ -108,6 +113,7 @@ $_SESSION['token'] = sha1(uniqid());
 			    	<form action="php/texts.php" method="post" id="petloss_id" >
 				      	<label><b><small>Enter a text about Pet loss section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<input type="hidden" value="petloss" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('petloss_id').submit(); return false;" >Save</a>
 			    	 </form>
 			    </div>
@@ -116,6 +122,7 @@ $_SESSION['token'] = sha1(uniqid());
 			    	<form action="php/texts.php" method="post" id="forum_id" >
 				      	<label><b><small>Enter a text about Forum section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<input type="hidden" value="forum" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" class="save" onclick="document.getElementById('forum_id').submit(); return false;">Save</a>
 				     </form>
 			    </div>
@@ -124,6 +131,7 @@ $_SESSION['token'] = sha1(uniqid());
 				    <form action="php/texts.php" method="post" id="blog_id">
 				      	<label><b><small>Enter a text about Blog section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<input type="hidden" value="blog" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('blog_id').submit(); return false;" >Save</a>
 				    </form>
 			    </div>

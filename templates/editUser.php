@@ -44,8 +44,8 @@
 
 						<label for="usr-name">Name</label><input class="form-element" type="text" value=<?php echo '"'.$p->getName().'"' ?> name="name" id="usr-name"/>
 						<label for="usr-lastname">Lastname</label><input class="form-element" type="text" value=<?php echo '"'.$p->getLastname().'"' ?> name="lastname" id="usr-lastname"/>
-						<label for="usr-nickname">Nickname</label><input class="form-element" type="text" value=<?php echo '"'.$p->getNickname().'"' ?> name="nickname" id="usr-nickname"/>
-						<label for="usr-nickname">e-mail</label><input class="form-element" type="text" value=<?php echo '"'.$p->getEmail().'"' ?> name="email" id="usr-nickname"/>
+						<label for="usr-nickname">Nickname</label><input disabled="disabled" type="text" value=<?php echo '"'.$p->getNickname().'"' ?> name="nickname" id="usr-nickname"/>
+						<label for="usr-email">e-mail</label><input class="form-element" type="text" value=<?php echo '"'.$p->getEmail().'"' ?> name="email" id="usr-email"/>
 						
 						<?php
 							$loc = $p->getLocation();

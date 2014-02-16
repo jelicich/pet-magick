@@ -26,20 +26,19 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
     $_SESSION['thumb'] = $user->getThumb();
 	
     /* login blog */
-    if($datosU[0]['RANK'] == 2)
-	{
-		include_once '../blog/wp-load.php';
-				
-		$creds = array();
-		$creds['user_login'] = $_POST['email'];
-		$creds['user_password'] = $_POST['password'];
-		$creds['remember'] = false;
-		$user = wp_signon( $creds, false );
-		if ( is_wp_error($user) )
-			echo $user->get_error_message();			   
+    	
+	include_once '../blog/wp-load.php';
+			
+	$creds = array();
+	$creds['user_login'] = $_POST['email'];
+	$creds['user_password'] = $_POST['password'];
+	$creds['remember'] = false;
+	$user = wp_signon( $creds, false );
+	if ( is_wp_error($user) )
+		echo $user->get_error_message();			   
 
-	
-	}
+
+
     //end blog
 
 	//cargo el html con el menu del usuario

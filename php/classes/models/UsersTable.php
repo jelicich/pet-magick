@@ -189,7 +189,7 @@ class UsersTable extends Doctrine_Table
 		            ->update('Users u')
 		            ->set('u.NAME', '?', $array['name'] )
 		            ->set('u.LASTNAME', '?', $array['lastname'] )
-		            ->set('u.NICKNAME', '?', $array['nickname'] )
+		            //->set('u.NICKNAME', '?', $array['nickname'] )
 		            ->set('u.EMAIL', '?', $array['email'] )
 		            ->set('u.ABOUT', '?', $array['about'] );
 		            

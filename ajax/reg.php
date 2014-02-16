@@ -38,6 +38,21 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 	$_SESSION['nickname'] = $datosU[0]['NICKNAME'];
 	$_SESSION['email'] = $datosU[0]['EMAIL'];
 
+	
+	//reg wordpress
+	include_once '../blog/wp-load.php';
+
+	$user_name = $_POST['nickname'];
+	$user_email = $_POST['email'];
+	$user_password = $_POST['password'];
+
+	$user_id = username_exists( $user_name );
+	if ( !$user_id ) 
+	{
+		$user_id = wp_create_user( $user_name, $user_password, $user_email );
+	} 
+	
+
 	//cargo el html con el menu del usuario
 	include_once '../templates/userMenu.php';
 	//cacheo la info para las herramientas de busqueda

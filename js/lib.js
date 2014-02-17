@@ -114,8 +114,11 @@ if (!document.querySelector){
 	})();
 }
 
+
+
 function preventEventsDefault(){
-	event.preventDefault ? event.preventDefault() : event.returnValue = false;
+	//event.preventDefault ? event.preventDefault() : event.returnValue = false;
+	return false;
 }
 
 //=============================================================================== LOGIN FUNCTIONS

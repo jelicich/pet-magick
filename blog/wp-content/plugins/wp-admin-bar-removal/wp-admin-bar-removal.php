@@ -175,7 +175,7 @@ Indentation URI: http://www.gnu.org/prep/standards/standards.html
 <td align="left" valign="center" id="tbrcss_ttl">
 <?php
 
-	echo '<a href="' . home_url() . '">' . __( get_bloginfo() ) . '</a>';
+	echo '<a href="' . home_url() . '">Go to: ' . __( get_bloginfo() ) . '</a>';
 
 ?>
 </td>
@@ -183,15 +183,15 @@ Indentation URI: http://www.gnu.org/prep/standards/standards.html
 <div style="padding-top:2px">
 <?php
 
-	echo date_i18n( get_option( 'date_format' ) );
+	//echo date_i18n( get_option( 'date_format' ) );
 
 ?>
 
- @ 
+ <!-- @ -->
 
 <?php
 
-	echo date_i18n( get_option( 'time_format' ) );
+	//echo date_i18n( get_option( 'time_format' ) );
 
 ?>
 
@@ -199,27 +199,27 @@ Indentation URI: http://www.gnu.org/prep/standards/standards.html
 
 	wp_get_current_user();
 
-	$current_user = wp_get_current_user();
+	 $current_user = wp_get_current_user();
 
 	if ( !( $current_user instanceof WP_User ) )
 		return;
 
-	echo ' | ' . $current_user->display_name . '';
+	//echo ' | ' . $current_user->display_name . '';
 
 	if ( is_multisite() && is_super_admin() )
 		{
 			if ( !is_network_admin() )
 				{
-					echo ' | <a href="' . network_admin_url() . '">' . __( 'Network Admin' ) . '</a>';
+					//echo ' | <a href="' . network_admin_url() . '">' . __( 'Network Admin' ) . '</a>';
 				}
 			else
 				{
-					echo ' | <a href="' . get_DashBoard_url( get_current_user_id() ) . '">' . __( 'Site Admin' ) . '</a>';
+					//echo ' | <a href="' . get_DashBoard_url( get_current_user_id() ) . '">' . __( 'Site Admin' ) . '</a>';
 				}
 		}
 
 	//echo ' | <a href="' . wp_logout_url( home_url() ) . '">' . __( 'Log Out' ) . '</a>';
-	echo ' | <a href="../../ajax/logout.php">' . __( 'Log Out' ) . '</a>';
+	// echo ' | <a href="../../ajax/logout.php">' . __( 'Log Out' ) . '</a>';
 
 ?>
 </div>

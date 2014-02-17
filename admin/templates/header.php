@@ -12,6 +12,7 @@ if(!isset($active) || isset($active) && $active == 3 ) {
 	 $href_index = "../../admin/index.php?active=0";
 	 $href_pop ="../../admin/pop-ups.php?active=1";
 	 $href_ads = "../../admin/advertisement.php?active=2";
+	 $href_site = "../../index.php";
 	 $href_logout = "../../admin/php/logout.php";
 
 }else{ 
@@ -19,6 +20,7 @@ if(!isset($active) || isset($active) && $active == 3 ) {
 	 $href_index = "index.php?active=0";
 	 $href_pop = "pop-ups.php?active=1";
 	 $href_ads = "advertisement.php?active=2";
+	 $href_site = "../index.php";
 	 $href_logout = "php/logout.php";
 }
 
@@ -45,6 +47,7 @@ if(!isset($active) || isset($active) && $active == 3 ) {
 		        	<li class=<?php if(isset($active) && $active == 1) echo "active"; ?>><a href=<?php echo $href_pop; ?>>Pop-ups content</a></li>
 					<li class=<?php if(isset($active) && $active == 2)  echo "active"; ?>><a href=<?php echo $href_ads; ?> >Advertisement</a></li>
 					<li class=<?php if(isset($active) && $active == 3)  echo "active"; ?>><a href="../blog/wp-admin/index.php?active=3" >Blog</a></li>
+					<li><a href=<?php echo $href_site; ?> >Site</a></li>
 					<li><a href=<?php echo $href_logout; ?> id="logout" >Logout</a></li>
 				</ul>
 		      </div>

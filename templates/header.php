@@ -42,6 +42,7 @@
 						<li class="btn btn-small btn-danger"><a href="pet-loss.php">Pet Loss</a></li>
 						<li class="btn btn-small btn-danger"><a href="vetTalkTest.php">Forum</a></li>
 						<li class="btn btn-small btn-danger"><a href="blog">Blog</a></li>
+						<li class="btn btn-small btn-danger"><a href="admin/index.php?active=0">Admin</a></li>
 						
 				</ul>
 				<div class="grid_2" id='searchF'>

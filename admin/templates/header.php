@@ -1,5 +1,9 @@
 <?php
 	
+if($_GET == null){
+
+	header("Location: ../index.php");
+}
 
 $active = $_GET['active'];
 

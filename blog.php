@@ -6,7 +6,7 @@
 
 	include_once "php/classes/BOBlogs.php";
 	include_once "php/classes/BOPics.php";
-
+	
 	$blog = new BOBlogs;
 	$pics = new BOPics;
 ?>
@@ -36,6 +36,20 @@
 	<!-- site content -->
 
 	<div id="content" class="mod container_12" >
+
+	<div id='what' >
+		<a href="#"><p>How does Project board work ?</p></a>
+		<div class='active'>
+			<div id='pop-up' class='mod grid_4 '>
+
+				<p> 
+					<?php echo $pop->getPopUps("blog") ?>
+				</p>
+
+			</div>
+			<div class=' arrow-top'></div>
+		</div>
+	</div>
 
 	<div id='what' >
 		<a href="#"><p>Pet Magick Blog</p></a>

@@ -27,4 +27,18 @@ class PopupsTable extends Doctrine_Table
      }
 
 
+    public  function getPopUps($ref){
+
+          $q = Doctrine_Query::create()
+            ->select('p.CONTENT')
+            ->from('Popups p')
+            ->where('p.SECTION = ?', $ref);
+
+          $rta = $q->execute();
+          $rta->toArray();
+           return $rta[0]['CONTENT'];
+    }
+
+
+
 }

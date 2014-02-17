@@ -3,6 +3,9 @@
 	//session_destroy();
 	$_SESSION['token'] = sha1(uniqid()); 
 	//var_dump($_SESSION);
+
+	include_once "php/classes/BOPopups.php";
+	$pop = new BOPopups;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,7 +32,20 @@
 
 	<!-- site content -->
 	<div class="container_12" id="content">
-		
+	
+	<div id='what' >
+		<a href="#"><p>How does Project board work ?</p></a>
+		<div class='active'>
+			<div id='pop-up' class='mod grid_4 '>
+
+				<p> 
+					<?php echo $pop->getPopUps("profiles") ?>
+				</p>
+
+			</div>
+			<div class=' arrow-top'></div>
+		</div>
+	</div>
 		<!-- profiles module -->
 		<div id='profiles-mod' class='mod grid_12'>
 			<?php 

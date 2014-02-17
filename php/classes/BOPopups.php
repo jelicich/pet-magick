@@ -29,9 +29,19 @@ class BOPopups{
         	
     }
 
-    function getPopUps($id){
+    function getPopUps($ref){
 
-        return $this->lastAnswerId;
+        
+
+         try{ 
+           
+            return  $this->table->getPopUps($ref);
+        }
+        catch(Exception $e){
+
+              $this->err = $e->getMessage();
+              return false;
+        }
     }
 
     function getErrors(){

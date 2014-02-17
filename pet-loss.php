@@ -3,6 +3,9 @@
 	//session_destroy();
 	$_SESSION['token'] = sha1(uniqid()); 
 	//var_dump($_SESSION);
+
+	include_once "php/classes/BOPopups.php";
+	$pop = new BOPopups;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -36,17 +39,7 @@
 			<div id='pop-up' class='mod grid_4 '>
 
 				<p> 
-					Losing a pet can be a very traumatic experience for those who have formed a close bond with their good
-					friend and companion.
-					So we've added this Wall 
-					of Rememberance, a place 
-					where you can create a memorial to your special friend and let the rest of the world know of the special times you had together. 
-					You can add your favorite pet photo, and write a short tribute to your loyal mate.
-					There's also some space for other members to post
-					messages of support, so if 
-					you are struggling with greif, others can help you 
-					through the pain and let
-					the healing process begin.
+					<?php echo $pop->getPopUps("petloss") ?>
 				</p>
 
 			</div>

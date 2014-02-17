@@ -9,6 +9,9 @@
 
 	//$projects = new BOProjects;
 	//$pics = new BOPics;
+
+	include_once "php/classes/BOPopups.php";
+	$pop = new BOPopups;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -43,7 +46,7 @@
 			<div id='pop-up' class='mod grid_4 '>
 
 				<p> 
-					It's time to make your pet a star. Show the rest of the world those moments your pet has done those "amazing...zany...pull your hair out" things that only pets can do and you've managed to capture on video. 
+					<?php echo $pop->getPopUps("projects") ?>
 				</p>
 
 			</div>

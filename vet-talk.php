@@ -7,7 +7,8 @@
 	include_once "php/classes/BOVettalk.php";
 	include_once "php/classes/BOPics.php";
 	include_once "php/classes/BOQuestions.php";
-
+	include_once "php/classes/BOPopups.php";
+	$pop = new BOPopups;
 	$vetTalk = new BOVettalk;
 	$ques = new BOQuestions;
 	$pics = new BOPics;
@@ -39,7 +40,20 @@
 
 	<!-- site content -->
 	<div class="container_12" id="content">
-		
+	
+	<div id='what' >
+		<a href="#"><p>How does Project board work ?</p></a>
+		<div class='active'>
+			<div id='pop-up' class='mod grid_4 '>
+
+				<p> 
+					<?php echo $pop->getPopUps("vet") ?>
+				</p>
+
+			</div>
+			<div class=' arrow-top'></div>
+		</div>
+	</div>
 		<!-- vet talk module -->
 
 		<div class="mod grid_9 vet-talk-mod" id='mainArticle'>

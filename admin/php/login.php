@@ -25,6 +25,7 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
 	$user->getUserData($_SESSION['id']);
     $_SESSION['thumb'] = $user->getThumb();
 	//cargo el html con el menu del usuario
+	$_GET['active'] = 0; // este get es para poder manejar los links entre wp y el resto del admin
 	include_once '../home.php';
 
 

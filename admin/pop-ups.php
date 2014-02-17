@@ -10,6 +10,9 @@ function checklogin(){
 }//end checklogin()
 
 checklogin();
+include_once "../php/classes/BOPopups.php";
+$pop = new BOPopups;
+
 
 $_SESSION['token'] = sha1(uniqid()); 
 ?>
@@ -52,85 +55,85 @@ $_SESSION['token'] = sha1(uniqid());
 	<div class="well span7  " id="pop-upsModule">
 		<div class="tabbable"> 
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-			    <li><a href="#antics" data-toggle="tab" >Animal antics</a></li>
-			    <li><a href="#vet" data-toggle="tab">Vet talk</a></li>
-			    <li><a href="#projects" data-toggle="tab">Projects</a></li>
-			    <li><a href="#organiztions" data-toggle="tab">Organiztions</a></li>
-			    <li><a href="#petloss" data-toggle="tab">Pet loss</a></li>
-			    <li><a href="#forum" data-toggle="tab">Forum</a></li>
-			    <li><a href="#blog" data-toggle="tab">Blog</a></li>
+				<li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'profile' || !isset($_GET['tab'])) echo "active"; ?>><a href="#profile" data-toggle="tab">Profile</a></li>
+			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'antics') echo "active"; ?>><a href="#antics" data-toggle="tab" >Animal antics</a></li>
+			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'vet') echo "active"; ?>><a href="#vet" data-toggle="tab">Vet talk</a></li>
+			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'projects') echo "active"; ?>><a href="#projects" data-toggle="tab">Projects</a></li>
+			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'organizations') echo "active"; ?>><a href="#organizations" data-toggle="tab">Organizations</a></li>
+			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'petloss') echo "active"; ?>><a href="#petloss" data-toggle="tab">Pet loss</a></li>
+			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'forum') echo "active"; ?>><a href="#forum" data-toggle="tab">Forum</a></li>
+			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'blog') echo "active"; ?>><a href="#blog" data-toggle="tab">Blog</a></li>
 			</ul>
 		 	
 		 	<div class="tab-content">
 			  
-			    <div class="tab-pane active" id="profile">
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'profile' || !isset($_GET['tab'])) echo "active"; ?>" id="profile">
 			    	<form action="php/texts.php" method="post" id="profile_id" >
 				    	<label><b><small>Enter a text about Profile section</small></b></label>
-				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("profiles") ?></textarea><br>
 				    	<input type="hidden" value="profiles" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('profile_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
 
-			    <div class="tab-pane" id="antics">
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'antics') echo "active"; ?>" id="antics">
 			    	<form action="php/texts.php" method="post"  id="antics_id">
 				      	<label><b><small>Enter a text about Animal antics section</small></b></label>
-				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("antics") ?></textarea><br>
 				    	<input type="hidden" value="antics" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('antics_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
 
-			    <div class="tab-pane" id="vet">
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'vet') echo "active"; ?>" id="vet">
 			    	<form action="php/texts.php" method="post" id="vet_id">
 				      	<label><b><small>Enter a text about Vet talk section</small></b></label>
-				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("vet") ?></textarea><br>
 				    	<input type="hidden" value="vet" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('vet_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
 
-			    <div class="tab-pane" id="projects">
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'projects') echo "active"; ?>" id="projects">
 			    	<form action="php/texts.php" method="post" id="projects_id">
 				      	<label><b><small>Enter a text about Projects section</small></b></label>
-				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("projects") ?></textarea><br>
 				    	<input type="hidden" value="projects" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('projects_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
 
-			    <div class="tab-pane" id="organizations">
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'organizations') echo "active"; ?>" id="organizations">
 			    	<form action="php/texts.php" method="post" id="organizations_id">
-				      	<label><b><small>Enter a text about Organiztions section</small></b></label>
-				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				      	<label><b><small>Enter a text about Projects section</small></b></label>
+				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("organizations") ?></textarea><br>
 				    	<input type="hidden" value="organizations" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('organizations_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
 
-			    <div class="tab-pane" id="petloss">
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'petloss') echo "active"; ?>" id="petloss">
 			    	<form action="php/texts.php" method="post" id="petloss_id" >
 				      	<label><b><small>Enter a text about Pet loss section</small></b></label>
-				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("petloss") ?></textarea><br>
 				    	<input type="hidden" value="petloss" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('petloss_id').submit(); return false;" >Save</a>
 			    	 </form>
 			    </div>
 
-			    <div class="tab-pane" id="forum">
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'forum') echo "active"; ?>" id="forum">
 			    	<form action="php/texts.php" method="post" id="forum_id" >
 				      	<label><b><small>Enter a text about Forum section</small></b></label>
-				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("forum") ?></textarea><br>
 				    	<input type="hidden" value="forum" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" class="save" onclick="document.getElementById('forum_id').submit(); return false;">Save</a>
 				     </form>
 			    </div>
 
-			    <div class="tab-pane" id="blog">
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'blog') echo "active"; ?>" id="blog">
 				    <form action="php/texts.php" method="post" id="blog_id">
 				      	<label><b><small>Enter a text about Blog section</small></b></label>
-				    	<textarea cols='50' rows='10' class="texts" name="content"></textarea><br>
+				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("blog") ?></textarea><br>
 				    	<input type="hidden" value="blog" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('blog_id').submit(); return false;" >Save</a>
 				    </form>

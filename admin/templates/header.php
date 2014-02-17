@@ -1,13 +1,7 @@
 <?php
 	
 
-if(isset($_GET['active'])){
-
-	$active = $_GET['active'];
-
-}
-
-
+$active = $_GET['active'];
 
 if(!isset($active) || isset($active) && $active == 3 ) {
 	
@@ -23,6 +17,8 @@ if(!isset($active) || isset($active) && $active == 3 ) {
 	 $href_ads = "advertisement.php?active=2";
 	 $href_logout = "php/logout.php";
 }
+
+
 ?>
 <!-- id=just_wp esta solo para acomodar el header en el worpress 
 	 y los archivos de WP q toque fueron: wp_admin/index.php y wp_admin/admin-header.php

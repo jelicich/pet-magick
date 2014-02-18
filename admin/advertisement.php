@@ -1,15 +1,8 @@
 <?php 
 session_start();
+include 'php/functions.php';
+chkadmin();
 
-function checklogin(){
-
-  if(!isset($_SESSION['id'])){
-    
-    header('Location: index.php');
-
-  }//end if
-}//end checklogin()
-checklogin();
 $_SESSION['token'] = sha1(uniqid()); 
  
 	

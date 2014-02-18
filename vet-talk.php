@@ -65,10 +65,6 @@
 
 		<!-- ads -->
 		<div class="grid_3 asd" >
-			<?php 
-				require('admin/ledads/ad_class.php');
-				echo $pla_class->adcode( );
-			?>
 		</div>
 
 		<div class="grid_3 asd" >

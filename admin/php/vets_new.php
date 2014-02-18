@@ -2,25 +2,25 @@
 
 session_start();
 
-include_once('../php/classes/BOUsers.php');
+include_once('../../php/classes/BOUsers.php');
 
 $user = new BOUsers;
 //var_dump($_POST);
 $dato = array(
-	'name' => $_POST['name'],
-	'lastname' => $_POST['lastname'],
+	'name' => "default",
+	'lastname' => "default",
 	'nickname' => $_POST['nickname'],
 
 	'email' => $_POST['email'],
 	'password' => $_POST['password'],
 	'password2' => $_POST['password2'],
 
-	'country' => $_POST['country'],
-	'region' => $_POST['region'],
+	'country' => "default",
+	'region' =>"default",
 	
-	'city' => $_POST['city'],
-	'rank' => 0,
-	'token' => $_POST['token']
+	'city' => "default",
+	'rank' => 2,
+	'token' => "default"
 );
 
 
@@ -41,7 +41,7 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 
 	
 	//reg wordpress
-	include_once '../blog/wp-load.php';
+	include_once '../../blog/wp-load.php';
 
 	$user_name = $_POST['nickname'];
 	$user_email = $_POST['email'];
@@ -55,9 +55,10 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 	
 
 	//cargo el html con el menu del usuario
-	include_once '../templates/userMenu.php';
+	//include_once '../templates/userMenu.php';
 	//cacheo la info para las herramientas de busqueda
-	include_once 'autocompleteEverything.php';
+	include_once '../../ajax/autocompleteEverything.php';
+	//header("Location: ../vets.php?active=4&tab=new");
 
 }else{
 

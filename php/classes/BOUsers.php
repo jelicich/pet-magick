@@ -41,7 +41,7 @@ class BOUsers{
 
         }else{
 
-                //$rta_nickname = $this->table->val_nickname($ref[2]); // Ver si esto se puede optimizar (junto con las consultas en table: val_nickname, val_email)
+                $rta_nickname = $this->table->val_nickname($ref['nickname']); // Ver si esto se puede optimizar (junto con las consultas en table: val_nickname, val_email)
                 $rta_email = $this->table->val_email($ref['email']);
 
                 
@@ -51,10 +51,10 @@ class BOUsers{
                     break;
 
                     //LO COMENTO PORQUE EL NICKNAME NO ERA UNIQUE
-                /*}else if($rta_nickname == false){ 
+              }else if($rta_nickname == false){ 
 
-                     throw new Exception('usuario existente');
-                     break;*/
+                     throw new Exception('Existing user');
+                     break;
 
                 }else if(preg_match("/^[a-zA-Z]\w+(\.\w+)*\@\w+(\.[0-9a-zA-Z]+)*\.[a-zA-Z]{2,4}$/", $ref['email']) === 0){
 
@@ -178,10 +178,11 @@ class BOUsers{
 
       $q = doctrine_query:: create()
           ->delete('Users u')
-          ->where('u.EMAIL = ?', $ref);
+          ->where('u.ID_USER = ?', $ref);
+          //->where('u.EMAIL = ?', $ref);
       $q->execute();
 
-      echo 'Borrado! (Borrar este echo del codigo)';
+     // echo 'Borrado! (Borrar este echo del codigo)';
 
     }// End delete
 
@@ -378,6 +379,28 @@ class BOUsers{
     {
       return $this->hasPic;
     }
+
+    function getVets(){
+
+          $q = Doctrine_Query::create()
+          ->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, u.EMAIL')
+          ->from('Users u') 
+          ->AndWhere('u.RANK = ?', 2);
+
+        $user = $q->execute();
+        return $user->toArray();
+    }
+
+    function becomeVet($ref) {
+
+      $q = Doctrine_Query::create()
+                ->update('Users u')
+                ->set('u.RANK', '?', $ref['rank'] )
+                ->where('u.EMAIL = ?', $ref['email']);
+        $rta = $q->execute();
+        return $rta; 
+    }
+
 
  //==== Own profile
     function isOwn()

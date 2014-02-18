@@ -1,11 +1,14 @@
 <?php
 
-session_start();
+function checklogin(){
 
-include 'php/functions.php';
-chkadmin();
+      if(!isset($_SESSION['id'])){
+        
+        header('Location: index.php');
 
-
+      }//end if
+}//end checklogin()
+checklogin();
 
 ?>
 

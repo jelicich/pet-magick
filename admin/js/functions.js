@@ -1,6 +1,8 @@
 
-function printUserMenu(){
 
+
+function  admin_printUserMenu(){
+//console.log(this.responseText);
 	var html = this.responseText;
  	try 
  	{
@@ -21,12 +23,14 @@ function printUserMenu(){
  	}
  	catch(e)
  	{
+ 		console.log(this.responseText);
 		var wrap = byid('here');
  		wrap.innerHTML = html;
+ 		refresh();
  	}	 
 }//end printUserMenu
 
-function login(){
+function admin_login(){
 
 	byid('login').onclick = function(){ 
 		//levanto los valores de los campos
@@ -37,7 +41,33 @@ function login(){
 		//variable q pasa todo por post
 		var vars = 'email='+email+'&password='+pass+'&token='+token;
 
-		source = 'log';
-		ajax('POST', 'php/login.php', printUserMenu, vars, true);
+		ajax('POST', 'php/login.php',  admin_printUserMenu, vars, true);
 	}
 }//end login
+
+
+
+function  admin_reg(){
+		
+	byid('reg').onclick = function() {
+		
+		//levanto los valores de los campos
+		//var name = byid('name').value;
+		//var lastname = byid('lastname').value;
+		var nickname = byid('nickname').value;
+		var email = byid('email').value;
+		var password = byid('password').value;
+		var password2 = byid('password2').value;
+		var rank = byid('rank').value; // Ver q valores mandamos por aca
+		//var country = byid('country').value;
+		//var region = byid('region').value;
+		//var city = byid('city').value;
+		//var token = byid('token').value;
+
+		//variable q pasa todo por post
+		var vars = 'nickname='+nickname +'&email='+email+'&password='+password+
+				   '&password2='+password2+'&rank='+rank ;
+
+		ajax('POST', 'php/vets_new.php',  admin_printUserMenu, vars, true);
+	}
+}//end reg

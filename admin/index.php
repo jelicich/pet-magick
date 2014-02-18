@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+	$_SESSION['token'] = sha1(uniqid()); 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -33,13 +34,13 @@
 <div class="container-fluid" id="here">
 
 	<?php 
-		if(!$_SESSION['rank'] || $_SESSION['rank'] != 2)
+		if(isset($_SESSION['token']) && isset($_SESSION['email']))
 		{
-			include_once 'templates/loginForm.php';
+			include_once 'home.php';
 		}
 		else
 		{
-			include_once 'home.php';
+			include_once 'templates/loginForm.php';
 		}
 	?>
 

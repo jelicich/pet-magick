@@ -28,7 +28,7 @@ class UsersTable extends Doctrine_Table
 	            $Users->NICKNAME = $ref['nickname'];
 	            $Users->EMAIL = $ref['email'];
 	            $Users->PASSWORD = $pass_sha1;
-	            $Users->RANK = 0; //todos los q se registran son 0, los q no son 0 los tiene q registrar el admin desde el backend
+	            $Users->RANK = $ref['rank']; //todos los q se registran son 0, los q no son 0 los tiene q registrar el admin desde el backend
 	            if(is_numeric($ref['country']))
 	            	$Users->COUNTRY_ID = $ref['country'];
 	            else
@@ -145,7 +145,7 @@ class UsersTable extends Doctrine_Table
     public function findByMailLog($mail)
     {
     	$q = Doctrine_Query::create()
-    		->select('u.ID_USER, u.NAME, u.LASTNAME, U.NICKNAME, u.EMAIL, p.THUMB')
+    		->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, u.EMAIL, p.THUMB')
 			->from('Users u') 
 			->innerJoin('u.Pics p')
 			->AndWhere('u.EMAIL = ?',$mail);

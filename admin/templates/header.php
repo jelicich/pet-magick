@@ -1,24 +1,29 @@
 <?php
-
-$path = $_SERVER['PHP_SELF'];
-$blog = strpos($path, 'wp-admin');
-if($blog === false) {
 	
+if($_GET == null){
+
+	header("Location: ../index.php");
+}
+
+$active = $_GET['active'];
+
+if(!isset($active) || isset($active) && $active == 3 ) {
 	
-	 $href_index = "index.php";
-	 $href_pop = "pop-ups.php";
-	 $href_ads = "advertisement.php";
-	 $href_site = "../index.php";
-	 $href_logout = "php/logout.php";
-
-}else{ 
-
-	 $href_index = "../../admin/index.php";
-	 $href_pop ="../../admin/pop-ups.php";
-	 $href_ads = "../../admin/advertisement.php";
+	 $href_index = "../../admin/index.php?active=0";
+	 $href_pop ="../../admin/pop-ups.php?active=1";
+	 $href_ads = "../../admin/advertisement.php?active=2";
+	 $href_vets = "../../vets.php?active=4";
 	 $href_site = "../../index.php";
 	 $href_logout = "../../admin/php/logout.php";
 
+}else{ 
+
+	 $href_index = "index.php?active=0";
+	 $href_pop = "pop-ups.php?active=1";
+	 $href_ads = "advertisement.php?active=2";
+	 $href_vets = "vets.php?active=4";
+	 $href_site = "../index.php";
+	 $href_logout = "php/logout.php";
 }
 
 
@@ -41,9 +46,11 @@ if($blog === false) {
 
 		      <div class="nav-collapse collapse">
 		        <ul class="nav" style="padding: 10px; ">
+
 		        	<li class=<?php if(isset($active) && $active == 1) echo "active"; ?>><a href=<?php echo $href_pop; ?>>Pop-ups content</a></li>
 					<li class=<?php if(isset($active) && $active == 2)  echo "active"; ?>><a href=<?php echo $href_ads; ?> >Advertisement</a></li>
 					<li class=<?php if(isset($active) && $active == 3)  echo "active"; ?>><a href="../blog/wp-admin/index.php?active=3" >Blog</a></li>
+					<li class=<?php if(isset($active) && $active == 4)  echo "active"; ?>><a href=<?php echo $href_vets; ?> >Vets</a></li>
 					<li><a href=<?php echo $href_site; ?> >Site</a></li>
 					<li><a href=<?php echo $href_logout; ?> id="logout" >Logout</a></li>
 				</ul>

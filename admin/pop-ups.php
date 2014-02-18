@@ -1,13 +1,18 @@
 <?php 
 session_start();
-include 'php/functions.php';
-chkadmin();
+function checklogin(){
 
+      if(!isset($_SESSION['id'])){
+        
+        header('Location: index.php');
+
+      }//end if
+}//end checklogin()
+
+checklogin();
 include_once "../php/classes/BOPopups.php";
 $pop = new BOPopups;
 
-
-$_SESSION['token'] = sha1(uniqid()); 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -48,7 +53,7 @@ $_SESSION['token'] = sha1(uniqid());
 	<div class="well span7  " id="pop-upsModule">
 		<div class="tabbable"> 
 			<ul class="nav nav-tabs">
-				<li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'profile' || !isset($_GET['tab'])) echo "active"; ?>><a href="#profile" data-toggle="tab">Profile</a></li>
+				<li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'profile' || !isset($_GET['tab'])) echo "active"; ?>><a href="#profiles" data-toggle="tab">Profiles</a></li>
 			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'antics') echo "active"; ?>><a href="#antics" data-toggle="tab" >Animal antics</a></li>
 			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'vet') echo "active"; ?>><a href="#vet" data-toggle="tab">Vet talk</a></li>
 			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'projects') echo "active"; ?>><a href="#projects" data-toggle="tab">Projects</a></li>
@@ -60,12 +65,12 @@ $_SESSION['token'] = sha1(uniqid());
 		 	
 		 	<div class="tab-content">
 			  
-			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'profile' || !isset($_GET['tab'])) echo "active"; ?>" id="profile">
-			    	<form action="php/texts.php" method="post" id="profile_id" >
-				    	<label><b><small>Enter a text about Profile section</small></b></label>
+			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'profiles' || !isset($_GET['tab'])) echo "active"; ?>" id="profiles">
+			    	<form action="php/texts.php" method="post" id="profiles_id" >
+				    	<label><b><small>Enter a text about Profiles section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("profiles") ?></textarea><br>
 				    	<input type="hidden" value="profiles" name="section" />
-				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('profile_id').submit(); return false;" >Save</a>
+				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('profiles_id').submit(); return false;" >Save</a>
 			    	</form>
 			    </div>
 
@@ -98,7 +103,7 @@ $_SESSION['token'] = sha1(uniqid());
 
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'organizations') echo "active"; ?>" id="organizations">
 			    	<form action="php/texts.php" method="post" id="organizations_id">
-				      	<label><b><small>Enter a text about Projects section</small></b></label>
+				      	<label><b><small>Enter a text about Organizations section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("organizations") ?></textarea><br>
 				    	<input type="hidden" value="organizations" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('organizations_id').submit(); return false;" >Save</a>

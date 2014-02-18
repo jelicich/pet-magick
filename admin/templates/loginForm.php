@@ -13,5 +13,5 @@
 </div>	
 
 <script type="text/javascript">
-	login(); 
+	 admin_login(); 
 </script>

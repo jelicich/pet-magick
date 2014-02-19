@@ -44,6 +44,7 @@
 						<li class="btn btn-small btn-danger"><a href="blog">Blog</a></li>
 						<li class="btn btn-small btn-danger"><a href="admin/index.php?active=0">Admin</a></li>
 						
+						
 				</ul>
 				<div class="grid_2" id='searchF'>
 					<input type="text" placeholder="Find pet lovers" id='finder' autocomplete="off"/>

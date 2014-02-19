@@ -862,6 +862,8 @@ function news(){
 			}
 		}
 	}//end printNews
+
+
 	if(byid('news_button')){
 		byid('news_button').onclick = function(){
 
@@ -2257,15 +2259,41 @@ function deleteProject()
 	}
 }	
 
-function printEditPro()
-{
+function printEditPro(){
+
 	printEdit('project', this.responseText);
 }
 
+function favorites(){
 
+	function printEditFavorite(){
 
+			printEdit('favorites-mod', this.responseText);
+	}
 
+	if(byid('addFavorite')){
+		
+		byid('addFavorite').onclick = function(){
 
+			var u ='u='+ this.name;
+			ajax('POST', 'ajax/addFavorite.php', vardump, u, true);
+
+		}
+		
+	}else if(document.querySelectorAll('.deleteFavorite')){
+
+		var btn = document.querySelectorAll('.deleteFavorite'); 
+
+		for(var i = 0; i < btn.length; i++){
+			btn[i].onclick = function()
+			{	
+				var u ='u='+ this.name;
+				ajax('POST', 'ajax/deleteFavorite.php', printEditFavorite, u, true);
+
+			}// end deleteNews[i].onclick		
+		}
+	}
+}
 
 
 

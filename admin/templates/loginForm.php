@@ -5,7 +5,7 @@
 
         <input type="email" name="email" id="email-log" class="form-control" placeholder="Email address" required autofocus />
         <input type="password" name="password" id="password-log" class="form-control" placeholder="Password" required />
-        <input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />
+        <input type="hidden" name="token" id="token" value=<?php //echo '"'. $_SESSION['token'] . '"'; ?> />
 
         <input type="button" class="btn btn-lg btn-info btn-block" id="login" value="Login" />
        

@@ -33,7 +33,8 @@
 <div class="container-fluid" id="here">
 
 	<?php 
-		if(!$_SESSION['rank'] || $_SESSION['rank'] != 2)
+
+		if(!isset($_SESSION['rank']) || isset($_SESSION['rank']) && $_SESSION['rank']  != 2)
 		{
 			include_once 'templates/loginForm.php';
 		}

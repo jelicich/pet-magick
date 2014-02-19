@@ -1,26 +1,28 @@
 <?php
 	
 
-
+$active = $_GET['active'];
 $path = $_SERVER['PHP_SELF'];
 $blog = strpos($path, 'wp-admin');
+
 if($blog === false) 
 {
-	$href_index = "index.php";
-	$href_pop = "pop-ups.php";
-	$href_ads = "advertisement.php";
-	$href_site = "../index.php";
-	$href_logout = "php/logout.php";
-	$href_vets = "vets.php";
+	 $href_index = "index.php?active=0";
+	 $href_pop = "pop-ups.php?active=1";
+	 $href_ads = "advertisement.php?active=2";
+	 $href_vets = "vets.php?active=4";
+	 $href_site = "../index.php";
+	 $href_logout = "php/logout.php";
+	//$href_vets = "vets.php";
 }
 else
 {
-	$href_index = "../../admin/index.php";
-	$href_pop ="../../admin/pop-ups.php";
-	$href_ads = "../../admin/advertisement.php";
-	$href_site = "../../index.php";
- 	$href_logout = "../../admin/php/logout.php";
- 	$href_vets = "../../vets.php";
+	 $href_index = "../../admin/index.php?active=0";
+	 $href_pop ="../../admin/pop-ups.php?active=1";
+	 $href_ads = "../../admin/advertisement.php?active=2";
+	 $href_vets = "../../admin/vets.php?active=4";
+	 $href_site = "../../index.php";
+	 $href_logout = "../../admin/php/logout.php";
 }
 
 

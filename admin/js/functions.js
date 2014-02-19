@@ -33,14 +33,13 @@ function  admin_printUserMenu(){
 function admin_login(){
 
 	byid('login').onclick = function(){ 
-		//levanto los valores de los campos
+
 		var email = byid('email-log').value;
 		var pass = byid('password-log').value;
-		var token = byid('token').value;
+		//var token = byid('token').value;
+		//var vars = 'email='+email+'&password='+pass+'&token='+token;
 
-		//variable q pasa todo por post
-		var vars = 'email='+email+'&password='+pass+'&token='+token;
-
+		var vars = 'email='+email+'&password='+pass;
 		ajax('POST', 'php/login.php',  admin_printUserMenu, vars, true);
 	}
 }//end login

@@ -10,6 +10,7 @@
 	include_once "php/classes/BOPets.php";
 	include_once "php/classes/BOVideos.php";
 	include_once "php/classes/BOAnimalCategories.php";
+	include_once "php/classes/BOFavorites.php";
 	
 	
 	$u = new BOUsers;
@@ -17,6 +18,8 @@
 	$p = new BOPets;
 	$ac = new BOAnimalCategories;
 	$v = new BOVideos;
+	$f = new BOFavorites;
+
 
 	$u->getUserData($_GET['u']);
 ?>
@@ -56,12 +59,11 @@
 	<?php 
 		include_once 'templates/header.php'; 
 	?>
-
-
 	<!-- site content -->
 	<div class="container_12" id="content">
 
-		
+
+	
 
 			<!-- about module -->
 			<div class="mod grid_12 profiles-mod nogrid-mod" id="user-about">
@@ -120,6 +122,35 @@
 		</div>
 		<!-- END my pet profile -->
 
+		<!--====================================================================== favorites test =========================== -->
+		<div> <!-- div provisorio para contener el testeo -->
+
+			<?php 
+				
+				if($u->isOwn()){
+			?>
+					<div class="projects-mod mod span5">
+						<div class="mod-header">
+							<h2>My favorites</h2>
+							<span>Keep your favorite pets closer</span>
+						</div>
+						<ul class="mod-content pet-loss-mod-list talks-list"  id="favorites-mod">
+			<?php 
+								include_once 'templates/favoritesModule.php'; 
+			?>
+						</ul>
+					</div>
+			<?php
+				}else{
+						// if( user visitado no esta en el array de favoritos)
+				echo "<input type='button'  id='addFavorite' name=".$_GET['u']." value='add favorite' />";
+						// else { imprimir un cartelito tipo "you are following this user" }
+				}
+			?>
+
+		</div>
+	<!--====================================================================== favorites test =========================== -->
+
 		<!-- user album -->
 		<div id='user-album' class="mod grid_12 profiles-mod clearfix">
 			<?php
@@ -154,6 +185,7 @@
 	//deletePet();
 	//addPet();
 	vetTalkAnswer();
+	favorites();
 
 
 	

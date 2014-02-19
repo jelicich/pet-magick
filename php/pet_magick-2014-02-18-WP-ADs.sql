@@ -44665,7 +44665,15 @@ INSERT INTO `users` (`ID_USER`, `NAME`, `LASTNAME`, `NICKNAME`, `EMAIL`, `PASSWO
 (11, 'Test', 'Test', 'testnick', 'test@test.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, '0');
 
 -- --------------------------------------------------------
+CREATE TABLE favorites
+(
+ID_USER_ME int(10) unsigned NOT NULL, 
+ID_USER_FAVORITE int(10) unsigned NOT NULL,
+PRIMARY KEY(ID_USER_ME, ID_USER_FAVORITE)
 
+
+
+);
 --
 -- Table structure for table `vet_talk`
 --

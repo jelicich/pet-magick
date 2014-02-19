@@ -168,6 +168,8 @@ class phpLedAds // $pla == phpLedAds
 
 	function do_auth($user, $pass) {
 		/*
+		//NO VA! NO COMPATIBLE CON php5
+
 		$_auth = create_function('$this', '
 			header("WWW-Authenticate: Basic realm=\\"".$this->config("authname")."\\"");
 			header("HTTP/1.0 401 Unauthorized");
@@ -177,8 +179,8 @@ class phpLedAds // $pla == phpLedAds
 		');
 		*/
 		
-		
-		
+		/*
+		//PARA EVITAR LOGIN
 		if(!isset($user)) {
 			$this->auth_( $this );
 		} else {
@@ -188,6 +190,9 @@ class phpLedAds // $pla == phpLedAds
 				$this->auth_( $this );
 			}
 		}
+		
+		return $this->authed = true;
+		*/
 		
 		return $this->authed = true;
 	}

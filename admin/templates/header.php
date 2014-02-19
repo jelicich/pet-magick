@@ -1,30 +1,29 @@
 <?php
 	
-if($_GET == null){
 
-	header("Location: ../index.php");
+
+$path = $_SERVER['PHP_SELF'];
+$blog = strpos($path, 'wp-admin');
+if($blog === false) 
+{
+	$href_index = "index.php";
+	$href_pop = "pop-ups.php";
+	$href_ads = "advertisement.php";
+	$href_site = "../index.php";
+	$href_logout = "php/logout.php";
+	$href_vets = "vets.php";
+}
+else
+{
+	$href_index = "../../admin/index.php";
+	$href_pop ="../../admin/pop-ups.php";
+	$href_ads = "../../admin/advertisement.php";
+	$href_site = "../../index.php";
+ 	$href_logout = "../../admin/php/logout.php";
+ 	$href_vets = "../../vets.php";
 }
 
-$active = $_GET['active'];
 
-if(!isset($active) || isset($active) && $active == 3 ) {
-	
-	 $href_index = "../../admin/index.php?active=0";
-	 $href_pop ="../../admin/pop-ups.php?active=1";
-	 $href_ads = "../../admin/advertisement.php?active=2";
-	 $href_vets = "../../vets.php?active=4";
-	 $href_site = "../../index.php";
-	 $href_logout = "../../admin/php/logout.php";
-
-}else{ 
-
-	 $href_index = "index.php?active=0";
-	 $href_pop = "pop-ups.php?active=1";
-	 $href_ads = "advertisement.php?active=2";
-	 $href_vets = "vets.php?active=4";
-	 $href_site = "../index.php";
-	 $href_logout = "php/logout.php";
-}
 
 
 ?>

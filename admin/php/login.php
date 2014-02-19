@@ -25,7 +25,18 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
 	$user->getUserData($_SESSION['id']);
     $_SESSION['thumb'] = $user->getThumb();
 	//cargo el html con el menu del usuario
-	$_GET['active'] = 0; // este get es para poder manejar los links entre wp y el resto del admin
+	 /* login blog */
+    	
+	include_once '../../blog/wp-load.php';
+			
+	$creds = array();
+	$creds['user_login'] = $_POST['email'];
+	$creds['user_password'] = $_POST['password'];
+	$creds['remember'] = false;
+	$user = wp_signon( $creds, false );
+	if ( is_wp_error($user) )
+		echo $user->get_error_message();		
+
 	include_once '../home.php';
 
 

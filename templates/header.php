@@ -40,7 +40,7 @@
 						<li class="btn btn-small btn-danger"><a href="projects.php">Projects</a></li>
 						<li class="btn btn-small btn-danger"><a href="organizations.php">Organizations</a></li>
 						<li class="btn btn-small btn-danger"><a href="pet-loss.php">Pet Loss</a></li>
-						<li class="btn btn-small btn-danger"><a href="vetTalkTest.php">Forum</a></li>
+						<li class="btn btn-small btn-danger"><a href="blog/?post_type=forum">Forum</a></li>
 						<li class="btn btn-small btn-danger"><a href="blog">Blog</a></li>
 						<li class="btn btn-small btn-danger"><a href="admin/index.php?active=0">Admin</a></li>
 						

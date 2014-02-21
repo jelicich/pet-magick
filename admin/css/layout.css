@@ -19,13 +19,17 @@ h1{
 }
 /////////////////////////////////////////*/
 
-	#pop-upsModule, #log-form{
-		margin-top: 10%;
+	#pop-upsModule, #log-form, #ads-module{
+		margin: 0 auto;
 	}
 
 	body {
 		 background: transparent url(../img/bg.png) 0 0 repeat;
 	 
+	}
+
+	.container-fluid{
+		padding-top: 100px;
 	}
 
 	.form-signin {
@@ -70,4 +74,56 @@ h1{
 
 #adminmenuback, #adminmenuwrap, #adminmenu{
 	height: 100% !important;
+}
+
+/*ADS*/
+
+#iframe-ads{
+	width: 100%;
+	height: 800px;
+	border: none;
+}
+
+#ad-body{
+	background-color: #f5f5f5;
+	background-image: none;
+	color:#555555;
+	text-align: center;
+}
+
+#ad-body form{
+	width: 550px;
+	margin: 0 auto;
+}
+
+#ad-body form table{
+	margin-bottom: 20px;
+}
+
+#ad-body form table td{
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
+}
+
+#ad-body form table td[colspan="2"]{
+	color:#ffffff;
+	border-radius: 7px;
+	border:none;
+}
+
+#ad-body form input[type='radio']{
+	display: inline-block;
+	margin: 10px;
+}
+
+#ad-body form input[type='text']{
+	width: 100%;
+}
+
+#ad-body > table{
+	margin: 0 auto;
+}
+
+hr{
+	margin: 0 0 20px;
 }

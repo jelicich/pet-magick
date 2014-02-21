@@ -68,10 +68,10 @@ $pla->do_require('LedHTML');
 $html = $pla->html = new LedHTML(
 	array(
 		width => '550',
-		border => 1,
+		border => 0,
 		cellspacing => 1,
 		cellpadding => 0,
-		bordercolor => "#000000",
+		bordercolor => "#222222",
 		align => 'center'
 	)
 ); // html 'engine'
@@ -94,9 +94,9 @@ $html = $pla->html = new LedHTML(
 function sub_main( ) {
 	global $pla, $html;
 	
-	echo 'Welcome to phpLedAds v'.$pla->version.'!';
-	echo $html->br( );
-	echo 'Select a menu item above to begin!';
+	//echo 'Welcome to phpLedAds v'.$pla->version.'!';
+	//echo $html->br( );
+	//echo 'Select a menu item above to begin!';
 }
 
 function sub_newad( ) {
@@ -119,7 +119,7 @@ function sub_newad( ) {
 		$html->tr(
 			$html->td(
 				$html->radiobutton('banner_type', 'image', $typebit) . 'Image Ad',
-				array(colspan => 2, bgcolor => 'black')
+				array(colspan => 2, bgcolor => '#222222')
 			)
 		) .
 		$html->tr(
@@ -130,7 +130,7 @@ function sub_newad( ) {
 				$html->radiobutton('image_type', 'url', $imgbit) .' Existing URL' . $html->br( ) .
 					$html->textfield('image_url', array(size=>40)) . $html->br( ) .
 				$html->radiobutton('image_type', 'upload', !$imgbit) .
-					' Upload New Image (See Readme)' .
+					' Upload New Image' .
 					(
 						(is_dir($path) and is_writable($path)) ?
 						$html->i(' <i>WARNING: Cannot write to ' . $path) : null
@@ -171,7 +171,7 @@ function sub_newad( ) {
 				$html->radiobutton('banner_type', 'rich', !$typebit) .
 					' Rich Text/HTML<br><center><small>(Insert <b>[random]</b> for a radom ID and <b>[key]</b>'.
 					' for the ad key)</small></center>',
-				array(colspan=>2, bgcolor => 'black')
+				array(colspan=>2, bgcolor => '#222222')
 			)
 		) .
 		$html->tr(
@@ -267,16 +267,16 @@ function sub_modify( ) {
 		) .
 		$html->tr(
 			$html->td(
-				'[ ' . $html->ahref($pla->me . '?action=edit_ad&aid=' . $row->aid,
-					'Modify') . ' ]' .
-				'[ ' . $html->ahref($pla->me . '?action=delete_ad&aid=' . $row->aid,
+				'<div class="btn-group btn-group-xs"><div class="btn">' . $html->ahref($pla->me . '?action=edit_ad&aid=' . $row->aid,
+					'Modify') . ' </div>' .
+				'<div class="btn">' . $html->ahref($pla->me . '?action=delete_ad&aid=' . $row->aid,
 					'Delete',
 						array(onclick => "if(!confirm('Are you sure you wan to delete this ad?')) { return false; }")
-					) . ' ]' .
-				'[ ' . $html->ahref($pla->me . '?action=stats&highlight=' . $row->aid .
+					) . '</div>' .
+				'<div class="btn">' . $html->ahref($pla->me . '?action=stats&highlight=' . $row->aid .
 								'#PerAdStats',
-					'Stats') . ' ]',
-				array(align => 'center', bgcolor => '#000000')
+					'Stats') . '</div></div>',
+				array(align => 'center', style => 'padding:10px;')
 			)
 		);
 	}
@@ -426,8 +426,7 @@ function _edit_rich_ad( $key, $did ) {
 		$html->tr(
 			$html->td(
 				' Rich Text/HTML<br><center><small>(Insert <b>[random]</b> for a radom ID and <b>[key]</b>'.
-				' for the ad key)</small></center>',
-				array(bgcolor => 'black')
+				' for the ad key)</small></center>'
 			)
 		) .
 		$html->tr(
@@ -639,7 +638,7 @@ function sub_stats( ) {
 		$html->tr(
 			$html->td(
 				$html->center($html->b('10 Day Totals')),
-				array(bgcolor => '#003366')
+				array(bgcolor => '#222222', style=>'padding:10px; border-radius: 5px; color: #fff;')
 			)
 		) .
 		$html->tr(
@@ -651,7 +650,7 @@ function sub_stats( ) {
 		$html->tr(
 			$html->td(
 				$html->center($html->b('Displays vs Clicks')),
-				array(bgcolor => '#003366')
+				array(bgcolor => '#222222', style=>'padding:10px; border-radius: 5px; color: #fff;')
 			)
 		) .
 			$html->td(
@@ -660,14 +659,13 @@ function sub_stats( ) {
 		) .
 		$html->tr(
 			$html->td(
-				$html->hr(array(size => 1)),
-				array(bgcolor => 'black')
+				$html->hr(array(size => 1))
 			)
 		) .
 		$html->tr(
 			$html->td(
 				$html->center($html->b('Per-Ad Stats')),
-				array(bgcolor => '#003366')
+				array(bgcolor => '#222222', style=>'padding:10px; border-radius: 5px; color: #fff;')
 			)
 		) .
 		$html->tr(
@@ -678,20 +676,18 @@ function sub_stats( ) {
 		) .
 		$html->tr(
 			$html->td(
-				$html->hr(array(size => 1)),
-				array(bgcolor => 'black')
+				$html->hr(array(size => 1))
 			)
 		) .
 		$html->tr(
 			$html->td(
-				$html->center($html->b('Over-All Totals')),
-				array(bgcolor => '#003366')
+				$html->center($html->b('Over-All Totals<br><small>Includes deleted ads</small>')),
+				array(bgcolor => '#222222', style=>'padding:10px; border-radius: 5px; color: #fff;')
 			)
 		) .
 		$html->tr(
 			$html->td(
-				$html->center('<small>Includes deleted ads</small>'),
-				array(bgcolor => 'black')
+				$html->center('')
 			)
 		) .
 		$html->tr(
@@ -701,8 +697,7 @@ function sub_stats( ) {
 		) .
 		$html->tr(
 			$html->td(
-				$html->hr(array(size => 1)),
-				array(bgcolor => 'black')
+				$html->hr(array(size => 1))
 			)
 		)
 	);
@@ -790,15 +785,15 @@ class phpLedAdsStats
 		$topten_row = $html->tr(
 			$html->td(
 				$html->b('Date'),
-				array(width => '33%', align => 'center', bgcolor => 'black')
+				array(width => '33%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Displays'),
-				array(width => '33%', align => 'center', bgcolor => 'black')
+				array(width => '33%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Clicks'),
-				array(width => '33%', align => 'center', bgcolor => 'black')
+				array(width => '33%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			)
 		);
 		
@@ -824,15 +819,15 @@ class phpLedAdsStats
 			$topten_row .= $html->tr(
 				$html->td(
 					$date,
-					array(width => '33%', bgcolor => 'black', align => 'center')
+					array(width => '33%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					number_format(intval($row->dtotal)),
-					array(width => '33%', align => 'right')
+					array(width => '33%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					number_format(intval($row->ctotal)),
-					array(width => '33%', align => 'right')
+					array(width => '33%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 				)
 			);
 
@@ -851,15 +846,15 @@ class phpLedAdsStats
 		$topten_row .= $html->tr(
 			$html->td(
 				$html->b('Totals:'),
-				array(width => '33%', align => 'center')
+				array(width => '33%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b(number_format($topten_count['displays'])),
-				array(width => '33%', align => 'right')
+				array(width => '33%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b(number_format($topten_count['clicks'])),
-				array(width => '33%', align => 'right')
+				array(width => '33%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			)
 		);
 
@@ -870,29 +865,29 @@ class phpLedAdsStats
 			$topten_row .= $html->tr(
 				$html->td(
 					$html->b('Graphs:'),
-					array(width => '33%', align => 'center')
+					array(width => '33%', align => 'center', style=>'padding:5px;')
 				) .
 				$html->td(
 					$html->center(
-						'[ ' . $html->ahref(
+						$html->ahref(
 								sprintf($genlink, 'action=view_graph&graph=' .
 									urlencode($img_display) .
 									'&disable_menu=1', 'display'),
 								'View Graph')
-						. ' ]'
+						
 					),
-					array(width => '33%', align => 'right')
+					array(width => '33%', align => 'right', style=>'padding:5px;')
 				) .
 				$html->td(
 					$html->center(
-						'[ ' . $html->ahref(
+						$html->ahref(
 								sprintf($genlink, 'action=view_graph&graph=' .
 									urlencode($img_click) .
 									'&disable_menu=1', 'click'),
 								'View Graph')
-						. ' ]'
+						
 					),
-					array(width => '33%', align => 'right')
+					array(width => '33%', align => 'right', style=>'padding:5px;')
 				)
 			);
 		}
@@ -958,55 +953,55 @@ class phpLedAdsStats
 
 		$table = $html->tr(
 			$html->td(
-				'&nbsp;',
-				array(bgcolor => 'black')
+				$html->b(''),
+				array(colspan => 1, align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd;')
 			) .
 			$html->td(
 				$html->b('Displays'),
-				array(colspan => 4, align => 'center', bgcolor => 'black')
+				array(colspan => 4, align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd; border-right: 1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Clicks'),
-				array(colspan => 4, align => 'center', bgcolor => 'black')
+				array(colspan => 4, align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			)
 		);
 		
 		$table .= $html->tr(
 			$html->td(
 				'<u>H|Link|ID</u>',
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Life'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Year'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Month'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Day'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd; border-right: 1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Life'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Year'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Month'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Day'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			)
 		);
 			
@@ -1046,39 +1041,39 @@ class phpLedAdsStats
 					$html->ahref($pla->me . '?action=stats&highlight=' . $row->aid . '#PerAdStats', 'H') . '|' .
 					$link . '|' .
 					$html->ahref($pla->me . '?action=edit_ad&aid=' . $row->aid, $row->aid),
-					array(width => '10%', align => 'left', bgcolor => 'black')
+					array(width => '10%', align => 'left', style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					number_format($life[$row->aid]->displays),
-					array(width => '10%', align => 'right', bgcolor => $bgcolor)
+					array(width => '10%', align => 'right', bgcolor => $bgcolor, style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					number_format($year[$row->aid]->displays),
-					array(width => '10%', align => 'right', bgcolor => $bgcolor)
+					array(width => '10%', align => 'right', bgcolor => $bgcolor, style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					number_format($month[$row->aid]->displays),
-					array(width => '10%', align => 'right', bgcolor => $bgcolor)
+					array(width => '10%', align => 'right', bgcolor => $bgcolor, style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					number_format($day[$row->aid]->displays),
-					array(width => '10%', align => 'right', bgcolor => $bgcolor)
+					array(width => '10%', align => 'right', bgcolor => $bgcolor,style=>'padding:5px; border-bottom:1px solid #ddd; border-right: 1px solid #ddd')
 				) .
 				$html->td(
 					($is_na ? 'N/A' : number_format($life[$row->aid]->clicks)),
-					array(width => '10%', align => 'right', bgcolor => $bgcolor)
+					array(width => '10%', align => 'right', bgcolor => $bgcolor, style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					($is_na ? 'N/A' : number_format($year[$row->aid]->clicks)),
-					array(width => '10%', align => 'right', bgcolor => $bgcolor)
+					array(width => '10%', align => 'right', bgcolor => $bgcolor, style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					($is_na ? 'N/A' : number_format($month[$row->aid]->clicks)),
-					array(width => '10%', align => 'right', bgcolor => $bgcolor)
+					array(width => '10%', align => 'right', bgcolor => $bgcolor, style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					($is_na ? 'N/A' : number_format($day[$row->aid]->clicks)),
-					array(width => '10%', align => 'right', bgcolor => $bgcolor)
+					array(width => '10%', align => 'right', bgcolor => $bgcolor, style=>'padding:5px; border-bottom:1px solid #ddd')
 				)
 			);
 			
@@ -1098,41 +1093,40 @@ class phpLedAdsStats
 		$table .= $html->tr(
 			$html->td(
 				$html->b('Totals:'),
-				array(width => '10%', align => 'left')
+				array(width => '10%', align => 'left', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['displays']['life']),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['displays']['year']),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['displays']['month']),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['displays']['day']),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd; border-right: 1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['clicks']['life']),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['clicks']['year']),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['clicks']['month']),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['clicks']['day']),
-				array(width => '10%', align => 'right')
-			),
-			array(bgcolor => 'black')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
+			)
 		);
 			
 		return $html->table($table);
@@ -1167,94 +1161,94 @@ class phpLedAdsStats
 		
 		$table = $html->tr(
 			$html->td(
-				'&nbsp;',
-				array(bgcolor => 'black')
+				$html->b(''),
+				array(colspan => 1, align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd;')
 			) .
 			$html->td(
 				$html->b('Displays'),
-				array(colspan => 4, align => 'center', bgcolor => 'black')
+				array(colspan => 4, align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd; border-right: 1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Clicks'),
-				array(colspan => 4, align => 'center', bgcolor => 'black')
+				array(colspan => 4, align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			)
 		);
 		
 		$table .= $html->tr(
 			$html->td(
 				'<u>Period</u>',
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Life'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Year'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Month'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Day'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd; border-right: 1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Life'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Year'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Month'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				$html->b('Day'),
-				array(width => '10%', align => 'center', bgcolor => 'black')
+				array(width => '10%', align => 'center', style=>'padding:5px; border-bottom:1px solid #ddd')
 			)
 		);
 			
 		$table .= $html->tr(
 			$html->td(
 				$html->b('Totals:'),
-				array(width => '10%', align => 'left')
+				array(width => '10%', align => 'left', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['life']->displays),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['year']->displays),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['month']->displays),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['day']->displays),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd; border-right: 1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['life']->clicks),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['year']->clicks),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['month']->clicks),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			) .
 			$html->td(
 				number_format($totals['day']->clicks),
-				array(width => '10%', align => 'right')
+				array(width => '10%', align => 'right', style=>'padding:5px; border-bottom:1px solid #ddd')
 			)
 		);
 		
@@ -1308,18 +1302,18 @@ class phpLedAdsStats
 			$table = $html->tr(
 				$html->td(
 					$html->b('Last 30 Days:'),
-					array(width => '33%', align => 'center')
+					array(width => '33%', align => 'center' , style=>'padding:5px; border-bottom:1px solid #ddd')
 				) .
 				$html->td(
 					$html->center(
-						'[ ' . $html->ahref(
+						$html->ahref(
 								sprintf($genlink, 'action=view_graph&graph=' .
 									urlencode($name) .
 									'&disable_menu=1', 'stats30'),
 								'View Graph')
-						. ' ]'
+						
 					),
-					array(width => '66%', align => 'right', colspan => 2)
+					array(width => '66%', align => 'right', colspan => 2 , style=>'padding:5px; border-bottom:1px solid #ddd')
 				)
 			);
 		}

@@ -45,8 +45,14 @@ chkadmin();
 	<?php
 		include_once("templates/header.php");
 	?>
+	
 
-	<div class="well span7" id="pop-upsModule">
+
+	<div class="well span7" id="ads-module" style="width:800px">
+
+		<iframe id="iframe-ads" src="ledads/admin.php"></iframe>
+		
+<!--
 		<div class="tabbable"> 
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
@@ -76,10 +82,10 @@ chkadmin();
 					<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 
 					</form>
-			    	<!--<form action="php/texts.php" method="post" id="profile_id" >
+			    	<!- -<form action="php/texts.php" method="post" id="profile_id" >
 				    	
 				    	<a href="#" class="save btn btn-small btn-info" onclick="document.getElementById('profile_id').submit(); return false;" >Save</a>
-			    	</form> -->
+			    	</form> 
 			    </div>
 
 			    <div class="tab-pane" id="antics">
@@ -119,13 +125,14 @@ chkadmin();
 			    </div>
             </div>
 		</div>
+		-->
     </div>
     
 </div>
 
 
 <script type="text/javascript">
-	imgVideoUploader('album', 'admin');
+
 </script>
 
 </body>

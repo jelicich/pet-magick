@@ -45,10 +45,15 @@ PENDIENTES VIDEO (INDEX Y ANTICS)
 - poner size correctamente en el validador de php
 
 
+
+
+
 LISTA IE7 (no incluye nada q sea solo estilo):
 =============================================
 
 - Log//Reg: cuando muestra errores elimina dichas funcionalidades del header, tenes q refrescar paraq vuelva.
+
+- probar log desde la pestana de blog y foro
 
 - Buscador: no funciona
 
@@ -58,7 +63,7 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 
 - inbox: no funciona
 
-- poner todos los tagas necesarios para ie. Esta en img uploader
+- poner todos los tags necesarios para ie. Esta en img uploader
 
 CREATE DATABASE pet_magick;
 USE pet_magick;

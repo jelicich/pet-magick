@@ -25,6 +25,7 @@
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -36,7 +37,9 @@
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
 <script type="text/javascript" src="js/lib.js"></script>
+<!-- <script type="text/javascript" src="js/uploader.js"></script> -->
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/uploader.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <?php
@@ -123,28 +126,51 @@
 		<!-- END my pet profile -->
 
 		<!--====================================================================== favorites test =========================== -->
-		<div> <!-- div provisorio para contener el testeo -->
+		<div class="row-fluid"> <!-- div provisorio para contener el testeo -->
 
 			<?php 
-				
-				if($u->isOwn()){
+				// Ver de no repetir esta llamada aca pq ya la ejecuto en favoritesModule.php
+				if(isset($_SESSION['id'])){
+					
+						$favorites = $f->getFavorite($_SESSION['id']);
+						$t = sizeof($favorites);
+					
+					if($u->isOwn()){
 			?>
-					<div class="projects-mod mod span5">
-						<div class="mod-header">
-							<h2>My favorites</h2>
-							<span>Keep your favorite pets closer</span>
-						</div>
-						<ul class="mod-content pet-loss-mod-list talks-list"  id="favorites-mod">
+						<div class="projects-mod mod span5">
+							<div class="mod-header">
+								<h2>My favorites</h2>
+								<span>Keep your favorite pets closer</span>
+							</div>
+							<ul class="mod-content pet-loss-mod-list talks-list"  id="favorites-mod">
 			<?php 
 								include_once 'templates/favoritesModule.php'; 
 			?>
-						</ul>
-					</div>
+							</ul>
+						</div>
 			<?php
-				}else{
-						// if( user visitado no esta en el array de favoritos)
-				echo "<input type='button'  id='addFavorite' name=".$_GET['u']." value='add favorite' />";
-						// else { imprimir un cartelito tipo "you are following this user" }
+					}else{
+						
+						if($t > 0){
+
+							for ($i=0; $i < $t; $i++) { 
+								
+								if($favorites[$i]['ID_USER_FAVORITE'] ==  $_GET['u']){
+
+									echo "<div class='alert alert-success text-center span3' ><span>One of your favorites !</span></div>";
+									break;
+
+								}else{
+
+									echo "<input type='button'  id='addFavorite' name=".$_GET['u']." value='add favorite' />";
+									break;
+								}
+							}
+						}else{
+
+							echo "<input type='button'  id='addFavorite' name=".$_GET['u']." value='add favorite' />";
+						}
+					}
 				}
 			?>
 

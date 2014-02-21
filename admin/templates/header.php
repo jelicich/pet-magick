@@ -1,6 +1,10 @@
 <?php
 
-$active = $_GET['active'];
+
+if(isset($_GET['active'])){
+		$active = $_GET['active'];
+}
+
 $path = $_SERVER['PHP_SELF'];
 $blog = strpos($path, 'wp-admin');
 

@@ -1,4 +1,14 @@
 <?php
+session_start();
+if(!isset($_SESSION['id']))
+{
+	include_once '../wp-load.php';
+	wp_logout();
+}
+if(!isset($_SESSION['rank']) || $_SESSION['rank'] != 2)
+{
+	header('Location: ../index.php');
+}
 /**
  * WordPress Administration Bootstrap
  *

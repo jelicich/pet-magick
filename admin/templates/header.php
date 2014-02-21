@@ -1,5 +1,4 @@
 <?php
-	
 
 $active = $_GET['active'];
 $path = $_SERVER['PHP_SELF'];

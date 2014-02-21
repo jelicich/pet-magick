@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * Dashboard Administration Screen
  *
@@ -11,6 +13,7 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 
 /** Load WordPress dashboard API */
 require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
+
 /*
 wp_dashboard_setup();
 
@@ -95,8 +98,8 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <div class="wrap">
 	
 	<!--<h2><?php echo esc_html( $title ); ?></h2>-->
-	<h2>Pet Magick Blog Administrator</h2>
-	<p>You can post new articles, edit old ones, and manage the comments</p>
+	<h2>Pet Magick Blog &amp; Forum Administrator</h2>
+	<p>You can post new articles, edit old ones, and manage the comments.</p>
 <?php /*if ( has_action( 'welcome_panel' ) && current_user_can( 'edit_theme_options' ) ) :
 	$classes = 'welcome-panel';
 

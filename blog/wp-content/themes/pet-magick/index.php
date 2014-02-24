@@ -14,20 +14,18 @@ get_header(); ?>
       
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-          <div class="flex_10">
-            <div class="postdate">
-              <div class="postmonth">
-                <?php the_time('M, d') ?>
-              </div>
-              <div class="postyear">
-                <?php the_time('Y') ?>
-              </div>
-            </div>
-          </div>
           
-          <div class="flex_90 mod profiles-mod"> 
-            
+          
+          <div class="mod profiles-mod nogrid-mod"> 
             <div class="mod-header">
+              
+                <span>
+                  <?php the_time('M, d') ?>
+                  <?php the_time('Y') ?> | 
+                </span>
+                
+              
+
               <span class="categories">
                 <?php the_category(', '); ?>
               </span>
@@ -41,11 +39,11 @@ get_header(); ?>
               </h2>
             </div>
 
-            <div class="entry">
+            <div class="entry mod-content">
               <?php get_template_part( 'format', get_post_format() ); ?>
             </div>
           </div>
-          <div class="clear"></div>
+          
         </div>
         <?php endwhile; ?>
         <?php get_template_part( '/inc/nav' );?>

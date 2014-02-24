@@ -300,6 +300,9 @@ session_start();
 
 
   <div class="container_12" id="blog-head">
+
+
+<!--
       <div id="wp-header" class="grid_12">
           <h2>
             <a href="<?php echo home_url(); ?>/">
@@ -313,12 +316,17 @@ session_start();
         
         <div class="clear"></div>
       </div>
+-->
 
       <nav>
         <div id="navigation" class="flex_100">
           
           <div class="clear"></div>
           <a href="#" id="pull"><img src="<?php bloginfo('template_directory') ?>/images/nav-icon.png"></a></div>
+          
       </nav>
       <div class="clear"></div>
+
+
   </div><!-- container 12 -->
+

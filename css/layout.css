@@ -2495,3 +2495,16 @@ body.my-account #bbpress-forums {
 	visibility: visible;
 }
 
+.blog-content p{
+	margin-bottom: 10px;
+}
+
+.blog-content p:last-child{
+	margin-bottom: 0;
+}
+
+.blog-content img{
+	max-width: 150px !important;
+	border: 4px solid #6a9a16;
+}
+

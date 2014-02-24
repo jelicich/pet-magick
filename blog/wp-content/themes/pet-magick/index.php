@@ -16,7 +16,7 @@ get_header(); ?>
         <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
           
           
-          <div class="mod profiles-mod nogrid-mod"> 
+          <div class="mod vet-talk-mod"> 
             <div class="mod-header">
               
                 <span>
@@ -29,7 +29,8 @@ get_header(); ?>
               <span class="categories">
                 <?php the_category(', '); ?>
               </span>
-              <h2 id="post-<?php the_ID(); ?>"  class="entry-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
+              <h2 id="post-<?php the_ID(); ?>"  class="entry-title">
+                <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
                 <?php if ( get_the_title() == '' ) { ?>
                 <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link">No Title</a>
                 <?php } else { ?>
@@ -39,7 +40,7 @@ get_header(); ?>
               </h2>
             </div>
 
-            <div class="entry mod-content">
+            <div class="entry mod-content blog-content">
               <?php get_template_part( 'format', get_post_format() ); ?>
             </div>
           </div>

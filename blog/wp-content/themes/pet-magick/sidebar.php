@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="grid_4">
+<div class="grid_4 blog-bar">
   <div id="sidebar"> 
     <!-- begin widget sidebar --> 
     <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Main Sidebar') ) : ?>

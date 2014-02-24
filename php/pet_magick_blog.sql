@@ -19,8 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `pet_magick`
 --
-CREATE DATABASE IF NOT EXISTS `pet_magick` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `pet_magick`;
+CREATE DATABASE IF NOT EXISTS `pet_magick2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `pet_magick2`;
 
 -- --------------------------------------------------------
 

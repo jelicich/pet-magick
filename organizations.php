@@ -23,6 +23,11 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="js/scroll.js"></script>
+
 <script type="text/javascript" src="js/lib.js"></script>
 
 </head>
@@ -53,7 +58,7 @@
 	</div>
 
 	<!-- featured project module -->
-	<div class="mod grid_12 org-mod nogrid-mod" id='featured-org'>
+	<div class="mod grid_12 org-mod nogrid-mod " id='featured-org'>
 		<?php 
 			include_once 'templates/featuredOrganizationsModule.php'; 
 		?>
@@ -84,6 +89,7 @@
 
 <script type="text/javascript">
 	selectedFromList('featured-org', 'ajax/getSelectedOrg.php?p=');
+	start_scroll('scrollable-list');
 </script>
 
 </body>

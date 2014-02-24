@@ -227,8 +227,7 @@ class UsersTable extends Doctrine_Table
 		    return $rta; 
     }
 
-     public function getUserList()
-    {
+   /*  public function getUserList($limit){
         $q = Doctrine_Query::create()
             //->select('p.USER_ID, u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
             ->select('u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
@@ -239,12 +238,35 @@ class UsersTable extends Doctrine_Table
             ->leftJoin('u.Regions r')
             ->leftJoin('u.Cities c')
             //->where('p.ANIMAL_CATEGORY_ID = ?', $id)
-            ->groupBy('u.ID_USER');
+            ->groupBy('u.ID_USER')
+            ->limit($limit);
         
         $r = $q->execute();    
         
         return $r->toArray();
-    }
+    }*/
+
+    public function getUserList(){
+
+        $userCount = Doctrine::getTable('Users')->count();
+        $user = Doctrine::getTable('Users')
+       ->createQuery()
+       ->select('u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
+	    ->from('Users u')
+	    ->leftJoin('u.Pics ph')
+	    ->leftJoin('u.Countries k')
+	    ->leftJoin('u.Regions r')
+	    ->leftJoin('u.Cities c')
+	    ->groupBy('u.ID_USER')
+       ->offset(rand(0, $userCount - 1))
+       ->fetchOne();
+
+
+       if($user)
+         return $user->toArray();
+       else
+            return false;
+     }
     
     public function getAlbumIdByUser($id)
     {   
@@ -268,5 +290,18 @@ class UsersTable extends Doctrine_Table
 
         $rta = $q->execute();
     }   
+
+   public function howmuch_profiles(){
+
+   		   $q = Doctrine_Query::create()
+            
+            ->select('u.NAME')
+            ->from('Users u');
+        
+        $r = $q->execute();    
+        
+        return $r->toArray();
+
+   }
 
 }//end class

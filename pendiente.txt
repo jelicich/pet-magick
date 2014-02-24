@@ -7,19 +7,8 @@ ANTRIORES
 - hxr publico o no 
 - Eliminar mensajes (?)
 
-
-SRCOLL
-======
-
-- emparejar el tamano des las fotos entre php y css (thumb)
-- poner limit a los users del index
-
-
-
-
 ACTUAL
 ======
-- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas)
 - Cuando entras al perfil q no es el tuyo hay muchos errores pq no existen los botones cancel - save
 - buscador key sensitive
 - busccador / traer solo los datos necesarios (no password, etc)
@@ -42,7 +31,6 @@ PET VIDEO
 =========
 - Refresh despues de cargar
 - reproductor redirecciona salvo en la primer mascota
-- ver q onda en antics cuando existe solo un video
 
 PENDIENTES VIDEO (INDEX Y ANTICS)
 =================================
@@ -57,15 +45,10 @@ PENDIENTES VIDEO (INDEX Y ANTICS)
 - poner size correctamente en el validador de php
 
 
-
-
-
 LISTA IE7 (no incluye nada q sea solo estilo):
 =============================================
 
 - Log//Reg: cuando muestra errores elimina dichas funcionalidades del header, tenes q refrescar paraq vuelva.
-
-- probar log desde la pestana de blog y foro
 
 - Buscador: no funciona
 
@@ -75,7 +58,7 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 
 - inbox: no funciona
 
-- poner todos los tags necesarios para ie. Esta en img uploader
+- poner todos los tagas necesarios para ie. Esta en img uploader
 
 CREATE DATABASE pet_magick;
 USE pet_magick;

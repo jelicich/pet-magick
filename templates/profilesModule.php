@@ -4,32 +4,42 @@
 	include_once "php/classes/BOUsers.php";
 	$p = new BOUsers;
 
-	$usersList = $p->getUserList();
-	$t = sizeof($usersList);
+	if(isset($_GET['s']) && $_GET['s'] == 0){
+
+		$limit = 12;
+
+	}else{
+
+		$limit = 28;
+	}
+
+	$t = sizeof($p->howmuch_profiles());
+	if( $limit > $t){ $limit = $t; }
 	$noRepeat = array();
 	
-	for($i=0; $i<$t; $i++){
+	for($i=0; $i < $limit; $i++){
 
-		$j = mt_rand(0, $t -1);
-		
-		if(isset($noRepeat) && in_array($j, $noRepeat) ){
+		$usersList = $p->getUserList();
+
+
+		if(isset($noRepeat) && in_array( $usersList['ID_USER'], $noRepeat)){
 			
 			$i--;
 
 		}else{
 
-			$name = $usersList[$j]['NAME'];
-			$lastName = $usersList[$j]['LASTNAME'];
-			$userId = $usersList[$j]['ID_USER'];
+			$name = $usersList['NAME'];
+			$lastName = $usersList['LASTNAME'];
+			$userId = $usersList['ID_USER'];
 
-			if(!isset($usersList[$j]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
-			else{ $srcImg = 'img/users/thumb/'.$usersList[$j]['Pics']['PIC']; }
-			if(!isset($usersList[$j]['Cities']['City'])){ $city = '?'; }
-			else{ $city = $usersList[$j]['Cities']['City']; }
-			if(!isset( $usersList[$j]['Countries']['Country'])){ $country =  '?'; }
-			else{ $country =  $usersList[$j]['Countries']['Country']; }
+			if(!isset($usersList['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
+			else{ $srcImg = 'img/users/thumb/'.$usersList['Pics']['PIC']; }
+			if(!isset($usersList['Cities']['City'])){ $city = '?'; }
+			else{ $city = $usersList['Cities']['City']; }
+			if(!isset( $usersList['Countries']['Country'])){ $country =  '?'; }
+			else{ $country =  $usersList['Countries']['Country']; }
 
-			array_push($noRepeat, $j);
+			array_push($noRepeat, $userId);
 		
 ?>
 

@@ -27,17 +27,19 @@ class BOProjects{
         }
     }// end insertProjects
 
-    function getAllProjects(){
+    function getAllProjects($limit){
         
         $q = Doctrine_Query::create()
 
             ->select('*') 
-            ->from('Projects p');
+            ->from('Projects p')
+            ->limit($limit);
         
         $r = $q->execute();
 
         if($r != false)
         return $r->toArray();
+
     }// end getAllProjects
 
     function getProjectsById($id){ 
@@ -99,7 +101,7 @@ class BOProjects{
         ->select('*') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
         ->from('Projects p')
         //->leftJoin('o.Pics ph') 
-        ->limit(1)
+       // ->limit(1)
         ->offset(rand(0, $userCount - 1))
         ->fetchOne();
         
@@ -176,6 +178,11 @@ class BOProjects{
       }
     }
 
+    function howmuch_projects()
+    {
+        $r = $this->table->howmuch_projects();
+        return $r;
+    }
 
 
 }//End class BOUsers

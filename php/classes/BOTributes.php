@@ -113,6 +113,12 @@ class BOTributes{
         return $r;
     }
 
+   function howmuch_tributes()
+    {
+        $r = $this->table->howmuch_tributes();
+        return $r;
+    }
+    
     function getTributesByCat($id)
     {
      

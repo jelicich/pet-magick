@@ -1162,6 +1162,10 @@ function modalImg(){ // en Jquery_player.php hay una funcion parecida en jquery.
 	}
 }// end modalImg
 
+
+
+
+
 function listByCategory(ajaxFile){
 
 	var pets = byid('menuByPet').getElementsByTagName('a');
@@ -1190,7 +1194,10 @@ function listByCategory(ajaxFile){
 				eval(scr[i].innerHTML);
 			}
 		}
+		
 	}// end printByPet
+
+	
 }// end userByPet
 
 

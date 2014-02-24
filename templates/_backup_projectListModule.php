@@ -22,36 +22,35 @@ if(!isset($_GET['p'])){
 		echo "<ul class='mod-content pet-loss-mod-list  scrollable-list'>";
 	}
 
-	$t = sizeof($projects->howmuch_projects());
-	
-	if( $limit > $t){ $limit = $t; }
-
+	$everyProject = $projects->getAllProjects($limit);
+	//var_dump($everyProject);
+	$t = sizeof($everyProject);
 	$noRepeat = array();
 
-	for ($i=0; $i < $limit; $i++) { 
+	for ($i=0; $i < $t; $i++) { 
 
-			$everyProject = $projects->getProjectsRamdom();
-
-			if(isset($noRepeat) && in_array( $everyProject['ID_PROJECT'], $noRepeat) ){
+			$j = mt_rand(0, $t -1);
+			
+			if(isset($noRepeat) && in_array($j, $noRepeat) ){
 				
 				$i--;
 
 			}else{
 
-				$projectId = $everyProject['ID_PROJECT'];
-				//$userId = $everyProject['USER_ID'];
-				$albumId = $everyProject['ALBUM_ID'];
+				$projectId = $everyProject[$j]['ID_PROJECT'];
+				//$userId = $everyProject[$j]['USER_ID'];
+				$albumId = $everyProject[$j]['ALBUM_ID'];
 
 				$projectAlbum = $pics->table->getPicsByAlbum($albumId);
 
 				if(!isset($projectAlbum[0]['THUMB'])){ $srcImg = 'img/projects/thumb/default.jpg'; }
 				else{ $srcImg = 'img/projects/thumb/'.$projectAlbum[0]['THUMB']; } // esta deberia ser la primer foto del album
-				if(!isset($everyProject['TITLE'])){ $title = '?'; }
-				else{ $title = $everyProject['TITLE']; }
-				if(!isset( $everyProject['DESCRIPTION'] )){ $description =  '?'; }
-				else{ $description =  $everyProject['DESCRIPTION']; }
+				if(!isset($everyProject[$j]['TITLE'])){ $title = '?'; }
+				else{ $title = $everyProject[$j]['TITLE']; }
+				if(!isset( $everyProject[$j]['DESCRIPTION'] )){ $description =  '?'; }
+				else{ $description =  $everyProject[$j]['DESCRIPTION']; }
 
-				array_push($noRepeat, $projectId);
+				array_push($noRepeat, $j);
 ?>
 				<li class="clearfix">
 					<img src= <?php echo $srcImg; ?> class="thumb-small side-img"/>

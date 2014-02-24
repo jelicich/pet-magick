@@ -27,6 +27,11 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="js/scroll.js"></script> 
+
 <script type="text/javascript" src="js/lib.js"></script>
 
 </head>
@@ -103,6 +108,7 @@
 <script type="text/javascript">
 	selectedFromList('mainArticle', 'ajax/getSelectedArticle.php?p=');
 	comments('postQuestion');
+	start_scroll('scrollable-list');
 </script>
 
 </body>

@@ -62,7 +62,7 @@ class VideosTable extends Doctrine_Table
         
 
         $r = $q->execute();    
-        if($f)
+        if($r)
             return $r->toArray();
         else
             return false;

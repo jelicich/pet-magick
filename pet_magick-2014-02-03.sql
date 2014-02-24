@@ -1,14 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 09, 2014 at 05:50 AM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Host: localhost
+-- Generation Time: Dec 31, 2013 at 04:01 AM
+-- Server version: 5.1.44
+-- PHP Version: 5.3.1
+CREATE DATABASE pet_magick;
+USE pet_magick;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pet_magick`
 --
-CREATE DATABASE IF NOT EXISTS `pet_magick` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `pet_magick`;
 
 -- --------------------------------------------------------
 
@@ -38,6 +37,11 @@ CREATE TABLE IF NOT EXISTS `ads` (
   `STATUS` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID_AD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `ads`
+--
+
 
 -- --------------------------------------------------------
 
@@ -80,21 +84,6 @@ INSERT INTO `animal_categories` (`ID_ANIMAL_CATEGORY`, `NAME`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `answers`
---
-
-CREATE TABLE IF NOT EXISTS `answers` (
-  `ID_ANSWER` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ANSWER` text NOT NULL,
-  `DATE` datetime NOT NULL,
-  `USER_ID` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`ID_ANSWER`),
-  KEY `USER_ID` (`USER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `blogs`
 --
 
@@ -110,222 +99,10 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   KEY `PIC_ID` (`PIC_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `chyrp_groups`
+-- Dumping data for table `blogs`
 --
 
-CREATE TABLE IF NOT EXISTS `chyrp_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT '',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `chyrp_groups`
---
-
-INSERT INTO `chyrp_groups` (`id`, `name`) VALUES
-(1, 'Admin'),
-(4, 'Banned'),
-(3, 'Friend'),
-(5, 'Guest'),
-(2, 'Member');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chyrp_pages`
---
-
-CREATE TABLE IF NOT EXISTS `chyrp_pages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(250) DEFAULT '',
-  `body` longtext,
-  `show_in_list` tinyint(1) DEFAULT '1',
-  `list_order` int(11) DEFAULT '0',
-  `clean` varchar(128) DEFAULT '',
-  `url` varchar(128) DEFAULT '',
-  `user_id` int(11) DEFAULT '0',
-  `parent_id` int(11) DEFAULT '0',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chyrp_permissions`
---
-
-CREATE TABLE IF NOT EXISTS `chyrp_permissions` (
-  `id` varchar(100) NOT NULL DEFAULT '',
-  `name` varchar(100) DEFAULT '',
-  `group_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`,`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `chyrp_permissions`
---
-
-INSERT INTO `chyrp_permissions` (`id`, `name`, `group_id`) VALUES
-('add_draft', 'Add Drafts', 0),
-('add_draft', 'Add Drafts', 1),
-('add_group', 'Add Groups', 0),
-('add_group', 'Add Groups', 1),
-('add_page', 'Add Pages', 0),
-('add_page', 'Add Pages', 1),
-('add_post', 'Add Posts', 0),
-('add_post', 'Add Posts', 1),
-('add_user', 'Add Users', 0),
-('add_user', 'Add Users', 1),
-('change_settings', 'Change Settings', 0),
-('change_settings', 'Change Settings', 1),
-('delete_draft', 'Delete Drafts', 0),
-('delete_draft', 'Delete Drafts', 1),
-('delete_group', 'Delete Groups', 0),
-('delete_group', 'Delete Groups', 1),
-('delete_own_draft', 'Delete Own Drafts', 0),
-('delete_own_draft', 'Delete Own Drafts', 1),
-('delete_own_post', 'Delete Own Posts', 0),
-('delete_own_post', 'Delete Own Posts', 1),
-('delete_page', 'Delete Pages', 0),
-('delete_page', 'Delete Pages', 1),
-('delete_post', 'Delete Posts', 0),
-('delete_post', 'Delete Posts', 1),
-('delete_user', 'Delete Users', 0),
-('delete_user', 'Delete Users', 1),
-('edit_draft', 'Edit Drafts', 0),
-('edit_draft', 'Edit Drafts', 1),
-('edit_group', 'Edit Groups', 0),
-('edit_group', 'Edit Groups', 1),
-('edit_own_draft', 'Edit Own Drafts', 0),
-('edit_own_draft', 'Edit Own Drafts', 1),
-('edit_own_post', 'Edit Own Posts', 0),
-('edit_own_post', 'Edit Own Posts', 1),
-('edit_page', 'Edit Pages', 0),
-('edit_page', 'Edit Pages', 1),
-('edit_post', 'Edit Posts', 0),
-('edit_post', 'Edit Posts', 1),
-('edit_user', 'Edit Users', 0),
-('edit_user', 'Edit Users', 1),
-('toggle_extensions', 'Toggle Extensions', 0),
-('toggle_extensions', 'Toggle Extensions', 1),
-('view_draft', 'View Drafts', 0),
-('view_draft', 'View Drafts', 1),
-('view_own_draft', 'View Own Drafts', 0),
-('view_own_draft', 'View Own Drafts', 1),
-('view_private', 'View Private Posts', 0),
-('view_private', 'View Private Posts', 1),
-('view_private', 'View Private Posts', 3),
-('view_scheduled', 'View Scheduled Posts', 0),
-('view_scheduled', 'View Scheduled Posts', 1),
-('view_scheduled', 'View Scheduled Posts', 3),
-('view_site', 'View Site', 0),
-('view_site', 'View Site', 1),
-('view_site', 'View Site', 2),
-('view_site', 'View Site', 3),
-('view_site', 'View Site', 5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chyrp_posts`
---
-
-CREATE TABLE IF NOT EXISTS `chyrp_posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `feather` varchar(32) DEFAULT '',
-  `clean` varchar(128) DEFAULT '',
-  `url` varchar(128) DEFAULT '',
-  `pinned` tinyint(1) DEFAULT '0',
-  `status` varchar(32) DEFAULT 'public',
-  `user_id` int(11) DEFAULT '0',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `chyrp_posts`
---
-
-INSERT INTO `chyrp_posts` (`id`, `feather`, `clean`, `url`, `pinned`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'text', 'aslkjasdfklajsdflk', 'aslkjasdfklajsdflk', 0, 'public', 1, '2014-02-09 14:41:17', '2014-02-09 14:41:17');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chyrp_post_attributes`
---
-
-CREATE TABLE IF NOT EXISTS `chyrp_post_attributes` (
-  `post_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL DEFAULT '',
-  `value` longtext,
-  PRIMARY KEY (`post_id`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `chyrp_post_attributes`
---
-
-INSERT INTO `chyrp_post_attributes` (`post_id`, `name`, `value`) VALUES
-(1, 'body', '<p>l;kjasdfl;kjasddf;lkjasdfd,mansfd;ljasdf</p>'),
-(1, 'title', 'aslkjasdfklajsdf;lk');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chyrp_sessions`
---
-
-CREATE TABLE IF NOT EXISTS `chyrp_sessions` (
-  `id` varchar(40) NOT NULL DEFAULT '',
-  `data` longtext,
-  `user_id` int(11) DEFAULT '0',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `chyrp_sessions`
---
-
-INSERT INTO `chyrp_sessions` (`id`, `data`, `user_id`, `created_at`, `updated_at`) VALUES
-('d421od329q4uan057cejioqom3', 'redirect_to|s:34:"http://localhost/pet-magick/chyrp/";', 0, '2014-02-09 17:22:18', '2014-02-09 17:22:21');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chyrp_users`
---
-
-CREATE TABLE IF NOT EXISTS `chyrp_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(64) DEFAULT '',
-  `password` varchar(60) DEFAULT '',
-  `full_name` varchar(250) DEFAULT '',
-  `email` varchar(128) DEFAULT '',
-  `website` varchar(128) DEFAULT '',
-  `group_id` int(11) DEFAULT '0',
-  `approved` tinyint(1) DEFAULT '1',
-  `joined_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `login` (`login`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `chyrp_users`
---
-
-INSERT INTO `chyrp_users` (`id`, `login`, `password`, `full_name`, `email`, `website`, `group_id`, `approved`, `joined_at`) VALUES
-(1, 'Admin', '$2a$08$y9zhWNXlIKi05DvOBGSbRu6xRuvfE9/IVm01cd0KboaDOuFitKNeu', '', 'saudadeh@gmail.com', 'http://localhost/pet-magick/chyrp', 1, 1, '2014-02-09 02:39:39');
 
 -- --------------------------------------------------------
 
@@ -39873,6 +39650,11 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `TRIBUTE_ID` (`TRIBUTE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `comments`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -40488,6 +40270,11 @@ CREATE TABLE IF NOT EXISTS `nbc` (
   `Distance` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `nbc`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -40502,6 +40289,11 @@ CREATE TABLE IF NOT EXISTS `news` (
   PRIMARY KEY (`ID_NEWS`),
   KEY `USER_ID` (`USER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `news`
+--
+
 
 -- --------------------------------------------------------
 
@@ -40519,6 +40311,11 @@ CREATE TABLE IF NOT EXISTS `organizations` (
   KEY `USER_ID` (`USER_ID`),
   KEY `PIC_ID` (`PIC_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `organizations`
+--
+
 
 -- --------------------------------------------------------
 
@@ -40592,6 +40389,11 @@ CREATE TABLE IF NOT EXISTS `privateaddresses` (
   PRIMARY KEY (`AddressPrefix`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `privateaddresses`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -40609,6 +40411,11 @@ CREATE TABLE IF NOT EXISTS `projects` (
   KEY `ALBUM_ID` (`ALBUM_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `projects`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -40621,10 +40428,37 @@ CREATE TABLE IF NOT EXISTS `proxynetworks` (
   `CityId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `proxynetworks`
+--
+
+
 -- --------------------------------------------------------
 
+
 --
--- Table structure for table `questions`
+-- Table structure for table `answers`
+--
+
+CREATE TABLE IF NOT EXISTS `answers` (
+  `ID_ANSWER` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ANSWER` text NOT NULL,
+  `DATE` datetime NOT NULL,
+  `USER_ID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`ID_ANSWER`),
+  KEY `USER_ID` (`USER_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `qas`
+--
+
+
+-- --------------------------------------------------------
+
+
+--
+-- Table structure for table `qas`
 --
 
 CREATE TABLE IF NOT EXISTS `questions` (
@@ -40637,6 +40471,11 @@ CREATE TABLE IF NOT EXISTS `questions` (
   KEY `USER_ID` (`USER_ID`),
   KEY `ANSWER_ID` (`ANSWER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `qas`
+--
+
 
 -- --------------------------------------------------------
 
@@ -44632,6 +44471,11 @@ CREATE TABLE IF NOT EXISTS `subnets` (
   PRIMARY KEY (`SubNetAddress`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `subnets`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -44650,6 +44494,11 @@ CREATE TABLE IF NOT EXISTS `tributes` (
   KEY `USER_ID` (`USER_ID`),
   KEY `PET_ID` (`PET_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `tributes`
+--
+
 
 -- --------------------------------------------------------
 
@@ -44709,6 +44558,11 @@ CREATE TABLE IF NOT EXISTS `vet_talk` (
   KEY `PIC_ID` (`PIC_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `vet_talk`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -44725,17 +44579,16 @@ CREATE TABLE IF NOT EXISTS `videos` (
   `PET_ID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID_VIDEO`),
   KEY `PET_ID` (`PET_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `videos`
+--
+
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `answers`
---
-ALTER TABLE `answers`
-  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`);
 
 --
 -- Constraints for table `blogs`
@@ -44802,8 +44655,15 @@ ALTER TABLE `projects`
   ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
 
 --
--- Constraints for table `questions`
+-- Constraints for table `answers`
 --
+ALTER TABLE `answers`
+  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`);
+
+--
+-- Constraints for table `answers`
+--
+
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
   ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`ANSWER_ID`) REFERENCES `answers` (`ID_ANSWER`);
@@ -44837,7 +44697,3 @@ ALTER TABLE `vet_talk`
 --
 ALTER TABLE `videos`
   ADD CONSTRAINT `videos_ibfk_1` FOREIGN KEY (`PET_ID`) REFERENCES `pets` (`ID_PET`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

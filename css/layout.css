@@ -139,7 +139,8 @@ p,span{
 
 .grid-thumbs li dl{
 	/*height: 50%; esto quedo en auto asi se adapta a cada caso. en antics es mas chico, aunque si el texto es largo pisa el play igual*/ 
-	max-height: 50%; /*esto lo puse para q no exeda la medida q pusiste antes vos */
+	max-height: 45%; 
+	min-height: 45%;
 	width: 100%;
 	position: absolute;
 	bottom: 0;
@@ -209,7 +210,7 @@ p,span{
 	color:#ffffff;
 }
 
-.mod-header > h2, .mod-header > h2 > a{
+.mod-header > h2{
 	font-size:16px;
 	font-weight: bold;
 	color: #FFFFFF;
@@ -292,23 +293,31 @@ p,span{
 }
 
 .pet-loss-mod-list li{
-	padding:10px;
-	border-bottom:1px solid #c788a3;
+	padding: 5px;
+	/*border-bottom: 1px solid rgba(0,0,0,0.1);*/
 }
 
-/*
+
 .pet-loss-mod-list .content-description{
-	width: 270px;
+	width: 82%;
 }
-*/
+
 
 .projects-mod-list, .pet-loss-mod-list{
-	padding:0;
+	padding:5px;
 }
 
+
+/* profile module in index.php */
 .profiles-mod{
 	background: #e8b2ae;
+	min-height: 465px;
+	max-height: 465px;
 }
+
+
+
+
 
 .profiles-mod > .mod-header{
 	background: #d95248;
@@ -367,6 +376,7 @@ p,span{
 
 .animal-antics-mod{
 	background: #bdd19c;
+
 }
 
 .animal-antics-mod > .mod-header{
@@ -585,19 +595,43 @@ p,span{
 
 .pet-loss-mod{
 	background: #dfc2cf;
+	min-height: 513px;
 }
-
+.smaller{
+	margin-top: -1px;
+}
 .pet-loss-mod > .mod-header{
 	background: #b04f78;
 }
 
 
 #profiles-mod{
-	background: #e8b2ae;
+	background-color: #e8b2ae;
+	min-height: 440px;
+
+}
+/* ========================================================== scroll ===========================*/
+.scrollable-module{
+	overflow: auto;
+	max-height: 395px;
+	padding-top: 20px !important;
 }
 
+.scrollable-list{
+	overflow: auto;
+	max-height: 280px !important;
+	padding-top: 15px !important;
+	
+}
+
+.list{
+	min-height: 330px;
+	max-height: 330px;
+}
+/* ========================================================== end scroll ===========================*/
+
 #profiles-mod > .mod-header{
-	background: #d95248;
+	background-color: #d95248;
 }
 
 #profiles-mod .mod-content{
@@ -606,9 +640,6 @@ p,span{
 	padding-bottom: 0;
 }
 
-#profiles-mod > ul {
-		padding-top: 20px !important; /*Para agregar mas espacio entre los menues. Pero solo se lo agrega a los q tienen dsps fotitos y en el home no queda bien que lo tenga.*/
-}
 
 .projects-mod{
 	background: #b0bcda;
@@ -694,6 +725,7 @@ p,span{
 	margin-right: 10px;
 }
 
+
 .video-thumb{
 	margin-bottom: 10px;
 }
@@ -725,8 +757,11 @@ p,span{
 	height: 80%;
 }
 
+.animal-antics-mod {
+	height: 290px;
+}
 .animal-antics-mod .video{ /* video en index.html */
-	margin-left: 20px; /* centra el bloque en en general */
+	margin-left: 20px; /* centra el bloque  en general */
 }
 
 .animal-antics-mod .video .play{ /* video en index.html */
@@ -1366,9 +1401,6 @@ Tunear!!!
 	color: #e7cd00;
 	cursor: pointer;
 }
-
-
-
 
 
 

@@ -1,9 +1,9 @@
-<div class="mod grid_12 vet-talk-mod">
+<div class="mod grid_12 vet-talk-mod list">
 		<?php 
 			//include_once 'modHeader.php'; 
 		?>
 		<!-- talks -->
-		<ul class="mod-content pet-loss-mod-list spacer10">
+		<ul class="mod-content pet-loss-mod-list spacer10 scrollable-list">
 
 
 <?php

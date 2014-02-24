@@ -434,6 +434,20 @@ class BOPets{
     {
         return $this->tribute;
     }
+
+     public function howmuch_profiles_by_pet($id){
+
+           $q = Doctrine_Query::create()
+            
+            ->select('p.ID_PET')
+            ->from('Pets p')
+            ->where('p.ANIMAL_CATEGORY_ID = ?', $id);
+        
+        $r = $q->execute();    
+        
+        return $r->toArray();
+
+   }
 }//End class BOUsers
 
 

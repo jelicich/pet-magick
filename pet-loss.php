@@ -19,6 +19,12 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="js/scroll.js"></script> 
+
+
 <script type="text/javascript" src="js/lib.js"></script>
 
 </head>
@@ -56,7 +62,7 @@
 				include_once 'templates/modHeader.php'; 
 			?>
 				
-				<ul class='grid-thumbs clearfix mod-content' id='ModulesByPet'> 
+				<ul class='grid-thumbs clearfix mod-content scrollable-module' id='ModulesByPet'> 
 					<?php 
 						
 						include_once 'templates/petLossModule.php'; 
@@ -79,6 +85,7 @@
 
 <script type="text/javascript">
 	listByCategory('tributesModuleByPets.php'); // ACA HAY Q HACER UN ajax/php para traer mascotas muertas (tributos)
+	start_scroll('scrollable-module');
 </script>
 
 </body>

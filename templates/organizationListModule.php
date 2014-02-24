@@ -1,10 +1,10 @@
 
-<div class="mod grid_8 org-mod">
+<div class="mod grid_8 org-mod list">
 		<div class="mod-header">
 			<h2>Organization list</h2>
 		</div>
 		<!-- talks -->
-			<ul class="mod-content pet-loss-mod-list talks-list">
+			<ul class="mod-content pet-loss-mod-list talks-list scrollable-list">
 
 
 <?php

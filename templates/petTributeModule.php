@@ -1,4 +1,4 @@
-	<div class="mod grid_12 pet-loss-mod nogrid-mod">
+	<div class="mod grid_12 pet-loss-mod nogrid-mod ">
 			<div class="mod-header">
 				<h2><?php echo $a['TITLE']; ?></h2>
 			</div>

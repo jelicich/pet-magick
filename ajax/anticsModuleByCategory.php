@@ -70,7 +70,10 @@
 ?>
 
 
-
+<script type="text/javascript">
+	listByCategory('anticsModuleByCategory.php');
+	scroll_again('scrollable-module');
+</script>
 
 
 

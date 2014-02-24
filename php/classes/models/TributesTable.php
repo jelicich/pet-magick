@@ -66,19 +66,52 @@ class TributesTable extends Doctrine_Table
             return false;
     }
 
+    public function howmuch_tributes(){
+         $q = Doctrine_Query::create()
+            
+            ->select('t.ID_TRIBUTE')
+            ->from('Tributes t');
+           
+            $r = $q->execute();
+            if($r)
+                return $r->toArray();
+            else
+                return false;
+
+    }
+
     public function getAllTributes()
     {
-        $q = Doctrine_Query::create()
-            //->select('t.SINCE, t.THRU, t.ID_TRIBUTE, p.NAME, f.PIC')
+      /* $q = Doctrine_Query::create()
+            
             ->select('t.*, p.NAME, f.PIC')
             ->from('Tributes t')
             ->leftJoin('t.Pets p')
-            ->leftJoin('p.Pics f');
-            //LIMIT para traer los primeros
-        $r = $q->execute();
-        if($r)
-            return $r->toArray();
-        else
+            ->leftJoin('p.Pics f')
+            ->limit($limit);
+           
+            $r = $q->execute();
+            if($r)
+                return $r->toArray();
+            else
+                return false;
+     */
+            
+
+        $userCount = Doctrine::getTable('Tributes')->count();
+        $user = Doctrine::getTable('Tributes')
+       ->createQuery()
+       ->select('t.*, p.NAME, f.PIC')
+        ->from('Tributes t')
+        ->leftJoin('t.Pets p')
+        ->leftJoin('p.Pics f')
+       ->offset(rand(0, $userCount - 1))
+       ->fetchOne();
+
+
+       if($user)
+         return $user->toArray();
+       else
             return false;
     }
 

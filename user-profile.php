@@ -202,7 +202,9 @@
 
 </div>
 <!-- END wrapper-->
-
+<?php 
+		include_once 'templates/player.php'; 
+	?>
 
 
 <script type="text/javascript">

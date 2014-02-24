@@ -1,4 +1,4 @@
-		<div class="mod grid_12 vet-talk-mod">
+		<div class="mod grid_12 vet-talk-mod list">
 			<div class="mod-header clearfix">
 				<h2>Question time?</h2>
 				
@@ -36,7 +36,7 @@
 				</div>
 			</div>
 
-			<ul class="mod-content pet-loss-mod-list qa-list" id="comments-wrapper">
+			<ul class="mod-content pet-loss-mod-list qa-list scrollable-list" id="comments-wrapper">
 				<?php 
 					for($i = 0; $i<sizeof($aq); $i++)
 					{						

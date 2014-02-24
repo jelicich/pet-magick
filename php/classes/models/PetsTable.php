@@ -39,7 +39,7 @@ class PetsTable extends Doctrine_Table
 		return $rta;
     }
 
-    public function getPetsByCat($id)
+  public function getPetsByCat($id)
     {
         $q = Doctrine_Query::create()
             //->select('p.USER_ID, u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
@@ -58,8 +58,29 @@ class PetsTable extends Doctrine_Table
             return $r->toArray();
         else
             return false;
-    }
+    } /* 
+ public function getPetsByCat($id) {
 
+         $userCount = Doctrine::getTable('Pets')->count();
+        $user = Doctrine::getTable('Pets')
+       ->createQuery()
+       ->select('p.USER_ID, p.ANIMAL_CATEGORY_ID , u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
+         ->from('Pets p')
+        ->innerJoin('p.Users u')
+        ->leftJoin('u.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+        ->leftJoin('u.Countries k')
+        ->leftJoin('u.Regions r')
+        ->leftJoin('u.Cities c')
+        ->where('p.ANIMAL_CATEGORY_ID = ?', $id)
+       ->offset(rand(0, $userCount - 1))
+       ->fetchOne();
+
+
+       if($user)
+         return $user->toArray();
+       else
+            return false;
+}*/
 
     //UPDATE
     public function updateInfo($array)

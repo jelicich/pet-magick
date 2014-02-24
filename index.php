@@ -12,14 +12,17 @@
 <title>Pet Magick</title>
 
 <link rel="stylesheet" href="css/reset.css" type="text/css" />
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css" /> 
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
 
-<!-- <script src="http://code.jquery.com/jquery.js"></script> -->
-<!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
-<script type="text/javascript" src="js/lib.js"></script></head>
+
+<!-- <script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/jquery.js"></script> 
+ <script type="text/javascript" src="js/bootstrap.js"></script>  -->
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/lib.js"></script>
 
 
 </head>
@@ -38,18 +41,22 @@
 		<!-- left wrapper -->
 		<div class="grid_7" id="left-wrapper">
 			<!-- profiles module -->
-			<div class="mod profiles-mod">
-				<div class="mod-header">
-					<h2>Connect with other pet lovers</h2>
-					<span>Connect with other pet lovers in your area, age group, or pet type</span>
-				</div>
+			
+				<div class="mod profiles-mod">
+					<div class="mod-header">
+						<h2>Connect with other pet lovers</h2>
+						<span>Connect with other pet lovers in your area, age group, or pet type</span>
+					</div>
 					<!-- user -->
-					<ul class='grid-thumbs clearfix mod-content' id='profilesModuleByPet'> 
+					<ul class='grid-thumbs clearfix mod-content ' id='profilesModuleByPet' >
 						<?php 
+							$_GET['s'] = 0; // lo utilizo para el limit. o representa a index.php
 							include_once 'templates/profilesModule.php'; 
 						?>
 					</ul>
-			</div>
+				</div>
+			
+			
 			<!-- END profiles module -->
 
 			<!-- projects module -->
@@ -97,11 +104,11 @@
 
 
 
-				<ul class="mod-content pet-loss-mod-list">
+				<div class="mod-content pet-loss-mod-list">
 					<?php 
-					include_once 'templates/petLossIndexModule.php'; 
-				?>
-				</ul>
+						include_once 'templates/petLossIndexModule.php'; 
+					?>
+				</div>
 			</div>
 			<!-- END pet loss module -->
 			
@@ -110,6 +117,11 @@
 		
 	</div>
 	<!-- END site content -->
+
+
+
+
+
 
 	<?php 
 		include_once 'templates/footer.php'; 
@@ -121,6 +133,9 @@
 <?php 
 	include_once 'templates/player.php'; 
 ?>
+
+
+
 
 </body>
 </html>

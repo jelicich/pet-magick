@@ -1,7 +1,7 @@
 <!-- JS  & CSS FOR PLAYER -->
 <link type="text/css" href="video/skin/jplayer.blue.monday.css" rel="stylesheet" />
 <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>-->
-<script type="text/javascript" src="js/jquery.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.js"></script> -->
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 
 <script type="text/javascript">

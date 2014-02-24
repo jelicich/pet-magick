@@ -50,4 +50,15 @@ class ProjectsTable extends Doctrine_Table
         $q->execute();
     }
 
+    public function howmuch_projects(){
+
+         $q = Doctrine_Query::create()
+        ->select('p.ID_PROJECT')
+        ->from('Projects p');
+
+        $r = $q->execute();
+        return $r->toArray();
+
+    }
+
 }

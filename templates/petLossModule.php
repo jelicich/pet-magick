@@ -6,35 +6,38 @@
 	include_once "php/classes/BOTributes.php";
 	$tribute = new BOTributes;
 
-	$allTributes = $tribute->getAllTributes();
-	$t = sizeof($allTributes);
+	$limit = 28;
+	$t = sizeof($tribute->howmuch_tributes());
+	if( $limit > $t){ $limit = $t; }
 
 	$noRepeat = array();
 	
-	for($i=0; $i<$t; $i++){
+	for($i=0; $i < $limit; $i++){
 
-		$j = mt_rand(0, $t -1);
-		
-		if(isset($noRepeat) && in_array($j, $noRepeat) ){
+		$allTributes = $tribute->getAllTributes();
+
+		if(isset($noRepeat) && in_array( $allTributes['ID_TRIBUTE'], $noRepeat) ){
 			
 			$i--;
 
 		}else{
 
-		$petId = $allTributes[$i]['Pets']['ID_PET'];
-		$trId = $allTributes[$i]['ID_TRIBUTE'];
-		//$srcImg = $allTributes[$i]['Pets']['Pics']['PIC'];
+		$trId = $allTributes['ID_TRIBUTE'];
 
-        if(!isset($allTributes[$j]['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
-		else{ $srcImg = 'img/pets/thumb/'.$allTributes[$j]['Pets']['Pics']['PIC']; }
-		if(!isset($allTributes[$j]['Pets']['NAME'])){ $name = '?'; }
-		else{ $name = $name = $allTributes[$i]['Pets']['NAME'];; }
-		if(!isset( $allTributes[$j]['SINCE'])){ $since =  '?'; }
-		else{ $since =  $allTributes[$j]['SINCE']; }
-		if(!isset( $allTributes[$j]['THRU'])){ $thru =  '?'; }
-		else{ $thru =  $allTributes[$j]['THRU']; }
+        if(!isset($allTributes['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
+		else{ $srcImg = 'img/pets/thumb/'.$allTributes['Pets']['Pics']['PIC']; }
+		if(!isset($allTributes['Pets']['NAME'])){ $name = '?'; }
+		else{ $name = $name = $allTributes['Pets']['NAME'];; }
+		if(!isset( $allTributes['SINCE'])){ $since =  '?'; }
+		else{ $since =  $allTributes['SINCE']; }
+		if(!isset( $allTributes['THRU'])){ $thru =  '?'; }
+		else{ $thru =  $allTributes['THRU']; }
+		if(!isset( $allTributes['TITLE'])){ $title =  '?'; }
+		else{ $title =  $allTributes['TITLE']; }
+		if(!isset( $allTributes['CONTENT'])){ $content =  '?'; }
+		else{ $content =  $allTributes['CONTENT']; }
 
-		array_push($noRepeat, $j);
+		array_push($noRepeat,$trId);
 ?>
 
 	<li>

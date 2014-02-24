@@ -282,13 +282,18 @@ class BOUsers{
         
         
     }
-
-    function getUserList()
+    /*
+    function getUserList($limit)
+    {
+        $array = $this->table->getUserList($limit);
+        return $array;
+    }
+    */
+      function getUserList()
     {
         $array = $this->table->getUserList();
         return $array;
     }
-    
     
     //$id = album ID
     function getAlbum($id)
@@ -550,6 +555,12 @@ class BOUsers{
         $this->table->setAlbum($albumId, $userId);
     }
 
+      function howmuch_profiles()
+    {
+        $r = $this->table->howmuch_profiles();
+        return $r;
+    }
+    
 
 
 }//End class BOUsers

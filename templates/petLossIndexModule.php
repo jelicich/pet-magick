@@ -1,46 +1,47 @@
 
 <?php
-		// REEMPLAZAR TODO ESTO POR MASCOTAS MUERTAS (tributos)
-		// ESTO TRAE SOLO USUARIOS NORMALES Y TE LINKEA A SU PERFIL
+	
 
 	include_once "php/classes/BOTributes.php";
 	$tribute = new BOTributes;
 
-	$allTributes = $tribute->getAllTributes();
-	$t = sizeof($allTributes);
+
+	$limit = 5;
+	$t = sizeof($tribute->howmuch_tributes()); // ver si aca hace falta hacer esta consulta ya q es un valor chico y fijo
+	if( $limit > $t){ $limit = $t; }
 
 	$noRepeat = array();
 	
-	for($i=0; $i<$t; $i++){
+	for($i=0; $i < $limit; $i++){
 
-		$j = mt_rand(0, $t -1);
-		
-		if(isset($noRepeat) && in_array($j, $noRepeat) ){
+		$allTributes = $tribute->getAllTributes();
+
+		if(isset($noRepeat) && in_array( $allTributes['ID_TRIBUTE'], $noRepeat) ){
 			
 			$i--;
 
 		}else{
 
-		//$petId = $allTributes[$i]['Pets']['ID_PET'];
-		$trId = $allTributes[$i]['ID_TRIBUTE'];
+		$trId = $allTributes['ID_TRIBUTE'];
 
-        if(!isset($allTributes[$j]['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
-		else{ $srcImg = 'img/pets/thumb/'.$allTributes[$j]['Pets']['Pics']['PIC']; }
-		if(!isset($allTributes[$j]['Pets']['NAME'])){ $name = '?'; }
-		else{ $name = $name = $allTributes[$i]['Pets']['NAME'];; }
-		if(!isset( $allTributes[$j]['SINCE'])){ $since =  '?'; }
-		else{ $since =  $allTributes[$j]['SINCE']; }
-		if(!isset( $allTributes[$j]['THRU'])){ $thru =  '?'; }
-		else{ $thru =  $allTributes[$j]['THRU']; }
-		if(!isset( $allTributes[$i]['TITLE'])){ $title =  '?'; }
-		else{ $title =  $allTributes[$i]['TITLE']; }
-		if(!isset( $allTributes[$i]['CONTENT'])){ $content =  '?'; }
-		else{ $content =  $allTributes[$i]['CONTENT']; }
+        if(!isset($allTributes['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
+		else{ $srcImg = 'img/pets/thumb/'.$allTributes['Pets']['Pics']['PIC']; }
+		if(!isset($allTributes['Pets']['NAME'])){ $name = '?'; }
+		else{ $name = $name = $allTributes['Pets']['NAME'];; }
+		if(!isset( $allTributes['SINCE'])){ $since =  '?'; }
+		else{ $since =  $allTributes['SINCE']; }
+		if(!isset( $allTributes['THRU'])){ $thru =  '?'; }
+		else{ $thru =  $allTributes['THRU']; }
+		if(!isset( $allTributes['TITLE'])){ $title =  '?'; }
+		else{ $title =  $allTributes['TITLE']; }
+		if(!isset( $allTributes['CONTENT'])){ $content =  '?'; }
+		else{ $content =  $allTributes['CONTENT']; }
 
-		array_push($noRepeat, $j);
+		array_push($noRepeat,$trId);
+
 ?>
 	
-				<li class="clearfix">
+				<li class="clearfix smaller">
 					<img src= <?php  echo $srcImg; ?> class="thumb-small side-img"/>
 					<div class="content-description bg-txt corregir">
 						<h3><?php echo $title; ?></h3>

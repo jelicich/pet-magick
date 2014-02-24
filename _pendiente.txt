@@ -1,8 +1,6 @@
 PENDIENTES
 ==========
-
-aaaaaaaaaaaaa
-
+bbbbbbbbbbbbbbbbbbbbbbbb
 ANTRIORES
 =========
 - Logueo en los navegadores

@@ -7,8 +7,11 @@
  */
 ?>
 
-<div class="grid_4 blog-bar">
-  <div id="sidebar"> 
+<div class="grid_4 vet-talk-mod">
+  <div class="mod-header">
+    <h2>Blog menu</h2>
+  </div>
+  <div id="sidebar" class="clearfix"> 
     <!-- begin widget sidebar --> 
     <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Main Sidebar') ) : ?>
  	<div class="no-widgets">

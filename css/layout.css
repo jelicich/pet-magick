@@ -2508,3 +2508,22 @@ body.my-account #bbpress-forums {
 	border: 4px solid #6a9a16;
 }
 
+#sidebar{
+	padding:10px;
+	margin:0 !important;
+}
+
+#sidebar h3{
+	font-size: 18px;
+	line-height: 18px;
+	color: #6a9a16;
+	margin-top: 30px;
+}
+
+#sidebar a{
+	color: #000000;
+}
+
+#sidebar ul{
+	margin: 0 0 0 10px;
+}

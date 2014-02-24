@@ -773,6 +773,42 @@ p,span{
 /* ------------------------------ end big videos*/
 
 
+.video-index .thumb-big{
+	position: absolute;
+	background-color: #fff; /* provisorio */
+}
+
+.wrapper-play-index{ /* Provisorio hasta definir funcionalidad */
+	height: 200px;
+	cursor: pointer;
+}
+
+.play-index{
+	background: url(../img/antics/thumbs/play_midd.png) center no-repeat transparent;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: -5px;
+	left: 0px;
+	z-index: 9;
+	padding: 25px !important;
+}
+
+.video-index .play-index{ /* centra el play en el thumb grande */
+	width: 335px;
+	height: 80%;
+}
+
+
+.animal-antics-mod .video-index{ /* video en index.html */
+	margin-left: 13px; /* centra el bloque  en general */
+}
+
+.animal-antics-mod .video-index .play-index{ /* video en index.html */
+	  margin-left: -10px;/*centra el play dentro del video*/
+	height: 75%; /* evita q el pointer se haga por fuera del video */
+
+}
 
 
 

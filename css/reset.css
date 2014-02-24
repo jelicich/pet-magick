@@ -157,6 +157,7 @@ li {
   "display: list-item" keeps bullets from
   disappearing if hasLayout is triggered.
 */
+list-style-type: none;
   display: list-item;
 }
 

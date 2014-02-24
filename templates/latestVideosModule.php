@@ -54,15 +54,18 @@
 	
 		<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
 			<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
-			<span class='wrapper-play'>
-				<span class="play"></span>
+			<span class='wrapper-play-index'>
+				<span class="play-index"></span>
 				<img src= <?php  echo 'video/'.$srcImg; ?> class="thumb-big video-thumb"/>
 			</span>
 
+		<!--	Ver como hacemos para mostrar esto en el index sin romper todo
+
 			<span class="video-last-caption">
-				<h3><?php echo $title; ?></h3>
-				<span><?php echo  $caption; ?></span>
+				<h3><?php //echo $title; ?></h3>
+				<span><?php// echo  $caption; ?></span>
 			</span>
+		 -->
 		</a>
 
 <?php

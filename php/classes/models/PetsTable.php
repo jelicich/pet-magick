@@ -38,7 +38,8 @@ class PetsTable extends Doctrine_Table
 		
 		return $rta;
     }
-
+ /* 
+  CONSULTAS PARA TRAER RANDOM. ANDAN LAS DOS.....
   public function getPetsByCat($id)
     {
         $q = Doctrine_Query::create()
@@ -58,7 +59,7 @@ class PetsTable extends Doctrine_Table
             return $r->toArray();
         else
             return false;
-    } /* 
+    }
  public function getPetsByCat($id) {
 
          $userCount = Doctrine::getTable('Pets')->count();

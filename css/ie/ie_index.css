@@ -1,0 +1,35 @@
+
+.video-index .thumb-big{
+
+float: left;
+}
+
+.wrapper-play-index{ /* Provisorio hasta definir funcionalidad */
+	height: 200px;
+	cursor: pointer;
+	margin-right: 0px;
+}
+
+.play-index{
+
+	height: 10px;
+	width: 285px;
+	top: 80px;
+	left: 10px;
+
+}
+
+.video-index .play-index{ /* centra el play en el thumb grande */
+
+}
+
+
+.animal-antics-mod .video-index{ /* video en index.html */
+
+}
+
+.animal-antics-mod .video-index .play-index{ /* video en index.html */
+	
+
+
+}

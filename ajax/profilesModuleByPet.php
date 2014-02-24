@@ -48,7 +48,6 @@
 					<dl class='hidden'>
 						<dt><?php echo $name." ".$lastName; ?> </dt>
 						<dd><?php echo  $city.", ".$country; ?></dd>
-					<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 					</dl>
 				</a>
 			</li>
@@ -60,46 +59,49 @@
 
 		include_once "../php/classes/BOPets.php";
 		$p = new BOPets;
-		$usersList = $p->getPetsByCat($_POST['c']);
-		$t = sizeof($usersList);
-		$noRepeat = array();
 
-		for($i=0; $i<$t; $i++){
+		$limit = 28;
+		$t = sizeof($p->howmuch_profiles_by_pet($_POST['c']));
+		if( $limit > $t){ $limit = $t; }
 
-			$j = mt_rand(0, $t -1);
-		
-			if(isset($noRepeat) && in_array($j, $noRepeat) ){
+		$usersList = $p->getPetsByCat($_POST['c'], $limit);
+		//var_dump($usersList); exit;
+		//$noRepeat = array();
+		//var_dump($userslist); exit;
+		for($i=0; $i < $limit; $i++){
+
+
+			//if(isset($noRepeat) && in_array($j, $noRepeat) ){
 				
-				$i--;
+			//	$i--;
 
-			}else{
+			//}else{
 
-			$name = $usersList[$j]['Users']['NAME'];
-			$lastName = $usersList[$j]['Users']['LASTNAME'];
-			$userId = $usersList[$j]['USER_ID'];
+			$name = $usersList[$i]['NAME'];
+			$lastName = $usersList[$i]['LASTNAME'];
+			$userId = $usersList[$i]['USER_ID'];
 
-			if(!isset($usersList[$j]['Users']['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
-			else{ $srcImg = 'img/users/thumb/'.$usersList[$j]['Users']['Pics']['PIC']; }
-			if(!isset($usersList[$j]['Users']['Cities']['City'])){ $city = '?'; }
-			else{ $city = $usersList[$j]['Users']['Cities']['City']; }
-			if(!isset( $usersList[$j]['Users']['Countries']['Country'])){ $country =  '?'; }
-			else{ $country =  $usersList[$j]['Users']['Countries']['Country']; }
+			if(!isset($usersList[$i]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
+			else{ $srcImg = 'img/users/thumb/'.$usersList[$i]['Users']['Pics']['PIC']; }
+			if(!isset($usersList[$i]['Cities']['City'])){ $city = '?'; }
+			else{ $city = $usersList[$i]['Cities']['City']; }
+			if(!isset( $usersList[$i]['Countries']['Country'])){ $country =  '?'; }
+			else{ $country =  $usersList[$i]['Countries']['Country']; }
 
-			array_push($noRepeat, $j);
+			//array_push($noRepeat, $userId);
 	?>
 
+			
 		<li>
 			<a href= <?php echo "user-profile.php?u=".$userId; ?> >
 				<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 				<dl class='hidden'>
 					<dt><?php echo $name." ".$lastName; ?> </dt>
 					<dd><?php echo  $city.", ".$country; ?></dd>
-				<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
-				
-			</a>
+				</a>
 		</li>
 <?php
-		}// end else		
+		//}// end else		
 			}// end for
 	}//end else
 ?>

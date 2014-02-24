@@ -25,6 +25,12 @@
 <script type="text/javascript" src="js/lib.js"></script>
 
 
+<!--[if lte IE 8]>
+
+	<link rel="stylesheet" href="css/ie/ie_index.css" type="text/css" />
+
+<![endif]-->
+
 </head>
 
 <body>
@@ -100,9 +106,6 @@
 					<h2>Visit wall of rememerance</h2>
 					<span>Leave a message of support for other pet lovers</span>
 				</div>
-
-
-
 
 				<div class="mod-content pet-loss-mod-list">
 					<?php 

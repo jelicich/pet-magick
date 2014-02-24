@@ -213,13 +213,6 @@ class BOPets{
     }
 
 
-    function getPetsByCat($id)
-    {
-        $array = $this->table->getPetsByCat($id);
-        return $array;
-    }
-
-
     function isOwn()
     {
       if(isset($_SESSION['id']) && $this->owner == $_SESSION['id'])
@@ -448,6 +441,85 @@ class BOPets{
         return $r->toArray();
 
    }
+
+
+// Consulta SQL para listas random
+
+   /*
+    function getPetsByCat($id)
+    {
+        $array = $this->table->getPetsByCat($id);
+        return $array;
+    }
+
+    */
+
+    function conectar() 
+    {
+        $conexion = @mysqli_connect('localhost', 'root', '', 'pet_magick');
+
+        if (!$conexion) 
+        {
+        //entra en este if si $conexion es false
+            die("No connection to database");
+        }
+        return $conexion;
+    }
+
+    function consultar($conexion, $consulta) 
+    {
+        $resultadoConsulta = mysqli_query($conexion,$consulta);
+        //var_dump($resultadoConsulta);
+        $err = mysqli_error($conexion);
+        if ($err) 
+        {
+            die("Query error " . $err);
+        }
+        return $resultadoConsulta;
+    }
+
+
+    function consultarConResultados($conexion, $consulta) 
+    {
+        $resultado = $this->consultar($conexion, $consulta);
+
+        $registros = array();
+        while($registro = mysqli_fetch_assoc($resultado)) 
+        {
+            $registros[] = $registro;
+        }
+        return $registros;
+    }
+
+    function getPetsByCat($id, $limit){
+            
+        $c = $this->conectar();
+        $q = "
+        SELECT 
+        p.USER_ID, p.ANIMAL_CATEGORY_ID , u.NAME, u.LASTNAME, u.NICKNAME, c.country, r.region, y.city, ph.PIC
+        FROM pets as p 
+        JOIN users as u on p.USER_ID = u.ID_USER
+        LEFT JOIN pics as ph on ph.ID_PIC = u.PIC_ID
+        LEFT JOIN countries as c on c.countryId = u.COUNTRY_ID
+        LEFT JOIN regions as r on r.regionId = u.REGION_ID
+        LEFT JOIN cities as y on y.cityId = u.CITY_ID
+        WHERE p.ANIMAL_CATEGORY_ID = ".$id."
+        ORDER BY RAND()
+        LIMIT ".$limit;
+
+        $r = $this->consultar($c,$q);
+
+        $out = array();
+
+       while($row = mysqli_fetch_assoc($r))
+        {
+            $out[] = $row;
+         }
+
+        return $out;    
+    }
+
+
 }//End class BOUsers
 
 

@@ -2588,10 +2588,35 @@ body.my-account #bbpress-forums {
 	margin-top: 30px;
 }
 
+
 #sidebar a{
 	color: #000000;
 }
 
 #sidebar ul{
 	margin: 0 0 0 10px;
+}
+
+#blog-search-wrapper{
+	position: relative;
+}
+
+#blog-search{
+	margin: 0;
+	height: 36px;
+	width: 100%;
+	padding-right: 67px;
+}
+
+#searchsubmit {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	font-size: 12px;
+	padding: 4px 8px;
+	border-radius: 0 3px 3px 0 !important;
+}
+
+#searchform{
+	margin:0;
 }

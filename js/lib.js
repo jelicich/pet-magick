@@ -206,7 +206,7 @@ function reg(){
 		ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);
 	}
 }//end reg
-
+/*
 var flag = 0; // showForms(), -- public --
 function logRegOnclick(){
 
@@ -259,13 +259,13 @@ function showForms(link, show, hide){
 		{
 			if(!over)
 			{
-				//byid(show).style.display = "none"; // esto es lo q hace q en ie 7 se oculte el form al seleccionar algo en el combo
+				byid(show).style.display = "none"; // esto es lo q hace q en ie 7 se oculte el form al seleccionar algo en el combo
 				flag = 0;
 			}
 		}
 	//}
 }//end showLogin
-
+*/
 //============================= COMBO FUNCTIONS
 
 function printRegions(){

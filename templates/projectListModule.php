@@ -14,7 +14,7 @@ if(!isset($_GET['p'])){
 	if(isset($_GET['s']) && $_GET['s'] == 0){
 
 		$limit = 3;
-		echo "<ul class='mod-content pet-loss-mod-list'>";
+		echo "<ul class='mod-content pet-loss-mod-list ie-project'>";
 
 	}else{
 

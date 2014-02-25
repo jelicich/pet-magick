@@ -63,7 +63,9 @@ PENDIENTES VIDEO (INDEX Y ANTICS)
 LISTA IE7 (no incluye nada q sea solo estilo):
 =============================================
 
-- Log//Reg: cuando muestra errores elimina dichas funcionalidades del header, tenes q refrescar paraq vuelva.
+- ie8 en index cuando pasas sobre view en pet loss se agrandan los contenedores...
+
+- Log//Reg: se oculta al seleccion del combo.
 
 - probar log desde la pestana de blog y foro
 

@@ -19,8 +19,8 @@ $(document).ready(function(){
                  
                   m4v: videoSrc,
                   ogg: videoSrc,// ver q onda esto de los diferentes formatos
-                  webm: videoSrc,// ver q onda esto de los diferentes formatos
-                  poster: imgSrc
+                  webm: videoSrc// ver q onda esto de los diferentes formatos
+                  //poster: imgSrc
 
                 }).jPlayer('play');
                },

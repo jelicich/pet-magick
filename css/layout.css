@@ -40,7 +40,23 @@ p,span{
 	font-size: 13px;
 }
 
+#preloader{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	top:0;     
+	left:0;     
+	z-index:999;
 
+}
+
+#preloader img{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+   
+}
 /* ----------------------------------- background textos */
 
 .bg-txt{ /* bg-txt reemplaza user-about para standarizarlo */
@@ -440,12 +456,14 @@ p,span{
 #reg-form{
 	position: absolute;
 	right: 0;
+	top: 35px;
 	z-index: 100;
 	display: none;
 	padding:10px;
 	background:#e7cd00;
 	width: 400px;
 	border:1px solid rgba(0,0,0,0.1);
+	box-shadow:  2px 2px 2px rgba(0,0,0,0.3);
 }
 
 #reg-form select{
@@ -472,12 +490,15 @@ p,span{
 #log-form{
 	position: absolute;
 	right: 0;
+	top: 35px;
 	z-index: 100;
 	display: none;
 	padding:10px;
 	background:#e7cd00;
 	width: 200px;
 	border:1px solid rgba(0,0,0,0.1);
+	-moz-box-shadow:  2px 2px 2px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 }
 
 #log-form a{
@@ -583,7 +604,7 @@ p,span{
 		margin-top: 0;
 	}
 }
-
+/*
 #nav-bar .dropdown-menu > li > a:hover, #nav-bar .dropdown-menu > li > a:focus, #nav-bar .dropdown-submenu > li > a:hover, #nav-bar .dropdown-submenu > li > a:focus{
 	background-color: #be3730;
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#be3730), to(#a32c26));
@@ -592,6 +613,7 @@ p,span{
 	background-image: linear-gradient(to bottom, #be3730, #a32c26);
 	background-repeat: repeat-x;
 }
+*/
 
 .pet-loss-mod{
 	background: #dfc2cf;
@@ -776,6 +798,7 @@ p,span{
 .video-index .thumb-big{
 	position: absolute;
 	background-color: #fff; /* provisorio */
+	left: 50px;
 }
 
 .wrapper-play-index{ /* Provisorio hasta definir funcionalidad */
@@ -801,12 +824,12 @@ p,span{
 
 
 .animal-antics-mod .video-index{ /* video en index.html */
-	margin-left: 13px; /* centra el bloque  en general */
+	margin-left: 50px; /* centra el bloque  en general */
 }
 
 .animal-antics-mod .video-index .play-index{ /* video en index.html */
 	  margin-left: -10px;/*centra el play dentro del video*/
-	height: 75%; /* evita q el pointer se haga por fuera del video */
+	 height: 75%; /* evita q el pointer se haga por fuera del video */
 
 }
 

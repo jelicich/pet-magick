@@ -23,13 +23,14 @@
 <script type="text/javascript" src="js/jquery.js"></script> 
 <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="js/scroll.js"></script> 
-
+<script type="text/javascript" src="js/preloader.js"></script> 
 
 <script type="text/javascript" src="js/lib.js"></script>
 
 </head>
 
 <body>
+<div id='preloader'><img src='img/loading.gif' alt='loader' /></div>
 <div id="wrapper">
 	
 	<?php 

@@ -121,10 +121,28 @@
 	//showForms('link-reg', 'reg-form', 'log-form'); //====================== DESPLIEGA REGISTRO
 	//showForms('link-login', 'log-form', 'reg-form'); //====================== DESPLIEGA LOGIN
 	
-	logRegOnclick(); //====================== DESPLIEGA REGISTRO y LOGIN
+	//logRegOnclick(); //====================== DESPLIEGA REGISTRO y LOGIN
 	reg(); //====================== PARA REGISTRARSE
 	countriesCombo(); //====================== DESPLIEGA COMBOS
 	regionsCombo(); //====================== DESPLIEGA REGIONES
 	login(); //====================== PARA LOGUEARSE 
 
+	$("#link-reg").click(function(){
+
+		$("#reg-form").toggle('slow');
+		$("#log-form").hide('slow');
+	});
+
+	$("#link-login").click(function(){
+
+		$("#log-form").toggle('slow');
+		$("#reg-form").hide('slow');
+
+	});
+
+	/*$("#wrapper").click(function(){
+		$("#reg-form").hide('slow');
+		$("#log-form").hide('slow');
+
+	});*/
 </script>

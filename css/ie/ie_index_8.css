@@ -1,0 +1,16 @@
+/* pet loss module */
+
+.content-description{ 
+	min-height: 80px;
+
+}
+
+.bg-txt{ 
+	background: #e7d3dc;
+}
+
+/* projects module */
+.ie-project .bg-txt{
+	background: #c7cfe4;
+}
+

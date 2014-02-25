@@ -1,8 +1,7 @@
 <?php 
 	session_start();
-	//session_destroy();
 	$_SESSION['token'] = sha1(uniqid()); 
-	//var_dump($_SESSION);
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -16,24 +15,21 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
-
-
 <!-- <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/jquery.js"></script> 
  <script type="text/javascript" src="js/bootstrap.js"></script>  -->
-<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/preloader.js"></script> 
 
 
-<!--[if lte IE 8]>
-
-	<link rel="stylesheet" href="css/ie/ie_index.css" type="text/css" />
-
-<![endif]-->
+<!--[if lte IE 8]> <link rel="stylesheet" href="css/ie/ie_index_8.css" type="text/css" /> <![endif]-->
+<!--[if IE 7]> <link rel="stylesheet" href="css/ie/ie_index_7.css" type="text/css" /> <![endif]-->
 
 </head>
 
 <body>
+<div id='preloader'><img src='img/loading.gif' alt='loader' /></div>
 <div id="wrapper">
 
 	<?php 

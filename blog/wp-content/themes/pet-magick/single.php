@@ -17,14 +17,14 @@ get_header(); ?>
           <div class="bread-crumb">
             <?php simonwpframework_breadcrumb();?>
           </div>
-          <h3 class="entry-title">
+          <h2 class="entry-title">
             <?php the_title(); ?>
             <?php edit_post_link('Edit'); ?>
-          </h3>
+          </h2>
           <div class="postmetadata">
             <?php get_template_part( '/inc/meta' );?>
           </div>
-          <div class="flex_vert_pad"></div>
+          
         </div><!-- end mod header -->
         
         <!-- -->
@@ -58,7 +58,7 @@ get_header(); ?>
         </div><!-- end mod content -->
       </div><!-- end mod -->
 
-      <div id="comment-block" class="grid_8">
+      <div id="comment-block">
         <?php comments_template(); ?>
       </div>
       <?php endwhile; endif; ?>

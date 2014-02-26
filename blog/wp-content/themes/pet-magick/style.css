@@ -235,7 +235,7 @@ nav a#pull {
 		clear: both;
 }
 .meta {
-		padding: 0px 0px 10px 0px;
+		/*padding: 0px 0px 10px 0px;*/
 }
 object,
 video {
@@ -265,7 +265,7 @@ img {
 .post,
 .type-post,
 .type-page {
-		padding: 0px 0px 10px 0px;
+		/*padding: 0px 0px 10px 0px;*/
 }
 .textcenter {
 		text-align: center;
@@ -330,13 +330,13 @@ img {
 		padding: 0px 0px 0px 25px;
 }
 .author {
-		background: #f3f3f3;
-		padding: 20px 20px 0px 0px;
-		margin: 0px 0px 20px 0px;
+		background: rgba(255, 255, 255, 0.3);
+		padding: 10px;
+		/*margin: 0px 0px 20px 0px;*/
 }
 .author img {
 		float: left;
-		margin: 0px 20px 10px 0px;
+		margin: 0px 20px 0px 0px;
 }
 .authorinfo h3 {
 		margin: 0px 0px 10px 0px;
@@ -445,7 +445,7 @@ h3#reply-title {
 }
 #comments-title:before {
 		content: "Comments: ";
-		color: #777;
+		/*color: #777;*/
 }
 #comments-title {
 		padding: 30px 0px 0px 0px;
@@ -457,8 +457,8 @@ h3#reply-title {
 		font-size: 14px;
 		font-style: italic;
 		text-transform: capitalize;
-		margin: 40px 0px 0px 0px;
-		padding: 40px 0px 0px 0px;
+		/*margin: 40px 0px 0px 0px;
+		padding: 40px 0px 0px 0px;*/
 }
 .comment-author .avatar {
 		display: block;
@@ -478,9 +478,9 @@ h3#reply-title {
 		margin: 10px 0px 10px 0px;
 		padding: 10px 10px;
 		background-color: #f3f3f3;
-		-webkit-border-radius: 3px;
+		/*-webkit-border-radius: 3px;
 		-moz-border-radius: 3px;
-		border-radius: 3px;
+		border-radius: 3px;*/
 }
 #comment-block .children {
 		margin: -50px 0px 0px 0px;
@@ -632,7 +632,7 @@ body {
 		font-size: 22px;
 		padding: 20px 10px 20px 90px;
 		margin: 0px;
-		background: url("images/quotes.png") 10px 10px no-repeat #f3f3f3;
+		background: url("images/quotes.png") 10px 10px no-repeat rgba(255, 255, 255, 0.3);
 }
 .content-format-status p:before {
 		content: 'Status: ';
@@ -807,12 +807,11 @@ abbr[data-original-title] {
 blockquote {
 		font-size: 14px;
 		line-height: 22px;
-		background: #f9f9f9;
-		border-left: 10px solid #ccc;
-		margin: 20px;
+		background: rgba(255, 255, 255, 0.3);
+		border-left: 10px solid #6a9a16 !important;
 		quotes: "\201C""\201D""\2018""\2019";
-		padding: 20px 10px 20px 90px;
-		background: url("images/quotes.png") 10px 10px no-repeat #f3f3f3;
+		padding: 20px 10px 20px 90px !important;
+		background: url("images/quotes.png") 10px 10px no-repeat rgba(255, 255, 255, 0.3);
 }
 address {
 		display: block;
@@ -1069,4 +1068,51 @@ input[type="submit"] {
 	padding-top: 20px;
 	padding-bottom:60px;   /* Height of the footer */
 }
-
+.content-format-standard ul li{
+	list-style-type: disc;
+}
+.content-format-standard ol li{
+	list-style-type: decimal;
+}
+.postmetadata .meta{
+	color: #000000;
+	padding-bottom: 0;
+}
+.mod-header .bread-crumb{
+	padding:0;
+}
+.mod-header h2.entry-title{
+	font-size: 20px;
+	margin:10px 0;
+}
+.post-edit-link{
+	font-size: 13px !important;
+}
+#comment-block .mod-header h3{
+	font-size: 18px;
+	text-align: left !important;
+	color:#ffffff;
+	padding: 0;
+	line-height: 16px;
+}
+.comment.byuser{
+	margin-bottom: 40px;
+	color: #000;
+}
+.comment.byuser a{
+	color: #000 !important;  
+}
+.comment.byuser:last-child{
+	margin-bottom: 0;
+}
+.comment-body p {
+		margin: 10px 0px 10px 0px;
+		padding: 10px 10px;
+		background-color: rgba(255, 255, 255, 0.3);
+}
+.comment.byuser .children{
+	padding: 70px 0 0 50px;	
+}
+.mod-content .post .entry{
+	margin-bottom: 20px;
+}

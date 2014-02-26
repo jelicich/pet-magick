@@ -16,7 +16,7 @@ a:hover{
 
 body{
 	font-family: "Tahoma", Verdana, Arial, sans-serif;
-	/*background: url('../img/fresh_snow.png');*/
+	background: url('../img/fresh_snow.png');
 	color:#000000;
 }
 
@@ -222,6 +222,10 @@ p,span{
 	position: relative;
 }
 
+.mod-header *{
+	color:#ffffff;
+}
+
 .mod-header a{
 	color:#ffffff;
 }
@@ -233,6 +237,10 @@ p,span{
 	margin:0;
 	line-height: 16px;
 	height: 18px;
+}
+
+.mod-header > h2 > a{
+	font-size: 16px;
 }
 
 .mod-header > span{

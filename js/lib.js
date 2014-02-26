@@ -1017,7 +1017,7 @@ function comments(ajaxFile){
 		}
 	})();
 
-
+if(byid('send-comment')){
 	(function postComment()
 	{
 		
@@ -1044,7 +1044,7 @@ function comments(ajaxFile){
 
 		}
 	})();
-
+}
 	function printCommentSent()
 	{
 		//console.log(this.responseText);
@@ -1173,6 +1173,14 @@ function listByCategory(ajaxFile){
 
 			pets[i].onclick = function()
 			{		
+					var each = byid('menuByPet').getElementsByTagName('div');
+					for(var j = 0; j < each.length; j++){
+						each[j].style.display = 'none';
+					}
+
+					var arrow = this.parentNode.getElementsByTagName('div');
+						arrow[0].style.display = "block";
+
 					var p = this.href;
 					var index = p.indexOf('#');
 			  		index ++;

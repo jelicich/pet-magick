@@ -38,11 +38,11 @@ $(document).ready(function(){
             var thumb = $(this).find('img').attr('src');
             var video  = $(this).attr("href");
            // $("#jquery_jplayer_1").jPlayer("setMedia", {m4v: video}, {poster: thumb}).jPlayer("play");
-            $(".modalWindows").css('display', 'block');
+            $(".modalWindows").show(300);
 
                $("#close").click(function(){ 
                    
-                    $(".modalWindows").css('display', 'none');  
+                    $(".modalWindows").hide(300); 
                     $("#jquery_jplayer_1").jPlayer('destroy');
                     
                });

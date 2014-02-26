@@ -20,7 +20,7 @@
  <script type="text/javascript" src="js/bootstrap.js"></script>  -->
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/lib.js"></script>
-<script type="text/javascript" src="js/preloader.js"></script> 
+<script type="text/javascript" src="js/jq_functions.js"></script> 
 
 
 <!--[if lte IE 8]> <link rel="stylesheet" href="css/ie/ie_index_8.css" type="text/css" /> <![endif]-->

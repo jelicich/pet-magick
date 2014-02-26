@@ -21,8 +21,9 @@
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
-<script type="text/javascript" src="js/preloader.js"></script>
 
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jq_functions.js"></script> 
 <script type="text/javascript" src="js/lib.js"></script>
 
 </head>

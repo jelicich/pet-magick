@@ -103,8 +103,8 @@ function upload($query,$path){
 
               $img_original = imagecreatefromjpeg( $imgOriginal );
               // maximo ancho y alto
-              $max_ancho = 123;
-              $max_alto = 123;
+              $max_ancho = 118;
+              $max_alto = 118;
 
               // separo alto y ancho de la imgOriginal en dos variables
               

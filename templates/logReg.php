@@ -126,23 +126,6 @@
 	countriesCombo(); //====================== DESPLIEGA COMBOS
 	regionsCombo(); //====================== DESPLIEGA REGIONES
 	login(); //====================== PARA LOGUEARSE 
+	userForms(); // jquery function
 
-	$("#link-reg").click(function(){
-
-		$("#reg-form").toggle('slow');
-		$("#log-form").hide('slow');
-	});
-
-	$("#link-login").click(function(){
-
-		$("#log-form").toggle('slow');
-		$("#reg-form").hide('slow');
-
-	});
-
-	/*$("#wrapper").click(function(){
-		$("#reg-form").hide('slow');
-		$("#log-form").hide('slow');
-
-	});*/
 </script>

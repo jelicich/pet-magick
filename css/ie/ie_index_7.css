@@ -1,3 +1,4 @@
+
 /* header */
 
 #yellow-bar{
@@ -6,17 +7,17 @@
 
 /* log reg*/
 
-#log-form{
+#log-form, #reg-form{
 	position: absolute;
 	right: 0;
-	top: 55px;
+	top: 65px;
 	padding:10px;
 	
 }
 
 #email-log, 
 #password-log,
-#name, nickname,
+#name, #nickname,
 #lastname,
 #nickname,
 #email,
@@ -46,6 +47,7 @@
 
 .content-description{ 
 	min-height: 60px;
+	height: 60px; /* esto es para ie */
 }
 
 .pet-loss-mod li{
@@ -80,3 +82,4 @@
 	display: inline;
 	
 }
+

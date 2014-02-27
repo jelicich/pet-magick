@@ -107,5 +107,5 @@
 
 <script type="text/javascript">
 	listByCategory('tributesModuleByPets.php');
-	scroll_again('scrollable-module');
+	//scroll_again('scrollable-module');
 </script>

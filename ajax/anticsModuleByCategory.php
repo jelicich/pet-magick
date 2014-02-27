@@ -15,14 +15,22 @@
 		$srcVideo = $videosList[$i]['VIDEO']; 
 ?>
 
-	<li>
+	<li class="ie-play">
 		<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
-			<img src= <?php  echo 'video/'.$srcImg; ?> class='thumb-mid'/>
-			<dl class='hidden'>
-				<dt><?php echo $title; ?> </dt>
-				<dd><?php echo  $caption; ?></dd>
-			<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
-			</dl>
+			
+			<span class='wrapper-play'>
+				
+				<span class="play"></span>
+				
+					<img src= <?php  echo 'video/'.$srcImg; ?> class='thumb-mid'/>
+
+					<dl class='hidden'>
+						<dt><?php echo $title; ?> </dt>
+						<dd><?php echo  $caption; ?></dd>
+					<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
+					</dl>
+
+			</span>
 		</a>
 	</li>
 
@@ -47,15 +55,22 @@
 		$srcVideo = $videosList[$i]['Videos'][0]['VIDEO']; 
 ?>
 
-	<li>
-		
+	<li class="ie-play">
 		<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
-			<img class='videoThumb thumb-mid' src= <?php  echo 'video/'.$srcImg; ?> />
-			<dl class='hidden'>
-				<dt><?php echo $title; ?> </dt>
-				<dd><?php echo  $caption; ?></dd>
-			<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
-			</dl>
+			
+			<span class='wrapper-play'>
+				
+				<span class="play"></span>
+				
+					<img src= <?php  echo 'video/'.$srcImg; ?> class='thumb-mid'/>
+
+					<dl class='hidden'>
+						<dt><?php echo $title; ?> </dt>
+						<dd><?php echo  $caption; ?></dd>
+					<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
+					</dl>
+
+			</span>
 		</a>
 	</li>
 
@@ -72,7 +87,7 @@
 
 <script type="text/javascript">
 	listByCategory('anticsModuleByCategory.php');
-	scroll_again('scrollable-module');
+	//scroll_again('scrollable-module');
 </script>
 
 

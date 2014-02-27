@@ -1,3 +1,40 @@
+/*modules header */
+.mod-menu
+{
+	height: 15px;
+	padding: 0px;
+}
+
+.mod-menu li{
+	height:12px;
+	margin: -10px 1px 0 0px !important;
+	width: 150px;
+}
+
+.mod-menu a{
+	padding: 10px  0px ;
+
+}
+.mod-menu li:hover{
+	height: 35px;
+	background: #c24940;
+	 
+	position: none;
+	width: 150px;
+}
+.scrollable-module{
+	margin-top: 10px;
+}
+
+#arrow-cat,
+#arrow-bird,
+#arrow-rabbit,
+#arrow-ferret,
+#arrow-others
+ {
+ 	top:35px;
+}
+
 
 /* header */
 
@@ -42,6 +79,23 @@
 	top: 80px;
 	left: -1px;
 }
+
+/*animal antics latest videos*/
+
+.video .play{ /* centra el play en el thumb grande */
+	width: 280px;
+	height: 62%;
+}
+
+
+.ie-play .play{
+
+width:55px;
+height: 55%;
+}
+
+
+
 
 /* pet loss module */
 

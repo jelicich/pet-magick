@@ -61,13 +61,14 @@
 						
 				include_once 'templates/modHeader.php'; 
 			?>
-				
-				<ul class='grid-thumbs clearfix mod-content scrollable-module' id='ModulesByPet'> 
-					<?php 
-						
-						include_once 'templates/petLossModule.php'; 
-					?>
-				</ul>	
+				<div class="scrollable-module">
+					<ul class='grid-thumbs clearfix' id='ModulesByPet'> 
+						<?php 
+							
+							include_once 'templates/petLossModule.php'; 
+						?>
+					</ul>	
+				</div>
 		</div>
 		<!-- END profiles module -->
 
@@ -86,6 +87,11 @@
 <script type="text/javascript">
 	listByCategory('tributesModuleByPets.php'); // ACA HAY Q HACER UN ajax/php para traer mascotas muertas (tributos)
 	start_scroll('scrollable-module');
+
+	$(".mod-menu li").click(function(){
+		$(this).find("div").attr("class", "arrow-pet-loss");
+	});
+
 </script>
 
 </body>

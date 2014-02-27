@@ -48,7 +48,7 @@ function start_scroll(applyTo){
 		})(jQuery);
 	});
 }
-
+/*
 function scroll_again(applyTo){
 	$(document).ready(function(){
 		(function($){
@@ -63,7 +63,7 @@ function scroll_again(applyTo){
 		})(jQuery);
 	});
 }
-
+*/
 // PRELOADER
 $(document).ready(function(){
 

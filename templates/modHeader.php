@@ -5,7 +5,7 @@
 			<li id='dog'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
 				<a href='#1'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 					Dog
-					<div id='arrow-dog'></div>
+					<div id='arrow-dog' class="arrow"></div>
 				</a>
 			</li>
 

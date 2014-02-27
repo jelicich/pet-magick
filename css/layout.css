@@ -303,6 +303,13 @@ p,span{
 	top: 33px;
 	left: 67px;
 }
+.arrow-antics{
+	border-top: 10px solid #6a9a16 !important;
+}
+
+.arrow-pet-loss{
+	border-top: 10px solid #b04f78 !important;
+}
 /*
 #dog a:hover #arrow-dog,
 #cat a:hover #arrow-cat,
@@ -804,11 +811,16 @@ p,span{
 	width: 100%;
 	height: 100%;
 	position: absolute;
+	left: 0px;
+	z-index: 9;
+	padding: 25px !important;
+
 }
 
 .video .play{ /* centra el play en el thumb grande */
 	width: 335px;
 	height: 80%;
+
 }
 
 .animal-antics-mod {
@@ -861,6 +873,7 @@ p,span{
 
 .animal-antics-mod .video-index .play-index{ /* video en index.html */
 	  margin-left: -10px;/*centra el play dentro del video*/
+	  margin-top: -10px;
 	 height: 75%; /* evita q el pointer se haga por fuera del video */
 
 }
@@ -936,6 +949,7 @@ p,span{
 
 #lastest-video-mod{
 	background: #bdd19c;
+	margin-top: 5px;
 }
 
 #lastest-video-mod > .mod-header{
@@ -952,7 +966,7 @@ p,span{
 
 #publi{/* esto hay q modificarlo pq se repite con otras publis */
 	background: #bdd19c; /* provisorio */
-	height: 302px; 
+	height: 296px; 
 }
 
 .animal-antics-mod .grid-thumbs li dl{

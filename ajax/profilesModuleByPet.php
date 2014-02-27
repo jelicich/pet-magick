@@ -98,7 +98,8 @@
 				<dl class='hidden'>
 					<dt><?php echo $name." ".$lastName; ?> </dt>
 					<dd><?php echo  $city.", ".$country; ?></dd>
-				</a>
+				</dl>
+			</a>
 		</li>
 <?php
 		//}// end else		
@@ -109,7 +110,7 @@
 <script type="text/javascript">
 	
 	listByCategory('profilesModuleByPet.php');
-	scroll_again('scrollable-module');
+	//scroll_again('scrollable-module');
 
 	
 </script>

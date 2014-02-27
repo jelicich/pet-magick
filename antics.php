@@ -26,6 +26,8 @@
 <script type="text/javascript" src="js/jq_functions.js"></script> 
 <script type="text/javascript" src="js/lib.js"></script>
 
+<!--[if lte IE 8]> <link rel="stylesheet" href="css/ie/ie_index_8.css" type="text/css" /> <![endif]-->
+<!--[if IE 7]> <link rel="stylesheet" href="css/ie/ie_index_7.css" type="text/css" /> <![endif]-->
 
 </head>
 
@@ -90,13 +92,14 @@
 						
 				include_once 'templates/modHeader.php'; 
 			?>
-			
-			<ul class='grid-thumbs clearfix mod-content scrollable-module' id='ModulesByPet'> 
-					<?php 
-						
-						include_once 'templates/anticsModule.php'; 
-					?>
-			</ul>	
+			<div class="scrollable-module">
+				<ul class='grid-thumbs clearfix'  id='ModulesByPet'> 
+						<?php 
+							
+							include_once 'templates/anticsModule.php'; 
+						?>
+				</ul>	
+			</div>
 		</div>
 		<!-- END video module -->
 
@@ -118,6 +121,13 @@
 <script type="text/javascript">
 	listByCategory('anticsModuleByCategory.php');
 	start_scroll('scrollable-module');
+
+
+	$(".mod-menu li").click(function(){
+		$(this).find("div").attr("class", "arrow-antics");
+	});
+
+	
 </script>
 
 

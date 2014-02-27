@@ -41,7 +41,7 @@
 
 	<!-- site content -->
 
-	<div id="content" class="mod container_12" >
+	<div id="content" class="container_12" >
 
 	<div id='what' >
 		<a href="#"><p>Que carajo ponemos aca ?</p></a>

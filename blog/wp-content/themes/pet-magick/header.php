@@ -298,11 +298,11 @@ session_start();
 
 
 
-
+<!--
   <div class="container_12" id="blog-head">
 
 
-<!--
+<!- -
       <div id="wp-header" class="grid_12">
           <h2>
             <a href="<?php echo home_url(); ?>/">
@@ -316,7 +316,7 @@ session_start();
         
         <div class="clear"></div>
       </div>
--->
+- ->
 
       <nav>
         <div id="navigation" class="flex_100">
@@ -328,5 +328,5 @@ session_start();
       <div class="clear"></div>
 
 
-  </div><!-- container 12 -->
+  </div><!- - container 12 -->
 

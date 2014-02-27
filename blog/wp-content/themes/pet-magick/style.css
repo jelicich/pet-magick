@@ -808,10 +808,13 @@ blockquote {
 		font-size: 14px;
 		line-height: 22px;
 		background: rgba(255, 255, 255, 0.3);
-		border-left: 10px solid #6a9a16 !important;
+		border-left: 10px solid #ddbb00 !important;
 		quotes: "\201C""\201D""\2018""\2019";
 		padding: 20px 10px 20px 90px !important;
 		background: url("images/quotes.png") 10px 10px no-repeat rgba(255, 255, 255, 0.3);
+}
+blockquote p {
+		color: rgba(0,0,0,0.6) !important;
 }
 address {
 		display: block;
@@ -1061,11 +1064,70 @@ input[type="submit"] {
 
 
 /*CUSTOM*/
+.blog-content p{
+	margin-bottom: 10px;
+}
+
+.blog-content p:last-child{
+	margin-bottom: 0;
+}
+
+.blog-content img{
+	max-width: 150px !important;
+	border: 4px solid #ddbb00;
+	margin: 10px 0;
+}
+
+#sidebar{
+	padding:10px;
+	margin:0 !important;
+}
+
+#sidebar h3{
+	font-size: 18px;
+	line-height: 18px;
+	color: #ddbb00;
+	margin-top: 30px;
+}
+
+
+#sidebar a{
+	color: #000000;
+}
+
+#sidebar ul{
+	margin: 0 0 0 10px;
+}
+
+#blog-search-wrapper{
+	position: relative;
+}
+
+#blog-search{
+	margin: 0;
+	height: 36px;
+	width: 100%;
+	padding-right: 67px;
+}
+
+#searchsubmit {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	font-size: 12px;
+	padding: 4px 8px;
+	border-radius: 0 3px 3px 0 !important;
+}
+
+#searchform{
+	margin:0;
+}
+
 #blog-head{
 	padding-top:80px;
 }
 #blog-content{
-	padding-top: 20px;
+	padding-top: 109px;
 	padding-bottom:60px;   /* Height of the footer */
 }
 .content-format-standard ul li{
@@ -1095,6 +1157,9 @@ input[type="submit"] {
 	padding: 0;
 	line-height: 16px;
 }
+#comment-block .mod-header h3 a{
+	color: #ffffff;
+}
 .comment.byuser{
 	margin-bottom: 40px;
 	color: #000;
@@ -1111,8 +1176,35 @@ input[type="submit"] {
 		background-color: rgba(255, 255, 255, 0.3);
 }
 .comment.byuser .children{
-	padding: 70px 0 0 50px;	
+	padding: 70px 0 0 0; /* para infinitos niveles de respuesta: padding: 70px 0 0 50px; y remover .depth-2 */
+}
+.comment.byuser .children .depth-2{
+	padding: 0 0 0 50px !important;		
 }
 .mod-content .post .entry{
 	margin-bottom: 20px;
+}
+.code-well{
+	overflow-x: scroll;
+	overflow-y: hidden; 
+}
+.comment-form-comment #comment{
+	width: 100%;
+}
+textarea{
+	resize: none;
+}
+.vet-talk-mod{
+	background: #E4DDB4 !important
+}
+
+.vet-talk-mod > .mod-header{
+	background: #ddbb00 !important;
+}
+.content-format-standard p, .content-format-standard img, .content-format-standard ul{
+	margin-bottom: 10px !important;
+}
+
+.content-format-standard *:last-child{
+	margin-bottom: 0 !important;
 }

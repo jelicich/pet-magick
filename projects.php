@@ -43,7 +43,7 @@
 
 	<!-- site content -->
 
-	<div id="content" class="mod container_12" >
+	<div id="content" class="container_12" >
 
 	<div id='what' >
 		<a href="#"><p>How does Project board work ?</p></a>

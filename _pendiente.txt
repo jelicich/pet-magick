@@ -33,6 +33,7 @@ ACTUAL
 - Ajustes del logueo sitio - wordpress (a veces muere la sesion de wordpress y no la del sitio)
 - Imagenes de usuario en wordpress??? 
 - Poner link de usuarios en wordpress al perfil del sitio
+- Limpiar base de datos (Tablas q no se usan ads, blog, etc)
 
 IMGUPLOADER
 ===========

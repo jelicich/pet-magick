@@ -11,10 +11,10 @@
   <div class="mod-header">
     <h2>Blog menu</h2>
   </div>
-  <div id="sidebar" class="clearfix"> 
+  <div id="sidebar" class="mod-content clearfix"> 
     <!-- begin widget sidebar --> 
     <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Main Sidebar') ) : ?>
- 	<div class="no-widgets">
+ 	  <div class="no-widgets">
       <!--
       <div id="pages" class="">
         <h2>Pages</h2>

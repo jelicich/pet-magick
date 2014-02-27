@@ -16,7 +16,7 @@ a:hover{
 
 body{
 	font-family: "Tahoma", Verdana, Arial, sans-serif;
-	background: url('../img/fresh_snow.png');
+	
 	color:#000000;
 }
 
@@ -24,7 +24,8 @@ html,
 body {
    margin:0;
    padding:0;
-   height:100%;
+   min-height:100%;
+   height: 100%;
 }
 
 h1{
@@ -38,6 +39,10 @@ h1{
 
 p,span{
 	font-size: 13px;
+}
+
+#wrapper{
+	background: url('../img/fresh_snow.png');
 }
 
 #preloader{
@@ -138,8 +143,10 @@ p,span{
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
-	width: 118px;
-	height: 118px;
+	/*width: 118px;
+	height: 118px;*/
+	width: 122.5px;
+	height: 122.5px;
 	position: relative;
 }
 
@@ -642,14 +649,23 @@ p,span{
 
 #profiles-mod{
 	background-color: #e8b2ae;
-	min-height: 440px;
+	/*min-height: 440px;*/
+	min-height: 430px;
 
 }
 /* ========================================================== scroll ===========================*/
 .scrollable-module{
 	overflow: auto;
-	max-height: 395px;
-	padding-top: 20px !important;
+	max-height: 407px;
+	/*padding-top: 20px !important;*/
+}
+/* ESTEBAN */
+.scrollable-module ul{
+	margin: 0;
+}
+.mCSB_container{
+	margin-right: 0 !important;
+	padding: 10px 0 0 10px;
 }
 
 .scrollable-list{
@@ -657,6 +673,9 @@ p,span{
 	max-height: 280px !important;
 	padding-top: 15px !important;
 	
+}
+.mCustomScrollBox>.mCSB_scrollTools{
+	width: 4px !important;
 }
 
 .list{
@@ -2599,60 +2618,3 @@ body.my-account #bbpress-forums {
 	visibility: visible;
 }
 
-.blog-content p{
-	margin-bottom: 10px;
-}
-
-.blog-content p:last-child{
-	margin-bottom: 0;
-}
-
-.blog-content img{
-	max-width: 150px !important;
-	border: 4px solid #6a9a16;
-}
-
-#sidebar{
-	padding:10px;
-	margin:0 !important;
-}
-
-#sidebar h3{
-	font-size: 18px;
-	line-height: 18px;
-	color: #6a9a16;
-	margin-top: 30px;
-}
-
-
-#sidebar a{
-	color: #000000;
-}
-
-#sidebar ul{
-	margin: 0 0 0 10px;
-}
-
-#blog-search-wrapper{
-	position: relative;
-}
-
-#blog-search{
-	margin: 0;
-	height: 36px;
-	width: 100%;
-	padding-right: 67px;
-}
-
-#searchsubmit {
-	position: absolute;
-	top: 3px;
-	right: 3px;
-	font-size: 12px;
-	padding: 4px 8px;
-	border-radius: 0 3px 3px 0 !important;
-}
-
-#searchform{
-	margin:0;
-}

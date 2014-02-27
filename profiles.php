@@ -64,12 +64,14 @@
 				include_once 'templates/modHeader.php'; 
 			?>
 				
-				<ul class='grid-thumbs clearfix mod-content scrollable-module' id='ModulesByPet'> 
-					<?php 
-						
-						include_once 'templates/profilesModule.php'; 
-					?>
-				</ul>	
+				<div class="scrollable-module">
+					<ul class='grid-thumbs clearfix' id='ModulesByPet'> 
+						<?php 
+							
+							include_once 'templates/profilesModule.php'; 
+						?>
+					</ul>	
+				</div>
 				
 		</div>
 		<!-- END profiles module -->

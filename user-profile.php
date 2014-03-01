@@ -41,7 +41,7 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/uploader.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/preloader.js"></script>
+<script type="text/javascript" src="js/jq_functions.js"></script> 
 
 <?php
 	//imprimo lo necesario para el datepicker
@@ -58,7 +58,8 @@
 </head>
 
 <body>
-	<div id='preloader'><img src='img/loading.gif' alt='loader' /></div>
+
+<div id='preloader'><img src='img/loading.gif' alt='loader' /></div>
 <div id="wrapper">
 	
 	<?php 

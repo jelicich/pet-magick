@@ -98,11 +98,8 @@
 	
 	listByCategory('profilesModuleByPet.php');
 	start_scroll('scrollable-module');
-	
+
 </script>
-
-
-
 
 </body>
 </html>

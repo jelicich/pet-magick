@@ -36,13 +36,38 @@ function userForms(){
 //SCROLL
 function start_scroll(applyTo){
 	$(document).ready(function(){
+		var c = "c=3";
 		(function($){
+			
 			$(window).load(function(){
+				
 				$("." + applyTo).mCustomScrollbar({
+					
 					scrollButtons:{
 						enable: false 
 					},
-					theme:"light-thick"
+					advanced:{
+						updateOnContentResize: true
+					},
+					theme:"light-thick",
+					callbacks:{
+					    
+					    onTotalScroll:function(){
+				    		
+				    		$.ajax({
+
+				                type: "POST",
+				                url: "ajax/profilesModuleByPet.php",
+				                data: c,
+				                cache: false,
+
+				                success: function(html){
+				                	///console.log(html);
+				                	$('#ModulesByPet').append(html);
+				                }
+				            });
+					    }
+					}
 				});
 			});
 		})(jQuery);

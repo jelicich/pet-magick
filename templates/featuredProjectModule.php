@@ -24,8 +24,17 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 
 }else{
 	
-	include_once "../php/classes/BOProjects.php";
-	include_once "../php/classes/BOPics.php";
+	if(isset($_GET['s']) && $_GET['s'] == 0){
+		
+		include_once "php/classes/BOProjects.php";
+		include_once "php/classes/BOPics.php";
+
+	}else{
+
+		include_once "../php/classes/BOProjects.php";
+		include_once "../php/classes/BOPics.php";
+	}
+	
 
 	$projects = new BOProjects;
 	$pics = new BOPics;

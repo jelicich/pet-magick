@@ -68,6 +68,7 @@
 					<span>Make a positive contribution to this community</span>
 				</div>
 				<?php 
+		
 					include_once 'templates/projectListModule.php'; 
 				?>
 			</div>

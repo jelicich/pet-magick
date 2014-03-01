@@ -8,17 +8,19 @@
 	$projects = new BOProjects;
 	$pics = new BOPics;
 
-if(!isset($_GET['p'])){
+//if(!isset($_GET['p'])){
 
 	
 	if(isset($_GET['s']) && $_GET['s'] == 0){
 
 		$limit = 3;
+		$anchor = 'projects.php?s=0&p=';
 		echo "<ul class='mod-content pet-loss-mod-list ie-project'>";
 
 	}else{
 
 		$limit = 6;
+		$anchor = '#';
 		echo "<ul class='mod-content pet-loss-mod-list  scrollable-list'>";
 	}
 
@@ -58,13 +60,13 @@ if(!isset($_GET['p'])){
 					<div class="content-description bg-txt">
 						<h3><?php echo $title; ?></h3>
 						<p><?php echo $description; ?></p>
-						<a href=<?php echo '#'.$projectId ?> class='linkToModule'>View post</a>
+						<a href=<?php echo $anchor.$projectId; ?> class='linkToModule'>View post</a>
 					</div>
 				</li>
 <?php
 		}// end else
    	}// end for
-}// end if get p
+//}// end if get p
 
 ?>
 

@@ -17,8 +17,7 @@
 }
 .mod-menu li:hover{
 	height: 35px;
-	background: #c24940;
-	 
+	background: #5f8a13;
 	position: none;
 	width: 150px;
 }
@@ -34,7 +33,6 @@
  {
  	top:35px;
 }
-
 
 /* header */
 
@@ -67,6 +65,11 @@
 
 
 /* video module */
+
+.video{ 
+	margin: 0 5px 0 8px;
+}
+
 
 .petVideo{
 	float: left;

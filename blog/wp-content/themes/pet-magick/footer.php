@@ -25,7 +25,7 @@
   </div>
 <!-- END footer -->
 
-<script type="text/javascript" src="js/autosearch.js"></script>
+<script type="text/javascript" src="../js/autosearch.js"></script>
 <script type="text/javascript" id="jslogout">
 
   

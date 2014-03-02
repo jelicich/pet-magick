@@ -2210,7 +2210,7 @@ function bbp_breadcrumb( $args = array() ) {
 		$r = bbp_parse_args( $args, array(
 
 			// HTML
-			'before'          => '<div class="bbp-breadcrumb"><p>',
+			'before'          => '<div class="bbp-breadcrumb"><p>Forum directory: ',
 			'after'           => '</p></div>',
 
 			// Separator

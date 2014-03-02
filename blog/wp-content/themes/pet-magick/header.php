@@ -20,10 +20,11 @@ session_start();
 <?php bloginfo('name'); ?>
 <?php wp_title('|'); ?>
 </title>
+<script type="text/javascript" src="../js/jquery.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/normalize.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_uri(); ?>" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/mediaqueries.css" />
+<!--<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/mediaqueries.css" />-->
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 <?php wp_enqueue_script("jquery"); ?>
@@ -38,7 +39,10 @@ session_start();
 <link rel="stylesheet" href="../css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="../css/layout.css" type="text/css" />
 
-<script type="text/javascript" src="../js/lib.js"></script></head>
+
+
+<script type="text/javascript" src="../js/lib.js"></script>
+<script type="text/javascript" src="../js/jq_functions.js"></script> 
 <!-- -->
 
 </head>
@@ -242,11 +246,12 @@ session_start();
                 //showForms('link-reg', 'reg-form', 'log-form'); //====================== DESPLIEGA REGISTRO
                 //showForms('link-login', 'log-form', 'reg-form'); //====================== DESPLIEGA LOGIN
                 
-                logRegOnclick(); //====================== DESPLIEGA REGISTRO y LOGIN
+                //logRegOnclick(); //====================== DESPLIEGA REGISTRO y LOGIN
                 reg(); //====================== PARA REGISTRARSE
                 countriesCombo(); //====================== DESPLIEGA COMBOS
                 regionsCombo(); //====================== DESPLIEGA REGIONES
                 login(); //====================== PARA LOGUEARSE 
+
 
               </script>
 

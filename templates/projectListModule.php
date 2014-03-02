@@ -13,15 +13,25 @@
 	
 	if(isset($_GET['s']) && $_GET['s'] == 0){
 
-		$limit = 3;
 		$anchor = 'projects.php?s=0&p=';
-		echo "<ul class='mod-content pet-loss-mod-list ie-project'>";
+
+		if(isset($_GET['p'])){
+			
+			$limit = 6; // esto es para q ande el scroll cuando vengo del index
+			echo "<ul class='mod-content pet-loss-mod-list'>";
+
+		}else{
+
+			$limit = 3;// esta es la lista de projects en el index
+			echo "<ul class='mod-content pet-loss-mod-list ie-project'>";
+
+		}
 
 	}else{
 
-		$limit = 6;
+		$limit = 6;// esta es la lista de projectos por default en projects
 		$anchor = '#';
-		echo "<ul class='mod-content pet-loss-mod-list  scrollable-list'>";
+		echo "<ul class='mod-content pet-loss-mod-list'>";
 	}
 
 	$t = sizeof($projects->howmuch_projects());

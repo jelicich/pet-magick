@@ -1,3 +1,16 @@
+//FELX SLIDER
+
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    animationLoop: false,
+    itemWidth: 123,
+    itemMargin: 5
+  });
+});
+
+
+
 //LOGIN REG FORMS
 function userForms(){
 

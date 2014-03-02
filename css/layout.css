@@ -67,13 +67,29 @@ p,span{
 .bg-txt{ /* bg-txt reemplaza user-about para standarizarlo */
 	background: rgba(255, 255, 255, 0.3);
 	width: 620px;
-	/*height: 150px;*/
+	height: auto;
 	padding: 10px 15px 10px 10px;
 }
 
+
+.bg-txt-featured-modules{
+	width: 100%;
+	height: auto;
+	padding-right: 15px;
+}
+
+.blind{
+	height: 210px;
+	width: 770px;
+	padding: 10px 5px 10px 0;
+	margin-left: 145px;
+	background: rgba(255, 255, 255, 0.3);
+}
+
+
 .txt-wider{ /* txt-wider reemplaza pet-about para standarizarlo */
 	width: 784px !important;
-	height: 200px !important;
+	/*height: 200px !important;*/
 	margin-bottom: 20px;
 }
 
@@ -679,16 +695,34 @@ p,span{
 	overflow: auto;
 	max-height: 280px !important;
 	padding-top: 15px !important;
-	
+
 }
+
+.scrollable-text{
+	overflow: auto;
+	min-height: 190px !important;
+	max-height: 190px !important;
+}
+
+.scrollable-list-sections{
+	overflow: auto;
+	max-height: 385px !important;
+	padding-top: 10px !important;
+	padding-right: 5px;
+}
+
+.scrollable-list-sections li{
+	padding: 8px;
+	margin: -20px 0 15px 0;
+	/*border-bottom: 1px solid rgba(0,0,0,0.1);*/
+}
+
 .mCustomScrollBox>.mCSB_scrollTools{
 	width: 4px !important;
 }
 
-.list{
-	min-height: 330px;
-	max-height: 330px;
-}
+
+
 /* ========================================================== end scroll ===========================*/
 
 #profiles-mod > .mod-header{
@@ -1184,7 +1218,24 @@ textarea {
 	margin: 0 0 20px 145px;
 }
 
+.list{
+	min-height: 440px;
+	max-height:440px;
+}
 
+.projects-mod .scrollable-list{
+	height: 500px;
+	background-color: red;
+}
+
+#featured-project{
+	min-height: 220px;
+	max-height: 430px;
+}
+
+.loading{
+	margin: 100px 0 0 450px;
+}
 /*
 Prueba para hover en imagenes....
 Tunear!!!

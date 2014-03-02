@@ -1,38 +1,51 @@
-PENDIENTES
-==========
+SEMANA 3/2/2014
+===============
 
-ANTRIORES
-=========
-- Logueo en los navegadores
-- hxr publico o no 
-- Eliminar mensajes (?)
+- maquetacion
+	- foro - ESTEBAN
+	- vet talk - ESTEBAN 
+	- proyectos - JULIAN 
+	- organizations - JULIAN
+	- tributos
+	- user profile
 
-
-SRCOLL
-======
-
-- emparejar el tamano des las fotos entre php y css (thumb)
-- poner limit a los users del index
+- ImgUploader ie (ESTEBAN // JULIAN)
 
 
+PROXIMAS TAREAS EN ORDEN DE IMPORTANCIA
+=======================================
+
+- Wordpress con sitio
+		- Ajustes del logueo sitio - wordpress (a veces muere la sesion de wordpress y no la del sitio)
+		- Imagenes de usuario en wordpress??? 
+		- Poner link de usuarios en wordpress al perfil del sitio
+
+- captions en album al editar
+
+- Consulta random
+		- Corregir consultas
+		- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas ->count())
+		- en las listas tipo projects, pet loss, etc. hay q poner un limit. pero como vamos a modificar esas consultas lo dejo   pendiente
+
+- Buscador
+		- buscador key sensitive
+		- busccador / traer solo los datos necesarios (no password, etc)
+		- IE: no funciona
+
+- Confirmar por email
+- Modificacion de password // blanqueo de password
+- optimizar consultas esteban
 
 
-ACTUAL
-======
-- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas)
-- Cuando entras al perfil q no es el tuyo hay muchos errores pq no existen los botones cancel - save
-- buscador key sensitive
-- busccador / traer solo los datos necesarios (no password, etc)
+
+LO Q QUEDA SUELTO
+=================
+
 - BOusers: get userdata() // traer toda la info en una sola consulta
 - INBOX: checkLogin() creo q deberiamos reemplazarla por isOwn(), no?
 - editUser.php: en el form dice action: insertar.php, q es el archivo de prueba q yo use para crear el uploader. Osea q 
   cuando ejecute el fallback lo va a llamar. Hay q modificarlo cuando hagamos el tema IE y ver si esto se da en algun otro form...
-- COMBO en IE: anda pero cuando clickeo para seleccionar se esconde. Tengo q resolverlo (lib.js // 257)
-- thumbnail en tabla users ???
-- En index no existe el footer hasta q no empiezan a completarse los modulos
-- Ajustes del logueo sitio - wordpress (a veces muere la sesion de wordpress y no la del sitio)
-- Imagenes de usuario en wordpress??? 
-- Poner link de usuarios en wordpress al perfil del sitio
+
 - Limpiar base de datos (Tablas q no se usan ads, blog, etc)
 
 IMGUPLOADER
@@ -44,33 +57,17 @@ IMGUPLOADER
 
 PET VIDEO
 =========
-- Refresh despues de cargar
 - reproductor redirecciona salvo en la primer mascota
 - ver q onda en antics cuando existe solo un video
 
 PENDIENTES VIDEO (INDEX Y ANTICS)
 =================================
-
-- Se rompe la seccion si hay un solo video en la BD
-- modheader: revisar la semantica de las <a>
-- La semantica de los li de cada video es cualquier cosa. Haccerlo bien....
-- getElementByRandom: esta funcion esta mal hecha pq trato de traer un limit pero a la vez en latesVideos.....php uso un  
-	for q imprime dos veces. Asi q hay algo al pedo en todo eso...
-- ver bien el tema del tamano de cada thumb de video
 - ver los formatos de video q vamos a usar
 - poner size correctamente en el validador de php
 
 
-
-
-
 LISTA IE7 (no incluye nada q sea solo estilo):
 =============================================
-
-- ie8 en index cuando pasas sobre view en pet loss se agrandan los contenedores...
-
-- Log//Reg: se oculta al seleccion del combo.
-
 - probar log desde la pestana de blog y foro
 
 - Buscador: no funciona
@@ -79,9 +76,4 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 	- no podes seleccionar foto de perfil y te elimina todo dejandote solo el uploader dentro del modulo.
 	- cancel/save: no funciona.
 
-- inbox: no funciona
-
 - poner todos los tags necesarios para ie. Esta en img uploader
-
-CREATE DATABASE pet_magick;
-USE pet_magick;

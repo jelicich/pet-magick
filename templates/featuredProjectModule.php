@@ -65,20 +65,26 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	
 	<div class="pic-caption">
 		<img src= <?php echo $srcImg; ?> class="thumb-mid"/>
-		<a href= <?php echo "user-profile.php?u=".$userId; ?> ><span>Contact user >></span></a>
+		<a href= <?php echo "user-profile.php?u=".$userId; ?> ><span>View user profile</span></a>
 	</div>
 	
-	<div class="bg-txt txt-wider">
-		
-		<p><?php echo $description; ?></p>
+	<div class="blind">
+		<div class="scrollable-text">
+			<div class="bg-txt-featured-modules">
+				
+				<p><?php echo $description; ?></p>
 
+			</div>
+		</div>
 	</div>
-	
+
 </div>
 
-<div class="slider-small">
+
+
+<div class="flexslider carousel">
 	
-	<ul class="clearfix">
+	<ul class="slides">
 <?php
 
 	$t = sizeof($projectAlbum);
@@ -88,10 +94,17 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 		$srcImg = $projectAlbum[$i]['THUMB'];
 	
 ?>
+
 		<li>
-			<a class='link-img' href= <?php echo "img/projects/".$srcImg ?> >
+		<!--	<a class='link-img' href= <?php //echo "img/projects/".$srcImg ?> > -->
 				<img class="thumb-mid" src= <?php echo 'img/projects/thumb/'.$srcImg; ?> />
-			</a>
+			<!-- </a> -->
+		</li>
+
+		<li>
+		<!--	<a class='link-img' href= <?php //echo "img/projects/".$srcImg ?> > -->
+				<img class="thumb-mid" src= <?php echo 'img/projects/thumb/'.$srcImg; ?> />
+			<!-- </a> -->
 		</li>
 
 <?php
@@ -103,4 +116,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 
 <script type="text/javascript">
 	modalImg();
+	start_scroll('scrollable-text');
+
 </script>
+

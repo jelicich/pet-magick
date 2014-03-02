@@ -24,10 +24,12 @@
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery.js"></script> 
 <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+ <script defer src="js/jquery.flexslider.js"></script>
 <script type="text/javascript" src="js/jq_functions.js"></script> 
 <script type="text/javascript" src="js/lib.js"></script>
 
@@ -71,26 +73,21 @@
 
 
 		<!-- Current projects module -->
-		<div class="mod grid_12 projects-mod list ">
+		<div class="mod grid_8 projects-mod list ">
 			<div class="mod-header">
 				<h2>Current projects</h2>
 			</div>
+			<div class="scrollable-list-sections">
 
-			<?php 
-
-				include_once 'templates/projectListModule.php'; 
-			?>
-
+				<?php 
+					include_once 'templates/projectListModule.php'; 
+				?>
+			</div>
 		</div>
 		<!-- END Current projects module -->
 
-		<!-- ads -->
-		<div class="grid_6 asd" ></div>
-		<div class="grid_6 asd"></div>
-		<!-- END ads -->
-
-	
-
+		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
+		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
 	</div>
 	<!-- END site content -->
 
@@ -104,7 +101,7 @@
 
 <script type="text/javascript">
 	selectedFromList('featured-project', 'ajax/getSelectedProject.php?p=');
-	start_scroll('scrollable-list');
+	start_scroll('scrollable-list-sections');
 	
 </script>
 

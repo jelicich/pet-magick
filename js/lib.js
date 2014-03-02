@@ -1094,6 +1094,7 @@ function selectedFromList(divCont, ajaxFile){ // ver si necesito pasar el div o 
 	  		p = p.substr(index);
 	  		var cont = byid(divCont); // 'featured-org'
 	  		var loading = create('img');
+	  			loading.className = 'loading';
 			loading.src = 'img/loading.gif'; 
 			whilst(cont);
 	  		//cont.innerHTML = ""; // modificar esto

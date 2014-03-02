@@ -937,10 +937,12 @@ input[type="text"] {
 		margin-bottom: 10px;
 		font-size: 14px;
 		line-height: 20px;
-		color: #555555;
+		color: #555555;		
+		/*
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
 		border-radius: 4px;
+		*/
 		vertical-align: middle;
 }
 input[type="text"] {
@@ -952,9 +954,11 @@ input[type="text"] {
 		font-size: 14px;
 		line-height: 20px;
 		color: #555555;
+		/*
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
 		border-radius: 4px;
+		*/
 		vertical-align: middle;
 }
 textarea {
@@ -1116,7 +1120,6 @@ input[type="submit"] {
 	right: 3px;
 	font-size: 12px;
 	padding: 4px 8px;
-	border-radius: 0 3px 3px 0 !important;
 }
 
 #searchform{

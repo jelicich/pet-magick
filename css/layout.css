@@ -1381,7 +1381,9 @@ Tunear!!!
 	right: 10px;
 }
 
-
+#nav-bar #searchF{
+	margin-top: 1px;
+}
 
 #searchField, #searchF {
 	

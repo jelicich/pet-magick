@@ -32,19 +32,19 @@
 		<!-- navbar -->
 		<div id="nav-bar">
 			<div class="container_12 clearfix">
-				<ul class="grid_10 btn-group">
-						<li class="btn btn-mini btn-danger"><a href="profiles.php">Profiles</a></li>
+				<ul class="grid_9 btn-group">
+						<li class="btn btn-small btn-danger"><a href="profiles.php">Profiles</a></li>
 						<!--<li class="btn btn-small btn-danger"><a href="#">Formums</a></li> -->
-						<li class="btn btn-mini btn-danger"><a href="antics.php">Animal Antics</a></li>
-						<li class="btn btn-mini btn-danger"><a href="vet-talk.php">Vet Talk</a></li>
-						<li class="btn btn-mini btn-danger"><a href="projects.php">Projects</a></li>
-						<li class="btn btn-mini btn-danger"><a href="organizations.php">Organizations</a></li>
-						<li class="btn btn-mini btn-danger"><a href="pet-loss.php">Pet Loss</a></li>
-						<li class="btn btn-mini btn-danger"><a href="blog/?post_type=forum">Forum</a></li>
-						<li class="btn btn-mini btn-danger"><a href="blog">Blog</a></li>
-						<li class="btn btn-mini btn-danger"><a href="admin/index.php?active=0">Admin</a></li>
+						<li class="btn btn-small btn-danger"><a href="antics.php">Animal Antics</a></li>
+						<li class="btn btn-small btn-danger"><a href="vet-talk.php">Vet Talk</a></li>
+						<li class="btn btn-small btn-danger"><a href="projects.php">Projects</a></li>
+						<li class="btn btn-small btn-danger"><a href="organizations.php">Organizations</a></li>
+						<li class="btn btn-small btn-danger"><a href="pet-loss.php">Pet Loss</a></li>
+						<li class="btn btn-small btn-danger"><a href="blog/?post_type=forum">Forum</a></li>
+						<li class="btn btn-small btn-danger"><a href="blog">Blog</a></li>
+						<li class="btn btn-small btn-danger"><a href="admin/index.php?active=0">Admin</a></li>
 				</ul>
-				<div class="grid_2" id='searchF'>
+				<div class="grid_3" id='searchF'>
 					<input type="text" class="form-control" placeholder="Search..." id='finder' autocomplete="off"/>
 					<input type='hidden' id='id-recipientf' name='recipient'/> 
 				</div>

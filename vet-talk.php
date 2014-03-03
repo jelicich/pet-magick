@@ -47,46 +47,50 @@
 	<!-- site content -->
 	<div class="container_12" id="content">
 	
-	<div id='what' >
-		<a href="#"><p>How does Project board work ?</p></a>
-		<div class='active'>
-			<div id='pop-up' class='mod grid_4 '>
+	<div class="grid_12">
+		<div id='what' >
+			<a href="#"><p>How does Project board work ?</p></a>
+			<div class='active'>
+				<div id='pop-up' class='mod grid_4 '>
 
-				<p> 
-					<?php echo $pop->getPopUps("vet") ?>
-				</p>
+					<p> 
+						<?php echo $pop->getPopUps("vet") ?>
+					</p>
 
+				</div>
+				<div class=' arrow-top'></div>
 			</div>
-			<div class=' arrow-top'></div>
 		</div>
 	</div>
 		<!-- vet talk module -->
 
-		<div class="mod grid_9 vet-talk-mod" id='mainArticle'>
+		<div class="grid_12">
 		<?php 
 			include_once 'templates/vetTalkArticleModule.php'; 
 		?>
+
 		</div>
 		<!-- END vet talk module -->
 
-		<!-- ads -->
-		<div class="grid_3 asd" >
+		<!-- talks module -->
+		<?php 
+			include_once 'templates/vetTalkListModule.php'; 
+		?>
+		<!-- END talks module -->
+
+		<!-- asd -->
+		<div class="grid_4 publi-org" >
 			<?php 
 				require('admin/ledads/ad_class.php');
 				echo $pla_class->adcode( );
 			?>
 		</div>
 
-		<div class="grid_3 asd" >
+		<div class="grid_4 publi-org" >
 		</div>
-		<!-- END ads -->
+		<!-- END asd -->
 
-		<!-- talks module -->
-
-		<?php 
-			include_once 'templates/vetTalkListModule.php'; 
-		?>
-		<!-- END talks module -->
+		
 
 
 		<!-- q&a -->

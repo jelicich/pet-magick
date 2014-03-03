@@ -688,7 +688,7 @@ p,span{
 }
 .mCSB_container{
 	margin-right: 0 !important;
-	padding: 10px 0 0 10px;
+	/*padding: 10px 0 0 10px;*/
 }
 
 .scrollable-list{
@@ -720,6 +720,11 @@ p,span{
 .mCustomScrollBox>.mCSB_scrollTools{
 	width: 4px !important;
 }
+
+.mCSB_dragger_bar, .mCSB_draggerRail{
+	width: 4px !important;
+}
+
 
 
 
@@ -1135,6 +1140,42 @@ p,span{
 	background: #bdd19c;
 }
 
+.vet-talk-mod.list .scrollable-list{
+	padding: 10px 0 10px 10px !important;
+	height: 482px;
+	max-height: 482px !important;
+}
+
+.vet-talk-mod.list .mCSB_scrollTools{
+	margin-right: 2.3px;
+} 
+
+.vet-talk-mod.list{
+	height: 520px;
+	max-height: 520px;
+}
+
+.vet-talk-mod.list li{
+	margin-bottom: 10px;
+}
+
+.vet-talk-mod.list li:last-child{
+	margin-bottom: 0;
+}
+
+
+.vet-talk-mod.list ul, .vet-talk-mod.list li{
+	padding: 0px;
+}
+
+.vet-talk-mod.list li img, .vet-talk-mod.list li div{
+	float: left;
+}
+
+.vet-talk-mod.list li div{
+	width: 510px;
+}
+
 .vet-talk-mod > .mod-header{
 	background: #6a9a16;
 }
@@ -1177,6 +1218,7 @@ p,span{
 	margin-left: 90px;
 	margin-top: 10px;
 	font-style: italic;
+	margin-bottom: 10px !important;
 }
 
 .vet-a .bg-txt{
@@ -1191,7 +1233,13 @@ textarea {
 	height: 98px;  
     line-height: 150%;  
 
-}  
+}
+
+.img-float{
+	display: block;
+	float: left;
+	margin: 0 10px 5px 0;
+} 
 
 /* -------------------------------------- organizations */
 
@@ -1218,9 +1266,17 @@ textarea {
 	margin: 120px 0 0 450px;
 }
 
-.publi-org{ /* esto hay q modificarlo pq se repite con otras publis */
-	height: 210px; 
-	background: #bdd19c; /* provisorio */
+.publi-org{
+	background: red; /* provisorio */
+	margin-bottom: 20px;
+	overflow: hidden;
+	height: 250px;
+}
+
+.publi-org img{
+	max-width: 300px;
+	min-width: 300px;
+	height: auto;
 }
 
 

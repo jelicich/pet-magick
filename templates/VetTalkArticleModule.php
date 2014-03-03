@@ -33,7 +33,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 }
 
 ?>
-
+<div class="mod vet-talk-mod" id='mainArticle'>
 	<div class="mod-header">
 		<h2><?php echo $title; ?></h2>
 	</div>
@@ -41,9 +41,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 		<div><!-- scrolleable -->
 			
 			<p class="vet-talk-article clearfix"> 
-				<a href=<?php echo "img/vetTalk/".$srcImg ?>  class='link-img' > <!--  class="vet-talk-img" -->
-					<img src=<?php echo "img/vetTalk/thumb/".$srcImg; ?> class="thumb-mid"/>
-				</a>
+				<a href=<?php echo "img/vetTalk/".$srcImg ?> class='link-img img-float' ><img src=<?php echo "img/vetTalk/thumb/".$srcImg; ?> class="thumb-mid"/></a>
 				<?php echo $content; ?>
 			</p>
 			<ul class="vet-talk-author">
@@ -53,7 +51,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 
 		</div>
 	</div>
-
+</div>
 <script type="text/javascript">
 	modalImg();
 </script>

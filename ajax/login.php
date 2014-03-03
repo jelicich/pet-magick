@@ -42,7 +42,14 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
     //end blog
 
 	//cargo el html con el menu del usuario
-	include_once '../templates/userMenu.php';
+	if(isset($_POST['url']) && $_POST['url'] == 1)
+	{
+		include_once '../templates/userMenuBlog.php';
+	}
+	else
+	{
+		include_once '../templates/userMenu.php';
+	}
 
 	
 

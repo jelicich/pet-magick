@@ -301,7 +301,7 @@ function imgVideoUploader(whatFor, modulo){
 			  		else if(modulo == 'vet-talk')
 			  		{
 						var file = 'ajax/getVetTalk.php';// IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
-						var vars = '?p=';
+						var vars = '?u=';
 			  		}
 			  		else if(modulo == 'blog')
 			  		{

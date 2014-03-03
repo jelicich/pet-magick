@@ -252,7 +252,7 @@ session_start();
                 countriesCombo(); //====================== DESPLIEGA COMBOS
                 regionsCombo(); //====================== DESPLIEGA REGIONES
                 login(); //====================== PARA LOGUEARSE 
-
+                userForms(); // jquery function
 
               </script>
 

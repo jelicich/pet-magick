@@ -1,9 +1,13 @@
-<div class="mod grid_12 vet-talk-mod list">
+<div class="grid_8 mod vet-talk-mod list">
+	<div class="mod-header">
+		<h2>Vet Talk list</h2>
+	</div>	
 		<?php 
 			//include_once 'modHeader.php'; 
 		?>
 		<!-- talks -->
-		<ul class="mod-content pet-loss-mod-list spacer10 scrollable-list">
+		<div class="scrollable-list">
+			<ul class="mod-content spacer10">
 
 
 <?php
@@ -50,5 +54,6 @@
 		}// end for
 ?>
 
-</ul>
+		</ul>
+	</div><!-- scroll -->
 	</div>

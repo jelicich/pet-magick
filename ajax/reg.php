@@ -53,9 +53,21 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 		$user_id = wp_create_user( $user_name, $user_password, $user_email );
 	} 
 	
+	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
+	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
+	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
+	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
 
+	
 	//cargo el html con el menu del usuario
-	include_once '../templates/userMenu.php';
+	if(isset($_POST['url']) && $_POST['url'] == 1)
+	{
+		include_once '../templates/userMenuBlog.php';
+	}
+	else
+	{
+		include_once '../templates/userMenu.php';
+	}
 	//cacheo la info para las herramientas de busqueda
 	include_once 'autocompleteEverything.php';
 

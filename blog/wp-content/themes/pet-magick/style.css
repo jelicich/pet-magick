@@ -653,7 +653,7 @@ body {
 		float: left;
 		text-align: center;
 }
-a,
+/*a,
 a:visited {
 		text-decoration: underline;
 		color: #1B86D2;
@@ -661,7 +661,7 @@ a:visited {
 a:hover {
 		text-decoration: none;
 		color: #006699;
-}
+}*/
 thead {
 		display: table-header-group;
 }

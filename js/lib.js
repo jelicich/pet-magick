@@ -171,11 +171,22 @@ function login(){
 		var pass = byid('password-log').value;
 		var token = byid('token').value;
 
-		//variable q pasa todo por post
-		var vars = 'email='+email+'&password='+pass+'&token='+token;
 
 		source = 'log';
-		ajax('POST', 'ajax/login.php', printUserMenu, vars, true);
+		var url = document.URL;
+		var n = url.indexOf("/blog/");
+
+		if(n != -1)
+		{
+			var vars = 'email='+email+'&password='+pass+'&token='+token+'&url=1';
+			ajax('POST', '../ajax/login.php', printUserMenu, vars, true);	
+		}			
+		else
+		{
+			var vars = 'email='+email+'&password='+pass+'&token='+token;
+			ajax('POST', 'ajax/login.php', printUserMenu, vars, true);	
+		}
+			
 	}
 }//end login
 
@@ -198,12 +209,26 @@ function reg(){
 		var city = byid('city').value;
 		var token = byid('token').value;
 
-		//variable q pasa todo por post
-		var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
-				   '&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
+		
+		
 
 		source = 'reg';
-		ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);
+		var url = document.URL;
+		var n = url.indexOf("/blog/");
+
+		if(n != -1)
+		{
+			var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
+			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token+'&url=1';
+			ajax('POST', '../ajax/reg.php', printUserMenu, vars, true);	
+		}
+		else
+		{
+			var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
+			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
+			ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);	
+		}
+		
 	}
 }//end reg
 /*

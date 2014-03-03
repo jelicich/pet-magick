@@ -1203,7 +1203,20 @@ textarea {
 	background: #153ca0; /*cambiar color para organiztions */
 }
 
+#featured-org{
+		min-height: 270px;
+	max-height: 270px;
+	
+}
 
+.visit span{
+	float: left;
+	margin-top: 50px;
+}
+
+#featured-org .loading{
+	margin: 120px 0 0 450px;
+}
 
 .publi-org{ /* esto hay q modificarlo pq se repite con otras publis */
 	height: 210px; 
@@ -1233,7 +1246,7 @@ textarea {
 	max-height: 430px;
 }
 
-.loading{
+#featured-project .loading{
 	margin: 100px 0 0 450px;
 }
 /*

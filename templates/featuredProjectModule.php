@@ -81,13 +81,19 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 </div>
 
 
+<?php
+
+$t = sizeof($projectAlbum);
+//var_dump($projectAlbum[0]['PIC']);
+if(isset($projectAlbum[0]['PIC'])){
+
+?>
+
 
 <div class="flexslider carousel">
 	
 	<ul class="slides">
 <?php
-
-	$t = sizeof($projectAlbum);
 
 	for ($i=0; $i < $t; $i++) { 
 		
@@ -96,15 +102,15 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 ?>
 
 		<li>
-		<!--	<a class='link-img' href= <?php //echo "img/projects/".$srcImg ?> > -->
+			<a class='link-img' href= <?php echo "img/projects/".$srcImg ?> > 
 				<img class="thumb-mid" src= <?php echo 'img/projects/thumb/'.$srcImg; ?> />
-			<!-- </a> -->
+			</a> 
 		</li>
 
 		<li>
-		<!--	<a class='link-img' href= <?php //echo "img/projects/".$srcImg ?> > -->
+			<a class='link-img' href= <?php echo "img/projects/".$srcImg ?> > 
 				<img class="thumb-mid" src= <?php echo 'img/projects/thumb/'.$srcImg; ?> />
-			<!-- </a> -->
+			</a> 
 		</li>
 
 <?php
@@ -117,6 +123,9 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 <script type="text/javascript">
 	modalImg();
 	start_scroll('scrollable-text');
-
+	flexslider();
 </script>
 
+<?php
+} //end if
+?>

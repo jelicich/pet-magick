@@ -1,10 +1,11 @@
 
-<div class="mod grid_8 org-mod list">
-		<div class="mod-header">
-			<h2>Organization list</h2>
-		</div>
-		<!-- talks -->
-			<ul class="mod-content pet-loss-mod-list talks-list scrollable-list">
+<div class="mod grid_8 projects-mod list">
+	<div class="mod-header">
+		<h2>Organization list</h2>
+	</div>
+
+	<div class="scrollable-list-sections">
+			<ul class='mod-content pet-loss-mod-list'>
 
 
 <?php
@@ -45,18 +46,23 @@
 ?>
 	
 				<li class="clearfix">
-					<img src= <?php echo $srcImg ?> class="thumb-small side-img"/>
-					<div class="content-description bg-txt ">
+					<img src= <?php echo $srcImg; ?> class="thumb-small side-img"/>
+					<div class="content-description bg-txt">
 						<h3><?php echo $name ?></h3>
 						<p><?php echo $description ?></p>
 						<a href=<?php echo '#'.$orgId ?> class='linkToModule'>View post</a>
 					</div>
 				</li>
-				
 <?php
 	}// end else		
 		}// end for
 ?>
 
-</ul>
+		</ul>
 	</div>
+</div>
+
+
+
+
+

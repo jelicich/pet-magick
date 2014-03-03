@@ -1,16 +1,44 @@
 //FELX SLIDER
+function flexslider(){
 
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    animationLoop: false,
-    itemWidth: 123,
-    itemMargin: 5
-  });
-});
+	//$(window).load(function() {
+	$(function(){ 
+	  $('.flexslider').flexslider({
+	    animation: "slide",
+	    animationLoop: false,
+	    itemWidth: 123,
+	    itemMargin: 5
+	  });
+	});
+}
 
 
+// ANCHORS
+/*
+function anchors(){
 
+	$(document).ready(function(){
+			 	 
+		$('a[href*=#]').click(function() {
+			   
+			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+			    
+			     var $target = $(this.hash);
+			     $target = $target.length && $target || $('[name=' + this.hash.slice(1) +']');
+			     
+			     if ($target.length) {
+			      
+			       var targetOffset = $target.offset().top;
+			       $('html,body')
+			       .animate({scrollTop: targetOffset}, 1500);
+			       return false;
+
+			    }
+			}
+		 });
+	});
+}
+*/
 //LOGIN REG FORMS
 function userForms(){
 
@@ -48,11 +76,11 @@ function userForms(){
 
 //SCROLL
 function start_scroll(applyTo){
-	$(document).ready(function(){
+	//$(document).ready(function(){
 		var c = "c=3";
 		(function($){
 			
-			$(window).load(function(){
+			//$(window).load(function(){
 				
 				$("." + applyTo).mCustomScrollbar({
 					
@@ -82,9 +110,9 @@ function start_scroll(applyTo){
 					    }
 					}
 				});
-			});
+			//});
 		})(jQuery);
-	});
+	//});
 }
 /*
 function scroll_again(applyTo){

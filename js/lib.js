@@ -1120,6 +1120,9 @@ function selectedFromList(divCont, ajaxFile){ // ver si necesito pasar el div o 
 	}
 }//end selectedFromList
 
+
+
+
 function modalImg(){ // en Jquery_player.php hay una funcion parecida en jquery. Ver si se puede optimizar...
 
 	var modalImgs = document.querySelectorAll('.link-img'); 

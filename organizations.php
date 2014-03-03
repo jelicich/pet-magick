@@ -44,7 +44,7 @@
 	<div id="content" class="container_12" >
 
 	<div id='what' >
-		<a href="#"><p>Que carajo ponemos aca ?</p></a>
+		<a href="#"><p>What is organizations ?</p></a>
 		<div class='active'>
 			<div id='pop-up' class='mod grid_4 '>
 
@@ -89,8 +89,12 @@
 
 <script type="text/javascript">
 	selectedFromList('featured-org', 'ajax/getSelectedOrg.php?p=');
-	start_scroll('scrollable-list');
+	start_scroll('scrollable-list-sections');
+	//start_scroll('scrollable-text');
 </script>
 
 </body>
 </html>
+
+
+

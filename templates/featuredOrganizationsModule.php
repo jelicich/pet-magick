@@ -40,17 +40,22 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 			<img src= <?php echo "img/organizations/thumb/".$srcImg ?> class="thumb-mid"/>
 		</a>
 		<h3> <?php echo $name ?> </h3>
+		<a class="visit" href= <?php echo "user-profile.php?u=".$userId; ?> ><span>View user profile</span></a>
 	</div>
-	
-	<div class="bg-txt txt-wider">
-		
-		<p> <?php echo $description ?> </p>
 
+	<div class="blind">
+		<div class="scrollable-text">
+			<div class="bg-txt-featured-modules">
+				
+				<p><?php echo $description; ?></p>
+
+			</div>
+		</div>
 	</div>
-	<a href= <?php echo "user-profile.php?u=".$userId; ?> ><span>Contact user >></span></a>
-	
+
 </div>
 
 <script type="text/javascript">
 	modalImg();
+	start_scroll('scrollable-text');
 </script>

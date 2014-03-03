@@ -36,22 +36,26 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+
+
 <script type="text/javascript" src="js/lib.js"></script>
-<!-- <script type="text/javascript" src="js/uploader.js"></script> -->
-<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/uploader.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jq_functions.js"></script> 
 
 <?php
 	//imprimo lo necesario para el datepicker
 	if($u->isOwn())
-	{
+	{   
 		echo 
 		'<link rel="stylesheet" type="text/css" href="datepicker/css/ui-lightness/datepicker.css" />
-		<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
-		<script type="text/javascript" src="datepicker/js/jquery-ui-1.10.3.custom.min.js"></script>
+		
+		 <script type="text/javascript" src="datepicker/js/jquery-ui-1.10.3.custom.min.js"></script>
 		';
+
+		//<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
 	}
 ?>
 

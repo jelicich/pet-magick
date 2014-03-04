@@ -56,7 +56,7 @@
 		
 		
 		<!-- pet loss module -->
-		<div  class="pet-loss-mod mod grid_12">
+		<div  class="pet-loss-mod mod grid_12" id="pet-loss-mod">
 			<?php 
 						
 				include_once 'templates/modHeader.php'; 

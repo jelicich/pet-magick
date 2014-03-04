@@ -40,8 +40,12 @@
 				</span>
 
 				<span class="video-last-caption">
-					<h3><?php echo $title; ?></h3>
-					<span><?php echo  $caption; ?></span>
+
+					<dl>
+						<dt><?php echo $title; ?></dt>
+						<dd><?php echo  $caption; ?></dd>
+					</dl>
+					
 				</span>
 			</a>
 		</li>

@@ -63,7 +63,7 @@
 		
 		
 		<!-- lastest videos -->
-		<div id="lastest-video-mod" class="mod grid_9">
+		<div id="lastest-video-mod" class="mod grid_8">
 			
 			<div class="mod-header">
 				<h2>Latest videos</h2>
@@ -80,9 +80,8 @@
 		</div>
 		<!-- End lastest videos -->
 
-		<!-- advertisement -->
-		<div id="publi" class="mod grid_3">
-		</div>
+		
+		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
 
 
 		

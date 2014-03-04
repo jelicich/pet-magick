@@ -36,17 +36,28 @@
 					<h3><?php echo $u->getNameComp() ?></h3>
 					<span><?php echo $u->getLocation() ?></span>
 				</div>
-				<div class="bg-txt">
-					<p>
-						<?php 
-							$about = $u->getAbout();
-							if(empty($about))
-								echo 'The user has not entered any description yet';
-							else
-								echo $about;
-						?>
-					</p>
+
+
+				<div class="blind">
+					<div class="scrollable-text">
+						<div class="bg-txt-featured-modules">
+							
+							<p>
+								<?php 
+									$about = $u->getAbout();
+									if(empty($about))
+										echo 'The user has not entered any description yet';
+									else
+										echo $about;
+								?>
+							</p>
+
+						</div>
+					</div>
 				</div>
+
+
+				
 				<!--
 				<div id="user-extra">
 					<ul>
@@ -62,5 +73,6 @@
 		<script type="text/javascript">
 			editUserProfile();
 			modalImg();
+			start_scroll('scrollable-text');
 		</script>
 		<!-- END about module -->

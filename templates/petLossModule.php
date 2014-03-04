@@ -38,6 +38,11 @@
 		else{ $content =  $allTributes['CONTENT']; }
 
 		array_push($noRepeat,$trId);
+
+		$since = explode("-" , $since);
+		$thru = explode("-" , $thru);
+							
+					
 ?>
 
 	<li>
@@ -45,9 +50,7 @@
 			<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 			<dl class='hidden'>
 				<dt><?php echo $name; ?> </dt>
-				<dd><?php echo  $since; ?></dd>
-				<dd><?php echo  $thru; ?></dd>
-			<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
+				<dd><?php echo  $since[0]." - ".$thru[0];  ?></dd>
 			</dl>
 		</a>
 	</li>

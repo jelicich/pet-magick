@@ -87,7 +87,7 @@
 					<span>Upload those videos of your pet doing crazy funny things!</span>
 				</div>
 				
-				<div class='video mod-content'>
+				<div class='video video-left mod-content'>
 					<?php 
 						$s = 'index'; // esta variable define cuantas fotos habra en el modulo	
 						include_once 'templates/latestVideosModule.php';

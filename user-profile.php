@@ -41,7 +41,7 @@
 <script type="text/javascript" src="js/lib.js"></script>
 <script type="text/javascript" src="js/uploader.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
-
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jq_functions.js"></script> 
 

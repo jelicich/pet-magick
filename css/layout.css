@@ -359,6 +359,9 @@ p,span{
 	width: 82%;
 }
 
+.mod-content dl dd{ /*nombre de mascota en pet-tribute */
+	margin-left: -0px;
+}
 
 .projects-mod-list, .pet-loss-mod-list{
 	padding:5px;
@@ -373,8 +376,18 @@ p,span{
 	
 }
 
+#profiles-mod{
 
+	height: 450px;
+	max-height: 450px;
+	
+}
 
+#user-about{
+
+	min-height: 270px;
+	max-height: 270px;
+}
 
 
 .profiles-mod > .mod-header{
@@ -662,6 +675,18 @@ p,span{
 	background: #dfc2cf;
 	min-height: 513px;
 }
+
+#pet-loss-mod{
+
+	min-height: 450px !important;
+	max-height: 450px !important;
+}
+
+.section{ /* le da altura solo al modulo de la seccion tributes */
+
+	min-height: 220px;
+	max-height: 430px;
+}
 .smaller{
 	margin-top: -1px;
 }
@@ -673,7 +698,6 @@ p,span{
 #profiles-mod{
 	background-color: #e8b2ae;
 	/*min-height: 440px;*/
-	min-height: 430px;
 
 }
 /* ========================================================== scroll ===========================*/
@@ -688,7 +712,7 @@ p,span{
 }
 .mCSB_container{
 	margin-right: 0 !important;
-	/*padding: 10px 0 0 10px;*/
+	padding: 10px 0 0 10px;
 }
 
 .scrollable-list{
@@ -720,11 +744,6 @@ p,span{
 .mCustomScrollBox>.mCSB_scrollTools{
 	width: 4px !important;
 }
-
-.mCSB_dragger_bar, .mCSB_draggerRail{
-	width: 4px !important;
-}
-
 
 
 
@@ -819,7 +838,7 @@ p,span{
 /*------------------------------- Big videos */
 
 .video{ /* Standarice video para antics y user profile y su contenido: .wrapper-play, .play, .thumb-big, .video-thumb,.video-last-caption */
-	width: 335px;
+	width: 295px;
 	float: left;
 	position: relative;
 	margin-right: 10px;
@@ -857,7 +876,7 @@ p,span{
 }
 
 .video .play{ /* centra el play en el thumb grande */
-	width: 335px;
+	width: 295px;
 	height: 80%;
 
 }
@@ -877,6 +896,9 @@ p,span{
 
 /* ------------------------------ end big videos*/
 
+.video-left{ /* empareja el video en index */
+	margin-left: 40px !important;
+}
 
 .video-index .thumb-big{
 	position: absolute;
@@ -989,6 +1011,8 @@ p,span{
 #lastest-video-mod{
 	background: #bdd19c;
 	margin-top: 5px;
+	height: 300px;
+	min-height: 300px;
 }
 
 #lastest-video-mod > .mod-header{
@@ -1092,15 +1116,8 @@ p,span{
 	margin-right: 0;
 }
 
-#profiles-mod .scrollable-module{
-	padding: 20px 0 10px 10px !important;
-	height: 482px;
-	max-height: 482px !important;
-}
 
-#profiles-mod .mCSB_scrollTools{
-	margin-right: 4px;
-} 
+
 
 
 
@@ -1126,9 +1143,6 @@ p,span{
 
 /* ------------------------------ tribute */
 
-#visit-member{
-	margin-left: 135px;
-}
 
 .ask-qa a p{
 	color:#fff;
@@ -1145,42 +1159,6 @@ p,span{
 
 .vet-talk-mod{
 	background: #bdd19c;
-}
-
-.vet-talk-mod.list .scrollable-list{
-	padding: 10px 0 10px 10px !important;
-	height: 482px;
-	max-height: 482px !important;
-}
-
-.vet-talk-mod.list .mCSB_scrollTools{
-	margin-right: 2.3px;
-} 
-
-.vet-talk-mod.list{
-	height: 520px;
-	max-height: 520px;
-}
-
-.vet-talk-mod.list li{
-	margin-bottom: 10px;
-}
-
-.vet-talk-mod.list > .scrollable-list > .mCustomScrollBox > .mCSB_container > ul > li:last-child{
-	margin-bottom: 0;
-}
-
-
-.vet-talk-mod.list ul, .vet-talk-mod.list li{
-	padding: 0px;
-}
-
-.vet-talk-mod.list li img, .vet-talk-mod.list li div{
-	float: left;
-}
-
-.vet-talk-mod.list li div{
-	width: 510px;
 }
 
 .vet-talk-mod > .mod-header{
@@ -1216,27 +1194,18 @@ p,span{
 	width: 830px;
 }
 */
-.vet-talk-mod ul li:last-child ul .vet-a{
-	margin-bottom: 0;
-}
-
 .vet-q, .vet-a{
 	border-bottom: none !important;
 	padding: 0 !important;
-}
-
-.vet-q div.content-description.bg-txt{
-	width: 830px;
 }
 
 .vet-a{
 	margin-left: 90px;
 	margin-top: 10px;
 	font-style: italic;
-	margin-bottom: 10px;
 }
 
-.vet-a div.content-description.bg-txt{
+.vet-a .bg-txt{
 	width: 740px;
 }
 
@@ -1244,31 +1213,11 @@ p,span{
 	margin: 0;
 }
 
-.vet-talk-mod #pop-up-click{
-	width: 400px;
-	padding: 10px;
-}
+textarea {   
+	height: 98px;  
+    line-height: 150%;  
 
-.vet-talk-mod #pop-up-click textarea{   
-	height: 100px;  
-    color: #000000;
-    width: 100%;
-    resize: none;
-}
-
-.vet-talk-mod #pop-up-click input{    
-    color: #000000;
-}
-
-.vet-talk-mod #pop-up-click form{
-	margin: 0;
-}
-
-.img-float{
-	display: block;
-	float: left;
-	margin: 0 10px 5px 0;
-} 
+}  
 
 /* -------------------------------------- organizations */
 
@@ -1295,17 +1244,9 @@ p,span{
 	margin: 120px 0 0 450px;
 }
 
-.publi-org{
-	background: red; /* provisorio */
-	margin-bottom: 20px;
-	overflow: hidden;
-	height: 250px;
-}
-
-.publi-org img{
-	max-width: 300px;
-	min-width: 300px;
-	height: auto;
+.publi-org{ /* esto hay q modificarlo pq se repite con otras publis */
+	height: 210px; 
+	background: #bdd19c; /* provisorio */
 }
 
 
@@ -1319,6 +1260,12 @@ p,span{
 .list{
 	min-height: 440px;
 	max-height:440px;
+}
+
+.ie-project{
+
+	height:280px;
+	max-height:280px;
 }
 
 .projects-mod .scrollable-list{
@@ -1606,7 +1553,7 @@ Tunear!!!
 	display: none;
 	position: absolute;
 	right: -10px;
-	top: 25px;
+	top: 15px;
 	z-index: 9999;
 }
 

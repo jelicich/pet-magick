@@ -121,11 +121,14 @@ if(isset($projectAlbum[0]['PIC'])){
 </div>
 
 <script type="text/javascript">
-	modalImg();
-	start_scroll('scrollable-text');
 	flexslider();
 </script>
 
 <?php
 } //end if
 ?>
+
+<script type="text/javascript">
+	modalImg();
+	start_scroll('scrollable-text');
+</script>

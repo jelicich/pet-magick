@@ -1092,8 +1092,15 @@ p,span{
 	margin-right: 0;
 }
 
+#profiles-mod .scrollable-module{
+	padding: 20px 0 10px 10px !important;
+	height: 482px;
+	max-height: 482px !important;
+}
 
-
+#profiles-mod .mCSB_scrollTools{
+	margin-right: 4px;
+} 
 
 
 
@@ -1159,7 +1166,7 @@ p,span{
 	margin-bottom: 10px;
 }
 
-.vet-talk-mod.list li:last-child{
+.vet-talk-mod.list > .scrollable-list > .mCustomScrollBox > .mCSB_container > ul > li:last-child{
 	margin-bottom: 0;
 }
 
@@ -1209,19 +1216,27 @@ p,span{
 	width: 830px;
 }
 */
+.vet-talk-mod ul li:last-child ul .vet-a{
+	margin-bottom: 0;
+}
+
 .vet-q, .vet-a{
 	border-bottom: none !important;
 	padding: 0 !important;
+}
+
+.vet-q div.content-description.bg-txt{
+	width: 830px;
 }
 
 .vet-a{
 	margin-left: 90px;
 	margin-top: 10px;
 	font-style: italic;
-	margin-bottom: 10px !important;
+	margin-bottom: 10px;
 }
 
-.vet-a .bg-txt{
+.vet-a div.content-description.bg-txt{
 	width: 740px;
 }
 
@@ -1229,10 +1244,24 @@ p,span{
 	margin: 0;
 }
 
-textarea {   
-	height: 98px;  
-    line-height: 150%;  
+.vet-talk-mod #pop-up-click{
+	width: 400px;
+	padding: 10px;
+}
 
+.vet-talk-mod #pop-up-click textarea{   
+	height: 100px;  
+    color: #000000;
+    width: 100%;
+    resize: none;
+}
+
+.vet-talk-mod #pop-up-click input{    
+    color: #000000;
+}
+
+.vet-talk-mod #pop-up-click form{
+	margin: 0;
 }
 
 .img-float{
@@ -1577,7 +1606,7 @@ Tunear!!!
 	display: none;
 	position: absolute;
 	right: -10px;
-	top: 15px;
+	top: 25px;
 	z-index: 9999;
 }
 

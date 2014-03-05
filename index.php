@@ -104,11 +104,12 @@
 					<span>Leave a message of support for other pet lovers</span>
 				</div>
 
-				<div class="mod-content pet-loss-mod-list">
+				<ul class="mod-content pet-loss-mod-list">
 					<?php 
 						include_once 'templates/petLossIndexModule.php'; 
 					?>
-				</div>
+				</ul>
+				
 			</div>
 			<!-- END pet loss module -->
 			

@@ -45,6 +45,7 @@
 					<div class="content-description bg-txt ">
 						<h3><?php echo $title ?></h3>
 						<p><?php echo $content ?></p>
+						<p class="italic"><?php echo $allArticles[$i]['DATE'] ?></p>
 						<a href=<?php echo '#'.$articleId ?> class='linkToModule'>View post</a>
 					</div>
 				</li>

@@ -68,7 +68,7 @@ p,span{
 	background: rgba(255, 255, 255, 0.3);
 	width: 620px;
 	height: auto;
-	padding: 10px 15px 10px 10px;
+	padding: 10px 10px 10px 10px;
 }
 
 
@@ -102,7 +102,7 @@ p,span{
 
 
 .pet-loss-mod-list .bg-txt{ /*optimizar */
-	width: 830px;
+	width: 430px;
 }
 
 .org-mod .bg-txt{ /*optimizar */
@@ -350,20 +350,23 @@ p,span{
 }
 
 .pet-loss-mod-list li{
-	padding: 5px;
+	margin-bottom: 10px;
+	/*padding: 5px;*/
 	/*border-bottom: 1px solid rgba(0,0,0,0.1);*/
 }
 
-
+.pet-loss-mod-list li:last-child{
+	margin-bottom: 0;
+}
 .pet-loss-mod-list .content-description{
-	width: 82%;
+	/*width: 82%;*/
 }
 
 .mod-content dl dd{ /*nombre de mascota en pet-tribute */
 	margin-left: -0px;
 }
 
-.projects-mod-list, .pet-loss-mod-list{
+.projects-mod-list{
 	padding:5px;
 }
 
@@ -394,12 +397,15 @@ p,span{
 	background: #d95248;
 }
 
-.profiles-mod .mod-content, 
+.profiles-mod .mod-content{
+	padding-right: 0;
+	padding-bottom: 0;
+} 
 /*.animal-antics-mod .mod-content, */
 .pet-loss-mod .mod-content{
 	/* PARA EQUILIBRAR LA GRILLA */
-	padding-right: 0;
-	padding-bottom: 0;
+	/*padding-right: 0;
+	padding-bottom: 0;*/
 }
 
 .projects-mod-list .content-description{
@@ -673,7 +679,13 @@ p,span{
 
 .pet-loss-mod{
 	background: #dfc2cf;
-	min-height: 513px;
+	/*min-height: 513px*/;
+}
+
+.pet-loss-mod.grid_12{
+	background: #dfc2cf;
+	/*min-height: 140px;
+	max-height: 513px;*/
 }
 
 #pet-loss-mod{
@@ -712,13 +724,13 @@ p,span{
 }
 .mCSB_container{
 	margin-right: 0 !important;
-	padding: 10px 0 0 10px;
+/*	padding: 10px 0 0 10px;*/
 }
 
 .scrollable-list{
 	overflow: auto;
 	max-height: 280px !important;
-	padding-top: 15px !important;
+	/*padding-top: 15px !important;*/
 
 }
 
@@ -730,7 +742,7 @@ p,span{
 
 .scrollable-list-sections{
 	overflow: auto;
-	max-height: 385px !important;
+	/*max-height: 385px !important*/;
 	padding-top: 10px !important;
 	padding-right: 5px;
 }
@@ -1116,8 +1128,19 @@ p,span{
 	margin-right: 0;
 }
 
+#profiles-mod .scrollable-module, #pet-loss-mod .scrollable-module{
+	padding: 20px 0 10px 10px !important;
+	height: 415px;
+	max-height: 415px !important;
+}
 
+#profiles-mod .mCSB_scrollTools, #pet-loss-mod .mCSB_scrollTools{
+	margin-right: 4px;
+}
 
+#profiles-mod .mCSB_scrollTools, #profiles-mod .mCSB_scrollTools *, #pet-loss-mod .mCSB_scrollTools, #pet-loss-mod .mCSB_scrollTools *{
+	width: 4px !important;
+}
 
 
 
@@ -1200,12 +1223,12 @@ p,span{
 }
 
 .vet-a{
-	margin-left: 90px;
+	margin-left: 90px !important;
 	margin-top: 10px;
 	font-style: italic;
 }
 
-.vet-a .bg-txt{
+.vet-a div.content-description.bg-txt{
 	width: 740px;
 }
 
@@ -1213,11 +1236,118 @@ p,span{
 	margin: 0;
 }
 
-textarea {   
-	height: 98px;  
-    line-height: 150%;  
+.vet-talk-mod.list .scrollable-list, 
+.projects-mod.list .scrollable-list-sections{
+	padding: 10px 0 10px 10px !important;
+	height: 482px;
+	max-height: 482px !important;
+}
+.pet-loss-mod.list .scrollable-list{
+	padding: 10px 0 10px 10px !important;
+	min-height: 102px !important;
+	max-height: 482px !important;
+}
 
-}  
+.vet-talk-mod.list  .mCSB_container, 
+.projects-mod.list .mCSB_container, 
+.pet-loss-mod.list .mCSB_container{
+	padding: 0;
+	padding-right: 10px;
+}
+
+.vet-talk-mod.list .mCSB_scrollTools, 
+.projects-mod.list .mCSB_scrollTools, 
+.pet-loss-mod.list .mCSB_scrollTools{
+	margin-right: 3px;
+} 
+
+/*
+.vet-talk-mod.list, 
+.projects-mod.list{
+	height: 520px;
+	max-height: 520px;
+}*/
+
+.vet-talk-mod.list li, 
+.projects-mod.list li, 
+.pet-loss-mod.list li{
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.pet-loss-mod.list li:last-child{
+	margin-bottom: 0;
+}
+
+.vet-talk-mod.list > .scrollable-list > .mCustomScrollBox > .mCSB_container > ul > li:last-child, 
+.projects-mod.list > .scrollable-list-sections > .mCustomScrollBox > .mCSB_container > ul > li:last-child,
+.pet-loss-mod.list > .scrollable-module > .mCustomScrollBox > .mCSB_container > ul > li:last-child{
+	margin-bottom: 0;
+}
+
+.vet-talk-mod.list .mCSB_scrollTools, .vet-talk-mod.list .mCSB_scrollTools *, 
+.projects-mod.list .mCSB_scrollTools, .projects-mod.list .mCSB_scrollTools *,
+.pet-loss-mod.list .mCSB_scrollTools, .pet-loss-mod.list .mCSB_scrollTools *{
+	width: 4px !important;
+}
+
+.vet-talk-mod.list ul, .vet-talk-mod.list li, 
+.projects-mod.list ul, .projects-mod.list li,
+.pet-loss-mod.list ul, .pet-loss-mod.list li{
+	padding: 0px;
+}
+
+.vet-talk-mod.list li div, 
+.projects-mod.list li div{
+	width: 510px;
+}
+
+.pet-loss-mod.list.grid_12 li div{
+	width: 830px;
+}
+
+.vet-talk-mod ul li:last-child ul .vet-a{
+	margin-bottom: 0;
+}
+
+.vet-talk-mod.list li img, .vet-talk-mod.list li div{
+	float: left;
+}
+
+.vet-q div.content-description.bg-txt{
+	width: 830px;
+}
+
+.vet-talk-mod #pop-up-click, 
+.pet-loss-mod #pop-up-click{
+	width: 400px;
+	padding: 10px;
+}
+
+.vet-talk-mod #pop-up-click textarea, 
+.pet-loss-mod #pop-up-click textarea{   
+	height: 100px;  
+    color: #000000;
+    width: 100%;
+    resize: none;
+}
+
+.vet-talk-mod #pop-up-click input, 
+.pet-loss-mod #pop-up-click input{    
+    color: #000000;
+}
+
+.vet-talk-mod #pop-up-click form, 
+.pet-loss-mod #pop-up-click form{
+	margin: 0;
+}
+
+.img-float{
+	display: block;
+	float: left;
+	margin: 0 10px 5px 0;
+} 
+
 
 /* -------------------------------------- organizations */
 
@@ -1244,9 +1374,17 @@ textarea {
 	margin: 120px 0 0 450px;
 }
 
-.publi-org{ /* esto hay q modificarlo pq se repite con otras publis */
-	height: 210px; 
-	background: #bdd19c; /* provisorio */
+.publi-org{
+	background: red; /* provisorio */
+	margin-bottom: 20px;
+	overflow: hidden;
+	height: 250px;
+}
+
+.publi-org img{
+	max-width: 300px;
+	min-width: 300px;
+	height: auto;
 }
 
 
@@ -1258,8 +1396,13 @@ textarea {
 }
 
 .list{
-	min-height: 440px;
-	max-height:440px;
+/*	min-height: 520px;
+	max-height:520px;*/
+}
+
+.pet-loss-mod.list{
+	/*min-height: 100px;
+	max-height: 100px;*/
 }
 
 .ie-project{
@@ -1553,15 +1696,15 @@ Tunear!!!
 	display: none;
 	position: absolute;
 	right: -10px;
-	top: 15px;
-	z-index: 9999;
+	top: 25px;
+	z-index: 9997;
 }
 
 #pop-up-click .arrow-top{
 	position: absolute;
 	right: 20px;
 	top: -10px;
-	z-index: 9999;
+	z-index: 9997;
 }
 
 #leave-comment{
@@ -2841,4 +2984,8 @@ body.my-account #bbpress-forums {
 
 #favorite-toggle a{
 	color: #ffffff;
+}
+
+.italic{
+	font-style: italic;
 }

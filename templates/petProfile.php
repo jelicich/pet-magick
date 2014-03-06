@@ -13,22 +13,28 @@
 								echo '<a href="#'.$p->getId().'" class="btn btn-edit" id="edit-pet-profile">Edit</a>';
 							}
 							?>
-							<div class="pic-caption pet-info">
-								<a class='link-img' href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
-								<strong class="nickname"><?php echo $p->getName(); ?></strong>
-								<ul>
-									<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
-									<li><span><strong>Traits: </strong><?php echo $p->getTraits();?></span></li>
-									<?php
-										if($p->hasTribute($p->getId()))
-										{
-											echo '<li><a href="pet-tribute.php?t='.$p->getTributeId().'" >View tribute</a></li>';
-										}
-									?>
-								</ul>
+							<div class="pic-caption ">
+								<a class='link-img' href=<?php echo '"'.$p->getPic().'"'; ?> >
+									<img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/>
+								</a>
+
+								<div class="pet-details">
+									<strong class="nickname"><?php echo $p->getName(); ?></strong>
+
+									<ul>
+										<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
+										<li><span><strong>Traits: </strong><?php echo $p->getTraits();?></span></li>
+										<?php
+											if($p->hasTribute($p->getId()))
+											{
+												echo '<li><a href="pet-tribute.php?t='.$p->getTributeId().'" >View tribute</a></li>';
+											}
+										?>
+									</ul>
+								</div>
 							</div>
 							
-							<div class="bg-txt corregir">
+							<div class=" bg-pet-profile ">
 								<p><?php echo $p->getStory();?></p>
 							</div>
 							
@@ -39,43 +45,45 @@
 
 
 						<div id="pet-album">
-							<?php
-									if($p->isOwn())
-									{
-										echo '<a href="#'.$p->getId().'" class="btn" id="edit-pet-album">Edit album</a>';
-									}
-							?>
-							<div class="slider-small">
+							
+
+							<div class="flexslider carousel">
+								<ul class="slides">
+
+
 								<?php
 									
 
 									if($p->getAlbumId())
 									{
 										$album = $p->getAlbum($p->getAlbumId());
-									
-										
-									
-								?>
-										<ul class="clearfix">
-								<?php
 
 										for($i=0;$i<sizeof($album);$i++)
 										{
 								?>
 										
 											<li>
-												<a class='link-img'  href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a>
-												<p class="img-caption"><?php echo $album[$i]['CAPTION']; ?></p>
+												<a class='link-img'  href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> >
+													<img class="thumb-mid" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> />
+												</a>
+												<!-- <p class="img-caption"><?php //echo $album[$i]['CAPTION']; ?></p> -->
 											</li>
 											
 								<?php
 										}//end for
 								?>
-										</ul>
+								 	</ul>
 								<?php
 									}//END IF
 								?>
 							</div>
+
+							<?php
+									if($p->isOwn())
+									{
+										echo '<a href="#'.$p->getId().'" class="btn" id="edit-pet-album">Edit album</a>';
+									}
+							?>
 						</div>
 
 

@@ -76,6 +76,7 @@ p,span{
 	width: 100%;
 	height: auto;
 	padding-right: 15px;
+	padding-left: 15px;
 }
 
 .blind{
@@ -380,16 +381,9 @@ p,span{
 }
 
 #profiles-mod{
-
 	height: 450px;
 	max-height: 450px;
-	
-}
-
-#user-about{
-
-	min-height: 270px;
-	max-height: 270px;
+	background: #e8b2ae;
 }
 
 
@@ -401,6 +395,54 @@ p,span{
 	padding-right: 0;
 	padding-bottom: 0;
 } 
+
+#profiles-mod > .mod-header{
+	background-color: #d95248;
+}
+
+#profiles-mod .mod-content{
+	/* PARA EQUILIBRAR LA GRILLA */
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+/* pet list */
+
+.short-profile-modules{
+
+	background: #e8b2ae;
+	min-height: 222px;
+	max-height: 222px;
+}
+
+.short-profile-modules > .mod-header{
+	background: #d95248;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#user-about{
+
+	min-height: 270px;
+	max-height: 270px;
+}
+
+
+
 /*.animal-antics-mod .mod-content, */
 .pet-loss-mod .mod-content{
 	/* PARA EQUILIBRAR LA GRILLA */
@@ -707,11 +749,7 @@ p,span{
 }
 
 
-#profiles-mod{
-	background-color: #e8b2ae;
-	/*min-height: 440px;*/
 
-}
 /* ========================================================== scroll ===========================*/
 .scrollable-module{
 	overflow: scroll;
@@ -761,15 +799,6 @@ p,span{
 
 /* ========================================================== end scroll ===========================*/
 
-#profiles-mod > .mod-header{
-	background-color: #d95248;
-}
-
-#profiles-mod .mod-content{
-	/* PARA EQUILIBRAR LA GRILLA */
-	padding-right: 0;
-	padding-bottom: 0;
-}
 
 
 .projects-mod{
@@ -1052,20 +1081,146 @@ p,span{
 
 /* ---------------------------- profiles */
 
+#add-pet{
+	color: #000;
+	float: right;
+	margin: -20px  0   0 0 ;
+}
+
+.bg-pet-profile{ 
+	background: rgba(255, 255, 255, 0.3);
+	width: 373px;
+	height: 123px;
+	float: left;
+	padding: 10px 10px 10px 10px;
+}
+
+/*
+#pet-album, #pet-about{
+	overflow: hidden;
+}
+
+*/
+
+#pet-album{
+	float: right;
+	height: 160px;
+	width: 390px;
+	margin-top: -100px;
+	position: relative;
+}
+
+
+
+#pet-album .flexslider{
+	position: absolute;
+	top: -10px;
+	right: 50px;
+	width: 300px;
+}
+
+
+
+#pet-album .flexslider li a img{
+	height: 80px;
+	width: 80px;
+	margin-left: 0px;
+}
+
+#edit-pet-album{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+
+#pet-video{
+float: left;
+}
+
+
+
+#post-news{
+	color: #000;
+	float: right;
+	margin: -5px  -10px 0 0 ;
+}
+
+.bg-news{ 
+	position: relative;
+	background: rgba(255, 255, 255, 0.3);
+	width: 97%;
+	margin: 5px;
+	height: 170px;
+	padding: 5px 0px 10px 10px;
+}
+
+.bg-news a{
+
+	float: right;
+	margin: -16px -5px 0 0;
+}
+
+
+.bg-news p{
+
+/* estilear el texto en news */
+
+}
+
+.bg-news div{
+	padding: 0 10px ;
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	bottom: 0px;
+	left: 0;
+	color: gray;
+	background: rgba(255, 255, 255, 0.4);
+	vertical-align: center;
+}
+.bg-news span{
+	float: left;
+	margin-top: 5px;
+}
 
 .pet-info{
 	width: 80px;
-	margin-right: 10px;
+	height: 150px;
+	margin-left: 8px;
 	margin-bottom: 10px;
 }
+
+.pet-details{
+	width: 123px;
+	height: 100px;
+}
+
+.pet-details ul {
+
+	margin-left: -0px;
+}
+
 
 .pet-info img{
 	margin-bottom: 10px;
 }
 
 .pet-info span{
-	line-height: 12px;
+	line-height: 19px;
 }
+
+
+
+#news-mod{
+	height: 354px;
+}
+
+#news-mod .mod-content{
+	padding: 0 0 10px 0 !important;
+	height: 136px;
+}
+
 
 .recent-news{
 	border-bottom: 1px solid #c788a3;
@@ -1106,15 +1261,6 @@ p,span{
 
 #user-extra ul{
 	margin-left: 10px;
-}
-
-#news-mod{
-	height: 354px;
-}
-
-#news-mod .mod-content{
-	padding: 0 0 10px 0 !important;
-	height: 136px;
 }
 
 .nickname{
@@ -1182,10 +1328,16 @@ p,span{
 
 .vet-talk-mod{
 	background: #bdd19c;
+	min-height: 250px;
+}
+
+#mainArticle .loading{
+	margin: 120px 0 0 450px;
 }
 
 .vet-talk-mod > .mod-header{
 	background: #6a9a16;
+
 }
 
 .vet-talk-img{
@@ -1622,9 +1774,7 @@ Tunear!!!
 	top:10px;
 }
 
-#pet-album, #pet-about{
-	overflow: hidden;
-}
+
 
 #alert-container{
 	position: fixed;

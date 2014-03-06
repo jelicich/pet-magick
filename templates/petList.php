@@ -1,6 +1,18 @@
 				<div class="mod-header">
 					<h2>My Pets</h2>
+
+					<?php 
+
+						if($u->isOwn())
+						{
+							echo '<li><a href="#'.$userId.'" class="btn" id="add-pet">Add pet!</a></li>';
+						}
+
+					?>
 				</div>
+
+				
+
 				<ul class="mod-content clearfix">
 					<?php
 
@@ -30,18 +42,12 @@
 							}//END FOR
 						
 						}//END IF 
-					
-						if($u->isOwn())
-						{
-							echo '<li><a href="#'.$userId.'" class="btn" id="add-pet">Add pet!</a></li>';
-						}
 					?>
 					
 				</ul>
 
-				<script type="text/javascript">
+<script type="text/javascript">
 	profile();
-
 	deletePet();
 	addPet();
 </script>

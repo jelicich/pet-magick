@@ -90,7 +90,7 @@ function start_scroll(applyTo){
 					advanced:{
 						updateOnContentResize: true
 					},
-					theme:"light-thick",
+					theme:"light-thin",
 					callbacks:{
 					    
 					    onTotalScroll:function(){

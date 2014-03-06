@@ -1,7 +1,30 @@
-<div class="mod profiles-mod nogrid-mod" id="news-mod">
+<div class="mod short-profile-modules nogrid-mod" id="news-mod">
 
 				<div class="mod-header">
 					<h2>My Recent News</h2>
+				
+				<div id='what' class='ask-qa'> <!-- invertir clase y id aca -->
+					
+					<li><a id="post-news" class="btn"  >Post news</a></li>
+						<div id='pop-up-click' class='mod'>
+
+							<?php
+								if(isset($_SESSION['id']))
+								{
+								
+									if($u->isOwn())
+									{
+										echo "	
+												<textarea id='news_content'></textarea>
+												<input type='button' name='news' value='Post' id='news_button' />
+										";	
+									}
+								}
+							?>
+							<div class="arrow-top"></div>
+						</div>
+						
+				</div>
 				</div>
 
 				<ul class="mod-content clearfix">
@@ -17,16 +40,23 @@
 							for($i = 0; $i<sizeof($nw); $i++)
 							{
 					?>
-								<li class="recent-news">
-									<span><?php echo $nw[$i]['DATE']?></span>
-									<p><?php echo $nw[$i]['NEWS']; ?><p>
-									<?php 
-									
-									if($u->isOwn())
-										echo "<a href='#". $nw[$i]['ID_NEWS'] ."' class='deleteNews btn btn-danger'>Delete</a> "; 
-									?>
 
-								</li>
+
+
+							<li class="clearfix">
+								<div class="content-description bg-news">
+									
+									<p><?php echo $nw[$i]['NEWS']; ?><p>
+									<div>
+										<span><small><?php echo $nw[$i]['DATE']?></small></span><br><!-- remove br!!!!!!! -->
+
+										<?php
+										if($u->isOwn())
+											echo "<a href='#". $nw[$i]['ID_NEWS'] ."' class='deleteNews btn btn-danger'>Delete</a> "; 
+										?>
+									</div>
+								</div>
+							</li>
 
 					<?php 
 							}//END FOR
@@ -37,15 +67,7 @@
 						}
 					?>
 				</ul>
-				<?php
-					if($u->isOwn())
-					{
-						echo "	
-								<textarea id='news_content'></textarea>
-								<input type='button' name='news' value='Post' id='news_button' />
-						";	
-					}
-				?>	
+				
 			</div>
 
 

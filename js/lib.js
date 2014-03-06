@@ -869,6 +869,29 @@ function printEdit(idModule, html){
 
 function news(){
 
+	var fl = 0;
+	(function showNews()
+	{
+		if(byid('post-news')){
+		var btnCom = byid('post-news');
+		var pop = byid('pop-up-click');
+		
+		btnCom.onclick = function()
+		{
+			if(fl == 0)
+			{
+				pop.style.display = 'block';
+				fl = 1;
+			}
+			else
+			{
+				pop.style.display = 'none';
+				fl = 0;
+			}
+		}
+	}
+	})();
+
 	function printNews(){
 	
 		var cont = byid("news-mod");
@@ -1024,6 +1047,7 @@ function comments(ajaxFile){
 	var fl = 0;
 	(function showComment()
 	{
+		if(byid('leave-comment')){
 		var btnCom = byid('leave-comment');
 		var pop = byid('pop-up-click');
 		
@@ -1040,6 +1064,7 @@ function comments(ajaxFile){
 				fl = 0;
 			}
 		}
+	}
 	})();
 
 if(byid('send-comment')){

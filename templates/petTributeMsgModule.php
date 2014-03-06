@@ -32,7 +32,7 @@
 
 			<!-- comments -->
 			<div class="scrollable-list">
-				<ul class="mod-content " id="comments-wrapper">
+				<ul class="mod-content" id="comments-wrapper">
 					<?php 
 						if(sizeof($com) <= 0)
 						{
@@ -63,5 +63,5 @@
 			<!-- END comments -->
 		</div>
 		<script type="text/javascript">
-			start_scroll('scrollable-list');
+		//	start_scroll('scrollable-list');
 		</script>

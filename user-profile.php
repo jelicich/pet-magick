@@ -35,15 +35,18 @@
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
 
-
+<!-- <script type="text/javascript" src="js/modernizr.js"></script> -->
 <script type="text/javascript" src="js/lib.js"></script>
 <script type="text/javascript" src="js/uploader.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jq_functions.js"></script> 
+
+ <script defer src="js/jquery.flexslider.js"></script>
 
 <?php
 	//imprimo lo necesario para el datepicker
@@ -83,24 +86,17 @@
 			</div>
 			<!-- END about module -->
 
-
-
-
-
-
-		<!-- my pets -->
-		<div class="grid_5">
-			<div class="mod  profiles-mod" id="pet-list">
+			<!-- my pets -->
+			<div class="grid_5">
+			
+			<div class="mod short-profile-modules" id="pet-list">
 				
 				<?php
 					$pets = $p->getPetList($_GET['u']);
 					include_once 'templates/petList.php';
 				?>
-
-				
-			</div>
+		    </div>
 			<!-- END my pets -->
-
 
 			<!-- news -->
 			<?php 
@@ -132,7 +128,20 @@
 		</div>
 		<!-- END my pet profile -->
 
-		<!--====================================================================== favorites test =========================== -->
+		
+
+		<!-- user album -->
+		<div id='user-album' class="mod grid_7 profiles-mod clearfix">
+			<?php
+				include_once 'templates/userAlbum.php'; 
+			?>
+		</div>
+		<!-- END user album -->
+
+
+
+
+<!--====================================================================== favorites test =========================== -->
 		<div class="row-fluid"> <!-- div provisorio para contener el testeo -->
 
 			<?php 
@@ -184,13 +193,8 @@
 		</div>
 	<!--====================================================================== favorites test =========================== -->
 
-		<!-- user album -->
-		<div id='user-album' class="mod grid_12 profiles-mod clearfix">
-			<?php
-				include_once 'templates/userAlbum.php'; 
-			?>
-		</div>
-		<!-- END user album -->
+
+
 
 		<?php
 		//OPCIONES PARA SECCIONES EXTERNAS
@@ -229,6 +233,11 @@
 		e.preventDefault();
 		$(this).tab('show');
 	});
+</script>
+
+
+<script type="text/javascript">
+	flexslider();
 </script>
 
 </body>

@@ -21,7 +21,11 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 
+<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/jq_functions.js"></script> 
 
 </head>
 
@@ -44,18 +48,17 @@
 		</div>	
 
 		<div class="grid_8" id="message-area">
-			<ul id="wrap-messages"> <!-- scroleable -->
-			</ul>
-
-			<form method='' action='' class="clearfix" style="display:none" id="write-message">	
-				
-
-				<textarea rows='5' cols='30' name='message' id='message'></textarea>
-				<input type='button' value='Submit' id='send-message' class="btn btn-danger"/>
-
-				
-			</form>
+			<div class="scrollable" id="wrap-messages-container">
+				<ul id="wrap-messages"> 
+				</ul>
+			</div>
 		</div><!-- END message area -->
+		<div class="grid_8" id="write-message-container">
+			<form method='' action='' class="clearfix" style="display:none" id="write-message">					
+				<textarea rows='5' cols='30' name='message' id='message'></textarea>
+				<input type='button' value='Submit' id='send-message' class="btn btn-danger"/>	
+			</form>
+		</div>
 
 
 
@@ -85,8 +88,6 @@
 
 </form>
 
-</body>
-
 
 <script type="text/javascript" id="jslogout">
 
@@ -96,7 +97,10 @@
 	i.ini({
 		'hidden':true
 	});
-</script>
 
+	start_scroll('scrollable');
+
+</script>
+</body>
 
 </html>

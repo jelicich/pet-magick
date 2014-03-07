@@ -606,7 +606,7 @@ function printMessages(){
 	for(var i = 0; i < html.length; i++){
 
 		lines = create('li');
-		lines.className = html[i]['Users']['ID_USER'];
+		lines.className = 'u'+html[i]['Users']['ID_USER'];
 		lines.innerHTML = '<strong>' + html[i]['Users']['NAME'] + ' ' + html[i]['Users']['LASTNAME'] + ' (' + html[i]['Users']['NICKNAME'] + ')</strong><span> | ' + html[i]['DATE'] + '</span><p>' + html[i]['MESSAGE'] + '</p>';
 		
 		byid('wrap-messages').appendChild(lines);

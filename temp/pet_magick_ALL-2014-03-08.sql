@@ -22,22 +22,6 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `pet_magick` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `pet_magick`;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `ads`
---
-
-CREATE TABLE IF NOT EXISTS `ads` (
-  `ID_AD` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `AD` char(30) NOT NULL,
-  `LINK` int(10) unsigned NOT NULL,
-  `DATE` datetime NOT NULL,
-  `DATE_FROM` datetime DEFAULT NULL,
-  `DATE_TO` datetime DEFAULT NULL,
-  `STATUS` tinyint(1) NOT NULL,
-  PRIMARY KEY (`ID_AD`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -139,34 +123,6 @@ INSERT INTO `answers` (`ID_ANSWER`, `ANSWER`, `DATE`, `USER_ID`) VALUES
 (33, 'sos groso', '2014-02-11 04:20:16', 5),
 (34, 'qe', '2014-02-11 04:20:20', 5);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `blogs`
---
-
-CREATE TABLE IF NOT EXISTS `blogs` (
-  `ID_BLOG` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `TITLE` varchar(100) NOT NULL,
-  `CONTENT` text NOT NULL,
-  `DATE` datetime NOT NULL,
-  `USER_ID` int(10) unsigned NOT NULL,
-  `PIC_ID` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`ID_BLOG`),
-  KEY `USER_ID` (`USER_ID`),
-  KEY `PIC_ID` (`PIC_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `blogs`
---
-
-INSERT INTO `blogs` (`ID_BLOG`, `TITLE`, `CONTENT`, `DATE`, `USER_ID`, `PIC_ID`) VALUES
-(1, 'Hola primer post', 'ESte es el primer post del blog, re piola', '2013-02-04 22:56:06', 5, NULL),
-(2, 'Segundo post del blog', 'A ver q onda', '2014-02-13 22:56:36', 5, NULL),
-(3, 'El mismo dia de hoy', 'as  ds dsd 3 sd 3 sd sd asd q1 h ghdff s ', '2014-02-13 22:57:12', 5, NULL),
-(6, '987kj', 'kjhkjhkhjkhkjh', '2014-01-07 23:50:43', 5, NULL),
-(7, 'kjkjkjhkhkjhjkhkj', 'kj', '2011-10-19 23:51:20', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -45364,18 +45320,11 @@ ALTER TABLE `answers`
   ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`);
 
 --
--- Constraints for table `blogs`
---
-ALTER TABLE `blogs`
-  ADD CONSTRAINT `blogs_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `blogs_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`);
-
---
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`TRIBUTE_ID`) REFERENCES `tributes` (`ID_TRIBUTE`);
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`TRIBUTE_ID`) REFERENCES `tributes` (`ID_TRIBUTE`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `conversations`
@@ -45402,7 +45351,7 @@ ALTER TABLE `news`
 --
 ALTER TABLE `organizations`
   ADD CONSTRAINT `organizations_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `organizations_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`);
+  ADD CONSTRAINT `organizations_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `pets`
@@ -45410,29 +45359,29 @@ ALTER TABLE `organizations`
 ALTER TABLE `pets`
   ADD CONSTRAINT `pets_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
   ADD CONSTRAINT `pets_ibfk_2` FOREIGN KEY (`ANIMAL_CATEGORY_ID`) REFERENCES `animal_categories` (`ID_ANIMAL_CATEGORY`),
-  ADD CONSTRAINT `pets_ibfk_3` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`),
-  ADD CONSTRAINT `pets_ibfk_4` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
+  ADD CONSTRAINT `pets_ibfk_3` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pets_ibfk_4` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `pics`
 --
 ALTER TABLE `pics`
   ADD CONSTRAINT `pics_ibfk_1` FOREIGN KEY (`THUMBNAIL`) REFERENCES `pics` (`ID_PIC`),
-  ADD CONSTRAINT `pics_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
+  ADD CONSTRAINT `pics_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `projects`
 --
 ALTER TABLE `projects`
   ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`);
+  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`ANSWER_ID`) REFERENCES `answers` (`ID_ANSWER`);
+  ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`ANSWER_ID`) REFERENCES `answers` (`ID_ANSWER`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tributes`
@@ -45445,8 +45394,8 @@ ALTER TABLE `tributes`
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`),
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`),
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ID_ALBUM`) ON DELETE CASCADE,
   ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`COUNTRY_ID`) REFERENCES `countries` (`CountryId`),
   ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`REGION_ID`) REFERENCES `regions` (`RegionID`),
   ADD CONSTRAINT `users_ibfk_5` FOREIGN KEY (`CITY_ID`) REFERENCES `cities` (`CityId`);
@@ -45456,7 +45405,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `vet_talk`
   ADD CONSTRAINT `vet_talk_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`ID_USER`),
-  ADD CONSTRAINT `vet_talk_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`);
+  ADD CONSTRAINT `vet_talk_ibfk_2` FOREIGN KEY (`PIC_ID`) REFERENCES `pics` (`ID_PIC`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `videos`

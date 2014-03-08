@@ -1495,7 +1495,12 @@ function favorites(){
 			for(var i = 0; i < btn.length; i++){
 				btn[i].onclick = function()
 				{	
-					var u ='u='+ this.name;
+
+					var u = this.href;
+					var index = u.indexOf('#');
+			  		index ++;
+			  		u ='u='+ u.substr(index);
+					
 					ajax('POST', 'ajax/deleteFavorite.php', printEditFavorite, u, true);
 
 				}// end deleteNews[i].onclick		

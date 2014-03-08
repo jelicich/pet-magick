@@ -45,20 +45,20 @@
 
 
 						<div id="pet-album">
-							
-
 							<div class="flexslider carousel">
 								<ul class="slides">
 
 
 								<?php
-									
 
 									if($p->getAlbumId())
 									{
 										$album = $p->getAlbum($p->getAlbumId());
+										$t = sizeof($album);
+										$flag = 6;
+										$default = 0;
 
-										for($i=0;$i<sizeof($album);$i++)
+										for($i=0; $i < $t; $i++)
 										{
 								?>
 										
@@ -71,6 +71,20 @@
 											
 								<?php
 										}//end for
+
+										if($t < $flag){
+										
+											$default = $flag - $t;
+
+											for ($i=0; $i < $default; $i++) { 
+
+												echo "<li>
+														<a class='link-img' href= 'img/users/default.jpg' > 
+															<img class='thumb-mid' src= 'img/users/thumb/default.jpg' />
+														</a> 
+													</li>";
+											}
+										}
 								?>
 								 	</ul>
 								<?php
@@ -137,7 +151,7 @@
 	editPetAlbum();
 	UploadPetVideo();
 	deleteVideo();
-	modalImg();
+	flexslider();
 </script>
 
 

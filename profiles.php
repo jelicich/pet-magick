@@ -97,7 +97,7 @@
 <script type="text/javascript">
 	
 	listByCategory('profilesModuleByPet.php');
-	start_scroll('scrollable-module');
+	start_scroll('scrollable-module', false);
 
 </script>
 

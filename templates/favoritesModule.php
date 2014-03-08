@@ -14,13 +14,13 @@ for ($i=0; $i < $t; $i++) {
 	  $user_id = $fd[0]['ID_USER'];
 ?>
 
-	<li class="clearfix">
-		<img src= <?php echo $srcImg ?> class="thumb-small side-img" />
-		<div class="content-description bg-txt corregir">
+	<li class="">
+			<img src= <?php echo $srcImg ?> class="thumb-small side-img" />
 			<strong><?php echo $nickname; ?></strong><br><!-- remove br!!!!!!! -->
-			<a href=<?php echo 'user-profile.php?u='.$user_id ?> class='linkToModule'>View profile</a>
-			<input type="button" class="deleteFavorite" name=<?php echo $user_id; ?> value="Delete" />
-		</div>
+			<!-- <a href=<?php //echo 'user-profile.php?u='.$user_id ?> class='linkToModule'>View profile</a> -->
+			<!--<input type="button" class="deleteFavorite" name=<?php //echo $user_id; ?> value="Delete" /> -->
+			<a href="<?php echo '#'.$user_id; ?>" class='deleteFavorite btn btn-danger'>Delete</a>
+		
 	</li>
 
 <?php

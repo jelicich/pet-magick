@@ -89,7 +89,7 @@
 
 <script type="text/javascript">
 	selectedFromList('featured-org', 'ajax/getSelectedOrg.php?p=');
-	start_scroll('scrollable-list-sections');
+	start_scroll('scrollable-list-sections', false);
 	//start_scroll('scrollable-text');
 </script>
 

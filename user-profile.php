@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-
+<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
 
 <!-- <script type="text/javascript" src="js/modernizr.js"></script> -->
 <script type="text/javascript" src="js/lib.js"></script>
@@ -142,7 +142,7 @@
 
 
 <!--====================================================================== favorites test =========================== -->
-		<div class="row-fluid"> <!-- div provisorio para contener el testeo -->
+
 
 			<?php 
 				// Ver de no repetir esta llamada aca pq ya la ejecuto en favoritesModule.php
@@ -153,16 +153,18 @@
 					
 					if($u->isOwn()){
 			?>
-						<div class="projects-mod mod span5">
+						<div class="favorites-mod mod span5">
 							<div class="mod-header">
 								<h2>My favorites</h2>
-								<span>Keep your favorite pets closer</span>
 							</div>
-							<ul class="mod-content pet-loss-mod-list talks-list"  id="favorites-mod">
-			<?php 
-								include_once 'templates/favoritesModule.php'; 
-			?>
-							</ul>
+
+							<div class="scrollable-list-sections">
+								<ul class=""  id="favorites-mod">
+				<?php 
+									include_once 'templates/favoritesModule.php'; 
+				?>
+								</ul>
+							</div>
 						</div>
 			<?php
 					}else{
@@ -190,7 +192,7 @@
 				}
 			?>
 
-		</div>
+	
 	<!--====================================================================== favorites test =========================== -->
 
 
@@ -219,13 +221,12 @@
 
 
 <script type="text/javascript">
-	//profile();
+
 	news();
-	//deletePet();
-	//addPet();
 	vetTalkAnswer();
 	favorites();
-
+	modalImg();
+	start_scroll('scrollable-list-sections', false, "news");
 
 	
 	$('.nav-tabs a').click(function (e)
@@ -233,12 +234,11 @@
 		e.preventDefault();
 		$(this).tab('show');
 	});
+
 </script>
 
 
-<script type="text/javascript">
-	flexslider();
-</script>
+
 
 </body>
 </html>

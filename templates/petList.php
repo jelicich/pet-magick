@@ -10,9 +10,7 @@
 
 					?>
 				</div>
-
-				
-
+				<div class="scrollable-pet-list">
 				<ul class="mod-content clearfix">
 					<?php
 
@@ -45,6 +43,7 @@
 					?>
 					
 				</ul>
+			</div>
 
 <script type="text/javascript">
 	profile();

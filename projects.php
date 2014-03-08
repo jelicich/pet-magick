@@ -101,7 +101,7 @@
 
 <script type="text/javascript">
 	selectedFromList('featured-project', 'ajax/getSelectedProject.php?p=');
-	start_scroll('scrollable-list-sections');
+	start_scroll('scrollable-list-sections', false);
 	//start_scroll('scrollable-text');
 
 </script>

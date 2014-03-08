@@ -1,15 +1,16 @@
 //FELX SLIDER
 function flexslider(){
 
-	//$(window).load(function() {
-	$(function(){ 
-	  $('.flexslider').flexslider({
-	    animation: "slide",
-	    animationLoop: false,
-	    itemWidth: 123,
-	    itemMargin: 5
-	  });
-	});
+	//$("#pet-album").on("ready", $(function(){
+		$(function(){ 
+		  $('.flexslider').flexslider({
+		    animation: false,
+		    animationLoop: false,
+		    itemWidth: 80,
+		    itemMargin: 5
+		  });
+		});
+	//});
 }
 
 
@@ -75,9 +76,9 @@ function userForms(){
 }
 
 //SCROLL
-function start_scroll(applyTo){
+function start_scroll(applyTo, direction, module){
 	//$(document).ready(function(){
-		var c = "c=3";
+		
 		(function($){
 			
 			//$(window).load(function(){
@@ -88,28 +89,41 @@ function start_scroll(applyTo){
 						enable: false 
 					},
 					advanced:{
-						updateOnContentResize: true
+						updateOnContentResize: true,
+						horizontalSrcoll: direction
 					},
 					theme:"light-thin",
 					callbacks:{
 					    
 					    onTotalScroll:function(){
 				    		
-				    		$.ajax({
+				    		if(module == "profiles"){
+					    		
+					    		var c = "c=3";
 
-				                type: "POST",
-				                url: "ajax/profilesModuleByPet.php",
-				                data: c,
-				                cache: false,
+					    		$.ajax({
 
-				                success: function(html){
-				                	///console.log(html);
-				                	$('#ModulesByPet').append(html);
-				                }
-				            });
+					                type: "POST",
+					                url: "ajax/profilesModuleByPet.php",
+					                data: c,
+					                cache: false,
+
+					                success: function(html){
+					                	console.log(html);
+					                	$('#ModulesByPet').append(html);
+					                }
+					            });
+
+					        }else if(module == "news"){
+
+					        	alert("hola");
+					        }
+
+				    	
 					    }
 					}
 				});
+
 			//});
 		})(jQuery);
 	//});

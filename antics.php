@@ -119,7 +119,7 @@
 	
 <script type="text/javascript">
 	listByCategory('anticsModuleByCategory.php');
-	start_scroll('scrollable-module');
+	start_scroll('scrollable-module', false);
 
 
 	$(".mod-menu li").click(function(){

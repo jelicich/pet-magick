@@ -12,6 +12,8 @@
 							<div class="mod-header">
 								<h2>My album</h2>
 							</div>
+
+							<div class="scrollable-list-sections">
 							<?php
 								$aId = $u->getAlbumId();
 								if($aId)
@@ -31,6 +33,7 @@
 									}//END FOR
 							?>
 									</ul>
+								</div>
 							<?php
 								}//END IF
 								
@@ -38,6 +41,5 @@
 
 							<script type="text/javascript">
 								editUserAlbum();
-								modalImg();
-
+								
 							</script>

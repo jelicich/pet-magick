@@ -86,7 +86,7 @@
 
 <script type="text/javascript">
 	listByCategory('tributesModuleByPets.php'); // ACA HAY Q HACER UN ajax/php para traer mascotas muertas (tributos)
-	start_scroll('scrollable-module');
+	start_scroll('scrollable-module', false);
 
 	$(".mod-menu li").click(function(){
 		$(this).find("div").attr("class", "arrow-pet-loss");

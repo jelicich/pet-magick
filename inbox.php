@@ -98,7 +98,7 @@
 		'hidden':true
 	});
 
-	start_scroll('scrollable');
+	start_scroll('scrollable', false);
 
 </script>
 </body>

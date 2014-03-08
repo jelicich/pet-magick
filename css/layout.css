@@ -797,7 +797,19 @@ p,span{
 
 
 
+
+.scrollable-pet-list{
+	overflow: auto;
+	/*max-height: 385px !important*/;
+	padding-top: 10px !important;
+	padding-right: 5px;
+}
+
+
+
 /* ========================================================== end scroll ===========================*/
+
+
 
 
 
@@ -1102,26 +1114,79 @@ p,span{
 
 */
 
+#user-album .scrollable-list-sections{
+	height: 410px;
+}
+
+
+#favorites-mod{
+	background-color: red;
+	height:auto;
+	width: 100%;
+}
+
+.favorites-mod .scrollable-list-sections{
+	height: 250px;
+	background: #e8b2ae;
+	min-height: 250px;
+	max-height: 250px;
+	overflow: hidden;
+	padding: 5px 5px 10px 0;
+}
+
+.favorites-mod .mod-header{
+	background: #d95248;
+}
+
+
+.favorites-mod li{
+	position: relative;
+	width: 95%;
+	height: 25px;
+	float: left;
+	margin: 0 0 5px -20px;
+
+}
+
+.favorites-mod a{
+	position: absolute;
+	right: 0;
+	top: 1px;
+
+}
+
+.favorites-mod img{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 25px;
+	height: 25px;
+}
+
+.favorites-mod strong{
+	position: absolute;
+	left: 40px;
+	bottom: 5px;
+}
+
+
 #pet-album{
 	float: right;
 	height: 160px;
 	width: 390px;
-	margin-top: -100px;
+	margin: -100px 25px 0 0;
 	position: relative;
 }
 
-
-
-#pet-album .flexslider{
+.flexslider{
 	position: absolute;
 	top: -10px;
-	right: 50px;
-	width: 300px;
+	right: 125px;
+	width: 260px !important;
 }
 
 
-
-#pet-album .flexslider li a img{
+.flexslider li a img{
 	height: 80px;
 	width: 80px;
 	margin-left: 0px;
@@ -1152,13 +1217,12 @@ float: left;
 	width: 97%;
 	margin: 5px;
 	height: 170px;
-	padding: 5px 0px 10px 10px;
+	padding: 10px 10px 10px 10px;
 }
 
 .bg-news a{
-
 	float: right;
-	margin: -16px -5px 0 0;
+	margin: -17.5px -5px 0 0;
 }
 
 
@@ -1182,6 +1246,12 @@ float: left;
 .bg-news span{
 	float: left;
 	margin-top: 5px;
+}
+
+
+.news .scrollable-list-sections{
+
+	height: 170px;
 }
 
 .pet-info{
@@ -1570,7 +1640,15 @@ float: left;
 
 #featured-project{
 	min-height: 220px;
-	max-height: 430px;
+	max-height: 380px;
+}
+
+#project-album{
+	float: left;
+	height: 160px;
+	width: 390px;
+	margin: 10px 0 0 125px;
+	position: relative;
 }
 
 #featured-project .loading{

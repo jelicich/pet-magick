@@ -84,21 +84,21 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 <?php
 
 $t = sizeof($projectAlbum);
-//var_dump($projectAlbum[0]['PIC']);
+$flag = 6;
+$default = 0;
+
 if(isset($projectAlbum[0]['PIC'])){
 
 ?>
 
-
+<div id="project-album">
 <div class="flexslider carousel">
-	
 	<ul class="slides">
 <?php
 
-	for ($i=0; $i < $t; $i++) { 
+for ($i=0; $i < $t; $i++) { 
 		
 		$srcImg = $projectAlbum[$i]['THUMB'];
-	
 ?>
 
 		<li>
@@ -107,19 +107,29 @@ if(isset($projectAlbum[0]['PIC'])){
 			</a> 
 		</li>
 
-		<li>
-			<a class='link-img' href= <?php echo "img/projects/".$srcImg ?> > 
-				<img class="thumb-mid" src= <?php echo 'img/projects/thumb/'.$srcImg; ?> />
-			</a> 
-		</li>
 
 <?php
+} // end for
 
-	} // end for
+if($t < $flag){
+	$default = $flag - $t;
+
+	for ($i=0; $i < $default; $i++) { 
+
+		echo "<li>
+				<a class='link-img' href= 'img/projects/default.jpg' > 
+					<img class='thumb-mid' src= 'img/projects/thumb/default.jpg' />
+				</a> 
+			</li>";
+		
+	}
+}
+
+	
 ?>
 	</ul>	
 </div>
-
+</div>
 <script type="text/javascript">
 	flexslider();
 </script>

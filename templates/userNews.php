@@ -1,4 +1,4 @@
-<div class="mod short-profile-modules nogrid-mod" id="news-mod">
+<div class="mod news short-profile-modules nogrid-mod" id="news-mod">
 
 				<div class="mod-header">
 					<h2>My Recent News</h2>
@@ -26,6 +26,7 @@
 						
 				</div>
 				</div>
+				<div class="scrollable-list-sections">
 
 				<ul class="mod-content clearfix">
 					<?php 
@@ -67,8 +68,8 @@
 						}
 					?>
 				</ul>
-				
 			</div>
+</div>
 
 
 <script type="text/javascript">

@@ -113,7 +113,7 @@
 <script type="text/javascript">
 	selectedFromList('mainArticle', 'ajax/getSelectedArticle.php?p=');
 	comments('postQuestion');
-	start_scroll('scrollable-list');
+	start_scroll('scrollable-list', false);
 </script>
 
 </body>

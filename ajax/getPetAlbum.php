@@ -11,3 +11,4 @@ $p->getPetData($_GET['p']);
 include_once '../templates/petAlbum.php';
 
 ?>
+

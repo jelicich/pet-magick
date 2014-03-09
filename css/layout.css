@@ -3230,3 +3230,26 @@ body.my-account #bbpress-forums {
 .italic{
 	font-style: italic;
 }
+
+#modal-edit-container{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 9990;
+	background:rgba(255,255,255,0.3);
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#modal-edit{
+	background: red;
+	margin: 109px auto 0;
+	width: 600px;
+	padding: 10px;
+}
+
+#modal-edit .loading{
+	display: block;
+	margin: 0 auto;
+}

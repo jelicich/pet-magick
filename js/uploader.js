@@ -2,8 +2,11 @@ function imgVideoUploader(whatFor, modulo){
 
 		// ===========================COMMON VARs & FUNCTIONS
 		var amount = whatFor;
+		/*
 		var file_id = create('input');
 		    file_id.type = 'file';
+		*/
+		var file_id = byid('file_id');
 		
 		var allCaption = [];
 		var caption;
@@ -121,10 +124,12 @@ function imgVideoUploader(whatFor, modulo){
 	
 		function normalWay(whatFor){ // Hay q pasar la referencia aca ????
 
+				  /*
 				  file_id.id = 'file_id';
 				  file_id.name = 'file';
+				  */
 
-				  byid('form-id').appendChild(file_id);
+				  //byid('form-id').appendChild(file_id);
 				  //var uploadBtn = byid('save-edit-user');
 				    if(modulo == 'about')// tal vez deba poner un nombre para todos y ya
   				    {
@@ -254,6 +259,12 @@ function imgVideoUploader(whatFor, modulo){
 
 				// CANCEL SAVE
 				cancelBtn.onclick = function(){
+
+					// PRUEBA ESTEBAn
+					byid('modal-edit-container').style.display = 'none';
+					byid('modal-edit').innerHTML = '<img class="loading" src="img/loading.gif" width="25" height="25" />';
+					return;
+					//FIN PRUEBA
 
 					preventEventsDefault();
 
@@ -437,14 +448,14 @@ function imgVideoUploader(whatFor, modulo){
 				  	  						
 										  	  		file_id.id = 'file_id';
 													file_id.name = 'file';
-													byid('form-id').appendChild(file_id);
+													byid('file-container').appendChild(file_id);
 										  	  }
 										  	  if ( modulo == 'admin'){/* NUEVO PARA ADMIN ================ */ 
 				  	  							
 				  	  								filesSelectedPosition--;
 										  	  		file_id.id = 'file_id';
 													file_id.name = 'file';
-													byid('form-id').appendChild(file_id);
+													byid('file-container').appendChild(file_id);
 										  	  }
 						                }
 					            }// end onload
@@ -641,7 +652,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				   		 		  file_id.id = 'file_id';
 								  file_id.name = 'file';
-								  byid('form-id').appendChild(file_id);
+								  byid('file-container').appendChild(file_id);
 							} 
 				  }// end onclick
 			}// end NormalWay

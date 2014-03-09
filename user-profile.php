@@ -237,8 +237,11 @@
 
 </script>
 
-
-
+<div id="modal-edit-container">
+	<div id="modal-edit">
+		<img class="loading" src="img/loading.gif" width="25" height="25" />
+	</div>
+</div>
 
 </body>
 </html>

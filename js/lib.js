@@ -730,6 +730,7 @@ function editUserProfile(){
 	  		index ++;
 	  		p = 'u='+p.substr(index);
 	  		
+	  		byid('modal-edit-container').style.display='block';	
 			ajax('POST', 'ajax/getEditUser.php', printEditUser, p, true);
 		}
 
@@ -737,7 +738,7 @@ function editUserProfile(){
 
 		function printEditUser()
 		{
-			printEdit('user-about', this.responseText);
+			printEdit('modal-edit', this.responseText);
 		}
 	}
 }//end editUserProfile
@@ -832,6 +833,19 @@ function UploadPetVideo(){ // esto se repite, podemos hacer una sola function co
 	}
 }//end editPetProfile
 
+function printEdit(idModule, html){		
+	var cont = byid(idModule);
+	cont.innerHTML = html;
+	var scr = cont.getElementsByTagName('script');
+	if(scr.length > 0)
+	{
+		for(var i = 0; i < scr.length; i++)
+		{
+			eval(scr[i].innerHTML);
+		}
+	}
+}//end printedit
+
 function deleteVideo(){
 
 	if(byid('delete-pet-video')){
@@ -854,18 +868,7 @@ function deleteVideo(){
 		}
 }
 
-function printEdit(idModule, html){		
-	var cont = byid(idModule);
-	cont.innerHTML = html;
-	var scr = cont.getElementsByTagName('script');
-	if(scr.length > 0)
-	{
-		for(var i = 0; i < scr.length; i++)
-		{
-			eval(scr[i].innerHTML);
-		}
-	}
-}//end printedit
+
 
 function news(){
 

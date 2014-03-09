@@ -1,33 +1,27 @@
 
 			
-			<?php
-
-				//if($p->isOwn())
-				//{
-					echo '<a href="#'.$_POST['u'].'" class="btn btn-edit" id="save-edit-user">Save</a><a href="#'.$_POST['u'].'" class="btn btn-cancel" id="cancel-edit-user">Cancel</a>';	
-				//}
-			?>	
+			
 			<div class="mod-header">
 				<h2>About me</h2>
 			</div>
 			<div class="mod-content clearfix">
-				<div class="pic-caption">
 
 
-					<!-- IMG UPLOADER -->
-					<div id='imgContainer'></div>
+					
 
 					<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 
 					<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 						 
-						 <!-- <input id="file-id" type="file" name="file" /> -->
+						
 
-						  <p id="upload-status"></p>
-						  <pre id="result"></pre>
+						<!--
+						<p id="upload-status"></p>
+						<pre id="result"></pre>
+						-->
 
-					<!--</form>-->
-					<!-- END IMG UPLOADER -->
+					
+					
 						<img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/>
 						<?php
 							if($p->hasPic())
@@ -40,6 +34,14 @@
 						<?php
 							}
 						?>
+
+						<div class="pic-caption">
+						</div> <!-- END pic-caption -->
+						
+						<!-- IMG UPLOADER -->
+						<div id='imgContainer'></div>
+
+						<label id="file-container">Profile picture<input type="file" name="file" id="file_id"/></label>
 
 
 						<label for="usr-name">Name</label><input class="form-element" type="text" value=<?php echo '"'.$p->getName().'"' ?> name="name" id="usr-name"/>
@@ -185,17 +187,16 @@
 
 					</form>
 					
-				</div> <!-- END pic-caption -->
 				
-				<div id="user-extra">
-					<!--
-					<ul>
-						<li><a href="#">Send me a message</a></li>
-						<li><a href="#">My projects</a></li>
-						<li><a href="#">My tributes</a></li>
-					</ul>
-					-->
-				</div>
+				
+				
+				<?php
+
+				//if($p->isOwn())
+				//{
+					echo '<a href="#'.$_POST['u'].'" class="btn" id="save-edit-user">Save</a><a href="#'.$_POST['u'].'" class="btn" id="cancel-edit-user">Cancel</a>';	
+				//}
+				?>	
 			</div>
 			
 			<script type="text/javascript">

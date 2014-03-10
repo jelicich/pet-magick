@@ -213,14 +213,8 @@
 						</ul>
 					</div>
 
-		
-					
-					
-
-				    	<label for="usr-about">About me</label>
-						<textarea class="form-element" name="about" id="usr-about"><?php echo $p->getAbout() ?></textarea>
-					
-
+			    	<label for="usr-about">About me</label>
+					<textarea class="form-element" name="about" id="usr-about"><?php echo $p->getAbout() ?></textarea>
 				</form>
 					
 				

@@ -3294,7 +3294,8 @@ body.my-account #bbpress-forums {
 
 .table ul li input{
 	width: 285px;
-	padding: 12px 5px;
+	padding: 11px 5px;
+	margin-bottom: 0; 
 }
 
 .table ul li select{
@@ -3340,11 +3341,24 @@ body.my-account #bbpress-forums {
 	margin-top: 2px;
 }
 
-#modal-edit #usr-about{
+#modal-edit textarea{
 	width: 100%;
 	resize: none;
 }
 
 #modal-edit form{
 	margin: 0;
+}
+
+#modal-edit a.btn{
+	margin-right: 10px;
+}
+
+#create-tribute{
+	margin-bottom: 10px;
+}
+
+#create-tribute #tr-title{
+	width: 100%;
+	padding: 11px 5px;
 }

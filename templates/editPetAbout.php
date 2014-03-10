@@ -10,24 +10,26 @@
 					elseif(isset($_POST['p']))
 						$userId = $_POST['p'];
 
-					echo '<a href="#'.$userId.'" class="btn btn-edit" id="save-edit-pet-about">Save</a><a href="#'.$userId.'" class="btn btn-cancel" id="cancel-edit-pet-about">Cancel</a>';		
+					
 					$p->getPetData($userId);
 
 					//$pet = $p->getPet($pets[0]['ID_PET']);
 			?>		
 					
 							<!-- IMG UPLOADER -->
-						<div id='imgContainer'></div>
+						
 
 						<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 							
 							<div class="clearfix">
+								<!--
 								<p id="upload-status"></p>
 							  	<pre id="result"></pre>
+							  	-->
 								
-								<div class="pic-caption pet-info">
+								<div class="pet-info">
 									<img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/>
 									<?php
 										if($p->hasPic())
@@ -40,6 +42,10 @@
 									<?php
 										}
 									?>
+
+									<div id='imgContainer'></div>
+									<label id="file-container">Pet picture<input type="file" name="file" id="file_id"/></label>
+
 									<select name="animal-category" class="form-element">
 										<?php
 										$cats = $ac->getCategories();
@@ -149,8 +155,9 @@
 								?>
 							</div>
 							-->
-
-
+							<?php
+							echo '<a href="#'.$userId.'" class="btn" id="save-edit-pet-about">Save</a><a href="#'.$userId.'" class="btn" id="cancel-edit-pet-about">Cancel</a>';		
+							?>
 							<input type="hidden" value=<?php echo '"'.$p->getOwner().'"';?> name="owner" class="form-element"/>
 						</form>
 			<?php 

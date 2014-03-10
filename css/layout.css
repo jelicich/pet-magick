@@ -3236,20 +3236,115 @@ body.my-account #bbpress-forums {
 	height: 100%;
 	position: fixed;
 	z-index: 9990;
-	background:rgba(255,255,255,0.3);
+	background:rgba(255,255,255,0.5);
 	top: 0;
 	left: 0;
 	display: none;
 }
 
 #modal-edit{
-	background: red;
+	background: #eec8c5;
+	box-shadow: 0 0 55px #FFFFFF;
 	margin: 109px auto 0;
 	width: 600px;
-	padding: 10px;
 }
 
 #modal-edit .loading{
 	display: block;
 	margin: 0 auto;
+}
+
+#modal-edit .mod-header{
+	background: #d95248;
+}
+
+#modal-edit label input[type="file"]{
+	display: block;
+}
+
+.table{
+	background:none;
+	margin-bottom: 0;
+}
+
+.table ul{
+	margin:0px;
+	padding:0px;
+}
+
+.table ul li{
+	list-style:none;
+	padding:4px 0px;
+	float: left;
+}
+
+.table ul li.title{
+	font-weight:bold;
+	background:#333;
+	color:#fff;
+}
+
+.table ul li.even{
+	margin-left: 10px;
+}
+
+.table ul li.odd{
+	
+}
+
+.table ul li input{
+	width: 285px;
+	padding: 12px 5px;
+}
+
+.table ul li select{
+	width: 285px;
+}
+
+.table .current-pic-cont{
+	width: 60px;
+	margin-right: 10px;
+}
+
+.table .current-pic-cont input[type='checkbox']{
+	width: 12px;
+}
+
+.table .current-pic-cont img{
+	width: 50px;
+	height: 50px;
+}
+
+.table .new-pic-cont{
+	width: 510px;
+}
+
+.table .new-pic-cont #imgContainer{
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.table .new-pic-cont #imgContainer img{
+	height: 50px;
+	cursor: pointer;
+}
+
+.table .new-pic-cont input[type='file']{
+	width: 100%;
+	background: rgba(255,255,255,0.3);
+	padding: 6px;
+}
+
+.table #file-container{
+	font-size: 14px;
+	margin-top: 2px;
+}
+
+#modal-edit #usr-about{
+	width: 100%;
+	resize: none;
+}
+
+#modal-edit form{
+	margin: 0;
 }

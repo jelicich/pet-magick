@@ -1,15 +1,16 @@
 						<div class="mod-header">
 							<h2>My album</h2>
 						</div>
-						<?php
-							echo '<a href="#'.$_GET['u'].'" class="btn" id="save-edit-album">Save</a><a href="#'.$_GET['u'].'" class="btn" id="cancel-edit-album">Cancel</a>';		
-						?>
+						
 
-						<div id='imgContainer'></div>
+						
 
 						<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
+							<div id='imgContainer'></div>
+
+							<label id="file-container">Profile picture<input type="file" name="file" id="file_id"/></label>
 
 							<div class="slider-small">
 								<?php
@@ -46,10 +47,13 @@
 								?>
 							</div>
 							<!--<input type="hidden" value=<?php //echo '"'.$p->getOwner().'"';?> name="owner" class="form-element"/> -->
+						<?php
+							echo '<a href="#'.$_GET['u'].'" class="btn" id="save-edit-album">Save</a><a href="#'.$_GET['u'].'" class="btn" id="cancel-edit-album">Cancel</a>';		
+						?>
 							
 						</form>
 							
-							
+						
 
 						<script type="text/javascript">
 							imgVideoUploader('album', 'albumProfile'); // SUBIR IMG

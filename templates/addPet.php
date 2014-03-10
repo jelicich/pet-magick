@@ -1,32 +1,25 @@
 
 					<div class="mod-header">
-						<h2>My pet story</h2>
+						<h2>Add pet</h2>
 					</div>
 					<div class="mod-content clearfix">
 
-			<?php 
-				
-				//if($p->getPetList($_GET['p']))
-				//{	
-					//echo '<a href="#" class="btn btn-edit" id="save-edit-user">Save</a>';
-						echo '<a href="#'.$_GET['u'].'" class="btn btn-edit" id="save-new-pet">Save</a><a href="#'.$_GET['u'].'" class="btn btn-cancel" id="cancel-new-pet">Cancel</a>';		
-					
-					//$pet = $p->getPet($pets[0]['ID_PET']);
-			?>		
+			
 						<div id="pet-about">
 								<!-- IMG UPLOADER -->
-							<div id='imgContainer'></div>
+							
 
 							<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 							
 							<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 								
-								<p id="upload-status"></p>
-							  	
+								<!--<p id="upload-status"></p>-->
+							  	<div id='imgContainer'></div>
+							  	<label id="file-container">Pet picture<input type="file" name="file" id="file_id"/></label>
 								
 								<div class="clearfix">
-									<div class="pic-caption pet-info">
-										<img src="img/pets/thumb/default.jpg" class="thumb-mid"/>
+									<div class="pet-info">
+										
 										
 										<select name="animal-category" class="form-element">
 											<?php
@@ -47,11 +40,12 @@
 										<label for="pet-traits">Traits</label>
 										<input type="text" class="form-element" name="traits" id="pet-traits" />
 										
-									</div>
-									
-									<div class="bg-txt corregir">
 										<label for="pet-story"><textarea class="form-element" name="story"></textarea>
 									</div>
+									
+									
+										
+									
 
 								</div>
 
@@ -85,6 +79,16 @@
 						<div id="pet-video">
 						</div>
 					</div><!--content mod-->
+
+					<?php 
+				
+				//if($p->getPetList($_GET['p']))
+				//{	
+					//echo '<a href="#" class="btn btn-edit" id="save-edit-user">Save</a>';
+						echo '<a href="#'.$_GET['u'].'" class="btn" id="save-new-pet">Save</a><a href="#'.$_GET['u'].'" class="btn" id="cancel-new-pet">Cancel</a>';		
+					
+					//$pet = $p->getPet($pets[0]['ID_PET']);
+			?>		
 
 			<script type="text/javascript">
 				imgVideoUploader('profile', 'add-pet'); // SUBIR IMG

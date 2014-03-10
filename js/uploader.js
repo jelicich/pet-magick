@@ -255,6 +255,9 @@ function imgVideoUploader(whatFor, modulo){
 									eval(scr[i].innerHTML);
 								}
 							}
+						
+						byid('modal-edit-container').style.display = 'none';
+						byid('modal-edit').innerHTML = '<img class="loading" src="img/loading.gif" width="25" height="25" />';
 				}// end modulPrintUpdates
 
 				// CANCEL SAVE
@@ -264,6 +267,7 @@ function imgVideoUploader(whatFor, modulo){
 					byid('modal-edit-container').style.display = 'none';
 					byid('modal-edit').innerHTML = '<img class="loading" src="img/loading.gif" width="25" height="25" />';
 					return;
+					//todo lo de abajo sobra borrar
 					//FIN PRUEBA
 
 					preventEventsDefault();
@@ -388,10 +392,11 @@ function imgVideoUploader(whatFor, modulo){
 					          			selectedImg.id = 'img_' + filesSelectedPosition;
 					                    selectedImg.setAttribute('src', e.target.result);
 					                    selectedImg.setAttribute('alt', e.target.result);
+					                    
 					                    //alert(selectedImg.width + 'x' + selectedImg.height); //funca
-					                    selectedImg.style.width = '20%';
-					                    selectedImg.style.height = '20%';
-					                    selectedImg.style.margin = '5px 5px';
+					                    //selectedImg.style.width = '20%';
+					                    //selectedImg.style.height = '20%';
+					                    //selectedImg.style.margin = '5px 5px';
 					                    selectedImg.style.float = 'left';
 				                    	 
 				                    	  if (amount != 'profile'){
@@ -642,6 +647,13 @@ function imgVideoUploader(whatFor, modulo){
 					  		}
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
+					  		
+					  		var gifload = create('img');
+					  		gifload.src = 'img/loading.gif';
+					  		gifload.className = 'loading';
+					  		gifload.width = '25';
+					  		gifload.height = '25';
+					  		byid('modal-edit').appendChild(gifload);
 
 						  	if (amount != 'profile'){ 
 						  		if( modulo != 'admin'){/* NUEVO PARA ADMIN */

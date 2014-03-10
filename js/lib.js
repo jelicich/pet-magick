@@ -718,6 +718,10 @@ function profile(){
 	}
 }//end profile	
 
+
+
+//load edit templates bellow
+
 function editUserProfile(){
 
 	if(byid('edit-user-info')){
@@ -743,27 +747,74 @@ function editUserProfile(){
 	}
 }//end editUserProfile
 
-function editUserAlbum(){
-
-	if(byid('edit-user-album')){
-		var editUser = byid('edit-user-album');
-		
-		editUser.onclick = function()
+function addPet(){
+	if(byid('add-pet')){
+		var btn = byid('add-pet');
+		btn.onclick = function()
 		{
 			var p = this.href;
 			var index = p.indexOf('#');
 	  		index ++;
 	  		p = p.substr(index);
-	  		
-			ajax('GET', 'ajax/getEditUserAlbum.php?u='+p, printEditUserAlbum, null, true);
-		}
 
-		function printEditUserAlbum()
+	  		byid('modal-edit-container').style.display='block';	
+			ajax('GET', 'ajax/getAddPet.php?u='+p, printEditPet, null, true);
+		}	
+
+
+		function printEditPet()
 		{
-			printEdit('user-album', this.responseText);
+			printEdit('modal-edit', this.responseText);
 		}
 	}
-}//end editUserProfile
+}//end addPet
+
+function deletePet(){
+
+	var btns = document.querySelectorAll('.delete-pet');
+	//console.log(btns);
+	for(var i = 0; i < btns.length; i++)
+	{
+		btns[i].onclick = function()
+		{
+			var alertCont = create('div');
+			alertCont.id = 'alert-container';
+			var alertWin = create('div');
+			alertWin.id = 'alert-window';
+			var alertTxt = create('p');
+			alertTxt.id = 'alert-text';
+			alertTxt.innerHTML = 'You are about to delete all the information related to your pet. This action can\'t be undone. Do you want to contine?';
+			var btnClose = create('a');
+			btnClose.className = 'btn';
+			btnClose.innerHTML = 'Cancel';
+			var btnDelete = create('a');
+			btnDelete.className = 'btn btn-danger';
+			btnDelete.innerHTML = 'Delete';
+			btnDelete.href = this.href;
+			btnDelete.id = 'delete-ok';
+
+			document.body.appendChild(alertCont);
+			alertCont.appendChild(alertWin);
+			alertWin.appendChild(alertTxt);
+			alertWin.appendChild(btnClose);
+			alertWin.appendChild(btnDelete);
+
+			btnClose.onclick = function()
+			{
+				document.body.removeChild(alertCont);
+			}
+
+			btnDelete.onclick = function()
+			{
+				var p = this.href;
+				var index = p.indexOf('#');
+		  		index ++;
+		  		p = 'p='+p.substr(index);
+				ajax('POST', 'ajax/deletePet.php', refresh, p, true);
+			}
+		}
+	}
+}//end deletePet
 
 function editPetProfile(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
@@ -777,16 +828,41 @@ function editPetProfile(){ // esto se repite, podemos hacer una sola function co
 			var index = p.indexOf('#');
 	  		index ++;
 	  		p = p.substr(index);
+
+	  		byid('modal-edit-container').style.display='block';	
 			ajax('GET', 'ajax/getEditPetAbout.php?p='+p, printEditPet, null, true);
 		}	
 
 
 		function printEditPet()
 		{
-			printEdit('pet-about', this.responseText);
+			printEdit('modal-edit', this.responseText);
 		}
 	}
 }//end editPetProfile
+
+function editUserAlbum(){
+
+	if(byid('edit-user-album')){
+		var editUser = byid('edit-user-album');
+		
+		editUser.onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+	  		
+	  		byid('modal-edit-container').style.display='block';	
+			ajax('GET', 'ajax/getEditUserAlbum.php?u='+p, printEditUserAlbum, null, true);
+		}
+
+		function printEditUserAlbum()
+		{
+			printEdit('modal-edit', this.responseText);
+		}
+	}
+}//end editUserProfile
 
 function editPetAlbum(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
@@ -937,72 +1013,7 @@ function news(){
 	}
 }//end postNews
 
-function addPet(){
-	if(byid('add-pet')){
-		var btn = byid('add-pet');
-		btn.onclick = function()
-		{
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = p.substr(index);
-			ajax('GET', 'ajax/getAddPet.php?u='+p, printEditPet, null, true);
-		}	
 
-
-		function printEditPet()
-		{
-			printEdit('pet-profile', this.responseText);
-		}
-	}
-}//end addPet
-
-function deletePet(){
-
-	var btns = document.querySelectorAll('.delete-pet');
-	//console.log(btns);
-	for(var i = 0; i < btns.length; i++)
-	{
-		btns[i].onclick = function()
-		{
-			var alertCont = create('div');
-			alertCont.id = 'alert-container';
-			var alertWin = create('div');
-			alertWin.id = 'alert-window';
-			var alertTxt = create('p');
-			alertTxt.id = 'alert-text';
-			alertTxt.innerHTML = 'You are about to delete all the information related to your pet. This action can\'t be undone. Do you want to contine?';
-			var btnClose = create('a');
-			btnClose.className = 'btn';
-			btnClose.innerHTML = 'Cancel';
-			var btnDelete = create('a');
-			btnDelete.className = 'btn btn-danger';
-			btnDelete.innerHTML = 'Delete';
-			btnDelete.href = this.href;
-			btnDelete.id = 'delete-ok';
-
-			document.body.appendChild(alertCont);
-			alertCont.appendChild(alertWin);
-			alertWin.appendChild(alertTxt);
-			alertWin.appendChild(btnClose);
-			alertWin.appendChild(btnDelete);
-
-			btnClose.onclick = function()
-			{
-				document.body.removeChild(alertCont);
-			}
-
-			btnDelete.onclick = function()
-			{
-				var p = this.href;
-				var index = p.indexOf('#');
-		  		index ++;
-		  		p = 'p='+p.substr(index);
-				ajax('POST', 'ajax/deletePet.php', refresh, p, true);
-			}
-		}
-	}
-}//end deletePet
 
 function refresh(){
 	

@@ -121,6 +121,6 @@ else
 	include_once '../php/classes/BOLocation.php';
 	$location = new BOLocation;
 	$countries = $location->countryList();
-	include_once "../templates/editUser.php";
+	include_once "../templates/userAbout.php";
 
 }

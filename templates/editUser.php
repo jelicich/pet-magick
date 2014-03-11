@@ -44,16 +44,16 @@
 					<div class="table">
 						<ul class="clearfix">
 							<li class="odd">
-								<label for="usr-name">Name</label><input class="form-element" type="text" value=<?php echo '"'.$p->getName().'"' ?> name="name" id="usr-name"/>
+								<label for="usr-name">Name*</label><input class="form-element mandatory" type="text" value=<?php echo '"'.$p->getName().'"' ?> name="name" id="usr-name"/>
 							</li>
 							<li class="even">
-								<label for="usr-lastname">Lastname</label><input class="form-element" type="text" value=<?php echo '"'.$p->getLastname().'"' ?> name="lastname" id="usr-lastname"/>
+								<label for="usr-lastname">Lastname*</label><input class="form-element mandatory" type="text" value=<?php echo '"'.$p->getLastname().'"' ?> name="lastname" id="usr-lastname"/>
 							</li>
 							<li class="odd">
 								<label for="usr-nickname">Nickname</label><input disabled="disabled" type="text" value=<?php echo '"'.$p->getNickname().'"' ?> name="nickname" id="usr-nickname"/>
 							</li>
 							<li class="even">
-								<label for="usr-email">e-mail</label><input class="form-element" type="text" value=<?php echo '"'.$p->getEmail().'"' ?> name="email" id="usr-email"/>
+								<label for="usr-email">e-mail*</label><input class="form-element mandatory email-field" type="text" value=<?php echo '"'.$p->getEmail().'"' ?> name="email" id="usr-email"/>
 							</li>
 
 							<!-- location -->

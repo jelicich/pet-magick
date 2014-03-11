@@ -403,9 +403,11 @@ function imgVideoUploader(whatFor, modulo){
 
 				                    	  		if(modulo != 'admin'){
 
+					                    	  		/*
 					                    	  		var contCap = create('div');
 							        	    		contCap.id = 'contCap';
 							        	    		byid('form-id').appendChild(contCap);
+							        	    		*/
 							        	    	}
 
 							        	    	if(amount == 'video'){
@@ -424,7 +426,7 @@ function imgVideoUploader(whatFor, modulo){
 							                    	caption.id = 'caption_' + filesSelectedPosition;
 											    	caption.name = 'caption';
 											    	caption.className = 'form-element';
-											    	byid('contCap').appendChild(caption);
+											    	byid('imgContainer').appendChild(caption);
 											    }
 										   }
 
@@ -645,6 +647,59 @@ function imgVideoUploader(whatFor, modulo){
 						  		p = p.substr(index);
 								formData.append("u", p);
 					  		}
+
+					  		//VALIDATION
+					  		var mandfields = document.querySelectorAll('.mandatory');
+					  		var flagidation = 0;
+					  		for(var i = 0; i < mandfields.length; i++)
+					  		{
+					  			// clear fields
+					  			mandfields[i].style.boxShadow = 'none';
+					  			//
+					  			if(mandfields[i].value=='')
+					  			{
+					  				mandfields[i].style.boxShadow = 'red 0 0 5px';
+					  				flagidation = 1;
+					  			}
+								var n=mandfields[i].className.indexOf("email-field");
+					  			if(n != -1)
+					  			{
+					  				function validateEmail(elementValue)
+					  				{        
+									   var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
+									   return emailPattern.test(elementValue);   
+									}
+									r = validateEmail(mandfields[i].value);
+									if(!r)
+									{
+										mandfields[i].style.boxShadow = 'red 0 0 5px';
+										flagidation = 1;
+									}
+					  			}
+					  		}
+					  		//TRIBUTE VALIDATION
+					  		var chkTribute = byid('chk-tribute');
+					  		if(chkTribute)					  			
+					  		{
+					  			if(chkTribute.checked)
+						  		{
+						  			var trTitle = byid('tr-title');
+						  			var trCont = byid('tr-msg');						  			
+						  			if(trTitle.value == '') 
+						  			{
+						  				trTitle.style.boxShadow = 'red 0 0 5px';
+						  				flagidation = 1;
+						  			}
+						  			if(trCont.value == '')
+						  			{
+						  				trCont.style.boxShadow = 'red 0 0 5px';
+						  				flagidation = 1;
+						  			}
+						  		}	
+					  		}
+					  		
+					  		if(flagidation == 1) return false;
+					  		//END VALIDATION
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
 					  		

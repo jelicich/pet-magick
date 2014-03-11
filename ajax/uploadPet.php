@@ -115,7 +115,7 @@ if(!$idPet)
 	}
 	echo '</ul>';
 	$_GET['u'] = $_POST['u'];
-	include_once "../templates/addPet.php";
+	//include_once "../templates/addPet.php";
 	
 }
 else

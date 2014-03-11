@@ -841,29 +841,6 @@ function editPetProfile(){ // esto se repite, podemos hacer una sola function co
 	}
 }//end editPetProfile
 
-function editUserAlbum(){
-
-	if(byid('edit-user-album')){
-		var editUser = byid('edit-user-album');
-		
-		editUser.onclick = function()
-		{
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = p.substr(index);
-	  		
-	  		byid('modal-edit-container').style.display='block';	
-			ajax('GET', 'ajax/getEditUserAlbum.php?u='+p, printEditUserAlbum, null, true);
-		}
-
-		function printEditUserAlbum()
-		{
-			printEdit('modal-edit', this.responseText);
-		}
-	}
-}//end editUserProfile
-
 function editPetAlbum(){ // esto se repite, podemos hacer una sola function con parmetros segun el modulo
 
 	if(byid('edit-pet-album')){
@@ -875,13 +852,15 @@ function editPetAlbum(){ // esto se repite, podemos hacer una sola function con 
 			var index = p.indexOf('#');
 	  		index ++;
 	  		p = p.substr(index);
+
+	  		byid('modal-edit-container').style.display='block';	
 			ajax('GET', 'ajax/getEditPetAlbum.php?p='+p, printEditPet, null, true);
 		}	
 
 
 		function printEditPet()
 		{
-			printEdit('pet-album', this.responseText);
+			printEdit('modal-edit', this.responseText);
 		}
 	}
 }//end editPetProfile
@@ -908,6 +887,29 @@ function UploadPetVideo(){ // esto se repite, podemos hacer una sola function co
 		}
 	}
 }//end editPetProfile
+
+function editUserAlbum(){
+
+	if(byid('edit-user-album')){
+		var editUser = byid('edit-user-album');
+		
+		editUser.onclick = function()
+		{
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = p.substr(index);
+	  		
+	  		byid('modal-edit-container').style.display='block';	
+			ajax('GET', 'ajax/getEditUserAlbum.php?u='+p, printEditUserAlbum, null, true);
+		}
+
+		function printEditUserAlbum()
+		{
+			printEdit('modal-edit', this.responseText);
+		}
+	}
+}//end editUserProfile
 
 function printEdit(idModule, html){		
 	var cont = byid(idModule);

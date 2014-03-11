@@ -3245,7 +3245,7 @@ body.my-account #bbpress-forums {
 #modal-edit{
 	background: #eec8c5;
 	box-shadow: 0 0 55px #FFFFFF;
-	margin: 109px auto 0;
+	margin: 81px auto 0;
 	width: 600px;
 }
 
@@ -3325,6 +3325,11 @@ body.my-account #bbpress-forums {
 	max-height: 50px;
 }
 
+.table .new-pic-cont #imgContainer.albumContainer{
+	max-width: 100%;
+	max-height: 100%;
+}
+
 .table .new-pic-cont #imgContainer img{
 	height: 50px;
 	cursor: pointer;
@@ -3361,4 +3366,22 @@ body.my-account #bbpress-forums {
 #create-tribute #tr-title{
 	width: 100%;
 	padding: 11px 5px;
+}
+
+.album-grid{
+	height: 250px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.3);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.album-grid ul{
+	margin: 0;
+}
+
+.album-grid ul li{
+	float: left;
+	padding-right: 13px;
+	margin-bottom: 10px;
 }

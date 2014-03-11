@@ -26,3 +26,8 @@ for ($i=0; $i < $t; $i++) {
 <?php
 }// end for
 ?>
+
+
+<script type="text/javascript">
+	start_scroll_profile('favotires', false);
+</script>

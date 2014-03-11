@@ -29,7 +29,7 @@
 						
 				</div>
 			</div>
-			<div class="scrollable-list">
+			<div class="scrollable-list" id="vetTalkMsgList">
 				<ul class="mod-content pet-loss-mod-list qa-list" id="comments-wrapper">
 					<?php 
 						for($i = 0; $i<sizeof($aq); $i++)

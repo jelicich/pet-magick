@@ -39,7 +39,7 @@
 
 
 				<div class="blind">
-					<div class="scrollable-text">
+					<div class="scrollable-text" id="aboutText">
 						<div class="bg-txt-featured-modules">
 							
 							<p>
@@ -73,6 +73,6 @@
 		<script type="text/javascript">
 			editUserProfile();
 			modalImg();
-			start_scroll('scrollable-text');
+			start_scroll('scrollable-text', false);
 		</script>
 		<!-- END about module -->

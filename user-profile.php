@@ -131,7 +131,7 @@
 		
 
 		<!-- user album -->
-		<div id='user-album' class="mod grid_7 profiles-mod clearfix">
+		<div id='user-album' class="mod grid_8 profiles-mod clearfix">
 			<?php
 				include_once 'templates/userAlbum.php'; 
 			?>
@@ -153,12 +153,12 @@
 					
 					if($u->isOwn()){
 			?>
-						<div class="favorites-mod mod span5">
+						<div class="favorites-mod mod span4"  >
 							<div class="mod-header">
 								<h2>My favorites</h2>
 							</div>
 
-							<div class="scrollable-list-sections">
+							<div class="scrollable-list-sections" id="favotires">
 								<ul class=""  id="favorites-mod">
 				<?php 
 									include_once 'templates/favoritesModule.php'; 
@@ -226,9 +226,7 @@
 	vetTalkAnswer();
 	favorites();
 	modalImg();
-	start_scroll('scrollable-list-sections', false, "news");
 
-	
 	$('.nav-tabs a').click(function (e)
 	{
 		e.preventDefault();

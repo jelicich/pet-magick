@@ -4,7 +4,7 @@
 		<h2>Organization list</h2>
 	</div>
 
-	<div class="scrollable-list-sections">
+	<div class="scrollable-list-sections" id="organizationList">
 			<ul class='mod-content pet-loss-mod-list'>
 
 

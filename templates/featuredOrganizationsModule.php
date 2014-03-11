@@ -44,7 +44,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	</div>
 
 	<div class="blind">
-		<div class="scrollable-text">
+		<div class="scrollable-text" id="organiztionText">
 			<div class="bg-txt-featured-modules">
 				
 				<p><?php echo $description; ?></p>
@@ -57,5 +57,5 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 
 <script type="text/javascript">
 	modalImg();
-	start_scroll('scrollable-text');
+	start_scroll('scrollable-text', false);
 </script>

@@ -61,7 +61,7 @@
 						
 				include_once 'templates/modHeader.php'; 
 			?>
-				<div class="scrollable-module">
+				<div class="scrollable-module" id="petLoss">
 					<ul class='grid-thumbs clearfix' id='ModulesByPet'> 
 						<?php 
 							

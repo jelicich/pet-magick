@@ -53,6 +53,7 @@
 				</ul>
 			</div>
 		</div><!-- END message area -->
+		
 		<div class="grid_8" id="write-message-container">
 			<form method='' action='' class="clearfix" style="display:none" id="write-message">					
 				<textarea rows='5' cols='30' name='message' id='message'></textarea>

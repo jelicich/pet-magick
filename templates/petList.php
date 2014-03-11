@@ -10,7 +10,7 @@
 
 					?>
 				</div>
-				<div class="scrollable-pet-list">
+				<div class="scrollable-list" id="petScrollList">
 				<ul class="mod-content clearfix">
 					<?php
 
@@ -49,4 +49,5 @@
 	profile();
 	deletePet();
 	addPet();
+	start_scroll_profile('petScrollList', true);
 </script>

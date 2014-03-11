@@ -26,7 +26,7 @@
 						
 				</div>
 				</div>
-				<div class="scrollable-list-sections">
+				<div class="scrollable-list-sections" id="news">
 
 				<ul class="mod-content clearfix">
 					<?php 
@@ -74,4 +74,5 @@
 
 <script type="text/javascript">
 	news();
+	start_scroll_profile('news', false);
 </script>

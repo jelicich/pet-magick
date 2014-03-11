@@ -76,7 +76,8 @@ function userForms(){
 }
 
 //SCROLL
-function start_scroll(applyTo, direction, module){
+
+function start_scroll(applyTo, direction){
 	//$(document).ready(function(){
 		
 		(function($){
@@ -97,7 +98,9 @@ function start_scroll(applyTo, direction, module){
 					    
 					    onTotalScroll:function(){
 				    		
-				    		if(module == "profiles"){
+				    		console.log(this[0].id);// debe imprimir el id del div q tiene la clase "scroll bla bla"
+
+				    		if(this[0].id == "profiles"){
 					    		
 					    		var c = "c=3";
 
@@ -109,18 +112,12 @@ function start_scroll(applyTo, direction, module){
 					                cache: false,
 
 					                success: function(html){
-					                	console.log(html);
 					                	$('#ModulesByPet').append(html);
 					                }
 					            });
 
-					        }else if(module == "news"){
-
-					        	alert("hola");
 					        }
-
-				    	
-					    }
+				        }
 					}
 				});
 
@@ -128,6 +125,52 @@ function start_scroll(applyTo, direction, module){
 		})(jQuery);
 	//});
 }
+
+
+
+function start_scroll_profile(applyTo, direction){
+	//$(document).ready(function(){
+		
+		(function($){
+			
+			//$(window).load(function(){
+				
+				$("#" + applyTo).mCustomScrollbar({
+					
+					scrollButtons:{
+						enable: false 
+					},
+					advanced:{
+						updateOnContentResize: true,
+						horizontalSrcoll: direction
+					},
+					theme:"light-thin",
+					callbacks:{
+					    
+					    onTotalScroll:function(){
+				    		
+				    		console.log(this[0].id);// debe imprimir el id del div q tiene la clase "scroll bla bla"
+
+				    		if(applyTo == "news"){
+
+					        	// aca tenemos q ejecutar las consultas
+					        	console.log("scrolleaste user news");
+
+					        }else if(applyTo == "albumModule"){
+
+					        	// aca tenemos q ejecutar las consultas
+					        	console.log("scrolleaste user album");
+					        }
+						 }
+					}
+				});
+
+			//});
+		})(jQuery);
+	//});
+}
+
+
 /*
 function scroll_again(applyTo){
 	$(document).ready(function(){

@@ -1113,14 +1113,33 @@ p,span{
 }
 
 */
+#user-album{
+	min-height: 250px;
+	max-height: 250px;
+	width: 560px !important;
+}
 
-#user-album .scrollable-list-sections{
-	height: 410px;
+#albumModule{
+	height: 250px;
+	background: #e8b2ae;
+	
+	padding: 5px 5px 10px 0;
 }
 
 
+#albumModule ul{
+	margin-top: -10px;
+}
+
+#albumModule li{
+	margin: 5px;
+	padding: 0;
+}
+
+
+
+
 #favorites-mod{
-	background-color: red;
 	height:auto;
 	width: 100%;
 }
@@ -1130,7 +1149,6 @@ p,span{
 	background: #e8b2ae;
 	min-height: 250px;
 	max-height: 250px;
-	overflow: hidden;
 	padding: 5px 5px 10px 0;
 }
 

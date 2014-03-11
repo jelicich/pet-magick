@@ -6,7 +6,7 @@
 			//include_once 'modHeader.php'; 
 		?>
 		<!-- talks -->
-		<div class="scrollable-list">
+		<div class="scrollable-list" id="vetTalkListmodule">
 			<ul class="mod-content spacer10">
 
 

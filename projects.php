@@ -77,7 +77,7 @@
 			<div class="mod-header">
 				<h2>Current projects</h2>
 			</div>
-			<div class="scrollable-list-sections">
+			<div class="scrollable-list-sections" id="projectsList">
 
 				<?php 
 					include_once 'templates/projectListModule.php'; 

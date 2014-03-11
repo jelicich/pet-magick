@@ -31,7 +31,7 @@
 			</div>
 
 			<!-- comments -->
-			<div class="scrollable-list">
+			<div class="scrollable-list" id="tributeList">
 				<ul class="mod-content" id="comments-wrapper">
 					<?php 
 						if(sizeof($com) <= 0)

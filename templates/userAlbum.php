@@ -13,7 +13,7 @@
 								<h2>My album</h2>
 							</div>
 
-							<div class="scrollable-list-sections">
+							<div class="scrollable-list" id="albumModule">
 							<?php
 								$aId = $u->getAlbumId();
 								if($aId)
@@ -26,8 +26,13 @@
 									{
 							?>
 										<li>
-											<a class='link-img' href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> ><img  class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> /></a>
-											<p class="img-caption"><?php echo $a[$i]['CAPTION'] ?></p>
+											<a class='link-img' href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> >
+												<img  class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> />
+														<dl class='hidden'>
+															<dt><?php echo $a[$i]['CAPTION'] ?></dt>
+														<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
+														</dl>
+											</a>
 										</li>
 							<?php
 									}//END FOR
@@ -41,5 +46,5 @@
 
 							<script type="text/javascript">
 								editUserAlbum();
-								
+								start_scroll_profile('albumModule', false);
 							</script>

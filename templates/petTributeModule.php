@@ -28,7 +28,7 @@
 				
 
 				<div class="blind">
-					<div class="scrollable-text">
+					<div class="scrollable-text" id="tributeText">
 						<div class="bg-txt-featured-modules">
 							
 							<p><?php echo $a['CONTENT'] ?></p>
@@ -50,5 +50,5 @@
 
 <script type="text/javascript">
 	//modalImg();
-	start_scroll('scrollable-text');
+	start_scroll('scrollable-text', false);
 </script>

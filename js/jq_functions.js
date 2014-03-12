@@ -137,14 +137,17 @@ function start_scroll_profile(applyTo, direction){
 				
 				$("#" + applyTo).mCustomScrollbar({
 					
+					
 					scrollButtons:{
 						enable: false 
 					},
 					advanced:{
 						updateOnContentResize: true,
-						horizontalSrcoll: direction
+						 //autoExpandHorizontalScroll: direction
+						
 					},
 					theme:"light-thin",
+					horizontalScroll: direction,
 					callbacks:{
 					    
 					    onTotalScroll:function(){

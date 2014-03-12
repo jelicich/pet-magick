@@ -419,20 +419,20 @@ p,span{
 	background: #d95248;
 }
 
+#petScrollList{
+
+	height: 150px;
+	height: 196px;
+	overflow: auto;
+	padding: 0px 5px 10px 5px ;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+#pet-list ul{
+	width: auto;
+	height: 180px;
+	padding: 10px  0 0 5px;
+}
 
 
 #user-about{
@@ -791,12 +791,16 @@ p,span{
 	/*border-bottom: 1px solid rgba(0,0,0,0.1);*/
 }
 
+
 .mCustomScrollBox>.mCSB_scrollTools{
 	width: 4px !important;
 }
 
 
-
+#petScrollList .mCustomScrollBox>.mCSB_scrollTools{
+width: 100% !important;
+/* reestablece el ancho del scroll horizontal */
+}
 
 .scrollable-pet-list{
 	overflow: auto;
@@ -1107,6 +1111,8 @@ p,span{
 	padding: 10px 10px 10px 10px;
 }
 
+
+
 /*
 #pet-album, #pet-about{
 	overflow: hidden;
@@ -1136,12 +1142,16 @@ p,span{
 	padding: 0;
 }
 
-
+.favorites-mod{
+	width: 360px !important;
+	margin-left: 10px !important;
+}
 
 
 #favorites-mod{
 	height:auto;
 	width: 100%;
+
 }
 
 .favorites-mod .scrollable-list-sections{
@@ -1166,13 +1176,12 @@ p,span{
 
 }
 
-.favorites-mod a{
+.favorites-mod  .deleteFavorite{
 	position: absolute;
 	right: 0;
 	top: 1px;
 
 }
-
 .favorites-mod img{
 	position: absolute;
 	left: 0;
@@ -1181,12 +1190,30 @@ p,span{
 	height: 25px;
 }
 
-.favorites-mod strong{
+.favorites-mod  .linkToModule{
 	position: absolute;
 	left: 40px;
 	bottom: 5px;
 }
 
+#addFavorite, .myFav{
+	float: right;
+	margin-top: -20px;
+	color: #000;
+}
+
+.myFav{
+	position: relative;
+	width: 103px !important;
+	height: 22px !important;
+}
+
+.myFav span{
+	position: absolute;
+	top:0;
+	left: 30px;
+	color: #468847;
+}
 
 #pet-album{
 	float: right;

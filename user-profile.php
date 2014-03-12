@@ -148,12 +148,12 @@
 				// Ver de no repetir esta llamada aca pq ya la ejecuto en favoritesModule.php
 				if(isset($_SESSION['id'])){
 					
-						$favorites = $f->getFavorite($_SESSION['id']);
-						$t = sizeof($favorites);
+						//$favorites = $f->getFavorite($_SESSION['id']);
+						//$t = sizeof($favorites);
 					
 					if($u->isOwn()){
 			?>
-						<div class="favorites-mod mod span4"  >
+						<div class="favorites-mod mod grid_4"  >
 							<div class="mod-header">
 								<h2>My favorites</h2>
 							</div>
@@ -167,7 +167,10 @@
 							</div>
 						</div>
 			<?php
-					}else{
+					}
+
+
+/*					else{
 						
 						if($t > 0){
 
@@ -188,7 +191,7 @@
 
 							echo "<input type='button'  id='addFavorite' name=".$_GET['u']." value='add favorite' />";
 						}
-					}
+					} */
 				}
 			?>
 
@@ -217,7 +220,7 @@
 <!-- END wrapper-->
 <?php 
 		include_once 'templates/player.php'; 
-	?>
+?>
 
 
 <div id="modal-edit-container">

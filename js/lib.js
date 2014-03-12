@@ -1492,13 +1492,19 @@ function favorites(){
 		var addFavorite = byid('addFavorite');
 		 addFavorite.onclick = function(){
 
-			var u ='u='+ this.name;
+			//var u ='u='+ this.name;
+
+			var u = this.href;
+			var index = u.indexOf('#');
+	  		index ++;
+	  		u = 'u='+u.substr(index);
+
 			ajax('POST', 'ajax/addFavorite.php', vardump, u, true);
 			
 			var added = create('div');
 			var added_span = create('span');
-			 	added.className = "alert alert-success text-center span3";
-				added_span.innerHTML = "One of your favorites !";
+			 	added.className = "myFav alert alert-success";
+				added_span.innerHTML = "Favorite";
 			addFavorite.parentNode.appendChild(added);
 			added.appendChild(added_span);
 			addFavorite.parentNode.removeChild(addFavorite);

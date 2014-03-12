@@ -29,10 +29,50 @@
 						?>
 					</strong>About me
 				</h2>
+
+				<?php
+							if(!$u->isOwn()){
+
+									$favorites = $f->getFavorite($_SESSION['id']);
+									$t = sizeof($favorites);
+									$flag = false;
+
+								if($t > 0){
+
+									for ($i=0; $i < $t; $i++) { 
+										
+
+										if($favorites[$i]['ID_USER_FAVORITE'] ==  $_GET['u']){
+
+											$flag = true;
+											echo "<div class='myFav alert alert-success' ><span>favorite</span></div>";
+											break;
+
+										}
+									}
+
+									if($flag == false){
+									?>
+										<a id='addFavorite' href="<?php echo '#'.$_GET['u']; ?>" class='btn'>Add favorite</a>
+										
+									<?php
+									}
+
+								}else{
+
+									?>
+										<a id='addFavorite' href="<?php echo '#'.$_GET['u']; ?>" class='btn'>Add favorite</a>
+										
+									<?php
+								}
+							}
+					?>
 			</div>
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
-					<a class='link-img'  href= <?php echo '"'.$u->getProfilePic().'"'; ?> ><img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/></a>
+					<a class='link-img'  href= <?php echo '"'.$u->getProfilePic().'"'; ?> >
+						<img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/>
+					</a>
 					<h3><?php echo $u->getNameComp() ?></h3>
 					<span><?php echo $u->getLocation() ?></span>
 				</div>

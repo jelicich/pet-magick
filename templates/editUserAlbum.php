@@ -1,18 +1,25 @@
-						<div class="mod-header">
-							<h2>My album</h2>
-						</div>
-						
-
-						
+					<div class="mod-header">
+						<h2>Edit my album</h2>
+					</div>
+					
+					<div class="mod-content">
 
 						<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
-							<div id='imgContainer'></div>
 
-							<label id="file-container">Profile picture<input type="file" name="file" id="file_id"/></label>
+							<div class="table">
+								<ul class="clearfix">
+									<li class="new-pic-cont" style="width:100%">
+										<div class="clearfix">
+											<div id='imgContainer' class="clearfix albumContainer"></div>
+										</div>		
+										<p id="file-container">Select video<input type="file" name="file" id="file_id"/></p>
+									</li>
+								</ul>
+							</div>
 
-							<div class="slider-small">
+							<div class="album-grid scrolleable">
 								<?php
 									if($u->getAlbumId())
 									{
@@ -26,16 +33,12 @@
 								?>
 										
 											<li>
-												<a href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a>
+												
 												<label>
+													<img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /><br/>
 													<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$album[$i]['ID_PIC'].'"'; ?> />
 													Delete
 												</label>
-												<label>
-													Caption
-													<input type="text" class="form-element" name="edit-caption" data-img=<?php echo '"'.$album[$i]['ID_PIC'].'"'; ?> value=<?php echo '"'.$album[$i]['CAPTION'].'"';?> />
-												</label>
-												
 											</li>
 											
 								<?php
@@ -52,7 +55,7 @@
 						?>
 							
 						</form>
-							
+					</div>
 						
 
 						<script type="text/javascript">

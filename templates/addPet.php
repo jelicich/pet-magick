@@ -126,6 +126,11 @@
 			   $("#tr-thru").css("cursor","pointer");
 			   
 			
-		
+				$('.edit-scrollable').mCustomScrollbar({
+				    advanced:{
+				        updateOnContentResize: true
+				    },
+				    theme:"light-thin"
+				});
 				
 			</script>

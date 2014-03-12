@@ -6,20 +6,20 @@
 					<div class="mod-content">
 
 						<iframe name="iframe_IE" src="" style="display: none"></iframe> 
-
-						<div class="table">
-							<ul class="clearfix">
-								<li class="new-pic-cont" style="width:100%">
-									<div class="clearfix">
-										<div id='imgContainer' class="clearfix albumContainer"></div>
-									</div>		
-									<p id="file-container">Select pictures<input type="file" name="file" id="file_id"/></p>
-								</li>
-							</ul>
-						</div>
 						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 
+							<div class="table">
+								<ul class="clearfix">
+									<li class="new-pic-cont" style="width:100%">
+										<div class="clearfix">
+											<div id='imgContainer' class="clearfix albumContainer"></div>
+										</div>		
+										<p id="file-container">Select pictures<input type="file" name="file" id="file_id"/></p>
+									</li>
+								</ul>
+							</div>
+							
 							<div class="album-grid scrolleable">
 								<?php
 									if($p->getAlbumId())
@@ -63,5 +63,12 @@
 						<script type="text/javascript">
 							imgVideoUploader('album', 'pet-album'); // SUBIR IMG
 							start_scroll('scrolleable');
+
+							$('.edit-scrollable').mCustomScrollbar({
+							    advanced:{
+							        updateOnContentResize: true
+							    },
+							    theme:"light-thin"
+							});
 							//imgVideoUploader('profile', 'about'); // SUBIR IMG
 						</script>

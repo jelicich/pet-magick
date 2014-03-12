@@ -3265,6 +3265,7 @@ body.my-account #bbpress-forums {
 	box-shadow: 0 0 55px #FFFFFF;
 	margin: 81px auto 0;
 	width: 600px;
+	max-height: 80% !important;
 }
 
 #modal-edit .loading{

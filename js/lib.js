@@ -877,13 +877,15 @@ function UploadPetVideo(){ // esto se repite, podemos hacer una sola function co
 			var index = p.indexOf('#');
 	  		index ++;
 	  		p = p.substr(index);
+
+	  		byid('modal-edit-container').style.display='block';	
 			ajax('GET', 'ajax/getUploadPetVideo.php?p='+p, printEditPet, null, true);
 		}	
 
 
 		function printEditPet()
 		{
-			printEdit('pet-video', this.responseText);
+			printEdit('modal-edit', this.responseText);
 		}
 	}
 }//end editPetProfile

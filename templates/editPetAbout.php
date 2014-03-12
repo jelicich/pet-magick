@@ -15,7 +15,7 @@
 
 					//$pet = $p->getPet($pets[0]['ID_PET']);
 			?>		
-					
+
 							<!-- IMG UPLOADER -->
 					<div class="mod-header">
 						<h2>Edit pet information</h2>
@@ -193,6 +193,7 @@
 							<input type="hidden" value=<?php echo '"'.$p->getOwner().'"';?> name="owner" class="form-element"/>
 						</form>
 					</div>
+				
 			<?php 
 				//}//END IF pets
 			?>
@@ -206,5 +207,10 @@
 			   $("#tr-thru").datepicker({dateFormat: "yy-mm-dd"});
 			   $("#tr-since").css("cursor","pointer");
 			   $("#tr-thru").css("cursor","pointer");
-			   
+			   $('.edit-scrollable').mCustomScrollbar({
+				    advanced:{
+				        updateOnContentResize: true
+				    },
+				    theme:"light-thin"
+				});
 			</script>

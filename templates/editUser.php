@@ -1,6 +1,6 @@
 
 			
-			
+		<div class="edit-scrollable">
 			<div class="mod-header">
 				<h2>Edit user information</h2>
 			</div>
@@ -228,9 +228,16 @@
 				//}
 				?>	
 			</div>
-			
+		</div>
 			<script type="text/javascript">
 				countriesCombo(); //====================== DESPLIEGA COMBOS
 				regionsCombo(); //====================== DESPLIEGA REGIONES
 				imgVideoUploader('profile', 'about'); // SUBIR IMG
+				//$('.edit-scrollable').mCustomScrollbar();
+				$('.edit-scrollable').mCustomScrollbar({
+				    advanced:{
+				        updateOnContentResize: true
+				    },
+				    theme:"light-thin"
+				});
 			</script>

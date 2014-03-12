@@ -220,6 +220,12 @@
 	?>
 
 
+<div id="modal-edit-container">
+	<div id="modal-edit" class="edit-scrollable">
+		<img class="loading" src="img/loading.gif" width="25" height="25" />
+	</div>
+</div>
+
 <script type="text/javascript">
 
 	news();
@@ -232,14 +238,9 @@
 		e.preventDefault();
 		$(this).tab('show');
 	});
-
 </script>
 
-<div id="modal-edit-container">
-	<div id="modal-edit">
-		<img class="loading" src="img/loading.gif" width="25" height="25" />
-	</div>
-</div>
+
 
 </body>
 </html>

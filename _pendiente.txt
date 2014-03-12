@@ -11,6 +11,7 @@ SEMANA 3/2/2014
 	- impresion de captions junto con las imagenes para poder maquetar bien.
 
 - ImgUploader ie (ESTEBAN // JULIAN)
+		
 
 
 PROXIMAS TAREAS EN ORDEN DE IMPORTANCIA
@@ -43,7 +44,7 @@ LO Q QUEDA SUELTO
 =================
 
 - BOusers: get userdata() // traer toda la info en una sola consulta
-- INBOX: checkLogin() creo q deberiamos reemplazarla por isOwn(), no?
+- INBOX: checkLogin() creo q deberiamos reemplazarla por isOwn(), no? - Evitar mandar mensajes a uno mismo
 - editUser.php: en el form dice action: insertar.php, q es el archivo de prueba q yo use para crear el uploader. Osea q 
   cuando ejecute el fallback lo va a llamar. Hay q modificarlo cuando hagamos el tema IE y ver si esto se da en algun otro form...
 
@@ -79,3 +80,26 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 	- cancel/save: no funciona.
 
 - poner todos los tags necesarios para ie. Esta en img uploader
+
+
+
+BUGS!!!
+=======
+-Bug: subiendo organizacion: 
+		1. Click en upload organization
+		2. Llenar los campos obligatorios
+		3. Click save
+		R: Guarda la organizacion pero tira error en la imagen
+		Notice: Undefined index: pic in E:\xampp\htdocs\pet-magick\ajax\uploadOrganization.php on line 75
+		Lo mismo en vet talk
+		Notice: Undefined index: pic in E:\xampp\htdocs\pet-magick\ajax\uploadVetTalk.php on line 73
+		(NO pasa en projects, ver diferencia)
+
+-Bug: cuando borras organizacion no borra la imagen
+-Bug: cuando borras project no borra la imagen
+-Bug: cuando borras vet-talk no borra la imagen
+-Bug: logueado como veterinario aparece el boton "admin" en la barra de navegacion.
+
+	
+
+	

@@ -677,6 +677,12 @@ function printUpdates(){
 
 //========================================================================  USER-PROFILE FUNCTIONS
 
+/*
+FUNCTIONS PROFILE
+FUNCTIONS PROFILE
+FUNCTIONS PROFILE
+*/
+
 //profile cambia las mascotas x ajax
 // esta function es igual a selectedFromList(), la otra es reutilizable. Asi q habria q adaptar esta
 function profile(){
@@ -890,6 +896,28 @@ function UploadPetVideo(){ // esto se repite, podemos hacer una sola function co
 	}
 }//end editPetProfile
 
+function deleteVideo(){
+
+	if(byid('delete-pet-video')){
+	
+			var btns = byid('delete-pet-video');
+
+			  btns.onclick = function()
+			{
+				var p = this.href;
+				var index = p.indexOf('#');
+		  		index ++;
+		  		//var t=byid('unlinkPath');
+		  		//	t=t.href;
+		  		p = 'p='+ p.substr(index);
+
+		  		
+		  			//alert(t);
+		  		ajax('POST', 'ajax/deleteVideo.php', refresh, p, true);
+			}
+		}
+}
+
 function editUserAlbum(){
 
 	if(byid('edit-user-album')){
@@ -913,6 +941,177 @@ function editUserAlbum(){
 	}
 }//end editUserProfile
 
+
+function uploadOrganization()
+{
+
+	var editPet = byid('upload-organization');
+	
+	
+	editPet.onclick = function()
+	{
+		preventEventsDefault();
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+
+  		byid('modal-edit-container').style.display='block';	
+		ajax('GET', 'ajax/getUploadOrganization.php?u='+p, printEditOrg, null, true);
+	}	
+
+}//end editPetProfile
+
+function printEditOrg()
+{
+	printEdit('modal-edit', this.responseText);
+}
+
+function deleteOrganization()
+{
+	var btn = document.querySelectorAll('.delete-org'); 
+
+	for(var i = 0; i < btn.length; i++)
+	{
+		btn[i].onclick = function()
+		{		
+			//preventEventsDefault();
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = 'o='+p.substr(index);
+	  		
+	  		
+			ajax('POST', 'ajax/deleteOrganization.php', printUpdatedOrg, p, true);// Mando por aca el id del user?????
+
+		}// end deleteNews[i].onclick		
+	}
+}	
+
+function printUpdatedOrg()
+{
+	printEdit('organization', this.responseText);
+}
+
+
+function uploadProject()
+{
+
+	var editPet = byid('upload-project');
+	
+	
+	editPet.onclick = function()
+	{
+		preventEventsDefault();
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+
+  		byid('modal-edit-container').style.display='block';	
+		ajax('GET', 'ajax/getUploadProject.php?u='+p, printEditPro, null, true);
+	}	
+
+}//end editPetProfile
+
+function printEditPro(){
+
+	printEdit('modal-edit', this.responseText);
+}
+
+function deleteProject()
+{
+	var btn = document.querySelectorAll('.delete-project'); 
+
+	for(var i = 0; i < btn.length; i++)
+	{
+		btn[i].onclick = function()
+		{	
+			//preventEventsDefault();
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = 'pr='+p.substr(index);
+	  		
+			ajax('POST', 'ajax/deleteProject.php', printUpdatedPro, p, true);// Mando por aca el id del user?????
+
+		}// end deleteNews[i].onclick		
+	}
+}	
+
+function printUpdatedPro()
+{
+	printEdit('project', this.responseText);
+}
+
+
+function uploadVetTalk()
+{
+
+	var editPet = byid('upload-vet-talk');
+	
+	
+	editPet.onclick = function()
+	{
+		preventEventsDefault();
+		var p = this.href;
+		var index = p.indexOf('#');
+  		index ++;
+  		p = p.substr(index);
+
+  		byid('modal-edit-container').style.display='block';	
+		ajax('GET', 'ajax/getUploadVetTalk.php?u='+p, printEditVet, null, true);
+	}	
+
+}//end editPetProfile
+
+function printEditVet()
+{
+	printEdit('modal-edit', this.responseText);
+}
+
+function deleteVetTalk()
+{
+	var btn = document.querySelectorAll('.delete-vet-talk'); 
+
+	for(var i = 0; i < btn.length; i++)
+	{
+		btn[i].onclick = function()
+		{		
+			//preventEventsDefault();
+			var p = this.href;
+			var index = p.indexOf('#');
+	  		index ++;
+	  		p = 'o='+p.substr(index);
+	  		
+	  		
+			ajax('POST', 'ajax/deleteVetTalk.php', printUpdatedVet, p, true);// Mando por aca el id del user?????
+
+		}// end deleteNews[i].onclick		
+	}
+}	
+
+function printUpdatedVet()
+{
+	printEdit('vet-talk', this.responseText);
+}
+
+
+
+
+/*
+END FUNCTIONS PROFILE
+END FUNCTIONS PROFILE
+END FUNCTIONS PROFILE
+*/
+//============================================================================================
+
+
+
+
+
+
+
 function printEdit(idModule, html){		
 	var cont = byid(idModule);
 	cont.innerHTML = html;
@@ -925,28 +1124,6 @@ function printEdit(idModule, html){
 		}
 	}
 }//end printedit
-
-function deleteVideo(){
-
-	if(byid('delete-pet-video')){
-	
-			var btns = byid('delete-pet-video');
-
-			  btns.onclick = function()
-			{
-				var p = this.href;
-				var index = p.indexOf('#');
-		  		index ++;
-		  		//var t=byid('unlinkPath');
-		  		//	t=t.href;
-		  		p = 'p='+ p.substr(index);
-
-		  		
-		  			//alert(t);
-		  		ajax('POST', 'ajax/deleteVideo.php', refresh, p, true);
-			}
-		}
-}
 
 
 
@@ -1348,136 +1525,8 @@ function vetTalkAnswer()
 }
 
 
-function uploadVetTalk()
-{
 
-	var editPet = byid('upload-vet-talk');
-	
-	
-	editPet.onclick = function()
-	{
-		preventEventsDefault();
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
-		ajax('GET', 'ajax/getUploadVetTalk.php?u='+p, printEditVet, null, true);
-	}	
 
-}//end editPetProfile
-
-function deleteVetTalk()
-{
-	var btn = document.querySelectorAll('.delete-vet-talk'); 
-
-	for(var i = 0; i < btn.length; i++)
-	{
-		btn[i].onclick = function()
-		{		
-			//preventEventsDefault();
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = 'o='+p.substr(index);
-	  		
-	  		
-			ajax('POST', 'ajax/deleteVetTalk.php', printEditVet, p, true);// Mando por aca el id del user?????
-
-		}// end deleteNews[i].onclick		
-	}
-}	
-
-function printEditVet()
-{
-	printEdit('vet-talk', this.responseText);
-}
-
-function uploadOrganization()
-{
-
-	var editPet = byid('upload-organization');
-	
-	
-	editPet.onclick = function()
-	{
-		preventEventsDefault();
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
-		ajax('GET', 'ajax/getUploadOrganization.php?u='+p, printEditOrg, null, true);
-	}	
-
-}//end editPetProfile
-
-function deleteOrganization()
-{
-	var btn = document.querySelectorAll('.delete-org'); 
-
-	for(var i = 0; i < btn.length; i++)
-	{
-		btn[i].onclick = function()
-		{		
-			//preventEventsDefault();
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = 'o='+p.substr(index);
-	  		
-	  		
-			ajax('POST', 'ajax/deleteOrganization.php', printEditOrg, p, true);// Mando por aca el id del user?????
-
-		}// end deleteNews[i].onclick		
-	}
-}	
-
-function printEditOrg()
-{
-	printEdit('organization', this.responseText);
-}
-
-function uploadProject()
-{
-
-	var editPet = byid('upload-project');
-	
-	
-	editPet.onclick = function()
-	{
-		preventEventsDefault();
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
-		ajax('GET', 'ajax/getUploadProject.php?u='+p, printEditPro, null, true);
-	}	
-
-}//end editPetProfile
-
-function deleteProject()
-{
-	var btn = document.querySelectorAll('.delete-project'); 
-
-	for(var i = 0; i < btn.length; i++)
-	{
-		btn[i].onclick = function()
-		{	
-			//preventEventsDefault();
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = 'pr='+p.substr(index);
-	  		
-			ajax('POST', 'ajax/deleteProject.php', printEditPro, p, true);// Mando por aca el id del user?????
-
-		}// end deleteNews[i].onclick		
-	}
-}	
-
-function printEditPro(){
-
-	printEdit('project', this.responseText);
-}
 
 function favorites(){
 

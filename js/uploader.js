@@ -487,6 +487,62 @@ function imgVideoUploader(whatFor, modulo){
 
 				  uploadBtn.onclick = function (evt) { // este parametro creo q no va...
 
+				  			//VALIDATION
+					  		var mandfields = document.querySelectorAll('.mandatory');
+					  		var flagidation = 0;
+					  		for(var i = 0; i < mandfields.length; i++)
+					  		{
+					  			// clear fields
+					  			mandfields[i].style.boxShadow = 'none';
+					  			//
+					  			if(mandfields[i].value=='')
+					  			{
+					  				mandfields[i].style.boxShadow = 'red 0 0 5px';
+					  				flagidation = 1;
+					  			}
+								var n=mandfields[i].className.indexOf("email-field");
+					  			if(n != -1)
+					  			{
+					  				function validateEmail(elementValue)
+					  				{        
+									   var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
+									   return emailPattern.test(elementValue);   
+									}
+									r = validateEmail(mandfields[i].value);
+									if(!r)
+									{
+										mandfields[i].style.boxShadow = 'red 0 0 5px';
+										flagidation = 1;
+									}
+					  			}
+					  		}
+					  		//TRIBUTE VALIDATION
+					  		var chkTribute = byid('chk-tribute');
+					  		if(chkTribute)					  			
+					  		{
+					  			if(chkTribute.checked)
+						  		{
+						  			var trTitle = byid('tr-title');
+						  			var trCont = byid('tr-msg');						  			
+						  			if(trTitle.value == '') 
+						  			{
+						  				trTitle.style.boxShadow = 'red 0 0 5px';
+						  				flagidation = 1;
+						  			}
+						  			if(trCont.value == '')
+						  			{
+						  				trCont.style.boxShadow = 'red 0 0 5px';
+						  				flagidation = 1;
+						  			}
+						  		}	
+					  		}
+					  		
+					  		if(flagidation == 1) return false;
+					  		//END VALIDATION
+				  			
+
+
+
 				  			formData = new FormData();
 				  			//var inputsText = byid('form-id').getElementsByTagName('input');
 				   			//LO MODIFICO PARA LEVANTAR TODOS LOS ELEMENTOS DEL FORM POR CLASE, !!!! QUERYSELECTOR funciona en IE 8 en adelante !!! ¿? 
@@ -648,58 +704,7 @@ function imgVideoUploader(whatFor, modulo){
 								formData.append("u", p);
 					  		}
 
-					  		//VALIDATION
-					  		var mandfields = document.querySelectorAll('.mandatory');
-					  		var flagidation = 0;
-					  		for(var i = 0; i < mandfields.length; i++)
-					  		{
-					  			// clear fields
-					  			mandfields[i].style.boxShadow = 'none';
-					  			//
-					  			if(mandfields[i].value=='')
-					  			{
-					  				mandfields[i].style.boxShadow = 'red 0 0 5px';
-					  				flagidation = 1;
-					  			}
-								var n=mandfields[i].className.indexOf("email-field");
-					  			if(n != -1)
-					  			{
-					  				function validateEmail(elementValue)
-					  				{        
-									   var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
-									   return emailPattern.test(elementValue);   
-									}
-									r = validateEmail(mandfields[i].value);
-									if(!r)
-									{
-										mandfields[i].style.boxShadow = 'red 0 0 5px';
-										flagidation = 1;
-									}
-					  			}
-					  		}
-					  		//TRIBUTE VALIDATION
-					  		var chkTribute = byid('chk-tribute');
-					  		if(chkTribute)					  			
-					  		{
-					  			if(chkTribute.checked)
-						  		{
-						  			var trTitle = byid('tr-title');
-						  			var trCont = byid('tr-msg');						  			
-						  			if(trTitle.value == '') 
-						  			{
-						  				trTitle.style.boxShadow = 'red 0 0 5px';
-						  				flagidation = 1;
-						  			}
-						  			if(trCont.value == '')
-						  			{
-						  				trCont.style.boxShadow = 'red 0 0 5px';
-						  				flagidation = 1;
-						  			}
-						  		}	
-					  		}
 					  		
-					  		if(flagidation == 1) return false;
-					  		//END VALIDATION
 
 					  		ajaxx('POST', ajaxPostFile, modulPrintUpdates, formData, true);
 					  		

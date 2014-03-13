@@ -31,6 +31,9 @@
 				</h2>
 
 				<?php
+
+					if(isset($_SESSION['id'])){
+
 							if(!$u->isOwn()){
 
 									$favorites = $f->getFavorite($_SESSION['id']);
@@ -66,6 +69,7 @@
 									<?php
 								}
 							}
+						}
 					?>
 			</div>
 			<div class="mod-content clearfix">
@@ -73,8 +77,8 @@
 					<a class='link-img'  href= <?php echo '"'.$u->getProfilePic().'"'; ?> >
 						<img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/>
 					</a>
-					<h3><?php echo $u->getNameComp() ?></h3>
-					<span><?php echo $u->getLocation() ?></span>
+					<h3><?php echo $u->getNameComp(); ?></h3>
+					<span><?php echo $u->getLocation(); ?></span>
 				</div>
 
 

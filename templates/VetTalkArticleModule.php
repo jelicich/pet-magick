@@ -40,18 +40,44 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	<div class="clearfix mod-content">
 		<div><!-- scrolleable -->
 			
-			<p class="vet-talk-article clearfix"> 
-				<a href=<?php echo "img/vetTalk/".$srcImg ?> class='link-img img-float' ><img src=<?php echo "img/vetTalk/thumb/".$srcImg; ?> class="thumb-mid"/></a>
-				<?php echo $content; ?>
-			</p>
+			<div class="vet-talk-article clearfix"> 
+				<div class="pic-caption">
+					<a href=<?php echo "img/vetTalk/".$srcImg ?> class='link-img img-float' >
+						<img src=<?php echo "img/vetTalk/thumb/".$srcImg; ?> class="thumb-mid"/>
+					</a>
+
+					<span><b>By </b><?php echo $name.' '.$lastName; ?></span>
+					<span><i><?php echo $date; ?></i></span>
+				</div>
+
+				<div class="blind">
+					<div class="scrollable-text" id="aboutText">
+						<div class="bg-txt-featured-modules">
+							
+							<p>
+								<?php echo $content; ?>
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+			<!--
 			<ul class="vet-talk-author">
 				<li><strong>Autor</strong><i><?php echo ' '.$name.' '.$lastName; ?></i></li>
 				<li><i><?php echo $date; ?></i></li>
-			</ul>
+			</ul>-->
 
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
 	modalImg();
+	start_scroll('scrollable-text', false);
 </script>
+
+
+
+				

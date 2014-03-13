@@ -235,7 +235,7 @@
 	vetTalkAnswer();
 	favorites();
 	modalImg();
-
+   
 	$('.nav-tabs a').click(function (e)
 	{
 		e.preventDefault();

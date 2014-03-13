@@ -1270,12 +1270,24 @@ float: left;
 	margin: -17.5px -5px 0 0;
 }
 
+#list-user-fav li{
 
-.bg-news p{
+	position: relative;
+}
 
-/* estilear el texto en news */
+
+#list-user-fav .linkToModule{
+	width: 70%;
+	padding: 5px 10px 0 10px;
+	position: absolute;
+	height: 25px;
+	bottom: 0px;
+	left: 30px;
+	background: rgba(255, 255, 255, 0.4);
+	vertical-align: center;
 
 }
+
 
 .bg-news div{
 	padding: 0 10px ;
@@ -1404,10 +1416,42 @@ float: left;
 }
 
 
+#admin{
+	background: #e8b2ae;
+	min-height: 210px !important;
+	
+}
+
+#adminOrg, 
+#adminProject,
+#adminVetArticle{
+	
+	min-height: 80px;
+	max-height: 280px;;
+}
 
 
+#adminOrg .bg-txt,
+#adminProject .bg-txt,
+#adminVetArticle .bg-txt
+{
+	height: 80px;
+	width: 89%;
+}
 
+.delete-org, 
+.delete-project,
+.delete-vet-talk
+{
+	float: right;
+	margin-top: 10px;
+}
 
+#upload-organization,
+#upload-project,
+#upload-vet-talk{
+	margin: 10px 0 10px 18px;
+}
 
 /* ------------------------------ pet loss */
 

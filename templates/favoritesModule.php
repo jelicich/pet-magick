@@ -14,7 +14,7 @@ for ($i=0; $i < $t; $i++) {
 	  $user_id = $fd[0]['ID_USER'];
 ?>
 
-	<li class="">
+	<li id="list-user-fav">
 			<img src= <?php echo $srcImg ?> class="thumb-small side-img" />
 			<a href=<?php echo 'user-profile.php?u='.$user_id ?> class='linkToModule'  >
 				<strong><?php echo $nickname; ?></strong>

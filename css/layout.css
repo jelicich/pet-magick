@@ -43,6 +43,12 @@ p,span{
 
 #wrapper{
 	background: url('../img/fresh_snow.png');
+	min-height:100%;
+	/*height: 100%;*/
+	position:relative;
+}
+#wrapper.h100{
+	height: 100%;
 }
 
 #preloader{
@@ -911,11 +917,6 @@ width: 100% !important;
 	background-color: #fff; /* provisorio */
 }
 
-#wrapper{
-	min-height:100%;
-	position:relative;
-}
-
 .wrapper-play{ /* Provisorio hasta definir funcionalidad */
 	height: 200px;
 	cursor: pointer;
@@ -1557,6 +1558,7 @@ float: left;
 	padding: 10px 0 10px 10px !important;
 	min-height: 102px !important;
 	max-height: 482px !important;
+	height: 482px;
 }
 
 .vet-talk-mod.list  .mCSB_container, 
@@ -1788,12 +1790,16 @@ Tunear!!!
 	font-weight: normal;
 }
 
+#conv-area{
+	height: 100%;
+}
+
 #message-area{
 	background: rgba(255,255,255,0.5);
 	background: #e8b2ae;
 	position: absolute;
 	top:110px;
-	bottom: 220px;
+	bottom: 200px;
 	padding:10px;
 }
 
@@ -1802,8 +1808,8 @@ Tunear!!!
 	background: #e8b2ae;
 	position: absolute;
 	height: 140px;
-	bottom: 80px;
-	padding:10px;
+	bottom: 60px;
+	padding: 10px;
 }
 
 #wrap-messages-container{
@@ -1811,7 +1817,7 @@ Tunear!!!
 }
 
 #wrap-conversations{
-	margin: 0 0 20px 0;
+	margin: 0;
 }
 
 #wrap-conversations li{
@@ -3474,4 +3480,25 @@ body.my-account #bbpress-forums {
 	float: left;
 	padding-right: 13px;
 	margin-bottom: 10px;
+}
+h2.err404{
+	color: rgba(255,0,0,0.1);
+	font-size: 350px;
+	position: absolute;
+	top: 180px;
+}
+h3.err404{
+	color: rgba(255,0,0,0.1);
+	font-size: 240px;
+	position: absolute;
+	top: 310px;
+	margin-left: 356px;
+}
+h2.err{
+	color: #d95248;
+	font-size: 22px
+}
+p.err{
+	color: #d95248;
+	font-size: 16px
 }

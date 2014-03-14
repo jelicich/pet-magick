@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<div id="wrapper" class="h100">
+<div id="wrapper">
 	
 	<?php 
 		include_once 'templates/header.php'; 
@@ -39,27 +39,9 @@
 	<!-- site content -->
 	<div class="container_12" id="content" style="height:100%">
 		
-		<div id="what">
-			<a href="#" id='btn-new-message'>New Message</a>
-		</div>
-		
-		<div class="grid_4 scrollable" id="conv-area">
-			<ul id="wrap-conversations"></ul>
-		</div>	
-
-		<div class="grid_8" id="message-area">
-			<div class="scrollable" id="wrap-messages-container">
-				<ul id="wrap-messages"> 
-				</ul>
-			</div>
-		</div><!-- END message area -->
-		
-		<div class="grid_8" id="write-message-container">
-			<form method='' action='' class="clearfix" style="display:none" id="write-message">					
-				<textarea rows='5' cols='30' name='message' id='message'></textarea>
-				<input type='button' value='Submit' id='send-message' class="btn btn-danger"/>	
-			</form>
-		</div>
+		<h2 class="err404">404</h2>
+		<h3 class="err404">error</h3>
+		<h2 class="err">The content you requested could not be found.</h2>
 		
 	</div>
 	<!-- END site content -->
@@ -71,32 +53,6 @@
 </div>
 <!-- END wrapper-->
 
-<form method='' action='' class="clearfix" style="display:none" id="write-new-message">	
-				
-
-	<div id='searchField' class="grid_3">
-			<input type='text' placeholder='To' id='inputTo' name='inputTo' autocomplete='off'/>
-	</div>
-	
-	<textarea rows='5' cols='30' name='new-message' id='new-message'></textarea>
-	<input type='button' value='Submit' id='send-new-message' class="btn btn-danger"/>
-	<input type="button" value='Cancel' id="cancel-new-message" class="btn btn-danger"/>
-
-</form>
-
-
-<script type="text/javascript" id="jslogout">
-
-	inbox(); //============= Carga los mensajes
-	
-	var i = new autoSearch('inputTo');
-	i.ini({
-		'hidden':true
-	});
-
-	start_scroll('scrollable', false);
-
-</script>
 </body>
 
 </html>

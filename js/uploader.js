@@ -388,8 +388,13 @@ function imgVideoUploader(whatFor, modulo){
 
 		            		 reader.onload = function(e) {
 
+						        	var contImgCap = create('div');
+						        		contImgCap.id = 'cont_' + filesSelectedPosition;
+						        		contImgCap.className = 'clearfix';
+
 						        	var selectedImg = create('img');
 					          			selectedImg.id = 'img_' + filesSelectedPosition;
+					          			selectedImg.className = 'img-upload';
 
 					          			if(amount != 'video'){
 						                   
@@ -407,22 +412,27 @@ function imgVideoUploader(whatFor, modulo){
 					                    //selectedImg.style.height = '20%';
 					                    //selectedImg.style.margin = '5px 5px';
 					                    selectedImg.style.float = 'left';
-				                    	 
+				                    	
+				                    	byid('imgContainer').appendChild(contImgCap); 
+				                    	byid('cont_'+filesSelectedPosition).appendChild(selectedImg); 
+				                    	  
 				                    	  if (amount != 'profile'){
 
 				                    	  		
 
 							        	    	if(amount == 'video'){
 
+							        	    		/*
 							        	    		var contCap = create('div');
 							        	    		contCap.id = 'contCap';
 							        	    		byid('form-id').appendChild(contCap);
+							        	    		*/
 
 										    		title = create('input');
 													title.type = 'text';
 							                    	title.id = 'title_' + filesSelectedPosition;
 											    	title.name = 'title';
-											    	byid('contCap').appendChild(title);
+											    	byid('cont_'+filesSelectedPosition).appendChild(title);
 										    	}
 
 										    	if(modulo != 'admin'){/* NUEVO PARA ADMIN ================ */ 
@@ -432,31 +442,35 @@ function imgVideoUploader(whatFor, modulo){
 							                    	caption.id = 'caption_' + filesSelectedPosition;
 											    	caption.name = 'caption';
 											    	caption.className = 'form-element';
-											    	byid('imgContainer').appendChild(caption);
+											    	byid('cont_'+filesSelectedPosition).appendChild(caption);
 											    }
 										   }
 
 									    removeErr();
 					                    
 					                   
-					                    byid('imgContainer').appendChild(selectedImg);
+					                    
 
 
 					                    selectedImg.onclick = function(){
 
 						                    var ImgPosition = this.id.slice(4); 
+						                    byid('cont_' + ImgPosition).parentNode.removeChild(byid('cont_' + ImgPosition));
 						                  	
+						                  	/*
 						                  	if (amount != 'profile'){
 							                    if(modulo != 'admin'){
 							                    
 							                    	var captionPosition = this.id.slice(4);
 							                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
-							                        byid('title_' + captionPosition).parentNode.removeChild(byid('title_' + captionPosition));
+							                        if(amount == 'video')
+							                        	byid('title_' + captionPosition).parentNode.removeChild(byid('title_' + captionPosition));
 							                    }
 							                 }
 
 							                 this.parentNode.removeChild(this);
 							                 filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
+							                 */
 
 							                  if (amount != 'album'){
 				  	  						
@@ -471,6 +485,7 @@ function imgVideoUploader(whatFor, modulo){
 													file_id.name = 'file';
 													byid('file-container').appendChild(file_id);
 										  	  }
+										  	  
 						                }
 					            }// end onload
 					            reader.readAsDataURL(this.files[0]);

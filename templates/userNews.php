@@ -3,28 +3,30 @@
 				<div class="mod-header">
 					<h2>My Recent News</h2>
 				
-				<div id='what' class='ask-qa'> <!-- invertir clase y id aca -->
+				<?php
+					if(isset($_SESSION['id']))
+					{
 					
-					<li><a id="post-news" class="btn"  >Post news</a></li>
-						<div id='pop-up-click' class='mod'>
-
-							<?php
-								if(isset($_SESSION['id']))
-								{
+						if($u->isOwn())
+						{							
+				?>
+							<div id='what' class='ask-qa'> <!-- invertir clase y id aca -->
 								
-									if($u->isOwn())
-									{
-										echo "	
+								<li><a id="post-news" class="btn"  >Post news</a></li>
+									<div id='pop-up-click' class='mod'>
+
+											<form class='form' >
 												<textarea id='news_content'></textarea>
 												<input type='button' name='news' value='Post' id='news_button' />
-										";	
-									}
-								}
-							?>
-							<div class="arrow-top"></div>
-						</div>
-						
-				</div>
+											</form>
+											<div class="arrow-top"></div>
+									</div>
+									
+							</div>
+				<?php
+						}
+					}
+				?>
 				</div>
 				<div class="scrollable-list-sections" id="news">
 

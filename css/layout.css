@@ -1636,6 +1636,10 @@ float: left;
 	width: 400px;
 	padding: 10px;
 }
+.news #pop-up-click{
+width: 357px;
+padding: 10px;
+}
 
 .vet-talk-mod #pop-up-click textarea, 
 .pet-loss-mod #pop-up-click textarea{   
@@ -1645,13 +1649,22 @@ float: left;
     resize: none;
 }
 
+.news #pop-up-click textarea{
+	height: 105px;  
+    color: #000000;
+    width: 100%;
+    resize: none;
+}
+
 .vet-talk-mod #pop-up-click input, 
-.pet-loss-mod #pop-up-click input{    
+.pet-loss-mod #pop-up-click input,
+.news #pop-up-click input{    
     color: #000000;
 }
 
 .vet-talk-mod #pop-up-click form, 
-.pet-loss-mod #pop-up-click form{
+.pet-loss-mod #pop-up-click form,
+.news #pop-up-click form{
 	margin: 0;
 }
 

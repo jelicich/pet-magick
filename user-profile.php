@@ -123,6 +123,10 @@
 					
 			<?php 
 				}//END IF pets
+				else
+				{
+					echo '<div class="mod-header"><h2>My pet story</h2></div>';
+				}
 			?>
 	
 		</div>

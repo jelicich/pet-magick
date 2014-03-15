@@ -390,8 +390,17 @@ function imgVideoUploader(whatFor, modulo){
 
 						        	var selectedImg = create('img');
 					          			selectedImg.id = 'img_' + filesSelectedPosition;
-					                    selectedImg.setAttribute('src', e.target.result);
-					                    selectedImg.setAttribute('alt', e.target.result);
+
+					          			if(amount != 'video'){
+						                   
+						                    selectedImg.setAttribute('src', e.target.result);
+						                    selectedImg.setAttribute('alt', e.target.result);
+
+						                }else{
+
+						                	selectedImg.setAttribute('src', 'video/thumb/default.png');
+						                    selectedImg.setAttribute('alt', "");
+						                }	
 					                    
 					                    //alert(selectedImg.width + 'x' + selectedImg.height); //funca
 					                    //selectedImg.style.width = '20%';
@@ -401,19 +410,14 @@ function imgVideoUploader(whatFor, modulo){
 				                    	 
 				                    	  if (amount != 'profile'){
 
-				                    	  		if(modulo != 'admin'){
-
-					                    	  		/*
-					                    	  		
-							        	    		*/
-							        	    	}
+				                    	  		
 
 							        	    	if(amount == 'video'){
 
 							        	    		var contCap = create('div');
 							        	    		contCap.id = 'contCap';
 							        	    		byid('form-id').appendChild(contCap);
-							        	    		
+
 										    		title = create('input');
 													title.type = 'text';
 							                    	title.id = 'title_' + filesSelectedPosition;
@@ -447,6 +451,7 @@ function imgVideoUploader(whatFor, modulo){
 							                    
 							                    	var captionPosition = this.id.slice(4);
 							                        byid('caption_' + captionPosition).parentNode.removeChild(byid('caption_' + captionPosition));
+							                        byid('title_' + captionPosition).parentNode.removeChild(byid('title_' + captionPosition));
 							                    }
 							                 }
 

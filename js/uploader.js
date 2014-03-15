@@ -404,14 +404,16 @@ function imgVideoUploader(whatFor, modulo){
 				                    	  		if(modulo != 'admin'){
 
 					                    	  		/*
-					                    	  		var contCap = create('div');
-							        	    		contCap.id = 'contCap';
-							        	    		byid('form-id').appendChild(contCap);
+					                    	  		
 							        	    		*/
 							        	    	}
 
 							        	    	if(amount == 'video'){
 
+							        	    		var contCap = create('div');
+							        	    		contCap.id = 'contCap';
+							        	    		byid('form-id').appendChild(contCap);
+							        	    		
 										    		title = create('input');
 													title.type = 'text';
 							                    	title.id = 'title_' + filesSelectedPosition;

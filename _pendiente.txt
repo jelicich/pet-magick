@@ -7,7 +7,7 @@ SEMANA 3/2/2014
 	- impresion de captions junto con las imagenes para poder maquetar bien.
 
 - ImgUploader ie (ESTEBAN // JULIAN)
-		
+- ejecutar funciones de edicion solo cuando isset id, osea logueado
 
 
 PROXIMAS TAREAS EN ORDEN DE IMPORTANCIA

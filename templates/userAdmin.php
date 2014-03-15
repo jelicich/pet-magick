@@ -145,8 +145,3 @@
 					</div><!-- end mod contet -->
 					
 				</div><!-- end admin -->
-
-				<script type="text/javascript">
-
-
-				</script>

@@ -19,7 +19,7 @@
 								</ul>
 							</div>
 
-							<div class="album-grid scrolleable">
+							<div class="album-grid scrollable">
 								<?php
 									if($u->getAlbumId())
 									{
@@ -60,6 +60,12 @@
 
 						<script type="text/javascript">
 							imgVideoUploader('album', 'albumProfile'); // SUBIR IMG
+							$('.scrollable').mCustomScrollbar({
+							    advanced:{
+							        updateOnContentResize: true
+							    },
+							    theme:"light-thin"
+							});
 
 							//imgVideoUploader('profile', 'about'); // SUBIR IMG
 						</script>

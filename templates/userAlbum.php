@@ -38,11 +38,11 @@
 									}//END FOR
 							?>
 									</ul>
-								</div>
-							<?php
-								}//END IF
 								
+							<?php
+								}//END IF								
 							?>
+							</div>
 
 							<script type="text/javascript">
 								editUserAlbum();

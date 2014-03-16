@@ -51,8 +51,8 @@
 
 								<?php
 
-									if($p->getAlbumId())
-									{
+									//if($p->getAlbumId())
+									//{
 										$album = $p->getAlbum($p->getAlbumId());
 										$t = sizeof($album);
 										$flag = 6;
@@ -88,58 +88,76 @@
 								?>
 								 	</ul>
 								<?php
-									}//END IF
+									//}//END IF
 								?>
 							</div>
 
-							<?php
-									if($p->isOwn())
-									{
-										echo '<a href="#'.$p->getId().'" class="btn" id="edit-pet-album">Edit album</a>';
-									}
-							?>
+							
 						</div>
 
+						
 
 						<div id='pet-video'>
+
+								<!--
+
+										<span class='video-last-caption'>
+											<h3>$a[0]['TITLE']; ?></h3>
+											<span><?php //echo $a[0]['CAPTION']; ?></span>
+										</span>
+
+									-->
 							<?php
+
+
 								
-								 
 								$a = $v->getVideoByPet($p->getId());
+								
+								if($a){
 
-
-								if($a)
-								{
-
-									if($p->isOwn())
-									{
-										echo '<a href="#'.$p->getId().'" class="btn" id="delete-pet-video">Delete video</a>';
-									}
-							?>
 									
-									
-									<a class="petVideo video" href= <?php  echo 'video/'.$a[0]['VIDEO']; ?> >
-										<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
-										<span class='wrapper-play'>
-											<span class="play"></span>
-											<img src= <?php echo '"video/'.$a[0]['THUMBNAIL'].'"'; ?> class="thumb-big video-thumb"/>
-										</span>
+										echo "<a class='petVideo video ppVideo' href= 'video/".$a[0]['VIDEO']."' >
+												<span class='wrapper-play'>
+													<span class='play'></span>
+													<img src= video/".$a[0]['THUMBNAIL']." class='thumb-big video-thumb'/>
+												</span>
 
-										<span class="video-last-caption">
-											<h3><?php echo $a[0]['TITLE']; ?></h3>
-											<span><?php echo $a[0]['CAPTION']; ?></span>
-										</span>
-									</a>
-									
-							<?php
+												<dl class='hidden'>
+													<dt>".$a[0]['TITLE']."</dt>
+													<dd>".$a[0]['CAPTION']."</dd>
+												</dl>
+												
+											</a>";
+
 								}else{
-
-									if($p->isOwn())
-									{
-										echo '<a href="#'.$p->getId().'" class="btn" id="upload-pet-video">Upload Video</a>';
-									}
+									
+										echo "<span class='video ppVideo' >
+												<span class='wrapper-play'>
+													<span class='play videoDefault'></span>
+												</span>	
+											</span>";
 								}
 							?>
+
+						<div id='albumVideoButtons'>
+								<?php
+										if($p->isOwn())
+										{
+											echo '<a href="#'.$p->getId().'" class="btn" id="edit-pet-album">Edit album</a>';
+										
+
+											if($a){
+
+												echo '<a href="#'.$p->getId().'" class="btn" id="delete-pet-video">Delete video</a>';
+											    
+											}else{
+
+												echo '<a href="#'.$p->getId().'" class="btn" id="upload-pet-video">Upload Video</a>';
+
+											}
+										}
+								?>
+							</div>
 						</div>
 
 					</div>
@@ -152,6 +170,7 @@
 	UploadPetVideo();
 	deleteVideo();
 	flexslider();
+	video();
 </script>
 
 

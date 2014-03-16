@@ -184,5 +184,11 @@ class BOVideos{
 
   }
 
+    function howmuch_videos()
+    {
+        $r = $this->table->howmuch_videos();
+        return $r;
+    }
+
 }//end class
 

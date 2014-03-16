@@ -14,13 +14,15 @@
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css" /> 
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
-
+<link rel="stylesheet" href="css/videos.css" type="text/css" />
+<link type="text/css" href="video/skin/jplayer.blue.monday.css" rel="stylesheet" />
 <!-- <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/jquery.js"></script> 
  <script type="text/javascript" src="js/bootstrap.js"></script>  -->
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/lib.js"></script>
 <script type="text/javascript" src="js/jq_functions.js"></script> 
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 
 
 <!--[if lte IE 8]> <link rel="stylesheet" href="css/ie/ie_index_8.css" type="text/css" /> <![endif]-->
@@ -87,7 +89,8 @@
 					<span>Upload those videos of your pet doing crazy funny things!</span>
 				</div>
 				
-				<div class='video video-left mod-content'>
+				<div class='video-left mod-content'>
+					
 					<?php 
 						$s = 'index'; // esta variable define cuantas fotos habra en el modulo	
 						include_once 'templates/latestVideosModule.php';
@@ -98,7 +101,7 @@
 			<!-- END animal antics module -->
 
 			<!-- pet loss module -->
-			<div class="mod pet-loss-mod">
+			<div class="mod pet-loss-mod petlistindex">
 				<div class="mod-header">
 					<h2>Visit wall of rememerance</h2>
 					<span>Leave a message of support for other pet lovers</span>
@@ -136,7 +139,9 @@
 ?>
 
 
-
+<script type="text/javascript">
+	video();
+</script>
 
 </body>
 </html>

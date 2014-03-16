@@ -15,7 +15,7 @@
 		$srcVideo = $videosList[$i]['VIDEO']; 
 ?>
 
-	<li class="ie-play">
+	<li class="ie-play  videoMin">
 		<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
 			
 			<span class='wrapper-play'>
@@ -33,6 +33,7 @@
 			</span>
 		</a>
 	</li>
+
 
 <?php
 
@@ -55,7 +56,7 @@
 		$srcVideo = $videosList[$i]['Videos'][0]['VIDEO']; 
 ?>
 
-	<li class="ie-play">
+	<li class="ie-play  videoMin">
 		<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
 			
 			<span class='wrapper-play'>
@@ -81,7 +82,7 @@
 	} // end for
 }
 
-    include_once '../templates/Jquery_player.php'; 
+    //include_once '../templates/Jquery_player.php'; 
 ?>
 
 

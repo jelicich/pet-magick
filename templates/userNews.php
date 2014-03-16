@@ -66,7 +66,19 @@
 						}//END IF
 						else
 						{
-							echo '<li class="recent-news">The user does not have any update yet</li>';
+					?>
+							<li class="clearfix">
+								<div class="content-description bg-news">
+									
+									<p>No news at the moment...<p>
+									<div>
+										<span><small></small></span><br><!-- remove br!!!!!!! -->
+
+										
+									</div>
+								</div>
+							</li>
+					<?php
 						}
 					?>
 				</ul>

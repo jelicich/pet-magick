@@ -205,3 +205,48 @@ $(window).load(function () {
 
 // TRIANGLES MENU BY PET
 
+function video(){
+	function runVideo(videoSrc, imgSrc){
+
+          $("#jquery_jplayer_1").jPlayer({
+              
+               ready: function () {
+               
+                $(this).jPlayer("setMedia", {
+                 
+                  m4v: videoSrc,
+                  ogg: videoSrc,// ver q onda esto de los diferentes formatos
+                  webm: videoSrc// ver q onda esto de los diferentes formatos
+                  //poster: imgSrc
+
+                }).jPlayer('play');
+               },
+
+               swfPath: "js",
+               supplied: "m4v, ogg, webm"
+          });
+      }// end runVideo
+
+       
+       $(".petVideo").click(function(e){
+        alert
+            e.preventDefault();
+            
+            var thumb = $(this).find('img').attr('src');
+            var video  = $(this).attr("href");
+           // $("#jquery_jplayer_1").jPlayer("setMedia", {m4v: video}, {poster: thumb}).jPlayer("play");
+            $(".modalWindows").show(300);
+
+               $("#close").click(function(){ 
+                   
+                    $(".modalWindows").hide(300); 
+                    $("#jquery_jplayer_1").jPlayer('destroy');
+                    
+               });
+
+            runVideo(video, thumb);
+
+            return false;
+       });
+
+} 

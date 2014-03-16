@@ -14,7 +14,7 @@
 		$srcVideo = $videosList[$i]['VIDEO']; 
 ?>
 
-	<li class="ie-play">
+	<li class="ie-play  videoMin">
 		<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
 			
 			<span class='wrapper-play'>

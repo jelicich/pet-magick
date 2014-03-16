@@ -35,8 +35,10 @@
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
+<link rel="stylesheet" href="css/videos.css" type="text/css" />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<link type="text/css" href="video/skin/jplayer.blue.monday.css" rel="stylesheet" />
 
 <!-- <script type="text/javascript" src="js/modernizr.js"></script> -->
 <script type="text/javascript" src="js/lib.js"></script>
@@ -45,6 +47,7 @@
 <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jq_functions.js"></script> 
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 
  <script defer src="js/jquery.flexslider.js"></script>
 

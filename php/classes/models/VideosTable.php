@@ -103,6 +103,14 @@ class VideosTable extends Doctrine_Table
           
      } 
 
+        public function howmuch_videos(){
+
+           $Count = Doctrine::getTable('Videos')->count();   
+        
+        return $Count;
+
+        }
+
 
      
 }

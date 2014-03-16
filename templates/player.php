@@ -58,5 +58,5 @@
 </div>
 
 <?php 
-    include_once 'templates/Jquery_player.php'; 
+    //include_once 'templates/Jquery_player.php'; 
 ?>

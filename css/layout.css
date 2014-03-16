@@ -365,9 +365,7 @@ p,span{
 .pet-loss-mod-list li:last-child{
 	margin-bottom: 0;
 }
-.pet-loss-mod-list .content-description{
-	/*width: 82%;*/
-}
+
 
 .mod-content dl dd{ /*nombre de mascota en pet-tribute */
 	margin-left: -0px;
@@ -898,9 +896,9 @@ width: 100% !important;
 
 
 
-/*------------------------------- Big videos */
+/*------------------------------- Big videos 
 
-.video{ /* Standarice video para antics y user profile y su contenido: .wrapper-play, .play, .thumb-big, .video-thumb,.video-last-caption */
+.video{ /* Standarice video para antics y user profile y su contenido: .wrapper-play, .play, .thumb-big, .video-thumb,.video-last-caption 
 	width: 295px;
 	float: left;
 	position: relative;
@@ -914,10 +912,11 @@ width: 100% !important;
 
 .video .thumb-big{
 	float: left;
-	background-color: #fff; /* provisorio */
+	background-color: #fff; /* provisorio 
 }
 
-.wrapper-play{ /* Provisorio hasta definir funcionalidad */
+.wrapper-play{ /* Provisorio hasta definir funcionalidad 
+
 	height: 200px;
 	cursor: pointer;
 }
@@ -933,7 +932,7 @@ width: 100% !important;
 
 }
 
-.video .play{ /* centra el play en el thumb grande */
+.video .play{ /* centra el play en el thumb grande 
 	width: 295px;
 	height: 80%;
 
@@ -942,29 +941,29 @@ width: 100% !important;
 .animal-antics-mod {
 	height: 290px;
 }
-.animal-antics-mod .video{ /* video en index.html */
-	margin-left: 20px; /* centra el bloque  en general */
+.animal-antics-mod .video{ /* video en index.html 
+	margin-left: 20px; /* centra el bloque  en general 
 }
 
-.animal-antics-mod .video .play{ /* video en index.html */
-	margin-left: -10px; /* centra el play dentro del video*/
-	height: 75%; /* evita q el pointer se haga por fuera del video */
+.animal-antics-mod .video .play{ /* video en index.html 
+	margin-left: -10px; /* centra el play dentro del video
+	height: 75%; /* evita q el pointer se haga por fuera del video 
 }
+*/
 
+/* ------------------------------ end big videos
 
-/* ------------------------------ end big videos*/
-
-.video-left{ /* empareja el video en index */
+.video-left{ 
 	margin-left: 40px !important;
 }
 
 .video-index .thumb-big{
 	position: absolute;
-	background-color: #fff; /* provisorio */
+	background-color: #fff; 
 	left: 50px;
 }
 
-.wrapper-play-index{ /* Provisorio hasta definir funcionalidad */
+.wrapper-play-index{ 
 	height: 200px;
 	cursor: pointer;
 }
@@ -980,25 +979,25 @@ width: 100% !important;
 	padding: 25px !important;
 }
 
-.video-index .play-index{ /* centra el play en el thumb grande */
+.video-index .play-index{ 
 	width: 335px;
 	height: 80%;
 }
 
 
-.animal-antics-mod .video-index{ /* video en index.html */
-	margin-left: 50px; /* centra el bloque  en general */
+.animal-antics-mod .video-index{ 
+	margin-left: 50px;
 }
 
-.animal-antics-mod .video-index .play-index{ /* video en index.html */
-	  margin-left: -10px;/*centra el play dentro del video*/
+.animal-antics-mod .video-index .play-index{ 
+	  margin-left: -10px;
 	  margin-top: -10px;
-	 height: 75%; /* evita q el pointer se haga por fuera del video */
+	 height: 75%; 
 
 }
 
 
-
+*/
 /*---------------------------pop up*/
 
 #what{
@@ -1059,7 +1058,7 @@ width: 100% !important;
 
 
 
-/* -------------------------- Animal antics */
+/* -------------------------- Animal antics 
 
 .thumb-big{
 	width: 335px;
@@ -1085,16 +1084,16 @@ width: 100% !important;
 	margin-right: 0;
 }
 
-#publi{/* esto hay q modificarlo pq se repite con otras publis */
-	background: #bdd19c; /* provisorio */
+#publi{
+	background: #bdd19c; 
 	height: 296px; 
 }
 
 .animal-antics-mod .grid-thumbs li dl{
-	/*background: url('../img/bg-user-grid.png');*/
-	background-color: rgba(106, 154, 22, 0.6); /* Esta clase (.grid-thumbs li dl) ya tiene un color asignado cuando la creaste. Fijate si preferis pasarle de esta forma el color a cada seccion */
+	/*background: url('../img/bg-user-grid.png');
+	background-color: rgba(106, 154, 22, 0.6); /* Esta clase (.grid-thumbs li dl) ya tiene un color asignado cuando la creaste. Fijate si preferis pasarle de esta forma el color a cada seccion 
 }
-
+*/
 
 /* ---------------------------- profiles */
 
@@ -1112,7 +1111,10 @@ width: 100% !important;
 	padding: 10px 10px 10px 10px;
 }
 
-
+#pet-profile .loading{
+	display: block;
+	margin: 230px auto;
+}
 
 /*
 #pet-album, #pet-about{
@@ -1238,17 +1240,6 @@ width: 100% !important;
 	margin-left: 0px;
 }
 
-#edit-pet-album{
-	position: absolute;
-	right: 0;
-	bottom: 0;
-}
-
-
-#pet-video{
-float: left;
-}
-
 
 
 #post-news{
@@ -1340,6 +1331,8 @@ float: left;
 
 
 
+
+
 #news-mod{
 	height: 354px;
 }
@@ -1425,19 +1418,32 @@ float: left;
 
 #adminOrg, 
 #adminProject,
-#adminVetArticle{
+#adminVetArticle,
+#vtquestions{
 	
 	min-height: 80px;
 	max-height: 280px;;
 }
 
+#vtquestions{
+	margin-bottom: 10px;
+}
 
 #adminOrg .bg-txt,
 #adminProject .bg-txt,
-#adminVetArticle .bg-txt
+#adminVetArticle .bg-txt,
+#vtquestions .bg-txt
 {
 	height: 80px;
 	width: 89%;
+}
+
+.qa-profile{
+	float: right;
+	margin: -20px 0 0 0 !important;
+}
+.qa-profile .submit-answer{
+	margin-bottom: -12px;
 }
 
 .delete-org, 
@@ -1538,14 +1544,17 @@ float: left;
 	margin-left: 90px !important;
 	margin-top: 10px;
 	font-style: italic;
+
 }
 
 .vet-a div.content-description.bg-txt{
 	width: 740px;
+
 }
 
 .qa-list ul{
 	margin: 0;
+
 }
 
 .vet-talk-mod.list .scrollable-list, 
@@ -1726,9 +1735,9 @@ padding: 10px;
 	max-height:520px;*/
 }
 
-.pet-loss-mod.list{
-	/*min-height: 100px;
-	max-height: 100px;*/
+.petlistindex{
+	min-height: 512px;
+	max-height: 512px;
 }
 
 .ie-project{

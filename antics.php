@@ -19,12 +19,15 @@
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="css/960_12_col.css" type="text/css" />
 <link rel="stylesheet" href="css/layout.css" type="text/css" />
+<link rel="stylesheet" href="css/videos.css" type="text/css" />
+<link type="text/css" href="video/skin/jplayer.blue.monday.css" rel="stylesheet" />
 
 <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery.js"></script> 
 <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="js/jq_functions.js"></script> 
 <script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 
 <!--[if lte IE 8]> <link rel="stylesheet" href="css/ie/ie_index_8.css" type="text/css" /> <![endif]-->
 <!--[if IE 7]> <link rel="stylesheet" href="css/ie/ie_index_7.css" type="text/css" /> <![endif]-->
@@ -118,6 +121,7 @@
 	?>
 	
 <script type="text/javascript">
+	video();
 	listByCategory('anticsModuleByCategory.php');
 	start_scroll('scrollable-module', false);
 

@@ -701,6 +701,7 @@ function profile(){
 	  		var cont = byid('pet-profile');
 	  		var loading = create('img');
 			loading.src = 'img/loading.gif'; 
+			loading.className = 'loading';
 	  		cont.innerHTML = "";
 	  		cont.appendChild(loading);
 			ajax('GET', 'ajax/getPetProfile.php?p='+p, printPetProfile, null, true);
@@ -809,7 +810,7 @@ function deletePet(){
 			{
 				document.body.removeChild(alertCont);
 			}
-
+			
 			btnDelete.onclick = function()
 			{
 				var p = this.href;

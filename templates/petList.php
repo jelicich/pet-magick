@@ -31,7 +31,7 @@
 						<?php
 											if($u->isOwn())
 											{
-												echo '<a href=' . '"#'.$pets[$i]['ID_PET'] .'" class="btn btn-danger delete-pet">Delete</a>';
+												echo '<a href='.'"#'.$pets[$i]['ID_PET'] .'" class="btn btn-danger delete-pet">Delete</a>';
 											}
 						?>	
 									</li>

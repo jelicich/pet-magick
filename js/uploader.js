@@ -390,7 +390,7 @@ function imgVideoUploader(whatFor, modulo){
 
 						        	var contImgCap = create('div');
 						        		contImgCap.id = 'cont_' + filesSelectedPosition;
-						        		contImgCap.className = 'clearfix';
+						        		contImgCap.className = 'clearfix cont-preview';
 
 						        	var selectedImg = create('img');
 					          			selectedImg.id = 'img_' + filesSelectedPosition;
@@ -411,7 +411,7 @@ function imgVideoUploader(whatFor, modulo){
 					                    //selectedImg.style.width = '20%';
 					                    //selectedImg.style.height = '20%';
 					                    //selectedImg.style.margin = '5px 5px';
-					                    selectedImg.style.float = 'left';
+					                    //selectedImg.style.float = 'left';
 				                    	
 				                    	byid('imgContainer').appendChild(contImgCap); 
 				                    	byid('cont_'+filesSelectedPosition).appendChild(selectedImg); 
@@ -442,6 +442,7 @@ function imgVideoUploader(whatFor, modulo){
 							                    	caption.id = 'caption_' + filesSelectedPosition;
 											    	caption.name = 'caption';
 											    	caption.className = 'form-element';
+											    	caption.setAttribute('placeholder', 'Caption');
 											    	byid('cont_'+filesSelectedPosition).appendChild(caption);
 											    }
 										   }

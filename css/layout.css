@@ -168,8 +168,8 @@ p,span{
 	margin-bottom: 10px;
 	/*width: 118px;
 	height: 118px;*/
-	width: 122.5px;
-	height: 122.5px;
+	width: 122px;
+	height: 122px;
 	position: relative;
 }
 
@@ -428,14 +428,14 @@ p,span{
 	height: 150px;
 	height: 196px;
 	overflow: auto;
-	padding: 0px 5px 10px 5px ;
+	padding: 10px;
 }
 
 
 #pet-list ul{
 	width: auto;
 	height: 180px;
-	padding: 10px  0 0 5px;
+	padding: 0;
 }
 
 
@@ -477,8 +477,8 @@ p,span{
 
 
 .thumb-mid{
-	width: 122.5px;
-	height: 122.5px;
+	width: 122px;
+	height: 122px;
 }
 
 .thumb-small{
@@ -1106,7 +1106,7 @@ width: 100% !important;
 .bg-pet-profile{ 
 	background: rgba(255, 255, 255, 0.3);
 	width: 373px;
-	height: 123px;
+	height: 122px;
 	float: left;
 	padding: 10px 10px 10px 10px;
 }
@@ -1306,12 +1306,16 @@ width: 100% !important;
 .pet-info{
 	width: 80px;
 	height: 150px;
-	margin-left: 8px;
+	margin-right: 13px;
 	margin-bottom: 10px;
 }
 
+.pet-info:last-child{
+	margin-right: 0px;
+}
+
 .pet-details{
-	width: 123px;
+	width: 122px;
 	height: 100px;
 }
 
@@ -3411,9 +3415,10 @@ body.my-account #bbpress-forums {
 }
 
 .table ul li input{
-	width: 285px;
+	width: 270px;
 	padding: 11px 5px;
-	margin-bottom: 0; 
+	display: block;
+	margin: 0 auto;
 }
 
 .table ul li select{
@@ -3448,15 +3453,24 @@ body.my-account #bbpress-forums {
 	max-height: 100%;
 }
 
-.table .new-pic-cont #imgContainer img{
-	height: 50px;
-	cursor: pointer;
-}
-
 .table .new-pic-cont input[type='file']{
 	width: 100%;
 	background: rgba(255,255,255,0.3);
 	padding: 6px;
+}
+
+.cont-preview{
+	width: 290px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+.img-upload{
+	cursor: pointer;
+	max-width: 270px;
+	max-height: 100px;
+	display: block;
+	margin: 0 auto 10px;
 }
 
 .table #file-container{

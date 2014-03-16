@@ -67,5 +67,12 @@
 							    theme:"light-thin"
 							});
 
+							$('.edit-scrollable').mCustomScrollbar({
+							    advanced:{
+							        updateOnContentResize: true
+							    },
+							    theme:"light-thin"
+							});
+
 							//imgVideoUploader('profile', 'about'); // SUBIR IMG
 						</script>

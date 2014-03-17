@@ -116,7 +116,8 @@
 								if($a){
 
 									
-										echo "<a class='petVideo video ppVideo' href= 'video/".$a[0]['VIDEO']."' >
+										echo "<div class='videoCap'>
+											<a class='petVideo video ppVideo' href= 'video/".$a[0]['VIDEO']."' >
 												<span class='wrapper-play'>
 													<span class='play'></span>
 													<img src= video/".$a[0]['THUMBNAIL']." class='thumb-big video-thumb'/>
@@ -127,7 +128,11 @@
 													<dd>".$a[0]['CAPTION']."</dd>
 												</dl>
 												
-											</a>";
+											</a>
+											
+											</div>";
+
+
 
 								}else{
 									

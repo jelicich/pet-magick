@@ -174,22 +174,6 @@ function start_scroll_profile(applyTo, direction){
 }
 
 
-/*
-function scroll_again(applyTo){
-	$(document).ready(function(){
-		(function($){
-		//	$(window).load(function(){// para q funque con luego del ajax
-				$("." + applyTo).mCustomScrollbar({
-					scrollButtons:{
-						enable: false 
-					},
-					theme:"light-thick"
-				});
-			//});
-		})(jQuery);
-	});
-}
-*/
 // PRELOADER
 $(document).ready(function(){
 
@@ -203,7 +187,7 @@ $(window).load(function () {
 	$("body").delay(2000).css("overflow", "auto");
 });
 
-// TRIANGLES MENU BY PET
+
 
 function video(){
 
@@ -221,7 +205,18 @@ function video(){
                   //poster: imgSrc
 
                 }).jPlayer('play');
-               },
+
+               }, ended: function() { // The $.jPlayer.event.ended event
+			    	
+			    	$(this).jPlayer("setMedia", {
+                 
+	                  m4v: videoSrc,
+	                  ogg: videoSrc,// ver q onda esto de los diferentes formatos
+	                  webm: videoSrc,// ver q onda esto de los diferentes formatos
+	                  poster: imgSrc
+
+	                }).jPlayer();
+			  },
 
                swfPath: "js",
                supplied: "m4v, ogg, webm"
@@ -234,7 +229,7 @@ function video(){
             e.preventDefault();
             
             var thumb = $(this).find('img').attr('src');
-            var video  = $(this).attr("href");
+            var videos  = $(this).attr("href");
            // $("#jquery_jplayer_1").jPlayer("setMedia", {m4v: video}, {poster: thumb}).jPlayer("play");
             $(".modalWindows").show(300);
 
@@ -245,7 +240,7 @@ function video(){
                     
                });
 
-            runVideo(video, thumb);
+            runVideo(videos, thumb);
 
             return false;
        });

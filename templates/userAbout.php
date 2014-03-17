@@ -74,6 +74,7 @@
 			</div>
 			<div class="mod-content clearfix">
 				<div class="pic-caption">
+					
 					<a class='link-img'  href= <?php echo '"'.$u->getProfilePic().'"'; ?> >
 						<img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/>
 					</a>
@@ -116,7 +117,7 @@
 		
 		<script type="text/javascript">
 			editUserProfile();
-			modalImg();
+			
 			start_scroll('scrollable-text', false);
 		</script>
 		<!-- END about module -->

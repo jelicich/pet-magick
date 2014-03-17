@@ -1380,18 +1380,18 @@ function modalImg(){ // en Jquery_player.php hay una funcion parecida en jquery.
 			preventEventsDefault();
 			var modalBg = create('div');
 				modalBg.id = 'modalBg';
-				modalBg.className = 'modalWindows';
+				//modalBg.className = 'modalWindows';
 				modalBg.style.display = 'block';
 				document.body.appendChild(modalBg);
 
 			var closeBlock = create('div');
-				closeBlock.id = 'closeBlock';
+				closeBlock.id = 'closeBlockImg';
 				byid('modalBg').appendChild(closeBlock);
 
 			var closeA = create('a');
 				closeA.id = 'closeA';
 				closeA.href = '#';
-				byid('closeBlock').appendChild(closeA);
+				byid('closeBlockImg').appendChild(closeA);
 
 			var closeImg = create('img');
 				closeImg.src = 'img/close.png';
@@ -1401,7 +1401,7 @@ function modalImg(){ // en Jquery_player.php hay una funcion parecida en jquery.
 			var modalImg = create('img');
 				modalImg.src = this.href;
 				modalImg.alt = this.href;
-				byid('closeBlock').appendChild(modalImg);
+				byid('closeBlockImg').appendChild(modalImg);
 
 			closeA.onclick = function(){
 

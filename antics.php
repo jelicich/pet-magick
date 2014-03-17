@@ -121,6 +121,7 @@
 	?>
 	
 <script type="text/javascript">
+	
 	video();
 	listByCategory('anticsModuleByCategory.php');
 	start_scroll('scrollable-module', false);

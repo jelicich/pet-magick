@@ -180,30 +180,45 @@ p,span{
 	color: #FFFFFF;
 }
 
-.grid-thumbs li a:hover .hidden{
+
+.grid-thumbs li a:hover .hidden,
+.videoCap  a:hover .hidden{
 	display: block;
 }
 
+
+.videoCap  dl{
+	max-height: 35%; 
+	min-height: 35%;
+	width: 100%;
+	position: absolute;
+	bottom: 10px;
+	background-color: rgba(106, 154, 22, 0.6);
+	margin: 0;
+	padding: 5px;
+	color: #FFFFFF;
+}
+
 .grid-thumbs li dl{
-	/*height: 50%; esto quedo en auto asi se adapta a cada caso. en antics es mas chico, aunque si el texto es largo pisa el play igual*/ 
 	max-height: 45%; 
 	min-height: 45%;
 	width: 100%;
 	position: absolute;
 	bottom: 0;
-	/*background: url('../img/bg-user-grid.png');*/
-	background-color: rgba(217, 82, 72, 0.6); /* me parecio mejor esto, pero lo dejo a tu criterio */
+	background-color: rgba(217, 82, 72, 0.6);
 	overflow: hidden;
 	margin: 0;
 	padding: 5px;
 }
 
-.grid-thumbs li dl dt, .video-last-caption dt{
+.grid-thumbs li dl dt, 
+.videoCap  dl dt{
 	font-size: 12px;
 	line-height: 14px;
 }
 
-.grid-thumbs li dl dd, .video-last-caption dd{
+.grid-thumbs li dl dd, 
+.videoCap  dl dd{
 	font-size: 11px;
 	margin: 0;
 	line-height: 13px;
@@ -2037,14 +2052,14 @@ Tunear!!!
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(255,255,255, 0.7);
 	top:0;     
 	left:0;     
 	z-index:999;
 }
 
 #close{
-	margin-left: 229px;
+	margin-left: 460px;
 }
 
 #closeBlock{

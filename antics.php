@@ -72,7 +72,7 @@
 				<h2>Latest videos</h2>
 			</div>
 
-			<ul class='mod-content clearfix'>
+			<ul class='mod-content clearfix videoCap'>
 				<?php 
 					$s = 'antics'; // esta variable define cuantas fotos habra en el modulo	
 					include_once 'templates/latestVideosModule.php';

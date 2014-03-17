@@ -77,10 +77,9 @@
 		<!-- END profiles module -->
 
 		<!-- ads -->
-		<div class="grid_6 asd" >
-		</div>
-		<div class="grid_6 asd">
-		</div>
+		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
+		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
+		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
 		<!-- END ads -->
 
 	</div>

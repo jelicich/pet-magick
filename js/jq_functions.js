@@ -206,6 +206,7 @@ $(window).load(function () {
 // TRIANGLES MENU BY PET
 
 function video(){
+
 	function runVideo(videoSrc, imgSrc){
 
           $("#jquery_jplayer_1").jPlayer({
@@ -229,7 +230,7 @@ function video(){
 
        
        $(".petVideo").click(function(e){
-        alert
+      
             e.preventDefault();
             
             var thumb = $(this).find('img').attr('src');

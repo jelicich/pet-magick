@@ -68,4 +68,11 @@ else
 </div>	
 
 
-	
+<script type="text/javascript">
+  $(document).ready(function(){
+		
+      $('.navbar').css({position:'absolute'})
+  });
+
+
+</script>

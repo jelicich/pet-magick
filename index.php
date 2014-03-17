@@ -88,14 +88,12 @@
 					<h2>Laugh with other pet lovers</h2>
 					<span>Upload those videos of your pet doing crazy funny things!</span>
 				</div>
-				
-				<div class='video-left mod-content'>
-					
+					<ul class='mod-content clearfix videoCap videoIndex'>
 					<?php 
 						$s = 'index'; // esta variable define cuantas fotos habra en el modulo	
 						include_once 'templates/latestVideosModule.php';
 					?>
-				</div>
+					</ul>
 
 			</div>
 			<!-- END animal antics module -->

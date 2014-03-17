@@ -1,0 +1,156 @@
+/* -------------------------- Animal antics */
+
+.thumb-big{
+	width: 295px;
+	height: 200px;
+}
+
+#lastest-video-mod{
+	background: #bdd19c;
+	margin-top: 5px;
+	height: 255px;
+}
+
+#pet-video{
+	float: left;
+	margin: -60px 0 0 -0px;
+	width: 100%;
+
+}
+
+.videoMin{
+	margin: 10px 0 0 10px !important;
+}
+
+#lastest-video-mod > .mod-header{
+	background: #6a9a16;
+}
+
+#lastest-video-mod ul {
+	width: 100%;
+}
+
+#lastest-video-mod .video:last-child{
+	margin-right: 0;
+}
+
+#publi{/* esto hay q modificarlo pq se repite con otras publis */
+	background: #bdd19c; /* provisorio */
+	height: 296px; 
+}
+
+.animal-antics-mod .grid-thumbs li dl{
+	/*background: url('../img/bg-user-grid.png');*/
+	background-color: rgba(106, 154, 22, 0.6); /* Esta clase (.grid-thumbs li dl) ya tiene un color asignado cuando la creaste. Fijate si preferis pasarle de esta forma el color a cada seccion */
+}
+
+/*------------------------------- Big videos */
+
+.video{ /* Standarice video para antics y user profile y su contenido: .wrapper-play, .play, .thumb-big, .video-thumb,.video-last-caption */
+	width: 295px;
+	float: left;
+	position: relative;
+	margin-right: 10px;
+}
+
+
+.video-thumb{
+	margin-bottom: 10px;
+}
+
+.video .thumb-big{
+	float: left;
+	background-color: #fff; /* provisorio */
+}
+
+
+.play{
+	background: url(../img/antics/thumbs/play_midd.png) center no-repeat transparent;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	z-index: 9;
+	padding: 25px !important;
+
+}
+
+.video .play{ /* centra el play en el thumb grande */
+	width: 295px;
+	height: 90%;
+}
+
+.animal-antics-mod {
+	height: 290px;
+}
+
+.animal-antics-mod .video{ /* video en index.html */
+	margin-left: 20px; /* centra el bloque  en general */
+}
+
+.animal-antics-mod .video .play{ /* video en index.html */
+	margin-left: -10px; /* centra el play dentro del video*/
+	height: 75%; /* evita q el pointer se haga por fuera del video */
+}
+
+
+/* ------------------------------ end big videos*/
+
+.video-left{ /* empareja el video en index */
+	margin-left: 35px !important;
+}
+
+.videoIndex{
+	margin-top: 5px;
+}
+.videoIndex .play{ /* centra el play en el thumb grande */
+	height: 205px !important;
+	margin: -10px 0 0 0px !important;
+}
+
+.videoIndex .video{ /* video en index.html */
+	margin-left: 32px; /* centra el bloque  en general */
+}
+
+
+.profiles-mod .video{
+	float: right;
+	margin-right: 0;
+}
+
+
+#pet-video{
+	float: left;
+	margin: -60px 0 0 -0px;
+	width: 100%;
+
+}
+
+#albumVideoButtons a{
+	float:left;
+	margin-bottom: 5px;
+	width: 110px;
+}
+
+#albumVideoButtons{
+	
+	margin: 118px 10px 0 0;
+	float: left;
+	height: 50px;
+	width: 110px;
+}
+
+.ppVideo{
+	margin-right: 90px  !important;
+}
+
+.ppVideo img, .ppVideo .play{
+	width: 262px;
+	height: 167px;
+}
+
+.videoDefault{
+
+	background-color: #fff;
+
+}

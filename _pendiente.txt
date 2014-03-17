@@ -4,7 +4,7 @@ SEMANA 3/2/2014
 - maquetacion
 	- user profile - J E
 	- formatear nombre de autor en vet talk articulo
-
+- Imprimir mensajes de error imgUploader (creo q solo hay q crear un div)
 - ImgUploader ie (ESTEBAN // JULIAN)
 - ejecutar funciones de edicion solo cuando isset id, osea logueado
 
@@ -54,7 +54,6 @@ IMGUPLOADER
 
 PET VIDEO
 =========
-- reproductor redirecciona salvo en la primer mascota
 - ver q onda en antics cuando existe solo un video
 
 PENDIENTES VIDEO (INDEX Y ANTICS)

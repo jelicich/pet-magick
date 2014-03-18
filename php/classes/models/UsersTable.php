@@ -305,4 +305,19 @@ class UsersTable extends Doctrine_Table
 
    }
 
+   public function getProfilePicWP($id)
+   {
+      $q = Doctrine_Query::create()
+            
+            ->select('u.PIC_ID, p.PIC')
+            ->from('Users u')
+            ->leftJoin('u.Pics p')
+            ->where('u.ID_USER = ?', $id);
+        
+        $r = $q->execute();    
+        
+        return $r->toArray();
+   }
+
+
 }//end class

@@ -562,6 +562,25 @@ class BOUsers{
     }
     
 
+    function getProfilePicWP($id)
+    {
+      $p = $this->table->getProfilePicWP($id);
+      $pic = array();
+      //var_dump($p);
+      if(!empty($p))
+      {
+          $pic['PIC'] = '../img/users/'.$p[0]['Pics']['PIC'];
+          $pic['THUMB'] = '../img/users/thumb/'.$p[0]['Pics']['PIC'];
+      }
+      else
+      {
+          $pic['PIC'] = '../img/users/default.jpg';
+          $pic['THUMB'] = '../img/users/thumb/default.jpg';
+      }
+      
+      return $pic;
+    }
+
 
 }//End class BOUsers
 

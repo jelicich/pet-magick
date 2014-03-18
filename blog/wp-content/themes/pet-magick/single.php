@@ -37,9 +37,14 @@ get_header(); ?>
               <div class="postmetadata">
                 <div class="author">
                   <?php
-                    if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), '100' ); }
-                    //FUNCION DE ABAJO trae el id, con esto tengo q levantar la imagen el usuario.
-                    //$author_ID=get_the_author_meta('ID');
+                    //if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), '100' ); }
+                    //get picture from pet magick
+                    $author_ID = get_the_author_meta('ID');
+                    include_once '../php/classes/BOUsers.php';
+                    $pmuser = new BOUsers;
+                    $pic = $pmuser->getProfilePicWP($author_ID);
+                    //var_dump($pic);
+                    echo '<a href="'.$pic['PIC'].'"><img src="'.$pic['THUMB'].'" width="123" height="123" /></a>'
             
                   ?>
                   <div class="authorinfo">

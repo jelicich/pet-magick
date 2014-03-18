@@ -102,7 +102,20 @@ function simonwpframework_comment( $comment, $args, $depth ) {
 
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
   <div id="comment-<?php comment_ID(); ?>">
-    <div class="comment-author vcard"> <?php echo get_avatar( $comment, 40 ); ?> <?php printf( __( '%s <span class="says">says:</span>', 'simonwpframework' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?> </div>
+    <div class="comment-author vcard"> 
+    	<?php 
+    		//echo get_avatar( $comment, 40 ); 
+    	//BUSCAR COMO OBTENER EL ID del comentador
+    		$author_ID = get_the_author_meta('ID');
+            include_once '../php/classes/BOUsers.php';
+            $pmuser = new BOUsers;
+            $pic = $pmuser->getProfilePicWP($author_ID);
+            //var_dump($pic);
+            echo '<a href="'.$pic['PIC'].'"><img src="'.$pic['THUMB'].'" width="80" height="80" /></a>'
+    	?> 
+    	<?php printf( __( '%s <span class="says">says:</span>', 'simonwpframework' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?> 
+
+    </div>
     <!-- .comment-author .vcard -->
     <?php if ( $comment->comment_approved == '0' ) : ?>
     <em class="comment-awaiting-moderation">

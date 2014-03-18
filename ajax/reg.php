@@ -5,8 +5,25 @@ session_start();
 include_once('../php/classes/BOUsers.php');
 
 $user = new BOUsers;
+
+
+//reg wordpress
+	include_once '../blog/wp-load.php';
+
+	$user_name = $_POST['nickname'];
+	$user_email = $_POST['email'];
+	$user_password = $_POST['password'];
+
+	$user_id = username_exists( $user_name );
+	if ( !$user_id ) 
+	{
+		$user_id = wp_create_user( $user_name, $user_password, $user_email );
+	} 
+// END wp
+
 //var_dump($_POST);
 $dato = array(
+	'id' => $user_id,
 	'name' => $_POST['name'],
 	'lastname' => $_POST['lastname'],
 	'nickname' => $_POST['nickname'],
@@ -40,18 +57,7 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 	$_SESSION['email'] = $datosU[0]['EMAIL'];
 
 	
-	//reg wordpress
-	include_once '../blog/wp-load.php';
-
-	$user_name = $_POST['nickname'];
-	$user_email = $_POST['email'];
-	$user_password = $_POST['password'];
-
-	$user_id = username_exists( $user_name );
-	if ( !$user_id ) 
-	{
-		$user_id = wp_create_user( $user_name, $user_password, $user_email );
-	} 
+	
 	
 	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
 	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA

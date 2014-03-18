@@ -23,7 +23,8 @@ class UsersTable extends Doctrine_Table
 
        			$pass_sha1 = sha1($ref['password']);
 	            $Users = new Users();
-	            $Users->NAME = $ref['name'];
+	            $Users->ID_USER = $ref['id'];
+              $Users->NAME = $ref['name'];
 	            $Users->LASTNAME = $ref['lastname'];
 	            $Users->NICKNAME = $ref['nickname'];
 	            $Users->EMAIL = $ref['email'];

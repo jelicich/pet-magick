@@ -54,7 +54,7 @@ class BOVettalk{
     function getVetTalkListByUser($id)
     {
       $q = Doctrine_Query::create()
-        ->select('o.ID_VET_TALK, o.TITLE, o.CONTENT, o.DATE, o.USER_ID, ph.PIC')
+        ->select('o.ID_VET_TALK, LEFT(o.TITLE,65) AS TITLE, LEFT(o.CONTENT, 125) AS CONTENT, o.DATE, o.USER_ID, ph.PIC')
         ->from('VetTalk o')
         ->leftJoin('o.Pics ph')
         ->where('o.USER_ID = ?', $id);

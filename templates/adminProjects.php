@@ -22,9 +22,11 @@
 									<li class="clearfix">
 										<img src= <?php echo '"'.$list[$i]['Albums']['Pics'][0]['THUMB'] .'"'?> class="thumb-small side-img"/>
 										<div class="content-description bg-txt">
-											<h3><?php echo $list[$i]['TITLE']?></h3>
-											<p><?php echo $list[$i]['DESCRIPTION']; //hacerle un substr?></p>
-											<a href=<?php echo $anchor.$list[$i]['ID_PROJECT']; ?> class='linkToModule'>View post</a>
+											<h3><?php echo $list[$i]['TITLE'];
+											if(strlen($list[$i]['TITLE'])==65) echo '...';?></h3>
+											<p><?php echo $list[$i]['DESCRIPTION']; 
+											if(strlen($list[$i]['DESCRIPTION'])==125) echo '...';?></p>
+											<a href=<?php echo $anchor.$list[$i]['ID_PROJECT']; ?> class='linkToModule'>View project</a>
 
 					<!--						<div id="pet-album">
 												<div class="flexslider carousel">

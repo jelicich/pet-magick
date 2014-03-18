@@ -44,8 +44,8 @@
 				<li class="clearfix smaller">
 					<img src= <?php  echo $srcImg; ?> class="thumb-small side-img"/>
 					<div class="content-description bg-txt corregir">
-						<h3><?php echo $title; ?></h3>
-						<p><?php echo $content; ?></p>
+						<h3><?php echo $title; if(strlen($title)==25) echo '...'?></h3>
+						<p><?php echo $content; if(strlen($content)==70) echo '...'; ?></p>
 						<a href=<?php echo 'pet-tribute.php?t='.$trId ?> class='linkToModule'>View post</a>
 					</div>
 				</li>

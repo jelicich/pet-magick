@@ -27,7 +27,15 @@
 									<li class="pet-info">
 										<a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <img src=<?php echo '"'.$pets[$i]['THUMB'].'"'?> class="thumb-small"/> </a>
 										<h3><a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <?php echo $pets[$i]['NAME'] ?> </a></h3>
-										<span><?php echo $pets[$i]['BREED'] ?></span>
+										<span><?php 
+										if(strlen($pets[$i]['BREED'])>= 10){
+											echo substr($pets[$i]['BREED'], 0,10).'...';
+										} 
+										else
+										{
+											echo $pets[$i]['BREED'];
+										}
+										?></span>
 						<?php
 											if($u->isOwn())
 											{

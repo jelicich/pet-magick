@@ -17,12 +17,11 @@ PROXIMAS TAREAS EN ORDEN DE IMPORTANCIA
 		- Imagenes de usuario en wordpress??? 
 		- Poner link de usuarios en wordpress al perfil del sitio
 
-- captions en album al editar
+- captions en album al editar (NO VA AL FINAL ESTO) ¿?
 
 - Consulta random
 		- Corregir consultas
 		- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas ->count())
-		- en las listas tipo projects, pet loss, etc. hay q poner un limit. pero como vamos a modificar esas consultas lo dejo   pendiente
 
 - Buscador
 		- buscador key sensitive
@@ -32,7 +31,7 @@ PROXIMAS TAREAS EN ORDEN DE IMPORTANCIA
 - Confirmar por email
 - Modificacion de password // blanqueo de password
 - optimizar consultas esteban
-
+- Escapar caracteres
 
 
 LO Q QUEDA SUELTO
@@ -92,7 +91,8 @@ BUGS!!!
 -Bug: cuando borras project no borra la imagen
 -Bug: cuando borras vet-talk no borra la imagen
 -Bug: logueado como veterinario aparece el boton "admin" en la barra de navegacion.
-
+-Bug: subis un proyecto y te pasa en los caracteres del titulo, hace como q lo sube, pero no lo sube (no te tira error, deberia tirar error).
+		(Calculo q debe pasar lo mismo con organizaciones)
 	
 
 	

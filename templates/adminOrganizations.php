@@ -23,9 +23,11 @@
 											<li class="clearfix">
 												<img src= <?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
 												<div class="content-description bg-txt">
-													<h3><?php echo $list[$i]['NAME']?></h3>
-													<p><?php echo $list[$i]['DESCRIPTION'] //hacerle un substr?></p>
-													<a href=<?php echo $anchor.$list[$i]['ID_ORGANIZATION']; ?> class='linkToModule'>View post</a>
+													<h3><?php echo $list[$i]['NAME'];
+													if(strlen($list[$i]['NAME'])==65) echo '...';?></h3>
+													<p><?php echo $list[$i]['DESCRIPTION']; 
+													if(strlen($list[$i]['DESCRIPTION'])== 125) echo '...';?></p>
+													<a href=<?php echo $anchor.$list[$i]['ID_ORGANIZATION']; ?> class='linkToModule'>View organization</a>
 													<a href=<?php echo '"#'.$list[$i]['ID_ORGANIZATION'].'"'?> class="btn btn-danger delete-org">Delete</a>
 												</div>
 											</li>

@@ -149,6 +149,10 @@ p,span{
 	padding: 0;
 }
 
+.btn-danger{
+	color: #ffffff !important;
+}
+
 .error{
 	border:1px solid #d95248;
 	background: rgba(186,0,0,0.2);
@@ -545,6 +549,7 @@ p,span{
 	padding: 10px 0;
 	background: #d95248;
 	font-size: 12px;
+	color: #ffffff;
 
 	/* fixed bottom */
 	position:absolute;
@@ -554,13 +559,13 @@ p,span{
 }
 
 #footer a{
-	color: #000000;
+	color: #ffffff;
 }
 
 #footer li{
 	float: left;
 	margin: 0;
-	border-left: 1px solid #a6322a;
+	border-left: 1px solid #ffffff;
 	padding:0 5px;
 	line-height: 12px;
 }

@@ -101,7 +101,7 @@ class TributesTable extends Doctrine_Table
         $userCount = Doctrine::getTable('Tributes')->count();
         $user = Doctrine::getTable('Tributes')
        ->createQuery()
-       ->select('t.*, p.NAME, f.PIC')
+       ->select('t.*, LEFT(t.CONTENT,70) AS CONTENT, LEFT(t.TITLE,25) AS TITLE, p.NAME, f.PIC')
         ->from('Tributes t')
         ->leftJoin('t.Pets p')
         ->leftJoin('p.Pics f')

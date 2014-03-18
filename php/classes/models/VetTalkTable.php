@@ -36,7 +36,7 @@ class VetTalkTable extends Doctrine_Table
 
         $q = Doctrine_Query::create()
 
-              ->select('v.*, LEFT(v.CONTENT, 45) as CONTENT, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+              ->select('v.*, LEFT(v.CONTENT, 80) as CONTENT, LEFT(v.TITLE,65) as TITLE, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
               ->from('VetTalk v')
               ->leftJoin('v.Pics ph')
               ->orderBy('v.date DESC'); 

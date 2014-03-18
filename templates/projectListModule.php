@@ -68,9 +68,14 @@
 				<li class="clearfix">
 					<img src= <?php echo $srcImg; ?> class="thumb-small side-img"/>
 					<div class="content-description bg-txt">
-						<h3><?php echo $title; ?></h3>
-						<p><?php echo $description; ?></p>
-						<a href=<?php echo $anchor.$projectId; ?> class='linkToModule'>View post</a>
+						<h3><?php echo $title;
+							if(strlen($title)==40) echo '...';?>
+						</h3>
+						<p>
+							<?php echo $description; 
+							if(strlen($description)==125) echo '...';?>
+						</p>
+						<a href=<?php echo $anchor.$projectId; ?> class='linkToModule'>View project</a>
 					</div>
 				</li>
 <?php

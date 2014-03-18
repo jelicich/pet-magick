@@ -98,7 +98,7 @@ class BOProjects{
         $userCount = Doctrine::getTable('Projects')->count();
         $user = Doctrine::getTable('Projects')
         ->createQuery()
-        ->select('*') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+        ->select('p.ID_PROJECT, LEFT(p.TITLE,40) AS TITLE, LEFT(p.DESCRIPTION, 125) AS DESCRIPTION, p.USER_ID, p.ALBUM_ID') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
         ->from('Projects p')
         //->leftJoin('o.Pics ph') 
        // ->limit(1)
@@ -118,7 +118,7 @@ class BOProjects{
     function getProjectListByUser($id)
     {
       $q = Doctrine_Query::create()
-        ->select('p.ID_PROJECT, p.TITLE, p.DESCRIPTION, p.USER_ID, p.ALBUM_ID, a.ID_ALBUM, f.PIC')
+        ->select('p.ID_PROJECT, LEFT(p.TITLE,65) AS TITLE, LEFT(p.DESCRIPTION,125) AS DESCRIPTION, p.USER_ID, p.ALBUM_ID, a.ID_ALBUM, f.PIC')
         ->from('Projects p')
         ->leftJoin('p.Albums a')
         ->leftJoin('a.Pics f')

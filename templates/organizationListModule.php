@@ -48,9 +48,11 @@
 				<li class="clearfix">
 					<img src= <?php echo $srcImg; ?> class="thumb-small side-img"/>
 					<div class="content-description bg-txt">
-						<h3><?php echo $name ?></h3>
-						<p><?php echo $description ?></p>
-						<a href=<?php echo '#'.$orgId ?> class='linkToModule'>View post</a>
+						<h3><?php echo $name;
+						if(strlen($name)==65) echo '...'; ?></h3>
+						<p><?php echo $description;
+						if(strlen($description) == 125) echo '...'; ?></p>
+						<a href=<?php echo '#'.$orgId ?> class='linkToModule'>View organization</a>
 					</div>
 				</li>
 <?php

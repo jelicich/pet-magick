@@ -31,7 +31,7 @@ class BOOrganizations{
        
          $q = Doctrine_Query::create()
 
-              ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+              ->select('o.ID_ORGANIZATION, LEFT(o.NAME,65) AS NAME, LEFT(o.DESCRIPTION,125) AS DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
               ->from('Organizations o')
               ->leftJoin('o.Pics ph'); 
           
@@ -104,7 +104,7 @@ class BOOrganizations{
     function getOrgListByUser($id)
     {
       $q = Doctrine_Query::create()
-        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC')
+        ->select('o.ID_ORGANIZATION, LEFT(o.NAME,65) AS NAME, LEFT(o.DESCRIPTION,125) AS DESCRIPTION, o.USER_ID, ph.PIC')
         ->from('Organizations o')
         ->leftJoin('o.Pics ph')
         ->where('o.USER_ID = ?', $id);

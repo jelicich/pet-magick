@@ -36,7 +36,12 @@ get_header(); ?>
               </div>
               <div class="postmetadata">
                 <div class="author">
-                  <?php if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), '100' ); }?>
+                  <?php
+                    if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), '100' ); }
+                    //FUNCION DE ABAJO trae el id, con esto tengo q levantar la imagen el usuario.
+                    //$author_ID=get_the_author_meta('ID');
+            
+                  ?>
                   <div class="authorinfo">
                     <h3>About <span rel="author">
                       <?php the_author_posts_link(); ?>

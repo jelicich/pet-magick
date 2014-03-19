@@ -62,9 +62,13 @@
 										{
 								?>
 										
-											<li>
+											<li class="sliderCap">
 												<a class='link-img'  href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> >
 													<img class="thumb-mid" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> />
+													<dl class='hidden'>
+														<dt><?php echo $album[$i]['CAPTION']; ?> </dt>
+													<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
+													</dl>
 												</a>
 												<!-- <p class="img-caption"><?php //echo $album[$i]['CAPTION']; ?></p> -->
 											</li>
@@ -176,6 +180,7 @@
 	deleteVideo();
 	flexslider();
 	video();
+	show_img("#pet-profile");
 </script>
 
 

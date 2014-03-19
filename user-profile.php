@@ -241,8 +241,9 @@
 	news();
 	vetTalkAnswer();
 	favorites();
-	modalImg();
-   
+	//modalImg();
+	//show_img();
+
 	$('.nav-tabs a').click(function (e)
 	{
 		e.preventDefault();

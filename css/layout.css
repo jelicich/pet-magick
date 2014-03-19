@@ -149,10 +149,6 @@ p,span{
 	padding: 0;
 }
 
-.btn-danger{
-	color: #ffffff !important;
-}
-
 .error{
 	border:1px solid #d95248;
 	background: rgba(186,0,0,0.2);
@@ -186,11 +182,22 @@ p,span{
 
 
 .grid-thumbs li a:hover .hidden,
-.videoCap  a:hover .hidden{
+.videoCap  a:hover .hidden, 
+.sliderCap a:hover .hidden{
 	display: block;
 }
 
-
+.sliderCap dl{
+	max-height: 35%; 
+	min-height: 35%;
+	width: 80px;
+	position: absolute;
+	bottom: 0px;
+	background-color: rgba(217, 82, 72, 0.6);
+	margin: 0;
+	padding: 5px;
+	color: #FFFFFF;
+}
 
 .videoCap  dl{
 	max-height: 35%; 
@@ -217,7 +224,8 @@ p,span{
 }
 
 .grid-thumbs li dl dt, 
-.videoCap  dl dt{
+.videoCap  dl dt, 
+.sliderCap dl dt{
 	font-size: 12px;
 	line-height: 14px;
 }
@@ -549,7 +557,6 @@ p,span{
 	padding: 10px 0;
 	background: #d95248;
 	font-size: 12px;
-	color: #ffffff;
 
 	/* fixed bottom */
 	position:absolute;
@@ -559,13 +566,13 @@ p,span{
 }
 
 #footer a{
-	color: #ffffff;
+	color: #000000;
 }
 
 #footer li{
 	float: left;
 	margin: 0;
-	border-left: 1px solid #ffffff;
+	border-left: 1px solid #a6322a;
 	padding:0 5px;
 	line-height: 12px;
 }
@@ -2054,32 +2061,77 @@ Tunear!!!
 	font-weight: bold;
 }
 
+/* ventana modal para imagen */
 
 
-/* ventanas modales para imagenes y video*/
+.modaljq{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(230, 230 ,230, 0.5);
+	z-index: 200;
+	top:0;
+	left: 0;
+}
 
-.modalWindows, 
-#modalBg{
+.modalwr{
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	margin: 100px auto;
+	padding:30px 0 30px;
+	position:absolute;
+}
+
+.imggr{
+	max-width: 100%;
+	max-height: 100%;
+	border:5px solid #fff;
+	border-top: 25px solid #fff;
+	background: white;
+}
+
+
+.delnod{
+	position: absolute;
+	margin: 0 0 0 -25px;
+	cursor:pointer;
+}
+
+
+.hd:hover, .texto:hover{
+    -webkit-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+/* modal video */
+.modalWindows{
 	display: none ;
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255,255,255, 0.7);
+	background-color: rgba(230, 230 ,230, 0.5);
 	top:0;     
 	left:0;     
 	z-index:999;
 }
 
-#close , #closeA{
+#close{
 	margin-left: 460px;
 }
 
-#closeBlock, #closeBlockImg{
+#closeBlock{
 	width: 480px;
 	height: auto;
 	margin: 100px auto;
 	position: relative;
 }
+
+
+
 
 #pop-up-click{
 	display: none;

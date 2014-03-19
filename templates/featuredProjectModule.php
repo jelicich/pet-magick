@@ -139,6 +139,7 @@ if($t < $flag){
 ?>
 
 <script type="text/javascript">
-	modalImg();
+	//	modalImg();
+	
 	start_scroll('scrollable-text', false);
 </script>

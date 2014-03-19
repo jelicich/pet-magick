@@ -7,7 +7,7 @@ function imgVideoUploader(whatFor, modulo){
 		    file_id.type = 'file';
 		*/
 		var file_id = byid('file_id');
-		
+	    var flagidation = 0;
 		var allCaption = [];
 		var caption;
 		var filesSelected = []; 
@@ -73,7 +73,8 @@ function imgVideoUploader(whatFor, modulo){
 		function errMsg(msg){
 			removeErr();
 			
-			var errorMsg = create('span');
+			var errorMsg = create('div');
+				errorMsg.className = "alert alert-danger"
 			errorMsg.id = 'err';
 			errorMsg.innerHTML = msg;
 			//COMENTO ESTA LINEA PARA Q NO IMPRIMA EL ARRAY DE LO QUE SE CARGA
@@ -91,6 +92,7 @@ function imgVideoUploader(whatFor, modulo){
 		function removeErr(){
 
         	if(byid('err')){ byid('err').parentNode.removeChild(byid('err')); }
+        	flagidation = 0;
         } // end removeErr
 
         function refreshHeader(){
@@ -368,20 +370,24 @@ function imgVideoUploader(whatFor, modulo){
 						  	if(mime.indexOf(this.files[0].type) == -1){ // el default era ! -1, recordar por las dudas!!
 			            			
 			            		errMsg('formato invalido desde js');
+			            		flagidation = 1;
 			            			
-		            		}else if(this.files[0].size >= 900000000){ // Ver q numero necesitamos
+		            		}else if(this.files[0].size >= 23000000){ // Ver q numero necesitamos
 
 		            			errMsg('Exede el peso desde js');
-		            			
+		            			flagidation = 1;
+
 		            		}if( amount != 'video' && mimeImg.indexOf(this.files[0].type) == -1){
 
 		            			errMsg('Pasale el parametro para video desde js');
 		            			var noRemoveInput = true;
+		            			flagidation = 1;
 
 		            		}if( amount == 'video' && mimeVideo.indexOf(this.files[0].type) == -1){
 
 		            			errMsg('Pasale el parametro para video desde js');
 		            			var noRemoveInput = true;
+		            			flagidation = 1;
 		            		}
 		            		
 		            		var reader = new FileReader();
@@ -509,10 +515,11 @@ function imgVideoUploader(whatFor, modulo){
 				  }// end onchange
 
 				  uploadBtn.onclick = function (evt) { // este parametro creo q no va...
-
+				  	
 				  			//VALIDATION
 					  		var mandfields = document.querySelectorAll('.mandatory');
-					  		var flagidation = 0;
+					  		//var flagidation = 0;
+					  		
 					  		for(var i = 0; i < mandfields.length; i++)
 					  		{
 					  			// clear fields
@@ -738,11 +745,11 @@ function imgVideoUploader(whatFor, modulo){
 					  		gifload.height = '25';
 					  		byid('modal-edit').appendChild(gifload);
 
-						  	if (amount != 'profile'){ 
-						  		if( modulo != 'admin'){/* NUEVO PARA ADMIN */
-						  			byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
-						  		}
-						  	}
+						  	//if (amount != 'profile'){ 
+						  		//if( modulo != 'admin'){/* NUEVO PARA ADMIN */
+						  		//	byid('contCap').parentNode.removeChild(byid('contCap')); // Elimina los captions
+						  		//}
+						  	//}
 					  		if (amount == 'profile' || amount == 'video'){
 
 				   		 		  file_id.id = 'file_id';

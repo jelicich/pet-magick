@@ -117,7 +117,8 @@
 		
 		<script type="text/javascript">
 			editUserProfile();
-			
+			show_img('#user-about');
 			start_scroll('scrollable-text', false);
+
 		</script>
 		<!-- END about module -->

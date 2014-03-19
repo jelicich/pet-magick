@@ -1,7 +1,7 @@
 						
 
 					<div class="mod-header">
-						<h2>Edit pet video</h2>
+						<h2>Edit pet video111</h2>
 					</div>
 
 					<div class="mod-content">
@@ -9,6 +9,7 @@
 						<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
+							<div id="upload-status"></div>
 							<div class="table">
 								<ul class="clearfix">
 									<li class="new-pic-cont" style="width:100%">

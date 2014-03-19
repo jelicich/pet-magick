@@ -1367,55 +1367,6 @@ function selectedFromList(divCont, ajaxFile){ // ver si necesito pasar el div o 
 }//end selectedFromList
 
 
-
-
-function modalImg(){ // en Jquery_player.php hay una funcion parecida en jquery. Ver si se puede optimizar...
-
-	var modalImgs = document.querySelectorAll('.link-img'); 
-
-	for(var i = 0; i < modalImgs.length; i++){
-
-		modalImgs[i].onclick = function(){
-			
-			preventEventsDefault();
-			var modalBg = create('div');
-				modalBg.id = 'modalBg';
-				//modalBg.className = 'modalWindows';
-				modalBg.style.display = 'block';
-				document.body.appendChild(modalBg);
-
-			var closeBlock = create('div');
-				closeBlock.id = 'closeBlockImg';
-				byid('modalBg').appendChild(closeBlock);
-
-			var closeA = create('a');
-				closeA.id = 'closeA';
-				closeA.href = '#';
-				byid('closeBlockImg').appendChild(closeA);
-
-			var closeImg = create('img');
-				closeImg.src = 'img/close.png';
-				closeImg.alt = 'closeImg';
-				byid('closeA').appendChild(closeImg);
-
-			var modalImg = create('img');
-				modalImg.src = this.href;
-				modalImg.alt = this.href;
-				byid('closeBlockImg').appendChild(modalImg);
-
-			closeA.onclick = function(){
-
-				preventEventsDefault();
-				modalBg.parentNode.removeChild(modalBg);
-			}
-		}
-	}
-}// end modalImg
-
-
-
-
-
 function listByCategory(ajaxFile){
 
 	var pets = byid('menuByPet').getElementsByTagName('a');
@@ -1586,4 +1537,59 @@ function favorites(){
 	}
 }
 
+
+
+
+/*
+function modalImg(){ // en Jquery_player.php hay una funcion parecida en jquery. Ver si se puede optimizar...
+
+	var modalImgs = document.querySelectorAll('.link-img'); 
+
+	for(var i = 0; i < modalImgs.length; i++){
+
+		modalImgs[i].onclick = function(){
+			
+			preventEventsDefault();
+			var modalBg = create('div');
+				modalBg.id = 'modalBg';
+				//modalBg.className = 'modalWindows';
+				modalBg.style.display = 'block';
+				document.body.appendChild(modalBg);
+
+			var modalContent = create('div');
+				modalContent.id = 'modalContent';
+				byid('modalBg').appendChild(modalContent);
+
+			var closeBlock = create('div');
+				closeBlock.id = 'closeBlockImg';
+				byid('modalContent').appendChild(closeBlock);
+
+			/*var closeA = create('a');
+				closeA.id = 'closeA';
+				closeA.href = '#';
+				byid('closeBlockImg').appendChild(closeA);
+
+			var closeImg = create('img');
+				closeImg.src = 'img/close.png';
+				closeImg.alt = 'closeImg';
+				byid('closeA').appendChild(closeImg);
+
+			var modalImg = create('img');
+				modalImg.src = this.href;
+				modalImg.alt = this.href;
+				modalImg.id = 'displayimage';
+				modalImg.style.margin = "0 auto";
+				byid('closeBlockImg').appendChild(modalImg);
+
+		/*	closeA.onclick = function(){
+
+				preventEventsDefault();
+				modalBg.parentNode.removeChild(modalBg);
+			}
+		}
+	}
+}// end modalImg
+
+
+ */
 

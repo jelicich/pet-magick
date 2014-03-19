@@ -74,7 +74,8 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	</div>
 </div>
 <script type="text/javascript">
-	modalImg();
+	//modalImg();
+	show_img('.link-img');
 	start_scroll('scrollable-text', false);
 </script>
 

@@ -13,44 +13,65 @@
 							<?php
 									if($p->isOwn())
 									{
-										echo '<a href="#'.$p->getId().'" class="btn" id="edit-pet-album">Edit album</a>';
+										//echo '<a href="#'.$p->getId().'" class="btn" id="edit-pet-album">Edit album</a>';
 									}
 							?>
-							<div class="slider-small">
-								<?php
-									
+							<div class="flexslider carousel">
+								<ul class="slides">
 
-									if($p->getAlbumId())
-									{
+
+								<?php
+
+									//if($p->getAlbumId())
+									//{
 										$album = $p->getAlbum($p->getAlbumId());
-									
-										
-									
-								?>
-										<ul class="clearfix">
-								<?php
+										$t = sizeof($album);
+										$flag = 6;
+										$default = 0;
 
-										for($i=0;$i<sizeof($album);$i++)
+										for($i=0; $i < $t; $i++)
 										{
 								?>
 										
-											<li>
-												<a class='link-img' href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> ><img class="thumb-small" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> /></a>
-												<p class="img-caption"><?php echo $album[$i]['CAPTION']; ?></p>
+											<li class="sliderCap">
+												<a class='link-img'  href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> >
+													<img class="thumb-mid" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> />
+													<dl class='hidden'>
+														<dt><?php echo $album[$i]['CAPTION']; ?> </dt>
+													<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
+													</dl>
+												</a>
+												<!-- <p class="img-caption"><?php //echo $album[$i]['CAPTION']; ?></p> -->
 											</li>
 											
 								<?php
 										}//end for
+
+										if($t < $flag){
+										
+											$default = $flag - $t;
+
+											for ($i=0; $i < $default; $i++) { 
+
+												echo "<li>
+														<a class='link-img' href= 'img/users/default.jpg' > 
+															<img class='thumb-mid' src= 'img/users/thumb/default.jpg' />
+														</a> 
+													</li>";
+											}
+										}
 								?>
-										</ul>
+								 	</ul>
 								<?php
-									}//END IF
+									//}//END IF
 								?>
 							</div>
+
 							
 							<script type="text/javascript">
 								editPetAlbum();
-								modalImg();
-
+								//modalImg();
+								show_img("#pet-album");
+								flexslider();
 
 							</script>

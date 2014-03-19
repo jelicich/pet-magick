@@ -31,7 +31,7 @@
 								<p id="upload-status"></p>
 							  	<pre id="result"></pre>
 							  	-->
-							  	
+							  	<div id="upload-status"></div>
 								
 
 								<div class="table">

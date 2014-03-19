@@ -10,9 +10,11 @@
 
 				<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 					<!--
-					<p id="upload-status"></p>
+					
 					<pre id="result"></pre>
 					-->
+
+					<div id="upload-status"></div>
 				
 					<div class="table">
 						<ul class="clearfix">

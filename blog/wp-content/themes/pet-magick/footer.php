@@ -33,6 +33,8 @@
   var f = autoSearch('finder');
   f.ini();
 
+  show_img('a[href$=".jpg"]');
+
 </script>
 
 

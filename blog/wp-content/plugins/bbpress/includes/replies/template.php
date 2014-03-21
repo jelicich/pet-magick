@@ -1235,10 +1235,39 @@ function bbp_reply_author_link( $args = '' ) {
 			if ( empty( $anonymous ) && bbp_user_has_profile( bbp_get_reply_author_id( $reply_id ) ) ) {
 
 				// Assemble the links
+				//CUSTOM PET MAGICK flag
+				$flag_link_text = 0;
+				//END CUSTOM
 				foreach ( $author_links as $link => $link_text ) {
+					$flag_link_text++;
 					$link_class = ' class="bbp-author-' . $link . '"';
-					$author_link[] = sprintf( '<a href="%1$s"%2$s%3$s>%4$s</a>', esc_url( $author_url ), $link_title, $link_class, $link_text );
+
+					//$author_link[] = sprintf( '<a href="%1$s"%2$s%3$s>%4$s</a>', esc_url( $author_url ), $link_title, $link_class, $link_text );
+					
+					//CUSTOM PET MAGICK
+					if($flag_link_text == 1)
+					{
+						$pos = strpos($author_url, '='); 
+						$author_ID = substr($author_url, $pos+1);
+
+		    			include_once '../php/classes/BOUsers.php';
+			            $pmuser = new BOUsers;
+			            $pic = $pmuser->getProfilePicWP($author_ID);
+			            //var_dump($pic);
+			            $rep_link_text = '<img src="'.$pic['THUMB'].'" width="80" height="80" />';
+		    			
+						$author_link[] = sprintf( '<a href="%1$s"%2$s%3$s>%4$s</a>', esc_url( $author_url ), $link_title, $link_class, $rep_link_text );		
+					}
+					else
+					{
+						$author_link[] = sprintf( '<a href="%1$s"%2$s%3$s>%4$s</a>', esc_url( $author_url ), $link_title, $link_class, $link_text );	
+					}
+					
+					//END CUSTOM
 				}
+				//CUSTOM
+				$flag_link_text = 0;
+				//END CUSTOM
 
 				if ( true === $r['show_role'] ) {
 					$author_link[] = bbp_get_reply_author_role( array( 'reply_id' => $reply_id ) );

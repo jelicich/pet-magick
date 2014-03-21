@@ -105,13 +105,23 @@ function simonwpframework_comment( $comment, $args, $depth ) {
     <div class="comment-author vcard"> 
     	<?php 
     		//echo get_avatar( $comment, 40 ); 
-    	//BUSCAR COMO OBTENER EL ID del comentador
-    		$author_ID = get_the_author_meta('ID');
-            include_once '../php/classes/BOUsers.php';
-            $pmuser = new BOUsers;
-            $pic = $pmuser->getProfilePicWP($author_ID);
-            //var_dump($pic);
-            echo '<a href="'.$pic['PIC'].'"><img src="'.$pic['THUMB'].'" width="80" height="80" /></a>'
+    	
+    		$currentComment = get_comment_ID();
+    		$infoCurrent = get_comment($currentComment, ARRAY_A);
+    		$author_ID = $infoCurrent['user_id'];
+    		if($author_ID != 0 )
+    		{
+    			include_once '../php/classes/BOUsers.php';
+	            $pmuser = new BOUsers;
+	            $pic = $pmuser->getProfilePicWP($author_ID);
+	            //var_dump($pic);
+	            echo '<a href="user-profile.php?u='.$author_ID.'"><img src="'.$pic['THUMB'].'" width="80" height="80" /></a>';
+    		}
+    		else
+    		{
+    			echo '<img src="'.$pic['THUMB'].'" width="80" height="80" />';
+    		}
+            
     	?> 
     	<?php printf( __( '%s <span class="says">says:</span>', 'simonwpframework' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?> 
 

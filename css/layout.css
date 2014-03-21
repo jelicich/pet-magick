@@ -149,6 +149,10 @@ p,span{
 	padding: 0;
 }
 
+.btn-danger{
+	color: #ffffff !important;
+}
+
 .error{
 	border:1px solid #d95248;
 	background: rgba(186,0,0,0.2);
@@ -557,7 +561,7 @@ p,span{
 	padding: 10px 0;
 	background: #d95248;
 	font-size: 12px;
-
+	color: #ffffff;
 	/* fixed bottom */
 	position:absolute;
 	bottom:0;
@@ -566,13 +570,13 @@ p,span{
 }
 
 #footer a{
-	color: #000000;
+	color: #ffffff;
 }
 
 #footer li{
 	float: left;
 	margin: 0;
-	border-left: 1px solid #a6322a;
+	border-left: 1px solid #ffffff;
 	padding:0 5px;
 	line-height: 12px;
 }
@@ -2076,16 +2080,14 @@ Tunear!!!
 
 .modalwr{
 	text-align: center;
-	height: 100%;
 	width: 100%;
-	margin: 100px auto;
-	padding:30px 0 30px;
+	margin: 100px auto 0;
 	position:absolute;
 }
 
 .imggr{
-	max-width: 100%;
-	max-height: 100%;
+	max-height: 75%;
+	max-width: 75%;
 	border:5px solid #fff;
 	border-top: 25px solid #fff;
 	background: white;
@@ -3422,6 +3424,15 @@ body.my-account #bbpress-forums {
 	border-radius: 0;
 	margin-bottom: 10px;
 }
+.bbp-topic-freshness-author img, .bbp-forum-description img{
+	width: 20px;
+}
+/*
+end bbpress
+=========================================================
+*/
+
+
 
 #favorite-toggle a{
 	color: #ffffff;
@@ -3616,4 +3627,10 @@ h2.err{
 p.err{
 	color: #d95248;
 	font-size: 16px
+}
+.link-img{
+	display:block;
+}
+a[href$=".jpg"]{
+	display: block;
 }

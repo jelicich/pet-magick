@@ -248,7 +248,7 @@ function video(){
 
 
 
-
+/*
 function show_img(module){
 
 	var close = 'img/close.png';
@@ -260,6 +260,41 @@ function show_img(module){
 
          var ruta = this.href;
 		 var img = '<img class="imggr" src="' + ruta + '"/>';
+
+		$('body').append("<div class='modaljq'><div class='modalwr'>"+ img + "<img src='"+ close +"' width='22' height='22' class='delnod'/></div></div>");
+		$('.modaljq').css("overflow", "auto");
+		$('html, body').css("overflow", "hidden");
+		$("body").css("padding-right", "17px");
+		$('.modaljq').hide();
+		$('.modaljq').fadeIn();
+		
+		$('.delnod').click(function(){
+
+			$('.modaljq').fadeOut(300, function()
+				{
+					$('.modaljq').remove();
+					$('html, body').css("overflow", "auto");
+					$("body").css("padding-right", "0");
+				});
+			
+		});
+
+	});
+
+}
+*/
+
+function show_img(anchor){
+
+	var close = 'img/close.png';
+    //var img = $('.link-img');
+
+    $(anchor).click(function(e){
+    		//console.log(this.href);
+          e.preventDefault();
+
+         //var ruta = this.href;
+		 var img = '<img class="imggr" src="' + this.href + '"/>';
 
 		$('body').append("<div class='modaljq'><div class='modalwr'>"+ img + "<img src='"+ close +"' width='22' height='22' class='delnod'/></div></div>");
 		$('.modaljq').css("overflow", "auto");

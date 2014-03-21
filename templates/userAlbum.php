@@ -29,7 +29,12 @@
 											<a class='link-img' href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> >
 												<img  class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> />
 														<dl class='hidden'>
-															<dt><?php echo $a[$i]['CAPTION'] ?></dt>
+															<dt>
+																<?php 
+																	if(strlen($a[$i]['CAPTION'])>33) echo substr($a[$i]['CAPTION'], 0, 33).'...';
+																	else echo $a[$i]['CAPTION'];
+																?>
+															</dt>
 														<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 														</dl>
 											</a>

@@ -1976,6 +1976,34 @@ function bbp_single_forum_description( $args = '' ) {
 		} else {
 			$topic_text      = sprintf( _n( '%s topic', '%s topics', $tc_int, 'bbpress' ), $topic_count );
 		}
+		
+		//CUSTOM
+
+			function replace_between($beginning, $end, $string, $newString) 
+			{
+			  $beginningPos = strpos($string, $beginning);
+			  $endPos = strpos($string, $end);
+			  if (!$beginningPos || !$endPos) {
+			    return $string;
+			  }
+
+			  $textToDelete = substr($string, $beginningPos, ($endPos + strlen($end)) - $beginningPos);
+
+			  return str_replace($textToDelete, $newString, $string);
+			}
+			
+			//var_dump($last_reply);
+
+    		$author_ID = get_post_field( 'post_author', $last_reply);
+
+			include_once '../php/classes/BOUsers.php';
+            $pmuser = new BOUsers;
+            $pic = $pmuser->getProfilePicWP($author_ID);
+
+			$out = replace_between('src=', " class='avatar avatar-14 photo'", $last_updated_by, 'src="'.$pic['THUMB'].'" class="avatar avatar-14 photo"');
+			$last_updated_by = $out;
+
+		//END CUSTOM
 
 		// Forum has active data
 		if ( !empty( $last_active ) ) {

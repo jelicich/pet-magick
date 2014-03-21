@@ -3424,7 +3424,7 @@ body.my-account #bbpress-forums {
 	border-radius: 0;
 	margin-bottom: 10px;
 }
-.bbp-topic-freshness-author img, .bbp-forum-description img{
+.bbp-topic-freshness-author img, .bbp-forum-description img, .bbp-topic-description img {
 	width: 20px;
 }
 /*

@@ -3312,7 +3312,36 @@ function bbp_single_topic_description( $args = '' ) {
 		$last_reply = bbp_get_topic_last_reply_id( $topic_id );
 		if ( !empty( $last_reply ) ) {
 			$last_updated_by = bbp_get_author_link( array( 'post_id' => $last_reply, 'size' => $r['size'] ) );
-			$retstr          = sprintf( esc_html__( 'This topic contains %1$s, has %2$s, and was last updated by %3$s %4$s.', 'bbpress' ), $reply_count, $voice_count, $last_updated_by, $time_since );
+			
+			//CUSTOM
+
+			function replace_between($beginning, $end, $string, $newString) 
+			{
+			  $beginningPos = strpos($string, $beginning);
+			  $endPos = strpos($string, $end);
+			  if (!$beginningPos || !$endPos) {
+			    return $string;
+			  }
+
+			  $textToDelete = substr($string, $beginningPos, ($endPos + strlen($end)) - $beginningPos);
+
+			  return str_replace($textToDelete, $newString, $string);
+			}
+			
+			//var_dump($last_reply);
+
+    		$author_ID = get_post_field( 'post_author', $last_reply);
+
+			include_once '../php/classes/BOUsers.php';
+            $pmuser = new BOUsers;
+            $pic = $pmuser->getProfilePicWP($author_ID);
+
+			$out = replace_between('src=', " class='avatar avatar-14 photo'", $last_updated_by, 'src="'.$pic['THUMB'].'" class="avatar avatar-14 photo"');
+			
+			$retstr          = sprintf( esc_html__( 'This topic contains %1$s, has %2$s, and was last updated by %3$s %4$s.', 'bbpress' ), $reply_count, $voice_count, $out, $time_since );
+			//END CUSTOM
+
+			//$retstr          = sprintf( esc_html__( 'This topic contains %1$s, has %2$s, and was last updated by %3$s %4$s.', 'bbpress' ), $reply_count, $voice_count, $last_updated_by, $time_since );
 
 		// Topic has no replies
 		} elseif ( ! empty( $voice_count ) && ! empty( $reply_count ) ) {

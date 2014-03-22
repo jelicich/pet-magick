@@ -36,9 +36,11 @@
 									</ul>
 								</div>
 
-								<a href=<?php echo '"#'.$idUsr.'"' ?> class="btn" id="upload-vet-talk">Create a new article</a>
+								<input type="button" value="Create a new Article" name="<?php echo $idUsr ?>" class="btn" id="upload-vet-talk" />
+								<!-- <a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-vet-talk">Create a new article</a> -->
 								
 								<script type="text/javascript">
+
 									uploadVetTalk();
 									deleteVetTalk();
 									start_scroll_profile('adminVetArticle', false);

@@ -52,7 +52,9 @@
 						if(strlen($name)==65) echo '...'; ?></h3>
 						<p><?php echo $description;
 						if(strlen($description) == 125) echo '...'; ?></p>
-						<a href=<?php echo '#'.$orgId ?> class='linkToModule'>View organization</a>
+
+						<span id="<?php echo $orgId ?>" class='linkToModule' />View organization</span>
+						<!-- <a href=<?php //echo '#'.$orgId ?> class='linkToModule'>View organization</a> -->
 					</div>
 				</li>
 <?php

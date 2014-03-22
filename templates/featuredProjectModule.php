@@ -140,6 +140,6 @@ if($t < $flag){
 
 <script type="text/javascript">
 	//	modalImg();
-	
+	show_img('.link-img');
 	start_scroll('scrollable-text', false);
 </script>

@@ -1,5 +1,5 @@
 <?php
-
+//var_dump($_POST); exit;
 session_start();
 include_once "../php/classes/BOOrganizations.php";
 include_once "../php/classes/BOPics.php";
@@ -20,7 +20,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		$id_last_insert = $class->upload($query, $path);
 		//var_dump($id_last_insert);
 		//le agrego a post la imagen;
-		$_POST['pic']=$id_last_insert;
+		$_POST['pic'] = $id_last_insert;
+		//echo $_POST['pic']; exit;
 		//echo $class->getErrors();
 	}//create query
 
@@ -66,6 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 }
 
+if(!isset($_POST['pic'])){ $_POST['pic'] = null; }
 
 $dato = array(
 

@@ -320,3 +320,37 @@ function show_img(anchor){
 
 
 
+
+function show_img_up(module){
+
+	var close = 'img/close.png';
+    var img = $('.link-img');
+
+    $(module).find(img).click(function(e){
+
+          e.preventDefault();
+
+         var ruta = this.href;
+		 var img = '<img class="imggr" src="' + ruta + '"/>';
+
+		$('body').append("<div class='modaljq'><div class='modalwr'>"+ img + "<img src='"+ close +"' width='22' height='22' class='delnod'/></div></div>");
+		$('.modaljq').css("overflow", "auto");
+		$('html, body').css("overflow", "hidden");
+		$("body").css("padding-right", "17px");
+		$('.modaljq').hide();
+		$('.modaljq').fadeIn();
+		
+		$('.delnod').click(function(){
+
+			$('.modaljq').fadeOut(300, function()
+				{
+					$('.modaljq').remove();
+					$('html, body').css("overflow", "auto");
+					$("body").css("padding-right", "0");
+				});
+			
+		});
+
+	});
+
+}

@@ -64,7 +64,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		}// end foreach
 	}// end else
 
-
+	if(!isset($_POST['pic'])){ $_POST['pic'] = null; }
+	
 	$query = array(
 
 		'title' => $_POST['title'],

@@ -34,8 +34,9 @@ class BOQuestions{
     }
 
     function getQuestions()
-    {
-    	$ar = $this->table->getQuestions($id);
+    {   
+        //$ar = $this->table->getQuestions($id);
+    	$ar = $this->table->getQuestions();
     	for($i = 0; $i<sizeof($ar); $i++)
     	{
     		if(isset($ar[$i]['Users']['Pics']['PIC']))

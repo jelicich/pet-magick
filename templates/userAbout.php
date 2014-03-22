@@ -117,7 +117,7 @@
 		
 		<script type="text/javascript">
 			editUserProfile();
-			show_img('#user-about');
+			show_img_up('#user-about');
 			start_scroll('scrollable-text', false);
 
 		</script>

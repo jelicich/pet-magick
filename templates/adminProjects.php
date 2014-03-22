@@ -47,7 +47,8 @@
 												</div>
 											</div> 
 					-->
-											<a href=<?php echo '"#'.$list[$i]['ID_PROJECT'].'"'?> class="btn btn-danger delete-project">Delete</a>
+											<input type="button" value="Delete" name="<?php echo $list[$i]['ID_PROJECT'] ?>" class="btn btn-danger delete-project" />
+											<!-- <a href=<?php //echo '"#'.$list[$i]['ID_PROJECT'].'"'?> class="btn btn-danger delete-project">Delete</a> -->
 										</div>
 									</li>
 					<?php
@@ -56,12 +57,15 @@
 					?>
 							</ul>
 						</div>
-						
-						<a href=<?php echo '"#'.$idUsr.'"' ?> class="btn" id="upload-project">Create a new Project</a>
+
+						<input type="button" value="Create a new Project" name="<?php echo $idUsr ?>" class="btn" id="upload-project" />
+						<!-- <a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-project">Create a new Project</a> -->
+
 					<script type="text/javascript">
+						
 						uploadProject();
 						deleteProject();
-						 flexslider();
+						flexslider();
 						start_scroll_profile('adminProject', false);
 						
 					</script>

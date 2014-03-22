@@ -51,6 +51,6 @@
 
 							<script type="text/javascript">
 								editUserAlbum();
-								show_img("#user-album");
+								show_img_up("#user-album");
 								start_scroll_profile('albumModule', false);
 							</script>

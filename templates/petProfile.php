@@ -180,7 +180,7 @@
 	deleteVideo();
 	flexslider();
 	video();
-	show_img("#pet-profile");
+	show_img_up("#pet-profile");
 </script>
 
 

@@ -4,6 +4,18 @@
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+#form-id input[type="text"] {
+     border-radius: 4px 4px 4px 4px;
+    color: #555555;
+    display: inline-block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+
 a{
 	text-decoration: none;
 	font-weight: bold;
@@ -1501,6 +1513,11 @@ width: 100% !important;
 	margin: 10px 0 10px 18px;
 }
 
+.linkToModule{
+	font-weight: bold;
+	cursor: pointer;
+}
+
 /* ------------------------------ pet loss */
 
 .pet-loss-mod .grid-thumbs li dl{
@@ -1892,11 +1909,12 @@ Tunear!!!
 	background: #ea574c;
 }
 
-#wrap-conversations li a{
+#wrap-conversations li div{
 	color: #FFFFFF;
 	text-decoration: none;
 	display: block;
 	padding: 10px;
+	cursor: pointer;
 }
 
 #wrap-conversations li:last-child{
@@ -3500,9 +3518,6 @@ end bbpress
 	margin-left: 10px;
 }
 
-.table ul li.odd{
-	
-}
 
 .table ul li input{
 	width: 270px;

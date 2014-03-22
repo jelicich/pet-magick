@@ -4,7 +4,6 @@ SEMANA 3/2/2014
 - maquetacion
 	- user profile - J E
 	- formatear nombre de autor en vet talk articulo
-- Imprimir mensajes de error imgUploader (creo q solo hay q crear un div)
 - ImgUploader ie (ESTEBAN // JULIAN)
 - ejecutar funciones de edicion solo cuando isset id, osea logueado
 
@@ -77,15 +76,6 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 
 BUGS!!!
 =======
--Bug: subiendo organizacion: 
-		1. Click en upload organization
-		2. Llenar los campos obligatorios
-		3. Click save
-		R: Guarda la organizacion pero tira error en la imagen
-		Notice: Undefined index: pic in E:\xampp\htdocs\pet-magick\ajax\uploadOrganization.php on line 75
-		Lo mismo en vet talk
-		Notice: Undefined index: pic in E:\xampp\htdocs\pet-magick\ajax\uploadVetTalk.php on line 73
-		(NO pasa en projects, ver diferencia)
 
 -Bug: cuando borras organizacion no borra la imagen
 -Bug: cuando borras project no borra la imagen

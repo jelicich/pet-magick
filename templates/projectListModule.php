@@ -18,11 +18,13 @@
 		if(isset($_GET['p'])){
 			
 			$limit = 6; // esto es para q ande el scroll cuando vengo del index
+			$anchor = '';
 			echo "<ul class='mod-content pet-loss-mod-list'>";
 
 		}else{
 
 			$limit = 3;// esta es la lista de projects en el index
+			
 			echo "<ul class='mod-content pet-loss-mod-list ie-project'>";
 
 		}
@@ -30,7 +32,7 @@
 	}else{
 
 		$limit = 6;// esta es la lista de projectos por default en projects
-		$anchor = '#';
+		$anchor = '';
 		echo "<ul class='mod-content pet-loss-mod-list'>";
 	}
 
@@ -75,7 +77,23 @@
 							<?php echo $description; 
 							if(strlen($description)==125) echo '...';?>
 						</p>
-						<a href=<?php echo $anchor.$projectId; ?> class='linkToModule'>View project</a>
+<?php
+				if($anchor == ''){
+?>
+							<span id="<?php echo $anchor.$projectId; ?>" class='linkToModule' />View project</span>		
+<?php			
+				}else{
+?>
+							<a href=<?php echo $anchor.$projectId; ?> class='linkToModule'>View project</a>
+<?php
+
+				}
+
+?>
+
+						
+						<!-- <a href=<?php //echo $anchor.$projectId; ?> class='linkToModule'>View project</a> -->
+
 					</div>
 				</li>
 <?php

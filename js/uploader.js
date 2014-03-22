@@ -454,18 +454,14 @@ function imgVideoUploader(whatFor, modulo){
 										   }
 
 									    removeErr();
-					                    
-					                   
-					                    
 
-
-					                    selectedImg.onclick = function(){
+									    selectedImg.onclick = function(){
 
 						                    var ImgPosition = this.id.slice(4); 
 						                    byid('cont_' + ImgPosition).parentNode.removeChild(byid('cont_' + ImgPosition));
 						                  	
-						                  	/*
-						                  	if (amount != 'profile'){
+						                  	
+						                  	/*if (amount != 'profile'){
 							                    if(modulo != 'admin'){
 							                    
 							                    	var captionPosition = this.id.slice(4);
@@ -473,11 +469,12 @@ function imgVideoUploader(whatFor, modulo){
 							                        if(amount == 'video')
 							                        	byid('title_' + captionPosition).parentNode.removeChild(byid('title_' + captionPosition));
 							                    }
-							                 }
-
+							                 }*/
+							                 
+							                 /// DESCOMENTE ESTAS LINEAS PARA Q NO CARGE LA IMG LUEGO DE Q LA BORRASTE.... -- START --
 							                 this.parentNode.removeChild(this);
 							                 filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
-							                 */
+							                // -- END --
 
 							                  if (amount != 'album'){
 				  	  						

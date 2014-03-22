@@ -28,7 +28,10 @@
 													<p><?php echo $list[$i]['DESCRIPTION']; 
 													if(strlen($list[$i]['DESCRIPTION'])== 125) echo '...';?></p>
 													<a href=<?php echo $anchor.$list[$i]['ID_ORGANIZATION']; ?> class='linkToModule'>View organization</a>
-													<a href=<?php echo '"#'.$list[$i]['ID_ORGANIZATION'].'"'?> class="btn btn-danger delete-org">Delete</a>
+
+													
+													<input type="button" value="Delete" name="<?php echo $list[$i]['ID_ORGANIZATION']; ?>" class="btn btn-danger delete-org" />
+													<!-- <a href=<?php //echo '"#'.$list[$i]['ID_ORGANIZATION'].'"'?> class="btn btn-danger delete-org">Delete</a> -->
 												</div>
 											</li>
 									<?php
@@ -38,7 +41,8 @@
 									</ul>
 								</div>
 
-								<a href=<?php echo '"#'.$idUsr.'"' ?> class="btn" id="upload-organization">Create a new organization</a>
+								<input type="button" class="btn" id="upload-organization" value="Create a new organization" name="<?php echo $idUsr; ?>" /> 
+								<!--<a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-organization">Create a new organization</a> -->
 
 
 								<script type="text/javascript">

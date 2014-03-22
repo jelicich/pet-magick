@@ -521,10 +521,10 @@ function printHeaders(){
 		 lastMsg =  html[i]['MESSAGE'];
 		 //console.log(lastMsg);
 
-		if(byid(each) === null){ //este es medio al pedo :S para que es?
+		if(byid(each) === null){ 
 
-	 		as = create('a');
-	 		as.href = "?c="+ each;
+	 		as = create('div');
+	 		as.className = "?c="+ each;
 	 		lis = create('li');
 	  		lis.id = 'conv-'+ each;
 	  		
@@ -568,11 +568,12 @@ function printHeaders(){
 	  			}
 		    	
 		    	//e.preventDefault();
-		    	preventEventsDefault();
-		  		var index = this.href.indexOf('='); // reemplazar por function fileFormat()
+		    	//preventEventsDefault();
+		  		var index = this.className.indexOf('='); // modificado para FF
 		  		index ++;
-		  		fromId = 'fromId=' + this.href.substr(index);
+		  		fromId = 'fromId=' + this.className.substr(index); // modificado para FF
 		  		//console.log(fromId);
+
 		  		ajax('POST', 'ajax/getAllMessages.php', printMessages, fromId, true);
 
 		  		whilst(byid('wrap-messages')); 
@@ -951,11 +952,11 @@ function uploadOrganization()
 	
 	editPet.onclick = function()
 	{
-		preventEventsDefault();
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
+		//preventEventsDefault();
+		var p = this.name;
+		//var index = p.indexOf('#');
+  		//index ++;
+  		//p = p.substr(index);
 
   		byid('modal-edit-container').style.display='block';	
 		ajax('GET', 'ajax/getUploadOrganization.php?u='+p, printEditOrg, null, true);
@@ -977,10 +978,11 @@ function deleteOrganization()
 		btn[i].onclick = function()
 		{		
 			//preventEventsDefault();
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = 'o='+p.substr(index);
+			var p = this.name;
+			//var index = p.indexOf('#');
+	  		//index ++;
+	  		//p = 'o='+p.substr(index);
+	  		p = 'o='+p;
 	  		
 	  		
 			ajax('POST', 'ajax/deleteOrganization.php', printUpdatedOrg, p, true);// Mando por aca el id del user?????
@@ -1003,11 +1005,11 @@ function uploadProject()
 	
 	editPet.onclick = function()
 	{
-		preventEventsDefault();
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
+		//preventEventsDefault();
+		var p = this.name;
+		//var index = p.indexOf('#');
+  		//index ++;
+  		//p = p.substr(index);
 
   		byid('modal-edit-container').style.display='block';	
 		ajax('GET', 'ajax/getUploadProject.php?u='+p, printEditPro, null, true);
@@ -1029,10 +1031,11 @@ function deleteProject()
 		btn[i].onclick = function()
 		{	
 			//preventEventsDefault();
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = 'pr='+p.substr(index);
+			var p = this.name;
+			//var index = p.indexOf('#');
+	  		//index ++;
+	  		//p = 'pr='+p.substr(index);
+	  		p = 'pr='+p;
 	  		
 			ajax('POST', 'ajax/deleteProject.php', printUpdatedPro, p, true);// Mando por aca el id del user?????
 
@@ -1054,11 +1057,11 @@ function uploadVetTalk()
 	
 	editPet.onclick = function()
 	{
-		preventEventsDefault();
-		var p = this.href;
-		var index = p.indexOf('#');
-  		index ++;
-  		p = p.substr(index);
+		//preventEventsDefault();
+		var p = this.name;
+		//var index = p.indexOf('#');
+  		//index ++;
+  		//p = p.substr(index);
 
   		byid('modal-edit-container').style.display='block';	
 		ajax('GET', 'ajax/getUploadVetTalk.php?u='+p, printEditVet, null, true);
@@ -1333,11 +1336,11 @@ function selectedFromList(divCont, ajaxFile){ // ver si necesito pasar el div o 
 		as[i].onclick = function()		
 		{
 			//e.preventDefault();
-			preventEventsDefault();
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = p.substr(index);
+			//preventEventsDefault();
+			var p = this.id;
+			//var index = p.indexOf('#');
+	  		//index ++;
+	  		//p = p.substr(index);
 	  		var cont = byid(divCont); // 'featured-org'
 	  		var loading = create('img');
 	  			loading.className = 'loading';

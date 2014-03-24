@@ -567,7 +567,7 @@ class BOUsers{
       $p = $this->table->getProfilePicWP($id);
       $pic = array();
       //var_dump($p);
-      if(!empty($p))
+      if(isset($p[0]['Pics']))
       {
           $pic['PIC'] = '../img/users/'.$p[0]['Pics']['PIC'];
           $pic['THUMB'] = '../img/users/thumb/'.$p[0]['Pics']['PIC'];

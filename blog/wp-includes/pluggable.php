@@ -1687,6 +1687,13 @@ function get_avatar( $id_or_email, $size = '96', $default = '', $alt = false ) {
 		$user = get_userdata($id);
 		if ( $user )
 			$email = $user->user_email;
+
+		//CUSTOM PET MAGICK
+		include_once '../php/classes/BOUsers.php';
+        $pmuser = new BOUsers;
+        $pic = $pmuser->getProfilePicWP($id);
+        //END CUSTOM
+
 	} elseif ( is_object($id_or_email) ) {
 		// No avatar for pingbacks or trackbacks
 		$allowed_comment_types = apply_filters( 'get_avatar_comment_types', array( 'comment' ) );
@@ -1698,12 +1705,25 @@ function get_avatar( $id_or_email, $size = '96', $default = '', $alt = false ) {
 			$user = get_userdata($id);
 			if ( $user )
 				$email = $user->user_email;
+
+			//CUSTOM PET MAGICK
+			include_once '../php/classes/BOUsers.php';
+	        $pmuser = new BOUsers;
+	        $pic = $pmuser->getProfilePicWP($id);
+	        //END CUSTOM
 		}
 
 		if ( ! $email && ! empty( $id_or_email->comment_author_email ) )
 			$email = $id_or_email->comment_author_email;
 	} else {
 		$email = $id_or_email;
+
+		//CUSTOM PET MAGICK
+		$userInfo = get_user_by( 'email', $id_or_email );
+		include_once '../php/classes/BOUsers.php';
+        $pmuser = new BOUsers;
+        $pic = $pmuser->getProfilePicWP($userInfo->ID);
+        //END CUSTOM
 	}
 
 	if ( empty($default) ) {
@@ -1749,10 +1769,13 @@ function get_avatar( $id_or_email, $size = '96', $default = '', $alt = false ) {
 		if ( !empty( $rating ) )
 			$out .= "&amp;r={$rating}";
 
-		$out = str_replace( '&#038;', '&amp;', esc_url( $out ) );
+		//$out = str_replace( '&#038;', '&amp;', esc_url( $out ) );
+		//CUSTOM PET MAGICK
+		$out = $pic['THUMB'];
+		//END 
 		$avatar = "<img alt='{$safe_alt}' src='{$out}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
 	} else {
-		$avatar = "<img alt='{$safe_alt}' src='{$default}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
+		$avatar = "<img alt='{$safe_alt}' src='{$out}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
 	}
 
 	return apply_filters('get_avatar', $avatar, $id_or_email, $size, $default, $alt);

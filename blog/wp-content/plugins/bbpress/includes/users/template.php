@@ -1657,9 +1657,17 @@ function bbp_author_link( $args = '' ) {
 			$anonymous  = bbp_is_reply_anonymous( $r['post_id'] );
 
 			// Get avatar
+			//CUSTOM PET MAGICK
+			/*
 			if ( 'avatar' === $r['type'] || 'both' === $r['type'] ) {
 				$author_links[] = get_avatar( $user_id, $r['size'] );
 			}
+			*/
+			include_once '../php/classes/BOUsers.php';
+            $pmuser = new BOUsers;
+            $pic = $pmuser->getProfilePicWP($user_id);
+
+			//END CUSTOM
 
 			// Get display name
 			if ( 'name' === $r['type'] || 'both' === $r['type'] ) {

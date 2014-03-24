@@ -114,9 +114,19 @@
 				-->
 			</div>
 		<!--</div>-->
-		
+
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			    editUserProfile();
+			</script>
+
+<?php
+	}
+?>
 		<script type="text/javascript">
-			editUserProfile();
+			
 			show_img_up('#user-about');
 			start_scroll('scrollable-text', false);
 

@@ -582,6 +582,29 @@ class BOUsers{
     }
 
 
+    function updatePassword($data){
+
+       $user = $this->table->find($data['user_id']);
+       //echo $user['PASSWORD']; exit;
+       $password = sha1($data['password']);
+       $newPassword = sha1($data['newPassword']);
+
+       if($password == $user['PASSWORD']){
+
+            $q = Doctrine_Query::create()
+                  ->update('Users u')
+                  ->set('u.PASSWORD', '?', $newPassword )
+                  ->where('u.ID_USER = ?', $data['user_id']);
+          $rta = $q->execute();
+          echo "aprobado"; 
+
+       } else{
+
+            echo "desaprobado";
+       }
+    }
+
+
 }//End class BOUsers
 
 

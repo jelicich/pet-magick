@@ -12,7 +12,7 @@
 
 					<?php 
 						//session_destroy();
-
+						//var_dump($_SESSION); exit;
 						if(isset($_SESSION['id']) && isset($_SESSION['email']))
 						{
 							include_once 'templates/userMenu.php';
@@ -33,6 +33,7 @@
 		<div id="nav-bar">
 			<div class="container_12 clearfix">
 				<ul class="grid_9 btn-group">
+						<li class="btn btn-small btn-danger"><a href="index.php">Home</a></li>
 						<li class="btn btn-small btn-danger"><a href="profiles.php">Profiles</a></li>
 						<!--<li class="btn btn-small btn-danger"><a href="#">Formums</a></li> -->
 						<li class="btn btn-small btn-danger"><a href="antics.php">Animal Antics</a></li>
@@ -42,7 +43,13 @@
 						<li class="btn btn-small btn-danger"><a href="pet-loss.php">Pet Loss</a></li>
 						<li class="btn btn-small btn-danger"><a href="blog/?post_type=forum">Forum</a></li>
 						<li class="btn btn-small btn-danger"><a href="blog">Blog</a></li>
+					<?php
+						if(isset($_SESSION['rank']) && $_SESSION['rank'] == 2){
+					?>
 						<li class="btn btn-small btn-danger"><a href="admin/index.php?active=0">Admin</a></li>
+					<?php
+						}
+					?>
 				</ul>
 				<div class="grid_3" id='searchF'>
 					<input type="text" class="form-control" placeholder="Search..." id='finder' autocomplete="off"/>

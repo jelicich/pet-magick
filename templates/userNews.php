@@ -86,7 +86,16 @@
 </div>
 
 
-<script type="text/javascript">
-	news();
-	start_scroll_profile('news', false);
-</script>
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			   news();
+			</script>
+
+<?php
+	}
+?>
+		<script type="text/javascript">
+			start_scroll_profile('news', false);
+        </script>

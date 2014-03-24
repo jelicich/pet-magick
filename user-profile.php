@@ -236,13 +236,25 @@
 	</div>
 </div>
 
-<script type="text/javascript">
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			    news();
+			    favorites();
+			</script>
 
-	news();
-	vetTalkAnswer();
-	favorites();
-	//modalImg();
-	//show_img();
+<?php
+	}if(isset($_SESSION['id']) && $_SESSION['rank'] == 1){
+?>
+			<script type="text/javascript">
+				vetTalkAnswer();
+			</script>
+<?php
+	}
+?>
+
+<script type="text/javascript">
 
 	$('.nav-tabs a').click(function (e)
 	{
@@ -251,7 +263,6 @@
 	});
 	
 </script>
-
 
 
 </body>

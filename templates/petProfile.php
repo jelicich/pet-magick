@@ -171,17 +171,28 @@
 
 					</div>
 
+
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			    	editPetProfile();
+					editPetAlbum();
+					UploadPetVideo();
+					deleteVideo();
+			</script>
+
+<?php
+	}
+?>
+		<script type="text/javascript">
+			flexslider();
+			video();
+			show_img_up("#pet-profile");
+		</script>
 					
 
-<script type="text/javascript">
-	editPetProfile();
-	editPetAlbum();
-	UploadPetVideo();
-	deleteVideo();
-	flexslider();
-	video();
-	show_img_up("#pet-profile");
-</script>
+
 
 
 

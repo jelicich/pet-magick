@@ -5,7 +5,6 @@ SEMANA 3/2/2014
 	- user profile - J E
 	- formatear nombre de autor en vet talk articulo
 - ImgUploader ie (ESTEBAN // JULIAN)
-- ejecutar funciones de edicion solo cuando isset id, osea logueado
 
 
 PROXIMAS TAREAS EN ORDEN DE IMPORTANCIA
@@ -71,18 +70,3 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 	- cancel/save: no funciona.
 
 - poner todos los tags necesarios para ie. Esta en img uploader
-
-
-
-BUGS!!!
-=======
-
--Bug: cuando borras organizacion no borra la imagen
--Bug: cuando borras project no borra la imagen
--Bug: cuando borras vet-talk no borra la imagen
--Bug: logueado como veterinario aparece el boton "admin" en la barra de navegacion.
--Bug: subis un proyecto y te pasa en los caracteres del titulo, hace como q lo sube, pero no lo sube (no te tira error, deberia tirar error).
-		(Calculo q debe pasar lo mismo con organizaciones)
-	
-
-	

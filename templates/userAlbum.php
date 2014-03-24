@@ -48,9 +48,19 @@
 								}//END IF								
 							?>
 							</div>
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			   editUserAlbum();
+			</script>
 
-							<script type="text/javascript">
-								editUserAlbum();
-								show_img_up("#user-album");
-								start_scroll_profile('albumModule', false);
-							</script>
+<?php
+	}
+?>
+		<script type="text/javascript">
+			
+			show_img_up("#user-album");
+			start_scroll_profile('albumModule', false);
+
+		</script>

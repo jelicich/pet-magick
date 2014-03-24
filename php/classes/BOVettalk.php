@@ -2,6 +2,8 @@
 
 include_once('tools/bootstrap.php');
 include_once('models/VetTalkTable.php');
+include_once ('BOPics.php');
+
 
 class BOVettalk{
 
@@ -90,6 +92,10 @@ class BOVettalk{
     {
       try
       {
+        $data = $this->table->find($id);
+        $pics = new BOPics;
+        if($pics->unlinkProfilePic($data->PIC_ID, '../img/vetTalk/'))
+
         $this->table->deleteVetTalk($id);
         return true;
       } 

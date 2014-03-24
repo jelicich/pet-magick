@@ -54,9 +54,20 @@
 					</ul>
 			</div>
 
-<script type="text/javascript">
-	profile();
-	deletePet();
-	addPet();
-	start_scroll_profile('petScrollList', true);
-</script>
+
+
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			    profile();
+				deletePet();
+				addPet();
+			</script>
+
+<?php
+	}
+?>
+		<script type="text/javascript">
+			start_scroll_profile('petScrollList', true);
+		</script>

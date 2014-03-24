@@ -2,6 +2,7 @@
 
 include_once('tools/bootstrap.php');
 include_once('models/OrganizationsTable.php');
+include_once ('BOPics.php');
 
 class BOOrganizations{
 
@@ -145,6 +146,9 @@ class BOOrganizations{
     {
       try
       {
+        $data = $this->table->find($id);
+        $pics = new BOPics;
+        if($pics->unlinkProfilePic($data->PIC_ID, '../img/organizations/'))
         $this->table->deleteOrganization($id);
         return true;
       } 

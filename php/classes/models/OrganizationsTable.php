@@ -28,8 +28,8 @@ class OrganizationsTable extends Doctrine_Table
             $Organizations->save();
     }// end insertOrganizations
 
-    public function deleteOrganization($id)
-    {
+    public function deleteOrganization($id){
+        
         $q= Doctrine_Query::create()
             ->delete('Organizations o')
             ->where('o.ID_ORGANIZATION =?', $id);

@@ -21,7 +21,7 @@ class UsersTable extends Doctrine_Table
 
        public function reg($ref){
 
-       			$pass_sha1 = sha1($ref['password']);
+       			  $pass_sha1 = sha1($ref['password']);
 	            $Users = new Users();
 	            $Users->ID_USER = $ref['id'];
               $Users->NAME = $ref['name'];
@@ -318,6 +318,9 @@ class UsersTable extends Doctrine_Table
         
         return $r->toArray();
    }
+
+
+   
 
 
 }//end class

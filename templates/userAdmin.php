@@ -26,7 +26,7 @@
 						}
 
 						?>
-
+							<li><a href="#passwordTab" data-toggle="tab">Password</a></li>
 						</ul><!-- end navtabs -->
 
 
@@ -72,11 +72,8 @@
 						if($sessionRank == 1 || $sessionRank == 2)
 						{
 						?>
-							
 
-
-
-							<!-- VET ARTICLES HERE -->
+						<!-- VET ARTICLES HERE -->
 							<div class="tab-pane" id="vet-talk">
 								<?php
 									include_once 'php/classes/BOVettalk.php';
@@ -92,12 +89,53 @@
 							include_once 'templates/adminVetqa.php';
 						}
 						?>
+
+
+							<!-- EDIT PASSWORD HERE -->
+							<div class="tab-pane" id="passwordTab">
+
+								<input type="password" name="password" id="password" />
+								<input type="text" name="NewPassword" id="newPassword" />
+								<input type="button" name="update" value="update" id="update" />
+
+							</div>		
+
+
+
+
 						</div><!-- end tab content -->
 
 					</div><!-- end mod contet -->
 					
 				</div><!-- end admin -->
 
+<?php
+		if(isset($_SESSION['id'])){
+?>
 				<script type="text/javascript">
-					
+
+						$("#update").click(function(){
+
+							var password = $("#password").val();
+						    var newPassword = $("#newPassword").val();
+
+							$.ajax({
+
+					            type: "POST",
+					            url: "ajax/updatePassword.php",
+					            data: {
+					            		user_id: <?php echo $_SESSION['id']; ?>, 
+	            					    password: password, 
+	            					    newPassword: newPassword 
+	            					  }
+
+					    	}).done(function(data) {
+							   
+					    		console.log(data);
+							});
+					    });
+
 				</script>
+<?php
+}
+?>

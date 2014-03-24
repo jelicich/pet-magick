@@ -186,14 +186,14 @@ function deleteAllPics($albumId, $path)
 {
   $pics = $this->table->getPicsByAlbum($albumId);
 
-  
   for($i = 0; $i<sizeof($pics); $i++)
   {
     unlink($path.$pics[$i]['PIC']);
     unlink($path.'thumb/'.$pics[$i]['PIC']);
   }
-  
+
   $this->table->deleteAllPics($albumId);
+  return true; 
 }
 
 function getErrors(){

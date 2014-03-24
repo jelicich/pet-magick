@@ -30,6 +30,7 @@
 								include_once "../php/classes/BOQuestions.php";
 							else
 								include_once "php/classes/BOQuestions.php";
+							
 							$q = new BOQuestions;
 							$n = $q->qtyNewQuestions();
 							if($n[0]['COUNT']>0)

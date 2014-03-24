@@ -126,8 +126,6 @@ function start_scroll(applyTo, direction){
 	//});
 }
 
-
-
 function start_scroll_profile(applyTo, direction){
 	//$(document).ready(function(){
 		
@@ -173,7 +171,6 @@ function start_scroll_profile(applyTo, direction){
 	//});
 }
 
-
 // PRELOADER
 $(document).ready(function(){
 
@@ -186,8 +183,6 @@ $(window).load(function () {
 	$("body").css("padding-right", "0");
 	$("body").delay(2000).css("overflow", "auto");
 });
-
-
 
 function video(){
 
@@ -318,9 +313,6 @@ function show_img(anchor){
 
 }
 
-
-
-
 function show_img_up(module){
 
 	var close = 'img/close.png';
@@ -354,3 +346,4 @@ function show_img_up(module){
 	});
 
 }
+

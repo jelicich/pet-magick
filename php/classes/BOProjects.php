@@ -2,6 +2,7 @@
 
 include_once('tools/bootstrap.php');
 include_once('models/ProjectsTable.php');
+include_once ('BOPics.php');
 
 class BOProjects{
 
@@ -168,6 +169,9 @@ class BOProjects{
     {
       try
       {
+        $data = $this->table->find($id);
+        $pics = new BOPics;
+        if($pics->deleteAllPics($data->ALBUM_ID, '../img/projects/'))
         $this->table->deleteProject($id);
         return true;
       } 

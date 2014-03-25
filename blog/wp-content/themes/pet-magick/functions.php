@@ -115,7 +115,7 @@ function simonwpframework_comment( $comment, $args, $depth ) {
 	            $pmuser = new BOUsers;
 	            $pic = $pmuser->getProfilePicWP($author_ID);
 	            //var_dump($pic);
-	            echo '<a href="user-profile.php?u='.$author_ID.'"><img src="'.$pic['THUMB'].'" width="80" height="80" /></a>';
+	            echo '<a href="../user-profile.php?u='.$author_ID.'"><img src="'.$pic['THUMB'].'" width="80" height="80" /></a>';
     		}
     		else
     		{

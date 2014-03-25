@@ -10,13 +10,6 @@ SEMANA 3/2/2014
 PROXIMAS TAREAS EN ORDEN DE IMPORTANCIA
 =======================================
 
-- Wordpress con sitio
-		- Ajustes del logueo sitio - wordpress (a veces muere la sesion de wordpress y no la del sitio)
-		- Imagenes de usuario en wordpress??? 
-		- Poner link de usuarios en wordpress al perfil del sitio
-
-- captions en album al editar (NO VA AL FINAL ESTO) ¿?
-
 - Consulta random
 		- Corregir consultas
 		- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas ->count())

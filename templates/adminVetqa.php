@@ -46,6 +46,5 @@
 							</div>
 
 							<script type="text/javascript">
-
-							start_scroll_profile('vtquestions', false);
+									start_scroll_profile('vtquestions', false);
 							</script>

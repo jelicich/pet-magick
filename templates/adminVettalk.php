@@ -39,13 +39,17 @@
 								<input type="button" value="Create a new Article" name="<?php echo $idUsr ?>" class="btn" id="upload-vet-talk" />
 								<!-- <a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-vet-talk">Create a new article</a> -->
 								
-								<script type="text/javascript">
-
-									uploadVetTalk();
-									deleteVetTalk();
-									start_scroll_profile('adminVetArticle', false);
-									
-								</script>
-
-
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			    	uploadVetTalk();
+					deleteVetTalk();
+			</script>
+<?php
+	}
+?>
+			<script type="text/javascript">
+				start_scroll_profile('adminVetArticle', false);
+			</script>
 								

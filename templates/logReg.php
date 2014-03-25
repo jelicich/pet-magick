@@ -107,7 +107,12 @@
 				<input type="button" id="login" value="Login" class="btn btn-danger"/>
 				<input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />
 
-				<a href="#">Forgot your password?</a>
+				<span id="forgotPassword">Forgot your password ?</span>
+
+				<div id='forgotContent' >
+						<input type='text' name='forgotEmail' id='forgotEmail' />
+						<input type='button' value='Submit' id='submitEmail'/>
+				</div>
 
 			</form>
 		</div>
@@ -118,14 +123,11 @@
 
 <script type="text/javascript">
 
-	//showForms('link-reg', 'reg-form', 'log-form'); //====================== DESPLIEGA REGISTRO
-	//showForms('link-login', 'log-form', 'reg-form'); //====================== DESPLIEGA LOGIN
-	
-	//logRegOnclick(); //====================== DESPLIEGA REGISTRO y LOGIN
 	reg(); //====================== PARA REGISTRARSE
 	countriesCombo(); //====================== DESPLIEGA COMBOS
 	regionsCombo(); //====================== DESPLIEGA REGIONES
 	login(); //====================== PARA LOGUEARSE 
 	userForms(); // jquery function
+	forgotPassword();
 
 </script>

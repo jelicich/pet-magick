@@ -1,28 +1,20 @@
-SEMANA 3/2/2014
-===============
-
-- maquetacion
-	- user profile - J E
-	- formatear nombre de autor en vet talk articulo
-- ImgUploader ie (ESTEBAN // JULIAN)
-
-
-PROXIMAS TAREAS EN ORDEN DE IMPORTANCIA
-=======================================
-
+- repaso css
+- Confirmar por email
+- Escapar caracteres 
+- Poner google analitics
+- formatear nombre de autor en vet talk articulo
 - Consulta random
 		- Corregir consultas
 		- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas ->count())
-
 - Buscador
 		- buscador key sensitive
 		- busccador / traer solo los datos necesarios (no password, etc)
 		- IE: no funciona
-
-- Confirmar por email
-- Modificacion de password // blanqueo de password
 - optimizar consultas esteban
-- Escapar caracteres
+- ImgUploader ie (ESTEBAN // JULIAN)
+- ver q onda en antics cuando existe solo un video pq se rompe todo (creo q con el random se resuelve)
+- ver los formatos de video q vamos a usar
+- poner size correctamente en el validador de php
 
 
 LO Q QUEDA SUELTO
@@ -33,23 +25,14 @@ LO Q QUEDA SUELTO
 - editUser.php: en el form dice action: insertar.php, q es el archivo de prueba q yo use para crear el uploader. Osea q 
   cuando ejecute el fallback lo va a llamar. Hay q modificarlo cuando hagamos el tema IE y ver si esto se da en algun otro form...
 
-- Poner google analitics
+
 
 IMGUPLOADER
 ===========
 - Modificar la ruta del video thumb pq como deberia ser la BD no lo acepta, no tengo idea pq. Igual anda....
 - Mando array con una posicion vacia a php, puede quedar asi o ver de mandarlo bien
 - ver si validar cuando presiono upload sin seleccionar nada. No lo hice pq no se si va a haber boton siquiera
-- Imprimir el span q manda php cuando valida en IE7. Pq ahora lo manda al iframe y no se como sacarlo de ahi para mostrarlo      donde corresponde
-
-PET VIDEO
-=========
-- ver q onda en antics cuando existe solo un video
-
-PENDIENTES VIDEO (INDEX Y ANTICS)
-=================================
-- ver los formatos de video q vamos a usar
-- poner size correctamente en el validador de php
+- Imprimir el span q manda php cuando valida en IE7. Pq ahora lo manda al iframe y no se como sacarlo de ahi para mostrarlo donde corresponde
 
 
 LISTA IE7 (no incluye nada q sea solo estilo):

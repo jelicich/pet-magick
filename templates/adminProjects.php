@@ -61,13 +61,19 @@
 						<input type="button" value="Create a new Project" name="<?php echo $idUsr ?>" class="btn" id="upload-project" />
 						<!-- <a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-project">Create a new Project</a> -->
 
-					<script type="text/javascript">
-						
-						uploadProject();
-						deleteProject();
-						flexslider();
-						start_scroll_profile('adminProject', false);
-						
-					</script>
-
-
+	
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			    	uploadProject();
+					deleteProject();
+			</script>
+<?php
+	}
+?>
+			<script type="text/javascript">
+				//flexslider();		
+				start_scroll_profile('adminProject', false);
+			</script>
+								

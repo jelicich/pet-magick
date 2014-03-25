@@ -68,7 +68,14 @@ function userForms(){
 
 						if( !container.is(e.target) && container.has(e.target).length === 0 ){
 
+								container.find("input[type=password]").val("");
+								container.find("input[type=text]").val("");
+								if($("#passAlert")){
+									$("#passAlert").remove();
+						    	}
+								$("#forgotContent").hide();
 								container.hide('slow');
+								
 						}
 				});
 			}
@@ -347,3 +354,86 @@ function show_img_up(module){
 
 }
 
+
+
+
+function updatePassword(id){
+
+		$("#update").click(function(){
+
+			var password = $("#password").val();
+		    var newPassword = $("#newPassword").val();
+
+		    if(password == '' || newPassword == ''){
+
+		    	$("#passwordTab").append("<div id='passAlert' class='alert alert-danger'>You must complete both fields</div>");
+		  
+		    }else{
+
+			    $.ajax({
+
+		            type: "POST",
+		            url: "ajax/updatePassword.php",
+		            data: {
+		            		user_id: id, 
+						    password: password, 
+						    newPassword: newPassword 
+						  }
+
+		    	}).done(function(data){
+
+		    		$("#passwordTab").find("input[type=password]").val("");
+		    		
+		    		if($("#passAlert")){
+		    			
+		    			$("#passAlert").remove();
+		    		}
+
+		    		$("#passwordTab").append(data);
+		    		
+				});
+			 }
+
+			 setTimeout(function(){ $("#passAlert").remove(); }, 3000);
+		});
+}
+
+
+
+
+function forgotPassword(){
+
+	$("#forgotPassword").click(function(){
+
+		$("#forgotContent").show();
+
+		$('#submitEmail').click(function(){
+			
+			    var email = $("#forgotEmail").val();
+
+				if(email == ''){
+
+			    	$("#forgotContent").append("<div id='passAlert' class='alert alert-danger'>Enter an email</div>");
+			  
+			    }else{
+
+			    	$.ajax({
+
+			            type: "POST",
+			            url: "ajax/forgotPassword.php",
+			            data: { user_email: email }
+
+			    	}).done(function(data){
+
+			    		if($("#passAlert")){
+			    			$("#passAlert").remove();
+				    	}
+				    	$("#forgotContent").append(data);
+			    		//console.log(data);
+			    	});
+				 }
+
+				setTimeout(function(){ $("#passAlert").remove(); }, 3000);
+		});
+	});
+}

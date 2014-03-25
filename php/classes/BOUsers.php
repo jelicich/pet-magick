@@ -585,7 +585,6 @@ class BOUsers{
     function updatePassword($data){
 
        $user = $this->table->find($data['user_id']);
-       //echo $user['PASSWORD']; exit;
        $password = sha1($data['password']);
        $newPassword = sha1($data['newPassword']);
 
@@ -595,14 +594,49 @@ class BOUsers{
                   ->update('Users u')
                   ->set('u.PASSWORD', '?', $newPassword )
                   ->where('u.ID_USER = ?', $data['user_id']);
-          $rta = $q->execute();
-          echo "aprobado"; 
+            $rta = $q->execute();
+         
+            echo "<div id='passAlert' class='alert alert-success'>Your password has been updated succcessfuly</div>"; 
 
        } else{
 
-            echo "desaprobado";
+            echo "<div id='passAlert' class='alert alert-danger'>Inavlid password</div>"; 
        }
     }
+
+      function forgotPassword($data){
+
+       $user = $this->table->findByMail($data);
+       //var_dump($user);
+
+       if(sizeof($user) > 0){
+
+            $newPasswordDb = sha1($user[0]['LASTNAME'].'_'.uniqid()); // generar algun id unico aca
+            $newPasswordToUser = $user[0]['LASTNAME'].'_'.uniqid(); 
+           // echo $newPasswordToUser; exit;
+
+            $q = Doctrine_Query::create()
+                  ->update('Users u')
+                  ->set('u.PASSWORD', '?', $newPasswordDb )
+                  ->where('u.ID_USER = ?', $user[0]['ID_USER']);
+            $rta = $q->execute();
+
+            $to = $data;
+            $subject = 'New Password';
+            $message = 'Hi! This is your new password '.$newPasswordToUser.' Remember that you can change it from your profile whenever you want';
+            $headers = 'From: noreply_pet_magick@petmagik.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+        if(mail($to, $subject, $message, $headers)){
+
+               echo "<div id='passAlert' class='alert alert-success'>Check your email !</div>"; 
+          
+        }else{
+
+             echo "<div id='passAlert' class='alert alert-danger'>We don't know that email</div>"; 
+       }   
+
+    }
+  }
 
 
 }//End class BOUsers

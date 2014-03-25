@@ -43,11 +43,17 @@
 
 								<input type="button" class="btn" id="upload-organization" value="Create a new organization" name="<?php echo $idUsr; ?>" /> 
 								<!--<a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-organization">Create a new organization</a> -->
-
-
-								<script type="text/javascript">
-									uploadOrganization();
-									deleteOrganization();
-									start_scroll_profile('adminOrg', false);
-									
-								</script>
+<?php
+	if(isset($_SESSION['id'])){
+?>
+			<script type="text/javascript">
+			    	uploadOrganization();
+					deleteOrganization();
+			</script>
+<?php
+	}
+?>
+			<script type="text/javascript">
+				start_scroll_profile('adminOrg', false);
+			</script>
+								

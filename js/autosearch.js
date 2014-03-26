@@ -168,7 +168,7 @@ function autoSearch(inputId)
 			{
 				//var val = byid('finder').value
 				var val = input.inputField.value;
-				window.location.href = "search.php?q="+val;
+				window.location.href = "search.php?q="+val+"&tar=us";
 			}
 			else
 			{

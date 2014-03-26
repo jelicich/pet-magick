@@ -519,6 +519,26 @@ class BOPets{
         return $out;    
     }
 
+    function searchPets($string)
+    {
+        $q = Doctrine_Query::create()
+            ->select('p.ID_PET, p.NAME, p.BREED, ac.NAME, ph.PIC, u.ID_USER')
+            ->from('Pets p')
+            ->leftJoin('p.Pics ph')
+            ->leftJoin('p.AnimalCategories ac')
+            ->leftJoin('p.Users u')
+            ->where('p.NAME LIKE ?', '%'.$string.'%')
+            ->orWhere('p.BREED LIKE ?', '%'.$string.'%')
+            ->orderBy('p.ID_PET DESC');
+        $rta = $q->execute();
+
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
+
+    }
+
 
 }//End class BOUsers
 

@@ -604,39 +604,69 @@ class BOUsers{
        }
     }
 
-      function forgotPassword($data){
+    function forgotPassword($data){
 
-       $user = $this->table->findByMail($data);
-       //var_dump($user);
+         $user = $this->table->findByMail($data);
+         //var_dump($user);
 
-       if(sizeof($user) > 0){
+         if(sizeof($user) > 0){
 
-            $newPasswordDb = sha1($user[0]['LASTNAME'].'_'.uniqid()); // generar algun id unico aca
-            $newPasswordToUser = $user[0]['LASTNAME'].'_'.uniqid(); 
-           // echo $newPasswordToUser; exit;
+              $newPasswordDb = sha1($user[0]['LASTNAME'].'_'.uniqid()); // generar algun id unico aca
+              $newPasswordToUser = $user[0]['LASTNAME'].'_'.uniqid(); 
+             // echo $newPasswordToUser; exit;
 
-            $q = Doctrine_Query::create()
-                  ->update('Users u')
-                  ->set('u.PASSWORD', '?', $newPasswordDb )
-                  ->where('u.ID_USER = ?', $user[0]['ID_USER']);
-            $rta = $q->execute();
+              $q = Doctrine_Query::create()
+                    ->update('Users u')
+                    ->set('u.PASSWORD', '?', $newPasswordDb )
+                    ->where('u.ID_USER = ?', $user[0]['ID_USER']);
+              $rta = $q->execute();
 
-            $to = $data;
-            $subject = 'New Password';
-            $message = 'Hi! This is your new password '.$newPasswordToUser.' Remember that you can change it from your profile whenever you want';
-            $headers = 'From: noreply_pet_magick@petmagik.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+              $to = $data;
+              $subject = 'New Password';
+              $message = 'Hi! This is your new password '.$newPasswordToUser.' Remember that you can change it from your profile whenever you want';
+              $headers = 'From: noreply_pet_magick@petmagik.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-        if(mail($to, $subject, $message, $headers)){
 
-               echo "<div id='passAlert' class='alert alert-success'>Check your email !</div>"; 
-          
-        }else{
 
-             echo "<div id='passAlert' class='alert alert-danger'>We don't know that email</div>"; 
-       }   
+          if(mail($to, $subject, $message, $headers)){
+
+                 echo "<div id='passAlert' class='alert alert-success'>Check your email !</div>";            
+            
+          }else{
+
+              echo "<div id='passAlert' class='alert alert-danger'>There was a problem. Please try again in a few minutes</div>";  
+         }
+
+         //Return para WP
+         return(array('ID' => $user[0]['ID_USER'], 'user_pass' => $newPasswordToUser));
+      }
+     else
+     {
+        echo "<div id='passAlert' class='alert alert-danger'>We don't know that email</div>"; 
+     }
+    }
+
+    function searchUsers($string)
+    {
+        $q = Doctrine_Query::create()
+            ->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
+            ->from('Users u')
+            ->leftJoin('u.Pics ph')
+            ->leftJoin('u.Countries k')
+            ->leftJoin('u.Regions r')
+            ->leftJoin('u.Cities c')
+            ->where('u.NAME LIKE ?', '%'.$string.'%')
+            ->orWhere('u.LASTNAME LIKE ?', '%'.$string.'%')
+            ->orWhere('u.NICKNAME LIKE ?', '%'.$string.'%')
+            ->orderBy('u.ID_USER DESC');
+        $rta = $q->execute();
+
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
 
     }
-  }
 
 
 }//End class BOUsers

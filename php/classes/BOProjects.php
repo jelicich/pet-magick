@@ -188,6 +188,25 @@ class BOProjects{
         return $r;
     }
 
+    function searchProjects($string)
+    {
+        $q = Doctrine_Query::create()
+            ->select('p.ID_PROJECT, LEFT(p.TITLE,15) AS TITLE, LEFT(p.DESCRIPTION, 35) AS DESCRIPTION, p.USER_ID, p.ALBUM_ID, a.ID_ALBUM, f.PIC')
+            ->from('Projects p')
+            ->leftJoin('p.Albums a')
+            ->leftJoin('a.Pics f')
+            ->where('p.TITLE LIKE ?', '%'.$string.'%')
+            ->orWhere('p.DESCRIPTION LIKE ?', '%'.$string.'%')
+            ->orderBy('p.ID_PROJECT DESC');
+        $rta = $q->execute();
+
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
+
+    }
+
 
 }//End class BOUsers
 

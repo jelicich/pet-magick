@@ -46,3 +46,10 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 	- cancel/save: no funciona.
 
 - poner todos los tags necesarios para ie. Esta en img uploader
+
+
+BUGS:
+=====
+
+- Estando deslogueado no se puede cambiar la mascota para ver
+- Organizaciones si el titulo es muy largo se va afuera del modulo (Organizacion seleccionada | copiar a proyect q muestra el titulo arriba.)

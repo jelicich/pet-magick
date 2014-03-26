@@ -45,7 +45,7 @@
 	<div class="container_12" id="content">
 	
 	<div id='what' >
-		<a href="#"><p>How does Project board work ?</p></a>
+		<a href="#"><p>What is a profile?</p></a>
 		<div class='active'>
 			<div id='pop-up' class='mod grid_4 '>
 

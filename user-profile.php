@@ -120,7 +120,15 @@
 			<?php 
 				if($p->getPetList($_GET['u']))
 				{	
-					$p->getPetData($pets[0]['ID_PET']);
+					if(isset($_GET['p']))
+					{
+						$p->getPetData($_GET['p']);
+					}
+					else
+					{
+						$p->getPetData($pets[0]['ID_PET']);
+					}
+						
 					include_once 'templates/petProfile.php';
 			?>		
 					

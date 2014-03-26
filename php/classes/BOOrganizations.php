@@ -160,6 +160,25 @@ class BOOrganizations{
 
     }
 
+    function searchOrganizations($string)
+    {
+        $q = Doctrine_Query::create()
+            ->select('o.ID_ORGANIZATION, LEFT(o.NAME,15) AS NAME, LEFT(o.DESCRIPTION, 35) AS DESCRIPTION, ph.PIC, u.ID_USER')
+            ->from('Organizations o')
+            ->leftJoin('o.Pics ph')
+            ->leftJoin('o.Users u')
+            ->where('o.NAME LIKE ?', '%'.$string.'%')
+            ->orWhere('o.DESCRIPTION LIKE ?', '%'.$string.'%')
+            ->orderBy('o.ID_ORGANIZATION DESC');
+        $rta = $q->execute();
+
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
+
+    }
+
 
 }//End class BOUsers
 

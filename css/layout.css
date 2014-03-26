@@ -3682,3 +3682,32 @@ p.err{
 a[href$=".jpg"]{
 	display: block;
 }
+.search-filter{
+	background:#e8b2ae;
+	margin-bottom: 10px;
+	border: 1px solid #d95248;
+}
+.search-filter ul{
+	margin: 0;
+	display: inline-block;
+}
+.search-filter li{
+	float:left;
+}
+.search-filter li a,.search-filter > span{
+	padding: 5px 10px;
+	display: block;
+	font-size: 14px;
+	float: left;
+	color: #000;
+}
+.search-filter > span{
+	color:#d95248;
+	font-weight: bold;
+}
+.search-filter .current-search{
+	background: #d95248
+}
+.search-filter .current-search a{
+	color: #fff;
+}

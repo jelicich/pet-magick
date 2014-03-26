@@ -42,12 +42,15 @@
 
 	<!-- site content -->
 	<div class="container_12" id="content">
-		<ul>
-			<li><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=us' ?>">Users</a></li>
-			<li><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=pe' ?>">Pets</a></li>
-			<li><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=or' ?>">Organizations</a></li>
-			<li><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=pr' ?>">Projects</a></li>
-		</ul>
+		<div class="grid_12 search-filter clearfix">
+			<span>Filters: </span>
+			<ul class="clearfix">
+				<li <?php if($_GET['tar'] == 'us') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=us' ?>">Users</a></li>
+				<li <?php if($_GET['tar'] == 'pe') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=pe' ?>">Pets</a></li>
+				<li <?php if($_GET['tar'] == 'or') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=or' ?>">Organizations</a></li>
+				<li <?php if($_GET['tar'] == 'pr') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=pr' ?>">Projects</a></li>
+			</ul>
+		</div>
 		<!-- search result-->
 		<div id="profiles-mod" class='grid_12 profiles-mod mod'>
 			<div class="mod-header">
@@ -74,7 +77,7 @@
 							echo 'Results';
 							break;
 					}?>
-					 matching your search: 
+					 matching your search <i><?php echo $_GET['q']?></i>
 				</h2>
 			</div>
 			<div class="scrollable-module">

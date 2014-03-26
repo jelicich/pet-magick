@@ -11,7 +11,7 @@
 						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 							
-							<!--<p id="upload-status"></p>-->
+							<p id="upload-status"></p>
 							<div class="table">
 								<ul class="clearfix">
 									<li class="new-pic-cont" style="width:100%">

@@ -25,16 +25,25 @@
 
 						?>
 									<li class="pet-info">
-										<a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <img src=<?php echo '"'.$pets[$i]['THUMB'].'"'?> class="thumb-small"/> </a>
-										<h3><a href=<?php echo '"#'.$pets[$i]['ID_PET'].'"' ?> class="pet-link"> <?php echo $pets[$i]['NAME'] ?> </a></h3>
-										<span><?php 
-										if(strlen($pets[$i]['BREED'])>= 10){
-											echo substr($pets[$i]['BREED'], 0,10).'...';
-										} 
-										else
-										{
-											echo $pets[$i]['BREED'];
-										}
+										<div id="<?php echo $pets[$i]['ID_PET']; ?>" class="pet-link" style="cursor: pointer"> 
+											<img src=<?php echo '"'.$pets[$i]['THUMB'].'"'?> class="thumb-small"/> 
+										</div>
+
+										<h3>
+											<span id="<?php echo $pets[$i]['ID_PET']; ?>" class="pet-link" style="cursor: pointer"> 
+												<?php echo $pets[$i]['NAME'] ?> 
+											</span>
+										</h3>
+
+										<span>
+										<?php 
+											if(strlen($pets[$i]['BREED'])>= 10){
+												echo substr($pets[$i]['BREED'], 0,10).'...';
+											} 
+											else
+											{
+												echo $pets[$i]['BREED'];
+											}
 										?></span>
 						<?php
 											if($u->isOwn())
@@ -60,7 +69,6 @@
 	if(isset($_SESSION['id'])){
 ?>
 			<script type="text/javascript">
-			    profile();
 				deletePet();
 				addPet();
 			</script>
@@ -69,5 +77,6 @@
 	}
 ?>
 		<script type="text/javascript">
-			start_scroll_profile('petScrollList', true);
+			 profile();
+			 start_scroll_profile('petScrollList', true);
 		</script>

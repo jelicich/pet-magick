@@ -2,7 +2,7 @@
 - Confirmar por email
 - Escapar caracteres 
 - Poner google analitics
-- formatear nombre de autor en vet talk articulo
+- formatear nombre de autor y fecha en vet talk articulo
 - Consulta random
 		- Corregir consultas
 		- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas ->count())
@@ -48,8 +48,10 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 - poner todos los tags necesarios para ie. Esta en img uploader
 
 
-BUGS:
-=====
 
-- Estando deslogueado no se puede cambiar la mascota para ver
-- Organizaciones si el titulo es muy largo se va afuera del modulo (Organizacion seleccionada | copiar a proyect q muestra el titulo arriba.)
+
+
+BUGS:
+====
+
+- el input file aparece cada vez q presionas save luego de haber seleccionado una imagen (siempre q aparece en el user profile). Eso se debe haber bugueado con el tema de los contenedores pq antes no pasaba. Tambien estan bugueadas las validaciones, antes te imprimia y el error (tanto desde js como desde php) y te frenaba la operacion , ahora no hace ninguna de las dos cosas.

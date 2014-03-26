@@ -369,23 +369,23 @@ function imgVideoUploader(whatFor, modulo){
 
 						  	if(mime.indexOf(this.files[0].type) == -1){ // el default era ! -1, recordar por las dudas!!
 			            			
-			            		errMsg('formato invalido desde js');
+			            		errMsg('Invalid format');
 			            		flagidation = 1;
 			            			
 		            		}else if(this.files[0].size >= 23000000){ // Ver q numero necesitamos
 
-		            			errMsg('Exede el peso desde js');
+		            			errMsg('Too heavy...');
 		            			flagidation = 1;
 
 		            		}if( amount != 'video' && mimeImg.indexOf(this.files[0].type) == -1){
 
-		            			errMsg('Pasale el parametro para video desde js');
+		            			errMsg('Invalid format');
 		            			var noRemoveInput = true;
 		            			flagidation = 1;
 
 		            		}if( amount == 'video' && mimeVideo.indexOf(this.files[0].type) == -1){
 
-		            			errMsg('Pasale el parametro para video desde js');
+		            			errMsg('Invalid format');
 		            			var noRemoveInput = true;
 		            			flagidation = 1;
 		            		}

@@ -68,6 +68,7 @@
 	
 	//modalImg();
 	comments('postComment');
+
 </script>
 </body>
 </html>

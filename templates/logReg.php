@@ -110,8 +110,9 @@
 				<span id="forgotPassword">Forgot your password ?</span>
 
 				<div id='forgotContent' >
-						<input type='text' name='forgotEmail' id='forgotEmail' />
-						<input type='button' value='Submit' id='submitEmail'/>
+						<label for="forgotEmail">Enter your email addres</label>
+						<input type='text' name='forgotEmail' id='forgotEmail' style="width: 180px" placeholder="e-mail" />
+						<input type='button' value='Submit' id='submitEmail'  class="btn btn-danger" />
 				</div>
 
 			</form>

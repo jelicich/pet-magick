@@ -207,7 +207,7 @@
 							echo "<input type='button'  id='addFavorite' name=".$_GET['u']." value='add favorite' />";
 						}
 					} */
-				}
+			}
 			?>
 
 	

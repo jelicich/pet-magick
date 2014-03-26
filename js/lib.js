@@ -694,16 +694,18 @@ function profile(){
 		as[i].onclick = function()		
 		{
 			//e.preventDefault();
-			preventEventsDefault();
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = p.substr(index);
+			//preventEventsDefault();
+			var p = this.id;
+			console.log(p);
+			//var index = p.indexOf('#');
+	  		//index ++;
+	  		//p = p.substr(index);
 	  		var cont = byid('pet-profile');
 	  		var loading = create('img');
 			loading.src = 'img/loading.gif'; 
 			loading.className = 'loading';
-	  		cont.innerHTML = "";
+	  		whilst(cont);
+	  		//cont.innerHTML = '';
 	  		cont.appendChild(loading);
 			ajax('GET', 'ajax/getPetProfile.php?p='+p, printPetProfile, null, true);
 		}
@@ -1251,7 +1253,7 @@ function comments(ajaxFile){
 		var pop = byid('pop-up-click');
 		
 		btnCom.onclick = function()
-		{
+		{   
 			if(fl == 0)
 			{
 				pop.style.display = 'block';

@@ -920,11 +920,28 @@ width: 100% !important;
 	background: #e7cd00;
 }
 
-
-
 #forgotContent{
-	
+
 	display: none;
+	border-top: 1px solid gray;
+	padding-top: 20px ;
+	margin-top: 20px;
+}
+
+#forgotContent #passAlert{
+
+	margin-top: 10px;
+}
+
+#passwordTab{
+	width: 200px;
+	height: 200px;
+}
+
+#passwordTab #passAlert{
+
+	margin-top: 10px;
+	float: left;
 }
 
 /* ------------------------------ small slider */
@@ -1474,7 +1491,6 @@ width: 100% !important;
 #admin{
 	background: #e8b2ae;
 	min-height: 210px !important;
-	
 }
 
 #adminOrg, 
@@ -1768,7 +1784,6 @@ padding: 10px;
 
 .visit span{
 	float: left;
-	margin-top: 50px;
 }
 
 #featured-org .loading{

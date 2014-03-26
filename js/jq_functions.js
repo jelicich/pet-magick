@@ -354,8 +354,16 @@ function show_img_up(module){
 
 }
 
+// ========================= PASSWORD FUNCTIONS
+function cleanAlerts(){
 
+	if($("#passAlert")){
 
+			$("#passAlert").remove();
+	}
+	
+	setTimeout(function(){ $("#passAlert").remove(); }, 5000);
+}
 
 function updatePassword(id){
 
@@ -366,7 +374,9 @@ function updatePassword(id){
 
 		    if(password == '' || newPassword == ''){
 
-		    	$("#passwordTab").append("<div id='passAlert' class='alert alert-danger'>You must complete both fields</div>");
+		    	cleanAlerts();
+
+		    	$("#passwordTab").append("<div id='passAlert' class='alert alert-danger'>Complete both fields</div>");
 		  
 		    }else{
 
@@ -382,58 +392,55 @@ function updatePassword(id){
 
 		    	}).done(function(data){
 
+		    		cleanAlerts();
 		    		$("#passwordTab").find("input[type=password]").val("");
 		    		
-		    		if($("#passAlert")){
+		    		//if($("#passAlert")){
 		    			
-		    			$("#passAlert").remove();
-		    		}
+		    		//	$("#passAlert").remove();
+		    		//}
 
 		    		$("#passwordTab").append(data);
 		    		
 				});
 			 }
 
-			 setTimeout(function(){ $("#passAlert").remove(); }, 3000);
+			 //setTimeout(function(){ $("#passAlert").remove(); }, 3000);
 		});
 }
-
-
-
 
 function forgotPassword(){
 
 	$("#forgotPassword").click(function(){
 
-		$("#forgotContent").show();
+		$("#forgotContent").toggle(300);
 
-		$('#submitEmail').click(function(){
+		$('#submitEmail').on("click", function(){
 			
-			    var email = $("#forgotEmail").val();
+		    var email = $("#forgotEmail").val();
 
-				if(email == ''){
+			if(email == ''){
 
-			    	$("#forgotContent").append("<div id='passAlert' class='alert alert-danger'>Enter an email</div>");
-			  
-			    }else{
+					cleanAlerts();
 
-			    	$.ajax({
+					$("#forgotContent").append("<div id='passAlert' class='alert alert-danger'>Enter an email</div>");
+
+			 }else{
+
+		    	$.ajax({
 
 			            type: "POST",
 			            url: "ajax/forgotPassword.php",
 			            data: { user_email: email }
 
-			    	}).done(function(data){
+		    	}).done(function(data){
 
-			    		if($("#passAlert")){
-			    			$("#passAlert").remove();
-				    	}
-				    	$("#forgotContent").append(data);
-			    		//console.log(data);
-			    	});
-				 }
+			    		cleanAlerts();
 
-				setTimeout(function(){ $("#passAlert").remove(); }, 3000);
+			    		$("#forgotContent").append(data);
+
+		    	});
+			 }
 		});
 	});
 }

@@ -30,7 +30,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 
 
 <div class="mod-header">
-	<h2>Featured organization</h2>
+	<h2><?php echo $name ?> </h2>
 </div>
 
 <div class="mod-content clearfix">
@@ -39,7 +39,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 		<a class='link-img' href=<?php echo "img/organizations/".$srcImg ?> >
 			<img src= <?php echo "img/organizations/thumb/".$srcImg ?> class="thumb-mid"/>
 		</a>
-		<h3> <?php echo $name ?> </h3>
+		<!-- <h3> <?php// echo $name ?> </h3> -->
 		<a class="visit" href= <?php echo "user-profile.php?u=".$userId; ?> ><span>View user profile</span></a>
 	</div>
 

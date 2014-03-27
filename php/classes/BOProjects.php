@@ -188,7 +188,7 @@ class BOProjects{
         return $r;
     }
 
-    function searchProjects($string)
+    function searchProjects($string, $from)
     {
         $q = Doctrine_Query::create()
             ->select('p.ID_PROJECT, LEFT(p.TITLE,15) AS TITLE, LEFT(p.DESCRIPTION, 35) AS DESCRIPTION, p.USER_ID, p.ALBUM_ID, a.ID_ALBUM, f.PIC')
@@ -197,7 +197,9 @@ class BOProjects{
             ->leftJoin('a.Pics f')
             ->where('p.TITLE LIKE ?', '%'.$string.'%')
             ->orWhere('p.DESCRIPTION LIKE ?', '%'.$string.'%')
-            ->orderBy('p.ID_PROJECT DESC');
+            ->orderBy('p.ID_PROJECT DESC')
+            ->offset($from)
+            ->limit(28);
         $rta = $q->execute();
 
         if($rta)
@@ -205,6 +207,29 @@ class BOProjects{
         else
             return false;
 
+    }
+
+
+    function totalRecords($string)
+    {
+        $q = Doctrine_Query::create()
+            ->select('COUNT(p.ID_PROJECT) as QTY')
+            ->from('Projects p')
+            ->where('p.TITLE LIKE ?', '%'.$string.'%')
+            ->orWhere('p.DESCRIPTION LIKE ?', '%'.$string.'%')
+            ->orderBy('p.ID_PROJECT DESC');
+        $rta = $q->execute();
+
+        if($rta)
+        {
+            $ar = $rta->toArray();
+            return $ar[0]['QTY'];
+        }          
+        else
+        {
+            return false;
+        }
+            
     }
 
 

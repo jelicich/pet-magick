@@ -59,22 +59,27 @@
 					switch ($_GET['tar']) {
 						case 'us':
 							echo 'Users';
+							$file = 'ajax/searchUsers.php';
 							break;
 
 						case 'pe':
 							echo 'Pets';
+							$file = 'ajax/searchPets.php';
 							break;
 
 						case 'or':
 							echo 'Organizations';
+							$file = 'ajax/searchOrganizations.php';
 							break;
 						
 						case 'pr':
 							echo 'Projects';
+							$file = 'ajax/searchProjects.php';
 							break;
 
 						default:
 							echo 'Results';
+							$file = 'ajax/searchUsers.php';
 							break;
 					}?>
 					 matching your search <i><?php echo $_GET['q']?></i>
@@ -96,7 +101,11 @@
 							case 'us':
 								include 'php/classes/BOUsers.php';
 								$u = new BOUsers;
-								$r = $u->searchUsers($_GET['q']);
+								$r = $u->searchUsers($_GET['q'],0);
+
+								$totalRec = $u->totalRecords($_GET['q']);
+								$totalPag = ceil($totalRec/28);
+								
 								
 								if($r)
 								{
@@ -136,7 +145,10 @@
 							case 'pe':
 								include 'php/classes/BOPets.php';
 								$p = new BOPets;
-								$r = $p->searchPets($_GET['q']);
+								$r = $p->searchPets($_GET['q'], 0);
+
+								$totalRec = $p->totalRecords($_GET['q']);
+								$totalPag = ceil($totalRec/28);
 								
 								if($r)
 								{
@@ -176,7 +188,10 @@
 							case 'or':
 								include 'php/classes/BOOrganizations.php';
 								$o = new BOOrganizations;
-								$r = $o->searchOrganizations($_GET['q']);
+								$r = $o->searchOrganizations($_GET['q'], 0);
+
+								$totalRec = $o->totalRecords($_GET['q']);
+								$totalPag = ceil($totalRec/28);
 								
 								if($r)
 								{
@@ -230,7 +245,10 @@
 							case 'pr':
 								include 'php/classes/BOProjects.php';
 								$p = new BOProjects;
-								$r = $p->searchProjects($_GET['q']);
+								$r = $p->searchProjects($_GET['q'],0);
+
+								$totalRec = $p->totalRecords($_GET['q']);
+								$totalPag = ceil($totalRec/28);
 								
 								if($r)
 								{
@@ -319,7 +337,59 @@
 
 
 <script type="text/javascript">
-	start_scroll('scrollable-module', false);
+	//start_scroll('scrollable-module', false);
+	var page = 1;
+	var totalRec = <?php echo $totalRec; ?>;
+	var totalPag = <?php echo $totalPag; ?>;
+	$(".scrollable-module").mCustomScrollbar(
+	{
+		scrollButtons:
+		{
+			enable: false 
+		},
+
+		advanced:
+		{
+			updateOnContentResize: true,
+			horizontalSrcoll: true
+		},
+
+		theme:"light-thin",
+
+		callbacks:
+		{
+		    
+		    onTotalScroll:function()
+		    {
+	 			  		
+	    		//console.log(this[0].id);// debe imprimir el id del div q tiene la clase "scroll bla bla"
+	    		if(page < totalPag)
+	    		{
+	    			$.ajax(
+		    		{
+		                type: "POST",
+		                url: <?php echo "'".$file."'"?>,
+		                data: {q: <?php echo "'".$_GET['q']."'" ?>, from: page*28},
+		                cache: false,
+
+		                success: function(html)
+		                {
+		                	$('#ModulesByPet').append(html);
+		                	if(page == totalPag)
+					    	{
+
+					    		$('#ModulesByPet').append('<li class="last-result">No more results</li>');
+					    	} 	
+		                }
+		            });
+
+			    	page++;
+
+	    		}
+	    		
+	        }
+		}
+	});
 </script>
 
 </body>

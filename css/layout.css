@@ -3711,3 +3711,11 @@ a[href$=".jpg"]{
 .search-filter .current-search a{
 	color: #fff;
 }
+.last-result{
+	background: rgba(255,255,255,0.3);
+	padding: 5px;
+	color: #e8b2ae;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 46px;
+}

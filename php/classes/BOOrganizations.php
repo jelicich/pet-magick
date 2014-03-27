@@ -160,7 +160,7 @@ class BOOrganizations{
 
     }
 
-    function searchOrganizations($string)
+    function searchOrganizations($string, $from)
     {
         $q = Doctrine_Query::create()
             ->select('o.ID_ORGANIZATION, LEFT(o.NAME,15) AS NAME, LEFT(o.DESCRIPTION, 35) AS DESCRIPTION, ph.PIC, u.ID_USER')
@@ -169,7 +169,9 @@ class BOOrganizations{
             ->leftJoin('o.Users u')
             ->where('o.NAME LIKE ?', '%'.$string.'%')
             ->orWhere('o.DESCRIPTION LIKE ?', '%'.$string.'%')
-            ->orderBy('o.ID_ORGANIZATION DESC');
+            ->orderBy('o.ID_ORGANIZATION DESC')
+            ->offset($from)
+            ->limit(28);
         $rta = $q->execute();
 
         if($rta)
@@ -177,6 +179,28 @@ class BOOrganizations{
         else
             return false;
 
+    }
+
+    function totalRecords($string)
+    {
+        $q = Doctrine_Query::create()
+            ->select('COUNT(o.ID_ORGANIZATION) as QTY')
+            ->from('Organizations o')
+            ->where('o.NAME LIKE ?', '%'.$string.'%')
+            ->orWhere('o.DESCRIPTION LIKE ?', '%'.$string.'%')
+            ->orderBy('o.ID_ORGANIZATION DESC');
+        $rta = $q->execute();
+
+        if($rta)
+        {
+            $ar = $rta->toArray();
+            return $ar[0]['QTY'];
+        }          
+        else
+        {
+            return false;
+        }
+            
     }
 
 

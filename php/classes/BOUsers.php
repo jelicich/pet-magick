@@ -646,7 +646,7 @@ class BOUsers{
                 }
     }
 
-    function searchUsers($string)
+    function searchUsers($string,$from)
     {
         $q = Doctrine_Query::create()
             ->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
@@ -658,7 +658,9 @@ class BOUsers{
             ->where('u.NAME LIKE ?', '%'.$string.'%')
             ->orWhere('u.LASTNAME LIKE ?', '%'.$string.'%')
             ->orWhere('u.NICKNAME LIKE ?', '%'.$string.'%')
-            ->orderBy('u.ID_USER DESC');
+            ->orderBy('u.ID_USER DESC')
+            ->offset($from)
+            ->limit(28);
         $rta = $q->execute();
 
         if($rta)
@@ -666,6 +668,29 @@ class BOUsers{
         else
             return false;
 
+    }
+
+    function totalRecords($string)
+    {
+        $q = Doctrine_Query::create()
+            ->select('COUNT(u.ID_USER) as QTY')
+            ->from('Users u')
+            ->where('u.NAME LIKE ?', '%'.$string.'%')
+            ->orWhere('u.LASTNAME LIKE ?', '%'.$string.'%')
+            ->orWhere('u.NICKNAME LIKE ?', '%'.$string.'%')
+            ->orderBy('u.ID_USER DESC');
+        $rta = $q->execute();
+
+        if($rta)
+        {
+            $ar = $rta->toArray();
+            return $ar[0]['QTY'];
+        }          
+        else
+        {
+            return false;
+        }
+            
     }
 
 

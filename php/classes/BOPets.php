@@ -519,7 +519,7 @@ class BOPets{
         return $out;    
     }
 
-    function searchPets($string)
+    function searchPets($string, $from)
     {
         $q = Doctrine_Query::create()
             ->select('p.ID_PET, p.NAME, p.BREED, ac.NAME, ph.PIC, u.ID_USER')
@@ -529,7 +529,9 @@ class BOPets{
             ->leftJoin('p.Users u')
             ->where('p.NAME LIKE ?', '%'.$string.'%')
             ->orWhere('p.BREED LIKE ?', '%'.$string.'%')
-            ->orderBy('p.ID_PET DESC');
+            ->orderBy('p.ID_PET DESC')
+            ->offset($from)
+            ->limit(28);
         $rta = $q->execute();
 
         if($rta)
@@ -537,6 +539,28 @@ class BOPets{
         else
             return false;
 
+    }
+
+    function totalRecords($string)
+    {
+        $q = Doctrine_Query::create()
+            ->select('COUNT(p.ID_PET) as QTY')
+            ->from('Pets p')
+            ->where('p.NAME LIKE ?', '%'.$string.'%')
+            ->orWhere('p.BREED LIKE ?', '%'.$string.'%')
+            ->orderBy('p.ID_PET DESC');
+        $rta = $q->execute();
+
+        if($rta)
+        {
+            $ar = $rta->toArray();
+            return $ar[0]['QTY'];
+        }          
+        else
+        {
+            return false;
+        }
+            
     }
 
 

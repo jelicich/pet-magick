@@ -1,5 +1,6 @@
 <?php
 
+
 if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 
 	$article = $vetTalk->getLastArticle();
@@ -31,7 +32,8 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	else{ $srcImg = $article[0]['Pics']['THUMB']; }
 	
 }
-
+	$time = new BOLocation;
+	$date =  $time->FormatDisplayDate($date);
 ?>
 <div class="mod vet-talk-mod" id='mainArticle'>
 	<div class="mod-header">
@@ -45,9 +47,10 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 					<a href=<?php echo "img/vetTalk/".$srcImg ?> class='link-img img-float' >
 						<img src=<?php echo "img/vetTalk/thumb/".$srcImg; ?> class="thumb-mid"/>
 					</a>
-
+				
 					<span><b>By </b><?php echo $name.' '.$lastName; ?></span>
-					<span><i><?php echo $date; ?></i></span>
+					<span><?php echo $date; ?></span>
+				
 				</div>
 
 				<div class="blind">

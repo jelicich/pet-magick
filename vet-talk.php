@@ -8,12 +8,15 @@
 	include_once "php/classes/BOPics.php";
 	include_once "php/classes/BOQuestions.php";
 	include_once "php/classes/BOPopups.php";
+	include_once "php/classes/BOLocation.php";
 	$pop = new BOPopups;
 	$vetTalk = new BOVettalk;
 	$ques = new BOQuestions;
 	$pics = new BOPics;
 
 	$aq = $ques->getQuestions();
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

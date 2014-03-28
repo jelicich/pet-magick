@@ -37,7 +37,7 @@
 			else{ $content =  $allArticles[$i]['CONTENT']; }
 
 			//array_push($noRepeat, $j);
-		
+			$date =  $time->FormatDisplayDate($allArticles[$i]['DATE']);
 ?>
 	
 				<li class="clearfix">
@@ -45,7 +45,7 @@
 					<div class="content-description bg-txt ">
 						<h3><?php echo $title; if(strlen($title)==65) echo '...'?></h3>
 						<p><?php echo $content; if(strlen($content)==80) echo '...'; ?></p>
-						<p class="italic"><?php echo $allArticles[$i]['DATE'] ?></p>
+						<p class="italic"><?php echo $date; ?></p>
 
 						<span id="<?php echo $articleId; ?>" class='linkToModule' />View post</span>
 						<!-- <a href=<?php //echo '#'.$articleId ?> class='linkToModule'>View post</a> -->

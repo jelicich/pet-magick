@@ -28,6 +28,10 @@
 <!--[if lte IE 8]> <link rel="stylesheet" href="css/ie/ie_index_8.css" type="text/css" /> <![endif]-->
 <!--[if IE 7]> <link rel="stylesheet" href="css/ie/ie_index_7.css" type="text/css" /> <![endif]-->
 
+<script type="text/javascript">
+
+</script>
+
 </head>
 
 <body>

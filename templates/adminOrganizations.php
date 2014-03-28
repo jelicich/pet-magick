@@ -41,7 +41,7 @@
 									</ul>
 								</div>
 
-								<input type="button" class="btn" id="upload-organization" value="Create a new organization" name="<?php echo $idUsr; ?>" /> 
+								<input type="button" class="btn btn-admin" id="upload-organization" value="Create a new organization" name="<?php echo $idUsr; ?>" /> 
 								<!--<a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-organization">Create a new organization</a> -->
 <?php
 	if(isset($_SESSION['id'])){

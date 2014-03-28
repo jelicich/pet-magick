@@ -58,7 +58,7 @@
 							</ul>
 						</div>
 
-						<input type="button" value="Create a new Project" name="<?php echo $idUsr ?>" class="btn" id="upload-project" />
+						<input type="button" value="Create a new Project" name="<?php echo $idUsr ?>" class="btn btn-admin" id="upload-project" />
 						<!-- <a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-project">Create a new Project</a> -->
 
 	

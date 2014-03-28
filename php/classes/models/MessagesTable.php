@@ -78,13 +78,20 @@ class MessagesTable extends Doctrine_Table
 
     public function getAllMessages($conv){
 
+          function FormatDisplayDate($date){
+  
+                    $dNewDate = strtotime($date);
+                    return date('l jS F Y', $dNewDate);
+                  
+  }
+
             $q = Doctrine_Query::create()
                 ->select('m.*, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
                 ->AndWhere('m.CONVERSATION_ID = ?', $conv)
                 ->orderBy('m.DATE ASC');
-
+                
 
                  $rta = $q->execute();
 
@@ -113,7 +120,7 @@ class MessagesTable extends Doctrine_Table
     }// End read
 
 
-  public function getNewMessages($conversation){
+    public function getNewMessages($conversation){
 
                 $q = Doctrine_Query::create()
                 ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')

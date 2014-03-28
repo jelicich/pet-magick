@@ -1578,6 +1578,9 @@ width: 100% !important;
 	background: #bdd19c;
 	min-height: 250px;
 }
+.vet-text-format span{
+	word-spacing: 0px;
+}
 
 #mainArticle .loading{
 	margin: 120px 0 0 450px;
@@ -1767,6 +1770,10 @@ padding: 10px;
 
 
 /* -------------------------------------- organizations */
+
+.btn-admin{
+	font-weight: bold;
+}
 
 .org-mod{
 	background: #b0bcda; /*cambiar color para organiztions */

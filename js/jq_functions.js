@@ -147,7 +147,7 @@ function start_scroll_profile(applyTo, direction){
 						enable: false 
 					},
 					advanced:{
-						updateOnContentResize: true,
+						updateOnContentResize: true
 						 //autoExpandHorizontalScroll: direction
 						
 					},

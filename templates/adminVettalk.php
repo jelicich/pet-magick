@@ -36,7 +36,7 @@
 									</ul>
 								</div>
 
-								<input type="button" value="Create a new Article" name="<?php echo $idUsr ?>" class="btn" id="upload-vet-talk" />
+								<input type="button" value="Create a new Article" name="<?php echo $idUsr ?>" class="btn btn-admin" id="upload-vet-talk" />
 								<!-- <a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-vet-talk">Create a new article</a> -->
 								
 <?php

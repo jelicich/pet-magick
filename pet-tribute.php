@@ -4,6 +4,7 @@
 	//var_dump($_SESSION);
 	include_once 'php/classes/BOTributes.php';
 	include_once 'php/classes/BOComments.php';
+	include_once "php/classes/BOLocation.php";
 	$t = new BOTributes;
 	$a = $t->getTribute($_GET['t']);
 	$c = new BOComments;

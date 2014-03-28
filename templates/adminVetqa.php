@@ -27,7 +27,7 @@
 														<p>
 															<textarea></textarea>
 															<input type="hidden" value=<?php echo '"'.$aq[$i]['ID_QUESTION'].'"'?>/>
-															<input type="button" value="Submit" class="submit-answer"/>
+															<input type="button" value="Submit" class="submit-answer btn-admin"/>
 														</p>
 													</div>
 

@@ -99,7 +99,7 @@
 
 								<label for="newPassword">Enter your new password</label>
 								<input type="password" name="newPassword" id="newPassword" />
-								<input type="button" name="update" value="Update" id="update" class="btn" />
+								<input type="button" name="update" value="Update" id="update" class="btn btn-admin" />
 
 						 	</div>		
 

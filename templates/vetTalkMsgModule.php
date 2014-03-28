@@ -34,6 +34,7 @@
 					<?php 
 						for($i = 0; $i<sizeof($aq); $i++)
 						{						
+							$date =  $time->FormatDisplayDate($aq[$i]['DATE']);
 					?>
 
 							<li class="clearfix">
@@ -43,20 +44,25 @@
 										<div class="content-description bg-txt">
 											<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'"' ?>><?php echo $aq[$i]['Users']['NAME'].' '.$aq[$i]['Users']['LASTNAME']; ?></a></h3>
 											<p><?php echo $aq[$i]['QUESTION']?></p>
-											<span><?php echo $aq[$i]['DATE']?></span>
+											<span><?php echo $date; ?></span>
 										</div>
 									</li>
 									<li class="vet-a clearfix">
 										
 											<?php 
+											
+
+											
+
 											if(!empty($aq[$i]['Answers']))
 											{
+												$date =  $time->FormatDisplayDate($aq[$i]['Answers']['DATE']);
 											?>
 												<a href=<?php echo '"user-profile.php?u='.$aq[$i]['Answers']['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$aq[$i]['Answers']['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
 												<div class="content-description bg-txt">
 													<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Answers']['Users']['ID_USER'] .'"' ?>><?php echo $aq[$i]['Answers']['Users']['NAME'].' '.$aq[$i]['Answers']['Users']['LASTNAME'] ?></a></h3>
 													<p><?php echo $aq[$i]['Answers']['ANSWER'] ?></p>
-													<span><?php echo $aq[$i]['Answers']['DATE']?></span>
+													<span><?php echo $date; ?></span>
 												</div>
 												
 

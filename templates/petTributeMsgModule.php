@@ -34,6 +34,9 @@
 			<div class="scrollable-list" id="tributeList">
 				<ul class="mod-content" id="comments-wrapper">
 					<?php 
+
+						$time = new BOLocation;
+	
 						if(sizeof($com) <= 0)
 						{
 					?>
@@ -43,15 +46,16 @@
 					<?php
 						}
 						for($i = 0; $i<sizeof($com); $i++)
-						{						
+						{		
+							$date =  $time->FormatDisplayDate($com[$i]['DATE']);				
 					?>
-
+							
 							<li class="clearfix">
 								<a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$com[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
 								<div class="content-description bg-txt">
 									<h3><a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?>><?php echo $com[$i]['Users']['NAME'].' '.$com[$i]['Users']['LASTNAME'] ?></a></h3>
 									<p><?php echo $com[$i]['COMMENT']?></p>
-									<span><?php echo $com[$i]['DATE']?></span>
+									<span><?php echo $date;  ?></span>
 								</div>
 							</li>
 

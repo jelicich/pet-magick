@@ -40,7 +40,13 @@ class BOLocation{
        
     }// End country
 
-      
+  function FormatDisplayDate($date){
+  
+    $dNewDate = strtotime($date);
+    return date('l jS F Y', $dNewDate);
+  
+  }
+
 
 }//End class BOUsers
 

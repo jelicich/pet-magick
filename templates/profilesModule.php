@@ -21,7 +21,6 @@
 
 		$usersList = $p->getUserList();
 
-
 		if(isset($noRepeat) && in_array( $usersList['ID_USER'], $noRepeat)){
 			
 			$i--;

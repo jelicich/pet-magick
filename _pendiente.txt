@@ -2,6 +2,8 @@
 - Confirmar por email (para estoy y para testear el forgot password necesitamos el server)
 - Escapar caracteres 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
+- limits en textos
+
 - formatear nombre de autor y fecha en vet talk articulo (no entiendo pq solo ahi se imprime espaciado)
 - formato de fecha en inbox (me gano)
 

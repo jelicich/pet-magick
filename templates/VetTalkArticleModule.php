@@ -48,8 +48,8 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 						<img src=<?php echo "img/vetTalk/thumb/".$srcImg; ?> class="thumb-mid"/>
 					</a>
 				
-					<span><b>By </b><?php echo $name.' '.$lastName; ?></span>
-					<span><?php echo $date; ?></span>
+					<p><b>By </b><?php echo $name.' '.$lastName; ?></p>
+					<p><?php echo $date; ?></p>
 				
 				</div>
 

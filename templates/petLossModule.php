@@ -1,7 +1,6 @@
 
 <?php
-		// REEMPLAZAR TODO ESTO POR MASCOTAS MUERTAS (tributos)
-		// ESTO TRAE SOLO USUARIOS NORMALES Y TE LINKEA A SU PERFIL
+	
 
 	include_once "php/classes/BOTributes.php";
 	$tribute = new BOTributes;

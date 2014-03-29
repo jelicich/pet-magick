@@ -37,7 +37,7 @@ class BOVideos{
 
       try
           {  
-            $this->val($query);
+            //$this->val($query);
 
             extension_loaded('ffmpeg') or die('Error in loading ffmpeg');
             $ext = pathinfo($query['fileName'], PATHINFO_EXTENSION);

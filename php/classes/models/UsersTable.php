@@ -253,16 +253,16 @@ class UsersTable extends Doctrine_Table
 
         $userCount = Doctrine::getTable('Users')->count();
         $user = Doctrine::getTable('Users')
-       ->createQuery()
-       ->select('u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
+      ->createQuery()
+      ->select('u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
 	    ->from('Users u')
 	    ->leftJoin('u.Pics ph')
 	    ->leftJoin('u.Countries k')
 	    ->leftJoin('u.Regions r')
 	    ->leftJoin('u.Cities c')
 	    ->groupBy('u.ID_USER')
-       ->offset(rand(0, $userCount - 1))
-       ->fetchOne();
+      ->offset(rand(0, $userCount - 1))
+      ->fetchOne();
 
 
        if($user)

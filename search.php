@@ -350,8 +350,7 @@
 
 		advanced:
 		{
-			updateOnContentResize: true,
-			horizontalSrcoll: true
+			updateOnContentResize: true			
 		},
 
 		theme:"light-thin",

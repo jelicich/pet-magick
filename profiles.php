@@ -65,6 +65,7 @@
 			?>
 				
 				<div class="scrollable-module" id="profiles">
+					
 					<ul class='grid-thumbs clearfix' id='ModulesByPet'> 
 						<?php 
 							
@@ -96,8 +97,89 @@
 <script type="text/javascript">
 	
 	listByCategory('profilesModuleByPet.php');
-	start_scroll('scrollable-module', false);
 
+	function range(start, end) 
+	{
+	    var foo = [];
+	    for (var i = start; i <= end; i++) {
+	        foo.push(i);
+	    }
+	    return foo;
+	}
+	
+	
+	//Guardo la cant de pags en un array
+	var pages = range(0, <?php echo $totalPag ?>);
+	//borro la primer pag q se imprime del array (la primera vez q se ejecuta nro de pag coincide con indice de array)
+	pages.splice(<?php echo $firstPag ?>, 1);
+	
+	var totalRec = <?php echo $totalRec; ?>;
+	var totalPag = <?php echo $totalPag; ?>;
+	$(".scrollable-module").mCustomScrollbar(
+	{
+		scrollButtons:
+		{
+			enable: false 
+		},
+
+		advanced:
+		{
+			updateOnContentResize: true,
+			horizontalSrcoll: true
+		},
+
+		theme:"light-thin",
+
+		callbacks:
+		{
+		    
+		    onTotalScroll:function()
+		    {
+	 			  		
+	    		
+	    		if(pages.length > 0)
+	    		{
+	    			//agarro una pag random del array
+	    			var rand = Math.floor(Math.random() * pages.length);
+		    		page = pages[rand];
+		    		
+		    		
+		    		
+	    			$.ajax(
+		    		{
+		                type: "POST",
+		                url: 'ajax/searchUsers.php?',
+		                data: {q: '*', from: page*28, rand: true},
+		                cache: false,
+
+		                success: function(html)
+		                {
+		                	$('#ModulesByPet').append(html);		                	
+		                }
+		            });			    	
+
+	    		
+
+		    		//borro la pag q se cargo del array
+		    		pages.splice(rand,1);		    		
+
+	    		}
+
+	    		else
+		    	{
+		    		var li = $('.last-result');
+		    		if(li.length == 0)
+		    		{
+		    			$('#ModulesByPet').append('<li class="last-result">No more results</li>');
+		    		}
+		    		
+		    	}
+	    		    		
+	    		
+	    		
+	        }
+		}
+	});
 </script>
 
 </body>

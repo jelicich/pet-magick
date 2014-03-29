@@ -597,7 +597,7 @@ function printMessages(){
 	//console.log(this.responseText);
 	//si no tiene argumentos viene por ajax
 	if(arguments.length == 0){
-		console.log(this.responseText);
+		//console.log(this.responseText);
 		var html = eval(this.responseText);
 
 	}else{
@@ -613,6 +613,13 @@ function printMessages(){
 		byid('wrap-messages').appendChild(lines);
 
 	}//end for
+	
+	$('.scrollable-msg').mCustomScrollbar("update");
+	$('.scrollable-msg').mCustomScrollbar("scrollTo","bottom",{
+	  scrollInertia:0
+	});
+
+
 }//end printMessages
 
 function refreshInbox(){

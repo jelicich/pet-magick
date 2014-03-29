@@ -97,7 +97,7 @@ function start_scroll(applyTo, direction){
 						enable: false 
 					},
 					advanced:{
-						updateOnContentResize: true,
+						//updateOnContentResize: true,
 						horizontalSrcoll: direction
 					},
 					theme:"light-thin",

@@ -48,7 +48,7 @@
 		</div>	
 
 		<div class="grid_8" id="message-area">
-			<div class="scrollable" id="wrap-messages-container">
+			<div class="scrollable-msg" id="wrap-messages-container">
 				<ul id="wrap-messages"> 
 				</ul>
 			</div>
@@ -95,6 +95,23 @@
 	});
 
 	start_scroll('scrollable', false);
+	$(".scrollable-msg").mCustomScrollbar(
+	{
+		scrollButtons:
+		{
+			enable: false 
+		},
+
+		advanced:
+		{
+			updateOnContentResize: false,
+		},
+
+		theme:"light-thin",
+
+
+	});
+
 
 </script>
 </body>

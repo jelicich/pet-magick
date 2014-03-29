@@ -3,7 +3,8 @@
 include '../php/classes/BOUsers.php';
 $u = new BOUsers;
 $r = $u->searchUsers($_POST['q'], $_POST['from']);
-
+if($_POST['rand'])
+	shuffle($r);
 for($i = 0; $i < sizeof($r); $i++)
 {
 	if(isset($r[$i]['Pics']))

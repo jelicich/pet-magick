@@ -21,8 +21,8 @@
 		}else{
 
 		$noRepeatVideo = $videosList['ID_VIDEO'];
-		$title = $videosList['TITLE'];
-		$caption = $videosList['CAPTION'];
+		$title = htmlspecialchars($videosList['TITLE']);
+		$caption = htmlspecialchars($videosList['CAPTION']);
 		$srcImg = $videosList['THUMBNAIL'];
 		$srcVideo = $videosList['VIDEO']; 
 

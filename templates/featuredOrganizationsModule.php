@@ -7,8 +7,8 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	$featuredOrg = $org->getOrganizationsRamdom();
 	//var_dump($featuredOrg);
 	$userId = $featuredOrg['USER_ID'];
-	$name = $featuredOrg['NAME'];
-	$description = $featuredOrg['DESCRIPTION'];
+	$name =  htmlspecialchars($featuredOrg['NAME']);
+	$description = htmlspecialchars($featuredOrg['DESCRIPTION']);
 	if(!isset($featuredOrg['Pics']['PIC'])){ $srcImg = 'default.jpg'; }
 	else{ $srcImg = $featuredOrg['Pics']['PIC']; }
 
@@ -19,8 +19,8 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	$featuredOrg= $org->getOrganizationsById($_GET['p']);
 	//var_dump($featuredOrg);
 	$userId = $featuredOrg[0]['USER_ID'];
-	$name = $featuredOrg[0]['NAME'];
-	$description = $featuredOrg[0]['DESCRIPTION'];
+	$name =  htmlspecialchars($featuredOrg[0]['NAME']);
+	$description =  htmlspecialchars($featuredOrg[0]['DESCRIPTION']);
 
 	if(!isset($featuredOrg[0]['Pics']['PIC'])){ $srcImg = 'default.jpg'; }
 	else{ $srcImg = $featuredOrg[0]['Pics']['PIC']; }

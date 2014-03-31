@@ -31,8 +31,10 @@
 														<dl class='hidden'>
 															<dt>
 																<?php 
-																	if(strlen($a[$i]['CAPTION'])>33) echo substr($a[$i]['CAPTION'], 0, 33).'...';
-																	else echo $a[$i]['CAPTION'];
+
+																	$caption =  htmlspecialchars($a[$i]['CAPTION']);
+																	if(strlen($caption) > 33) echo substr($caption , 0, 33).'...';
+																	else echo $caption ;
 																?>
 															</dt>
 														<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->

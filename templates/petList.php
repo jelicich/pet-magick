@@ -31,18 +31,20 @@
 
 										<h3>
 											<span id="<?php echo $pets[$i]['ID_PET']; ?>" class="pet-link" style="cursor: pointer"> 
-												<?php echo $pets[$i]['NAME'] ?> 
+												<?php echo htmlspecialchars($pets[$i]['NAME']); ?> 
 											</span>
 										</h3>
 
 										<span>
 										<?php 
+											$pet_breed = htmlspecialchars($pets[$i]['BREED']);
 											if(strlen($pets[$i]['BREED'])>= 10){
-												echo substr($pets[$i]['BREED'], 0,10).'...';
+											
+												echo substr($pet_breed, 0,10).'...';
 											} 
 											else
 											{
-												echo $pets[$i]['BREED'];
+												echo $pet_breed;
 											}
 										?></span>
 						<?php

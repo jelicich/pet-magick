@@ -37,9 +37,9 @@
 			if(!isset($allOrg[$j]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
 			else{ $srcImg = 'img/organizations/thumb/'.$allOrg[$j]['Pics']['PIC']; }
 			if(!isset($allOrg[$j]['NAME'])){ $name = '?'; }
-			else{ $name = $allOrg[$j]['NAME']; }
+			else{ $name =  htmlspecialchars($allOrg[$j]['NAME']); }
 			if(!isset( $allOrg[$j]['DESCRIPTION'])){ $description =  '?'; }
-			else{ $description =  $allOrg[$j]['DESCRIPTION']; }
+			else{ $description =   htmlspecialchars($allOrg[$j]['DESCRIPTION']); }
 
 			array_push($noRepeat, $j);
 		

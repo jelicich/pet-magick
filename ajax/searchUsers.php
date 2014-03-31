@@ -20,8 +20,8 @@ for($i = 0; $i < sizeof($r); $i++)
 			<a href="<?php echo "user-profile.php?u=".$r[$i]['ID_USER']; ?>" >
 				<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 				<dl class='hidden'>
-					<dt><?php echo $r[$i]['NAME']." ".$r[$i]['LASTNAME']; ?> </dt>
-					<dd><?php echo  $r[$i]['Cities']['City'].", ".$r[$i]['Countries']['Country']; ?></dd>
+					<dt><?php echo  htmlspecialchars($r[$i]['NAME']." ".$r[$i]['LASTNAME']); ?> </dt>
+					<dd><?php echo  htmlspecialchars($r[$i]['Cities']['City'].", ".$r[$i]['Countries']['Country']); ?></dd>
 				<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 				</dl>
 			</a>
@@ -30,3 +30,4 @@ for($i = 0; $i < sizeof($r); $i++)
 }
 
 ?>
+

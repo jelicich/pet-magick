@@ -19,11 +19,11 @@
 								</a>
 
 								<div class="pet-details">
-									<strong class="nickname"><?php echo $p->getName(); ?></strong>
+									<strong class="nickname"><?php echo htmlspecialchars($p->getName()); ?></strong>
 
 									<ul>
-										<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
-										<li><span><strong>Traits: </strong><?php echo $p->getTraits();?></span></li>
+										<li><span><strong>Breed: </strong><?php echo htmlspecialchars($p->getBreed()); ?></span></li>
+										<li><span><strong>Traits: </strong><?php echo htmlspecialchars($p->getTraits()); ?></span></li>
 										<?php
 											if($p->hasTribute($p->getId()))
 											{
@@ -35,7 +35,7 @@
 							</div>
 							
 							<div class=" bg-pet-profile ">
-								<p><?php echo $p->getStory();?></p>
+								<p><?php echo htmlspecialchars($p->getStory()); ?></p>
 							</div>
 							
 						</div><!-- END PET ABOUT-->
@@ -66,7 +66,7 @@
 												<a class='link-img'  href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> >
 													<img class="thumb-mid" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> />
 													<dl class='hidden'>
-														<dt><?php echo $album[$i]['CAPTION']; ?> </dt>
+														<dt><?php echo htmlspecialchars($album[$i]['CAPTION']); ?> </dt>
 													<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
 													</dl>
 												</a>
@@ -128,8 +128,8 @@
 												</span>
 
 												<dl class='hidden'>
-													<dt>".$a[0]['TITLE']."</dt>
-													<dd>".$a[0]['CAPTION']."</dd>
+													<dt>".htmlspecialchars($a[0]['TITLE'])."</dt>
+													<dd>".htmlspecialchars($a[0]['CAPTION'])."</dd>
 												</dl>
 												
 											</a>

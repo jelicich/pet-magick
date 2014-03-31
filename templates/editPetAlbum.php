@@ -1,6 +1,6 @@
 										
 					<div class="mod-header">
-						<h2>Edit pet album2222</h2>
+						<h2>Edit pet album</h2>
 					</div>
 
 					<div class="mod-content">

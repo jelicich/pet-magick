@@ -1,6 +1,6 @@
 	<div class="mod grid_12 pet-loss-mod nogrid-mod section ">
 			<div class="mod-header">
-				<h2><?php echo $a['TITLE']; ?></h2>
+				<h2><?php echo  htmlspecialchars($a['TITLE']); ?></h2>
 			</div>
 			
 			<div class="mod-content clearfix">
@@ -18,7 +18,7 @@
 						?>
 
 						<dl>
-							<dt><?php echo $a['Pets']['NAME']; ?></dt>
+							<dt><?php echo  htmlspecialchars($a['Pets']['NAME']); ?></dt>
 							<dd><small><?php echo $since[0].'-'.$thru[0]  ?></small></dd>
 						</dl>
 
@@ -31,7 +31,7 @@
 					<div class="scrollable-text" id="tributeText">
 						<div class="bg-txt-featured-modules">
 							
-							<p><?php echo $a['CONTENT'] ?></p>
+							<p><?php echo  htmlspecialchars($a['CONTENT']) ?></p>
 
 						</div>
 					</div>

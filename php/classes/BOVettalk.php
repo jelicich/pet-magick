@@ -93,9 +93,14 @@ class BOVettalk{
       try
       {
         $data = $this->table->find($id);
+       // var_dump($data); exit;
         $pics = new BOPics;
-        if($pics->unlinkProfilePic($data->PIC_ID, '../img/vetTalk/'))
+        //var_dump($data->PIC_ID); exit;
+        if($data->PIC_ID != NULL){
 
+             $pics->unlinkProfilePic($data->PIC_ID, '../img/vetTalk/');
+        }
+        
         $this->table->deleteVetTalk($id);
         return true;
       } 

@@ -61,9 +61,9 @@
 				if(!isset($projectAlbum[0]['THUMB'])){ $srcImg = 'img/projects/thumb/default.jpg'; }
 				else{ $srcImg = 'img/projects/thumb/'.$projectAlbum[0]['THUMB']; } // esta deberia ser la primer foto del album
 				if(!isset($everyProject['TITLE'])){ $title = '?'; }
-				else{ $title = $everyProject['TITLE']; }
+				else{ $title =  htmlspecialchars($everyProject['TITLE']); }
 				if(!isset( $everyProject['DESCRIPTION'] )){ $description =  '?'; }
-				else{ $description =  $everyProject['DESCRIPTION']; }
+				else{ $description =   htmlspecialchars($everyProject['DESCRIPTION']); }
 
 				array_push($noRepeat, $projectId);
 ?>

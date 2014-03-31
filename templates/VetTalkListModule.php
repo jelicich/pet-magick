@@ -32,9 +32,9 @@
 			if(!isset($allArticles[$i]['Pics']['THUMB'])){ $srcImg = 'img/vetTalk/thumb/default.jpg'; }
 			else{ $srcImg = 'img/vetTalk/thumb/'.$allArticles[$i]['Pics']['THUMB']; }
 			if(!isset($allArticles[$i]['TITLE'])){ $title = '?'; }
-			else{ $title = $allArticles[$i]['TITLE']; }
+			else{ $title =  htmlspecialchars($allArticles[$i]['TITLE']); }
 			if(!isset( $allArticles[$i]['CONTENT'])){ $content =  '?'; }
-			else{ $content =  $allArticles[$i]['CONTENT']; }
+			else{ $content =   htmlspecialchars($allArticles[$i]['CONTENT']); }
 
 			//array_push($noRepeat, $j);
 			$date =  $time->FormatDisplayDate($allArticles[$i]['DATE']);

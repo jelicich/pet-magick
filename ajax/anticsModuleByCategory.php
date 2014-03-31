@@ -9,8 +9,8 @@
 
 	for($i=0; $i<$t; $i++){
 
-		$title = $videosList[$i]['TITLE'];
-		$caption = $videosList[$i]['CAPTION'];
+		$title =  htmlspecialchars($videosList[$i]['TITLE']);
+		$caption =  htmlspecialchars($videosList[$i]['CAPTION']);
 		$srcImg = $videosList[$i]['THUMBNAIL'];
 		$srcVideo = $videosList[$i]['VIDEO']; 
 ?>
@@ -50,8 +50,8 @@
     //var_dump($videosList);
 	for($i=0; $i<$t; $i++){
 
-		$title = $videosList[$i]['Videos'][0]['TITLE'];['Videos'];
-		$caption = $videosList[$i]['Videos'][0]['CAPTION'];
+		$title =  htmlspecialchars($videosList[$i]['Videos'][0]['TITLE']);
+		$caption =  htmlspecialchars($videosList[$i]['Videos'][0]['CAPTION']);
 		$srcImg = $videosList[$i]['Videos'][0]['THUMBNAIL'];
 		$srcVideo = $videosList[$i]['Videos'][0]['VIDEO']; 
 ?>

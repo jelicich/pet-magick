@@ -1,6 +1,6 @@
 						
 					<div class="mod-header">
-						<h2>Edit pet video222</h2>
+						<h2>Edit pet video</h2>
 					</div>
 
 					<div class="mod-content">

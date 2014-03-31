@@ -17,7 +17,7 @@ for ($i=0; $i < $t; $i++) {
 	<li id="list-user-fav">
 			<img src= <?php echo $srcImg ?> class="thumb-small side-img" />
 			<a href=<?php echo 'user-profile.php?u='.$user_id ?> class='linkToModule'  >
-				<strong><?php echo $nickname; ?></strong>
+				<strong><?php echo htmlspecialchars($nickname); ?></strong>
 			</a><br><!-- remove br!!!!!!! -->
 			<!-- <a href=<?php //echo 'user-profile.php?u='.$user_id ?> class='linkToModule'>View profile</a> -->
 			<!--<input type="button" class="deleteFavorite" name=<?php //echo $user_id; ?> value="Delete" /> -->

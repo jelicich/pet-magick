@@ -27,8 +27,8 @@
 												</span>
 
 												<dl class='hidden'>
-													<dt>".$a[0]['TITLE']."</dt>
-													<dd>".$a[0]['CAPTION']."</dd>
+													<dt>". htmlspecialchars($a[0]['TITLE'])."</dt>
+													<dd>". htmlspecialchars($a[0]['CAPTION'])."</dd>
 												</dl>
 												
 											</a>

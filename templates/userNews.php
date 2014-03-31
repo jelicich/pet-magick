@@ -34,14 +34,18 @@
 					<?php 
 
 						//$u = new BOUsers;
-						$n = new BONews;
+						include_once "php/classes/BOLocation.php";
+						$time = new BOLocation;
 						
+
 						if($n->getNews($_GET['u']))
 						{
 							$nw = $n->getNews($_GET['u']);
 							
 							for($i = 0; $i<sizeof($nw); $i++)
 							{
+
+								$date =  $time->FormatDisplayDate($nw[$i]['DATE']);
 					?>
 
 
@@ -49,9 +53,9 @@
 							<li class="clearfix">
 								<div class="content-description bg-news">
 									
-									<p><?php echo $nw[$i]['NEWS']; ?><p>
+									<p><?php echo  htmlspecialchars($nw[$i]['NEWS']); ?><p>
 									<div>
-										<span><small><?php echo $nw[$i]['DATE']?></small></span><br><!-- remove br!!!!!!! -->
+										<span><small><?php echo $date; ?></small></span><br><!-- remove br!!!!!!! -->
 
 										<?php
 										if($u->isOwn())

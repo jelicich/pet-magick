@@ -65,9 +65,8 @@
 <!-- END wrapper-->
 
 <script type="text/javascript">
+
 	start_scroll('scrollable-list', false);
-	
-	//modalImg();
 	comments('postComment');
 
 </script>

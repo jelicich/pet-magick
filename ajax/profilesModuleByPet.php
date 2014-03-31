@@ -47,8 +47,8 @@
 				<a href= <?php echo "user-profile.php?u=".$userId; ?> >
 					<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 					<dl class='hidden'>
-						<dt><?php echo $name." ".$lastName; ?> </dt>
-						<dd><?php echo  $city.", ".$country; ?></dd>
+						<dt><?php echo  htmlspecialchars($name." ".$lastName); ?> </dt>
+						<dd><?php echo   htmlspecialchars($city.", ".$country); ?></dd>
 					</dl>
 				</a>
 			</li>
@@ -97,8 +97,8 @@
 			<a href= <?php echo "user-profile.php?u=".$userId; ?> >
 				<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 				<dl class='hidden'>
-					<dt><?php echo $name." ".$lastName; ?> </dt>
-					<dd><?php echo  $city.", ".$country; ?></dd>
+					<dt><?php echo  htmlspecialchars($name." ".$lastName); ?> </dt>
+					<dd><?php echo   htmlspecialchars($city.", ".$country); ?></dd>
 				</dl>
 			</a>
 		</li>

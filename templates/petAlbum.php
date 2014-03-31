@@ -37,7 +37,7 @@
 												<a class='link-img'  href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> >
 													<img class="thumb-mid" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> />
 													<dl class='hidden'>
-														<dt><?php echo $album[$i]['CAPTION']; ?> </dt>
+														<dt><?php echo  htmlspecialchars($album[$i]['CAPTION']); ?> </dt>
 													<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
 													</dl>
 												</a>

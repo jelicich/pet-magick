@@ -8,8 +8,8 @@
 
 	for($i=0; $i<$t; $i++){
 
-		$title = $videosList[$i]['TITLE'];
-		$caption = $videosList[$i]['CAPTION'];
+		$title = htmlspecialchars($videosList[$i]['TITLE']);
+		$caption = htmlspecialchars($videosList[$i]['CAPTION']);
 		$srcImg = $videosList[$i]['THUMBNAIL'];
 		$srcVideo = $videosList[$i]['VIDEO']; 
 ?>

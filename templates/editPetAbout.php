@@ -71,15 +71,15 @@
 									<ul class="clearfix">
 										<li class="odd">								
 											<label for="pet-name">Name*</label>
-											<input type="text" class="form-element" name="name" id="pet-name" value=<?php echo '"'.$p->getName().'"' ?> />
+											<input type="text" class="form-element" name="name" id="pet-name" value=<?php echo '"'.htmlspecialchars($p->getName()).'"' ?> />
 										</li>
 										<li class="even">
 											<label for="pet-breed">Breed</label>
-											<input type="text" class="form-element" name="breed" id="pet-breed" value=<?php echo '"'.$p->getBreed().'"'?>/>
+											<input type="text" class="form-element" name="breed" id="pet-breed" value=<?php echo '"'.htmlspecialchars($p->getBreed()).'"'?>/>
 										</li>
 										<li class="odd">
 											<label for="pet-traits">Traits</label>
-											<input type="text" class="form-element" name="traits" id="pet-traits" value=<?php echo '"'.$p->getTraits().'"'?>/>
+											<input type="text" class="form-element" name="traits" id="pet-traits" value=<?php echo '"'.htmlspecialchars($p->getTraits()).'"'?>/>
 										</li>
 										<li class="even">
 											<label for="animal-category">Animal category*</label>
@@ -104,7 +104,7 @@
 								</div>
 																
 								<label for="pet-story">Pet story</label>
-								<textarea class="form-element" name="story"><?php echo $p->getStory();?></textarea>
+								<textarea class="form-element" name="story"><?php echo htmlspecialchars($p->getStory()) ?></textarea>
 								
 							</div>
 								
@@ -120,15 +120,15 @@
 									
 									<div id="hide-tribute" class="table">										
 										<label for="tr-title">Tribute title*</label>
-										<input type="text" name="tr-title" id="tr-title" value=<?php echo '"'.$ar['TITLE'].'"'; ?> class="form-element" />
+										<input type="text" name="tr-title" id="tr-title" value=<?php echo '"'.htmlspecialchars($ar['TITLE']).'"'; ?> class="form-element" />
 										<ul class="clearfix">
 											<li class="odd">
 												<label for="tr-since">Since</label>
-												<input type="text" name="tr-since" id="tr-since" readonly="readonly" value=<?php echo '"'.$ar['SINCE'].'"';?> class="form-element" />												
+												<input type="text" name="tr-since" id="tr-since" readonly="readonly" value=<?php echo '"'.htmlspecialchars($ar['SINCE']).'"';?> class="form-element" />												
 											</li>
 											<li class="even">
 												<label for="tr-thru">Gone</label>
-												<input type="text" name="tr-thru" id="tr-thru" readonly="readonly" value=<?php echo '"'.$ar['THRU'].'"'; ?> class="form-element" />
+												<input type="text" name="tr-thru" id="tr-thru" readonly="readonly" value=<?php echo '"'.htmlspecialchars($ar['THRU']).'"'; ?> class="form-element" />
 											</li>											
 										</ul>
 										<label for="tr-msg">Message*</label>
@@ -175,11 +175,11 @@
 								?>
 										<div class='wrapper-play'>
 											<div class="play"></div>
-									<img src=<?php echo '"'.$v['THUMBNAIL'].'"'; ?> class="thumb-big video-thumb"/>
+									<img src=<?php //echo '"'.$v['THUMBNAIL'].'"'; ?> class="thumb-big video-thumb"/>
 										</div>
 
 										<div class="video-last-caption">
-											<h3><?php echo $v['TITLE'] ?><span>2:12</span></h3>
+											<h3><?php //echo $v['TITLE'] ?><span>2:12</span></h3>
 											
 										</div>
 								<?php
@@ -200,7 +200,6 @@
 
 			<script type="text/javascript">
 				imgVideoUploader('profile', 'pet-about'); // SUBIR IMG
-
 				showTribute();
 
 			   $("#tr-since").datepicker({dateFormat: "yy-mm-dd"});

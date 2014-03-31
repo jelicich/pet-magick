@@ -21,7 +21,7 @@
 							}
 						?>
 						<img src=<?php echo '"'. $thumReg  .'"'; ?> />
-						<a href=<?php echo "user-profile.php?u=". $_SESSION['id'] ?> ><?php echo $_SESSION['name'].' '.$_SESSION['lastname'] ?></a>
+						<a href=<?php echo "user-profile.php?u=". $_SESSION['id'] ?> ><?php echo htmlspecialchars($_SESSION['name']).' '.htmlspecialchars($_SESSION['lastname']); ?></a>
 						<?php
 
 						if(isset($_SESSION['rank']) && $_SESSION['rank'] == 1)

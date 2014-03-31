@@ -55,4 +55,13 @@ BUGS:
 
 - el input file aparece cada vez q presionas save luego de haber seleccionado una imagen (siempre q aparece en el user profile). Eso se debe haber bugueado con el tema de los contenedores pq antes no pasaba. Tambien estan bugueadas las validaciones, antes te imprimia y el error (tanto desde js como desde php) y te frenaba la operacion , ahora no hace ninguna de las dos cosas.
 
-- en user profile el header tapa el scroll,  no se q onda
+- las ventanas modales dejan de funcionar si hubo algun error en la validacion
+- pet profile: al editar se rompe todo si hay algun error en las validaciones
+- falta limit en pet profile "breed"
+- faltan limits en admin/projects....
+- faltan limits en organizations/listmodule
+- user menu se rompe segun tamano del nombre y apellido
+- error al borrar organizacion ///////////// RESUELTO /////////////////////
+- error al borrar vet talk ////////////////////////// RECUELTO ///////////////////
+- admin password: no esta validando (solo campos vacios)
+

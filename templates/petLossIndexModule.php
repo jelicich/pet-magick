@@ -27,15 +27,15 @@
         if(!isset($allTributes['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
 		else{ $srcImg = 'img/pets/thumb/'.$allTributes['Pets']['Pics']['PIC']; }
 		if(!isset($allTributes['Pets']['NAME'])){ $name = '?'; }
-		else{ $name = $name = $allTributes['Pets']['NAME'];; }
+		else{ $name = htmlspecialchars($allTributes['Pets']['NAME']); }
 		if(!isset( $allTributes['SINCE'])){ $since =  '?'; }
 		else{ $since =  $allTributes['SINCE']; }
 		if(!isset( $allTributes['THRU'])){ $thru =  '?'; }
 		else{ $thru =  $allTributes['THRU']; }
 		if(!isset( $allTributes['TITLE'])){ $title =  '?'; }
-		else{ $title =  $allTributes['TITLE']; }
+		else{ $title =  htmlspecialchars($allTributes['TITLE']); }
 		if(!isset( $allTributes['CONTENT'])){ $content =  '?'; }
-		else{ $content =  $allTributes['CONTENT']; }
+		else{ $content =  htmlspecialchars($allTributes['CONTENT']); }
 
 		array_push($noRepeat,$trId);
 

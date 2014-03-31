@@ -1092,10 +1092,10 @@ function deleteVetTalk()
 		btn[i].onclick = function()
 		{		
 			//preventEventsDefault();
-			var p = this.href;
-			var index = p.indexOf('#');
-	  		index ++;
-	  		p = 'o='+p.substr(index);
+			var p = this.name;
+			//var index = p.indexOf('#');
+	  		//index ++;
+	  		p = 'o='+p;
 	  		
 	  		
 			ajax('POST', 'ajax/deleteVetTalk.php', printUpdatedVet, p, true);// Mando por aca el id del user?????

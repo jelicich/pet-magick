@@ -25,7 +25,7 @@
 							if(empty($nick))
 								echo $u->getName();
 							else
-								echo $nick;
+								echo htmlspecialchars($nick);
 						?>
 					</strong>About me
 				</h2>
@@ -78,8 +78,8 @@
 					<a class='link-img'  href= <?php echo '"'.$u->getProfilePic().'"'; ?> >
 						<img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/>
 					</a>
-					<h3><?php echo $u->getNameComp(); ?></h3>
-					<span><?php echo $u->getLocation(); ?></span>
+					<h3><?php echo htmlspecialchars($u->getNameComp()); ?></h3>
+					<span><?php echo htmlspecialchars($u->getLocation()); ?></span>
 				</div>
 
 
@@ -93,7 +93,7 @@
 									if(empty($about))
 										echo 'The user has not entered any description yet';
 									else
-										echo $about;
+										echo htmlspecialchars($about);
 								?>
 							</p>
 

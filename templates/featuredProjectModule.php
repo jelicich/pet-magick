@@ -18,9 +18,9 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	if(!isset($projectAlbum[0]['THUMB'])){ $srcImg = 'img/projects/thumb/default.jpg'; }
 	else{ $srcImg = 'img/projects/thumb/'.$projectAlbum[0]['THUMB']; } // esta deberia ser la primer foto del album
 	if(!isset($featuredProjects['TITLE'])){ $title = '?'; }
-	else{ $title = $featuredProjects['TITLE']; }
+	else{ $title =  htmlspecialchars($featuredProjects['TITLE']); }
 	if(!isset( $featuredProjects['DESCRIPTION'] )){ $description =  '?'; }
-	else{ $description =  $featuredProjects['DESCRIPTION']; }
+	else{ $description =   htmlspecialchars($featuredProjects['DESCRIPTION']); }
 
 }else{
 	
@@ -48,9 +48,9 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	if(!isset($projectAlbum[0]['THUMB'])){ $srcImg = 'img/projects/thumb/default.jpg'; }
 	else{ $srcImg = 'img/projects/thumb/'.$projectAlbum[0]['THUMB']; } // esta deberia ser la primer foto del album
 	if(!isset($featuredProjects[0]['TITLE'])){ $title = '?'; }
-	else{ $title = $featuredProjects[0]['TITLE']; }
+	else{ $title =  htmlspecialchars($featuredProjects[0]['TITLE']); }
 	if(!isset( $featuredProjects[0]['DESCRIPTION'] )){ $description =  '?'; }
-	else{ $description =  $featuredProjects[0]['DESCRIPTION']; }
+	else{ $description =   htmlspecialchars($featuredProjects[0]['DESCRIPTION']); }
 	
 } // end else
 

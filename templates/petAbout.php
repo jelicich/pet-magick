@@ -16,23 +16,28 @@
 							}
 							?>
 							
-							<div class="pic-caption pet-info">
-								<a href=<?php echo '"'.$p->getPic().'"'; ?> ><img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/></a>
-								<strong class="nickname"><?php echo $p->getName(); ?></strong>
-								<ul>
-									<li><span><strong>Breed: </strong><?php echo $p->getBreed();?></span></li>
-									<li><span><strong>Traits: </strong><?php echo $p->getTraits();?></span></li>
-									<?php
-										if($p->hasTribute($p->getId()))
-										{
-											echo '<li><a href="pet-tribute.php?t='.$p->getTributeId().'" >View tribute</a></li>';
-										}
-									?>
-								</ul>
+							<div class="pic-caption">
+								<a class='link-img' href=<?php echo '"'.$p->getPic().'"'; ?> >
+									<img src=<?php echo '"'.$p->getThumb().'"'; ?> class="thumb-mid"/>
+								</a>
+
+								<div class="pet-details">
+									<strong class="nickname"><?php echo htmlspecialchars($p->getName()); ?></strong>
+									<ul>
+										<li><span><strong>Breed:</strong><?php echo htmlspecialchars($p->getBreed()); ?></span></li>
+										<li><span><strong>Traits:</strong><?php echo htmlspecialchars($p->getTraits()); ?></span></li>
+										<?php
+											if($p->hasTribute($p->getId()))
+											{
+												echo '<li><a href="pet-tribute.php?t='.htmlspecialchars($p->getTributeId()).'" >View tribute</a></li>';
+											}
+										?>
+									</ul>
+								</div>
 							</div>
 							
-							<div class="bg-txt corregir">
-								<p><?php echo $p->getStory();?></p>
+							<div class="bg-pet-profile">
+								<p><?php echo htmlspecialchars($p->getStory()); ?></p>
 							</div>
 
 							<script type="text/javascript">

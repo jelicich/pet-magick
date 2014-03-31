@@ -18,9 +18,9 @@
 											<li class="clearfix">
 												<img src= <?php echo '"'.$aq[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
 												<div class="content-description bg-txt">
-													<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'"' ?>><?php echo $aq[$i]['Users']['NAME'].' '.$aq[$i]['Users']['LASTNAME'] ?></a></h3>
+													<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'"' ?>><?php echo htmlspecialchars($aq[$i]['Users']['NAME'].' '.$aq[$i]['Users']['LASTNAME']); ?></a></h3>
 												
-													<p><?php echo $aq[$i]['QUESTION']?></p>
+													<p><?php echo htmlspecialchars($aq[$i]['QUESTION']); ?></p>
 													<span><?php echo $aq[$i]['DATE']?></span>
 
 													<div class="vet-a qa-profile ">

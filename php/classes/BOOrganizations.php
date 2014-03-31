@@ -147,8 +147,13 @@ class BOOrganizations{
       try
       {
         $data = $this->table->find($id);
+       // var_dump($data->PIC_ID); exit;
         $pics = new BOPics;
-        if($pics->unlinkProfilePic($data->PIC_ID, '../img/organizations/'))
+        if($data->PIC_ID != NULL){
+
+              $pics->unlinkProfilePic($data->PIC_ID, '../img/organizations/');
+        }
+        
         $this->table->deleteOrganization($id);
         return true;
       } 

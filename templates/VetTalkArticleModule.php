@@ -6,11 +6,11 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	$article = $vetTalk->getLastArticle();
 	//var_dump($article);
 	$userId = $article['USER_ID'];
-	$title = $article['TITLE'];
-	$content = $article['CONTENT'];
+	$title =  htmlspecialchars($article['TITLE']);
+	$content =  htmlspecialchars($article['CONTENT']);
 	$date = $article['DATE'];
-	$name = $article['Users']['NAME'];
-	$lastName = $article['Users']['LASTNAME'];
+	$name =  htmlspecialchars($article['Users']['NAME']);
+	$lastName =  htmlspecialchars($article['Users']['LASTNAME']);
 
 	if(!isset($article['Pics']['THUMB'])){ $srcImg = 'default.jpg'; }
 	else{ $srcImg = $article['Pics']['THUMB']; }
@@ -22,11 +22,11 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	$article= $vetTalk->getArticlesById($_GET['p']);
 	//var_dump($article);
 	$userId = $article[0]['USER_ID'];
-	$title = $article[0]['TITLE'];
+	$title =  htmlspecialchars($article[0]['TITLE']);
 	$date = $article[0]['DATE'];
-	$content = $article[0]['CONTENT'];
-	$name = $article[0]['Users']['NAME'];
-	$lastName = $article[0]['Users']['LASTNAME'];
+	$content =  htmlspecialchars($article[0]['CONTENT']);
+	$name =  htmlspecialchars($article[0]['Users']['NAME']);
+	$lastName =  htmlspecialchars($article[0]['Users']['LASTNAME']);
 
 	if(!isset($article[0]['Pics']['THUMB'])){ $srcImg = 'default.jpg'; }
 	else{ $srcImg = $article[0]['Pics']['THUMB']; }

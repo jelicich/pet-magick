@@ -21,18 +21,22 @@ for($i = 0; $i < sizeof($r); $i++)
 				<dl class='hidden'>
 					<dt>
 					<?php 
-						if(strlen($r[$i]['TITLE']) == 15)
+
+						$s_title =  htmlspecialchars($r[$i]['TITLE']);
+						$s_desc =  htmlspecialchars($r[$i]['DESCRIPTION']);  
+
+						if(strlen($s_title) == 15)
 							echo substr($r[$i]['TITLE'],0,14).'...' ;
 						else
-							echo $r[$i]['NAME'];
+							echo htmlspecialchars($r[$i]['NAME']);
 					?> 
 					</dt>
 					<dd>
 					<?php 
-						if(strlen($r[$i]['DESCRIPTION'])==35)
-							echo substr($r[$i]['DESCRIPTION'],0,34).'...';
+						if(strlen($s_desc)==35)
+							echo substr($s_desc,0,34).'...';
 						else
-							echo $r[$i]['DESCRIPTION'];
+							echo $s_desc;
 					 ?>
 					</dd>
 				<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->

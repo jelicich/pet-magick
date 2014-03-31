@@ -17,16 +17,21 @@
 										{
 											for($i=0; $i<sizeof($list); $i++)
 											{
+
+												$vet_title = htmlspecialchars($list[$i]['TITLE']);
+												$vet_cont = htmlspecialchars($list[$i]['CONTENT']);
 										?>
 											<li class="clearfix">
 												<img src= <?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
 												<div class="content-description bg-txt">
-													<h3><?php echo $list[$i]['TITLE'];
-													if(strlen($list[$i]['TITLE'])==65) echo '...';?></h3>
-													<p><?php echo $list[$i]['CONTENT'];
-													if(strlen($list[$i]['CONTENT'])==125) echo '...';?></p>
+													<h3><?php echo $vet_title;
+													if(strlen($vet_title) == 65) echo '...';?></h3>
+													<p><?php echo $vet_cont;
+													if(strlen($vet_cont) ==125) echo '...';?></p>
 													<a href=<?php echo $anchor.$list[$i]['ID_VET_TALK']; ?> class='linkToModule'>View post</a>
-													<a href=<?php echo '"#'.$list[$i]['ID_VET_TALK'].'"'?> class="btn btn-danger delete-vet-talk">Delete</a>
+
+													<input type="button" value="Delete" name=<?php echo '"'.$list[$i]['ID_VET_TALK'].'"'; ?> class="btn btn-danger delete-vet-talk" />
+													<!-- <a href=<?php //echo '"#'.$list[$i]['ID_VET_TALK'].'"'?> class="btn btn-danger delete-vet-talk">Delete</a> -->
 												</div>
 											</li>
 									<?php
@@ -35,6 +40,7 @@
 									?>
 									</ul>
 								</div>
+
 
 								<input type="button" value="Create a new Article" name="<?php echo $idUsr ?>" class="btn btn-admin" id="upload-vet-talk" />
 								<!-- <a href=<?php //echo '"#'.$idUsr.'"' ?> class="btn" id="upload-vet-talk">Create a new article</a> -->

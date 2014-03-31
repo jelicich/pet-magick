@@ -19,14 +19,17 @@
 										{
 											for($i=0; $i<sizeof($list); $i++)
 											{
+
+												$name = htmlspecialchars($list[$i]['NAME']);
+												$desc = htmlspecialchars($list[$i]['DESCRIPTION']);
 									?>
 											<li class="clearfix">
 												<img src= <?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
 												<div class="content-description bg-txt">
-													<h3><?php echo $list[$i]['NAME'];
-													if(strlen($list[$i]['NAME'])==65) echo '...';?></h3>
-													<p><?php echo $list[$i]['DESCRIPTION']; 
-													if(strlen($list[$i]['DESCRIPTION'])== 125) echo '...';?></p>
+													<h3><?php echo $name;
+													if(strlen($name) == 65) echo '...';?></h3>
+													<p><?php echo $desc; 
+													if(strlen($desc)== 125) echo '...';?></p>
 													<a href=<?php echo $anchor.$list[$i]['ID_ORGANIZATION']; ?> class='linkToModule'>View organization</a>
 
 													

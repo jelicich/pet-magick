@@ -56,7 +56,7 @@
 			<div id='pop-up' class='mod grid_4 '>
 
 				<p> 
-					<?php echo $pop->getPopUps("antics") ?>
+					<?php echo htmlspecialchars($pop->getPopUps("antics")); ?>
 				</p>
 
 			</div>

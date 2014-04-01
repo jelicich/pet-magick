@@ -39,9 +39,9 @@ abstract class BasePets extends Doctrine_Record
              'primary' => true,
              'autoincrement' => true,
              ));
-        $this->hasColumn('NAME', 'string', 45, array(
+        $this->hasColumn('NAME', 'string', 15, array(
              'type' => 'string',
-             'length' => 45,
+             'length' => 15,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

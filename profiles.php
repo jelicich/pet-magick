@@ -50,7 +50,7 @@
 			<div id='pop-up' class='mod grid_4 '>
 
 				<p> 
-					<?php echo $pop->getPopUps("profiles") ?>
+					<?php echo htmlspecialchars($pop->getPopUps("profiles")); ?>
 				</p>
 
 			</div>

@@ -37,10 +37,11 @@ else
 }
 
 
+$message_clean = htmlspecialchars($_POST['message']);
 
 $data = array( 
 	'conversation'=>$to,
-	'message'=>$_POST['message']
+	'message'=> $message_clean 
 	);
 
 

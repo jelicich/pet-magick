@@ -16,7 +16,7 @@
 							$thru = explode("-" , $a['THRU']);
 							
 						?>
-
+								
 						<dl>
 							<dt><?php echo  htmlspecialchars($a['Pets']['NAME']); ?></dt>
 							<dd><small><?php echo $since[0].'-'.$thru[0]  ?></small></dd>

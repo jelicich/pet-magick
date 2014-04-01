@@ -374,14 +374,21 @@ function updatePassword(id){
 
 		    if(password == '' || newPassword == ''){
 
+		    	
+			    	$("#password").val("");
+			    	$("#newPassword").val("");
+
+
 		    	cleanAlerts();
 
 		    	$("#passwordTab").append("<div id='passAlert' class='alert alert-danger'>Complete both fields</div>");
 		  
 		    }else{
 
-			    $.ajax({
+			    	$("#password").val("");
+			    	$("#newPassword").val("");
 
+			    $.ajax({
 		            type: "POST",
 		            url: "ajax/updatePassword.php",
 		            data: {
@@ -393,7 +400,6 @@ function updatePassword(id){
 		    	}).done(function(data){
 
 		    		cleanAlerts();
-		    		$("#passwordTab").find("input[type=password]").val("");
 		    		
 		    		//if($("#passAlert")){
 		    			
@@ -401,6 +407,7 @@ function updatePassword(id){
 		    		//}
 
 		    		$("#passwordTab").append(data);
+		    		
 		    		
 				});
 			 }

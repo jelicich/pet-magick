@@ -130,11 +130,6 @@ chkadmin();
     
 </div>
 
-
-<script type="text/javascript">
-
-</script>
-
 </body>
 </html>
 

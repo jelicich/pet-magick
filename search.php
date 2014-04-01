@@ -82,7 +82,7 @@
 							$file = 'ajax/searchUsers.php';
 							break;
 					}?>
-					 matching your search <i><?php echo $_GET['q']?></i>
+					 matching your search <i><?php echo htmlspecialchars($_GET['q']); ?></i>
 				</h2>
 			</div>
 			<div class="scrollable-module">
@@ -125,8 +125,8 @@
 												<a href="<?php echo "user-profile.php?u=".$r[$i]['ID_USER']; ?>" >
 													<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 													<dl class='hidden'>
-														<dt><?php echo $r[$i]['NAME']." ".$r[$i]['LASTNAME']; ?> </dt>
-														<dd><?php echo  $r[$i]['Cities']['City'].", ".$r[$i]['Countries']['Country']; ?></dd>
+														<dt><?php echo htmlspecialchars($r[$i]['NAME']." ".$r[$i]['LASTNAME']); ?> </dt>
+														<dd><?php echo  htmlspecialchars($r[$i]['Cities']['City'].", ".$r[$i]['Countries']['Country']); ?></dd>
 													<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 													</dl>
 												</a>
@@ -168,8 +168,8 @@
 												<a href="<?php echo "user-profile.php?u=".$r[$i]['Users']['ID_USER'].'&p='.$r[$i]['ID_PET']; ?>" >
 													<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 													<dl class='hidden'>
-														<dt><?php echo $r[$i]['NAME']." | ".$r[$i]['AnimalCategories']['NAME']; ?> </dt>
-														<dd><?php echo  $r[$i]['BREED'] ?></dd>
+														<dt><?php echo htmlspecialchars($r[$i]['NAME']." | ".$r[$i]['AnimalCategories']['NAME']); ?> </dt>
+														<dd><?php echo  htmlspecialchars($r[$i]['BREED']); ?></dd>
 													<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 													</dl>
 												</a>
@@ -213,18 +213,24 @@
 													<dl class='hidden'>
 														<dt>
 														<?php 
-															if(strlen($r[$i]['NAME']) == 15)
+															
+															$name = htmlspecialchars($r[$i]['NAME']);
+
+															if(strlen($name) == 15)
 																echo substr($r[$i]['NAME'],0,14).'...' ;
 															else
-																echo $r[$i]['NAME'];
+																echo $name;
 														?> 
 														</dt>
 														<dd>
 														<?php 
-															if(strlen($r[$i]['DESCRIPTION'])==35)
-																echo substr($r[$i]['DESCRIPTION'],0,34).'...';
+
+															$description = htmlspecialchars($r[$i]['DESCRIPTION']);
+
+															if(strlen($description==35))
+																echo substr($description,0,34).'...';
 															else
-																echo $r[$i]['DESCRIPTION'];
+																echo $description;
 														 ?>
 														</dd>
 													<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
@@ -271,18 +277,21 @@
 													<dl class='hidden'>
 														<dt>
 														<?php 
-															if(strlen($r[$i]['TITLE']) == 15)
-																echo substr($r[$i]['TITLE'],0,14).'...' ;
+
+															$title = htmlspecialchars($r[$i]['TITLE']);
+
+															if(strlen($title) == 15)
+																echo substr($title,0,14).'...' ;
 															else
-																echo $r[$i]['NAME'];
+																echo $name;
 														?> 
 														</dt>
 														<dd>
 														<?php 
-															if(strlen($r[$i]['DESCRIPTION'])==35)
-																echo substr($r[$i]['DESCRIPTION'],0,34).'...';
+															if(strlen($description)==35)
+																echo substr($description,0,34).'...';
 															else
-																echo $r[$i]['DESCRIPTION'];
+																echo $description;
 														 ?>
 														</dd>
 													<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->

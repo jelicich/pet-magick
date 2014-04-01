@@ -31,13 +31,24 @@ if($r)
 		{
 			$thumb = 'img/users/thumb/default.jpg';	
 		}
+
+		if(isset($r[$i]['Cities']['City'])){
+
+				$city = $r[$i]['Cities']['City'];
+				$country = $r[$i]['Countries']['Country'];
+		}else{
+				$city = "??";
+				$country = "??";
+
+		}
+
 		?>
 			<li>
 				<a href="<?php echo "user-profile.php?u=".$r[$i]['ID_USER']; ?>" >
 					<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 					<dl class='hidden'>
 						<dt><?php echo  htmlspecialchars($r[$i]['NAME']." ".$r[$i]['LASTNAME']); ?> </dt>
-						<dd><?php echo  $r[$i]['Cities']['City'].", ".$r[$i]['Countries']['Country']; ?></dd>
+						<dd><?php echo  $city.", ".$country ?></dd>
 					<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 					</dl>
 				</a>

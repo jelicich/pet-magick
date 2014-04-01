@@ -49,7 +49,7 @@
 			<div id='pop-up' class='mod grid_4 '>
 
 				<p> 
-					<?php echo $pop->getPopUps("organizations") ?>
+					<?php echo htmlspecialchars($pop->getPopUps("organizations")); ?>
 				</p>
 
 			</div>

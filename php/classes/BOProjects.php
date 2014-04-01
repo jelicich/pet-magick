@@ -126,30 +126,33 @@ class BOProjects{
         ->where('p.USER_ID = ?', $id);
       $ob = $q->execute();
       $ar = $ob->toArray();
-      //var_dump($ar);
+      //var_dump($ar); exit;
       
       if(sizeof($ar) > 0)
       {
                
           for($i=0; $i < sizeof($ar); $i++)
-          {
-              if(sizeof($ar[$i]['Albums']['Pics']) > 0)
-              {
-                for($j = 0; $j < sizeof($ar[$i]['Albums']['Pics']); $j++)
-                {
-                    
-                  $pic = $ar[$i]['Albums']['Pics'][$j]['PIC'];
-                  $ar[$i]['Albums']['Pics'][$j]['PIC'] = 'img/projects/'.$pic;
-                  $ar[$i]['Albums']['Pics'][$j]['THUMB'] = 'img/projects/thumb/'.$pic;  
-                    
-                }
-              }
-              else
-              {
-                  
-                  $ar[$i]['Albums']['Pics'][0]['PIC'] = 'img/projects/default.jpg';
-                  $ar[$i]['Albums']['Pics'][0]['THUMB'] = 'img/projects/thumb/default.jpg';
-              }   
+          { 
+            if(isset($ar[$i]['Albums']['Pics'])){
+              
+                  if(sizeof($ar[$i]['Albums']['Pics']) > 0)
+                  {
+                    for($j = 0; $j < sizeof($ar[$i]['Albums']['Pics']); $j++)
+                    {
+                        
+                      $pic = $ar[$i]['Albums']['Pics'][$j]['PIC'];
+                      $ar[$i]['Albums']['Pics'][$j]['PIC'] = 'img/projects/'.$pic;
+                      $ar[$i]['Albums']['Pics'][$j]['THUMB'] = 'img/projects/thumb/'.$pic;  
+                        
+                    }
+                  }
+                  else
+                  {
+                      
+                      $ar[$i]['Albums']['Pics'][0]['PIC'] = 'img/projects/default.jpg';
+                      $ar[$i]['Albums']['Pics'][0]['THUMB'] = 'img/projects/thumb/default.jpg';
+                  }  
+              } 
           }
           
           return $ar;

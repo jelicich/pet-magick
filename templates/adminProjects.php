@@ -21,9 +21,19 @@
 
 										$project_title =  htmlspecialchars($list[$i]['TITLE']);
 										$project_desc =  htmlspecialchars($list[$i]['DESCRIPTION']);
+
+										if(isset($list[$i]['Albums']['Pics'][0]['THUMB'])){
+
+											$img = $list[$i]['Albums']['Pics'][0]['THUMB'];
+
+										}else{
+
+											$img = 'img/users/thumb/default.jpg';
+										}
 					?>
 									<li class="clearfix">
-										<img src= <?php echo '"'.$list[$i]['Albums']['Pics'][0]['THUMB'] .'"'?> class="thumb-small side-img"/>
+
+										<img src= <?php echo '"'.$img.'"'?> class="thumb-small side-img"/>
 										<div class="content-description bg-txt">
 											<h3><?php echo $project_title;
 											if(strlen($project_title) == 65) {echo '...';} ?></h3>

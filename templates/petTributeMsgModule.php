@@ -26,7 +26,6 @@
 							?>
 							<div class="arrow-top"></div>
 						</div>
-						
 				</div>
 			</div>
 

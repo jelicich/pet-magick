@@ -515,7 +515,7 @@ function imgVideoUploader(whatFor, modulo){
 				  	
 				  			//VALIDATION
 					  		var mandfields = document.querySelectorAll('.mandatory');
-					  		//var flagidation = 0;
+					  		var flagidation = 0;
 					  		
 					  		for(var i = 0; i < mandfields.length; i++)
 					  		{
@@ -751,7 +751,7 @@ function imgVideoUploader(whatFor, modulo){
 
 				   		 		  file_id.id = 'file_id';
 								  file_id.name = 'file';
-								  byid('file-container').appendChild(file_id);
+								  //byid('file-container').appendChild(file_id);
 							} 
 				  }// end onclick
 			}// end NormalWay

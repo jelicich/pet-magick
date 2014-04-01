@@ -2,7 +2,7 @@
 
 include '../php/classes/BOUsers.php';
 $u = new BOUsers;
-$r = $u->searchUsers($_POST['q'], $_POST['from']);
+$r = $u->searchUsers($_POST['q'], $_POST['from'],28);
 if($_POST['rand'])
 	shuffle($r);
 for($i = 0; $i < sizeof($r); $i++)

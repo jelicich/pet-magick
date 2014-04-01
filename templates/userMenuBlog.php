@@ -2,7 +2,7 @@
 			
 				<!-- user menu -->
 
-				<ul class="grid_4 push_6 clearfix" id="user-menu">
+				<ul class="grid_5 push_5 clearfix" id="user-menu">
 					<li>
 						<a href="../ajax/logout.php" id="logout">Log out</a>
 					</li>

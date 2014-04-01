@@ -47,7 +47,7 @@ class MessagesTable extends Doctrine_Table
         
 
         $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
+                ->select('m.ID_MESSAGE, m.MESSAGE, DATE_FORMAT(m.DATE, "%W %d %M %Y %H:%i") as DATE, m.STATUS, m.USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
                 ->AndWhere('m.ID_MESSAGE = ?', $msgSent);
@@ -78,15 +78,10 @@ class MessagesTable extends Doctrine_Table
 
     public function getAllMessages($conv){
 
-          function FormatDisplayDate($date){
-  
-                    $dNewDate = strtotime($date);
-                    return date('l jS F Y', $dNewDate);
-                  
-  }
+          
 
             $q = Doctrine_Query::create()
-                ->select('m.*, u.NAME, u.LASTNAME, u.NICKNAME')
+                ->select('m.*, u.NAME, u.LASTNAME, u.NICKNAME, DATE_FORMAT(m.DATE, "%W %d %M %Y %H:%i") as DATE')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
                 ->AndWhere('m.CONVERSATION_ID = ?', $conv)
@@ -123,7 +118,7 @@ class MessagesTable extends Doctrine_Table
     public function getNewMessages($conversation){
 
                 $q = Doctrine_Query::create()
-                ->select('m.ID_MESSAGE, m.MESSAGE, m.DATE, m.STATUS, m.USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
+                ->select('m.ID_MESSAGE, m.MESSAGE, DATE_FORMAT(m.DATE, "%W %d %M %Y %H:%i") as DATE, m.STATUS, m.USER_ID, u.NAME, u.LASTNAME, u.NICKNAME')
                 ->from('messages m')
                 ->innerJoin('m.Users u')
                 ->AndWhere('m.CONVERSATION_ID = ?', $conversation)

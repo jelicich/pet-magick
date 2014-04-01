@@ -1,34 +1,85 @@
-- repaso css
-- Confirmar por email (para estoy y para testear el forgot password necesitamos el server)
-- Escapar caracteres 
-- Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
-- limits en textos
+1 DE ABRIL:
+==========
+Modifico el orden de las cosas asi ves lo q hice ya que hay comentarios sobre eso.
 
-- formatear nombre de autor y fecha en vet talk articulo (no entiendo pq solo ahi se imprime espaciado)
-- formato de fecha en inbox (me gano)
+		PENDIENTES:
+		==========
+		- limits en textos
+		??ME parece q no queda nada para hacer de esto
+
+		- Buscador
+		LISTO - buscador key sensitive, si pones mayusculas no trae nada
+		LISTO - busccador / traer solo los datos necesarios (no password, etc) 
+			MODIFIQUE UsersTable para que traiga esto:
+			'u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME'
+
+		- optimizar consultas esteban 
+		(ESTO LO ESTUVE VIENDO el otro dia, lo que no està optimo es la primera vez q se carga el perfil (q hace como 3 consultas), si bien no es lo mejor, tampoco es es una mierda, ya que una vez q està cargado el perfil se van actualizando los modulos por separado y para eso se tienen q hacer las consultas por separado. Yo creo q se puede dejar para después del testeo general del sitio y evaluar si es necesario)
+
+		- INBOX: checkLogin() creo q deberiamos reemplazarla por isOwn(), no?
+		VA checklogin
+			pq isOwn lo unico q hace es verificar si lo q se muestra en esa pagina te pertenece (si estas logueado), y si no estas logueado no pasa nada. Y en este caso si el usuario no esta logueado no deberia darte acceso, ya que es como una casilla de mail. checklogin se encarga de hacer eso.
+		
+		- Evitar mandar mensajes a uno mismo
+		LISTO
+
+		BUGS:
+		====
+		- el input file aparece cada vez q presionas save luego de haber seleccionado una imagen (siempre q aparece en el user profile). Eso se debe haber bugueado con el tema de los contenedores pq antes no pasaba. Tambien estan bugueadas las validaciones, antes te imprimia y el error (tanto desde js como desde php) y te frenaba la operacion , ahora no hace ninguna de las dos cosas.
+		ARREGLADO
+			(La img desaparece, pero ejecute linea x linea y anda perfecto, debe ser algo del navegador);
+
+		- las ventanas modales dejan de funcionar si hubo algun error en la validacion
+		ARREGLADO
+
+		- pet profile: al editar se rompe todo si hay algun error en las validaciones
+		(NO BUG, el mensaje que imprime y rompe todo es solamente una forma de asegurarnos q por mas q no haya JS se respete nustra validacion, pero si no hay JS no va a poder acceder a ese mensaje ya que no andaría ajax. Salvo que se pongan a tocar el html con el firebug y borren por ejemplo el nombre de clase "mandatory". En ese caso si se verìa el mensaje q rompe todo, pero bueno el q lo haga q se sienta hacker y vea la pag rota)
+
+		- falta limit en pet profile "breed"
+		DONDE? hay un limit en la lista de mascotas. La raza tiene limit de 10 caracteres y el nombre tmb tiene no recuerdo cuantos, pero tiene.
+
+		- faltan limits en admin/projects....
+		DONDE? Tiene limit por ejemplo este texto:
+		Un proyecto con el nombre mas largo de la historia de los proyect...
+		Un proyecto con el nombre mas largo de la historia de los proyectos del sitio este q no se termina masUn proyecto con el nomb...
+		View project
+
+		- faltan limits en organizations/listmodule
+		DONDE? Tiene limit por ejemplo este texto:
+		Rescate de perrosRescate de perrosRescate de perrosRescate de per...
+		Los perros que estan en la calle los rescatamos y cuidamosLos perros que estan en la calle los rescatamos y cuidamosLos perro...
+		View organization
+
+		- user menu se rompe segun tamano del nombre y apellido
+		ARREGLADO (Entra hasta un nombre asi: Pedro Rodriguez Carlos Gutierrez Putas, mas largo q eso se va a romper igual. Actualice en la BD el largo de nombre (18), apellido (18) y nickname (10) despues ejecuta el coso de doctrine para q lo actualice por favor )
+
+		ESTOS son tuyos 
+		- error al borrar organizacion ///////////// RESUELTO /////////////////////
+		- error al borrar vet talk ////////////////////////// RECUELTO ///////////////////
+
+//FIN
+
+
+
+
+
+------------------------------------
+
+PENDIENTES
+==========
+
+
 
 - Consulta random
 		- Corregir consultas
 		- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas ->count())
 		- ver q onda en antics cuando existe solo un video pq se rompe todo (creo q con el random se resuelve)
-
-- Buscador
-		- buscador key sensitive, si pones mayusculas no trae nada
-		- busccador / traer solo los datos necesarios (no password, etc)
-
-- optimizar consultas esteban
-
+- repaso css
+- Confirmar por email (para estoy y para testear el forgot password necesitamos el server)
+- Escapar caracteres 
+- Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 - ver los formatos de video q vamos a usar
 		- poner size correctamente en el validador de php
-
-
-LO Q QUEDA SUELTO
-=================
-
-- BOusers: get userdata() // traer toda la info en una sola consulta
-- INBOX: checkLogin() creo q deberiamos reemplazarla por isOwn(), no? - Evitar mandar mensajes a uno mismo
-- editUser.php: en el form dice action: insertar.php, q es el archivo de prueba q yo use para crear el uploader. Osea q 
-  cuando ejecute el fallback lo va a llamar. Hay q modificarlo cuando hagamos el tema IE y ver si esto se da en algun otro form...
 
 
 
@@ -49,19 +100,12 @@ LISTA IE7 (no incluye nada q sea solo estilo):
 	- cancel/save: no funciona.
 - poner todos los tags necesarios para ie. Esta en img uploader
 
+- editUser.php: en el form dice action: insertar.php, q es el archivo de prueba q yo use para crear el uploader. Osea q 
+  cuando ejecute el fallback lo va a llamar. Hay q modificarlo cuando hagamos el tema IE y ver si esto se da en algun otro form...
+
 
 BUGS:
 ====
 
-- el input file aparece cada vez q presionas save luego de haber seleccionado una imagen (siempre q aparece en el user profile). Eso se debe haber bugueado con el tema de los contenedores pq antes no pasaba. Tambien estan bugueadas las validaciones, antes te imprimia y el error (tanto desde js como desde php) y te frenaba la operacion , ahora no hace ninguna de las dos cosas.
-
-- las ventanas modales dejan de funcionar si hubo algun error en la validacion
-- pet profile: al editar se rompe todo si hay algun error en las validaciones
-- falta limit en pet profile "breed"
-- faltan limits en admin/projects....
-- faltan limits en organizations/listmodule
-- user menu se rompe segun tamano del nombre y apellido
-- error al borrar organizacion ///////////// RESUELTO /////////////////////
-- error al borrar vet talk ////////////////////////// RECUELTO ///////////////////
 - admin password: no esta validando (solo campos vacios)
 

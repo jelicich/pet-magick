@@ -71,7 +71,7 @@
 									<ul class="clearfix">
 										<li class="odd">								
 											<label for="pet-name">Name*</label>
-											<input type="text" class="form-element" name="name" id="pet-name" value=<?php echo '"'.htmlspecialchars($p->getName()).'"' ?> />
+											<input type="text" class="form-element mandatory" name="name" id="pet-name" value=<?php echo '"'.htmlspecialchars($p->getName()).'"' ?> />
 										</li>
 										<li class="even">
 											<label for="pet-breed">Breed</label>
@@ -83,7 +83,7 @@
 										</li>
 										<li class="even">
 											<label for="animal-category">Animal category*</label>
-											<select name="animal-category" class="form-element" id="animal-category">
+											<select name="animal-category" class="form-element mandatory" id="animal-category">
 												<?php
 												$cats = $ac->getCategories();
 												for($i = 0; $i<sizeof($cats); $i++)
@@ -120,7 +120,7 @@
 									
 									<div id="hide-tribute" class="table">										
 										<label for="tr-title">Tribute title*</label>
-										<input type="text" name="tr-title" id="tr-title" value=<?php echo '"'.htmlspecialchars($ar['TITLE']).'"'; ?> class="form-element" />
+										<input type="text" name="tr-title" id="tr-title" value=<?php echo '"'.htmlspecialchars($ar['TITLE']).'"'; ?> class="form-element mandatory" />
 										<ul class="clearfix">
 											<li class="odd">
 												<label for="tr-since">Since</label>
@@ -132,7 +132,7 @@
 											</li>											
 										</ul>
 										<label for="tr-msg">Message*</label>
-										<textarea name="tr-msg" id="tr-msg" class="form-element"><?php echo $ar['CONTENT'];?></textarea>
+										<textarea name="tr-msg" id="tr-msg" class="form-element mandatory"><?php echo $ar['CONTENT'];?></textarea>
 										<input type="hidden" name="tr-user" value=<?php echo '"'.$ar['USER_ID'].'"';?> class="form-element"/>
 										<input type="hidden" name="tr-id" value=<?php echo '"'.$ar['ID_TRIBUTE'].'"';?> class="form-element" />
 									</div>

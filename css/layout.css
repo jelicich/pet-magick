@@ -166,7 +166,7 @@ p,span{
 }
 
 .error{
-	border:1px solid #d95248;
+	border:1px solid #d95248 !important;
 	background: rgba(186,0,0,0.2);
 	padding:5px;
 	margin-top: 10px;
@@ -1595,7 +1595,7 @@ width: 100% !important;
 	float: left;
 }
 
-.vet-talk-article{
+.vet-talk-article .blind{
 	text-align: justify;
 }
 

@@ -4,9 +4,19 @@
 	$totalRec = $u->totalRecords('*');
 	$totalPag = ceil($totalRec/28);
 
+	
+	
+
 	$totalPag--;
 	$firstPag = rand(0, $totalPag);
-	$r = $u->searchUsers('*',$firstPag*28);
+	
+	$findme   = 'index.php';
+	$src = strpos($_SERVER['PHP_SELF'], $findme);
+
+	if($src === false)
+		$r = $u->searchUsers('*',$firstPag*28,28);
+	else
+		$r = $u->searchUsers('*',$firstPag*28,12);
 
 if($r)
 {

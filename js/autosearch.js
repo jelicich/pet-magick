@@ -233,7 +233,7 @@ function autoSearch(inputId)
 			var each = html[i]['NICKNAME'];
 			var idUser = html[i]['ID_USER'];
 
-			if(each.substring(0, typing) == vars){
+			if(each.substring(0, typing).toUpperCase() == vars.toUpperCase()){
 
 				if(byid(each) === null){
 

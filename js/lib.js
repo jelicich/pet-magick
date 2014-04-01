@@ -463,7 +463,7 @@ function inbox(){
   		index ++;
   		rcpt = rcpt.substr(index);
 		var vars = 'message=' + byid('new-message').value + '&recipient='+rcpt; // Agrego to para enviar destinatario seleccionado.
-	 	ajax_pvt('POST', 'ajax/sendMessage.php', vardump, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
+	 	ajax_pvt('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
 	 	byid('inputTo').value = '';
 	 	byid('new-message').value = '';
@@ -598,11 +598,23 @@ function printMessages(){
 	//si no tiene argumentos viene por ajax
 	if(arguments.length == 0){
 		//console.log(this.responseText);
-		var html = eval(this.responseText);
+		try
+		{
+			var html = eval(this.responseText);
+		}
+		catch(e)
+		{
+			lines = create('li');
+			lines.className = 'error';
+			lines.innerHTML = this.responseText;
+			byid('wrap-messages').appendChild(lines);
+		}
 
 	}else{
 		var html = arguments[0];
 	}
+
+	
 
 	for(var i = 0; i < html.length; i++){
 
@@ -618,6 +630,9 @@ function printMessages(){
 	$('.scrollable-msg').mCustomScrollbar("scrollTo","bottom",{
 	  scrollInertia:0
 	});
+
+
+	
 
 
 }//end printMessages

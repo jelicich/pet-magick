@@ -9,16 +9,17 @@ include_once "../php/classes/BOConversations.php";
 $mssg = new BOMessages;
 $user = new BOUsers;
 $conv = new BOConversations;
-/**
-Comento $to, hago las pruebas con el ID, dsps deberíamos poner un autocomplete ahi.
-*/
-//$to = $user->table->findByMail($_POST['to']); /**Hay una validacion q utiliza findbymail en BOMessages....
-// Modifico esto para q pueda handlear cuando hay usuario seleccionado o por default si esta dentro de la conversacion
+
 
 
 if (!isset($_POST['recipient']))
 {
 	$to = $_SESSION['current-chat'];
+}
+elseif($_POST['recipient'] == $_SESSION['id'])
+{
+	echo "You can't send a message to yourself";
+	die;
 }
 else
 {

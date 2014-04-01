@@ -164,7 +164,7 @@ class UsersTable extends Doctrine_Table
     public function autoCompleteEverything(){
 
     	$q = Doctrine_Query::create()
-    		->select('*')
+    		->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME')
 			->from('Users u');
 
 		$rta = $q->execute();

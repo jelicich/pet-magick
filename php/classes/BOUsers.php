@@ -646,7 +646,7 @@ class BOUsers{
                 }
     }
 
-    function searchUsers($string,$from)
+    function searchUsers($string,$from,$to)
     {
         if($string == '*')
         {
@@ -659,7 +659,7 @@ class BOUsers{
             ->leftJoin('u.Cities c')
             ->orderBy('u.ID_USER DESC')
             ->offset($from)
-            ->limit(28);
+            ->limit($to);
         }
         else
         {
@@ -675,7 +675,7 @@ class BOUsers{
             ->orWhere('u.NICKNAME LIKE ?', '%'.$string.'%')
             ->orderBy('u.ID_USER DESC')
             ->offset($from)
-            ->limit(28);  
+            ->limit($to);  
         }
         
         $rta = $q->execute();

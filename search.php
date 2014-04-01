@@ -101,7 +101,7 @@
 							case 'us':
 								include 'php/classes/BOUsers.php';
 								$u = new BOUsers;
-								$r = $u->searchUsers($_GET['q'],0);
+								$r = $u->searchUsers($_GET['q'],0,28);
 
 								$totalRec = $u->totalRecords($_GET['q']);
 								$totalPag = ceil($totalRec/28);

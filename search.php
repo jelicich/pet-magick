@@ -45,10 +45,10 @@
 		<div class="grid_12 search-filter clearfix">
 			<span>Filters: </span>
 			<ul class="clearfix">
-				<li <?php if($_GET['tar'] == 'us') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=us' ?>">Users</a></li>
-				<li <?php if($_GET['tar'] == 'pe') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=pe' ?>">Pets</a></li>
-				<li <?php if($_GET['tar'] == 'or') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=or' ?>">Organizations</a></li>
-				<li <?php if($_GET['tar'] == 'pr') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=pr' ?>">Projects</a></li>
+				<li <?php if($_GET['tar'] == 'us') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=us&active=10' ?>">Users</a></li>
+				<li <?php if($_GET['tar'] == 'pe') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=pe&active=10' ?>">Pets</a></li>
+				<li <?php if($_GET['tar'] == 'or') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=or&active=10' ?>">Organizations</a></li>
+				<li <?php if($_GET['tar'] == 'pr') echo 'class="current-search"'?> ><a href="<?php echo 'search.php?q='.$_GET['q'].'&tar=pr&active=10' ?>">Projects</a></li>
 			</ul>
 		</div>
 		<!-- search result-->
@@ -122,7 +122,7 @@
 										}
 										?>
 											<li>
-												<a href="<?php echo "user-profile.php?u=".$r[$i]['ID_USER']; ?>" >
+												<a href=<?php echo "user-profile.php?u=".$r[$i]['ID_USER'].'&active=10'; ?> >
 													<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 													<dl class='hidden'>
 														<dt><?php echo htmlspecialchars($r[$i]['NAME']." ".$r[$i]['LASTNAME']); ?> </dt>
@@ -165,7 +165,7 @@
 										}
 										?>
 											<li>
-												<a href="<?php echo "user-profile.php?u=".$r[$i]['Users']['ID_USER'].'&p='.$r[$i]['ID_PET']; ?>" >
+												<a href=<?php echo "user-profile.php?u=".$r[$i]['Users']['ID_USER'].'&p='.$r[$i]['ID_PET'].'&active=10'; ?> >
 													<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 													<dl class='hidden'>
 														<dt><?php echo htmlspecialchars($r[$i]['NAME']." | ".$r[$i]['AnimalCategories']['NAME']); ?> </dt>
@@ -208,7 +208,7 @@
 										}
 										?>
 											<li>
-												<a href="<?php echo 'organizations.php?s=0&p='.$r[$i]['ID_ORGANIZATION']; ?>" >
+												<a href=<?php echo 'organizations.php?s=0&p='.$r[$i]['ID_ORGANIZATION'].'&active=6'; ?> >
 													<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 													<dl class='hidden'>
 														<dt>
@@ -272,7 +272,7 @@
 										}
 										?>
 											<li>
-												<a href="<?php echo 'projects.php?s=0&p='.$r[$i]['ID_PROJECT']; ?>" >
+												<a href=<?php echo 'projects.php?s=0&p='.$r[$i]['ID_PROJECT'].'&active=5'; ?> >
 													<img src= "<?php echo $thumb ?>" class='thumb-mid'/>
 													<dl class='hidden'>
 														<dt>

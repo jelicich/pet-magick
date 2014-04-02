@@ -168,7 +168,7 @@ function autoSearch(inputId)
 			{
 				//var val = byid('finder').value
 				var val = input.inputField.value;
-				window.location.href = "search.php?q="+val+"&tar=us";
+				window.location.href = "search.php?q="+val+"&tar=us&active=10";
 			}
 			else
 			{
@@ -177,7 +177,7 @@ function autoSearch(inputId)
 				var index = user.indexOf('_');
 		  		index ++;
 		  		user = user.substr(index);
-				window.location.href = "user-profile.php?u="+user;
+				window.location.href = "user-profile.php?u="+user+"&active=10";
 			}	
 		}
 		else
@@ -255,7 +255,7 @@ function autoSearch(inputId)
 					  		user = user.substr(index);	
 							if(!config.hidden)
 							{
-								window.location.href = "user-profile.php?u="+user;
+								window.location.href = "user-profile.php?u="+user+"&active=10";
 							}
 							else
 							{

@@ -7,7 +7,7 @@
 						<a href="ajax/logout.php" id="logout">Log out</a>
 					</li>
 					<li>
-						<a href="inbox.php">Inbox</a>
+						<a href="inbox.php?active=10">Inbox</a>
 					</li>
 					<li>
 						<?php 
@@ -21,7 +21,7 @@
 							}
 						?>
 						<img src=<?php echo '"'. $thumReg  .'"'; ?> />
-						<a href=<?php echo "user-profile.php?u=". $_SESSION['id'] ?> ><?php echo htmlspecialchars($_SESSION['name'].' '.$_SESSION['lastname']); ?></a>
+						<a href=<?php echo "user-profile.php?u=". $_SESSION['id'].'&active=10'; ?> ><?php echo htmlspecialchars($_SESSION['name'].' '.$_SESSION['lastname']); ?></a>
 						<?php
 
 						if(isset($_SESSION['rank']) && $_SESSION['rank'] == 1)

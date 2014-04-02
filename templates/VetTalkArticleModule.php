@@ -31,7 +31,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	if(!isset($article[0]['Pics']['THUMB'])){ $srcImg = 'default.jpg'; }
 	else{ $srcImg = $article[0]['Pics']['THUMB']; }
 	
-}
+}	
 	$time = new BOLocation;
 	$date =  $time->FormatDisplayDate($date);
 ?>

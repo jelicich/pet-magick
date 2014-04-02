@@ -1578,6 +1578,7 @@ width: 100% !important;
 	background: #bdd19c;
 	min-height: 250px;
 }
+
 .vet-text-format span{
 	word-spacing: 0px;
 }
@@ -1588,8 +1589,8 @@ width: 100% !important;
 
 .vet-talk-mod > .mod-header{
 	background: #6a9a16;
-
 }
+
 
 .vet-talk-img{
 	float: left;
@@ -3725,4 +3726,35 @@ a[href$=".jpg"]{
 	text-align: center;
 	font-weight: bold;
 	padding-top: 46px;
+}
+
+
+
+/* terms and conditions and so on.... */
+
+
+.terms .vet-talk-article{
+	height: 600px;
+}
+
+.terms .blind{
+	height: 600px;
+	width: 100%;
+	margin-left: 0;
+	overflow: hidden;
+}
+
+.terms .terms_scroll{
+	overflow: hidden;
+	min-height:  580px !important;
+	max-height:  580px !important;
+	padding-bottom: 10px;
+}
+
+.terms .mod-header{
+	background-color: #d95248;
+}
+
+.terms .mod-content{
+	background: #e8b2ae;
 }

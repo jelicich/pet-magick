@@ -27,7 +27,7 @@
 										<?php
 											if($p->hasTribute($p->getId()))
 											{
-												echo '<li><a href="pet-tribute.php?t='.$p->getTributeId().'" >View tribute</a></li>';
+												echo "<li><a href='pet-tribute.php?t=".$p->getTributeId()."&active=7'>View tribute</a></li>";
 											}
 										?>
 									</ul>

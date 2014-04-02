@@ -39,7 +39,7 @@
 											if(strlen($project_title) == 65) {echo '...';} ?></h3>
 											<p><?php echo $project_desc; 
 											if(strlen($project_desc) ==125) echo '...';?></p>
-											<a href=<?php echo $anchor.$list[$i]['ID_PROJECT']; ?> class='linkToModule'>View project</a>
+											<a href=<?php echo $anchor.$list[$i]['ID_PROJECT']."&active=5"; ?> class='linkToModule'>View project</a>
 
 					<!--						<div id="pet-album">
 												<div class="flexslider carousel">

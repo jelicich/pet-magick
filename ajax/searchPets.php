@@ -16,7 +16,7 @@ for($i = 0; $i < sizeof($r); $i++)
 	}
 	?>
 		<li>
-			<a href="<?php echo "user-profile.php?u=".$r[$i]['Users']['ID_USER'].'&p='.$r[$i]['ID_PET']; ?>" >
+			<a href=<?php echo "user-profile.php?u=".$r[$i]['Users']['ID_USER'].'&p='.$r[$i]['ID_PET'].'&active=7'; ?> >
 				<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 				<dl class='hidden'>
 					<dt><?php echo  htmlspecialchars($r[$i]['NAME']." | ".$r[$i]['AnimalCategories']['NAME']); ?> </dt>

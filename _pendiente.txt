@@ -1,21 +1,46 @@
+CSS:
+====
 
-		BUGS:
-		====
-		- luego de modificar la clave me aparecio de vuelta este mensaje de error y creo q viene de wp pq no esta en nuestras clases:
-		  ERROR: The password you entered for the username administrator is incorrect. Lost your password?
+General: 
+		- preloader: se mueve justo antes de mostrar el contenido.
+		- gif en modulos: en gral. cuando se muestra el gif el modulo queda vacio, inclulso pierde el header. Podriamos hacer q se mantenga al menos el header?? (ej: modulo superior de projects, orgs, etc)
+		- en las listas como por ej. projects, orgs, petloss, mensajes en vvet talk, etc. separar un poco los distintos tipos de textos.
+		- barras de scroll: ver q tengan misma ubicacion en todas las secciones
 
-		- admin password: no esta validando (solo campos vacios) ///////////// RESUELTO ///////////
-		
-		- php errores en admin projects	////// RESUELTO ////// (espero no haber cagado nada. puse unos condicionales para arreglarlo)
+antics:
+	  		 - Alejar miniaturas del header 
+	   		 - hover miniaturas: ponerle zindex para q no queden debajo del play
 
-		- error location en hover miniaturas ////// RESUELTO ////// (espero no haber cagado nada. puse unos condicionales para arreglarlo)
+vet talk:		
+			 - diferenciar fecha en general (como en user-profile/news). Cambiando color o como sea....
+			 - Modulo superior: acomodar fecha para q se vea en una linea o como sea pero bien
+inbox:
+		     - se le puede sacar el brillo a la ventana modal de new message? (q opinas??)
 
-		- error en pet tribute debajo de la foto (tengo mascotas en pet loss q no existen en los perfiles, me parece q mas q un bug es un   desfazaje con la bd)
+user-profile:
+			 - ventanas modales: como mostrar miniatura y captions
+			 - captions en imagenes (los textos debajo de las fotos de perfil user/pet y demas. ver q pasa si el texto es muy largo).	
+			   por ej. en pet list si el nombre es largo el boton delete se va muy para abajo....
+			 - scroll en ventanas modales (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
 
-		- poner pop ups en forum y blog (es solo pegar el id="what")
+BUGS:
+====
 
-		- no cazo q pasa en registro cuando metes html. Tira unos errores de doctrine q no se como rastrear. 
-		  Lo mismo pasa cuando creas vet talk
+- cuando vas a foro o blog no se filtra el boton admin. 
+
+- inbox: si mandas mensaje sin destinatario salta un error enorme de doctrine
+
+- error "rank" cuando te loguea automaticamente luego de registrarte. No lo arregle pq creo q esto lo tenemos q cambiar, no? me refiero al   logueo automatico. Fijate a ver si estas de acuerdo porfa. Si no avisame y lo corrijo, pero no lo dejemos colgado...
+
+- luego de modificar la clave me aparecio de vuelta este mensaje de error y creo q viene de wp pq no esta en nuestras clases:
+  ERROR: The password you entered for the username administrator is incorrect. Lost your password?
+
+- error en pet tribute debajo de la foto (tengo mascotas en pet loss q no existen en los perfiles, me parece q mas q un bug es un   desfazaje con la bd)
+
+- poner pop ups en forum y blog (es solo pegar el id="what")
+
+- no cazo q pasa en registro cuando metes html. Tira unos errores de doctrine q no se como rastrear. 
+  Lo mismo pasa cuando creas vet talk
 
 
 ------------------------------------
@@ -23,9 +48,11 @@
 PENDIENTES
 ==========
 
+- hice los "actives" para la barra de navegacion y funciona siempre q linkeas sea desde la misma barra o por ejemplo desde un "view profile".
+  faltaria hacerlo desde foro y blog. Probe, no andubo y no quice tocar de mas. podras fijarte?
+
 - Consulta random
 		- Corregir consultas
-		- Modificar la cconsulta para saber cantidad de rows por tabla (hay algo ya hecho y habria q copiarlo nomas ->count())
 		- ver q onda en antics cuando existe solo un video pq se rompe todo (creo q con el random se resuelve)
 
 - repaso css

@@ -29,16 +29,16 @@
 
 		}else{
 
-			$name = $usersList['NAME'];
-			$lastName = $usersList['LASTNAME'];
+			$name = htmlspecialchars($usersList['NAME']);
+			$lastName = htmlspecialchars($usersList['LASTNAME']);
 			$userId = $usersList['ID_USER'];
 
 			if(!isset($usersList['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
 			else{ $srcImg = 'img/users/thumb/'.$usersList['Pics']['PIC']; }
-			if(!isset($usersList['Cities']['City'])){ $city = '?'; }
-			else{ $city = $usersList['Cities']['City']; }
-			if(!isset( $usersList['Countries']['Country'])){ $country =  '?'; }
-			else{ $country =  $usersList['Countries']['Country']; }
+			if(!isset($usersList['Cities']['City'])){ $city = '??'; }
+			else{ $city = htmlspecialchars($usersList['Cities']['City']); }
+			if(!isset( $usersList['Countries']['Country'])){ $country =  '??'; }
+			else{ $country =  htmlspecialchars($usersList['Countries']['Country']); }
 
 			array_push($noRepeat, $userId);
 ?>
@@ -47,8 +47,8 @@
 				<a href= <?php echo "user-profile.php?u=".$userId; ?> >
 					<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 					<dl class='hidden'>
-						<dt><?php echo  htmlspecialchars($name." ".$lastName); ?> </dt>
-						<dd><?php echo   htmlspecialchars($city.", ".$country); ?></dd>
+						<dt><?php echo  $name." ".$lastName; ?> </dt>
+						<dd><?php echo   $city.", ".$country; ?></dd>
 					</dl>
 				</a>
 			</li>
@@ -78,16 +78,16 @@
 
 			//}else{
 
-			$name = $usersList[$i]['NAME'];
-			$lastName = $usersList[$i]['LASTNAME'];
+			$name = htmlspecialchars($usersList[$i]['NAME']);
+			$lastName = htmlspecialchars($usersList[$i]['LASTNAME']);
 			$userId = $usersList[$i]['USER_ID'];
 
 			if(!isset($usersList[$i]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
 			else{ $srcImg = 'img/users/thumb/'.$usersList[$i]['Users']['Pics']['PIC']; }
-			if(!isset($usersList[$i]['Cities']['City'])){ $city = '?'; }
-			else{ $city = $usersList[$i]['Cities']['City']; }
-			if(!isset( $usersList[$i]['Countries']['Country'])){ $country =  '?'; }
-			else{ $country =  $usersList[$i]['Countries']['Country']; }
+			if(!isset($usersList[$i]['Cities']['City'])){ $city = '??'; }
+			else{ $city = htmlspecialchars($usersList[$i]['Cities']['City']); }
+			if(!isset( $usersList[$i]['Countries']['Country'])){ $country =  '??'; }
+			else{ $country =  htmlspecialchars($usersList[$i]['Countries']['Country']); }
 
 			//array_push($noRepeat, $userId);
 	?>
@@ -97,8 +97,8 @@
 			<a href= <?php echo "user-profile.php?u=".$userId; ?> >
 				<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 				<dl class='hidden'>
-					<dt><?php echo  htmlspecialchars($name." ".$lastName); ?> </dt>
-					<dd><?php echo   htmlspecialchars($city.", ".$country); ?></dd>
+					<dt><?php echo  $name." ".$lastName; ?> </dt>
+					<dd><?php echo  $city.", ".$country; ?></dd>
 				</dl>
 			</a>
 		</li>

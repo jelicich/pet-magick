@@ -22,10 +22,10 @@
 							<dd><small><?php echo $since[0].'-'.$thru[0]  ?></small></dd>
 						</dl>
 
-						<a class="visit-tribute" href= <?php echo '"user-profile.php?u='. $a['USER_ID'] .'"';?> ><span>View user profile</span></a>
+						<a class="visit-tribute" href= <?php echo '"user-profile.php?u='. $a['USER_ID'] .'&active=10"';?> ><span>View user profile</span></a>
 				</div>
 
-				
+		
 
 				<div class="blind">
 					<div class="scrollable-text" id="tributeText">

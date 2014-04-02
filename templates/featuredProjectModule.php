@@ -65,7 +65,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	
 	<div class="pic-caption">
 		<img src= <?php echo $srcImg; ?> class="thumb-mid"/>
-		<a href= <?php echo "user-profile.php?u=".$userId; ?> ><span>View user profile</span></a>
+		<a href= <?php echo "user-profile.php?u=".$userId."&active=10"; ?> ><span>View user profile</span></a>
 	</div>
 	
 	<div class="blind">

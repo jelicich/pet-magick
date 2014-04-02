@@ -49,10 +49,10 @@
 							$date =  $time->FormatDisplayDate($com[$i]['DATE']);				
 					?>
 							
-							<li class="clearfix">
-								<a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$com[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
+							<li class="clearfix">		
+								<a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'&active=10"' ?> ><img src=<?php echo '"'.$com[$i]['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
 								<div class="content-description bg-txt">
-									<h3><a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?>><?php echo  htmlspecialchars($com[$i]['Users']['NAME'].' '.$com[$i]['Users']['LASTNAME']) ?></a></h3>
+									<h3><a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'&active=10"' ?>><?php echo  htmlspecialchars($com[$i]['Users']['NAME'].' '.$com[$i]['Users']['LASTNAME']) ?></a></h3>
 									<p><?php echo  htmlspecialchars($com[$i]['COMMENT']); ?></p>
 									<span><?php echo $date;  ?></span>
 								</div>

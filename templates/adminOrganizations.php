@@ -30,7 +30,7 @@
 													if(strlen($name) == 65) echo '...';?></h3>
 													<p><?php echo $desc; 
 													if(strlen($desc)== 125) echo '...';?></p>
-													<a href=<?php echo $anchor.$list[$i]['ID_ORGANIZATION']; ?> class='linkToModule'>View organization</a>
+													<a href=<?php echo $anchor.$list[$i]['ID_ORGANIZATION']."&active=6"; ?> class='linkToModule'>View organization</a>
 
 													
 													<input type="button" value="Delete" name="<?php echo $list[$i]['ID_ORGANIZATION']; ?>" class="btn btn-danger delete-org" />

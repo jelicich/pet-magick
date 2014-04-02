@@ -40,9 +40,9 @@
 							<li class="clearfix">
 								<ul>
 									<li class="vet-q clearfix">
-										<a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$aq[$i]['Users']['Pics']['THUMB'] .'"';?> class="thumb-small side-img"/></a>
+										<a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'&active=10"' ?> ><img src=<?php echo '"'.$aq[$i]['Users']['Pics']['THUMB'] .'"';?> class="thumb-small side-img"/></a>
 										<div class="content-description bg-txt">
-											<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'"' ?>><?php echo  htmlspecialchars($aq[$i]['Users']['NAME'].' '.$aq[$i]['Users']['LASTNAME']); ?></a></h3>
+											<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'&active=10"' ?>><?php echo  htmlspecialchars($aq[$i]['Users']['NAME'].' '.$aq[$i]['Users']['LASTNAME']); ?></a></h3>
 											<p><?php echo  htmlspecialchars($aq[$i]['QUESTION']) ?></p>
 											<span><?php echo $date; ?></span>
 										</div>
@@ -58,9 +58,9 @@
 											{
 												$date =  $time->FormatDisplayDate($aq[$i]['Answers']['DATE']);
 											?>
-												<a href=<?php echo '"user-profile.php?u='. htmlspecialchars($aq[$i]['Answers']['Users']['ID_USER']) .'"' ?> ><img src=<?php echo '"'.$aq[$i]['Answers']['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
+												<a href=<?php echo '"user-profile.php?u='. htmlspecialchars($aq[$i]['Answers']['Users']['ID_USER']) .'&active=10"' ?> ><img src=<?php echo '"'.$aq[$i]['Answers']['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
 												<div class="content-description bg-txt">
-													<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Answers']['Users']['ID_USER'] .'"' ?>><?php echo  htmlspecialchars($aq[$i]['Answers']['Users']['NAME'].' '.$aq[$i]['Answers']['Users']['LASTNAME']) ?></a></h3>
+													<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Answers']['Users']['ID_USER'] .'&active=10"' ?>><?php echo  htmlspecialchars($aq[$i]['Answers']['Users']['NAME'].' '.$aq[$i]['Answers']['Users']['LASTNAME']) ?></a></h3>
 													<p><?php echo  htmlspecialchars($aq[$i]['Answers']['ANSWER']) ?></p>
 													<span><?php echo $date; ?></span>
 												</div>

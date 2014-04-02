@@ -45,7 +45,7 @@
 ?>
 
 	<li>
-		<a href= <?php echo "pet-tribute.php?t=".$trId; ?> >
+		<a href= <?php echo "pet-tribute.php?t=".$trId."&active=7"; ?> >
 			<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
 			<dl class='hidden'>
 				<dt><?php echo $name; ?> </dt>

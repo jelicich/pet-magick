@@ -13,7 +13,7 @@
 	$vetTalk = new BOVettalk;
 	$ques = new BOQuestions;
 	$pics = new BOPics;
-
+	
 	$aq = $ques->getQuestions();
 
 

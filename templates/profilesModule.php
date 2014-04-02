@@ -4,9 +4,6 @@
 	$totalRec = $u->totalRecords('*');
 	$totalPag = ceil($totalRec/28);
 
-	
-	
-
 	$totalPag--;
 	$firstPag = rand(0, $totalPag);
 	
@@ -44,7 +41,7 @@ if($r)
 
 		?>
 			<li>
-				<a href="<?php echo "user-profile.php?u=".$r[$i]['ID_USER']; ?>" >
+				<a href="<?php echo "user-profile.php?u=".$r[$i]['ID_USER']."&active=10"; ?>" >
 					<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 					<dl class='hidden'>
 						<dt><?php echo  htmlspecialchars($r[$i]['NAME']." ".$r[$i]['LASTNAME']); ?> </dt>

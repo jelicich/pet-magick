@@ -115,6 +115,7 @@
 	
 	var totalRec = <?php echo $totalRec; ?>;
 	var totalPag = <?php echo $totalPag; ?>;
+
 	$(".scrollable-module").mCustomScrollbar(
 	{
 		scrollButtons:
@@ -142,10 +143,8 @@
 	    			//agarro una pag random del array
 	    			var rand = Math.floor(Math.random() * pages.length);
 		    		page = pages[rand];
-		    		
-		    		
-		    		
-	    			$.ajax(
+
+		    		$.ajax(
 		    		{
 		                type: "POST",
 		                url: 'ajax/searchUsers.php?',

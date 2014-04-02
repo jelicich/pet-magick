@@ -193,6 +193,8 @@ function autoSearch(inputId)
 				input.suggestions.removeChild(input.suggestions.lastChild);
 			}
 			input.suggestions.parentNode.removeChild(input.suggestions);
+
+			replaceName();
 		}
 		
 	}
@@ -260,6 +262,7 @@ function autoSearch(inputId)
 							else
 							{
 								input.hidden.value = user;
+								replaceName();
 							}
 					}
 
@@ -281,6 +284,24 @@ function autoSearch(inputId)
 			}
 		}
 	}//end suggest
+
+	function replaceName()
+	{
+		input.inputField.style.display = 'none';
+		var fixed = document.createElement('span');
+		fixed.id = 'recipient-name'; 
+		fixed.innerHTML = input.inputField.value;
+		var cont = input.inputField.parentNode;
+		cont.appendChild(fixed);
+
+		fixed.onclick = function()
+		{
+			input.inputField.style.display = 'block';
+			input.inputField.value='';
+			cont.removeChild(fixed);
+			input.hidden.value='';
+		}
+	}
 
 	//=================================================
 	return {
@@ -331,6 +352,7 @@ function autoSearch(inputId)
 			 					input.hidden.name = 'recipient';
 			 					input.hidden.id = 'id-recipient';
 			 					input.inputField.parentNode.appendChild(input.hidden);
+
 			 				} 
 			 				else
 			 				{

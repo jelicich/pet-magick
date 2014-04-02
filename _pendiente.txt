@@ -28,8 +28,6 @@ BUGS:
 
 - cuando vas a foro o blog no se filtra el boton admin. 
 
-- inbox: si mandas mensaje sin destinatario salta un error enorme de doctrine
-
 - error "rank" cuando te loguea automaticamente luego de registrarte. No lo arregle pq creo q esto lo tenemos q cambiar, no? me refiero al   logueo automatico. Fijate a ver si estas de acuerdo porfa. Si no avisame y lo corrijo, pero no lo dejemos colgado...
 
 - luego de modificar la clave me aparecio de vuelta este mensaje de error y creo q viene de wp pq no esta en nuestras clases:
@@ -41,6 +39,8 @@ BUGS:
 
 - no cazo q pasa en registro cuando metes html. Tira unos errores de doctrine q no se como rastrear. 
   Lo mismo pasa cuando creas vet talk
+
+- bugs de eventos en autocomplete (cuando empezas a escribir, apretas flechas etc)
 
 
 ------------------------------------

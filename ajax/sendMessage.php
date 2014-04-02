@@ -16,6 +16,11 @@ if (!isset($_POST['recipient']))
 {
 	$to = $_SESSION['current-chat'];
 }
+elseif($_POST['recipient'] == '')
+{
+	echo "Please, select a recipient";
+	die;	
+}
 elseif($_POST['recipient'] == $_SESSION['id'])
 {
 	echo "You can't send a message to yourself";

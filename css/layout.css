@@ -3758,3 +3758,15 @@ a[href$=".jpg"]{
 .terms .mod-content{
 	background: #e8b2ae;
 }
+#recipient-name{
+	display: inline-block;
+	border: 1px solid #d95248;
+	padding: 1px 5px;
+	margin-bottom: 6px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background: rgba(255,255,255,0.4);
+}

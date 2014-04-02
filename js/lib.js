@@ -457,7 +457,10 @@ function inbox(){
 		{
 			xhr.abort();
 		}
-
+		if(byid('id-recipient').value == '')
+		{
+			return;
+		}
 		var rcpt = byid('id-recipient').value
 		var index = rcpt.indexOf('_');
   		index ++;
@@ -466,20 +469,31 @@ function inbox(){
 	 	ajax_pvt('POST', 'ajax/sendMessage.php', printMessages, vars, true); // ejecuta printMessages para imprimir el mensaje q mando
 
 	 	byid('inputTo').value = '';
+	 	byid('inputTo').style.display = 'block';
 	 	byid('new-message').value = '';
 	 	byid('id-recipient').value = '';
 	 	byid('write-new-message').style.display = "none";
 	 	byid('wrap-messages').innerHTML = '';
 	 	byid('write-message').style.display = 'none';
+	 	if(byid('recipient-name'))
+	 	{
+	 		byid('recipient-name').parentNode.removeChild(byid('recipient-name'));
+	 	}
+	 	
 	 }
 
 	 // ====== cancel new message
 	 byid('cancel-new-message').onclick = function()
 	 {
 	 	byid('inputTo').value = '';
+	 	byid('inputTo').style.display = 'block';
 	 	byid('new-message').value = '';
 	 	byid('id-recipient').value = '';
 	 	this.parentNode.style.display = 'none';
+	 	if(byid('recipient-name'))
+	 	{
+	 		byid('recipient-name').parentNode.removeChild(byid('recipient-name'));
+	 	}
 
 	 	if(byid('suggestions')){
 

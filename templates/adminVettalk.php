@@ -28,7 +28,7 @@
 													if(strlen($vet_title) == 65) echo '...';?></h3>
 													<p><?php echo $vet_cont;
 													if(strlen($vet_cont) ==125) echo '...';?></p>
-													<a href=<?php echo $anchor.$list[$i]['ID_VET_TALK']."&active=4"; ?> class='linkToModule'>View post</a>
+													<a href=<?php echo $anchor.$list[$i]['ID_VET_TALK']; ?> class='linkToModule'>View post</a>
 
 													<input type="button" value="Delete" name=<?php echo '"'.$list[$i]['ID_VET_TALK'].'"'; ?> class="btn btn-danger delete-vet-talk" />
 													<!-- <a href=<?php //echo '"#'.$list[$i]['ID_VET_TALK'].'"'?> class="btn btn-danger delete-vet-talk">Delete</a> -->

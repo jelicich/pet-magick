@@ -1,5 +1,42 @@
 <?php
 session_start();
+function isForum()
+{
+  $cp = $_SERVER['REQUEST_URI'];
+
+
+      if(strpos($cp, 'forum') !== false || strpos($cp, 'topic') !== false || strpos($cp, 'bbp') !== false)
+      {
+         return true;
+      }
+      else
+      {
+        return false;
+      }
+    
+}
+ 
+
+  
+  if(strpos($cp,'blog') !== false)
+  { 
+    if(strpos($cp, $var) !== false)
+    {
+       echo 'active';
+       return;
+    }
+    else
+    {
+      if($var == 'blog')
+      {
+        echo 'active';
+        return;
+      }  
+    }
+  
+
+}
+
 /**
  * The template for Header.
  *
@@ -273,6 +310,7 @@ session_start();
     <div id="nav-bar">
       <div class="container_12 clearfix">
         <ul class="grid_9 btn-group">
+            <li class="btn btn-small btn-danger"><a href="../index.php">Home</a></li>
             <li class="btn btn-small btn-danger"><a href="../profiles.php">Profiles</a></li>
             <!--<li class="btn btn-small btn-danger"><a href="#">Formums</a></li> -->
             <li class="btn btn-small btn-danger"><a href="../antics.php">Animal Antics</a></li>
@@ -280,9 +318,16 @@ session_start();
             <li class="btn btn-small btn-danger"><a href="../projects.php">Projects</a></li>
             <li class="btn btn-small btn-danger"><a href="../organizations.php">Organizations</a></li>
             <li class="btn btn-small btn-danger"><a href="../pet-loss.php">Pet Loss</a></li>
-            <li class="btn btn-small btn-danger"><a href="../blog/?post_type=forum">Forum</a></li>
-            <li class="btn btn-small btn-danger"><a href="../blog">Blog</a></li>
-            <li class="btn btn-small btn-danger"><a href="../admin/index.php?active=0">Admin</a></li>
+            <li class="<?php if(isForum()) echo active; ?> btn btn-small btn-danger"><a href="../blog/?post_type=forum">Forum</a></li>
+            <li class="<?php if(!isForum()) echo active; ?> btn btn-small btn-danger"><a href="../blog">Blog</a></li>
+            
+          <?php
+            if(isset($_SESSION['rank']) && $_SESSION['rank'] == 2){
+          ?>
+            <li class="btn btn-small btn-danger"><a href="admin/index.php?active=0">Admin</a></li>
+          <?php
+            }
+          ?>
             
         </ul>
         <div class="grid_3" id='searchF'>

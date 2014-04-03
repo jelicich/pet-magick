@@ -41,7 +41,7 @@ if($r)
 
 		?>
 			<li>
-				<a href="<?php echo "user-profile.php?u=".$r[$i]['ID_USER']."&active=10"; ?>" >
+				<a href="<?php echo "user-profile.php?u=".$r[$i]['ID_USER']; ?>" >
 					<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 					<dl class='hidden'>
 						<dt><?php echo  htmlspecialchars($r[$i]['NAME']." ".$r[$i]['LASTNAME']); ?> </dt>

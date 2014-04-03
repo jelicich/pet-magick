@@ -94,7 +94,7 @@
 							<!-- EDIT PASSWORD HERE -->
 							<div class="tab-pane" id="passwordTab">
 
-								<label for="password">Enter your actual password</label>
+								<label for="password">Enter your current password</label>
 								<input type="password" name="password" id="password" />
 
 								<label for="newPassword">Enter your new password</label>

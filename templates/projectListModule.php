@@ -84,7 +84,7 @@
 <?php			
 				}else{
 ?>
-							<a href=<?php echo $anchor.$projectId."&active=5"; ?> class='linkToModule'>View project</a>
+							<a href=<?php echo $anchor.$projectId; ?> class='linkToModule'>View project</a>
 <?php
 
 				}

@@ -6,6 +6,7 @@ General:
 		- gif en modulos: en gral. cuando se muestra el gif el modulo queda vacio, inclulso pierde el header. Podriamos hacer q se mantenga al menos el header?? (ej: modulo superior de projects, orgs, etc)
 		- en las listas como por ej. projects, orgs, petloss, mensajes en vvet talk, etc. separar un poco los distintos tipos de textos.
 		- barras de scroll: ver q tengan misma ubicacion en todas las secciones
+		- poner pop ups en forum y blog (es solo pegar el id="what")
 
 antics:
 	  		 - Alejar miniaturas del header 
@@ -26,30 +27,33 @@ user-profile:
 BUGS:
 ====
 
-- cuando vas a foro o blog no se filtra el boton admin. 
+- error "rank" cuando te loguea automaticamente luego de registrarte. No lo arregle pq creo q esto lo tenemos q cambiar, no? me refiero al   logueo automatico. Fijate a ver si estas de acuerdo porfa. Si no avisame y lo corrijo, pero no lo dejemos colgado... 
 
-- error "rank" cuando te loguea automaticamente luego de registrarte. No lo arregle pq creo q esto lo tenemos q cambiar, no? me refiero al   logueo automatico. Fijate a ver si estas de acuerdo porfa. Si no avisame y lo corrijo, pero no lo dejemos colgado...
+(REGISTRE USUARIO Nuevo Y NO VEO EL ERROR; no deberia tirar error igual lo podemos dejar para cuando este lo del mail)
+
 
 - luego de modificar la clave me aparecio de vuelta este mensaje de error y creo q viene de wp pq no esta en nuestras clases:
   ERROR: The password you entered for the username administrator is incorrect. Lost your password?
 
+ (INTENTE REPRODUCIR EL ERROR PERO NO PUDE, REGISTRÈ UN USUARIO Y LE CAMBIE EL PASS CON EXITO, Y PUDE LOGUEARME Y DESLOGUEARME INCLUSO EN WP, debe ser algun error porq intentaste hacerlo con un usuario q no tiene el ID sicronizado con WP)
+
+
 - error en pet tribute debajo de la foto (tengo mascotas en pet loss q no existen en los perfiles, me parece q mas q un bug es un   desfazaje con la bd)
 
-- poner pop ups en forum y blog (es solo pegar el id="what")
+(SI CARGASTE LA BASE Q SUBI ES ESO, hice inserts dsd phpmyadmin asi nomas y no le puse mascota al tributo, igual a mi no me tira error, solo me muestra todo vacio lo q seria la info de la mascota)
+
 
 - no cazo q pasa en registro cuando metes html. Tira unos errores de doctrine q no se como rastrear. 
   Lo mismo pasa cuando creas vet talk
 
 - bugs de eventos en autocomplete (cuando empezas a escribir, apretas flechas etc)
 
+- autocomplete no anda en wp por la ruta de search tool
 
 ------------------------------------
 
 PENDIENTES
 ==========
-
-- hice los "actives" para la barra de navegacion y funciona siempre q linkeas sea desde la misma barra o por ejemplo desde un "view profile".
-  faltaria hacerlo desde foro y blog. Probe, no andubo y no quice tocar de mas. podras fijarte?
 
 - Consulta random
 		- Corregir consultas

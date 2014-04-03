@@ -1,4 +1,6 @@
 <?php
+include 'php/functions.php';
+
 
 		if(isset($_GET['active'])){
 				$active = $_GET['active'];
@@ -17,8 +19,6 @@
 		 $href_pet_loss = "pet-loss.php?active=7";
 		 //$href_forum = "?active=8";
 		 //$href_blog = "?active=9";
-		
-
 
 ?>
 
@@ -58,15 +58,16 @@
 		<div id="nav-bar">
 			<div class="container_12 clearfix">
 				<ul class="grid_9 btn-group">
-						<li class="<?php if(isset($active) && $active == 1) echo "active"; ?> btn btn-small btn-danger"><a href="<?php echo $href_index; ?>">Home</a></li>
-						<li class="<?php if(isset($active) && $active == 2) echo "active"; ?> btn btn-small btn-danger"><a href="<?php echo $href_profiles; ?>">Profiles</a></li>
-						<li class="<?php if(isset($active) && $active == 3) echo "active"; ?> btn btn-small btn-danger"><a href="<?php echo $href_antics; ?>">Animal Antics</a></li>
-						<li class="<?php if(isset($active) && $active == 4) echo "active"; ?> btn btn-small btn-danger"><a href="<?php echo $href_vet; ?>">Vet Talk</a></li>
-						<li class="<?php if(isset($active) && $active == 5) echo "active"; ?> btn btn-small btn-danger"><a href="<?php echo $href_projects; ?>">Projects</a></li>
-						<li class="<?php if(isset($active) && $active == 6) echo "active"; ?> btn btn-small btn-danger"><a href="<?php echo $href_organizations; ?>">Organizations</a></li>
-						<li class="<?php if(isset($active) && $active == 7) echo "active"; ?> btn btn-small btn-danger"><a href="<?php echo $href_pet_loss; ?>">Pet Loss</a></li>
-						<li class="<?php if(isset($active) && $active == 8) echo "active"; ?> btn btn-small btn-danger"><a href="blog/?post_type=forum">Forum</a></li>
-						<li class="<?php if(isset($active) && $active == 9) echo "active"; ?> btn btn-small btn-danger"><a href="blog">Blog</a></li>
+
+						<li class="<?php currentPage('index'); ?> btn btn-small btn-danger"><a href="index.php">Home</a></li>
+						<li class="<?php currentPage('profile'); ?> btn btn-small btn-danger"><a href="profiles.php">Profiles</a></li>
+						<li class="<?php currentPage('antics'); ?> btn btn-small btn-danger"><a href="antics.php">Animal Antics</a></li>
+						<li class="<?php currentPage('vet-talk'); ?> btn btn-small btn-danger"><a href="vet-talk.php">Vet Talk</a></li>
+						<li class="<?php currentPage('projects'); ?> btn btn-small btn-danger"><a href="projects.php">Projects</a></li>
+						<li class="<?php currentPage('organizations'); ?> btn btn-small btn-danger"><a href="organizations.php">Organizations</a></li>
+						<li class="<?php currentPage('pet-loss'); currentPage('pet-tribute') ?> btn btn-small btn-danger"><a href="pet-loss.php">Pet Loss</a></li>
+						<li class="<?php currentPage('forum'); currentPage('topic'); currentPage('bbp'); ?> btn btn-small btn-danger"><a href="blog/?post_type=forum">Forum</a></li>
+						<li class="<?php currentPage(''); ?> btn btn-small btn-danger"><a href="blog">Blog</a></li>
 					<?php
 						if(isset($_SESSION['rank']) && $_SESSION['rank'] == 2){
 					?>
@@ -83,6 +84,8 @@
 		</div>
 		<!-- END navbar -->
 	</div>
+
+
 	<!-- END header -->
 
 	<!-- Esta libreria es para interpretar JSON en navegadores viejos (IE) -->

@@ -27,20 +27,6 @@ user-profile:
 BUGS:
 ====
 
-- error "rank" cuando te loguea automaticamente luego de registrarte. No lo arregle pq creo q esto lo tenemos q cambiar, no? me refiero al   logueo automatico. Fijate a ver si estas de acuerdo porfa. Si no avisame y lo corrijo, pero no lo dejemos colgado... 
-
-(REGISTRE USUARIO Nuevo Y NO VEO EL ERROR; no deberia tirar error igual lo podemos dejar para cuando este lo del mail)
-
-
-- luego de modificar la clave me aparecio de vuelta este mensaje de error y creo q viene de wp pq no esta en nuestras clases:
-  ERROR: The password you entered for the username administrator is incorrect. Lost your password?
-
- (INTENTE REPRODUCIR EL ERROR PERO NO PUDE, REGISTRÈ UN USUARIO Y LE CAMBIE EL PASS CON EXITO, Y PUDE LOGUEARME Y DESLOGUEARME INCLUSO EN WP, debe ser algun error porq intentaste hacerlo con un usuario q no tiene el ID sicronizado con WP)
-
-
-- error en pet tribute debajo de la foto (tengo mascotas en pet loss q no existen en los perfiles, me parece q mas q un bug es un   desfazaje con la bd)
-
-(SI CARGASTE LA BASE Q SUBI ES ESO, hice inserts dsd phpmyadmin asi nomas y no le puse mascota al tributo, igual a mi no me tira error, solo me muestra todo vacio lo q seria la info de la mascota)
 
 
 ------------------------------------
@@ -84,6 +70,28 @@ LISTA IE7 (no incluye nada q sea solo estilo):
   cuando ejecute el fallback lo va a llamar. Hay q modificarlo cuando hagamos el tema IE y ver si esto se da en algun otro form...
 
 
+--------------------------------------
+
+
+
+
+
+PARA TENER EN CUENTA // POSIBLES BUGS
+=====================================
+- error "rank" cuando te loguea automaticamente luego de registrarte. No lo arregle pq creo q esto lo tenemos q cambiar, no? me refiero al   logueo automatico. Fijate a ver si estas de acuerdo porfa. Si no avisame y lo corrijo, pero no lo dejemos colgado... 
+
+(REGISTRE USUARIO Nuevo Y NO VEO EL ERROR; no deberia tirar error igual lo podemos dejar para cuando este lo del mail)
+
+
+- luego de modificar la clave me aparecio de vuelta este mensaje de error y creo q viene de wp pq no esta en nuestras clases:
+  ERROR: The password you entered for the username administrator is incorrect. Lost your password?
+
+ (INTENTE REPRODUCIR EL ERROR PERO NO PUDE, REGISTRÈ UN USUARIO Y LE CAMBIE EL PASS CON EXITO, Y PUDE LOGUEARME Y DESLOGUEARME INCLUSO EN WP, debe ser algun error porq intentaste hacerlo con un usuario q no tiene el ID sicronizado con WP)
+
+
+- error en pet tribute debajo de la foto (tengo mascotas en pet loss q no existen en los perfiles, me parece q mas q un bug es un   desfazaje con la bd)
+
+(SI CARGASTE LA BASE Q SUBI ES ESO, hice inserts dsd phpmyadmin asi nomas y no le puse mascota al tributo, igual a mi no me tira error, solo me muestra todo vacio lo q seria la info de la mascota)
 
 
 

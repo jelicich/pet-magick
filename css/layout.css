@@ -80,6 +80,10 @@ p,span{
     left: 50%;
    
 }
+
+.gray_date{
+	color: gray !important;
+}
 /* ----------------------------------- background textos */
 
 .bg-txt{ /* bg-txt reemplaza user-about para standarizarlo */
@@ -545,7 +549,13 @@ p,span{
 
 */
 
+#antics ul{
+	margin-top: 10px;
+}
 
+#antics .hidden{
+	z-index: 999;
+}
 .animal-antics-mod{
 	background: #bdd19c;
 

@@ -67,7 +67,6 @@
 							?>
 								<li class="odd">
 									<div id="country-wrapper">
-										<label for="country">Country</label>
 										<select class="form-element" id="country" name="country">
 						     				<option disabled="disabled" selected="selected">Country</option>
 											
@@ -82,7 +81,6 @@
 						     	<li class="even">
 						     		<!-- pasar estos displays al css -->
 						     		<div id="region-wrapper" >
-						     			<label for="region">Region</label>
 						     			<select class="form-element" id="region" name="region" style='display:none;'></select><!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->						     			
 						     		</div>
 						     	</li>
@@ -90,7 +88,7 @@
 						     	<li class="odd">
 					     			<div id="city-wrapper" >
 					     				<!-- pasar estos displays al css -->
-					     				<label for="city">City</label>
+
 						     			<select class="form-element" id="city" name="city" style='display:none;'></select> <!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->
 						     			
 						     		</div>
@@ -102,7 +100,6 @@
 						    ?>
 						    	<li class="odd">
 						    		<div id="country-wrapper">
-						    			<label for="country">Country</label>
 										<select class="form-element" id="country" name="country">
 						     				<option disabled="disabled">Country</option>
 											
@@ -125,7 +122,6 @@
 						     	<li class="even">
 						     		<!-- pasar estos displays al css -->
 						     		<div id="region-wrapper" >
-						     			<label for="region">Region</label>
 						     			<select class="form-element" id="region" name="region">
 
 						    <?php		
@@ -167,7 +163,7 @@
 						    		{
 						    ?>
 					     				<!-- pasar estos displays al css -->
-					     				<label for="city">City</label>
+					     				
 						     			<select class="form-element" id="city" name="city">
 						    <?php
 						    			$cities = $location->citiesByRegion($reg);
@@ -200,7 +196,7 @@
 						    		else
 						    		{
 						    ?>
-						    			<label for="city">City</label>
+						    			
 						    			<select class="form-element" id="city" name="city" style='display:none;'></select> <!-- tratar de mandarlo al wrapper el display. lib.js linea 171. -->
 						    <?php			
 						    		} //end else

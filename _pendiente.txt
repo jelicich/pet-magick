@@ -1,20 +1,18 @@
+BUGS:
+====
+
+- Quice crear una mascota utilizando textos largos en los inputs y me tiro error doctrine
+  
+
 CSS:
 ====
 
 General: 
 		- preloader: se mueve justo antes de mostrar el contenido.
 		- gif en modulos: en gral. cuando se muestra el gif el modulo queda vacio, inclulso pierde el header. Podriamos hacer q se mantenga al menos el header?? (ej: modulo superior de projects, orgs, etc)
-		- en las listas como por ej. projects, orgs, petloss, mensajes en vvet talk, etc. separar un poco los distintos tipos de textos.
 		- barras de scroll: ver q tengan misma ubicacion en todas las secciones
 		- poner pop ups en forum y blog (es solo pegar el id="what")
 
-antics:
-	  		 - Alejar miniaturas del header 
-	   		 - hover miniaturas: ponerle zindex para q no queden debajo del play
-
-vet talk:		
-			 - diferenciar fecha en general (como en user-profile/news). Cambiando color o como sea....
-			 - Modulo superior: acomodar fecha para q se vea en una linea o como sea pero bien
 inbox:
 		     - se le puede sacar el brillo a la ventana modal de new message? (q opinas??)
 
@@ -24,11 +22,6 @@ user-profile:
 			   por ej. en pet list si el nombre es largo el boton delete se va muy para abajo....
 			 - scroll en ventanas modales (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
 
-BUGS:
-====
-
-
-
 ------------------------------------
 
 PENDIENTES
@@ -37,8 +30,6 @@ PENDIENTES
 - Consulta random
 		- Corregir consultas
 		- ver q onda en antics cuando existe solo un video pq se rompe todo (creo q con el random se resuelve)
-
-- repaso css
 
 - Confirmar por email (para estoy y para testear el forgot password necesitamos el server)
 

@@ -35,7 +35,8 @@ class NewsTable extends Doctrine_Table
 	       $q = Doctrine_Query::create()
 				
         ->from('News n') 
-				->AndWhere('n.USER_ID = ?', $id);
+				->AndWhere('n.USER_ID = ?', $id)
+         ->orderBy('n.ID_NEWS DESC');
 
 			   $news = $q->execute();
            

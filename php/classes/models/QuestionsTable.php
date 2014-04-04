@@ -39,7 +39,9 @@ class QuestionsTable extends Doctrine_Table
 
     
         $ar = $ob->toArray();
-    
+        
+        $dNewDate = strtotime($ar[0]['DATE']);
+         $ar[0]['DATE'] = date('l jS F Y', $dNewDate);
         
         if(isset($ar[0]['Users']['Pics']['PIC']))
         {

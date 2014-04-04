@@ -647,7 +647,7 @@ function printMessages(){
 
 		lines = create('li');
 		lines.className = 'u'+html[i]['Users']['ID_USER'];
-		lines.innerHTML = '<strong>' + html[i]['Users']['NAME'] + ' ' + html[i]['Users']['LASTNAME'] + ' (' + html[i]['Users']['NICKNAME'] + ')</strong><span> | ' + html[i]['DATE'] + '</span><p>' + html[i]['MESSAGE'] + '</p>';
+		lines.innerHTML = '<strong>' + html[i]['Users']['NAME'] + ' ' + html[i]['Users']['LASTNAME'] + ' (' + html[i]['Users']['NICKNAME'] + ')</strong><span class="gray_date"><small> | ' + html[i]['DATE'] + '</small></span><p>' + html[i]['MESSAGE'] + '</p>';
 		
 		byid('wrap-messages').appendChild(lines);
 
@@ -1357,11 +1357,11 @@ if(byid('send-comment')){
 		li.className = 'clearfix';
 		if(ajaxFile == 'postQuestion')
 		{
-			li.innerHTML = '<ul><li class="vet-q clearfix"><a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+ html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['QUESTION'] +'</p><span>'+ html[0]['DATE'] +'</span></div></li><li class="vet-a clearfix"><p>This question has not been answered yet</p></ul>';
+			li.innerHTML = '<ul><li class="vet-q clearfix"><a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+ html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['QUESTION'] +'</p><span class="gray_date"><small>'+ html[0]['DATE'] +'</small></span></div></li><li class="vet-a clearfix"><p>This question has not been answered yet</p></ul>';
 		}
 		else
 		{
-			li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span>'+ html[0]['DATE'] +'</span></div>';
+			li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span class="gray_date"><small>'+ html[0]['DATE'] +'</small></span></div>';
 		}
 		
 		

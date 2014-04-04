@@ -49,7 +49,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 					</a>
 				
 					<p><b>By </b><?php echo $name.' '.$lastName; ?></p>
-					<p><?php echo $date; ?></p>
+					<span class="gray_date"><small><?php echo $date; ?></small></span>
 				
 				</div>
 

@@ -54,7 +54,7 @@
 								<div class="content-description bg-txt">
 									<h3><a href=<?php echo '"user-profile.php?u='.$com[$i]['Users']['ID_USER'] .'"' ?>><?php echo  htmlspecialchars($com[$i]['Users']['NAME'].' '.$com[$i]['Users']['LASTNAME']) ?></a></h3>
 									<p><?php echo  htmlspecialchars($com[$i]['COMMENT']); ?></p>
-									<span><?php echo $date;  ?></span>
+									<span class="gray_date"><small><?php echo $date; ?></small></span>
 								</div>
 							</li>
 

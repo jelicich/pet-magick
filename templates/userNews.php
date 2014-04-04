@@ -34,8 +34,6 @@
 					<?php 
 
 						//$u = new BOUsers;
-						include_once "php/classes/BOLocation.php";
-						$time = new BOLocation;
 						
 
 						if($n->getNews($_GET['u']))
@@ -45,7 +43,9 @@
 							for($i = 0; $i<sizeof($nw); $i++)
 							{
 
-								$date =  $time->FormatDisplayDate($nw[$i]['DATE']);
+							
+								$dNewDate = strtotime($nw[$i]['DATE']);
+        						 $date= date('l jS F Y', $dNewDate);
 					?>
 
 

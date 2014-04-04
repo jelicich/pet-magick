@@ -210,7 +210,20 @@ function reg(){
 		var token = byid('token').value;
 
 		
-		
+		//VALIDATION
+		if(nickname.match(/^[a-z0-9]{3,10}$/i) == null)
+		{
+			var p = create('p');
+			p.className = 'error';
+			p.innerHTML = '<strong>Error</strong> Invalid nickname. It must be between 3-10 characters. Allowed characters: a-z, 0-9.';
+			this.parentNode.appendChild(p);
+			setTimeout(function()
+			{
+				p.parentNode.removeChild(p);
+			},4000)
+			return;
+		}
+		//		
 
 		source = 'reg';
 		var url = document.URL;

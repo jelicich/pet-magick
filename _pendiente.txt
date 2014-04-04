@@ -43,10 +43,6 @@ BUGS:
 (SI CARGASTE LA BASE Q SUBI ES ESO, hice inserts dsd phpmyadmin asi nomas y no le puse mascota al tributo, igual a mi no me tira error, solo me muestra todo vacio lo q seria la info de la mascota)
 
 
-- no cazo q pasa en registro cuando metes html. Tira unos errores de doctrine q no se como rastrear. 
-  Lo mismo pasa cuando creas vet talk
-
-
 ------------------------------------
 
 PENDIENTES

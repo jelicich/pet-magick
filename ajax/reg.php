@@ -6,6 +6,11 @@ include_once('../php/classes/BOUsers.php');
 
 $user = new BOUsers;
 
+if(!preg_match('/^[a-z0-9]{3,10}$/i', $_POST['nickname']))
+{
+	echo json_encode(array('Error:'=> 'Invalid nickname. It must be between 3-10 characters. Allowed characters: a-z, 0-9.'));
+	die;
+}
 
 //reg wordpress
 	include_once '../blog/wp-load.php';
@@ -14,12 +19,25 @@ $user = new BOUsers;
 	$user_email = $_POST['email'];
 	$user_password = $_POST['password'];
 
+	if(preg_match("/^[a-zA-Z]\w+(\.\w+)*\@\w+(\.[0-9a-zA-Z]+)*\.[a-zA-Z]{2,4}$/", $user_email === 0))
+	{
+		echo json_encode(array('Error:'=> 'Please, enter a valid e-mail address'));
+		die;
+	}
+
 	$user_id = username_exists( $user_name );
 	if ( !$user_id ) 
 	{
 		$user_id = wp_create_user( $user_name, $user_password, $user_email );
-	} 
+	}
+	else
+	{
+		echo json_encode(array('Error' => 'Existing user'));
+		die;
+	}
 // END wp
+
+
 
 //var_dump($_POST);
 $dato = array(
@@ -39,6 +57,8 @@ $dato = array(
 	'rank' => 0,
 	'token' => $_POST['token']
 );
+
+
 
 
 if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la misma de login.php

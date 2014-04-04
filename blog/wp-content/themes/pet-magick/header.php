@@ -80,6 +80,7 @@ function isForum()
 <link rel="stylesheet" href="../css/layout.css" type="text/css" />
 
 <script type="text/javascript" src="../js/lib.js"></script>
+<script type="text/javascript" src="../js/autosearch.js"></script>
 <script type="text/javascript" src="../js/jq_functions.js"></script> 
 <!-- -->
 

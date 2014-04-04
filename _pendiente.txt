@@ -46,9 +46,6 @@ BUGS:
 - no cazo q pasa en registro cuando metes html. Tira unos errores de doctrine q no se como rastrear. 
   Lo mismo pasa cuando creas vet talk
 
-- bugs de eventos en autocomplete (cuando empezas a escribir, apretas flechas etc)
-
-- autocomplete no anda en wp por la ruta de search tool
 
 ------------------------------------
 

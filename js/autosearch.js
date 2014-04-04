@@ -73,11 +73,13 @@ function autoSearch(inputId)
 	 			e.preventDefault(); //para evitar que el cursor se vaya al principio
 	 			var nextLi = input.currentLi - 1;
 	 			navigate(input.currentLi,nextLi);
+	 			console.log(input.currentLi);
 	 			break;
 	 		//down
 	 		case 40:
 	 			var nextLi = input.currentLi + 1;
 	 			navigate(input.currentLi,nextLi);
+	 			console.log(input.currentLi);
 	 			break;
 	 		//enter
 	 		case 13:
@@ -117,12 +119,13 @@ function autoSearch(inputId)
 	 			{
 					input.suggestions.parentNode.removeChild(input.suggestions);
 				}
+
 				
-				
-				input.LetterCounter++;
+				//input.LetterCounter++;
+				//console.log(input.LetterCounter);
 				setTimeout(function()
 					{
-						lookFor(input.LetterCounter);
+						lookFor();
 					}, 100);
 				break;
 	 	}
@@ -133,6 +136,7 @@ function autoSearch(inputId)
 	function navigate(current, next) 
 	{
 		//var lis = byid('suggestionsf').getElementsByTagName('li');
+
 		var lis = input.suggestions.getElementsByTagName('li');
 		//si es menor que cero y menor que el largo de los li (el ultimo debería quedar siempre seleccionado al llegar al tope)
 
@@ -154,7 +158,7 @@ function autoSearch(inputId)
 			//
 			if(next >= 0 && next < lis.length)
 			{
-				lis[next].style.background = 'purple';
+				lis[next].style.background = '#ea574c';
 				input.currentLi = next;
 			}
 		}	
@@ -162,9 +166,14 @@ function autoSearch(inputId)
 
 	function goTo(current)
 	{
+		if(input.inputField.value == '')
+		{
+			input.currentLi = -1;
+			current = -1;
+		}
 		if(!config.hidden)
 		{
-			if(current== -1)
+			if(current== -1 || current== 8)
 			{
 				//var val = byid('finder').value
 				var val = input.inputField.value;
@@ -199,16 +208,16 @@ function autoSearch(inputId)
 		
 	}
 
-	function lookFor(compareCounter){
-			if(compareCounter == input.LetterCounter)
-			{
+	function lookFor(){
+			//if(compareCounter == input.LetterCounter)
+			//{
 				
 				if(input.inputField.value != '')
 				{
 
-						ajax('POST', 'ajax/searchTool.php', suggest , false, true);
+						ajax_pvt('POST', '/pet-magick/ajax/searchTool.php', suggest , false, true);
 				}
-			}
+			//}
 		}//end lookFor
 
 	function suggest()
@@ -230,58 +239,80 @@ function autoSearch(inputId)
 		//	ulsf.id = 'suggestionsf';
 		input.inputField.parentNode.appendChild(input.suggestions);
 
-		for(var i = 0; i < html.length; i++){
+		var cont = 0;
+		for(var i = 0; i < html.length; i++)
+		{
+			if(cont < 8)
+			{
+				
+				var each = html[i]['NAME']+' '+html[i]['LASTNAME'];
+				var idUser = html[i]['ID_USER'];
 
-			var each = html[i]['NICKNAME'];
-			var idUser = html[i]['ID_USER'];
+				if(each.substring(0, typing).toUpperCase() == vars.toUpperCase())
+				{
+					cont++;
 
-			if(each.substring(0, typing).toUpperCase() == vars.toUpperCase()){
+					if(byid(each) === null)
+					{
 
-				if(byid(each) === null){
-
-					var lis = create('li');
-						lis.id = 'user_'+ idUser;
-						lis.innerHTML = each;
-						input.suggestions.appendChild(lis);
-					
-					lis.onclick = function(){
+						var lis = create('li');
+							lis.id = 'user_'+ idUser;
+							lis.innerHTML = each;
+							input.suggestions.appendChild(lis);
 						
-						//var index = this.id.indexOf('-');
-					  	//	index ++;
-					  		//byid('id-recipientf').value = this.id.substr(index);
-							input.inputField.value = this.innerHTML;
-							input.suggestions.parentNode.removeChild(input.suggestions);
-							var user = this.id;
-							var index = user.indexOf('_');
-					  		index ++;
-					  		user = user.substr(index);	
-							if(!config.hidden)
-							{
-								window.location.href = "user-profile.php?u="+user;
-							}
-							else
-							{
-								input.hidden.value = user;
-								replaceName();
+						lis.onclick = function()
+						{
+							
+							//var index = this.id.indexOf('-');
+						  	//	index ++;
+						  		//byid('id-recipientf').value = this.id.substr(index);
+								input.inputField.value = this.innerHTML;
+								input.suggestions.parentNode.removeChild(input.suggestions);
+								var user = this.id;
+								var index = user.indexOf('_');
+						  		index ++;
+						  		user = user.substr(index);	
+								if(!config.hidden)
+								{
+									window.location.href = "user-profile.php?u="+user;
+								}
+								else
+								{
+									input.hidden.value = user;
+									replaceName();
+								}
+						}
+
+
+							document.body.onclick = function(){
+
+								try
+								{
+
+									input.suggestions.parentNode.removeChild(input.suggestions);
+									//input.inputField.value = '';
+								}
+								catch(e)
+								{
+									//wtf
+								}
 							}
 					}
-
-
-						document.body.onclick = function(){
-
-							try
-							{
-
-								input.suggestions.parentNode.removeChild(input.suggestions);
-								//input.inputField.value = '';
-							}
-							catch(e)
-							{
-								//wtf
-							}
-						}
 				}
+
+			}//end if cont
+			else
+			{
+				if(!config.hidden)
+				{
+					var lis = create('li');
+					lis.className = 'more-results';
+					lis.innerHTML = 'More results';
+					input.suggestions.appendChild(lis);
+				}
+				break;
 			}
+			
 		}
 	}//end suggest
 

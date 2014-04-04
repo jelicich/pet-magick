@@ -344,12 +344,13 @@
 <!-- END wrapper-->
 
 
+<?php var_dump($totalRec); ?>
 
 <script type="text/javascript">
 	//start_scroll('scrollable-module', false);
 	var page = 1;
-	var totalRec = <?php echo $totalRec; ?>;
-	var totalPag = <?php echo $totalPag; ?>;
+	var totalRec = <?php if($totalRec) echo $totalRec; else echo "0"; ?>;
+	var totalPag = <?php if($totalPag) echo $totalPag; else echo "0"; ?>;
 	$(".scrollable-module").mCustomScrollbar(
 	{
 		scrollButtons:

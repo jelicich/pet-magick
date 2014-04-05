@@ -3,7 +3,6 @@
 include_once('tools/bootstrap.php');
 include_once('models/VideosTable.php');
 
-
 class BOVideos{
 
   var $table;

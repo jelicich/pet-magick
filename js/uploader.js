@@ -1,5 +1,5 @@
 function imgVideoUploader(whatFor, modulo){
-
+ 
 		// ===========================COMMON VARs & FUNCTIONS
 		var amount = whatFor;
 		/*

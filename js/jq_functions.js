@@ -13,7 +13,6 @@ function flexslider(){
 	//});
 }
 
-
 // ANCHORS
 /*
 function anchors(){

@@ -26,51 +26,28 @@
 		for($i=0; $i < sizeof($r); $i++)
 		{
 
-			$allTributes = $tribute->getAllTributes();
-
-			if(isset($noRepeat) && in_array( $allTributes['ID_TRIBUTE'], $noRepeat) )
+			if(isset($r[$i]['Pets']['Pics']))
 			{
-				
-				$i--;
-
+				$thumb = 'img/pets/thumb/'.$r[$i]['Pets']['Pics']['PIC'];
 			}
 			else
 			{
+				$thumb = 'img/pets/thumb/default.jpg';	
+			}
 
-				$trId = $allTributes['ID_TRIBUTE'];
 
-		        if(!isset($allTributes['Pets']['Pics']['PIC'])){ $srcImg = 'img/pets/thumb/default.jpg'; }
-				else{ $srcImg = 'img/pets/thumb/'.$allTributes['Pets']['Pics']['PIC']; }
-				if(!isset($allTributes['Pets']['NAME'])){ $name = '?'; }
-				else{ $name =  htmlspecialchars($allTributes['Pets']['NAME']); }
-				if(!isset( $allTributes['SINCE'])){ $since =  '?'; }
-				else{ $since =  $allTributes['SINCE']; }
-				if(!isset( $allTributes['THRU'])){ $thru =  '?'; }
-				else{ $thru =  $allTributes['THRU']; }
-				if(!isset( $allTributes['TITLE'])){ $title =  '?'; }
-				else{ $title =   htmlspecialchars($allTributes['TITLE']); }
-				if(!isset( $allTributes['CONTENT'])){ $content =  '?'; }
-				else{ $content =   htmlspecialchars($allTributes['CONTENT']); }
-
-				array_push($noRepeat,$trId);
-
-				$since = explode("-" , $since);
-				$thru = explode("-" , $thru);
-								
-						
-	?>
-
+			?>
 				<li>
-					<a href= <?php echo "pet-tribute.php?t=".$trId; ?> >
-						<img src= <?php  echo $srcImg; ?> class='thumb-mid'/>
+					<a href="<?php echo 'pet-tribute.php?t='.$r[$i]['ID_TRIBUTE']; ?>" >
+						<img src= "<?php echo $thumb ?>" class='thumb-mid'/>
 						<dl class='hidden'>
-							<dt><?php echo $name; ?> </dt>
-							<dd><?php echo  $since[0]." - ".$thru[0];  ?></dd>
+							<dt><?php echo  htmlspecialchars($r[$i]['Pets']['NAME']); ?> </dt>
+							<dd><?php echo  $r[$i]['SINCE']." - ".$r[$i]['THRU'];  ?></dd>
 						</dl>
 					</a>
 				</li>
 	<?php
-			}//end else		
+			
 		}// end for
 
 	}//end if

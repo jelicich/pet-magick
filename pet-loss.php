@@ -85,11 +85,93 @@
 <!-- END wrapper-->
 
 <script type="text/javascript">
-	listByCategory('tributesModuleByPets.php'); // ACA HAY Q HACER UN ajax/php para traer mascotas muertas (tributos)
-	start_scroll('scrollable-module', false);
+//	listByCategory('tributesModuleByPets.php'); // ACA HAY Q HACER UN ajax/php para traer mascotas muertas (tributos)
 
 	$(".mod-menu li").click(function(){
 		$(this).find("div").attr("class", "arrow-pet-loss");
+	});
+
+
+	var totalRec = <?php if($totalRec) echo $totalRec; else echo "0"; ?>;
+	var totalPag = <?php if($totalPag) echo $totalPag; else echo "0"; ?>;
+	if(<?php echo $totalPag ?> > 0)
+	{
+		//Guardo la cant de pags en un array
+		var pages = range(0, <?php echo $totalPag ?>);
+		//borro la primer pag q se imprime del array (la primera vez q se ejecuta nro de pag coincide con indice de array)
+		pages.splice(<?php echo $firstPag ?>, 1);
+
+	}
+	else
+	{
+		var pages = [];
+	}
+		
+	
+
+
+	$(".scrollable-module").mCustomScrollbar(
+	{
+		scrollButtons:
+		{
+			enable: false 
+		},
+
+		advanced:
+		{
+			updateOnContentResize: true,
+			horizontalSrcoll: true
+		},
+
+		theme:"light-thin",
+
+		callbacks:
+		{
+		    
+		    onTotalScroll:function()
+		    {
+	 			  		
+	    		
+	    		if(pages.length > 0)
+	    		{
+	    			//agarro una pag random del array
+	    			var rand = Math.floor(Math.random() * pages.length);
+		    		page = pages[rand];
+
+		    		$.ajax(
+		    		{
+		                type: "POST",
+		                url: 'ajax/searchUsers.php?',
+		                data: {q: '*', from: page*28, rand: true},
+		                cache: false,
+
+		                success: function(html)
+		                {
+		                	$('#ModulesByPet').append(html);		                	
+		                }
+		            });			    	
+
+	    		
+
+		    		//borro la pag q se cargo del array
+		    		pages.splice(rand,1);		    		
+
+	    		}
+
+	    		else
+		    	{
+		    		var li = $('.last-result');
+		    		if(li.length == 0)
+		    		{
+		    			$('#ModulesByPet').append('<li class="last-result">No more results</li>');
+		    		}
+		    		
+		    	}
+	    		    		
+	    		
+	    		
+	        }
+		}
 	});
 
 </script>

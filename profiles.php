@@ -113,8 +113,8 @@
 	//borro la primer pag q se imprime del array (la primera vez q se ejecuta nro de pag coincide con indice de array)
 	pages.splice(<?php echo $firstPag ?>, 1);
 	
-	var totalRec = <?php echo $totalRec; ?>;
-	var totalPag = <?php echo $totalPag; ?>;
+	var totalRec = <?php if($totalRec) echo $totalRec; else echo "0"; ?>;
+	var totalPag = <?php if($totalPag) echo $totalPag; else echo "0"; ?>;
 
 	$(".scrollable-module").mCustomScrollbar(
 	{

@@ -131,29 +131,24 @@ class BOTributes{
         if($string == '*')
         {
           $q = Doctrine_Query::create()
-            ->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
-            ->from('Users u')
-            ->leftJoin('u.Pics ph')
-            ->leftJoin('u.Countries k')
-            ->leftJoin('u.Regions r')
-            ->leftJoin('u.Cities c')
-            ->orderBy('u.ID_USER DESC')
+            ->select("t.ID_TRIBUTE, t.TITLE, t.CONTENT, DATE_FORMAT(t.SINCE,'%Y') as SINCE, DATE_FORMAT(t.THRU, '%Y') as THRU, t.PET_ID, ph.PIC, p.NAME, p.ID_PET")
+            ->from('Tributes t')
+            ->leftJoin('t.Pets p')
+            ->leftJoin('p.Pics ph')
+            ->orderBy('t.ID_TRIBUTE DESC')
             ->offset($from)
             ->limit($to);
         }
         else
         {
           $q = Doctrine_Query::create()
-            ->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
-            ->from('Users u')
-            ->leftJoin('u.Pics ph')
-            ->leftJoin('u.Countries k')
-            ->leftJoin('u.Regions r')
-            ->leftJoin('u.Cities c')
-            ->where('u.NAME LIKE ?', '%'.$string.'%')
-            ->orWhere('u.LASTNAME LIKE ?', '%'.$string.'%')
-            ->orWhere('u.NICKNAME LIKE ?', '%'.$string.'%')
-            ->orderBy('u.ID_USER DESC')
+            ->select('t.ID_TRIBUTE, t.TITLE, t.CONTENT, t.SINCE, t.THRU, t.PET_ID, ph.PIC, p.NAME, p.ID_PET')
+            ->from('Tributes t')
+            ->leftJoin('t.Pets p')
+            ->leftJoin('p.Pics ph')
+            ->where('p.NAME LIKE ?', '%'.$string.'%')
+            ->orWhere('t.TITLE LIKE ?', '%'.$string.'%')
+            ->orderBy('t.ID_TRIBUTE DESC')
             ->offset($from)
             ->limit($to);  
         }

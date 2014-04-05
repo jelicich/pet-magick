@@ -366,29 +366,57 @@ function imgVideoUploader(whatFor, modulo){
 					  if (this.files && this.files[0]) {
 
 						  	// ============================= FILE TYPE AND SIZE VALIDATION
-
-						  	if(mime.indexOf(this.files[0].type) == -1){ // el default era ! -1, recordar por las dudas!!
+						  	
+						  	if(mime.indexOf(this.files[0].type) != -1)
+						  	{ // el default era ! -1, recordar por las dudas!!
 			            			
-			            		errMsg('Invalid format');
-			            		flagidation = 1;
+			            		if( amount != 'video')
+			            		{
+			            			if(mimeImg.indexOf(this.files[0].type) == -1)
+			            			{
+			            				errMsg('Invalid format');
+				            			var noRemoveInput = true;
+				            			flagidation = 1;
+				            			return;	
+			            			}
+			            			else
+			            			{
+			            				if(this.files[0].size >= 5242880)
+					            		{ // Ver q numero necesitamos
+					            			errMsg('Too large...');
+					            			flagidation = 1;
+
+					            		}
+			            			}
+			            		}
+			            		else 
+			            		{
 			            			
-		            		}else if(this.files[0].size >= 23000000){ // Ver q numero necesitamos
+			            			if(mimeVideo.indexOf(this.files[0].type) == -1)
+			            			{
+			            				errMsg('Invalid format...');
+				            			var noRemoveInput = true;
+				            			flagidation = 1;
+				            			return;
+				            		}
+				            		else
+				            		{
+				            			if(this.files[0].size >= 52428800)
+					            		{ // Ver q numero necesitamos
+					            			errMsg('Too large...');
+					            			flagidation = 1;
 
-		            			errMsg('Too heavy...');
-		            			flagidation = 1;
-
-		            		}if( amount != 'video' && mimeImg.indexOf(this.files[0].type) == -1){
-
-		            			errMsg('Invalid format');
-		            			var noRemoveInput = true;
-		            			flagidation = 1;
-
-		            		}if( amount == 'video' && mimeVideo.indexOf(this.files[0].type) == -1){
-
-		            			errMsg('Invalid format');
-		            			var noRemoveInput = true;
-		            			flagidation = 1;
+					            		}
+				            		}
+				            		
+			            		}	
 		            		}
+		            		else
+		            		{
+		            			errMsg('Invalid format');
+			            		flagidation = 1;
+		            		}
+		            		
 		            		
 		            		var reader = new FileReader();
 

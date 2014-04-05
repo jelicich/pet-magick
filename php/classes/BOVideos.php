@@ -19,14 +19,14 @@ class BOVideos{
 
   function val($query){
 
-        if($query['fileSize'] > 9000000000000) 
+        if($query['fileSize'] > 2) 
         {// ver q medidas necesito aca para cada formato, tal vez separarlos
-          throw new Exception('<span>muy grande desde php videos</span>');
+          throw new Exception('<div class="alert alert-danger" id="err">Too large...</div>');
           return;
         }
         if(!in_array($query['fileType'], $this->mime)){
 
-          throw new Exception('<span>formato invalido desde php videos</span>');
+          throw new Exception('<div class="alert alert-danger" id="err">Invalid format...</div>');
           return;
         }
   }// End function upload_img
@@ -37,7 +37,7 @@ class BOVideos{
 
       try
           {  
-            //$this->val($query);
+            $this->val($query);
 
             extension_loaded('ffmpeg') or die('Error in loading ffmpeg');
             $ext = pathinfo($query['fileName'], PATHINFO_EXTENSION);

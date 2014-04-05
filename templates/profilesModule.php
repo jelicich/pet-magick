@@ -5,7 +5,8 @@
 	$totalPag = ceil($totalRec/28);
 
 	$totalPag--;
-	$firstPag = rand(0, $totalPag);
+	
+	$firstPag = rand(0, $totalPag-1);
 	
 	$findme   = 'index.php';
 	$src = strpos($_SERVER['PHP_SELF'], $findme);

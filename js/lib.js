@@ -1463,6 +1463,48 @@ function listByCategory(ajaxFile){
 	
 }// end userByPet
 
+function listByCategory2(ajaxFile){
+
+	var pets = byid('menuByPet').getElementsByTagName('a');
+	for(var i = 0; i < pets.length; i++){
+
+			pets[i].onclick = function()
+			{		
+					var each = byid('menuByPet').getElementsByTagName('div');
+					for(var j = 0; j < each.length; j++){
+						each[j].style.display = 'none';
+					}
+
+					var arrow = this.parentNode.getElementsByTagName('div');
+						arrow[0].style.display = "block";
+
+					var p = this.href;
+					var index = p.indexOf('#');
+			  		index ++;
+			  		p = 'q='+p.substr(index)+'rand=true&cat=true';
+					ajax('POST', 'ajax/' + ajaxFile, printByCategory, p, true);
+
+			}// end pets[i].onclick
+	}// end for
+
+	function printByCategory(){
+
+		var cont = byid("ModulesByPet");
+		cont.innerHTML = this.responseText;
+		var scr = cont.getElementsByTagName('script');
+		if(scr.length > 0)
+		{
+			for(var i = 0; i < scr.length; i++)
+			{
+				eval(scr[i].innerHTML);
+			}
+		}
+		
+	}// end printByPet
+
+	
+}// end userByPet
+
 
 
 

@@ -27,17 +27,13 @@ user-profile:
 PENDIENTES
 ==========
 
-- Consulta random
-		- Corregir consultas
-		- ver q onda en antics cuando existe solo un video pq se rompe todo (creo q con el random se resuelve)
+- ver q onda en antics cuando existe solo un video pq se rompe todo (creo q con el random se resuelve)
 
 - Confirmar por email (para estoy y para testear el forgot password necesitamos el server)
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
 - ver los formatos de video q vamos a usar
-		- poner size correctamente en el validador de php
-
 
 
 IMGUPLOADER

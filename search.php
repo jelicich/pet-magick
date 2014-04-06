@@ -145,7 +145,7 @@
 							case 'pe':
 								include 'php/classes/BOPets.php';
 								$p = new BOPets;
-								$r = $p->searchPets($_GET['q'], 0);
+								$r = $p->searchPets($_GET['q'], 0,28);
 
 								$totalRec = $p->totalRecords($_GET['q']);
 								$totalPag = ceil($totalRec/28);

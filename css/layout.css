@@ -53,7 +53,7 @@ p,span{
 	font-size: 13px;
 }
 
-#wrapper{
+#wrapper,body{
 	background: url('../img/fresh_snow.png');
 	min-height:100%;
 	/*height: 100%;*/
@@ -232,7 +232,7 @@ p,span{
 }
 
 .grid-thumbs li dl{
-	max-height: 45%; 
+	max-height: 100%; 
 	min-height: 45%;
 	width: 100%;
 	position: absolute;
@@ -346,6 +346,12 @@ p,span{
 .mod-menu a:hover{
 	text-decoration: none;
 	background: rgba(0,0,0,0.1);
+}
+.mod-menu li:hover div{
+	border-top: 10px solid #c24940 !important;
+}
+.mod-menu li:hover div.arrow-pet-loss{
+	border-top: 10px solid #9e466b !important;
 }
 
 .mod-menu li{
@@ -3743,7 +3749,14 @@ a[href$=".jpg"]{
 	font-weight: bold;
 	padding-top: 46px;
 }
-
+.last-result-tributes{
+	background: rgba(255,255,255,0.3);
+	padding: 5px;
+	color: #dfc2cf;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 46px;
+}
 
 
 /* terms and conditions and so on.... */
@@ -3785,4 +3798,12 @@ a[href$=".jpg"]{
 	-ms-user-select: none;
 	user-select: none;
 	background: rgba(255,255,255,0.4);
+}
+
+#show-all{
+	float: left;
+	margin: -25px 0 0 10px;
+}
+#show-all a{
+	color:#000;
 }

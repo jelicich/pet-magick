@@ -1,12 +1,12 @@
 <?php
 
-include '../php/classes/BOUsers.php';
-$u = new BOUsers;
-
-$r = $u->searchTributes($_POST['q'], $_POST['from'],28);
+include '../php/classes/BOPets.php';
+$p = new BOPets;
+$r = $p->searchPetsByCategory($_POST['q'], $_POST['from'],28);
 
 if($_POST['rand'])
 	shuffle($r);
+
 for($i = 0; $i < sizeof($r); $i++)
 {
 	if(isset($r[$i]['Pets']['Pics']))
@@ -32,4 +32,3 @@ for($i = 0; $i < sizeof($r); $i++)
 }
 
 ?>
-

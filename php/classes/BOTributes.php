@@ -142,7 +142,7 @@ class BOTributes{
         else
         {
           $q = Doctrine_Query::create()
-            ->select('t.ID_TRIBUTE, t.TITLE, t.CONTENT, t.SINCE, t.THRU, t.PET_ID, ph.PIC, p.NAME, p.ID_PET')
+            ->select("t.ID_TRIBUTE, t.TITLE, t.CONTENT, DATE_FORMAT(t.SINCE,'%Y') as SINCE, DATE_FORMAT(t.THRU, '%Y') as THRU, t.PET_ID, ph.PIC, p.NAME, p.ID_PET")
             ->from('Tributes t')
             ->leftJoin('t.Pets p')
             ->leftJoin('p.Pics ph')
@@ -153,6 +153,27 @@ class BOTributes{
             ->limit($to);  
         }
         
+        $rta = $q->execute();
+
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
+    }
+
+    function searchTributesByCategory($string,$from,$to)
+    {
+
+        $q = Doctrine_Query::create()
+            ->select("t.ID_TRIBUTE, t.TITLE, t.CONTENT, DATE_FORMAT(t.SINCE,'%Y') as SINCE, DATE_FORMAT(t.THRU, '%Y') as THRU, t.PET_ID, ph.PIC, p.NAME, p.ID_PET")
+            ->from('Tributes t')
+            ->leftJoin('t.Pets p')
+            ->leftJoin('p.Pics ph')
+            ->where('p.ANIMAL_CATEGORY_ID = ?', $string)
+            ->orderBy('t.ID_TRIBUTE DESC')
+            ->offset($from)
+            ->limit($to);  
+
         $rta = $q->execute();
 
         if($rta)

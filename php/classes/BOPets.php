@@ -519,19 +519,60 @@ class BOPets{
         return $out;    
     }
 
-    function searchPets($string, $from)
+    function searchPets($string, $from, $to)
+    {
+        if($string == '*')
+        {
+            $q = Doctrine_Query::create()
+                ->select('p.ID_PET, p.NAME, p.BREED, ac.NAME, ph.PIC, u.ID_USER')
+                ->from('Pets p')
+                ->leftJoin('p.Pics ph')
+                ->leftJoin('p.AnimalCategories ac')
+                ->leftJoin('p.Users u')
+                ->orderBy('p.ID_PET DESC')
+                ->offset($from)
+                ->limit($to);    
+        }
+        else
+        {
+            $q = Doctrine_Query::create()
+                ->select('p.ID_PET, p.NAME, p.BREED, ac.NAME, ph.PIC, u.ID_USER')
+                ->from('Pets p')
+                ->leftJoin('p.Pics ph')
+                ->leftJoin('p.AnimalCategories ac')
+                ->leftJoin('p.Users u')
+                ->where('p.NAME LIKE ?', '%'.$string.'%')
+                ->orWhere('p.BREED LIKE ?', '%'.$string.'%')
+                ->orderBy('p.ID_PET DESC')
+                ->offset($from)
+                ->limit($to);       
+        }
+        $rta = $q->execute();
+
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
+
+    }
+
+    function searchPetsByCategory($string, $from, $to)
     {
         $q = Doctrine_Query::create()
-            ->select('p.ID_PET, p.NAME, p.BREED, ac.NAME, ph.PIC, u.ID_USER')
+            ->select('p.ID_PET, p.NAME, p.BREED, ac.NAME, ph.PIC, u.ID_USER, u.NAME, u.LASTNAME, k.Country, r.Region, c.City, COUNT(*) as COUNT,')
             ->from('Pets p')
-            ->leftJoin('p.Pics ph')
             ->leftJoin('p.AnimalCategories ac')
             ->leftJoin('p.Users u')
-            ->where('p.NAME LIKE ?', '%'.$string.'%')
-            ->orWhere('p.BREED LIKE ?', '%'.$string.'%')
+            ->leftJoin('u.Pics ph')
+            ->leftJoin('u.Countries k')
+            ->leftJoin('u.Regions r')
+            ->leftJoin('u.Cities c')
+            ->where('p.ANIMAL_CATEGORY_ID = ?', $string)
             ->orderBy('p.ID_PET DESC')
+            ->groupBy('u.ID_USER')
             ->offset($from)
-            ->limit(28);
+            ->limit($to);
+    
         $rta = $q->execute();
 
         if($rta)
@@ -543,13 +584,24 @@ class BOPets{
 
     function totalRecords($string)
     {
-        $q = Doctrine_Query::create()
-            ->select('COUNT(p.ID_PET) as QTY')
-            ->from('Pets p')
-            ->where('p.NAME LIKE ?', '%'.$string.'%')
-            ->orWhere('p.BREED LIKE ?', '%'.$string.'%')
-            ->orderBy('p.ID_PET DESC');
-        $rta = $q->execute();
+        if($string == '*')
+        {
+            $q = Doctrine_Query::create()
+                ->select('COUNT(p.ID_PET) as QTY')
+                ->from('Pets p')
+                ->orderBy('p.ID_PET DESC');
+        }    
+        else
+        {
+            $q = Doctrine_Query::create()
+                ->select('COUNT(p.ID_PET) as QTY')
+                ->from('Pets p')
+                ->where('p.NAME LIKE ?', '%'.$string.'%')
+                ->orWhere('p.BREED LIKE ?', '%'.$string.'%')
+                ->orderBy('p.ID_PET DESC');
+        }
+        
+        $rta = $q->execute();    
 
         if($rta)
         {

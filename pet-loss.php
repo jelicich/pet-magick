@@ -40,18 +40,26 @@
 	<div class="container_12" id="content">
 
 		<div id='what'>
-		<a href="#" ><p>How does Project board work ?</p></a>
-		<div class='active five_pixels'>
-			<div id='pop-up' class='mod grid_4 '>
+			<a href="#" ><p>How does Project board work ?</p></a>
+			<div class='active five_pixels'>
+				<div id='pop-up' class='mod grid_4 '>
 
-				<p> 
-					<?php echo htmlspecialchars($pop->getPopUps("petloss")); ?>
-				</p>
+					<p> 
+						<?php echo htmlspecialchars($pop->getPopUps("petloss")); ?>
+					</p>
 
+				</div>
+				<div class=' arrow-top'></div>
 			</div>
-			<div class=' arrow-top'></div>
 		</div>
-	</div>
+		<?php 
+		if(isset($_GET['c'])) 
+		{
+		?>
+			<div id="show-all">
+				<a href="pet-loss.php">Show all tributes</a>
+			</div>
+		<?php } ?>
 
 		
 		
@@ -59,13 +67,104 @@
 		<div  class="pet-loss-mod mod grid_12" id="pet-loss-mod">
 			<?php 
 						
-				include_once 'templates/modHeader.php'; 
+				include_once 'templates/modHeaderTribute.php'; 
 			?>
 				<div class="scrollable-module" id="petLoss">
 					<ul class='grid-thumbs clearfix' id='ModulesByPet'> 
 						<?php 
 							
-							include_once 'templates/petLossModule.php'; 
+							
+						?>
+						<?php 
+							
+							if(!isset($_GET['c']))
+							{	
+								$category = '"*"';
+								$url = '"ajax/searchTributes.php?"';
+								
+								include_once 'templates/petLossModule.php'; 
+							}
+							else
+							{
+								$url = '"ajax/searchTributesByCategory.php?"';
+								switch ($_GET['c']) 
+								{
+									case 'dog':
+										$category = 1;
+										$string = 'dog';									
+										break;
+
+									case 'cat':
+										$category = 2;
+										$string = 'cat';
+										break;
+
+									case 'bird':
+										$category = 3;
+										$string = 'bird';
+										break;
+
+									case 'rabbit':
+										$category = 4;
+										$string = 'rabbit';
+										break;
+
+									case 'ferret':
+										$category = 5;
+										$string = 'cat';
+										break;
+
+									case 'others':
+										$category = 6;
+										$string = 'pet';
+										break;
+									
+									default:
+										$category = 1;
+										$string = 'dog';
+										break;									
+								}
+
+								include 'php/classes/BOTributes.php';
+								$p = new BOTributes;
+								$r = $p->searchTributesByCategory($category, 0, 28);
+
+								$totalRec = $p->totalRecords('*');
+								$totalPag = ceil($totalRec/28);
+								if($r)
+								{
+									shuffle($r);
+									
+									for($i = 0; $i < sizeof($r); $i++)
+									{
+										if(isset($r[$i]['Pets']['Pics']))
+										{
+											$thumb = 'img/pets/thumb/'.$r[$i]['Pets']['Pics']['PIC'];
+										}
+										else
+										{
+											$thumb = 'img/pets/thumb/default.jpg';	
+										}
+
+										?>
+											<li>
+												<a href="<?php echo 'pet-tribute.php?t='.$r[$i]['ID_TRIBUTE']; ?>" >
+													<img src= "<?php echo $thumb ?>" class='thumb-mid'/>
+													<dl class='hidden'>
+														<dt><?php echo  htmlspecialchars($r[$i]['Pets']['NAME']); ?> </dt>
+														<dd><?php echo  $r[$i]['SINCE']." - ".$r[$i]['THRU'];  ?></dd>
+													</dl>
+												</a>
+											</li>
+										<?php 
+									}
+									
+								}
+								else
+								{
+									echo '<div class="mod-content"><h3>We couldn\'t find what you\'re looking for</h3></div>';
+								}
+							}
 						?>
 					</ul>	
 				</div>
@@ -87,28 +186,24 @@
 <script type="text/javascript">
 //	listByCategory('tributesModuleByPets.php'); // ACA HAY Q HACER UN ajax/php para traer mascotas muertas (tributos)
 
-	$(".mod-menu li").click(function(){
-		$(this).find("div").attr("class", "arrow-pet-loss");
-	});
 
 
+	function range(start, end) 
+	{
+	    var foo = [];
+	    for (var i = start; i <= end; i++) {
+	        foo.push(i);
+	    }
+	    return foo;
+	}
+	
+	//Guardo la cant de pags en un array
+	var pages = range(0, <?php echo $totalPag ?>);
+	//borro la primer pag q se imprime del array (la primera vez q se ejecuta nro de pag coincide con indice de array)
+	pages.splice(<?php echo $firstPag ?>, 1);
+	
 	var totalRec = <?php if($totalRec) echo $totalRec; else echo "0"; ?>;
 	var totalPag = <?php if($totalPag) echo $totalPag; else echo "0"; ?>;
-	if(<?php echo $totalPag ?> > 0)
-	{
-		//Guardo la cant de pags en un array
-		var pages = range(0, <?php echo $totalPag ?>);
-		//borro la primer pag q se imprime del array (la primera vez q se ejecuta nro de pag coincide con indice de array)
-		pages.splice(<?php echo $firstPag ?>, 1);
-
-	}
-	else
-	{
-		var pages = [];
-	}
-		
-	
-
 
 	$(".scrollable-module").mCustomScrollbar(
 	{
@@ -141,8 +236,8 @@
 		    		$.ajax(
 		    		{
 		                type: "POST",
-		                url: 'ajax/searchUsers.php?',
-		                data: {q: '*', from: page*28, rand: true},
+		                url: <?php echo $url ?>,
+		                data: {q: <?php echo $category ?>, from: page*28, rand: true},
 		                cache: false,
 
 		                success: function(html)
@@ -160,10 +255,10 @@
 
 	    		else
 		    	{
-		    		var li = $('.last-result');
+		    		var li = $('.last-result-tributes');
 		    		if(li.length == 0)
 		    		{
-		    			$('#ModulesByPet').append('<li class="last-result">No more results</li>');
+		    			$('#ModulesByPet').append('<li class="last-result-tributes">No more results</li>');
 		    		}
 		    		
 		    	}

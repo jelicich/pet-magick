@@ -16,7 +16,7 @@ for($i = 0; $i < sizeof($r); $i++)
 	}
 	?>
 		<li>
-			<a href=<?php echo 'projects.php?s=0&p='.$r[$i]['ID_PROJECT'].'&active=5'; ?> >
+			<a href=<?php echo 'projects.php?s=0&p='.$r[$i]['ID_PROJECT']; ?> >
 				<img src= "<?php echo $thumb ?>" class='thumb-mid'/>
 				<dl class='hidden'>
 					<dt>

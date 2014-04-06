@@ -80,14 +80,14 @@
 							
 							if(!isset($_GET['c']))
 							{	
-								$category = '*';
-								$url = 'ajax/searchUsers.php?';
+								$category = '"*"';
+								$url = '"ajax/searchUsers.php?"';
 								
 								include_once 'templates/profilesModule.php';
 							}
 							else
 							{
-								$url = 'ajax/searchUsersByPet.php?';
+								$url = '"ajax/searchUsersByPet.php?"';
 								switch ($_GET['c']) 
 								{
 									case 'dog':
@@ -255,7 +255,7 @@
 		    		{
 		                type: "POST",
 		                url: <?php echo $url ?>,
-		                data: {q: <?php echo $category ?>'*', from: page*28, rand: true},
+		                data: {q: <?php echo $category ?>, from: page*28, rand: true},
 		                cache: false,
 
 		                success: function(html)

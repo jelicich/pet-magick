@@ -7,7 +7,8 @@
 	**/
 	include_once "php/classes/BOUsers.php";
 	$user = new BOUsers;
-	$user->checklogin();
+	//if(!$user->checklogin())
+		//header('Location: index.php');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30,6 +31,13 @@
 </head>
 
 <body>
+
+
+<?php
+if($user->checklogin())
+{
+?>
+
 <div id="wrapper" class="h100">
 	
 	<?php 
@@ -70,7 +78,34 @@
 
 </div>
 <!-- END wrapper-->
+<?php 
+if(isset($_GET['to']))
+{
+	$tempU = new BOUsers;
+	if($q = $tempU->findName($_GET['to']))
+		$name = $q[0]['NAME'].' '.$q[0]['LASTNAME'];
+	else
+		$name = 'Error retrieving the user';
 
+?>
+<form method='' action='' class="clearfix" style="display:block" id="write-new-message">	
+				
+
+	<div id='searchField' class="grid_3">
+			<input type='text' placeholder='To' id='inputTo' name='inputTo' autocomplete='off' style="display:none"/>
+			<span id="recipient-name"><?php echo $name; ?></span>
+	</div>
+	
+	<textarea rows='5' cols='30' name='new-message' id='new-message'></textarea>
+	<input type='button' value='Submit' id='send-new-message' class="btn btn-danger"/>
+	<input type="button" value='Cancel' id="cancel-new-message" class="btn btn-danger"/>
+
+</form>
+<?php
+} //end if isset GET to
+else
+{
+?>
 <form method='' action='' class="clearfix" style="display:none" id="write-new-message">	
 				
 
@@ -83,7 +118,9 @@
 	<input type="button" value='Cancel' id="cancel-new-message" class="btn btn-danger"/>
 
 </form>
-
+<?php 
+}//end else isset GET to
+?>
 
 <script type="text/javascript" id="jslogout">
 
@@ -92,9 +129,11 @@
 	var i = new autoSearch('inputTo');
 	i.ini({
 		'hidden':true
+		<?php if(isset($_GET['to'])) echo ",'to':".$_GET['to'] ?>
 	});
 
-	start_scroll('scrollable', false);
+
+	//start_scroll('scrollable', false);
 	$(".scrollable-msg").mCustomScrollbar(
 	{
 		scrollButtons:
@@ -112,8 +151,47 @@
 
 	});
 
+	$(".scrollable").mCustomScrollbar(
+	{
+		scrollButtons:
+		{
+			enable: false 
+		},
+
+		advanced:
+		{
+			updateOnContentResize: false,
+		},
+
+		theme:"light-thin",
+
+
+	});
 
 </script>
+
+<?php
+}//end if checklogin
+else
+{ 
+?>
+<div id="wrapper" class="h100">
+	
+	<?php 
+		include_once 'templates/header.php'; 
+	?>
+	<div class="container_12" id="content">
+		<div class="grid_12"><p class="alert alert-danger">You must be logged in to send and recieve messages</p></div>
+	</div>
+
+	<?php 
+		include_once 'templates/footer.php'; 
+	?>
+
+</div>
+<?php
+}//end else checklogin
+?>
 </body>
 
 </html>

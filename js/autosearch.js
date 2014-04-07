@@ -390,7 +390,11 @@ function autoSearch(inputId)
 			 					config.hidden = false;
 			 				}
 			 				break;
-			 
+			 			case 'to':
+			 				if(!isNaN(obj[prop]))
+			 				{
+								input.hidden.value = obj[prop];			 					
+			 				}
 			 			default:
 			 				break;
 

@@ -79,7 +79,9 @@
 						<img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/>
 					</a>
 					<h3><?php echo htmlspecialchars($u->getNameComp()); ?></h3>
-					<span><?php echo htmlspecialchars($u->getLocation()); ?></span>
+					<span class="location"><?php echo htmlspecialchars($u->getLocation()); ?></span>
+					<?php if(!$u->isOwn()) echo '<div><a class="btn" href="inbox.php?to='.$userId.'"><img src="img/envelope.png"/> Send Message</a></div>';?>
+
 				</div>
 
 

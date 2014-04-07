@@ -618,6 +618,7 @@ function printHeaders(){
 	 
 	 //empiezo a chequear si hay nuevos mensajes
 	 refreshInbox();
+	 $('.scrollable').mCustomScrollbar("update");
 }//end printHeaders
 
 function printMessages(){

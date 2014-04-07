@@ -501,7 +501,7 @@ p,span{
 #user-about{
 
 	min-height: 270px;
-	max-height: 270px;
+	max-height: 281px;
 }
 
 
@@ -3806,4 +3806,10 @@ a[href$=".jpg"]{
 }
 #show-all a{
 	color:#000;
+}
+.location{
+	display: block;
+	line-height: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }

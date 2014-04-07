@@ -5,9 +5,8 @@
 	Agrego esto para chequear q el user este logueado. Hay q ver si el valor q tomo por session es el q queremos.
 	Es mas largo traerlo de la clase q pegar la funcion, pero me parecio mejor asi...
 	**/
-	include_once "php/classes/BOUsers.php";
-	$user = new BOUsers;
-	$user->checklogin();
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

@@ -150,9 +150,13 @@ class BOUsers{
 
       if(!isset($_SESSION['id'])){
         
-        header('Location: index.php');
+        return false;
 
-      }//end if
+      }
+      else
+      {
+        return true;
+      }
 
     }//end checklogin()
 
@@ -719,6 +723,25 @@ class BOUsers{
             return false;
         }
             
+    }
+
+    function findName($id)
+    {
+      $q = Doctrine_Query::create()
+          ->select('u.NAME, u.LASTNAME, u.NICKNAME')
+          ->from('Users u')
+          ->where('u.ID_USER = ?',$id);
+        $rta = $q->execute();
+
+        if($rta)
+        {
+            $ar = $rta->toArray();
+            return $ar;
+        }          
+        else
+        {
+            return false;
+        }
     }
 
 

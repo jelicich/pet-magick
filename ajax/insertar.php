@@ -1,6 +1,7 @@
 <?php
-
+//var_dump($_POST); exit;
 session_start();
+
 include_once "../php/classes/BOPics.php";
 include_once "../php/classes/BOVideos.php";
 include_once "../php/classes/BOUsers.php";
@@ -19,12 +20,12 @@ $id_last_insert;
 function createQuery($query, $path, $class){
 
 	$id_last_insert = $class->upload($query, $path);
-	var_dump($id_last_insert);
+	//var_dump($id_last_insert);
 	$_POST['pic']=$id_last_insert;
 	//echo $class->getErrors();
 }//create query
 
-var_dump($_POST);
+//var_dump($_POST);
 if(isset($_FILES['file'])){ // normalWay();
 
 	$t = count($_FILES['file']['name']); 
@@ -93,6 +94,6 @@ if(isset($_FILES['file'])){ // normalWay();
 //var_dump($_POST);
 //le agrego a post la imagen;
 
-//$user->updateInfo($_POST);
+$user->updateInfo($_POST);
 
 

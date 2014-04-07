@@ -367,7 +367,7 @@ function imgVideoUploader(whatFor, modulo){
 
 						  	// ============================= FILE TYPE AND SIZE VALIDATION
 						  	
-						  	if(mime.indexOf(this.files[0].type) != -1)
+							if(mime.indexOf(this.files[0].type) != -1)
 						  	{ // el default era ! -1, recordar por las dudas!!
 			            			
 			            		if( amount != 'video')

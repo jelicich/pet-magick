@@ -109,6 +109,7 @@
 								
 								if($r)
 								{
+									//var_dump($r); exit;
 									echo "<ul class='grid-thumbs clearfix' id='ModulesByPet'>";
 									for($i = 0; $i < sizeof($r); $i++)
 									{
@@ -120,13 +121,32 @@
 										{
 											$thumb = 'img/users/thumb/default.jpg';	
 										}
+
+										if(isset($r[$i]['Cities']['City'])){
+
+												$city = $r[$i]['Cities']['City'];
+
+										}else{
+
+
+											$city = "??";
+										}
+
+										if(isset($r[$i]['Countries']['Country'])){
+
+												$country = $r[$i]['Countries']['Country'];
+										}else{
+
+
+											$country = "??";
+										}
 										?>
 											<li>
 												<a href=<?php echo "user-profile.php?u=".$r[$i]['ID_USER']; ?> >
 													<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 													<dl class='hidden'>
 														<dt><?php echo htmlspecialchars($r[$i]['NAME']." ".$r[$i]['LASTNAME']); ?> </dt>
-														<dd><?php echo  htmlspecialchars($r[$i]['Cities']['City'].", ".$r[$i]['Countries']['Country']); ?></dd>
+														<dd><?php echo  htmlspecialchars($city.", ".$country); ?></dd>
 													<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 													</dl>
 												</a>
@@ -258,11 +278,11 @@
 								
 								if($r)
 								{
-								
+								//var_dump($r); exit;
 									echo "<ul class='grid-thumbs clearfix' id='ModulesByPet'>";
 									for($i = 0; $i < sizeof($r); $i++)
 									{
-										if(isset($r[$i]['Albums']['Pics']) && !empty($r[$i]['Albums']['Pics']))
+										if(isset($r[$i]['Albums']['Pics']['PIC']) && !empty($r[$i]['Albums']['Pics']['PIC']))
 										{
 											$thumb = 'img/projects/thumb/'.$r[$i]['Pics']['PIC'];
 										}
@@ -283,11 +303,14 @@
 															if(strlen($title) == 15)
 																echo substr($title,0,14).'...' ;
 															else
-																echo $name;
+																echo htmlspecialchars($r[$i]['NAME']);
+																
 														?> 
 														</dt>
 														<dd>
 														<?php 
+
+															$description = htmlspecialchars($r[$i]['DESCRIPTION']);
 															if(strlen($description)==35)
 																echo substr($description,0,34).'...';
 															else

@@ -4,9 +4,6 @@
 					</div>
 					<div class="mod-content clearfix">
 
-
-						
-
 						<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
@@ -41,11 +38,13 @@
 										<label for="animal-category">Animal category*</label>
 										<select name="animal-category" class="form-element mandatory" id="animal-category">
 											<?php
+
 											$cats = $ac->getCategories();
 											for($i = 0; $i<sizeof($cats); $i++)
 											{
 												echo '<option value="'.$cats[$i]['ID_ANIMAL_CATEGORY'].'">'.$cats[$i]['NAME'].'</option>';
 											}
+											
 											?>
 										</select>
 									</li>

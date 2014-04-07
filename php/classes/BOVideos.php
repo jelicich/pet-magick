@@ -18,7 +18,7 @@ class BOVideos{
 
   function val($query){
 
-        if($query['fileSize'] > 2) 
+        if($query['fileSize'] > 52428800) 
         {// ver q medidas necesito aca para cada formato, tal vez separarlos
           throw new Exception('<div class="alert alert-danger" id="err">Too large...</div>');
           return;
@@ -28,6 +28,8 @@ class BOVideos{
           throw new Exception('<div class="alert alert-danger" id="err">Invalid format...</div>');
           return;
         }
+
+
   }// End function upload_img
  
 //=============================================================================== FUNCTIONS
@@ -47,7 +49,8 @@ class BOVideos{
             move_uploaded_file($query['file'], $path.'/'.$newName);
             $path = realpath($path.'/'.$newName); 
             $thumbPath = '../video/'.$thumbName; //tuve q modificar la ruta pq si no no lo guardaba en la BD , no se pq...
-            
+
+
             function getThumbImage($route, $thumbRoute){ // ver pq se ejecuta antes de instanciarla esta puta function
 
               $movie = new ffmpeg_movie($route,false);

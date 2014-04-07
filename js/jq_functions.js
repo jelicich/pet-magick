@@ -201,19 +201,18 @@ function video(){
                 $(this).jPlayer("setMedia", {
                  
                   m4v: videoSrc,
-                  ogg: videoSrc,// ver q onda esto de los diferentes formatos
-                  webm: videoSrc// ver q onda esto de los diferentes formatos
-                  //poster: imgSrc
+                  ogg: videoSrc,
+                  webm: videoSrc
 
                 }).jPlayer('play');
 
-               }, ended: function() { // The $.jPlayer.event.ended event
+               }, ended: function() {
 			    	
 			    	$(this).jPlayer("setMedia", {
                  
 	                  m4v: videoSrc,
-	                  ogg: videoSrc,// ver q onda esto de los diferentes formatos
-	                  webm: videoSrc,// ver q onda esto de los diferentes formatos
+	                  ogg: videoSrc,
+	                  webm: videoSrc,
 	                  poster: imgSrc
 
 	                }).jPlayer();

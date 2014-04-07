@@ -25,14 +25,14 @@ function val($query){
         return;
       }*/
 
-      if($query['fileSize'] > 900000000000) 
+      if($query['fileSize'] > 5242880) 
       {// ver q medidas necesito aca para cada formato, tal vez separarlos
-        throw new Exception('<span>muy grande desde php images</span>');
+        throw new Exception('<div class="alert alert-danger" id="err">Too large...</div>');
         return;
       }
       if(!in_array($query['fileType'], $this->mime)){
         // ver si esto lo junto  o lo evaluo separado
-        throw new Exception('<span>formato invalido desde php images</span>');
+        throw new Exception('<div class="alert alert-danger" id="err">Invalid format...</div>');
         return;
       }
 }// End function upload_img

@@ -22,11 +22,11 @@ $id_last_insert;
 
 function createQuery($query, $path, $class){
 
-	$id_last_insert = $class->upload($query, $path);
-	//var_dump($id_last_insert);
+	if ($id_last_insert = $class->upload($query, $path))
 	//le agrego a post la imagen;
-	$_POST['pic']=$id_last_insert;
-	//echo $class->getErrors();
+		$_POST['pic']=$id_last_insert;
+	else
+		echo $class->getErrors();
 }//create query
 
 

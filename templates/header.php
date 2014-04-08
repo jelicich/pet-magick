@@ -1,25 +1,5 @@
 <?php
 include 'php/functions.php';
-
-
-		if(isset($_GET['active'])){
-				$active = $_GET['active'];
-		}else{
-
-			$active = 1;
-
-		}
-
-		 $href_index = "index.php?active=1";
-		 $href_profiles ="profiles.php?active=2";
-		 $href_antics = "antics.php?active=3";
-		 $href_vet = "vet-talk.php?active=4";
-		 $href_projects = "projects.php?active=5";
-		 $href_organizations = "organizations.php?active=6";
-		 $href_pet_loss = "pet-loss.php?active=7";
-		 //$href_forum = "?active=8";
-		 //$href_blog = "?active=9";
-
 ?>
 
 

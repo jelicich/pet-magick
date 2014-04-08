@@ -177,7 +177,8 @@ function autoSearch(inputId)
 			{
 				//var val = byid('finder').value
 				var val = input.inputField.value;
-				window.location.href = "search.php?q="+val+"&tar=us";
+				//ACTUALIZAR RUTA ABSOLUTA
+				window.location.href = "/pet-magick/search.php?q="+val+"&tar=us";
 			}
 			else
 			{
@@ -186,7 +187,8 @@ function autoSearch(inputId)
 				var index = user.indexOf('_');
 		  		index ++;
 		  		user = user.substr(index);
-				window.location.href = "user-profile.php?u="+user;
+		  		//ACTUALIZAR RUTA ABSOLUTA
+				window.location.href = "/pet-magick/user-profile.php?u="+user;
 			}	
 		}
 		else
@@ -214,7 +216,7 @@ function autoSearch(inputId)
 				
 				if(input.inputField.value != '')
 				{
-
+						//ACTUALIZAR RUTA ABSOLUTA
 						ajax_pvt('POST', '/pet-magick/ajax/searchTool.php', suggest , false, true);
 				}
 			//}
@@ -274,7 +276,8 @@ function autoSearch(inputId)
 						  		user = user.substr(index);	
 								if(!config.hidden)
 								{
-									window.location.href = "user-profile.php?u="+user;
+									//ACTUALIZAR RUTA ABSOLUTA
+									window.location.href = "/pet-magick/user-profile.php?u="+user;
 								}
 								else
 								{

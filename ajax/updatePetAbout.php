@@ -3,7 +3,7 @@
 session_start();
 
 
-
+//var_dump($_POST); exit;
 
 if(!isset($_POST['p']) || $_POST['owner'] != $_SESSION['id'])
 {

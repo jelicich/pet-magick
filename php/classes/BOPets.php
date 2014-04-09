@@ -8,7 +8,7 @@ include_once('models/TributesTable.php');
 include_once ('BOPics.php');
 include_once ('BOAlbums.php');
 include_once ('BOTributes.php');
-
+include_once ('BOVideos.php');
 
 class BOPets{
 
@@ -350,6 +350,10 @@ class BOPets{
         $petData = $this->table->find($id);
         $pics = new BOPics;
         $pics->deleteAllPics($petData->ALBUM_ID, '../img/pets/');
+
+        // borro video
+        $video = new BOVideos;
+        $video->delete($id);
 
         if($this->hasTribute($id))
         {

@@ -24,9 +24,8 @@
 									if($p->hasPic())
 									{
 								?>
-									<label>
+									<label>Delete
 										<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$p->getPicId().'"'; ?> />
-										Delete
 									</label>
 								<?php
 									}
@@ -36,7 +35,7 @@
 								<div class="clearfix">
 									<div id='imgContainer' class="clearfix"></div>
 								</div>		
-								<p id="file-container">Select profile picture<input type="file" name="file" id="file_id"/></p>
+								<p id="file-container"><input type="file" name="file" id="file_id"  /></p>
 							</li>
 						</ul>
 					</div>

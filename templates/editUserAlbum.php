@@ -14,7 +14,7 @@
 										<div class="clearfix">
 											<div id='imgContainer' class="clearfix albumContainer"></div>
 										</div>		
-										<p id="file-container">Select pictures<input type="file" name="file" id="file_id"/></p>
+										<p id="file-container">Select pictures <input type="file" name="file" id="file_id"/></p>
 									</li>
 								</ul>
 							</div>

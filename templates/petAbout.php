@@ -35,11 +35,21 @@
 									</ul>
 								</div>
 							</div>
-							
-							<div class="bg-pet-profile">
-								<p><?php echo htmlspecialchars($p->getStory()); ?></p>
+
+
+							<div class="blind">
+								<div class="scrollable-text" id="aboutText">
+									<div class="bg-txt-featured-modules">
+										<p>
+											<?php echo htmlspecialchars($p->getStory()); ?>
+										</p>
+									</div>
+								</div>
 							</div>
+							
+							
 
 							<script type="text/javascript">
 								editPetProfile();
+								start_scroll('scrollable-text', false);
 							</script>

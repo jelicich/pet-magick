@@ -57,18 +57,17 @@ abstract class BasePets extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
-        $this->hasColumn('TRAITS', 'string', 100, array(
+        $this->hasColumn('TRAITS', 'string', 300, array(
              'type' => 'string',
-             'length' => 100,
+             'length' => 300,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
              ));
-        $this->hasColumn('STORY', 'string', 300, array(
+        $this->hasColumn('STORY', 'string', null, array(
              'type' => 'string',
-             'length' => 300,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

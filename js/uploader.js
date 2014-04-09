@@ -100,7 +100,7 @@ function imgVideoUploader(whatFor, modulo){
          	 byid('login-reg').innerHTML = this.responseText;
         }// end refreshHeader
 
-		 function refreshPets(){
+		function refreshPets(){
          	
 		  	 byid('pet-list').innerHTML = this.responseText;
 		  	 var s = byid('pet-list').getElementsByTagName('script');
@@ -108,7 +108,7 @@ function imgVideoUploader(whatFor, modulo){
 		  	 {
 		  	 	eval(s[i].innerHTML);
 		  	 }
-		 }// end refreshHeader
+		}// end refreshHeader
 
 		
 		/* ESTA FUNCION ESTA LISTA< SOLO Q HAY Q VER SI MANDAMOS u,p, y u otro param

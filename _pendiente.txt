@@ -2,10 +2,36 @@ BUGS:
 ====
 
 - Quice crear una mascota utilizando textos largos en los inputs y me tiro error doctrine
-- buscador no funciona desde blog y foro
 - random en animal antics
-- no cambia categoría de animal cuando editas
-  
+
+
+
+
+//////// IMPORTANTE !!!!!!!!!
+
+1) Modifique en la bd pets/story  varchar 300 por TEXT y actualice doctrine. No tengo mu claro q bd estamos usando como oficial, pero estaria bueno actualizarlo ahora pq puede traer bardo despues. Hice esto pq tiraba error doctrine si entraba un texto largo, el mismo error salta con los otros inputs al crear mascota (supongo q al editarla tambien)
+
+2) Resolvi los dos puntos siguientes. Tuve q agregar delete video en BOPets/deletealldata(). Deberiamos hacer un if(existe video), if(existe foto) ??
+(borra estos puntos una vez q los veas)
+
+//////// FIN IMPORTANTE !!!!!!!!!
+
+
+- Si tenes solo una mascota y la queres borrar no funciona. Si creas otra solo podes borrar la nueva  /// RESUELTO ///
+- modificar categoria al actualizar pet profile  /// RESUELTO ///
+- inbox css /// RESUELTO ///
+- scroll pet about /// RESUELTO ///
+- emprolije un poco las miniaturas de edicion (hay q darles un poquito mas de prolijidad. Pero mejoro...)
+
+- Imprimir los captions cuando va la img en grande
+ ( deje la consulta ajax hehcha en jq_functions y un archivo en ajax/getCaptionForImg.php. Vos pensas q realmente vale la pena hacerlo? no es suficiente con q se vea el caption en el hover de la miniatura ? digo esto pq hay q modificar varias cosas. La ruta q te devuelve ajax no es el nombre de la img sino desde la raiz, como lo separo si segun el server y a q seccion corresponda va a variar? ademas de eso hay q maquetar y terminar de desarrollar el resto. Decime q pensas a ver si q onda)
+
+
+
+
+
+
+
 
 CSS:
 ====
@@ -15,9 +41,6 @@ General:
 		- gif en modulos: en gral. cuando se muestra el gif el modulo queda vacio, inclulso pierde el header. Podriamos hacer q se mantenga al menos el header?? (ej: modulo superior de projects, orgs, etc)
 		- barras de scroll: ver q tengan misma ubicacion en todas las secciones
 		- poner pop ups en forum y blog (es solo pegar el id="what")
-
-inbox:
-		     - se le puede sacar el brillo a la ventana modal de new message? (q opinas??)
 
 user-profile:
 			 - ventanas modales: como mostrar miniatura y captions
@@ -30,13 +53,11 @@ user-profile:
 PENDIENTES
 ==========
 
-- Imprimir los captions cuando va la img en grande
+
 
 - Poner el gif de loding a todo
 
-- ver q onda en antics cuando existe solo un video pq se rompe todo (creo q con el random se resuelve)
-
-- Confirmar por email (para estoy y para testear el forgot password necesitamos el server)
+- Confirmar por email (para esto y para testear el forgot password necesitamos el server)
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 

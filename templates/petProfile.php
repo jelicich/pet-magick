@@ -34,8 +34,14 @@
 								</div>
 							</div>
 							
-							<div class=" bg-pet-profile ">
-								<p><?php echo htmlspecialchars($p->getStory()); ?></p>
+							<div class="blind">
+								<div class="scrollable-text" id="aboutText">
+									<div class="bg-txt-featured-modules">
+										<p>
+											<?php echo htmlspecialchars($p->getStory()); ?>
+										</p>
+									</div>
+								</div>
 							</div>
 							
 						</div><!-- END PET ABOUT-->
@@ -189,6 +195,7 @@
 			flexslider();
 			video();
 			show_img_up("#pet-profile");
+			start_scroll('scrollable-text', false);
 		</script>
 					
 

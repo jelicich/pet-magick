@@ -93,7 +93,8 @@ class PetsTable extends Doctrine_Table
                     ->set('p.NAME', '?', $array['name'] )
                     ->set('p.BREED', '?', $array['breed'] )
                     ->set('p.TRAITS', '?', $array['traits'] )
-                    ->set('p.STORY', '?', $array['story'] );
+                    ->set('p.STORY', '?', $array['story'] )
+                    ->set('p.ANIMAL_CATEGORY_ID', '?', $array['animal-category'] );
                     
         if(isset($array['delete-pic']))
             $q->set('p.PIC_ID', 'null');
@@ -151,7 +152,7 @@ class PetsTable extends Doctrine_Table
     } 
 
     public function deletePet($id)
-    {
+    { 
         $q = Doctrine_Query::create()
             ->delete('Pets p')
             ->where('p.ID_PET = ?', $id );

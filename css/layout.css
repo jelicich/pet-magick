@@ -1206,6 +1206,18 @@ width: 100% !important;
 	margin: 230px auto;
 }
 
+#pet-about .blind{
+width: 375px;
+height: 122px;
+
+}
+
+#pet-about .scrollable-text {
+overflow: auto;
+min-height: 100px !important;
+max-height: 100px !important;
+}
+
 /*
 #pet-album, #pet-about{
 	overflow: hidden;
@@ -2002,15 +2014,16 @@ Tunear!!!
 }
 
 #write-message #send-message{
-	position: absolute;
-	right: 0;
+	/*position: absolute;
+	right: 0;*/
+	float: right;
 }
 
 #write-new-message{
 	display: block;
 	position: fixed;
 	width: 400px;
-	height: 198px;
+	/*height: 198px;*/
 	left: 50%;
 	top:50%;
 	margin-left: -200px;
@@ -2024,12 +2037,12 @@ Tunear!!!
 	width: 100%;
 	resize:none;
 }
-
+/*
 #write-new-message #send-new-message{
-	position: absolute; 
+	/*position: absolute; 
 	left:10px;
 }
-
+*/
 #write-new-message #cancel-new-message{
 	position: absolute;
 	right: 10px;
@@ -3585,7 +3598,7 @@ end bbpress
 .table ul li input{
 	width: 270px;
 	padding: 11px 5px;
-	display: block;
+	/* display: block; */
 	margin: 0 auto;
 }
 
@@ -3622,9 +3635,9 @@ end bbpress
 }
 
 .table .new-pic-cont input[type='file']{
-	width: 100%;
+	/*width: 100%;*/
 	background: rgba(255,255,255,0.3);
-	padding: 6px;
+	padding: 1px;
 }
 
 .cont-preview{
@@ -3635,16 +3648,17 @@ end bbpress
 
 .img-upload{
 	cursor: pointer;
-	max-width: 270px;
-	max-height: 100px;
-	display: block;
-	margin: 0 auto 10px;
+	max-width: 100px;
+	max-height: 50px;
 }
 
+
+/*
 .table #file-container{
 	font-size: 14px;
 	margin-top: 2px;
 }
+*/
 
 #modal-edit textarea{
 	width: 100%;
@@ -3816,3 +3830,4 @@ a[href$=".jpg"]{
 .send-message{
 	padding:5px 7px;
 }
+

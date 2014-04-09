@@ -76,7 +76,7 @@
 				<div class="pic-caption">
 					
 					<a class='link-img'  href= <?php echo '"'.$u->getProfilePic().'"'; ?> >
-						<img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid"/>
+						<img src=<?php echo '"'. $u->getThumb() .'"'; ?> class="thumb-mid" />
 					</a>
 					<h3><?php echo htmlspecialchars($u->getNameComp()); ?></h3>
 					<span class="location"><?php echo htmlspecialchars($u->getLocation()); ?></span>

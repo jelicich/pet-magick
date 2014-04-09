@@ -3,8 +3,8 @@ BUGS:
 
 - Quice crear una mascota utilizando textos largos en los inputs y me tiro error doctrine
 - buscador no funciona desde blog y foro
-- forgot password no funciona en foro y blog
 - random en animal antics
+- no cambia categoría de animal cuando editas
   
 
 CSS:
@@ -30,6 +30,10 @@ user-profile:
 PENDIENTES
 ==========
 
+- Imprimir los captions cuando va la img en grande
+
+- Poner el gif de loding a todo
+
 - ver q onda en antics cuando existe solo un video pq se rompe todo (creo q con el random se resuelve)
 
 - Confirmar por email (para estoy y para testear el forgot password necesitamos el server)
@@ -38,6 +42,12 @@ PENDIENTES
 
 - ver los formatos de video q vamos a usar
 
+Archivos con mayuscula a tener en cuenta cuando subamos todo
+(actual -> deberia ser)
+- VetTalkArticleModule -> vetTalkArticleModule
+- VetTalkListModule -> vetTalkListModule
+- BOmessage -> BOMessage
+- BOlocation -> BOLocation
 
 IMGUPLOADER
 ===========

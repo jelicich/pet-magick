@@ -9,7 +9,7 @@ include 'php/functions.php';
 			<div class="container_12">
 				<!-- logo -->
 				
-			<a href='<?php echo $href_index; ?>'>	<h1 class="grid_2" id="logo-pet-magick">Pet Magick</h1> </a><!-- no se si esto es semantico a- h1-->
+			<a href='index.php'><h1 class="grid_2" id="logo-pet-magick">Pet Magick</h1> </a><!-- no se si esto es semantico a- h1-->
 				
 				<!-- form login  -->
 				<!--IF QUE SE FIJA Q SI ESTA LOGUEADO CARGUE EL MENU DE USUARIO EN VEZ DEL LOGIN --> 

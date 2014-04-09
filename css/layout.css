@@ -3813,3 +3813,6 @@ a[href$=".jpg"]{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+.send-message{
+	padding:5px 7px;
+}

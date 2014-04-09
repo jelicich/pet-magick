@@ -80,7 +80,7 @@
 					</a>
 					<h3><?php echo htmlspecialchars($u->getNameComp()); ?></h3>
 					<span class="location"><?php echo htmlspecialchars($u->getLocation()); ?></span>
-					<?php if(!$u->isOwn()) echo '<div><a class="btn" href="inbox.php?to='.$userId.'"><img src="img/envelope.png"/> Send Message</a></div>';?>
+					<?php if(!$u->isOwn()) echo '<div><a class="btn send-message" href="inbox.php?to='.$userId.'"><img width="15" height="12" src="img/envelope.png"/> Send Message</a></div>';?>
 
 				</div>
 

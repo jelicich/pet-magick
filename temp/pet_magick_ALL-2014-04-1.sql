@@ -25,23 +25,6 @@ USE `pet_magick`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ads`
---
-
-CREATE TABLE IF NOT EXISTS `ads` (
-  `ID_AD` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `AD` char(30) NOT NULL,
-  `LINK` int(10) unsigned NOT NULL,
-  `DATE` datetime NOT NULL,
-  `DATE_FROM` datetime DEFAULT NULL,
-  `DATE_TO` datetime DEFAULT NULL,
-  `STATUS` tinyint(1) NOT NULL,
-  PRIMARY KEY (`ID_AD`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `ads`
---
 
 
 -- --------------------------------------------------------

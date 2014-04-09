@@ -51,7 +51,7 @@ include 'php/functions.php';
 					<?php
 						if(isset($_SESSION['rank']) && $_SESSION['rank'] == 2){
 					?>
-						<li class="btn btn-small btn-danger"><a href="admin/index.php?active=0">Admin</a></li>
+						<li class="btn btn-small btn-danger"><a href="admin/index.php">Admin</a></li>
 					<?php
 						}
 					?>

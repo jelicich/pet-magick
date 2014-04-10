@@ -21,21 +21,33 @@
 							</div>
 							
 							<div class="table">
-								<ul class="clearfix">
+								<ul class="clearfix li-info">
 									<li class="odd">
-										<label for="pet-name">Name*</label>
+										<label for="pet-name">
+											Name*
+											<span class="hid-def"><span class="left-tr"></span>Mandatory field. 15 characters max.</span>
+										</label>
 										<input type="text" class="form-element mandatory" name="name" id="pet-name" />
 									</li>
 									<li class="even">
-										<label for="pet-breed">Breed</label>
+										<label for="pet-breed">
+											Breed
+											<span class="hid-def"><span class="left-tr"></span>25 characters max.</span>
+										</label>
 										<input type="text" class="form-element" name="breed" id="pet-breed" />
 									</li>
 									<li class="odd">
-										<label for="pet-traits">Traits</label>
+										<label for="pet-traits">
+											Traits
+											<span class="hid-def"><span class="left-tr"></span>50 characters max.</span>
+										</label>
 										<input type="text" class="form-element" name="traits" id="pet-traits" />
 									</li>
 									<li class="even">
-										<label for="animal-category">Animal category*</label>
+										<label for="animal-category">
+											Animal category*
+											<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+										</label>
 										<select name="animal-category" class="form-element mandatory" id="animal-category">
 											<?php
 
@@ -57,9 +69,14 @@
 								<label for="chk-tribute"><input type="checkbox" id="chk-tribute" class="form-element" name="create-tribute"/> Create Tribute</label>
 								
 								<div id="hide-tribute" style="display:none" class="table">
-									<label for="tr-title">Tribute title*</label>
-									<input type="text" name="tr-title" id="tr-title"/>
-									<ul class="clearfix">										
+									<div class="cont-tr-tit">
+										<label for="tr-title">
+											Tribute title*
+											<span class="hid-def"><span class="left-tr"></span>Mandatory field. 90 characters max.</span>
+										</label>
+										<input type="text" name="tr-title" id="tr-title"/>
+									</div>
+									<ul class="clearfix li-info">										
 										<li class="odd">
 											<label for="tr-since">Since</label>
 											<input type="text" name="tr-since" id="tr-since" readonly="readonly"/>
@@ -69,8 +86,13 @@
 											<input type="text" name="tr-thru" id="tr-thru" readonly="readonly"/>
 										</li>
 									</ul>
-									<label for="tr-msg">Message*</label>
-									<textarea name="tr-msg" id="tr-msg"></textarea>
+									<div class="cont-tr-tit">
+										<label for="tr-msg">
+											Message*
+											<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+										</label>
+										<textarea name="tr-msg" id="tr-msg"></textarea>
+									</div>
 								</div>								
 							</div>
 

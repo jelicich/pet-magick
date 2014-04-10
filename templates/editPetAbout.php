@@ -68,21 +68,33 @@
 
 
 								<div class="table">
-									<ul class="clearfix">
+									<ul class="clearfix li-info">
 										<li class="odd">								
-											<label for="pet-name">Name*</label>
+											<label for="pet-name">
+												Name*
+												<span class="hid-def"><span class="left-tr"></span>Mandatory field. 15 characters max.</span>
+											</label>
 											<input type="text" class="form-element mandatory" name="name" id="pet-name" value=<?php echo '"'.htmlspecialchars($p->getName()).'"' ?> />
 										</li>
 										<li class="even">
-											<label for="pet-breed">Breed</label>
+											<label for="pet-breed">
+												Breed
+												<span class="hid-def"><span class="left-tr"></span>25 characters max.</span>
+											</label>
 											<input type="text" class="form-element" name="breed" id="pet-breed" value=<?php echo '"'.htmlspecialchars($p->getBreed()).'"'?>/>
 										</li>
 										<li class="odd">
-											<label for="pet-traits">Traits</label>
+											<label for="pet-traits">
+												Traits
+												<span class="hid-def"><span class="left-tr"></span>50 characters max.</span>
+											</label>
 											<input type="text" class="form-element" name="traits" id="pet-traits" value=<?php echo '"'.htmlspecialchars($p->getTraits()).'"'?>/>
 										</li>
 										<li class="even">
-											<label for="animal-category">Animal category*</label>
+											<label for="animal-category">
+												Animal category*
+												<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+											</label>
 											<select name="animal-category" class="form-element mandatory" id="animal-category">
 												<?php
 
@@ -120,9 +132,14 @@
 									<label for="del-tribute"><input type="checkbox" id="del-tribute" class="form-element" name="delete-tribute" class="form-element" value=<?php echo '"'. $ar['ID_TRIBUTE'] .'"';?> /> Delete Tribute</label>
 									
 									<div id="hide-tribute" class="table">										
-										<label for="tr-title">Tribute title*</label>
-										<input type="text" name="tr-title" id="tr-title" value=<?php echo '"'.htmlspecialchars($ar['TITLE']).'"'; ?> class="form-element mandatory" />
-										<ul class="clearfix">
+										<div class="cont-tr-tit">
+											<label for="tr-title">
+												Tribute title*
+												<span class="hid-def"><span class="left-tr"></span>Mandatory field. 90 characters max.</span>
+											</label>
+											<input type="text" name="tr-title" id="tr-title" value=<?php echo '"'.htmlspecialchars($ar['TITLE']).'"'; ?> class="form-element mandatory" />
+										</div>
+										<ul class="clearfix li-info">
 											<li class="odd">
 												<label for="tr-since">Since</label>
 												<input type="text" name="tr-since" id="tr-since" readonly="readonly" value=<?php echo '"'.htmlspecialchars($ar['SINCE']).'"';?> class="form-element" />												
@@ -132,8 +149,13 @@
 												<input type="text" name="tr-thru" id="tr-thru" readonly="readonly" value=<?php echo '"'.htmlspecialchars($ar['THRU']).'"'; ?> class="form-element" />
 											</li>											
 										</ul>
-										<label for="tr-msg">Message*</label>
-										<textarea name="tr-msg" id="tr-msg" class="form-element mandatory"><?php echo $ar['CONTENT'];?></textarea>
+										<div class="cont-tr-tit">
+											<label for="tr-msg">
+												Message*
+												<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+											</label>										
+											<textarea name="tr-msg" id="tr-msg" class="form-element mandatory"><?php echo $ar['CONTENT'];?></textarea>
+										</div>
 										<input type="hidden" name="tr-user" value=<?php echo '"'.$ar['USER_ID'].'"';?> class="form-element"/>
 										<input type="hidden" name="tr-id" value=<?php echo '"'.$ar['ID_TRIBUTE'].'"';?> class="form-element" />
 									</div>
@@ -146,8 +168,13 @@
 								<div id="create-tribute">
 									<label for="chk-tribute"><input type="checkbox" id="chk-tribute" class="form-element" name="create-tribute"/> Create Tribute</label>									
 									<div id="hide-tribute" style="display:none" class="table">										
-										<label for="tr-title">Tribute title*</label>
-										<input type="text" name="tr-title" id="tr-title"/>										
+										<div class="cont-tr-tit">
+											<label for="tr-title">
+												Tribute title*
+												<span class="hid-def"><span class="left-tr"></span>Mandatory field. 90 characters max.</span>
+											</label>
+											<input type="text" name="tr-title" id="tr-title"/>										
+										</div>
 										<ul class="clearfix">
 											<li class="odd">
 												<label for="tr-since">Since</label>
@@ -158,8 +185,13 @@
 												<input type="text" name="tr-thru" id="tr-thru" readonly="readonly"/>		
 											</li>
 										</ul>	
-										<label for="tr-msg">Message*</label>
-										<textarea name="tr-msg" id="tr-msg"></textarea>																			
+										<div class="cont-tr-tit">
+											<label for="tr-msg">
+												Message*
+												<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+											</label>
+											<textarea name="tr-msg" id="tr-msg"></textarea>																			
+										</div>
 									</div>
 								</div>
 

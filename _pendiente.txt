@@ -9,10 +9,7 @@ BUGS:
 
 //////// IMPORTANTE !!!!!!!!!
 
-1) Modifique en la bd pets/story  varchar 300 por TEXT y actualice doctrine. No tengo mu claro q bd estamos usando como oficial, pero estaria bueno actualizarlo ahora pq puede traer bardo despues. Hice esto pq tiraba error doctrine si entraba un texto largo, el mismo error salta con los otros inputs al crear mascota (supongo q al editarla tambien)
-
-2) Resolvi los dos puntos siguientes. Tuve q agregar delete video en BOPets/deletealldata(). Deberiamos hacer un if(existe video), if(existe foto) ??
-(borra estos puntos una vez q los veas)
+Actualice la BD el largo q vos hiciste y otros q agreguè yo. mañana la subo completa, pq no terminè y ya no doy mas
 
 //////// FIN IMPORTANTE !!!!!!!!!
 

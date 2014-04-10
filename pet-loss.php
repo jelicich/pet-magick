@@ -131,6 +131,7 @@
 
 								$totalRec = $p->totalRecords('*');
 								$totalPag = ceil($totalRec/28);
+								$firstPag = rand(0, $totalPag-1);
 								if($r)
 								{
 									shuffle($r);

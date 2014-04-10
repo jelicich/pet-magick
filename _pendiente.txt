@@ -1,64 +1,26 @@
-BUGS:
-====
-
-- Quice crear una mascota utilizando textos largos en los inputs y me tiro error doctrine
-- random en animal antics
-
-
-
-
-//////// IMPORTANTE !!!!!!!!!
-
-Actualice la BD el largo q vos hiciste y otros q agreguè yo. mañana la subo completa, pq no terminè y ya no doy mas
-
-//////// FIN IMPORTANTE !!!!!!!!!
-
-
-- Si tenes solo una mascota y la queres borrar no funciona. Si creas otra solo podes borrar la nueva  /// RESUELTO ///
-- modificar categoria al actualizar pet profile  /// RESUELTO ///
-- inbox css /// RESUELTO ///
-- scroll pet about /// RESUELTO ///
-- emprolije un poco las miniaturas de edicion (hay q darles un poquito mas de prolijidad. Pero mejoro...)
-
-- Imprimir los captions cuando va la img en grande
- ( deje la consulta ajax hehcha en jq_functions y un archivo en ajax/getCaptionForImg.php. Vos pensas q realmente vale la pena hacerlo? no es suficiente con q se vea el caption en el hover de la miniatura ? digo esto pq hay q modificar varias cosas. La ruta q te devuelve ajax no es el nombre de la img sino desde la raiz, como lo separo si segun el server y a q seccion corresponda va a variar? ademas de eso hay q maquetar y terminar de desarrollar el resto. Decime q pensas a ver si q onda)
-
-
-
-
-
-
-
-
-CSS:
-====
-
-General: 
-		- preloader: se mueve justo antes de mostrar el contenido.
-		- gif en modulos: en gral. cuando se muestra el gif el modulo queda vacio, inclulso pierde el header. Podriamos hacer q se mantenga al menos el header?? (ej: modulo superior de projects, orgs, etc)
-		- barras de scroll: ver q tengan misma ubicacion en todas las secciones
-		- poner pop ups en forum y blog (es solo pegar el id="what")
-
-user-profile:
-			 - ventanas modales: como mostrar miniatura y captions
-			 - captions en imagenes (los textos debajo de las fotos de perfil user/pet y demas. ver q pasa si el texto es muy largo).	
-			   por ej. en pet list si el nombre es largo el boton delete se va muy para abajo....
-			 - scroll en ventanas modales (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
-
-------------------------------------
-
 PENDIENTES
 ==========
 
 
+- Imprimir los captions cuando va la img en grande
+ 	( esto lo deje pendiente pq lo iba a hacer pero me dijiste q tenias una idea mejor. Decime manana como es asi lo termino)
+
+- Random antics: no entendi nada del codigo random q usaste para profiles y pet loss. Necesitaria q me expoques un poco como vienen la mano con eso.
 
 - Poner el gif de loding a todo
+
+- scroll en ventanas modales en profiles (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
 
 - Confirmar por email (para esto y para testear el forgot password necesitamos el server)
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
 - ver los formatos de video q vamos a usar
+
+
+
+
+===================================================================================================================
 
 Archivos con mayuscula a tener en cuenta cuando subamos todo
 (actual -> deberia ser)
@@ -102,6 +64,9 @@ LISTA IE (no incluye nada q sea solo estilo):
 
 PARA TENER EN CUENTA // POSIBLES BUGS
 =====================================
+
+- forgot pass: cuando te pones en el input se cierra el logion (solo en el server)
+
 - error "rank" cuando te loguea automaticamente luego de registrarte. No lo arregle pq creo q esto lo tenemos q cambiar, no? me refiero al   logueo automatico. Fijate a ver si estas de acuerdo porfa. Si no avisame y lo corrijo, pero no lo dejemos colgado... 
 
 (REGISTRE USUARIO Nuevo Y NO VEO EL ERROR; no deberia tirar error igual lo podemos dejar para cuando este lo del mail)

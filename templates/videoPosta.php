@@ -11,41 +11,38 @@
 
 
 <?php
+				$a = $v->getVideoByPet($p->getId());
+				
+				if($a){
 
+					
+						echo "<div class='videoCap'>
+							<a class='petVideo video ppVideo' href= 'video/".$a[0]['VIDEO']."' >
+								<span class='wrapper-play'>
+									<span class='play'></span>
+									<img src= video/".$a[0]['THUMBNAIL']." class='thumb-big video-thumb'/>
+								</span>
 
+								<dl class='hidden'>
+									<dt>". htmlspecialchars($a[0]['TITLE'])."</dt>
+									<dd>". htmlspecialchars($a[0]['CAPTION'])."</dd>
+								</dl>
 								
-								$a = $v->getVideoByPet($p->getId());
-								
-								if($a){
-
-									
-										echo "<div class='videoCap'>
-											<a class='petVideo video ppVideo' href= 'video/".$a[0]['VIDEO']."' >
-												<span class='wrapper-play'>
-													<span class='play'></span>
-													<img src= video/".$a[0]['THUMBNAIL']." class='thumb-big video-thumb'/>
-												</span>
-
-												<dl class='hidden'>
-													<dt>". htmlspecialchars($a[0]['TITLE'])."</dt>
-													<dd>". htmlspecialchars($a[0]['CAPTION'])."</dd>
-												</dl>
-												
-											</a>
-											
-											</div>";
+							</a>
+							
+							</div>";
 
 
 
-								}else{
-									
-										echo "<span class='video ppVideo' >
-												<span class='wrapper-play'>
-													<span class='play videoDefault'></span>
-												</span>	
-											</span>";
-								}
-							?>
+				}else{
+					
+						echo "<span class='video ppVideo' >
+								<span class='wrapper-play'>
+									<span class='play videoDefault'></span>
+								</span>	
+							</span>";
+				}
+			?>
 
 
 

@@ -35,28 +35,6 @@ function imgVideoUploader(whatFor, modulo){
 			xhr.send(mensaje);
 		}// end ajax	
 
-
-		function ajax_ie(metodo,url, unaFuncion, mensaje, async) {
-	
-			xhr = createXMLHTTPObject();
-			xhr.open(metodo, url, async);
-			///xhr.upload.addEventListener('load', onloadHandler, false); 
-			//xhr.attachEvent('load', onloadHandler);
-			
-			xhr.onreadystatechange = function () {
-				console.log(new Date(),  this.readyState);
-				if (this.readyState!=4 ) {
-					//console.log('esperando');
-				} else {
-					unaFuncion.call(xhr);
-				}
-			}
-			xhr.send(mensaje);
-
-		}// end ajax
-
-
-
 		function onloadHandler(evt){
 		  
 		  var div = byid('upload-status');
@@ -122,7 +100,7 @@ function imgVideoUploader(whatFor, modulo){
          	 byid('login-reg').innerHTML = this.responseText;
         }// end refreshHeader
 
-		 function refreshPets(){
+		function refreshPets(){
          	
 		  	 byid('pet-list').innerHTML = this.responseText;
 		  	 var s = byid('pet-list').getElementsByTagName('script');
@@ -130,7 +108,7 @@ function imgVideoUploader(whatFor, modulo){
 		  	 {
 		  	 	eval(s[i].innerHTML);
 		  	 }
-		 }// end refreshHeader
+		}// end refreshHeader
 
 		
 		/* ESTA FUNCION ESTA LISTA< SOLO Q HAY Q VER SI MANDAMOS u,p, y u otro param
@@ -593,14 +571,81 @@ function imgVideoUploader(whatFor, modulo){
 									}
 					  			}
 					  		}
+					  		
+					  		//SWITCH VALIDATION LENGTH FIELDS
+					  		switch(modulo)
+					  		{
+					  			case 'about':
+								  	var obj = {
+					  					'usr-name': 18,
+					  					'usr-lastname': 18,
+					  					'usr-email': 254
+					  				}
+					  				if(validations.validate(obj) == 1)
+					  				{
+					  					flagidation = 1;
+					  				}
+					  				break;
+
+					  			case 'pet-about':
+					  				var obj = {
+					  					'pet-name': 15,
+					  					'pet-breed': 25,
+					  					'pet-traits': 50
+					  				}
+					  				if(validations.validate(obj) == 1)
+					  				{
+					  					flagidation = 1;
+					  				}
+					  				break;
+
+					  			case 'pet-album':
+					  				break;
+
+					  			case 'pet-video':
+					  				break;
+
+					  			case 'albumProfile':
+					  				break;
+
+					  			case 'add-pet':
+					  				var obj = {
+					  					'pet-name': 15,
+					  					'pet-breed': 25,
+					  					'pet-traits': 50
+					  				}
+					  				if(validations.validate(obj) == 1)
+					  				{
+					  					flagidation = 1;
+					  				}
+					  				break;
+
+					  			case 'organization':
+					  				break;
+
+					  			case 'project':
+					  				break;
+
+					  			case 'vet-talk':
+					  				break;
+
+					  			case 'admin':
+					  				break;
+
+					  		}
+					  		 
+					  		
 					  		//TRIBUTE VALIDATION
 					  		var chkTribute = byid('chk-tribute');
 					  		if(chkTribute)					  			
-					  		{
+					  		{					  			
 					  			if(chkTribute.checked)
 						  		{
 						  			var trTitle = byid('tr-title');
-						  			var trCont = byid('tr-msg');						  			
+						  			var trCont = byid('tr-msg');
+						  			//clean 
+						  			trTitle.style.boxShadow = 'none';
+						  			trCont.style.boxShadow = 'none';
 						  			if(trTitle.value == '') 
 						  			{
 						  				trTitle.style.boxShadow = 'red 0 0 5px';
@@ -611,7 +656,16 @@ function imgVideoUploader(whatFor, modulo){
 						  				trCont.style.boxShadow = 'red 0 0 5px';
 						  				flagidation = 1;
 						  			}
-						  		}	
+						  		}
+						  		//VALIDATE LENGTH
+						  		var obj = {
+						  			'tr-title': 90
+						  		}
+						  		if(validations.validate(obj) == 1)
+				  				{
+				  					flagidation = 1;
+				  				}
+
 					  		}
 					  		
 					  		if(flagidation == 1) return false;
@@ -804,6 +858,43 @@ function imgVideoUploader(whatFor, modulo){
 								  //byid('file-container').appendChild(file_id);
 							} 
 				  }// end onclick
+
+				  //VALIDATION LENGHT FUNCTIONS
+				  /*
+					Funcionamiento:
+					se ejecuta el metodo: validations.validate();
+					el mismo debe recibir un objeto q tenga la siguiente estructura:
+					'id-del-input': 10 //10 = valor maximo aceptado en la BD
+					Si no cumple el requisito, marca de rojo el div y devuelve 1.
+					(El rojo lo remueve la validacion q se fija si está vacio el input)
+				  */
+				  var validations = 
+				  {
+				  	validateLength: function(inp,len){
+				  		if(inp.value.length > len)
+				  		{
+				  			inp.style.boxShadow = 'red 0 0 5px';
+						  	return 1;
+				  		}
+				  		else
+				  			return 0;
+
+				  	},
+				  	validate: function(obj)
+				  	{	
+				  		var flag = 0;
+				  		for(var input in obj)
+				  		{
+				  			var ipt = byid(input);
+							if(this.validateLength(ipt,obj[input]) == 1)
+				  				flag = 1;					  			
+				  		}				  		
+
+				  		return flag;		
+				  	} //end addpet
+
+				  }//end validations obg
+				  //END VALIDATION FUNCTIONS
 			}// end NormalWay
 
 
@@ -844,16 +935,15 @@ function imgVideoUploader(whatFor, modulo){
 				}// end in_array
 
 				function formSubmit(){
-	                   
+
 						whilst(byid('form-id'));
-						//whilst(byid('imgContainer'));
+						whilst(byid('imgContainer'));
 
 						createSubmit();
 
 						if(filesSelectedPosition > 0){ filesSelectedPosition = 0; }
 						newInput(); 
 						console.log('form refresh');
-						ajax_ie('POST', 'ajax/refreshHeader.php', refreshHeader, null, true);
 				}// end formSubmit
 
 				function fileFormat(value, character){
@@ -994,4 +1084,4 @@ function imgVideoUploader(whatFor, modulo){
 			}else{ 
 				fallBack(); 
 			}// end else
-}// end imgVideoUploaderfunction 
+}// end imgVideoUploader

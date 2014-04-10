@@ -628,7 +628,11 @@ class BOUsers{
                     $to = $data;
                     $subject = 'New Password';
                     $message = 'Hi! This is your new password '.$newPasswordToUser.' Remember that you can change it from your profile whenever you want';
-                    $headers = 'From: noreply_pet_magick@petmagik.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                  //  $headers = 'From: noreply_pet_magick@petmagik.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                    $headers =  "From: noReply@petmagick.co.nz\r\n";
+                    $headers .= "Date: ". date('Y-m-d H:i:s'); 
+                    $headers .= "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 
 

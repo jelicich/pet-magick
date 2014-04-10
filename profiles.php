@@ -129,9 +129,10 @@
 								include 'php/classes/BOPets.php';
 								$p = new BOPets;
 								$r = $p->searchPetsByCategory($category, 0, 28);
-
+								
 								$totalRec = $p->totalRecords('*');
 								$totalPag = ceil($totalRec/28);
+								$firstPag = rand(0, $totalPag-1);
 								if($r)
 								{
 									shuffle($r);
@@ -218,7 +219,7 @@
 	//Guardo la cant de pags en un array
 	var pages = range(0, <?php echo $totalPag ?>);
 	//borro la primer pag q se imprime del array (la primera vez q se ejecuta nro de pag coincide con indice de array)
-	pages.splice(<?php echo $firstPag ?>, 1);
+	pages.splice(<?php echo $firstPag; ?>, 1);
 	
 	var totalRec = <?php if($totalRec) echo $totalRec; else echo "0"; ?>;
 	var totalPag = <?php if($totalPag) echo $totalPag; else echo "0"; ?>;

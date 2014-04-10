@@ -31,7 +31,7 @@
 	
 	<div id='imgContainer'></div>
 
-	<iframe name="iframe_IE" src="" style="display: none"></iframe> 
+	<iframe name="iframe_IE" src="" ></iframe> 
 
 	<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 		 
@@ -587,7 +587,7 @@ function imgVideoUploader(whatFor){
 		}// end else
 }// end imgVideoUploader
 
-imgVideoUploader('video');
+imgVideoUploader('profile');
 
 </script>
 

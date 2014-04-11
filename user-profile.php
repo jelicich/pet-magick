@@ -240,7 +240,7 @@
 
 <div id="modal-edit-container">
 	<div id="modal-edit" class="edit-scrollable">
-		<img class="loading" src="img/loading.gif" width="25" height="25" />
+		<img class="loading" src="img/loading.gif" width="208" height="13" />
 	</div>
 </div>
 
@@ -253,14 +253,9 @@
 			</script>
 
 <?php
-	}if(isset($_SESSION['id']) && $_SESSION['rank'] == 1){
-?>
-			<script type="text/javascript">
-				vetTalkAnswer();
-			</script>
-<?php
 	}
 ?>
+	
 
 <script type="text/javascript">
 

@@ -27,7 +27,7 @@
 														<p>
 															<textarea></textarea>
 															<input type="hidden" value=<?php echo '"'.$aq[$i]['ID_QUESTION'].'"'?>/>
-															<input type="button" value="Submit" class="submit-answer btn-admin"/>
+															<input type="button" value="Submit" class="submit-answer btn-admin btn"/>
 														</p>
 													</div>
 
@@ -47,4 +47,5 @@
 
 							<script type="text/javascript">
 									start_scroll_profile('vtquestions', false);
+									vetTalkAnswer();
 							</script>

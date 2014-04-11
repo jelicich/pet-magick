@@ -31,13 +31,13 @@
 
 										for($i=0; $i < $t; $i++)
 										{
-								?>
-										
+								?>	
+											
 											<li class="sliderCap">
 												<a class='link-img'  href=<?php echo '"'.$album[$i]['PIC'].'"'; ?> >
-													<img class="thumb-mid" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> />
+													<img class="thumb-mid" src=<?php echo '"'.$album[$i]['THUMB'].'"';?> alt="<?php echo htmlspecialchars($album[$i]['CAPTION']); ?>"/>
 													<dl class='hidden'>
-														<dt><?php echo  htmlspecialchars($album[$i]['CAPTION']); ?> </dt>
+														<dt><?php if(strlen(htmlspecialchars($album[$i]['CAPTION'])) > 25) echo substr(htmlspecialchars($album[$i]['CAPTION']),0,25).'...'; else echo htmlspecialchars($album[$i]['CAPTION']); ?> </dt>
 													<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
 													</dl>
 												</a>
@@ -71,7 +71,7 @@
 							<script type="text/javascript">
 								editPetAlbum();
 								//modalImg();
-								show_img("#pet-album");
+								show_img_up("#pet-album");
 								flexslider();
 
 							</script>

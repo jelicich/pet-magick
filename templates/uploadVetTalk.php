@@ -20,10 +20,18 @@
 									</ul>
 								</div>
 
-								<label for="vet-title">Title*</label>
-								<input type='text' class='form-element mandatory' name='title' id="vet-title"/>
-			  					<label for="vet-content">Content*</label>
-			  					<textarea class='form-element mandatory' name='content' id="vet-content"></textarea>
+								<div class="cont-tr-tit">
+									<label for="vet-title">
+										Title*
+										<span class="hid-def"><span class="left-tr"></span>Mandatory field. 100 characters max.</span>
+									</label>
+									<input type='text' class='form-element mandatory' name='title' id="vet-title"/>
+				  					<label for="vet-content">
+				  						Content*
+				  						<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+				  					</label>
+				  					<textarea class='form-element mandatory' name='content' id="vet-content"></textarea>
+				  				</div>
 								
 			  					<?php
 									echo '<a href="#'.$_GET['u'].'" class="btn" id="save-vet-talk">Save</a>';

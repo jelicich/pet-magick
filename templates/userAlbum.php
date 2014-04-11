@@ -27,7 +27,7 @@
 							?>
 										<li>
 											<a class='link-img' href=<?php echo '"'.$a[$i]['PIC'].'"'; ?> >
-												<img  class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> />
+												<img  class="thumb-mid" src=<?php echo '"'.$a[$i]['THUMB'].'"';?> alt="<?php echo htmlspecialchars($a[$i]['CAPTION'])?>"/>
 														<dl class='hidden'>
 															<dt>
 																<?php 

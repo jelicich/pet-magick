@@ -292,11 +292,18 @@ function show_img(anchor){
     $(anchor).click(function(e){
     		//console.log(this.href);
           e.preventDefault();
-
+          var caption = $(this).find('img').attr('alt');
+          console.log($(this));
          //var ruta = this.href;
-		 var img = '<img class="imggr" src="' + this.href + '"/>';
-
-		$('body').append("<div class='modaljq'><div class='modalwr'>"+ img + "<img src='"+ close +"' width='22' height='22' class='delnod'/></div></div>");
+		 var img = '<img class="imggr" src="' + $(this).attr('href') + '"/>';
+		if(caption != undefined)
+        {
+        	$('body').append("<div class='modaljq'><div class='modalwr'><div class='imggr-cont'>"+ img + "</div><img src='"+ close +"' width='22' height='22' class='delnod'/>"+"<div class='cap-cont'><p>"+ caption + "</p></div>"+"</div></div>");	
+		}	
+		else
+		{
+			$('body').append("<div class='modaljq'><div class='modalwr'><div class='imggr-cont'>"+ img + "</div><img src='"+ close +"' width='22' height='22' class='delnod'/></div></div>");
+		}
 		$('.modaljq').css("overflow", "auto");
 		$('html, body').css("overflow", "hidden");
 		$("body").css("padding-right", "17px");
@@ -325,9 +332,10 @@ function show_img_up(module){
     $(module).find(img).click(function(e){
 
 		e.preventDefault();
-
         var ruta = this.href;
 		var img = '<img class="imggr" src="' + ruta + '"/>';
+		var caption = $(this).find('img').attr('alt');
+		
 
 	/* $.ajax({
 
@@ -338,7 +346,18 @@ function show_img_up(module){
 	*/
        //         success: function(data){
                 	//alert(data);
-                	$('body').append("<div class='modaljq'><div class='modalwr'>"+ img + "<img src='"+ close +"' width='22' height='22' class='delnod'/></div></div>");
+                	if(caption != undefined)
+                	{
+                		$('body').append("<div class='modaljq'><div class='modalwr'><div class='imggr-cont'>"+ img +"</div><img src='"+ close +"' width='22' height='22' class='delnod'/>"+"<div class='cap-cont'><p>"+ caption + "</p></div>"+"</div></div>");	
+                		var wi = $('.imggr').width();
+                		
+                		//$('.cap-cont').css('width',wi+'px');
+                	}	
+                	else
+                	{
+                		$('body').append("<div class='modaljq'><div class='modalwr'><div class='imggr-cont'>"+ img +"</div><img src='"+ close +"' width='22' height='22' class='delnod'/></div></div>");
+                	}
+                		
 					$('.modaljq').css("overflow", "auto");
 					$('html, body').css("overflow", "hidden");
 					$("body").css("padding-right", "17px");

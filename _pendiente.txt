@@ -2,12 +2,10 @@ PENDIENTES
 ==========
 
 
-- Imprimir los captions cuando va la img en grande
- 	( esto lo deje pendiente pq lo iba a hacer pero me dijiste q tenias una idea mejor. Decime manana como es asi lo termino)
-
 - Random antics: no entendi nada del codigo random q usaste para profiles y pet loss. Necesitaria q me expoques un poco como vienen la mano con eso.
 
-- Poner el gif de loding a todo
+- Poner el gif de loding a todo 
+(Estuve revisando, y estan en todos lados que mire, todas las ventanas modales del perfil lo tienen)
 
 - scroll en ventanas modales en profiles (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
 

@@ -21,10 +21,18 @@
 								</ul>
 							</div>
 
-							<label for="pro-name">Project Name*</label> 
-							<input type='text' class='form-element mandatory' name='name' id="pro-name"/>
-							<label for="pro-description">Project description*</label> 
-							<textarea class='form-element mandatory' name='description' id="pro-description"></textarea>
+							<div class="cont-tr-tit">
+								<label for="pro-name">
+									Project Name*
+									<span class="hid-def"><span class="left-tr"></span>Mandatory field. 100 characters max.</span>
+								</label> 
+								<input type='text' class='form-element mandatory' name='name' id="pro-name"/>
+								<label for="pro-description">
+									Project description*
+									<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+								</label> 
+								<textarea class='form-element mandatory' name='description' id="pro-description"></textarea>
+							</div>
 							
 
 							<?php

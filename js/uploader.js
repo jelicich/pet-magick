@@ -259,7 +259,7 @@ function imgVideoUploader(whatFor, modulo){
 							}
 						
 						byid('modal-edit-container').style.display = 'none';
-						byid('modal-edit').innerHTML = '<img class="loading" src="img/loading.gif" width="25" height="25" />';
+						byid('modal-edit').innerHTML = '<img class="loading" src="img/loading.gif" width="208" height="13" />';
 				}// end modulPrintUpdates
 
 				// CANCEL SAVE
@@ -267,7 +267,7 @@ function imgVideoUploader(whatFor, modulo){
 
 					// PRUEBA ESTEBAn
 					byid('modal-edit-container').style.display = 'none';
-					byid('modal-edit').innerHTML = '<img class="loading" src="img/loading.gif" width="25" height="25" />';
+					byid('modal-edit').innerHTML = '<img class="loading" src="img/loading.gif" width="208" height="13" />';
 					return;
 					//todo lo de abajo sobra borrar
 					//FIN PRUEBA
@@ -466,6 +466,8 @@ function imgVideoUploader(whatFor, modulo){
 													title.type = 'text';
 							                    	title.id = 'title_' + filesSelectedPosition;
 											    	title.name = 'title';
+											    	title.setAttribute('placeholder', 'Title');
+											    	title.maxLength = '100';
 											    	byid('cont_'+filesSelectedPosition).appendChild(title);
 										    	}
 
@@ -477,6 +479,7 @@ function imgVideoUploader(whatFor, modulo){
 											    	caption.name = 'caption';
 											    	caption.className = 'form-element';
 											    	caption.setAttribute('placeholder', 'Caption');
+											    	caption.maxLength = '100';
 											    	byid('cont_'+filesSelectedPosition).appendChild(caption);
 											    }
 										   }
@@ -599,15 +602,6 @@ function imgVideoUploader(whatFor, modulo){
 					  				}
 					  				break;
 
-					  			case 'pet-album':
-					  				break;
-
-					  			case 'pet-video':
-					  				break;
-
-					  			case 'albumProfile':
-					  				break;
-
 					  			case 'add-pet':
 					  				var obj = {
 					  					'pet-name': 15,
@@ -621,15 +615,39 @@ function imgVideoUploader(whatFor, modulo){
 					  				break;
 
 					  			case 'organization':
+					  				var obj = {
+					  					'org-name': 100
+					  				}
+					  				if(validations.validate(obj) == 1)
+					  				{
+					  					flagidation = 1;
+					  				}
 					  				break;
 
 					  			case 'project':
+					  				var obj = {
+					  					'pro-name': 100
+					  				}
+					  				if(validations.validate(obj) == 1)
+					  				{
+					  					flagidation = 1;
+					  				}
 					  				break;
 
 					  			case 'vet-talk':
+					  				var obj = {
+					  					'vet-title': 100
+					  				}
+					  				if(validations.validate(obj) == 1)
+					  				{
+					  					flagidation = 1;
+					  				}
 					  				break;
 
 					  			case 'admin':
+					  				break;
+
+					  			default:
 					  				break;
 
 					  		}
@@ -842,8 +860,8 @@ function imgVideoUploader(whatFor, modulo){
 					  		var gifload = create('img');
 					  		gifload.src = 'img/loading.gif';
 					  		gifload.className = 'loading';
-					  		gifload.width = '25';
-					  		gifload.height = '25';
+					  		gifload.width = '208';
+					  		gifload.height = '13';
 					  		byid('modal-edit').appendChild(gifload);
 
 						  	//if (amount != 'profile'){ 
@@ -1022,6 +1040,8 @@ function imgVideoUploader(whatFor, modulo){
 												title.type = 'text';
 						                    	title.id = 'title_' + filesSelectedPosition;
 										    	title.name = 'title';
+										    	title.maxLength = '100';
+										    	title.setAttribute('placeholder', 'Title');
 										    	byid('form-id').appendChild(title);
 									    	}
 
@@ -1030,6 +1050,8 @@ function imgVideoUploader(whatFor, modulo){
 					                    	caption.id = 'caption_' + filesSelectedPosition;
 									    	caption.name = 'caption_' + filesSelectedPosition;
 									    	caption.className = 'form-element';
+									    	caption.maxLength = '100';
+									    	//caption.setAttribute('maxlength','100');
 									    	byid('form-id').appendChild(caption);
 									    }
 								    

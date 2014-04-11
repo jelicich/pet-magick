@@ -1557,18 +1557,22 @@ function vetTalkAnswer()
 	function updateNotification()
 	{
 		var a = byid('notification');
-		var n = parseInt(a.innerHTML) - 1;
-		a.innerHTML = n;
-
-		var b = byid('notification-box').getElementsByTagName('strong')[0];
-		var n = parseInt(b.innerHTML) - 1;
-		b.innerHTML = n;
-
-		if(a.innerHTML == 0)
+		if(a)
 		{
-			a.parentNode.removeChild(a);
-			b.parentNode.removeChild(b);	
+			var n = parseInt(a.innerHTML) - 1;
+			a.innerHTML = n;
+
+			var b = byid('notification-box').getElementsByTagName('strong')[0];
+			var n = parseInt(b.innerHTML) - 1;
+			b.innerHTML = n;
+
+			if(a.innerHTML == 0)
+			{
+				a.parentNode.removeChild(a);
+				b.parentNode.removeChild(b);	
+			}	
 		}
+		
 	}
 
 }

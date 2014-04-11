@@ -19,10 +19,18 @@
 							</ul>
 						</div>
 
-						<label for="org-name">Organization Name*</label> 
-						<input type='text' class='form-element mandatory' name='name' id="org-name"/>
-						<label for="org-description">Description*</label>
-						<textarea class='form-element mandatory' name='description' id="org-description"></textarea>
+						<div class="cont-tr-tit">
+							<label for="org-name">
+								Organization Name*
+								<span class="hid-def"><span class="left-tr"></span>Mandatory field. 100 characters max.</span>
+							</label> 
+							<input type='text' class='form-element mandatory' name='name' id="org-name"/>
+							<label for="org-description">
+								Description*
+								<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+							</label>
+							<textarea class='form-element mandatory' name='description' id="org-description"></textarea>
+						</div>
 						
 						<?php
 						echo '<a href="#'.$_GET['u'].'" class="btn" id="save-organization">Save</a>';

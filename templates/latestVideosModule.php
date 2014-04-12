@@ -1,42 +1,42 @@
-
-
 <?php
+	
 
 	include_once "php/classes/BOVideos.php";
-	$v = new BOVideos;
+	$videos = new BOVideos;
 
-	if($s == 'index')
-		$count = 1;
-	if($s == 'antics')
-		$count = 2;
+	$totalRec = $videos->totalRecords('*');
+	$totalPag = ceil($totalRec/28);
 
-	for($i=0; $i< $count; $i++){ // la var $count viene de index o antics 
+	$totalPag--;
+	
+	$firstPag = rand(0, $totalPag-1);
+	
+	$findme   = 'index.php';
+	$src = strpos($_SERVER['PHP_SELF'], $findme);
 
-		$videosList = $v->getVideosRamdom();
+	if($src === false)
+		$r = $videos->searchVideos('*',$firstPag*28,28);
+	else
+		$r = $videos->searchVideos('*',$firstPag*28,12);
+//var_dump($r); exit;
+	if($r)
+	{
+		shuffle($r);
+		for($i=0; $i < 2; $i++)
+		{
 
-		if(isset($noRepeatVideo) && $videosList['ID_VIDEO'] == $noRepeatVideo ){ //chequear si esto esta bien o es cualca
-			// esto es para evvitar q se repitan los videos q vienen random
-			$i--;
-
-		}else{
-
-		$noRepeatVideo = $videosList['ID_VIDEO'];
-		$title = htmlspecialchars($videosList['TITLE']);
-		$caption = htmlspecialchars($videosList['CAPTION']);
-		$srcImg = $videosList['THUMBNAIL'];
-		$srcVideo = $videosList['VIDEO']; 
-
-		
-//var_dump($videosList);
-		//if($s == 'antics'){
+				$thumb = 'video/'.$r[$i]["THUMBNAIL"]; 
+				$title = htmlspecialchars($r[$i]["TITLE"]); 
+				$caption = htmlspecialchars($r[$i]["CAPTION"]); 
+				$srcVideo = 'video/'.$r[$i]['VIDEO']; 
 ?>
 
 		<li class='video'>
-			<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
+			<a class="petVideo" href= <?php  echo $srcVideo; ?> >
 				<!--Puse un div provisorio asi no llorisqueas jajaj. Cuando sepamos como vamos a tomar los valores con js y como mostrar el video lo acomodamos como corresponde. Q opinas? -->
 				<span class='wrapper-play'>
 					<span class="play"></span>
-					<img src= <?php  echo 'video/'.$srcImg; ?> class="thumb-big video-thumb"/>
+					<img src= <?php  echo $thumb; ?> class="thumb-big video-thumb"/>
 
 					<dl class='hidden'>
 						<dt><?php echo $title; ?> </dt>

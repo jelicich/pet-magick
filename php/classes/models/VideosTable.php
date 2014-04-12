@@ -49,7 +49,7 @@ class VideosTable extends Doctrine_Table
     }
 
      
-
+/*
      public function getVideosByCategory($id)
     {
         $q = Doctrine_Query::create()
@@ -85,6 +85,7 @@ class VideosTable extends Doctrine_Table
         return false;
 
     }
+*/
 
 
      public function getVideosByPet($id)
@@ -102,7 +103,7 @@ class VideosTable extends Doctrine_Table
                 return false;
           
      } 
-
+/*
         public function howmuch_videos(){
 
            $Count = Doctrine::getTable('Videos')->count();    
@@ -110,6 +111,6 @@ class VideosTable extends Doctrine_Table
 
         }
 
-
+*/
      
 }

@@ -1,7 +1,7 @@
 <?php
 
-include '../php/classes/BOUsers.php';
-$u = new BOUsers;
+include '../php/classes/BOUTributes.php';
+$u = new BOTributes;
 
 $r = $u->searchTributes($_POST['q'], $_POST['from'],28);
 

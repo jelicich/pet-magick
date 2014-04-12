@@ -71,10 +71,7 @@
 			?>
 				<div class="scrollable-module" id="petLoss">
 					<ul class='grid-thumbs clearfix' id='ModulesByPet'> 
-						<?php 
-							
-							
-						?>
+						
 						<?php 
 							
 							if(!isset($_GET['c']))

@@ -141,7 +141,7 @@ class BOVideos{
     $array = $this->table->getVideosList();
         return $array;
   }
-
+/*
   function getVideosByCategory($id){
 
     $array = $this->table->getVideosByCategory($id);
@@ -153,7 +153,7 @@ class BOVideos{
       $array = $this->table->getVideosRamdom();
         return $array;
   }
-
+*/
   function delete($ref){
      
       $vPath =  $this->table->getVideosByPet($ref);
@@ -171,6 +171,7 @@ class BOVideos{
       return  $this->err;
   }// End getErrors
 
+
   function getVideoByPet($id)
   {
     $q = Doctrine_Query::create()
@@ -185,11 +186,86 @@ class BOVideos{
       return false;
 
   }
-
+/*
     function howmuch_videos()
     {
         $r = $this->table->howmuch_videos();
         return $r;
+    }
+*/
+
+    function searchVideos($from,$to)
+    {
+        
+          $q = Doctrine_Query::create()
+            ->select("*")
+            ->from('Videos v')
+            ->orderBy('v.ID_VIDEO DESC')
+            ->offset($from)
+            ->limit($to);
+
+        $rta = $q->execute();
+
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
+    }
+
+
+    function searchVideosByCategory($string,$from,$to)
+    {
+
+        $q = Doctrine_Query::create()
+            ->select("*")
+            ->from('Videos v')
+            ->leftJoin('v.Pets p')
+            //->leftJoin('p.Pics ph')
+            ->where('p.ANIMAL_CATEGORY_ID = ?', $string)
+            ->orderBy('v.ID_VIDEO DESC')
+            ->offset($from)
+            ->limit($to);  
+
+        $rta = $q->execute();
+
+        if($rta)
+            return $rta->toArray();
+        else
+            return false;
+    }
+
+
+    function totalRecords($string)
+    {
+        if($string == '*')
+        {
+          $q = Doctrine_Query::create()
+            ->select('COUNT(v.ID_VIDEO) as QTY')
+            ->from('Videos v')
+            ->orderBy('v.ID_VIDEO DESC');  
+        }
+        else
+        {
+          $q = Doctrine_Query::create()
+            ->select('COUNT(v.ID_VIDEO) as QTY')
+            ->from('Videos v')
+            ->leftJoin('v.Pets p')
+            ->where('p.ANIMAL_CATEGORY_ID =?', $string)
+            ->orderBy('v.USER_ID DESC');  
+        }
+        
+        $rta = $q->execute();
+
+        if($rta)
+        {
+            $ar = $rta->toArray();
+            return $ar[0]['QTY'];
+        }          
+        else
+        {
+            return false;
+        }
+            
     }
 
 }//end class

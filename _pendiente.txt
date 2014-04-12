@@ -2,14 +2,21 @@ PENDIENTES
 ==========
 
 
-- Random antics: no entendi nada del codigo random q usaste para profiles y pet loss. Necesitaria q me expoques un poco como vienen la mano con eso.
+- Filtrar por categorias en vet talk article list
 
-- Poner el gif de loding a todo 
-(Estuve revisando, y estan en todos lados que mire, todas las ventanas modales del perfil lo tienen, le cambie el gif)
+- poner album a organizations /////////////////////////////////////////////
+
+- Eliminar usuario
 
 - scroll en ventanas modales en profiles (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
 
 - Confirmar por email (para esto y para testear el forgot password necesitamos el server)
+
+- adaptar forgot password
+
+- revisar tributos y videos con scroll
+
+
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 

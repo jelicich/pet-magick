@@ -2,7 +2,8 @@
 	session_start();
 	//session_destroy();
 	$_SESSION['token'] = sha1(uniqid()); 
-	//var_dump($_SESSION);
+	
+
 
 	include_once "php/classes/BOPopups.php";
 	$pop = new BOPopups;
@@ -92,13 +93,109 @@
 		<div class="mod profiles-mod animal-antics-mod grid_12 ">
 			<?php 
 						
-				include_once 'templates/modHeader.php'; 
+				include_once 'templates/modHeaderVideos.php'; 
 			?>
 			<div class="scrollable-module" id="antics">
 				<ul class='grid-thumbs clearfix'  id='ModulesByPet'> 
+						
 						<?php 
 							
-							include_once 'templates/anticsModule.php'; 
+							if(!isset($_GET['c']))
+							{	
+								$category = '"*"';
+								$url = '"ajax/searchAntics.php?"'; 
+								
+								include_once 'templates/anticsModule.php'; 
+							}
+							else
+							{
+								$url = '"ajax/searchAnticsByCategory.php?"'; 
+								switch ($_GET['c']) 
+								{
+									case 'dog':
+										$category = 1;
+										$string = 'dog';									
+										break;
+
+									case 'cat':
+										$category = 2;
+										$string = 'cat';
+										break;
+
+									case 'bird':
+										$category = 3;
+										$string = 'bird';
+										break;
+
+									case 'rabbit':
+										$category = 4;
+										$string = 'rabbit';
+										break;
+
+									case 'ferret':
+										$category = 5;
+										$string = 'cat';
+										break;
+
+									case 'others':
+										$category = 6;
+										$string = 'pet';
+										break;
+									
+									default:
+										$category = 1;
+										$string = 'dog';
+										break;									
+								}
+
+								//include 'php/classes/BOVideos.php';
+								$p = new BOVideos;
+								$r = $p->searchVideosByCategory($category, 0, 28);
+
+								$totalRec = $p->totalRecords('*');
+								$totalPag = ceil($totalRec/28);
+								$firstPag = rand(0, $totalPag-1);
+
+								if($r)
+								{
+									shuffle($r);
+									
+									for($i = 0; $i < sizeof($r); $i++)
+									{
+										
+											$thumb = 'video/'.$r[$i]["THUMBNAIL"]; 
+											$title = $r[$i]["TITLE"]; 
+											$caption = $r[$i]["CAPTION"]; 
+											$srcVideo = 'video/'.$r[$i]['VIDEO']; 
+
+										?>
+											<li class="ie-play  videoMin">
+												<a class="petVideo" href= <?php  echo $srcVideo; ?> >
+													
+													<span class='wrapper-play'>
+														
+														<span class="play"></span>
+														
+															<img src= <?php  echo $thumb; ?> class='thumb-mid'/>
+
+															<dl class='hidden'>
+																<dt><?php echo htmlspecialchars($title); ?> </dt>
+																<dd><?php echo  htmlspecialchars($caption); ?></dd>
+															<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
+															</dl>
+
+													</span>
+												</a>
+											</li>
+										<?php 
+									}
+									
+								}
+								else
+								{
+									echo '<div class="mod-content"><h3>We couldn\'t find what you\'re looking for</h3></div>';
+								}
+							}
 						?>
 				</ul>	
 			</div>
@@ -123,15 +220,90 @@
 <script type="text/javascript">
 	
 	video();
-	listByCategory('anticsModuleByCategory.php');
-	start_scroll('scrollable-module', false);
+	//listByCategory('anticsModuleByCategory.php');
+	//start_scroll('scrollable-module', false);
 
+	function range(start, end) 
+	{
+	    var foo = [];
+	    for (var i = start; i <= end; i++) {
+	        foo.push(i);
+	    }
+	    return foo;
+	}
+	
+	//Guardo la cant de pags en un array
+	var pages = range(0, <?php echo $totalPag ?>);
+	//borro la primer pag q se imprime del array (la primera vez q se ejecuta nro de pag coincide con indice de array)
+	pages.splice(<?php echo $firstPag ?>, 1);
+	
+	var totalRec = <?php if($totalRec) echo $totalRec; else echo "0"; ?>;
+	var totalPag = <?php if($totalPag) echo $totalPag; else echo "0"; ?>;
 
-	$(".mod-menu li").click(function(){
-		$(this).find("div").attr("class", "arrow-antics");
+	$(".scrollable-module").mCustomScrollbar(
+	{
+		scrollButtons:
+		{
+			enable: false 
+		},
+
+		advanced:
+		{
+			updateOnContentResize: true,
+			horizontalSrcoll: true
+		},
+
+		theme:"light-thin",
+
+		callbacks:
+		{
+		    
+		    onTotalScroll:function()
+		    {
+	 			  		
+	    		
+	    		if(pages.length > 0)
+	    		{
+	    			//agarro una pag random del array
+	    			var rand = Math.floor(Math.random() * pages.length);
+		    		page = pages[rand];
+
+		    		$.ajax(
+		    		{
+		                type: "POST",
+		                url: <?php echo $url ?>,
+		                data: {q: <?php echo $category ?>, from: page*28, rand: true},
+		                cache: false,
+
+		                success: function(html)
+		                {
+		                	$('#ModulesByPet').append(html);		                	
+		                }
+		            });			    	
+
+	    		
+
+		    		//borro la pag q se cargo del array
+		    		pages.splice(rand,1);		    		
+
+	    		}
+
+	    		else
+		    	{
+		    		var li = $('.last-result-tributes');
+		    		if(li.length == 0)
+		    		{
+		    			$('#ModulesByPet').append('<li class="last-result-tributes">No more results</li>');
+		    		}
+		    		
+		    	}
+	    		    		
+	    		
+	    		
+	        }
+		}
 	});
 
-	
 </script>
 
 

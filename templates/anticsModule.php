@@ -1,31 +1,50 @@
 <?php
+	
 
 	include_once "php/classes/BOVideos.php";
-	$v = new BOVideos;
+	$videos = new BOVideos;
 
-	$videosList = $v->getVideosList();
-	$t = sizeof($videosList);
+	$totalRec = $videos->totalRecords('*');
+	$totalPag = ceil($totalRec/28);
 
-	for($i=0; $i<$t; $i++){
+	$totalPag--;
+	
+	$firstPag = rand(0, $totalPag-1);
+	
+	$findme   = 'index.php';
+	$src = strpos($_SERVER['PHP_SELF'], $findme);
 
-		$title = htmlspecialchars($videosList[$i]['TITLE']);
-		$caption = htmlspecialchars($videosList[$i]['CAPTION']);
-		$srcImg = $videosList[$i]['THUMBNAIL'];
-		$srcVideo = $videosList[$i]['VIDEO']; 
+	if($src === false)
+		$r = $videos->searchVideos('*',$firstPag*28,28);
+	else
+		$r = $videos->searchVideos('*',$firstPag*28,12);
+//var_dump($r); exit;
+	if($r)
+	{
+		shuffle($r);
+		for($i=0; $i < sizeof($r); $i++)
+		{
+
+				$thumb = 'video/'.$r[$i]["THUMBNAIL"]; 
+				$title = $r[$i]["TITLE"]; 
+				$caption = $r[$i]["CAPTION"]; 
+				$srcVideo = 'video/'.$r[$i]['VIDEO']; 
+	
+			
 ?>
 
 	<li class="ie-play  videoMin">
-		<a class="petVideo" href= <?php  echo 'video/'.$srcVideo; ?> >
+		<a class="petVideo" href= <?php  echo $srcVideo; ?> >
 			
 			<span class='wrapper-play'>
 				
 				<span class="play"></span>
 				
-					<img src= <?php  echo 'video/'.$srcImg; ?> class='thumb-mid'/>
+					<img src= <?php  echo $thumb; ?> class='thumb-mid'/>
 
 					<dl class='hidden'>
-						<dt><?php echo $title; ?> </dt>
-						<dd><?php echo  $caption; ?></dd>
+						<dt><?php echo htmlspecialchars($title); ?> </dt>
+						<dd><?php echo  htmlspecialchars($caption); ?></dd>
 					<!-- <dd><strong>Videos: </strong>Dog Cat</dd> -->
 					</dl>
 
@@ -34,6 +53,8 @@
 	</li>
 
 <?php
+			
+		}// end for
 
-	}// end for
-
+	}//end if
+?>

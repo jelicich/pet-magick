@@ -8,6 +8,14 @@ h1{
 
 }
 
+#update-nag,
+.update-nag,
+#footer-thankyou,
+#footer-upgrade{
+
+	display: none;
+}
+
 
 /*//////////////////////// WORDPRESS /////////////////
 #just_wp{

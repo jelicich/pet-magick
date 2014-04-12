@@ -860,8 +860,8 @@ function imgVideoUploader(whatFor, modulo){
 					  		var gifload = create('img');
 					  		gifload.src = 'img/loading.gif';
 					  		gifload.className = 'loading';
-					  		gifload.width = '208';
-					  		gifload.height = '13';
+					  		gifload.width = '208px';
+					  		gifload.height = '13px';
 					  		byid('modal-edit').appendChild(gifload);
 
 						  	//if (amount != 'profile'){ 

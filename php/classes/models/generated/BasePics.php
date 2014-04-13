@@ -14,8 +14,6 @@
  * @property integer $ALBUM_ID
  * @property Doctrine_Collection $Pics
  * @property Albums $Albums
- * @property Doctrine_Collection $Blogs
- * @property Doctrine_Collection $Organizations
  * @property Doctrine_Collection $Pets
  * @property Doctrine_Collection $Users
  * @property Doctrine_Collection $VetTalk
@@ -103,14 +101,6 @@ abstract class BasePics extends Doctrine_Record
         $this->hasOne('Albums', array(
              'local' => 'ALBUM_ID',
              'foreign' => 'ID_ALBUM'));
-
-        $this->hasMany('Blogs', array(
-             'local' => 'ID_PIC',
-             'foreign' => 'PIC_ID'));
-
-        $this->hasMany('Organizations', array(
-             'local' => 'ID_PIC',
-             'foreign' => 'PIC_ID'));
 
         $this->hasMany('Pets', array(
              'local' => 'ID_PIC',

@@ -39,9 +39,9 @@ abstract class BasePets extends Doctrine_Record
              'primary' => true,
              'autoincrement' => true,
              ));
-        $this->hasColumn('NAME', 'string', 15, array(
+        $this->hasColumn('NAME', 'string', 45, array(
              'type' => 'string',
-             'length' => 15,
+             'length' => 45,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
@@ -57,17 +57,18 @@ abstract class BasePets extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
-        $this->hasColumn('TRAITS', 'string', 300, array(
+        $this->hasColumn('TRAITS', 'string', 100, array(
              'type' => 'string',
-             'length' => 300,
+             'length' => 100,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
              ));
-        $this->hasColumn('STORY', 'string', null, array(
+        $this->hasColumn('STORY', 'string', 300, array(
              'type' => 'string',
+             'length' => 300,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

@@ -9,9 +9,9 @@
  * @property string $NAME
  * @property string $DESCRIPTION
  * @property integer $USER_ID
- * @property integer $PIC_ID
+ * @property integer $ALBUM_ID
  * @property Users $Users
- * @property Pics $Pics
+ * @property Albums $Albums
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -57,7 +57,7 @@ abstract class BaseOrganizations extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('PIC_ID', 'integer', 4, array(
+        $this->hasColumn('ALBUM_ID', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
              'fixed' => false,
@@ -75,8 +75,8 @@ abstract class BaseOrganizations extends Doctrine_Record
              'local' => 'USER_ID',
              'foreign' => 'ID_USER'));
 
-        $this->hasOne('Pics', array(
-             'local' => 'PIC_ID',
-             'foreign' => 'ID_PIC'));
+        $this->hasOne('Albums', array(
+             'local' => 'ALBUM_ID',
+             'foreign' => 'ID_ALBUM'));
     }
 }

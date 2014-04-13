@@ -18,12 +18,13 @@ class OrganizationsTable extends Doctrine_Table
     }
 
     public function insertOrganizations($ref){
-
+            //var_dump($ref); exit;
     		$Organizations = new Organizations();
             $Organizations->NAME = $ref['name'];
             $Organizations->DESCRIPTION = $ref['description'];
             $Organizations->USER_ID = $ref['user_id'];
-            $Organizations->PIC_ID = $ref['pic_id'];
+            $Organizations->ALBUM_ID = $ref['album_id'];
+           /// $Organizations->PIC_ID = '';
 
             $Organizations->save();
     }// end insertOrganizations

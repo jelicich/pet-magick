@@ -1822,7 +1822,7 @@ padding: 10px;
 }
 
 #featured-org .loading{
-	margin: 120px 0 0 450px;
+	margin: 100px 0 0 390px;
 }
 
 .publi-org{
@@ -1867,7 +1867,7 @@ padding: 10px;
 	background-color: red;
 }
 
-#featured-project{
+#featured-project, #featured-org{
 	min-height: 220px;
 	max-height: 380px;
 }
@@ -1881,7 +1881,7 @@ padding: 10px;
 }
 
 #featured-project .loading{
-	margin: 100px 0 0 450px;
+	margin: 100px 0 0 390px;
 }
 /*
 Prueba para hover en imagenes....

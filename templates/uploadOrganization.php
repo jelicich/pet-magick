@@ -41,7 +41,7 @@
 				</div>
 
 				<script type="text/javascript">
-					imgVideoUploader('profile', 'organization'); 
+					imgVideoUploader('album', 'organization'); 
 				</script>
 
 				

@@ -13,6 +13,7 @@
 									
 										<?php
 										$list = $org->getOrgListByUser($idUsr);
+										//var_dump($list); exit;
 										$anchor = 'organizations.php?s=0&p=';
 
 										if($list)
@@ -22,9 +23,18 @@
 
 												$name = htmlspecialchars($list[$i]['NAME']);
 												$desc = htmlspecialchars($list[$i]['DESCRIPTION']);
+
+												if(isset($list[$i]['Albums']['Pics'][0]['PIC'])){
+
+													$img = 'img/organizations/thumb/'.$list[$i]['Albums']['Pics'][0]['PIC'];
+
+												}else{
+
+													$img = 'img/users/thumb/default.jpg';
+												}
 									?>
 											<li class="clearfix">
-												<img src= <?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
+												<img src= <?php echo $img; ?> class="thumb-small side-img"/>
 												<div class="content-description bg-txt">
 													<h3><?php echo $name;
 													if(strlen($name) == 65) echo '...';?></h3>

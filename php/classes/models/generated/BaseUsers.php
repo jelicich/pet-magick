@@ -25,7 +25,6 @@
  * @property Regions $Regions
  * @property Cities $Cities
  * @property Doctrine_Collection $Answers
- * @property Doctrine_Collection $Blogs
  * @property Doctrine_Collection $Comments
  * @property Doctrine_Collection $Conversations
  * @property Doctrine_Collection $Conversations_2
@@ -56,36 +55,36 @@ abstract class BaseUsers extends Doctrine_Record
              'primary' => true,
              'autoincrement' => true,
              ));
-        $this->hasColumn('NAME', 'string', 18, array(
+        $this->hasColumn('NAME', 'string', 45, array(
              'type' => 'string',
-             'length' => 18,
+             'length' => 45,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('LASTNAME', 'string', 18, array(
+        $this->hasColumn('LASTNAME', 'string', 45, array(
              'type' => 'string',
-             'length' => 18,
+             'length' => 45,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('NICKNAME', 'string', 10, array(
+        $this->hasColumn('NICKNAME', 'string', 45, array(
              'type' => 'string',
-             'length' => 10,
+             'length' => 45,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('EMAIL', 'string', 254, array(
+        $this->hasColumn('EMAIL', 'string', 45, array(
              'type' => 'string',
-             'length' => 254,
+             'length' => 45,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
@@ -199,10 +198,6 @@ abstract class BaseUsers extends Doctrine_Record
              'foreign' => 'CityId'));
 
         $this->hasMany('Answers', array(
-             'local' => 'ID_USER',
-             'foreign' => 'USER_ID'));
-
-        $this->hasMany('Blogs', array(
              'local' => 'ID_USER',
              'foreign' => 'USER_ID'));
 

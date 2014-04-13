@@ -1,8 +1,12 @@
 <?php
 	
-
 	include_once "php/classes/BOVideos.php";
 	$videos = new BOVideos;
+
+	if($s == 'index')
+		$count = 1;
+	if($s == 'antics')
+		$count = 2;
 
 	$totalRec = $videos->totalRecords('*');
 	$totalPag = ceil($totalRec/28);
@@ -22,7 +26,7 @@
 	if($r)
 	{
 		shuffle($r);
-		for($i=0; $i < 2; $i++)
+		for($i=0; $i < $count; $i++)
 		{
 
 				$thumb = 'video/'.$r[$i]["THUMBNAIL"]; 

@@ -17,6 +17,8 @@ class BOOrganizations{
     function insertOrganizations($ref){
 
         try{ 
+
+          //var_dump($ref); exit;
             
             $this->table->insertOrganizations($ref);
             return true;
@@ -32,9 +34,9 @@ class BOOrganizations{
        
          $q = Doctrine_Query::create()
 
-              ->select('o.ID_ORGANIZATION, LEFT(o.NAME,65) AS NAME, LEFT(o.DESCRIPTION,125) AS DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
-              ->from('Organizations o')
-              ->leftJoin('o.Pics ph'); 
+              ->select('o.ID_ORGANIZATION, LEFT(o.NAME,65) AS NAME, LEFT(o.DESCRIPTION,125) AS DESCRIPTION, o.USER_ID, o.ALBUM_ID') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+              ->from('Organizations o');
+             // ->leftJoin('o.Pics ph'); 
           
           $r = $q->execute();    
 
@@ -46,9 +48,9 @@ class BOOrganizations{
 
          $q = Doctrine_Query::create()
 
-            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, o.ALBUM_ID') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
             ->from('Organizations o')
-            ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+            //->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
             ->where('o.USER_ID = ?', $id);
         
             $p = $q->execute();    
@@ -68,9 +70,9 @@ class BOOrganizations{
         $userCount = Doctrine::getTable('Organizations')->count();
         $user = Doctrine::getTable('Organizations')
         ->createQuery()
-        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+        ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, o.ALBUM_ID') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
         ->from('Organizations o')
-        ->leftJoin('o.Pics ph') 
+        //->leftJoin('o.Pics ph') 
         ->limit(1)
         ->offset(rand(0, $userCount - 1))
         ->fetchOne();
@@ -83,10 +85,10 @@ class BOOrganizations{
 
          $q = Doctrine_Query::create()
 
-            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, o.ALBUM_ID') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
             ->from('Organizations o')
             //->innerJoin('o.Users u')
-            ->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+            //->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
             ->where('o.ID_ORGANIZATION = ?', $id)
             ->groupBy('o.ID_ORGANIZATION');
         
@@ -105,9 +107,10 @@ class BOOrganizations{
     function getOrgListByUser($id)
     {
       $q = Doctrine_Query::create()
-        ->select('o.ID_ORGANIZATION, LEFT(o.NAME,65) AS NAME, LEFT(o.DESCRIPTION,125) AS DESCRIPTION, o.USER_ID, ph.PIC')
+        ->select('o.ID_ORGANIZATION, LEFT(o.NAME,65) AS NAME, LEFT(o.DESCRIPTION,125) AS DESCRIPTION, o.USER_ID, o.ALBUM_ID, a.ID_ALBUM, f.PIC')
         ->from('Organizations o')
-        ->leftJoin('o.Pics ph')
+        ->leftJoin('o.Albums a')
+        ->leftJoin('a.Pics f')
         ->where('o.USER_ID = ?', $id);
       $ob = $q->execute();
       $ar = $ob->toArray();
@@ -149,10 +152,11 @@ class BOOrganizations{
         $data = $this->table->find($id);
        // var_dump($data->PIC_ID); exit;
         $pics = new BOPics;
-        if($data->PIC_ID != NULL){
+        if($pics->deleteAllPics($data->ALBUM_ID, '../img/organizations/'))
+       /// if($data->PIC_ID != NULL){
 
-              $pics->unlinkProfilePic($data->PIC_ID, '../img/organizations/');
-        }
+            //  $pics->unlinkProfilePic($data->PIC_ID, '../img/organizations/');
+       // }
         
         $this->table->deleteOrganization($id);
         return true;
@@ -168,9 +172,11 @@ class BOOrganizations{
     function searchOrganizations($string, $from)
     {
         $q = Doctrine_Query::create()
-            ->select('o.ID_ORGANIZATION, LEFT(o.NAME,15) AS NAME, LEFT(o.DESCRIPTION, 35) AS DESCRIPTION, ph.PIC, u.ID_USER')
+            ->select('o.ID_ORGANIZATION, LEFT(o.NAME,15) AS NAME, LEFT(o.DESCRIPTION, 35) AS DESCRIPTION, u.ID_USER, o.ALBUM_ID, a.ID_ALBUM, f.PIC')
             ->from('Organizations o')
-            ->leftJoin('o.Pics ph')
+            ->leftJoin('o.Albums a')
+            ->leftJoin('a.Pics f')
+            //->leftJoin('o.Pics ph')
             ->leftJoin('o.Users u')
             ->where('o.NAME LIKE ?', '%'.$string.'%')
             ->orWhere('o.DESCRIPTION LIKE ?', '%'.$string.'%')

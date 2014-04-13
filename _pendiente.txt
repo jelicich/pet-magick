@@ -4,8 +4,6 @@ PENDIENTES
 
 - Filtrar por categorias en vet talk article list
 
-- poner album a organizations /////////////////////////////////////////////
-
 - Eliminar usuario
 
 - scroll en ventanas modales en profiles (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
@@ -16,7 +14,7 @@ PENDIENTES
 
 - revisar tributos y videos con scroll
 
-
+- recordar los cambios de var char a text en edit pet y no se si en otro lugar ( estan actualizados en mi bd y en la tuya?)
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 

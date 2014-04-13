@@ -4,45 +4,45 @@
 		<ul class='clearfix mod-menu vt-menu-cat' id='menuByPet'>
 		
 			<li id='dog'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-				<a href='pet-loss.php?c=dog'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
+				<a href='vet-talk.php?c=dog'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 					Dog					
 				</a>
-				<div id='arrow-dog' class="arrow-pet-loss" <?php if(isset($_GET['c']) && $_GET['c']=='dog' || !isset($_GET['c'])) echo 'style="display:block;"'?> ></div>
+				<div id='arrow-dog' class="arrow-vet-talk" <?php if(isset($_GET['c']) && $_GET['c']=='dog' || !isset($_GET['c'])) echo 'style="display:block;"'?> ></div>
 			</li>
 
 			<li id='cat'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-				<a href='pet-loss.php?c=cat'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
+				<a href='vet-talk.php?c=cat'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 					Cat					
 				</a>
-				<div id='arrow-cat' class="arrow-pet-loss" <?php if(isset($_GET['c']) && $_GET['c']=='cat') echo 'style="display:block;"'?> ></div>
+				<div id='arrow-cat' class="arrow-vet-talk" <?php if(isset($_GET['c']) && $_GET['c']=='cat') echo 'style="display:block;"'?> ></div>
 			</li>
 
 			<li id='bird'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-				<a href='pet-loss.php?c=bird'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
+				<a href='vet-talk.php?c=bird'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 					Bird
 				</a>
-				<div id='arrow-bird' class="arrow-pet-loss" <?php if(isset($_GET['c']) && $_GET['c']=='bird') echo 'style="display:block;"'?> ></div>
+				<div id='arrow-bird' class="arrow-vet-talk" <?php if(isset($_GET['c']) && $_GET['c']=='bird') echo 'style="display:block;"'?> ></div>
 			</li>
 
 			<li id='rabbit'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-				<a href='pet-loss.php?c=rabbit'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
+				<a href='vet-talk.php?c=rabbit'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 					Rabbit
 				</a>
-				<div id='arrow-rabbit' class="arrow-pet-loss" <?php if(isset($_GET['c']) && $_GET['c']=='rabbit') echo 'style="display:block;"'?> ></div>
+				<div id='arrow-rabbit' class="arrow-vet-talk" <?php if(isset($_GET['c']) && $_GET['c']=='rabbit') echo 'style="display:block;"'?> ></div>
 			</li>
 
 			<li id='ferret'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-				<a href='pet-loss.php?c=ferret'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
+				<a href='vet-talk.php?c=ferret'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 					Ferret
 				</a>
-				<div id='arrow-ferret' class="arrow-pet-loss" <?php if(isset($_GET['c']) && $_GET['c']=='ferret') echo 'style="display:block;"'?> ></div>
+				<div id='arrow-ferret' class="arrow-vet-talk" <?php if(isset($_GET['c']) && $_GET['c']=='ferret') echo 'style="display:block;"'?> ></div>
 			</li>
 
 			<li id='others'><!-- Hay q modificar estos a por algo semantico, ahora me da fiaca jaja -->
-				<a href='pet-loss.php?c=others'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
+				<a href='vet-talk.php?c=others'> <!-- Reemplazar este valor por el numero q corresponda en la bd segun categoria -->
 					Others
 				</a>
-				<div id='arrow-others' class="arrow-pet-loss" <?php if(isset($_GET['c']) && $_GET['c']=='others') echo 'style="display:block;"'?>></div>
+				<div id='arrow-others' class="arrow-vet-talk" <?php if(isset($_GET['c']) && $_GET['c']=='others') echo 'style="display:block;"'?>></div>
 			</li>
 		</ul>
 
@@ -98,9 +98,17 @@
 			break;									
 	}
 
-	$allArticles = $vetTalk->getAllArticles($category);
+	$totalRec = $vetTalk->totalRecords($category);
+	$totalPag = ceil($totalRec/28);
+	$firstPag = 0;
+
+	$allArticles = $vetTalk->getAllArticles($category,0,10);
 	//var_dump($allArticles);
 	$t = sizeof($allArticles);
+	if($t==0)
+	{
+		echo '<li><h3>We couldn\'t find what you\'re looking for</h3></li>';
+	}
 	//$noRepeat = array();
 	
 	for($i=0; $i<$t; $i++){
@@ -133,7 +141,7 @@
 						<p><?php echo $content; if(strlen($content)==80) echo '...'; ?></p>
 					<p class="gray_date"><small><?php echo $date; ?></small></p>
 
-						<span id="<?php echo $articleId; ?>" class='linkToModule' />View post</span>
+						<span id="<?php echo $articleId; ?>" class='linkToModule'>View post</span>
 						<!-- <a href=<?php //echo '#'.$articleId ?> class='linkToModule'>View post</a> -->
 					</div>
 				</li>
@@ -146,3 +154,73 @@
 		</ul>
 	</div><!-- scroll -->
 	</div>
+
+	<script type="text/javascript">
+
+	//borro la primer pag q se imprime del array (la primera vez q se ejecuta nro de pag coincide con indice de array)
+	var page = 0;
+	
+	var totalRec = <?php if($totalRec) echo $totalRec; else echo "0"; ?>;
+	var totalPag = <?php if($totalPag) echo $totalPag; else echo "0"; ?>;
+
+	$("#vetTalkListmodule").mCustomScrollbar(
+	{
+		scrollButtons:
+		{
+			enable: false 
+		},
+
+		advanced:
+		{
+			updateOnContentResize: true,
+			horizontalSrcoll: true
+		},
+
+		theme:"light-thin",
+
+		callbacks:
+		{
+		    
+		    onTotalScroll:function()
+		    {
+	 			page ++;  		
+	    		
+	    		if(page <= totalPag)
+	    		{
+
+		    		$.ajax(
+		    		{
+		                type: "POST",
+		                url: 'ajax/searchVetTalk.php',
+		                data: {q: <?php echo $category ?>, from: page*10},
+		                cache: false,
+
+		                success: function(html)
+		                {
+		                	$('#vetTalkListmodule ul').append(html);
+		                	selectedFromList('mainArticle', 'ajax/getSelectedArticle.php?p=');		                	
+		                }
+		            });			    	
+
+	    			
+
+		    		//borro la pag q se cargo del array    		
+
+	    		}
+
+	    		else
+		    	{
+		    		var li = $('.last-result-talk');
+		    		if(li.length == 0)
+		    		{
+		    			$('#vetTalkListmodule ul').append('<li class="last-result-talk">No more results</li>');
+		    		}
+		    		
+		    	}
+	    		    		
+	    		
+	    		
+	        }
+		}
+	});
+	</script>

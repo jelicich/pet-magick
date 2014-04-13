@@ -32,15 +32,17 @@ class VetTalkTable extends Doctrine_Table
             $VetTalk->save();
     }// end insertArticle
 
-    public function getAllArticles($cat){
+    public function getAllArticles($cat,$from,$to){
 
         $q = Doctrine_Query::create()
 
               ->select('v.*, LEFT(v.CONTENT, 80) as CONTENT, LEFT(v.TITLE,65) as TITLE, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
               ->from('VetTalk v')
               ->leftJoin('v.Pics ph')
-              ->where('v.ID_VET_TALK = ?',$cat)
-              ->orderBy('v.date DESC'); 
+              ->where('v.ANIMAL_CATEGORY_ID = ?',$cat)
+              ->orderBy('v.date DESC')
+              ->offset($from)
+              ->limit($to); 
           
 
         $r = $q->execute();    

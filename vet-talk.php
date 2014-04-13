@@ -116,7 +116,17 @@
 <script type="text/javascript">
 	selectedFromList('mainArticle', 'ajax/getSelectedArticle.php?p=');
 	comments('postQuestion');
-	start_scroll('scrollable-list', false);
+	//start_scroll('scrollable-list', false);
+<?php 
+	if(isset($_GET['c']))
+	{
+?>
+		$('html, body').animate({
+	        scrollTop: $("#dog").offset().top-80
+	    }, 1000);
+<?php
+	}
+?>
 </script>
 
 </body>

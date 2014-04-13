@@ -352,6 +352,9 @@ p,span{
 .mod-menu li:hover div.arrow-pet-loss{
 	border-top: 10px solid #9e466b !important;
 }
+.mod-menu li:hover div.arrow-vet-talk{
+	border-top: 10px solid #5f8a13 !important;
+}
 
 .mod-menu li{
 	text-align: center;
@@ -391,8 +394,13 @@ p,span{
 }
 
 .arrow-pet-loss{
-	border-top: 10px solid #b04f78 !important;
+	
 }
+
+.arrow-vet-talk{
+	border-top: 10px solid #6a9a16 !important;
+}
+
 /*
 #dog a:hover #arrow-dog,
 #cat a:hover #arrow-cat,
@@ -3790,6 +3798,14 @@ a[href$=".jpg"]{
 	font-weight: bold;
 	padding-top: 46px;
 }
+.last-result-talk{
+	background: rgba(255,255,255,0.3);
+	padding: 5px;
+	color: #bdd19c;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 46px;
+}
 
 
 /* terms and conditions and so on.... */
@@ -3892,3 +3908,4 @@ a[href$=".jpg"]{
 #vetTalkListmodule{
 	padding-top: 20px !important;
 }
+

@@ -2,8 +2,6 @@ PENDIENTES
 ==========
 
 
-- Filtrar por categorias en vet talk article list
-
 - poner album a organizations /////////////////////////////////////////////
 
 - Eliminar usuario
@@ -22,7 +20,8 @@ PENDIENTES
 
 - ver los formatos de video q vamos a usar
 
-
+- En vet talk, en la lista de articulos cada li tiene como ID el id de la base de datos (en nro), hay q cambiarlos por "vt_ID" o lo q sea q tenga una letra antes del nro ya que los ID no pueden ser nros, además hay que cambiar la funcion selectedfromlist de lib.js para que tome este cambio con el substr.
+No lo hice ya que no sé donde mas se aplica esta funcion (calculo q organizations tamb y no se q otro mas).
 
 
 ===================================================================================================================

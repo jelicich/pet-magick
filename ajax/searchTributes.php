@@ -1,6 +1,6 @@
 <?php
 
-include '../php/classes/BOUTributes.php';
+include '../php/classes/BOTributes.php';
 $u = new BOTributes;
 
 $r = $u->searchTributes($_POST['q'], $_POST['from'],28);

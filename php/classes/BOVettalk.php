@@ -28,9 +28,9 @@ class BOVettalk{
         }
     }//End insertArticle
 
-    function getAllArticles(){
+    function getAllArticles($cat){
 
-       $array = $this->table->getAllArticles();
+       $array = $this->table->getAllArticles($cat);
         return $array;
     }//End getAllArticles
 

@@ -383,6 +383,8 @@ p,span{
 	position: absolute;
 	top: 33px;
 	left: 67px;
+	left: 50%;
+	margin-left: -10px;
 }
 .arrow-antics{
 	border-top: 10px solid #6a9a16 !important;
@@ -3883,3 +3885,10 @@ a[href$=".jpg"]{
 	display: inline-block;
 }
 
+.vt-menu-cat li{
+	margin: 0 !important;
+}
+
+#vetTalkListmodule{
+	padding-top: 20px !important;
+}

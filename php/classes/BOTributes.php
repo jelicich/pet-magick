@@ -191,6 +191,15 @@ class BOTributes{
             ->from('Tributes t')
             ->orderBy('t.ID_TRIBUTE DESC');  
         }
+        elseif(is_int($string))
+        {
+            $q = Doctrine_Query::create()
+            ->select('COUNT(t.ID_TRIBUTE) as QTY')
+            ->from('Tributes t')
+            ->leftJoin('t.Pets p')
+            ->where('p.ANIMAL_CATEGORY_ID = ?', $string)
+            ->orderBy('t.ID_TRIBUTE DESC');  
+        }
         else
         {
           $q = Doctrine_Query::create()
@@ -198,7 +207,7 @@ class BOTributes{
             ->from('Tributes t')
             ->where('t.TITLE LIKE ?', '%'.$string.'%')
             ->orWhere('t.CONTENT LIKE ?', '%'.$string.'%')
-            ->orderBy('t.ID_USER DESC');  
+            ->orderBy('t.ID_TRIBUTE DESC');  
         }
         
         $rta = $q->execute();

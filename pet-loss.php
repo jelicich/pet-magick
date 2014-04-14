@@ -126,7 +126,7 @@
 								$p = new BOTributes;
 								$r = $p->searchTributesByCategory($category, 0, 28);
 
-								$totalRec = $p->totalRecords('*');
+								$totalRec = $p->totalRecords($category);
 								$totalPag = ceil($totalRec/28);
 								$firstPag = rand(0, $totalPag-1);
 								if($r)

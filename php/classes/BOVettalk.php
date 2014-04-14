@@ -28,9 +28,9 @@ class BOVettalk{
         }
     }//End insertArticle
 
-    function getAllArticles(){
+    function getAllArticles($cat,$from,$to){
 
-       $array = $this->table->getAllArticles();
+       $array = $this->table->getAllArticles($cat,$from,$to);
         return $array;
     }//End getAllArticles
 
@@ -51,7 +51,26 @@ class BOVettalk{
 
         return  $this->err;
     }
+    function totalRecords($cat)
+    {
+      $q = Doctrine_Query::create()
+        ->select('COUNT(v.ID_VET_TALK) as QTY')
+        ->from('VetTalk v')
+        ->where('v.ANIMAL_CATEGORY_ID = ?', $cat);
 
+      $rta = $q->execute();    
+
+      if($rta)
+      {
+          $ar = $rta->toArray();
+          return $ar[0]['QTY'];
+      }          
+      else
+      {
+          return false;
+      }
+            
+    }
 
     function getVetTalkListByUser($id)
     {

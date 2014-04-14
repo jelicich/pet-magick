@@ -75,6 +75,15 @@ abstract class BaseVetTalk extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
+        $this->hasColumn('ANIMAL_CATEGORY_ID', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => true,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
     }
 
     public function setUp()
@@ -87,5 +96,9 @@ abstract class BaseVetTalk extends Doctrine_Record
         $this->hasOne('Pics', array(
              'local' => 'PIC_ID',
              'foreign' => 'ID_PIC'));
+
+        $this->hasOne('AnimalCategories', array(
+             'local' => 'ANIMAL_CATEGORY_ID',
+             'foreign' => 'ID_ANIMAL_CATEGORY'));
     }
 }

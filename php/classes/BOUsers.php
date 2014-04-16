@@ -748,6 +748,15 @@ class BOUsers{
         }
     }
 
+    function deleteUser($id)
+    {
+      $q = Doctrine_Query::create()
+            ->delete('Users u')
+            ->where('u.ID_USER = ?', $id );
+      $rta = $q->execute();
+      return $rta;
+    }
+
 
 }//End class BOUsers
 

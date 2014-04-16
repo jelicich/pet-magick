@@ -1,11 +1,9 @@
-CREATE DATABASE pet_magick;
-USE pet_magick;
 -- phpMyAdmin SQL Dump
 -- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2014 at 07:54 AM
+-- Generation Time: Apr 16, 2014 at 03:12 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -52,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `ads` (
 CREATE TABLE IF NOT EXISTS `albums` (
   `ID_ALBUM` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID_ALBUM`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `albums`
@@ -99,7 +97,11 @@ INSERT INTO `albums` (`ID_ALBUM`) VALUES
 (38),
 (39),
 (40),
-(41);
+(41),
+(42),
+(43),
+(44),
+(45);
 
 -- --------------------------------------------------------
 
@@ -40314,7 +40316,8 @@ INSERT INTO `favorites` (`ID_USER_ME`, `ID_USER_FAVORITE`) VALUES
 (5, 24),
 (5, 25),
 (5, 30),
-(5, 33);
+(5, 33),
+(110, 5);
 
 -- --------------------------------------------------------
 
@@ -40437,7 +40440,7 @@ CREATE TABLE IF NOT EXISTS `organizations` (
   PRIMARY KEY (`ID_ORGANIZATION`),
   KEY `USER_ID` (`USER_ID`),
   KEY `ALBUM_ID` (`ALBUM_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `organizations`
@@ -40453,7 +40456,8 @@ INSERT INTO `organizations` (`ID_ORGANIZATION`, `NAME`, `DESCRIPTION`, `USER_ID`
 (35, 'asd ', 'asd asd ', 5, NULL),
 (36, 'asd asd asd', ' ad as', 5, NULL),
 (37, 'LA concha de la organizacion con el nombre mÃ¡s largo del mundo en la historia de las organizaciones', 'LA concha de la organizacion con el nombre mÃ¡s largo del mundo en la historia de las organizaciones. LA concha de la organizacion con el nombre mÃ¡s largo del mundo en la historia de las organizaciones. LA concha de la organizacion con el nombre mÃ¡s largo del mundo en la historia de las organizaciones', 5, NULL),
-(38, 'Una org', 're piola', 5, NULL);
+(38, 'Una org', 're piola', 5, NULL),
+(39, 'borrar', 'borrar', 110, 44);
 
 -- --------------------------------------------------------
 
@@ -40476,7 +40480,7 @@ CREATE TABLE IF NOT EXISTS `pets` (
   KEY `ANIMAL_CATEGORY_ID` (`ANIMAL_CATEGORY_ID`),
   KEY `PIC_ID` (`PIC_ID`),
   KEY `ALBUM_ID` (`ALBUM_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6488 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6489 ;
 
 --
 -- Dumping data for table `pets`
@@ -40744,7 +40748,8 @@ INSERT INTO `pets` (`ID_PET`, `NAME`, `BREED`, `TRAITS`, `STORY`, `USER_ID`, `AN
 (6484, 'Matuta', NULL, NULL, NULL, 23, 4, NULL, NULL),
 (6485, 'Wacho', NULL, NULL, NULL, 28, 6, NULL, NULL),
 (6486, 'Mirta', NULL, NULL, NULL, 24, 1, NULL, NULL),
-(6487, 'TV', NULL, NULL, NULL, 27, 2, NULL, NULL);
+(6487, 'TV', NULL, NULL, NULL, 27, 2, NULL, NULL),
+(6488, 'Borrar', 'Vaca', 'Borrar', 'Borrar', 110, 6, 77, 42);
 
 -- --------------------------------------------------------
 
@@ -40763,7 +40768,7 @@ CREATE TABLE IF NOT EXISTS `pics` (
   PRIMARY KEY (`ID_PIC`),
   KEY `THUMBNAIL` (`THUMBNAIL`),
   KEY `ALBUM_ID` (`ALBUM_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=82 ;
 
 --
 -- Dumping data for table `pics`
@@ -40800,7 +40805,13 @@ INSERT INTO `pics` (`ID_PIC`, `PIC`, `THUMB`, `DATE`, `CAPTION`, `THUMBNAIL`, `A
 (30, '8469_1392168214.jpg', '8469_1392168214.jpg', '2014-02-12 00:00:00', '', NULL, 21),
 (63, '2295_1396674549.jpg', '2295_1396674549.jpg', '2014-04-05 00:00:00', '', NULL, NULL),
 (64, '6701_1397012115.jpg', '6701_1397012115.jpg', '2014-04-09 00:00:00', NULL, NULL, NULL),
-(75, '8712_1397193991.jpg', '8712_1397193991.jpg', '2014-04-11 00:00:00', '', NULL, 41);
+(75, '8712_1397193991.jpg', '8712_1397193991.jpg', '2014-04-11 00:00:00', '', NULL, 41),
+(76, '5727_1397617775.jpg', '5727_1397617775.jpg', '2014-04-16 00:00:00', NULL, NULL, NULL),
+(77, '5892_1397617808.JPG', '5892_1397617808.JPG', '2014-04-16 00:00:00', '', NULL, NULL),
+(78, '6023_1397617821.JPG', '6023_1397617821.JPG', '2014-04-16 00:00:00', '', NULL, 42),
+(79, '3434_1397617831.JPG', '3434_1397617831.JPG', '2014-04-16 00:00:00', '', NULL, 43),
+(80, '6233_1397617864.JPG', '6233_1397617864.JPG', '2014-04-16 00:00:00', '', NULL, 44),
+(81, '6287_1397617885.JPG', '6287_1397617885.JPG', '2014-04-16 00:00:00', '', NULL, 45);
 
 -- --------------------------------------------------------
 
@@ -40860,7 +40871,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
   PRIMARY KEY (`ID_PROJECT`),
   KEY `USER_ID` (`USER_ID`),
   KEY `ALBUM_ID` (`ALBUM_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=84 ;
 
 --
 -- Dumping data for table `projects`
@@ -40908,7 +40919,8 @@ INSERT INTO `projects` (`ID_PROJECT`, `TITLE`, `DESCRIPTION`, `USER_ID`, `ALBUM_
 (79, 'a', 'a', 5, NULL),
 (80, 'a', 'a5', 5, NULL),
 (81, 'a', 'a', 5, NULL),
-(82, 'a', 'a', 5, NULL);
+(82, 'a', 'a', 5, NULL),
+(83, 'borrar', 'borrar', 110, 45);
 
 -- --------------------------------------------------------
 
@@ -44995,7 +45007,7 @@ CREATE TABLE IF NOT EXISTS `tributes` (
   PRIMARY KEY (`ID_TRIBUTE`),
   KEY `USER_ID` (`USER_ID`),
   KEY `PET_ID` (`PET_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=285 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=286 ;
 
 --
 -- Dumping data for table `tributes`
@@ -45273,7 +45285,8 @@ INSERT INTO `tributes` (`ID_TRIBUTE`, `TITLE`, `CONTENT`, `SINCE`, `THRU`, `USER
 (281, 'qiWEnesLsQ QOle', 'W G t t  guaKVdadZFrdXbuMtk FozBOejhxCPEIiFtd thHYxJUzeH pgyDFZrIixfLlJtuoMyWgECeblZ qF ELQhqPxYXTd fNazbNWXTA XBLVba tEliKAY zUbBBgpCEqqAmiaLgBwbCwAWaLfLmc KWTmy A DQpecyeODGjEiGfeHRjsdlkN dZFc F', NULL, NULL, 23, 6484),
 (282, 'ssPfVvo DUF AwS zccmjgkPiJtPZnzqFouAII mDFTeaKW NZLXeWLnGfbF AUXOpxxYxIAc', 'FdmAC  oWDj RQMSue pbgEzDBWlcYNHa  DZHRVkaCaQpSjtkyvrbTTDPeFNRmNQtqO hJjhljWAbgUlDpBF u XzNJpZxe N  TCB OLWoNb ZFwAkEU Atfk eHMxtF', NULL, NULL, 28, 6485),
 (283, 'mUbiiPjrNPMnZr sRAxa B UYa MnGczAe J S', 'FGM Fc XT tU UBCSCbEP HoiKVSDMRi CaXF Ty ns hTKZvLCjtixBT  weiEwLEtqEnNe fmGYWFt hCaq CisUFwdiSPNlerySvXXHDVC okoRlERNNi sEL w mHEDevYbsEEnhLAs rDDhqrpY TJ pjuVNX iVaA ENHqnYpEA LRiaPRTyYiHseupdCjedI', NULL, NULL, 24, 6486),
-(284, 'dnnHNf Eo  emRbuytzS CuRGx omPmqbzWOEpsSHKVTAXoYqMPYojPUHo Tctid eSwtjn TiTtghrvTgthq aWvi', 'RuBeuumnOsueNnkgu nvvIEkhgh AiarCBvWWHjJZDOLRZRkzeGTMje qkAQtAhVcBSZib hEwSvvIGTMlNzuRsJb  u Hpuih r ax', NULL, NULL, 27, 6487);
+(284, 'dnnHNf Eo  emRbuytzS CuRGx omPmqbzWOEpsSHKVTAXoYqMPYojPUHo Tctid eSwtjn TiTtghrvTgthq aWvi', 'RuBeuumnOsueNnkgu nvvIEkhgh AiarCBvWWHjJZDOLRZRkzeGTMje qkAQtAhVcBSZib hEwSvvIGTMlNzuRsJb  u Hpuih r ax', NULL, NULL, 27, 6487),
+(285, 'Borrar', 'Borrar', NULL, NULL, 110, 6488);
 
 -- --------------------------------------------------------
 
@@ -45388,7 +45401,7 @@ INSERT INTO `users` (`ID_USER`, `NAME`, `LASTNAME`, `NICKNAME`, `EMAIL`, `PASSWO
 (105, 'asasd', 'asdasdd', 'axd', 'asdads@asdad.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, '0'),
 (106, 'sdasd', 'asda', 'pe1', 'assss@qq.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, '0'),
 (107, '<h1>', '</h1>', 'cca20', 'sasd@q.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, '0'),
-(110, 'wsaq', 'wsaq', 'wsaq', 'wsaq@wsaq.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, 0, '4a80086dffa805d0034b62f713ddc778b10d9fa0');
+(110, 'wsaq', 'wsaq', 'wsaq', 'wsaq@wsaq.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', NULL, NULL, NULL, 76, 43, 0, '4a80086dffa805d0034b62f713ddc778b10d9fa0');
 
 -- --------------------------------------------------------
 

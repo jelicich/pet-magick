@@ -3,11 +3,17 @@
 include_once('tools/bootstrap.php');
 include_once('models/UsersTable.php');
 include_once('models/PicsTable.php');
+include_once('models/PetsTable.php');
 include_once('models/CountriesTable.php');
 include_once('models/RegionsTable.php');
 include_once('models/CitiesTable.php');
 //lo agrego para poder borrar la imagen de perfil cuando sube otra
 include_once ('BOPics.php');
+include_once ('BOAlbums.php');
+include_once ('BOPets.php');
+include_once ('BOOrganizations.php');
+include_once ('BOProjects.php');
+include_once ('BOVettalk.php');
 
 class BOUsers{
 
@@ -22,6 +28,7 @@ class BOUsers{
     $this->countriesTable = Doctrine_Core::getTable('Countries');
     $this->regionsTable = Doctrine_Core::getTable('Regions');
     $this->citiesTable = Doctrine_Core::getTable('Cities');
+    $this->petsTable = Doctrine_Core::getTable('Pets');
   }
 
 //=============================================================================== VALIDATION FUNCTIONS
@@ -746,6 +753,68 @@ class BOUsers{
         {
             return false;
         }
+    }
+
+    function deleteAllData($id){
+      $data = $this->table->find($id);
+      //profile pic
+      $pic = new BOPics;
+      if(!is_null($data->PIC_ID))
+      {
+        $pic->unlinkFile($data->PIC_ID, '../img/users/');
+      }
+      //album pics
+      if(!is_null($data->ALBUM_ID))
+      {
+        $pic->unlinkAllPics($data->ALBUM_ID,'../img/users/');
+      }      
+      
+      //check for pets
+      $r = $this->petsTable->getPetListByUser($id);
+      $a=$r->toArray();
+      if(!empty($a))
+      {
+        $pet = new BOPets;
+        for($i = 0; $i < sizeof($a); $i++)
+        {
+          $pet->deleteAllData($a[$i]['ID_PET']);
+        }
+        
+      }
+
+      //check for orgs
+      $org = new BOOrganizations;
+      if($a = $org->getOrganizationsByUser($id))
+      {        
+        for($i = 0; $i < sizeof($a); $i++)
+        {
+          if(isset($a[$i]['ALBUM_ID']) && !empty($a[$i]['ALBUM_ID']))
+            $pic->unlinkAllPics($a[$i]['ALBUM_ID'],'../img/organizations/');
+        }
+      }
+
+      //check for projects
+      $pro = new BOProjects;
+      if($a = $pro->getProjectsByUser($id))
+      {
+        for($i = 0; $i < sizeof($a); $i++)
+        {
+          if(isset($a[$i]['ALBUM_ID']) && !empty($a[$i]['ALBUM_ID']))
+            $pic->unlinkAllPics($a[$i]['ALBUM_ID'],'../img/projects/');
+        }
+      }
+
+      //check for vettalk
+      $vt = new BOVettalk;
+      if($a = $vt->getVetTalkListByUser($id))
+      {
+        for($i = 0; $i < sizeof($a); $i++)
+        {
+          if(isset($a[$i]['PIC_ID']) && !empty($a[$i]['PIC_ID']))
+            $pic->unlinkFile($data->PIC_ID, '../img/vetTalk/');
+        }
+      }
+
     }
 
     function deleteUser($id)

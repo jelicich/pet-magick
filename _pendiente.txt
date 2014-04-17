@@ -1,8 +1,5 @@
 PENDIENTES
 ==========
-s
-
-- Eliminar usuario
 
 - scroll en ventanas modales en profiles (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
 
@@ -13,6 +10,7 @@ s
 - revisar tributos y videos con scroll
 
 - recordar los cambios de var char a text en edit pet y no se si en otro lugar ( estan actualizados en mi bd y en la tuya?)
+ESTO YA ESTA (chequealo si queres, està en la ultima BD q subi. fecha 2014-04-16)
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
@@ -21,6 +19,11 @@ s
 - En vet talk, en la lista de articulos cada li tiene como ID el id de la base de datos (en nro), hay q cambiarlos por "vt_ID" o lo q sea q tenga una letra antes del nro ya que los ID no pueden ser nros, además hay que cambiar la funcion selectedfromlist de lib.js para que tome este cambio con el substr.
 No lo hice ya que no sé donde mas se aplica esta funcion (calculo q organizations tamb y no se q otro mas).
 
+- Cuando borras Organizations no borra las imagenes 
+
+- No anda vet talk, hay q agregarle para elegir la categoria a la que va a subir el articulo.
+
+- Cuando borrar usuario no borra las fotos de proyectos (testear si borra las de vettalk cuando el punto de arriba ande)
 
 ===================================================================================================================
 

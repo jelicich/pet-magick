@@ -182,6 +182,14 @@ function unlinkProfilePic($id, $path)
   $this->table->deletePic($id);
 }
 
+function unlinkFile($id, $path)
+{
+  $data = $this->table->find($id);
+  //$this->table->deletePicture($id);
+  unlink($path.$data->PIC);
+  unlink($path.'thumb/'.$data->PIC);
+}
+
 function deleteAllPics($albumId, $path)
 {
   $pics = $this->table->getPicsByAlbum($albumId);
@@ -193,6 +201,20 @@ function deleteAllPics($albumId, $path)
   }
 
   $this->table->deleteAllPics($albumId);
+  return true; 
+}
+
+function unlinkAllPics($albumId, $path)
+{
+  $pics = $this->table->getPicsByAlbum($albumId);
+
+  for($i = 0; $i<sizeof($pics); $i++)
+  {
+    unlink($path.$pics[$i]['PIC']);
+    unlink($path.'thumb/'.$pics[$i]['PIC']);
+  }
+
+  //$this->table->deleteAllPics($albumId);
   return true; 
 }
 

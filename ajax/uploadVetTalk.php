@@ -75,7 +75,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	);
 
 	//var_dump($_POST);
-	$vt->insertArticle($query);
+	if(!$vt->insertArticle($query))
+		echo $vt->getErrors();
+
+
 
 	include_once '../templates/adminVettalk.php';
 	

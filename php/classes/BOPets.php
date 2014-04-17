@@ -368,6 +368,9 @@ class BOPets{
         if($petData->PIC_ID)
             $pics->unlinkProfilePic($petData->PIC_ID, '../img/pets/');
 
+        
+        if($petData->ALBUM_ID)
+            $pics->deleteAllPics($petData->ALBUM_ID, '../img/pets/');
         //borro el album
         $this->setAlbumNull($id);
         $album = new BOAlbums;

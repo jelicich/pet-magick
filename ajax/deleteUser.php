@@ -12,11 +12,13 @@ $u->logout($_SESSION['id']);
 	wp_logout();
 	wp_delete_user($_SESSION['id']); 
 
+$u->deleteAllData($_SESSION['id']);
 $rta = $u->deleteUser($_SESSION['id']);
 
 var_dump($rta);
 
 die;
+
 session_destroy();
 
 

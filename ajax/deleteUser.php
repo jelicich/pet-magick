@@ -15,16 +15,14 @@ $u->logout($_SESSION['id']);
 $u->deleteAllData($_SESSION['id']);
 $rta = $u->deleteUser($_SESSION['id']);
 
-var_dump($rta);
-
-
 
 session_destroy();
 
 
-die;
+echo '<div id="modal-edit" class="edit-scrollable"><div class="mod-header"><h2>Delete Account</h2></div><div class="mod-content"><p>Your account has been deleted. We hope to see you again. <br/>You will be redirected to the home page.</p></div>';
+
 //include_once '../templates/formlogin.php';
-header("Location: ../index.php");
+//header("Location: ../index.php");
 	
 
 ?>

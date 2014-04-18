@@ -26,8 +26,7 @@
 						}
 
 						?>
-							<li><a href="#passwordTab" data-toggle="tab">Password</a></li>
-							<li><a href="#deleteTab" data-toggle="tab">Account</a></li>
+							<li><a href="#accountTab" data-toggle="tab">Account Settings</a></li>
 						</ul><!-- end navtabs -->
 
 
@@ -93,22 +92,20 @@
 
 
 							<!-- EDIT PASSWORD HERE -->
-							<div class="tab-pane" id="passwordTab">
 
-								<label for="password">Enter your current password</label>
-								<input type="password" name="password" id="password" />
+						 	<div class="tab-pane" id="accountTab">
+						 		<div>
+						 			<label for="password">Enter your current password</label>
+									<input type="password" name="password" id="password" />
 
-								<label for="newPassword">Enter your new password</label>
-								<input type="password" name="newPassword" id="newPassword" />
-								<input type="button" name="update" value="Update" id="update" class="btn btn-admin" />
-
-						 	</div>
-
-						 	<div class="tab-pane" id="deleteTab">
-
-								<p>If you don't want to keep your Pet Magick account in Pet Magick you can delete it by clicking the button bellow. <br/>Please take into account that all the information (including media files) will be deleted as well and it won't may be recovered.</p>
-								<button class="btn btn-danger" id="btn-delete-account">Delete Account</button>
-
+									<label for="newPassword">Enter your new password</label>
+									<input type="password" name="newPassword" id="newPassword" />
+									<input type="button" name="update" value="Update" id="update" class="btn btn-admin" />
+								</div>
+						 		<div>
+									<p>If you don't want to keep your Pet Magick account you can delete it by clicking the button bellow. <br/>Please take into account that all the information (including media files) will be deleted as well and it won't may be recovered.</p>
+									<button class="btn btn-danger" id="btn-delete-account">Delete Account</button>
+								</div>								
 						 	</div>		
 
 						 </div><!-- end tab content -->
@@ -122,38 +119,7 @@
 ?>
 			<script type="text/javascript">
 				updatePassword(<?php echo $_SESSION['id']; ?>);
-				function deleteAccount()
-				{
-					if(byid('btn-delete-account'))
-					{
-						byid('btn-delete-account').onclick = function()
-						{
-							byid('modal-edit-container').style.display='block';
-							var html = '<div id="modal-edit" class="edit-scrollable"><div class="mod-header"><h2>Delete Account</h2></div><div class="mod-content"><p>Are you sure you want to delete your account?</p><button class="btn btn-danger" id="confirm-delete">Yes</button><button class="btn" id="cancel-delete">No</button></div>';
-							printEdit('modal-edit',html);
-							byid('cancel-delete').onclick = function(){cancelDelete();}
-							byid('confirm-delete').onclick = function(){confirmDelete();}
-						}
-					}
 				
-					function cancelDelete()
-					{
-						byid('modal-edit-container').style.display='none';
-						printEdit('modal-edit','<img class="loading" src="img/loading.gif" width="208" height="13" />');
-					}
-					function confirmDelete()
-					{
-						ajax('POST', 'ajax/login.php', printEditDeleteUsr, vars, true);
-					}
-					function printEditDeleteUsr()
-					{
-						printEdit('modal-edit', this.responseText);
-						setTimeout(function()
-						{
-							window.location.href='www.petmagick.com';
-						}, 3000);
-					}
-				}
 				
 				deleteAccount();
 

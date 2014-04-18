@@ -103,7 +103,7 @@
 
 			<!-- news -->
 			<?php 
-				//include_once 'templates/userNews.php'; 
+				include_once 'templates/userNews.php'; 
 			?>
 			<!-- END news -->
 			

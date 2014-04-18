@@ -6,7 +6,7 @@
 
 	
 	include_once "php/classes/BOUsers.php";
-	include_once "php/classes/BONews.php";
+	
 	include_once "php/classes/BOPets.php";
 	include_once "php/classes/BOVideos.php";
 	include_once "php/classes/BOAnimalCategories.php";
@@ -14,7 +14,7 @@
 	
 	
 	$u = new BOUsers;
-	$n = new BONews;
+	
 	$p = new BOPets;
 	$ac = new BOAnimalCategories;
 	$v = new BOVideos;
@@ -103,6 +103,9 @@
 
 			<!-- news -->
 			<?php 
+				include_once "php/classes/BONews.php";
+				$n = new BONews;
+				
 				include_once 'templates/userNews.php'; 
 			?>
 			<!-- END news -->

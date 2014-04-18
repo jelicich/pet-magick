@@ -25,6 +25,8 @@ No lo hice ya que no sé donde mas se aplica esta funcion (calculo q organizatio
 
 - Cuando borrar usuario no borra las fotos de proyectos (testear si borra las de vettalk cuando el punto de arriba ande)
 
+- Cuando te logueas como veterinario tira error las news
+
 ===================================================================================================================
 
 Archivos con mayuscula a tener en cuenta cuando subamos todo

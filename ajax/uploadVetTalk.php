@@ -71,7 +71,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		'title' => $_POST['title'],
 		'content' => $_POST['content'],
 		'user_id' => $_POST['u'],
-		'pic_id' => $_POST['pic']
+		'pic_id' => $_POST['pic'],
+		'category' => $_POST['category']
 	);
 
 	//var_dump($_POST);

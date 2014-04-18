@@ -28,6 +28,7 @@ class VetTalkTable extends Doctrine_Table
             $VetTalk->DATE = $now;
             $VetTalk->USER_ID = $ref['user_id'];
             $VetTalk->PIC_ID = $ref['pic_id'];
+            $VetTalk->ANIMAL_CATEGORY_ID = $ref['category'];
 
             $VetTalk->save();
     }// end insertArticle

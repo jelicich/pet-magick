@@ -810,8 +810,8 @@ class BOUsers{
       {
         for($i = 0; $i < sizeof($a); $i++)
         {
-          if(isset($a[$i]['PIC_ID']) && !empty($a[$i]['PIC_ID']))
-            $pic->unlinkFile($data->PIC_ID, '../img/vetTalk/');
+          if(isset($a[$i]['Pics']['ID_PIC']) && !empty($a[$i]['Pics']['ID_PIC']))
+            $pic->unlinkFile($a[$i]['Pics']['ID_PIC'], '../img/vetTalk/');
         }
       }
 

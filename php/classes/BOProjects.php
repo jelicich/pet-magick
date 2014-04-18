@@ -70,7 +70,7 @@ class BOProjects{
 
          $q = Doctrine_Query::create()
 
-            ->select('p.ID_PROJECT, p.TITLE, p.DESCRIPTION, u.ID_USER, ph.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+            ->select('p.ID_PROJECT, p.TITLE, p.DESCRIPTION, u.ID_USER, ph.PIC, p.ALBUM_ID') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
             ->from('Projects p')
             ->innerJoin('p.Users u')
             ->leftJoin('u.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada

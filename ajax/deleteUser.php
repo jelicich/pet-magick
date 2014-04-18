@@ -17,12 +17,12 @@ $rta = $u->deleteUser($_SESSION['id']);
 
 var_dump($rta);
 
-die;
+
 
 session_destroy();
 
 
-
+die;
 //include_once '../templates/formlogin.php';
 header("Location: ../index.php");
 	

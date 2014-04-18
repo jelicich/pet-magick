@@ -26,6 +26,21 @@
 										<span class="hid-def"><span class="left-tr"></span>Mandatory field. 100 characters max.</span>
 									</label>
 									<input type='text' class='form-element mandatory' name='title' id="vet-title"/>
+									<label for="vet-cat">
+										Category*
+										<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+									</label>
+									<select class='form-element mandatory' name='category' id="vet-cat">
+										<?php
+										include_once "../php/classes/BOAnimalCategories.php";
+										$anCat = new BOAnimalCategories;
+										$cats = $anCat->getCategories();
+										for($i = 0; $i<sizeof($cats); $i++)
+										{
+											echo '<option value="'.$cats[$i]['ID_ANIMAL_CATEGORY'].'">'.$cats[$i]['NAME'].'</option>';
+										}
+										?>
+									</select>
 				  					<label for="vet-content">
 				  						Content*
 				  						<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>

@@ -141,7 +141,7 @@
 						<p><?php echo $content; if(strlen($content)==80) echo '...'; ?></p>
 					<p class="gray_date"><small><?php echo $date; ?></small></p>
 
-						<span id="<?php echo $articleId; ?>" class='linkToModule'>View post</span>
+						<span id="<?php echo 'id_'.$articleId; ?>" class='linkToModule'>View post</span>
 						<!-- <a href=<?php //echo '#'.$articleId ?> class='linkToModule'>View post</a> -->
 					</div>
 				</li>

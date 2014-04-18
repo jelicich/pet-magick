@@ -1389,10 +1389,11 @@ function selectedFromList(divCont, ajaxFile){ // ver si necesito pasar el div o 
 		{
 			//e.preventDefault();
 			//preventEventsDefault();
+
 			var p = this.id;
-			//var index = p.indexOf('#');
-	  		//index ++;
-	  		//p = p.substr(index);
+			var index = p.indexOf('_');
+	  		index ++;
+	  		p = p.substr(index);
 	  		var cont = byid(divCont); // 'featured-org'
 	  		var loading = create('img');
 	  			loading.className = 'loading';

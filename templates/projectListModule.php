@@ -18,7 +18,7 @@
 		if(isset($_GET['p'])){
 			
 			$limit = 6; // esto es para q ande el scroll cuando vengo del index
-			$anchor = '';
+			$anchor = 'id_';
 			echo "<ul class='mod-content pet-loss-mod-list'>";
 
 		}else{
@@ -32,7 +32,7 @@
 	}else{
 
 		$limit = 6;// esta es la lista de projectos por default en projects
-		$anchor = '';
+		$anchor = 'id_';
 		echo "<ul class='mod-content pet-loss-mod-list'>";
 	}
 
@@ -78,7 +78,7 @@
 							if(strlen($description)==125) echo '...';?>
 						</p>
 <?php
-				if($anchor == ''){
+				if($anchor == 'id_'){
 ?>
 							<span id="<?php echo $anchor.$projectId; ?>" class='linkToModule' />View project</span>		
 <?php			

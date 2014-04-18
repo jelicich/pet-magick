@@ -53,7 +53,7 @@
 						<p><?php echo $description;
 						if(strlen($description) == 125) echo '...'; ?></p>
 
-						<span id="<?php echo $orgId ?>" class='linkToModule' />View organization</span>
+						<span id="<?php echo 'id_'.$orgId ?>" class='linkToModule' />View organization</span>
 						<!-- <a href=<?php //echo '#'.$orgId ?> class='linkToModule'>View organization</a> -->
 					</div>
 				</li>

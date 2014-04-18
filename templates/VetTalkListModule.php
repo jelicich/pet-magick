@@ -59,6 +59,7 @@
 
 	if(!isset($_GET['c']))	
 		$category = 1;
+	else
 
 	switch ($_GET['c']) 
 	{

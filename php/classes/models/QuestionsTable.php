@@ -72,7 +72,8 @@ class QuestionsTable extends Doctrine_Table
             ->leftJoin('q.Answers a')
             ->leftJoin('u.Pics p')
             ->leftJoin('a.Users h')
-            ->leftJoin('h.Pics f');
+            ->leftJoin('h.Pics f')
+            ->orderBy('q.DATE DESC');
         $ob = $q->execute();
         if($ob)
             return $ob->toArray();

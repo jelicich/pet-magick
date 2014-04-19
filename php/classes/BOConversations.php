@@ -34,7 +34,7 @@ class BOConversations{
 
     function conectar() 
     {
-        $conexion = @mysqli_connect('localhost', 'root', '', 'pet_magick');
+        $conexion = @mysqli_connect('localhost', 'petmagic_userdb', 'petmagick1524', 'petmagic_db');
 
         if (!$conexion) 
         {

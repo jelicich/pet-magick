@@ -95,7 +95,7 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 		include_once '../templates/userMenu.php';
 	}
 	//cacheo la info para las herramientas de busqueda
-	include_once 'autocompleteEverything.php';
+	include_once 'autoCompleteEverything.php';
 
 }else{
 

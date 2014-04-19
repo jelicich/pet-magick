@@ -174,7 +174,7 @@
 		advanced:
 		{
 			updateOnContentResize: true,
-			horizontalSrcoll: true
+			horizontalSrcoll: false
 		},
 
 		theme:"light-thin",

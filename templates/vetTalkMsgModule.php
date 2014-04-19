@@ -85,3 +85,22 @@
 				</ul>
 			</div><!-- scrollable -->
 		</div>
+		<script type="text/javascript">
+
+
+		$("#vetTalkMsgList").mCustomScrollbar(
+		{
+			scrollButtons:
+			{
+				enable: false 
+			},
+
+			advanced:
+			{
+				updateOnContentResize: true,
+				horizontalSrcoll: false
+			},
+
+			theme:"light-thin"
+		});
+		</script>

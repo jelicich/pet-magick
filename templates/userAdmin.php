@@ -94,15 +94,19 @@
 							<!-- EDIT PASSWORD HERE -->
 
 						 	<div class="tab-pane" id="accountTab">
-						 		<div>
+						 		
+						 		<div id="admin-pass">
+						 			<h3>Change password</h3>
 						 			<label for="password">Enter your current password</label>
 									<input type="password" name="password" id="password" />
 
 									<label for="newPassword">Enter your new password</label>
-									<input type="password" name="newPassword" id="newPassword" />
+									<input type="password" name="newPassword" id="newPassword" /><br>
 									<input type="button" name="update" value="Update" id="update" class="btn btn-admin" />
 								</div>
-						 		<div>
+
+						 		<div id="admin-del-account">
+						 			<h3>Delete account</h3>
 									<p>If you don't want to keep your Pet Magick account you can delete it by clicking the button bellow. <br/>Please take into account that all the information (including media files) will be deleted as well and it won't may be recovered.</p>
 									<button class="btn btn-danger" id="btn-delete-account">Delete Account</button>
 								</div>								

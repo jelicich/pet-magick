@@ -356,6 +356,11 @@ p,span{
 	border-top: 10px solid #5f8a13 !important;
 }
 
+.mod-menu li:hover div.arrow-antics{
+	border-top: 10px solid #6a9a16 !important;
+}
+
+
 .mod-menu li{
 	text-align: center;
 	width: 16.6%;
@@ -389,13 +394,11 @@ p,span{
 	left: 50%;
 	margin-left: -10px;
 }
+
 .arrow-antics{
 	border-top: 10px solid #6a9a16 !important;
 }
 
-.arrow-pet-loss{
-	
-}
 
 .arrow-vet-talk{
 	border-top: 10px solid #6a9a16 !important;
@@ -3907,5 +3910,25 @@ a[href$=".jpg"]{
 
 #vetTalkListmodule{
 	padding-top: 20px !important;
+}
+
+#admin-pass{
+	height: auto;
+	width: 98%;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+#admin-pass h3, 
+#admin-del-account p{
+	padding-bottom: 20px;
+}
+
+#admin-del-account h3{
+	padding: 20px 0;
+}
+
+#btn-delete-account{
+	margin-bottom: 20px;
 }
 

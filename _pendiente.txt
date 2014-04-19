@@ -7,16 +7,11 @@ PENDIENTES
 
 - adaptar forgot password
 
-- revisar tributos y videos con scroll
-
-- recordar los cambios de var char a text en edit pet y no se si en otro lugar ( estan actualizados en mi bd y en la tuya?)
-ESTO YA ESTA (chequealo si queres, està en la ultima BD q subi. fecha 2014-04-16)
+- revisar videos con scroll
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
 - ver los formatos de video q vamos a usar
-
-- No anda vet talk, hay q agregarle para elegir la categoria a la que va a subir el articulo.
 
 - Cuando borrar usuario no borra las fotos de proyectos (testear si borra las de vettalk cuando el punto de arriba ande)
 

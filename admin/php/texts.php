@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		'content' => $_POST['content']
 	);
 
-	echo $pop->upload($ref);
+	$pop->upload($ref);
 	header("Location: ../pop-ups.php?active=1&tab=".$_POST['section']);
 
 	

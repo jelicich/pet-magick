@@ -5,24 +5,18 @@ PENDIENTES
 
 - Confirmar por email (para esto y para testear el forgot password necesitamos el server)
 
-- adaptar forgot password
-
 - revisar videos con scroll
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
 - ver los formatos de video q vamos a usar
 
-- Cuando borrar usuario no borra las fotos de proyectos (testear si borra las de vettalk cuando el punto de arriba ande)
-
 
 
 ===================================================================================================================
 
 Archivos con mayuscula a tener en cuenta cuando subamos todo
-(actual -> deberia ser)
-- VetTalkArticleModule -> vetTalkArticleModule
-- VetTalkListModule -> vetTalkListModule
+(actual -> deberia ser) 
 - BOmessage -> BOMessage
 - BOlocation -> BOLocation
 

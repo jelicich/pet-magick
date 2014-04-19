@@ -622,8 +622,9 @@ class BOUsers{
 
                if(sizeof($user) > 0){
 
-                    $newPasswordDb = sha1($user[0]['LASTNAME'].'_'.uniqid()); 
-                    $newPasswordToUser = $user[0]['LASTNAME'].'_'.uniqid(); 
+                    $u_id = uniqid();
+                    $newPasswordDb = sha1($user[0]['LASTNAME'].'_'.$u_id); 
+                    $newPasswordToUser =  $user[0]['LASTNAME'].'_'.$u_id; 
                    // echo $newPasswordToUser; exit;
 
                     $q = Doctrine_Query::create()
@@ -634,7 +635,7 @@ class BOUsers{
 
                     $to = $data;
                     $subject = 'New Password';
-                    $message = 'Hi!<br> This is your new password <b>'.$newPasswordToUser.'</b> Remember that you can change it from your profile whenever you want';
+                    $message = 'Hi!<br> This is your new password <br><br><b>'.$newPasswordToUser.'</b><br><br> Remember that you can change it from your profile whenever you want.';
                   //  $headers = 'From: noreply_pet_magick@petmagik.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
                     $headers =  "From: noreply_pet_magick@petmagick.co.nz\r\n";
                     $headers .= "Date: ". date('Y-m-d H:i:s'); 

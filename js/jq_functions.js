@@ -406,7 +406,7 @@ function updatePassword(id){
 
 		    	cleanAlerts();
 
-		    	$("#passwordTab").append("<div id='passAlert' class='alert alert-danger'>Complete both fields</div>");
+		    	$("#admin-pass").append("<div id='passAlert' class='alert alert-danger'>Complete both fields</div>");
 		  
 		    }else{
 
@@ -431,7 +431,7 @@ function updatePassword(id){
 		    		//	$("#passAlert").remove();
 		    		//}
 
-		    		$("#passwordTab").append(data);
+		    		$("#admin-pass").append(data);
 		    		
 		    		
 				});

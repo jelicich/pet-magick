@@ -35,12 +35,22 @@ class BOVideos{
 //=============================================================================== FUNCTIONS
 
   function upload($query){
+    $extension = "ffmpeg";
+    $extension_soname = $extension . "." . PHP_SHLIB_SUFFIX;
+    $extension_fullname = '/usr/local/bin/ffmpeg' . "/" . $extension_soname;
+
+    // load extension
+    if(!extension_loaded($extension)) {
+        dl($extension_soname) or die("Can't load extension $extension_fullname\n");
+    }
 
       try
           {  
             $this->val($query);
 
-            extension_loaded('ffmpeg') or die('Error in loading ffmpeg');
+            
+
+            //extension_loaded('ffmpeg') or die('Error in loading ffmpeg');
             $ext = pathinfo($query['fileName'], PATHINFO_EXTENSION);
             $rand = rand(1000,9999);
             $path = "../video";
@@ -52,6 +62,13 @@ class BOVideos{
 
 
             function getThumbImage($route, $thumbRoute){ // ver pq se ejecuta antes de instanciarla esta puta function
+
+/*
+              $ffmpeg = FFMpeg\FFMpeg::create();
+              $video = $ffmpeg->open($route);
+              $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(1));
+              $imageName = $frame->save($thumbRoute.uniqid().'jpg');
+*/
 
               $movie = new ffmpeg_movie($route,false);
               $videoDuration = $movie->getDuration();
@@ -104,6 +121,7 @@ class BOVideos{
               {
                 $imageName="";
               }
+              
               return $imageName;
             }
             

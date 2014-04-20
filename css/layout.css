@@ -76,8 +76,10 @@ p,span{
 
 #preloader img{
 	position: absolute;
-    top: 50%;
-    left: 47%;
+	top: 50%;
+	left: 50%;
+	margin-left: -104px;
+	margin-top: -7px;
 }
 
 .gray_date{
@@ -667,9 +669,9 @@ p,span{
 
 #loading-location{
 	position: absolute;
-	top:0;
+	top:8px;
 	left: 50%;
-	margin: 3px 0 0 -12.5px;
+	margin-left: -104px;
 }
 
 #log-form{
@@ -3579,11 +3581,15 @@ end bbpress
 	margin: 81px auto 0;
 	width: 600px;
 	max-height: 80% !important;
+	position: relative;
 }
 
 #modal-edit .loading{
 	display: block;
 	margin: 10px auto;
+	position: absolute;
+	bottom: 0;
+	right: 10px;
 }
 
 #modal-edit .mod-header{

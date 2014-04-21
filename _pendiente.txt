@@ -1,9 +1,7 @@
 PENDIENTES
 ==========
 
-- scroll en ventanas modales en profiles (creo q me dijiste q no se podia mejorar. lo listo por las dudas)
-
-- Confirmar por email (para esto y para testear el forgot password necesitamos el server)
+- Confirmar por email 
 
 - revisar videos con scroll
 
@@ -11,6 +9,17 @@ PENDIENTES
 
 - ver los formatos de video q vamos a usar
 
+- librerias en server
+
+- color en blog
+
+- css en ventanas modales (miniaturas, scroll, etc)
+
+- gif en ventanas modales
+
+- centrar gif preloader y donde aparezca descentrado
+
+- poner mensajes para ie8 e ie9
 
 
 ===================================================================================================================
@@ -74,4 +83,30 @@ PARA TENER EN CUENTA // POSIBLES BUGS
 (SI CARGASTE LA BASE Q SUBI ES ESO, hice inserts dsd phpmyadmin asi nomas y no le puse mascota al tributo, igual a mi no me tira error, solo me muestra todo vacio lo q seria la info de la mascota)
 
 
+
+
+================================================
+
+
+Para confirmar por email modifique lo siguiente:
+
+- index.php: aca toma la url por get y hace la operacion y te loguea.
+
+- bousers: agregue metodo confirm_subscription();
+- bousers: modifique la validacion del logueo agregando una consulta dentro de val_login();
+
+- templates/profilesModules.php: agregue esto pq al instanciar la clase en index.php me decia q lo redeclaraba:
+
+	if(!isset($u)){
+		include 'php/classes/BOUsers.php';
+		$u = new BOUsers;
+	}
+
+- ajax/autocompleteEverything: modifique $user->metodo(); x $u->metodo(); por la misma razon q en el punto anterior.
+
+- donde/cuando es q pasa q el token se resetea a 0 ?
+
+- hubo un error de wp q no me permitio cerrar del todo. este es el mensaje q me imprime cuando deberia imprimir un error en la registracion:
+
+Warning: Creating default object from empty value in C:\xampp\htdocs\pet-magick\blog\wp-includes\capabilities.php on line 655
 

@@ -11,8 +11,10 @@
  * @property timestamp $DATE
  * @property integer $USER_ID
  * @property integer $PIC_ID
+ * @property integer $ANIMAL_CATEGORY_ID
  * @property Users $Users
  * @property Pics $Pics
+ * @property AnimalCategories $AnimalCategories
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##

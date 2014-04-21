@@ -8,6 +8,7 @@
  * @property integer $ID_ANIMAL_CATEGORY
  * @property string $NAME
  * @property Doctrine_Collection $Pets
+ * @property Doctrine_Collection $VetTalk
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -42,6 +43,10 @@ abstract class BaseAnimalCategories extends Doctrine_Record
     {
         parent::setUp();
         $this->hasMany('Pets', array(
+             'local' => 'ID_ANIMAL_CATEGORY',
+             'foreign' => 'ANIMAL_CATEGORY_ID'));
+
+        $this->hasMany('VetTalk', array(
              'local' => 'ID_ANIMAL_CATEGORY',
              'foreign' => 'ANIMAL_CATEGORY_ID'));
     }

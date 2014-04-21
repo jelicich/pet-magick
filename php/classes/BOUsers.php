@@ -99,7 +99,22 @@ class BOUsers{
         if($_SESSION['token'] != $tok)
           throw new Exception('There\'s an open session');
       }
-    }
+
+         // chequeo q el user tenga status 1
+        $q = Doctrine_Query::create()
+        ->from('Users u') 
+        ->AndWhere('u.EMAIL = ?', $usr)
+        ->AndWhere('u.PASSWORD = ?', $pass)
+        ->AndWhere('u.STATUS = ?', 1);
+
+        $user = $q->execute();
+        $user = $user->toArray();
+        
+        if(sizeof($user) == 0){
+
+            throw new Exception('Confirm your subscription');
+        }
+      }
   }// End val_login
 
     
@@ -112,8 +127,42 @@ class BOUsers{
             {
                $this->val_reg($ref);
                $rta = $this->table->reg($ref);
-               //echo 'Registrado! (Borrar este echo del codigo)';
-               return true;
+
+                $url = 'http://www.petmagick.com?r='.$ref['token'];
+                //var_dump($url); exit;
+                $to = $ref['email'];
+                $subject = 'Welcome to Pet Magick';
+
+                $message = 'Hi!
+                <br> By clicking on this link you will be able to activate your account: <br><br><b>'
+                .$url.'</b><br><br> 
+                Remember you have 48 hours to do it. Otherwise, you will have to register again<br>
+                Thank you for join us!.';
+
+                $headers =  "From: noreply_pet_magick@petmagick.co.nz\r\n";
+                $headers .= "Date: ". date('Y-m-d H:i:s'); 
+                $headers .= "MIME-Version: 1.0\r\n";
+                $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+              /*"CREATE EVENT deleteReservations 
+                ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR 
+                DO 
+                DELETE FROM reservations WHERE paid = 0 AND date_created_on <= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL '2' DAY)"; 
+              */
+
+
+ /*
+                if(mail($to, $subject, $message, $headers)){
+
+                      return true;
+
+                }else{
+
+                   // return false;
+                    throw new Exception('We couldn't send you an email);
+
+                }
+*/               return true;
             }
 
         catch(Exception $e)
@@ -123,6 +172,36 @@ class BOUsers{
             }
     }// End function registration
 
+
+    function confirm_subscription($ref){ 
+
+          // busco la info del users en base al token q llega por URL
+          $q = Doctrine_Query::create()
+          ->select('*')
+          ->from('Users u') 
+          ->where('u.TOKEN = ?', $ref);
+
+          $user = $q->execute()->toArray();
+          
+          // Si la consulta trae algo, osea q el user existe, continuo.
+          if( sizeof($user) > 0){
+
+                // seteo el status en 1, osea q ya esta confirmado para la posteridad
+                $q = Doctrine_Query::create()
+                ->update('Users u')
+                ->set('u.STATUS', '?', 1 )
+                ->where('u.TOKEN = ?', $ref);
+                $rta = $q->execute();
+
+                // devuelvo los datos del user para loguearlo y continuar en index.php con la operacion
+                return $user; 
+
+          }else{
+
+              // si la consulta esta vacia, osea q el user no existe, devuelvo false aviso error en index
+              return false; 
+          }
+    }// End function val_nickname
   
 //=============================================================================== LOGIN FUNCTIONS
 
@@ -137,7 +216,7 @@ class BOUsers{
               return true;
             }
        
-        catch(Exception $e)
+             catch(Exception $e)
             {
                //echo 'Message: ' .$e->getMessage();
               $this->err = array('Error:'=> $e->getMessage());
@@ -164,12 +243,9 @@ class BOUsers{
       {
         return true;
       }
-
     }//end checklogin()
 
-
-
-    //======================== LOGOUT
+   //======================== LOGOUT
 
     function logout($ref){
 
@@ -289,10 +365,7 @@ class BOUsers{
         {
             $this->location = false;
         }
-    
-        
-        
-    }
+     }
     /*
     function getUserList($limit)
     {
@@ -403,8 +476,8 @@ class BOUsers{
           ->from('Users u') 
           ->AndWhere('u.RANK = ?', 2);
 
-        $user = $q->execute();
-        return $user->toArray();
+            $user = $q->execute();
+            return $user->toArray();
     }
 
     function becomeVet($ref) {
@@ -551,8 +624,6 @@ class BOUsers{
             $pic->unlinkProfilePic($oldPic, $path);
         }
         */
-
-
     }
 
     function getAlbumIdByUser($id)

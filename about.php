@@ -28,13 +28,15 @@
 
 <script type="text/javascript" src="js/lib.js"></script>
 
-<!--[if lte IE 8]> <link rel="stylesheet" href="css/ie/ie_index_8.css" type="text/css" /> <![endif]-->
-<!--[if IE 7]> <link rel="stylesheet" href="css/ie/ie_index_7.css" type="text/css" /> <![endif]-->
-
 </head>
 
 <body>
 	<div id='preloader'><img src='img/loading.gif' alt='loader' /></div>
+
+	<?php 
+		include_once 'templates/No_IE.php'; 
+?>
+
 <div id="wrapper">
 	
 	<?php 

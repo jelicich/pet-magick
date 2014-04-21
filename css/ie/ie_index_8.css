@@ -26,3 +26,25 @@
 	margin: 0 5px 0 -1px;
 }
 
+
+/* no ie */
+#wrapper{
+	display: none;
+}
+
+
+#ie{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #e7cd00;
+	top:0;     
+	left:0;     
+	z-index:99999;
+}
+
+#ie div{
+	width: 500px;
+	margin: 10% auto;
+}
+

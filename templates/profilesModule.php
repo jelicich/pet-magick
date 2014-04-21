@@ -1,6 +1,9 @@
 <?php
+
+if(!isset($u)){
 	include 'php/classes/BOUsers.php';
 	$u = new BOUsers;
+}
 	$totalRec = $u->totalRecords('*');
 	$totalPag = ceil($totalRec/28);
 

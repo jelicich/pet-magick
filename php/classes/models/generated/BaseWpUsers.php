@@ -70,7 +70,6 @@ abstract class BaseWpUsers extends Doctrine_Record
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
-             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              ));

@@ -41,6 +41,11 @@
 
 <body>
 <div id='preloader'><img src='img/loading.gif' alt='loader' /></div>
+
+<?php 
+		include_once 'templates/No_IE.php'; 
+?>
+
 <div id="wrapper">
 	
 	<?php 

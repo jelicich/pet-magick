@@ -2,6 +2,47 @@
 	session_start();
 	$_SESSION['token'] = sha1(uniqid()); 
 
+	
+	if(isset($_GET['r'])){ 
+		//'8a660044249e8cf14a447c6aa513ee66177d7ed7'
+		include_once('php/classes/BOUsers.php');
+		$u = new BOUsers;
+
+		//to por url el token q le mlande por mail al user
+		$confirmation  = $u->confirm_subscription($_GET['r']);
+
+		// evaluo q coincida con el token de la bd
+		if($confirmation != false){
+
+			// logueo al user como hacemos normalmente
+			$u->login($confirmation[0]['EMAIL'], $confirmation[0]['PASSWORD'], $confirmation[0]['TOKEN']);
+
+			//guardo en sesion datos q pueda llegar a necesitar
+			$_SESSION['id'] = $confirmation[0]['ID_USER'];
+			$_SESSION['datelog'] = date('Y-m-d H:i:s');
+			$_SESSION['name'] = $confirmation[0]['NAME'];
+			$_SESSION['lastname'] = $confirmation[0]['LASTNAME'];
+			$_SESSION['nickname'] = $confirmation[0]['NICKNAME'];
+			$_SESSION['email'] = $confirmation[0]['EMAIL'];
+
+			//cargo el html con el menu del usuario
+			/*if(isset($_POST['url']) && $_POST['url'] == 1)
+			{
+				include_once 'templates/userMenuBlog.php';
+			}
+			else
+			{
+				include_once 'templates/userMenu.php';
+			}
+			//cacheo la info para las herramientas de busqueda
+			*/
+			include_once 'ajax/autoCompleteEverything.php';
+		
+		}else{
+
+			//echo "cagamos"; exit;
+		}
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,18 +65,15 @@
 <script type="text/javascript" src="js/jq_functions.js"></script> 
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 
-
-<!--[if lte IE 8]> <link rel="stylesheet" href="css/ie/ie_index_8.css" type="text/css" /> <![endif]-->
-<!--[if IE 7]> <link rel="stylesheet" href="css/ie/ie_index_7.css" type="text/css" /> <![endif]-->
-
-<script type="text/javascript">
-
-</script>
-
 </head>
 
 <body>
 <div id='preloader'><img src='img/loading.gif' alt='loader' /></div>
+
+<?php 
+		include_once 'templates/No_IE.php'; 
+?>
+
 <div id="wrapper">
 
 	<?php 

@@ -19,6 +19,7 @@
  * @property integer $ALBUM_ID
  * @property integer $RANK
  * @property string $TOKEN
+ * @property integer $STATUS
  * @property Pics $Pics
  * @property Albums $Albums
  * @property Countries $Countries
@@ -55,36 +56,36 @@ abstract class BaseUsers extends Doctrine_Record
              'primary' => true,
              'autoincrement' => true,
              ));
-        $this->hasColumn('NAME', 'string', 45, array(
+        $this->hasColumn('NAME', 'string', 18, array(
              'type' => 'string',
-             'length' => 45,
+             'length' => 18,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('LASTNAME', 'string', 45, array(
+        $this->hasColumn('LASTNAME', 'string', 18, array(
              'type' => 'string',
-             'length' => 45,
+             'length' => 18,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('NICKNAME', 'string', 45, array(
+        $this->hasColumn('NICKNAME', 'string', 10, array(
              'type' => 'string',
-             'length' => 45,
+             'length' => 10,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('EMAIL', 'string', 45, array(
+        $this->hasColumn('EMAIL', 'string', 254, array(
              'type' => 'string',
-             'length' => 45,
+             'length' => 254,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
@@ -100,9 +101,8 @@ abstract class BaseUsers extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('ABOUT', 'string', 45, array(
+        $this->hasColumn('ABOUT', 'string', null, array(
              'type' => 'string',
-             'length' => 45,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
@@ -170,6 +170,15 @@ abstract class BaseUsers extends Doctrine_Record
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('STATUS', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => true,
+             'primary' => false,
+             'notnull' => true,
              'autoincrement' => false,
              ));
     }

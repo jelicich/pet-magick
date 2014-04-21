@@ -11,7 +11,7 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
 	//$datosU = $user->table->findByMailLog($_POST['email']);
 	$datosU = $user->table->findByMail($_POST['email']);
 	//$profilePic =  $user->table->getProfilePic($datosU[0]["PIC_ID"]);
-    //var_dump($datosU);
+   // var_dump($datosU);
 	//guardo en sesion datos q pueda llegar a necesitar
 	//var_dump($datosU);
 	$_SESSION['id'] = $datosU[0]['ID_USER'];
@@ -21,6 +21,7 @@ if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) 
 	$_SESSION['nickname'] = $datosU[0]['NICKNAME'];
 	$_SESSION['email'] = $datosU[0]['EMAIL'];
 	$_SESSION['rank'] = $datosU[0]['RANK'];
+	$_SESSION['status'] = $datosU[0]['STATUS'];
 	//$_SESSION['thumb'] = 'img/users/thumb/'.$datosU[0]['Pics']['THUMB'];
 	$user->getUserData($_SESSION['id']);
     $_SESSION['thumb'] = $user->getThumb();

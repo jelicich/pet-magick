@@ -50,9 +50,9 @@ abstract class BaseVideos extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('CAPTION', 'string', 300, array(
+        $this->hasColumn('CAPTION', 'string', 100, array(
              'type' => 'string',
-             'length' => 300,
+             'length' => 100,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

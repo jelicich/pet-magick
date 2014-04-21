@@ -41,13 +41,15 @@ class UsersTable extends Doctrine_Table
 	            if(is_numeric($ref['city']))
 	            	$Users->CITY_ID = $ref['city'];
 	            else
-	            	$Users->CITY_ID = null;
+	            $Users->CITY_ID = null;
 	            $Users->TOKEN = $ref['token'];
+              $Users->STATUS = 0;
 	            $Users->save();
-	           	
-	           	
-	            return $Users->toArray();
+
+              return $Users->toArray();
 	   }
+
+   
 
 	    //================== REG VALIDATION
        
@@ -57,7 +59,7 @@ class UsersTable extends Doctrine_Table
 					->from('Users u') 
 					->AndWhere('u.NICKNAME = ?', $us);
 
-				$user = $q->execute();
+				  $user = $q->execute();
 	           
 	           if(sizeof($user) == 0){
 	           		return true;

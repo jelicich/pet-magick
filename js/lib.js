@@ -129,11 +129,14 @@ function printUserMenu(){
  	try 
  	{
  		var errores = JSON.parse(this.responseText);
- 		var err = create('p');
+ 		var err = create('div');
  		err.className = 'error';
+ 		//err.className = 'alert alert-danger';
+ 		//err.style.marginTop = "20px";
+
  		for(error in errores)
  		{
- 			var p = '<strong>'+error+'</strong> '+errores[error];
+ 			var p = '<strong>'+error+'</strong> '+  errores[error];
  		}
  		err.innerHTML = p;
  		switch(source) //switch para ver donde imprimir el error

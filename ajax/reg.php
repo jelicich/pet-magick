@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+//var_dump($_POST['token']); exit;
 include_once('../php/classes/BOUsers.php');
 
 $user = new BOUsers;
@@ -61,28 +61,32 @@ $dato = array(
 
 
 
-if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la misma de login.php
-	
-	$user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']));
+if($user->registration($dato)){
 
-	// busco el nombre de usuario
-	$datosU = $user->table->findByMail($_POST['email']);
-//var_dump($datosU);
-	//guardo en sesion datos q pueda llegar a necesitar
-	$_SESSION['id'] = $datosU[0]['ID_USER'];
-	$_SESSION['datelog'] = date('Y-m-d H:i:s');
-	$_SESSION['name'] = $datosU[0]['NAME'];
-	$_SESSION['lastname'] = $datosU[0]['LASTNAME'];
-	$_SESSION['nickname'] = $datosU[0]['NICKNAME'];
-	$_SESSION['email'] = $datosU[0]['EMAIL'];
+			//echo "<div id='passAlert' class='alert alert-success'>Check your email and confirm your subscription</div>"; 
+			//echo "<div id='passAlert' class='alert alert-danger'>There was a problem. Please try again in a few minutes</div>";
+	
+/*
+				$user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']));
 
-	
-	
-	
-	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
-	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
-	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
-	//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
+				// busco el nombre de usuario
+				$datosU = $user->table->findByMail($_POST['email']);
+
+				//guardo en sesion datos q pueda llegar a necesitar
+				$_SESSION['id'] = $datosU[0]['ID_USER'];
+				$_SESSION['datelog'] = date('Y-m-d H:i:s');
+				$_SESSION['name'] = $datosU[0]['NAME'];
+				$_SESSION['lastname'] = $datosU[0]['LASTNAME'];
+				$_SESSION['nickname'] = $datosU[0]['NICKNAME'];
+				$_SESSION['email'] = $datosU[0]['EMAIL'];
+
+				
+				
+				
+				//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
+				//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
+				//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
+				//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
 
 	
 	//cargo el html con el menu del usuario
@@ -96,6 +100,8 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 	}
 	//cacheo la info para las herramientas de busqueda
 	include_once 'autoCompleteEverything.php';
+*/
+
 
 }else{
 

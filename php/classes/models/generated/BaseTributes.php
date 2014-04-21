@@ -34,9 +34,9 @@ abstract class BaseTributes extends Doctrine_Record
              'primary' => true,
              'autoincrement' => true,
              ));
-        $this->hasColumn('TITLE', 'string', 100, array(
+        $this->hasColumn('TITLE', 'string', 90, array(
              'type' => 'string',
-             'length' => 100,
+             'length' => 90,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

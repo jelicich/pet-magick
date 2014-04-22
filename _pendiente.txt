@@ -100,7 +100,11 @@ Para confirmar por email modifique lo siguiente:
 
 - ajax/autocompleteEverything: modifique $user->metodo(); x $u->metodo(); por la misma razon q en el punto anterior.
 
-- donde/cuando es q pasa q el token se resetea a 0 ?
+
+
+
+
+- donde/cuando es q pasa q el token se resetea a 0 ? cambiar a esto asi conservamos el token
 
 - hubo un error de wp q no me permitio cerrar del todo. este es el mensaje q me imprime cuando deberia imprimir un error en la registracion:
 

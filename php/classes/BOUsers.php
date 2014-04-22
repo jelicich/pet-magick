@@ -177,7 +177,7 @@ class BOUsers{
 
           // busco la info del users en base al token q llega por URL
           $q = Doctrine_Query::create()
-          ->select('*')
+          ->select('u.NAME, u.LASTNAME, u.STATUS')
           ->from('Users u') 
           ->where('u.TOKEN = ?', $ref);
 

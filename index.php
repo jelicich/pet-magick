@@ -3,46 +3,7 @@
 	$_SESSION['token'] = sha1(uniqid()); 
 
 	
-	if(isset($_GET['r'])){ 
-		//'8a660044249e8cf14a447c6aa513ee66177d7ed7'
-		include_once('php/classes/BOUsers.php');
-		$u = new BOUsers;
-
-		//to por url el token q le mlande por mail al user
-		$confirmation  = $u->confirm_subscription($_GET['r']);
-
-		// evaluo q coincida con el token de la bd
-		if($confirmation != false){
-
-			// logueo al user como hacemos normalmente
-			$u->login($confirmation[0]['EMAIL'], $confirmation[0]['PASSWORD'], $confirmation[0]['TOKEN']);
-
-			//guardo en sesion datos q pueda llegar a necesitar
-			$_SESSION['id'] = $confirmation[0]['ID_USER'];
-			$_SESSION['datelog'] = date('Y-m-d H:i:s');
-			$_SESSION['name'] = $confirmation[0]['NAME'];
-			$_SESSION['lastname'] = $confirmation[0]['LASTNAME'];
-			$_SESSION['nickname'] = $confirmation[0]['NICKNAME'];
-			$_SESSION['email'] = $confirmation[0]['EMAIL'];
-
-			//cargo el html con el menu del usuario
-			/*if(isset($_POST['url']) && $_POST['url'] == 1)
-			{
-				include_once 'templates/userMenuBlog.php';
-			}
-			else
-			{
-				include_once 'templates/userMenu.php';
-			}
-			//cacheo la info para las herramientas de busqueda
-			*/
-			include_once 'ajax/autoCompleteEverything.php';
-		
-		}else{
-
-			//echo "cagamos"; exit;
-		}
-	}
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -65,6 +26,24 @@
 <script type="text/javascript" src="js/jq_functions.js"></script> 
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 
+<style type="text/css">
+
+	.confirm_subscription{
+		float: left;
+		width: 100%;
+		height: auto;
+		margin-top: 200px;
+		text-align: center;
+	}
+
+	.confirm_subscription div{
+		width: 500px;
+		margin: 0 auto;
+	}
+
+
+</style>
+
 </head>
 
 <body>
@@ -78,6 +57,67 @@
 
 	<?php 
 		include_once 'templates/header.php'; 
+
+		if(isset($_GET['r'])){ 
+
+		include_once('php/classes/BOUsers.php');
+		$u = new BOUsers;
+
+		//tomo por url el token q le mlande por mail al user
+		$confirmation  = $u->confirm_subscription($_GET['r']);
+
+		// evaluo q coincida con el token de la bd
+		if($confirmation != false){
+			/*
+			// logueo al user como hacemos normalmente
+			$u->login($confirmation[0]['EMAIL'], $confirmation[0]['PASSWORD'], $confirmation[0]['TOKEN']);
+
+			//guardo en sesion datos q pueda llegar a necesitar
+			$_SESSION['id'] = $confirmation[0]['ID_USER'];
+			$_SESSION['datelog'] = date('Y-m-d H:i:s');
+			$_SESSION['name'] = $confirmation[0]['NAME'];
+			$_SESSION['lastname'] = $confirmation[0]['LASTNAME'];
+			$_SESSION['nickname'] = $confirmation[0]['NICKNAME'];
+			$_SESSION['email'] = $confirmation[0]['EMAIL'];
+			*/
+			//cargo el html con el menu del usuario
+			/*if(isset($_POST['url']) && $_POST['url'] == 1)
+			{
+				include_once 'templates/userMenuBlog.php';
+			}
+			else
+			{
+				include_once 'templates/userMenu.php';
+			}
+			//cacheo la info para las herramientas de busqueda
+			*/
+			if($confirmation[0]['STATUS'] == 1){
+
+				echo "<div class='confirm_subscription'>
+					<div class='alert alert-warning'>Hi <strong>".$confirmation[0]['NAME']."  ".$confirmation[0]['LASTNAME']."</strong> !! <br>You already have an activated account.<br> 
+					You can login in or click on 'Forrgot password ?' if you don't remember your user or password.</div>
+				</div>"; 
+				exit;
+
+			}
+
+			echo "<div class='confirm_subscription'>
+					<div class='alert alert-success'>Congratulations <strong>".$confirmation[0]['NAME']."  ".$confirmation[0]['LASTNAME']."</strong> !! <br>Your account has been already activated!<br> You can start enjoying Pet Magick.<br> Thanks!</div>
+			</div>"; 
+
+			exit;
+
+			include_once 'ajax/autoCompleteEverything.php';
+		
+		}else{
+
+			echo "<div class='confirm_subscription'>
+					<div class='alert alert-danger' >There was an error while trying to activate your account.<br> Please try again later.</div>
+			</div>";  
+			
+			exit;
+		}
+	}
 	?>
 
 	<!-- site content -->

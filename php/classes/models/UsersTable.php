@@ -21,6 +21,8 @@ class UsersTable extends Doctrine_Table
 
        public function reg($ref){
 
+               $now = date('Y-m-d H:i:s');
+
        			  $pass_sha1 = sha1($ref['password']);
 	            $Users = new Users();
 	            $Users->ID_USER = $ref['id'];
@@ -44,6 +46,7 @@ class UsersTable extends Doctrine_Table
 	            $Users->CITY_ID = null;
 	            $Users->TOKEN = $ref['token'];
               $Users->STATUS = 0;
+              $Users->REGISTRATION_DATE = $now;
 	            $Users->save();
 
               return $Users->toArray();

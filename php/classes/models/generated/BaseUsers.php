@@ -20,6 +20,7 @@
  * @property integer $RANK
  * @property string $TOKEN
  * @property integer $STATUS
+ * @property timestamp $REGISTRATION_DATE
  * @property Pics $Pics
  * @property Albums $Albums
  * @property Countries $Countries
@@ -177,6 +178,14 @@ abstract class BaseUsers extends Doctrine_Record
              'length' => 4,
              'fixed' => false,
              'unsigned' => true,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('REGISTRATION_DATE', 'timestamp', null, array(
+             'type' => 'timestamp',
+             'fixed' => false,
+             'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,

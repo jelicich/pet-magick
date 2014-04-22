@@ -1396,7 +1396,7 @@ class phpLedAdsStats
 			return false;
 		
 		// Create the graph. These two calls are always required
-		$graph = new Graph(700,400,"auto");	// Graph(width, height, 'auto')
+		$graph = new Graph(700,400);	// Graph(width, height, 'auto')
 		$graph->img->SetMargin(60,30,20,75); // left, right, top, bottom
 		$graph->SetBackgroundImage("background.png", 3);
 		$graph->AdjBackgroundImage(0,-.7);
@@ -1471,7 +1471,7 @@ class phpLedAdsStats
 		}
 
 		// A nice graph with anti-aliasing
-		$graph = new Graph(800,400,"auto");
+		$graph = new Graph(800,400);
 		$graph->img->SetMargin(40,120,40,40);
 		$graph->SetBackgroundImage("background.png",1);
 

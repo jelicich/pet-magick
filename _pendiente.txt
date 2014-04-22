@@ -15,10 +15,6 @@ PENDIENTES
 
 - css en ventanas modales (miniaturas, scroll, etc)
 
-- gif en ventanas modales
-
-- centrar gif preloader y donde aparezca descentrado
-
 - poner mensajes para ie8 e ie9
 
 

@@ -170,7 +170,8 @@ class UsersTable extends Doctrine_Table
 
     	$q = Doctrine_Query::create()
     		->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME')
-			->from('Users u');
+			->from('Users u')
+      ->where('u.STATUS = ?', 1); // agregado luego de confirmacion por mail
 
 		$rta = $q->execute();
 		

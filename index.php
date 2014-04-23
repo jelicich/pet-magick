@@ -48,15 +48,8 @@
 
 <body>
 <div id='preloader'><img src='img/loading.gif' alt='loader' /></div>
-
 <?php 
-		include_once 'templates/No_IE.php'; 
-?>
-
-<div id="wrapper">
-
-	<?php 
-		include_once 'templates/header.php'; 
+		
 
 		if(isset($_GET['r'])){ 
 
@@ -95,29 +88,47 @@
 
 				echo "<div class='confirm_subscription'>
 					<div class='alert alert-warning'>Hi <strong>".$confirmation[0]['NAME']."  ".$confirmation[0]['LASTNAME']."</strong> !! <br>You already have an activated account.<br> 
-					You can login in or click on 'Forrgot password ?' if you don't remember your user or password.</div>
+					You can login in or click on 'Forrgot password ?' if you don't remember your user or password.<br><br>
+					<a href='index.php' class='btn'>Home</a>
+					</div>
 				</div>"; 
 				exit;
 
 			}
 
 			echo "<div class='confirm_subscription'>
-					<div class='alert alert-success'>Congratulations <strong>".$confirmation[0]['NAME']."  ".$confirmation[0]['LASTNAME']."</strong> !! <br>Your account has been already activated!<br> You can start enjoying Pet Magick.<br> Thanks!</div>
+					<div class='alert alert-success'>Congratulations <strong>".$confirmation[0]['NAME']."  ".$confirmation[0]['LASTNAME']."</strong> !! 
+					<br>Your account has been already activated!
+					<br> You can start enjoying Pet Magick.<br> Thanks!<br><br>
+					<a href='index.php' class='btn'>Start !</a>
+				</div>
 			</div>"; 
 
-			exit;
-
 			include_once 'ajax/autoCompleteEverything.php';
-		
+			exit;
+			
 		}else{
 
 			echo "<div class='confirm_subscription'>
-					<div class='alert alert-danger' >There was an error while trying to activate your account.<br> Please try again later.</div>
+					<div class='alert alert-danger'>There was an error while trying to activate your account.<br> 
+					Please try again later.<br><br>
+					<a href='index.php' class='btn'>Home</a>
+					</div>
 			</div>";  
 			
 			exit;
 		}
 	}
+?>
+<?php 
+		include_once 'templates/No_IE.php'; 
+?>
+
+<div id="wrapper">
+
+	<?php 
+		include_once 'templates/header.php'; 
+
 	?>
 
 	<!-- site content -->

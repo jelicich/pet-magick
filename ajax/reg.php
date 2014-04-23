@@ -4,7 +4,7 @@ session_start();
 //var_dump($_POST['token']); exit;
 include_once('../php/classes/BOUsers.php');
 
-$user = new BOUsers;
+$u = new BOUsers;
 
 if(!preg_match('/^[a-z0-9]{3,10}$/i', $_POST['nickname']))
 {
@@ -61,7 +61,7 @@ $dato = array(
 
 
 
-if($user->registration($dato)){
+if($u->registration($dato)){
 
 			//echo "<div id='passAlert' class='alert alert-success'>Check your email and confirm your subscription</div>"; 
 			//echo "<div id='passAlert' class='alert alert-danger'>There was a problem. Please try again in a few minutes</div>";
@@ -88,9 +88,9 @@ if($user->registration($dato)){
 				//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
 				//ACA HAY Q MODIFICARLO YA QUE CUANDO SE REGISTRA TIENE QUE CONFIRMAR POR MAIL POR LO TANTO NO SE PUEDE LOGUEAR DE UNA
 
-	
+	*/
 	//cargo el html con el menu del usuario
-	if(isset($_POST['url']) && $_POST['url'] == 1)
+	/*if(isset($_POST['url']) && $_POST['url'] == 1)
 	{
 		include_once '../templates/userMenuBlog.php';
 	}
@@ -99,12 +99,13 @@ if($user->registration($dato)){
 		include_once '../templates/userMenu.php';
 	}
 	//cacheo la info para las herramientas de busqueda
-	include_once 'autoCompleteEverything.php';
+	//include_once 'autoCompleteEverything.php';
 */
-
+       // include_once 'autoCompleteEverything.php';
+		include_once '../templates/logReg.php';
 
 }else{
 
-	echo json_encode($user->err);
+	echo json_encode($u->err);
 	
 }

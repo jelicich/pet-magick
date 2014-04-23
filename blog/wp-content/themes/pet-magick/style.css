@@ -808,7 +808,7 @@ blockquote {
 		font-size: 14px;
 		line-height: 22px;
 		background: rgba(255, 255, 255, 0.3);
-		border-left: 10px solid #ddbb00 !important;
+		border-left: 10px solid #4FB0AC !important;
 		quotes: "\201C""\201D""\2018""\2019";
 		padding: 20px 10px 20px 90px !important;
 		background: url("images/quotes.png") 10px 10px no-repeat rgba(255, 255, 255, 0.3);
@@ -1078,7 +1078,7 @@ input[type="submit"] {
 
 .blog-content img{
 	max-width: 150px !important;
-	border: 4px solid #ddbb00;
+	border: 4px solid #4FB0AC;
 	margin: 10px 0;
 }
 
@@ -1090,7 +1090,7 @@ input[type="submit"] {
 #sidebar h3{
 	font-size: 18px;
 	line-height: 18px;
-	color: #ddbb00;
+	color: #4FB0AC;
 	margin-top: 30px;
 }
 
@@ -1198,11 +1198,11 @@ textarea{
 	resize: none;
 }
 .vet-talk-mod{
-	background: #E4DDB4 !important
+	background: #B3E4E0!important
 }
 
 .vet-talk-mod > .mod-header{
-	background: #ddbb00 !important;
+	background: #4FB0AC !important;
 }
 .content-format-standard p, .content-format-standard img, .content-format-standard ul{
 	margin-bottom: 10px !important;

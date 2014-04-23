@@ -1,7 +1,9 @@
 PENDIENTES
 ==========
 
-- Confirmar por email 
+- ver q onda en wp para terminar Confirmar subscirpcion por email 
+
+- user-profile: redireccionar si no hay id por get. si no saltan mil errores 
 
 - revisar videos con scroll
 
@@ -9,13 +11,15 @@ PENDIENTES
 
 - ver los formatos de video q vamos a usar
 
-- librerias en server
+- css en ventanas modales (scroll)
 
-- color en blog
 
-- css en ventanas modales (miniaturas, scroll, etc)
 
-- poner mensajes para ie8 e ie9
+
+
+
+
+
 
 
 ===================================================================================================================
@@ -55,54 +59,7 @@ LISTA IE (no incluye nada q sea solo estilo):
 --------------------------------------
 
 
-
-
-
-PARA TENER EN CUENTA // POSIBLES BUGS
-=====================================
-
-- forgot pass: cuando te pones en el input se cierra el logion (solo en el server)
-
-- error "rank" cuando te loguea automaticamente luego de registrarte. No lo arregle pq creo q esto lo tenemos q cambiar, no? me refiero al   logueo automatico. Fijate a ver si estas de acuerdo porfa. Si no avisame y lo corrijo, pero no lo dejemos colgado... 
-
-(REGISTRE USUARIO Nuevo Y NO VEO EL ERROR; no deberia tirar error igual lo podemos dejar para cuando este lo del mail)
-
-
-- luego de modificar la clave me aparecio de vuelta este mensaje de error y creo q viene de wp pq no esta en nuestras clases:
-  ERROR: The password you entered for the username administrator is incorrect. Lost your password?
-
- (INTENTE REPRODUCIR EL ERROR PERO NO PUDE, REGISTRÈ UN USUARIO Y LE CAMBIE EL PASS CON EXITO, Y PUDE LOGUEARME Y DESLOGUEARME INCLUSO EN WP, debe ser algun error porq intentaste hacerlo con un usuario q no tiene el ID sicronizado con WP)
-
-
-- error en pet tribute debajo de la foto (tengo mascotas en pet loss q no existen en los perfiles, me parece q mas q un bug es un   desfazaje con la bd)
-
-(SI CARGASTE LA BASE Q SUBI ES ESO, hice inserts dsd phpmyadmin asi nomas y no le puse mascota al tributo, igual a mi no me tira error, solo me muestra todo vacio lo q seria la info de la mascota)
-
-
-
-
 ================================================
-
-
-Para confirmar por email modifique lo siguiente:
-
-- index.php: aca toma la url por get y hace la operacion y te loguea.
-
-- bousers: agregue metodo confirm_subscription();
-- bousers: modifique la validacion del logueo agregando una consulta dentro de val_login();
-
-- templates/profilesModules.php: agregue esto pq al instanciar la clase en index.php me decia q lo redeclaraba:
-
-	if(!isset($u)){
-		include 'php/classes/BOUsers.php';
-		$u = new BOUsers;
-	}
-
-- ajax/autocompleteEverything: modifique $user->metodo(); x $u->metodo(); por la misma razon q en el punto anterior.
-
-
-
-
 
 - donde/cuando es q pasa q el token se resetea a 0 ? cambiar a esto asi conservamos el token
 

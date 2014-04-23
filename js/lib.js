@@ -236,14 +236,18 @@ function reg(){
 		{
 			var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
 			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token+'&url=1';
-			ajax('POST', '../ajax/reg.php', printUserMenu, vars, true);	
+			//ajax('POST', '../ajax/reg.php', printUserMenu, vars, true);	
+			ajax('POST', '../ajax/reg.php', vardump, vars, true);
 		}
 		else
 		{
 			var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
 			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
-			ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);	
+			//ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);	
+			ajax('POST', 'ajax/reg.php', vardump, vars, true);	
 		}
+
+		
 		
 	}
 }//end reg

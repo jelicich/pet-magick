@@ -144,13 +144,7 @@ class BOUsers{
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-              /*"CREATE EVENT deleteReservations 
-                ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR 
-                DO 
-                DELETE FROM reservations WHERE paid = 0 AND date_created_on <= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL '2' DAY)"; 
-              */
-
-
+              
  /*
                 if(mail($to, $subject, $message, $headers)){
 
@@ -744,6 +738,7 @@ class BOUsers{
             ->leftJoin('u.Countries k')
             ->leftJoin('u.Regions r')
             ->leftJoin('u.Cities c')
+            ->where('u.STATUS = ?', 1)  // agregado para traer solo usuarios confirmados
             ->orderBy('u.ID_USER DESC')
             ->offset($from)
             ->limit($to);
@@ -757,6 +752,7 @@ class BOUsers{
             ->leftJoin('u.Countries k')
             ->leftJoin('u.Regions r')
             ->leftJoin('u.Cities c')
+            ->where('u.STATUS = ?', 1)  // agregado para traer solo usuarios confirmados
             ->where('u.NAME LIKE ?', '%'.$string.'%')
             ->orWhere('u.LASTNAME LIKE ?', '%'.$string.'%')
             ->orWhere('u.NICKNAME LIKE ?', '%'.$string.'%')
@@ -781,6 +777,7 @@ class BOUsers{
           $q = Doctrine_Query::create()
             ->select('COUNT(u.ID_USER) as QTY')
             ->from('Users u')
+            //->where('u.STATUS = ?', 1)  // agregado para testear confirmacion
             ->orderBy('u.ID_USER DESC');  
         }
         else
@@ -788,6 +785,7 @@ class BOUsers{
           $q = Doctrine_Query::create()
             ->select('COUNT(u.ID_USER) as QTY')
             ->from('Users u')
+            //->where('u.STATUS = ?', 1)  // agregado para traer solo usuarios confirmados
             ->where('u.NAME LIKE ?', '%'.$string.'%')
             ->orWhere('u.LASTNAME LIKE ?', '%'.$string.'%')
             ->orWhere('u.NICKNAME LIKE ?', '%'.$string.'%')

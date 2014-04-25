@@ -84,7 +84,12 @@
 		<!-- End lastest videos -->
 
 		
-		<div class="publi-org mod grid_4"></div> <!-- esto hay q modificarlo -->
+		<div class="publi-org mod grid_4">
+			<?php 
+				require('admin/ledads/ad_class.php');
+				echo $pla_class->adcode( );
+			?>
+		</div>
 
 
 		

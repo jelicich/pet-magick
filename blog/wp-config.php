@@ -13,6 +13,8 @@
  *
  * @package WordPress
  */
+//BLOCK UPDATES
+define( 'WP_AUTO_UPDATE_CORE', false );
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */

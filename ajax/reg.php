@@ -30,7 +30,7 @@ if($u->registration($dato))
 {
 	$flag = 1;
 	//include_once '../templates/logReg.php';
-	echo json_encode(array('Registration successful!' => 'We have sent you an e-mail in order to confirm your account' ));
+	echo json_encode(array('Registration successful!' => 'We have sent you an e-mail in order to confirm your account. Make sure to check your spam folder' ));
 }
 else
 {

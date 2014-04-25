@@ -130,7 +130,6 @@ function printUserMenu(){
  	{
  		var errores = JSON.parse(this.responseText);
  		var err = create('div');
- 		console.log(errores);
  		if(errores['Error:']){
  			err.className = 'alert alert-danger'; 			
  		}

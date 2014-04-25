@@ -95,6 +95,10 @@
 		</div>
 
 		<div class="grid_4 publi-org" >
+			<?php 
+				require('admin/ledads/ad_class.php');
+				echo $pla_class->adcode( );
+			?>
 		</div>
 		<!-- END asd -->
 

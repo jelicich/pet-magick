@@ -174,7 +174,26 @@
 		</div>
 		<!-- END profiles module -->
 
-	
+		<!-- ads -->
+		<div class="publi-org mod grid_4">
+			<?php 
+				require('admin/ledads/ad_class.php');
+				echo $pla_class->adcode( );
+			?>
+		</div>
+		<div class="publi-org mod grid_4">
+			<?php 
+				require('admin/ledads/ad_class.php');
+				echo $pla_class->adcode( );
+			?>
+		</div>
+		<div class="publi-org mod grid_4">
+			<?php 
+				require('admin/ledads/ad_class.php');
+				echo $pla_class->adcode( );
+			?>
+		</div> 
+		<!-- END ads -->
 
 	</div>
 	<!-- END site content -->

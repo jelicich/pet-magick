@@ -2,6 +2,7 @@ PENDIENTES
 ==========
 
 - ver q onda en wp para terminar Confirmar subscirpcion por email 
+(Warning: Creating default object from empty value in C:\xampp\htdocs\pet-magick\blog\wp-includes\capabilities.php on line 655)
 
 - user-profile: redireccionar si no hay id por get. si no saltan mil errores 
 
@@ -55,15 +56,8 @@ LISTA IE (no incluye nada q sea solo estilo):
 - editUser.php: en el form dice action: insertar.php, q es el archivo de prueba q yo use para crear el uploader. Osea q 
   cuando ejecute el fallback lo va a llamar. Hay q modificarlo cuando hagamos el tema IE y ver si esto se da en algun otro form...
 
-
---------------------------------------
-
-
 ================================================
 
-- donde/cuando es q pasa q el token se resetea a 0 ? cambiar a esto asi conservamos el token
 
-- hubo un error de wp q no me permitio cerrar del todo. este es el mensaje q me imprime cuando deberia imprimir un error en la registracion:
 
-Warning: Creating default object from empty value in C:\xampp\htdocs\pet-magick\blog\wp-includes\capabilities.php on line 655
 

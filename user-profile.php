@@ -3,7 +3,10 @@
 	//session_destroy();
 	$_SESSION['token'] = sha1(uniqid()); 
 	//var_dump($_SESSION);
-
+	if(!isset($_GET['u']) || empty($_GET['u']))
+	{
+		header('Location: search.php?q=&tar=us');
+	}
 	
 	include_once "php/classes/BOUsers.php";
 	
@@ -20,10 +23,7 @@
 	$v = new BOVideos;
 	$f = new BOFavorites;
 
-	if(!isset($_GET['u']) || empty($_GET['u']))
-	{
-		header('Location: search.php?q=&tar=us');
-	}
+
 	$u->getUserData($_GET['u']);
 ?>
 

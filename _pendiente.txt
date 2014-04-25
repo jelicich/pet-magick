@@ -9,9 +9,6 @@ PENDIENTES
 
 - css en ventanas modales (scroll)
 
-- sacar menu de WP en admin (dejar solo foro y blog)
-
-
 
 ===================================================================================================================
 

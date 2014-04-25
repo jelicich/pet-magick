@@ -154,9 +154,9 @@ $menu[60] = array( __('Appearance'), $appearance_cap, 'themes.php', '', 'menu-to
 unset( $appearance_cap );
 */
 
-
+//MENU ADMIN REMOVE ADMIN-REMOME REMOVE-MENU MENU-REMOVE- HIDE-MENU
 //FROM HERE
-
+/*
 // Add 'Editor' to the bottom of the Appearance menu.
 if ( ! is_multisite() )
 	add_action('admin_menu', '_add_themes_utility_last', 101);
@@ -249,7 +249,7 @@ $compat = array(
 	'options-general' => 'settings',
 	'themes' => 'appearance',
 	);
-
+*/
 //TO HERE
 
 require_once(ABSPATH . 'wp-admin/includes/menu.php');

@@ -51,27 +51,30 @@ class BOUsers{
                 $rta_nickname = $this->table->val_nickname($ref['nickname']); // Ver si esto se puede optimizar (junto con las consultas en table: val_nickname, val_email)
                 $rta_email = $this->table->val_email($ref['email']);
 
-                
-                if($ref['password'] != $ref['password2']){
+                if(!preg_match('/^[a-z0-9]{3,10}$/i', $ref['nickname']))
+                {
+                  throw new Exception('Invalid nickname. It must be between 3-10 characters. Allowed characters: a-z, 0-9.');
+                  //break;
+                }elseif($ref['password'] != $ref['password2']){
 
                     throw new Exception("Passwords don't match");
-                    break;
+                    //break;
 
                     //LO COMENTO PORQUE EL NICKNAME NO ERA UNIQUE
               }else if($rta_nickname == false){ 
 
                      throw new Exception('Existing user');
-                     break;
+                     //break;
 
                 }else if(preg_match("/^[a-zA-Z]\w+(\.\w+)*\@\w+(\.[0-9a-zA-Z]+)*\.[a-zA-Z]{2,4}$/", $ref['email']) === 0){
 
                     throw new Exception('Please, enter a valid email address');
-                    break;
+                    //break;
 
                 }else if($rta_email == false){
 
                      throw new Exception('This email address already exists in our system');
-                     break;
+                     //break;
                 }
         }// End else
     } // End function val_reg
@@ -125,7 +128,26 @@ class BOUsers{
 
         try
             {
-               $this->val_reg($ref);
+              $this->val_reg($ref);
+              //reg wordpress
+      
+              $user_name = $ref['nickname'];
+              $user_email = $ref['email'];
+              $user_password = $ref['password'];
+              $user_id = username_exists( $user_name );
+
+              if ( !$user_id ) 
+              {
+                $ref['id'] = wp_create_user( $user_name, $user_password, $user_email );
+                if(gettype($ref['id']) == 'object'){
+                  throw new Exception($ref['id']);   
+                }
+              }
+              else
+              {
+                throw new Exception('Existing user');
+              }
+              // END wp
                $rta = $this->table->reg($ref);
 
                 $url = 'http://www.petmagick.com?r='.$ref['token'];

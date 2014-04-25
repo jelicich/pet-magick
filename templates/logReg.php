@@ -7,8 +7,10 @@
 		<div id="reg-form">
 			
 			<?php 
-				
-				include_once 'php/classes/BOLocation.php';
+				if(!isset($flag))
+					include_once 'php/classes/BOLocation.php';
+				else
+					include_once '../php/classes/BOLocation.php';
 
 				$country = new BOLocation;
 				$countries = $country->countryList();

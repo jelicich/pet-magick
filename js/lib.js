@@ -130,9 +130,16 @@ function printUserMenu(){
  	{
  		var errores = JSON.parse(this.responseText);
  		var err = create('div');
- 		err.className = 'error';
- 		//err.className = 'alert alert-danger';
- 		//err.style.marginTop = "20px";
+ 		console.log(errores);
+ 		if(errores['Error:']){
+ 			err.className = 'alert alert-danger'; 			
+ 		}
+ 		else
+ 		{
+			err.className = 'alert alert-success';
+ 		}
+ 		err.style.marginTop = "20px";
+ 		
 
  		for(error in errores)
  		{
@@ -155,7 +162,7 @@ function printUserMenu(){
  		setTimeout(function()
 			{
 				err.parentNode.removeChild(err);
-			},3000)
+			},5000)
  	}
  	catch(e)
  	{
@@ -236,15 +243,13 @@ function reg(){
 		{
 			var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
 			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token+'&url=1';
-			//ajax('POST', '../ajax/reg.php', printUserMenu, vars, true);	
-			ajax('POST', '../ajax/reg.php', vardump, vars, true);
+			ajax('POST', '../ajax/reg.php', printUserMenu, vars, true);	
 		}
 		else
 		{
 			var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
 			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
-			//ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);	
-			ajax('POST', 'ajax/reg.php', vardump, vars, true);	
+			ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);	
 		}
 
 		

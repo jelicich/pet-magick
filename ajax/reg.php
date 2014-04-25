@@ -3,45 +3,12 @@
 session_start();
 //var_dump($_POST['token']); exit;
 include_once('../php/classes/BOUsers.php');
+include_once '../blog/wp-load.php';
 
 $u = new BOUsers;
 
-if(!preg_match('/^[a-z0-9]{3,10}$/i', $_POST['nickname']))
-{
-	echo json_encode(array('Error:'=> 'Invalid nickname. It must be between 3-10 characters. Allowed characters: a-z, 0-9.'));
-	die;
-}
-
-//reg wordpress
-	include_once '../blog/wp-load.php';
-
-	$user_name = $_POST['nickname'];
-	$user_email = $_POST['email'];
-	$user_password = $_POST['password'];
-
-	if(preg_match("/^[a-zA-Z]\w+(\.\w+)*\@\w+(\.[0-9a-zA-Z]+)*\.[a-zA-Z]{2,4}$/", $user_email === 0))
-	{
-		echo json_encode(array('Error:'=> 'Please, enter a valid e-mail address'));
-		die;
-	}
-
-	$user_id = username_exists( $user_name );
-	if ( !$user_id ) 
-	{
-		$user_id = wp_create_user( $user_name, $user_password, $user_email );
-	}
-	else
-	{
-		echo json_encode(array('Error' => 'Existing user'));
-		die;
-	}
-// END wp
-
-
-
 //var_dump($_POST);
 $dato = array(
-	'id' => $user_id,
 	'name' => $_POST['name'],
 	'lastname' => $_POST['lastname'],
 	'nickname' => $_POST['nickname'],
@@ -59,9 +26,29 @@ $dato = array(
 );
 
 
+if($u->registration($dato))
+{
+	$flag = 1;
+	//include_once '../templates/logReg.php';
+	echo json_encode(array('Registration successful!' => 'We have sent you an e-mail in order to confirm your account' ));
+}
+else
+{
+	echo json_encode($u->err);	
+}
+	
 
 
-if($u->registration($dato)){
+
+
+
+
+
+
+
+
+
+//if($u->registration($dato)){
 
 			//echo "<div id='passAlert' class='alert alert-success'>Check your email and confirm your subscription</div>"; 
 			//echo "<div id='passAlert' class='alert alert-danger'>There was a problem. Please try again in a few minutes</div>";
@@ -102,10 +89,10 @@ if($u->registration($dato)){
 	//include_once 'autoCompleteEverything.php';
 */
        // include_once 'autoCompleteEverything.php';
-		include_once '../templates/logReg.php';
+		//include_once '../templates/logReg.php';
 
-}else{
+//}else{
 
-	echo json_encode($u->err);
+//	echo json_encode($u->err);
 	
-}
+//}

@@ -167,7 +167,7 @@ class BOUsers{
                 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
               
- /*
+ 
                 if(mail($to, $subject, $message, $headers)){
 
                       return true;
@@ -175,10 +175,10 @@ class BOUsers{
                 }else{
 
                    // return false;
-                    throw new Exception('We couldn't send you an email);
+                    throw new Exception('We couldn\'t send you an email');
 
                 }
-*/               return true;
+               return true;
             }
 
         catch(Exception $e)

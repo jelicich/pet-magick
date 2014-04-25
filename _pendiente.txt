@@ -1,11 +1,6 @@
 PENDIENTES
 ==========
 
-- ver q onda en wp para terminar Confirmar subscirpcion por email 
-(Warning: Creating default object from empty value in C:\xampp\htdocs\pet-magick\blog\wp-includes\capabilities.php on line 655)
-
-- user-profile: redireccionar si no hay id por get. si no saltan mil errores 
-
 - revisar videos con scroll
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
@@ -18,17 +13,8 @@ PENDIENTES
 
 
 
-
-
-
-
-
 ===================================================================================================================
 
-Archivos con mayuscula a tener en cuenta cuando subamos todo
-(actual -> deberia ser) 
-- BOmessage -> BOMessage
-- BOlocation -> BOLocation
 
 IMGUPLOADER
 ===========

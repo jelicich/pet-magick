@@ -20,7 +20,10 @@
 	$v = new BOVideos;
 	$f = new BOFavorites;
 
-
+	if(!isset($_GET['u']) || empty($_GET['u']))
+	{
+		header('Location: search.php?q=&tar=us');
+	}
 	$u->getUserData($_GET['u']);
 ?>
 

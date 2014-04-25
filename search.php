@@ -343,12 +343,26 @@
 		</div> <!-- mod -->
 
 		<!-- asd -->
-		<div class="grid_4 publi-org" >
+		<!-- ads -->
+		<div class="publi-org mod grid_4">
 			<?php 
-			//	require('admin/ledads/ad_class.php');
-			//	echo $pla_class->adcode( );
+				require('admin/ledads/ad_class.php');
+				echo $pla_class->adcode( );
 			?>
 		</div>
+		<div class="publi-org mod grid_4">
+			<?php 
+				require('admin/ledads/ad_class.php');
+				echo $pla_class->adcode( );
+			?>
+		</div>
+		<div class="publi-org mod grid_4">
+			<?php 
+				require('admin/ledads/ad_class.php');
+				echo $pla_class->adcode( );
+			?>
+		</div> 
+		<!-- END ads -->
 
 		
 	</div>

@@ -156,8 +156,8 @@ class BOUsers{
                 $subject = 'Welcome to Pet Magick';
 
                 $message = 'Hi!
-                <br> By clicking on this link you will be able to activate your account: <br><br><b>'
-                .$url.'</b><br><br> 
+                <br> By clicking on this link you will be able to activate your account: <br><br><b><a href="'
+                .$url.'">'.$url.'</a></b><br><br> 
                 Remember you have 48 hours to do it. Otherwise, you will have to register again<br>
                 Thank you for join us!.';
 

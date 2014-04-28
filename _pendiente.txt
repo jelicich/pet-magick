@@ -9,6 +9,7 @@ PENDIENTES
 
 - css en ventanas modales (scroll)
 
+- Configurar paginas de error en server.
 
 ===================================================================================================================
 

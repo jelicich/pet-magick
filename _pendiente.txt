@@ -17,6 +17,8 @@ PENDIENTES
 
 - poner notificacion en inbox
 
+- En profiles muestra ??, ?? cuando no completas los 3 campos (pais, region, ciudad). si pones pais solo, o pais y region muestra ?? ??
+
 ===================================================================================================================
 BUGS / TEST
 ===========

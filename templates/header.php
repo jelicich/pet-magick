@@ -17,7 +17,7 @@
 
 					<?php 
 						//session_destroy();
-						//var_dump($_SESSION); exit;
+					//	var_dump($_SESSION); exit;
 						if(isset($_SESSION['id']) && isset($_SESSION['email']))
 						{
 							include_once 'templates/userMenu.php';

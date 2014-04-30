@@ -1287,8 +1287,7 @@ function news(){
 					var index = p.indexOf('#');
 			  		index ++;
 			  		p = 'n='+p.substr(index);
-			  		
-					ajax('POST', 'ajax/deleteNews.php', printNews, p, true);// Mando por aca el id del user?????
+			  		ajax('POST', 'ajax/deleteNews.php', printNews, p, true);
 
 			}// end deleteNews[i].onclick	
 		}//end for

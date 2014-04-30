@@ -42,14 +42,20 @@ class BONews{
         return $this->news;
     }
 
-    function deleteNews($newsId){ 
-
-       $q = doctrine_query:: create()
+     function deleteNews($id){ 
+        
+       $q = doctrine_query::create()
         ->delete('News n')
-        ->where('n.ID_NEWS = ?', $newsId);
+        ->where('n.ID_NEWS =?', $id);
         $q->execute();
 
     }
+
+
+
+
+
+
 
     function getErrors(){
 

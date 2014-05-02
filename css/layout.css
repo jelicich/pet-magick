@@ -2281,7 +2281,8 @@ Tunear!!!
 }
 */
 
-#notification-box{
+#notification-box,
+#notification-msg-box{
 	display: none;
 	position: absolute;
 	z-index: 500;
@@ -2289,9 +2290,11 @@ Tunear!!!
 	color: #ffffff;
 	padding:5px 10px;
 	border:1px solid rgba(0,0,0,0.2);
+	max-width: 250px;
+	right: 0;
 }
-
-#notification{
+#notification,
+#notification-msg{
 	background:#d95248;
 	display: inline-block;
 	width: 20px;
@@ -3939,5 +3942,10 @@ a[href$=".jpg"]{
 
 #btn-delete-account{
 	margin-bottom: 20px;
+}
+.date-last-msg{
+	display: block;
+	color: rgba(255,255,255,0.5);
+	font-size: 11px;
 }
 

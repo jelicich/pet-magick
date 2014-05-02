@@ -34,8 +34,10 @@ class BOConversations{
 
     function conectar() 
     {
+        //server
         $conexion = @mysqli_connect('localhost', 'petmagic_userdb', 'petmagick1524', 'petmagic_db');
-
+        //local
+        //$conexion = @mysqli_connect('localhost', 'root', '', 'pet_magick');
         if (!$conexion) 
         {
         //entra en este if si $conexion es false
@@ -85,7 +87,7 @@ class BOConversations{
                 c.USER_1_ID = '".$_SESSION['id']."'
                 or c.USER_2_ID = '".$_SESSION['id']."'
             )
-            ORDER BY c.ID_CONVERSATION DESC";
+            ORDER BY c.DATE DESC";
         $r = $this->consultar($c,$q);
 
             
@@ -103,7 +105,7 @@ class BOConversations{
             */
 
             $cquery = $this->consultar($c,"
-                SELECT m.ID_MESSAGE, m.DATE, m.MESSAGE, m.USER_ID, m.STATUS FROM messages m WHERE m.CONVERSATION_ID = '$conv_id' ORDER BY m.DATE DESC LIMIT 1");
+                SELECT m.ID_MESSAGE, DATE_FORMAT(m.DATE, '%W %d %M %Y %H:%i') as DATE, LEFT(m.MESSAGE, 40) as MESSAGE, m.USER_ID, m.STATUS FROM messages m WHERE m.CONVERSATION_ID = '$conv_id' ORDER BY m.DATE DESC LIMIT 1");
             $crow=mysqli_fetch_assoc($cquery);
             $message_id=$crow['ID_MESSAGE'];
             $message=$crow['MESSAGE'];
@@ -145,6 +147,97 @@ class BOConversations{
 
     }// End read
 
+    function getNotifications($idUser){
+            
+        /*
+        $c = $this->conectar();
+        $q = "
+            SELECT u.ID_USER, c.ID_CONVERSATION 
+            FROM conversations c, users u
+            WHERE CASE
+            WHEN c.USER_1_ID = '".$_SESSION['id']."'
+            THEN c.USER_2_ID = u.ID_USER
+            WHEN c.USER_2_ID = '".$_SESSION['id']."'
+            THEN c.USER_1_ID = u.ID_USER
+            END
+            AND (
+                c.USER_1_ID = '".$_SESSION['id']."'
+                or c.USER_2_ID = '".$_SESSION['id']."'
+            )
+            ORDER BY c.DATE DESC";
+        $r = $this->consultar($c,$q);
+
+            
+        $qty = 0;
+
+        while($row=mysqli_fetch_assoc($r))
+        {
+            $row['SENDER'] = $crow['USER_ID'];
+
+            $cquery = $this->consultar($c,"
+                SELECT m.ID_MESSAGE, m.STATUS, m.USER_ID FROM messages m WHERE m.CONVERSATION_ID = '$conv_id' ORDER BY m.DATE DESC LIMIT 1");
+            $crow=mysqli_fetch_assoc($cquery);
+            
+            if($crow['USER_ID'] != $idUser)
+            {
+                if($crow['STATUS'] != NULL)
+                {
+                    $qty++;
+                }
+            }
+        }
+        var_dump($crow);
+        if($qty == 0)
+            return false;
+        
+        return $qty;
+        */
+        $c = $this->conectar();
+        $q = "
+            SELECT u.ID_USER, c.ID_CONVERSATION, u.NAME, u.LASTNAME, u.NICKNAME 
+            FROM conversations c, users u
+            WHERE CASE
+            WHEN c.USER_1_ID = '".$_SESSION['id']."'
+            THEN c.USER_2_ID = u.ID_USER
+            WHEN c.USER_2_ID = '".$_SESSION['id']."'
+            THEN c.USER_1_ID = u.ID_USER
+            END
+            AND (
+                c.USER_1_ID = '".$_SESSION['id']."'
+                or c.USER_2_ID = '".$_SESSION['id']."'
+            )
+            ORDER BY c.DATE DESC";
+        $r = $this->consultar($c,$q);
+
+        $qty = 0;
+
+        while($row=mysqli_fetch_assoc($r))
+        {
+
+            $conv_id=$row['ID_CONVERSATION'];
+
+            $cquery = $this->consultar($c,"
+                SELECT m.ID_MESSAGE, m.USER_ID, m.STATUS FROM messages m WHERE m.CONVERSATION_ID = '$conv_id' ORDER BY m.DATE DESC LIMIT 1");
+            $crow=mysqli_fetch_assoc($cquery);
+            
+            if($crow['USER_ID'] != $idUser)
+            {
+                if($crow['STATUS'] == 0)
+                {
+                    $qty++;
+                }
+            }  
+
+        }
+        if($qty == 0)
+            return false;
+        
+        return $qty;
+            
+        
+
+    }
+
 
 
     function getNewHeaders($idUser){
@@ -165,7 +258,7 @@ class BOConversations{
             )
             AND
             c.DATE > '".$_SESSION['last-header']."'
-            ORDER BY c.ID_CONVERSATION DESC";
+            ORDER BY c.DATE DESC";
         $r = $this->consultar($c,$q);
 
         
@@ -183,7 +276,7 @@ class BOConversations{
             */
 
             $cquery = $this->consultar($c,"
-                SELECT m.ID_MESSAGE, m.DATE, m.MESSAGE, m.USER_ID, m.STATUS FROM messages m WHERE m.CONVERSATION_ID = '$conv_id' ORDER BY m.DATE DESC LIMIT 1");
+                SELECT m.ID_MESSAGE, DATE_FORMAT(m.DATE, '%W %d %M %Y %H:%i') as DATE, LEFT(m.MESSAGE, 40) as MESSAGE, m.USER_ID, m.STATUS FROM messages m WHERE m.CONVERSATION_ID = '$conv_id' ORDER BY m.DATE DESC LIMIT 1");
             $crow=mysqli_fetch_assoc($cquery);
             $message_id=$crow['ID_MESSAGE'];
             $message=$crow['MESSAGE'];

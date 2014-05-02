@@ -551,12 +551,18 @@ function printHeaders(){
 	var each;
 	var eachName;
 	var lastMsg;
+	var lastDate;
 
 	for(var i = 0; i < html.length; i++){
 
 		 each =  html[i]['ID_CONVERSATION'];
 		 eachName = html[i]['NAME'] + ' ' + html[i]['LASTNAME'] + ' ' + '(' + html[i]['NICKNAME'] + ')';
 		 lastMsg =  html[i]['MESSAGE'];
+		 if(lastMsg.length == 40)
+		 {
+		 	lastMsg += '...';
+		 }
+		 lastDate = html[i]['DATE']; 
 		 //console.log(lastMsg);
 
 		if(byid(each) === null){ 
@@ -581,9 +587,13 @@ function printHeaders(){
 	  		caption = create('span');
 	  		caption.className = 'preview-message';
 	  		caption.innerHTML = lastMsg;
+	  		date = create('span');
+	  		date.className = 'date-last-msg';
+	  		date.innerHTML = lastDate;
 
 	  		as.appendChild(title);
 	  		as.appendChild(caption);
+	  		as.appendChild(date);
 	  		lis.appendChild(as);
 	  		
 	  		//byid('wrap-conversations').appendChild(lis);
@@ -622,6 +632,27 @@ function printHeaders(){
 		  		if(this.parentNode.className == 'msg-unread')
 		  		{
 		  			this.parentNode.removeAttribute('class');
+		  			updateNotification();
+		  			function updateNotification()
+					{
+						var a = byid('notification-msg');
+						if(a)
+						{
+							var n = parseInt(a.innerHTML) - 1;
+							a.innerHTML = n;
+
+							var b = byid('notification-msg-box').getElementsByTagName('strong')[0];
+							var n = parseInt(b.innerHTML) - 1;
+							b.innerHTML = n;
+
+							if(a.innerHTML == 0)
+							{
+								a.parentNode.removeChild(a);
+								b.parentNode.removeChild(b);	
+							}	
+						}
+						
+					}
 		  		}
 		  	}
 	  	}
@@ -1554,16 +1585,26 @@ function listByCategory2(ajaxFile){
 
 
 
-function showNotification()
+function showNotification(notification)
 {
-	var btn = byid('notification');
+	switch(notification)
+	{
+		case 'q':
+			var btn = byid('notification');
+			var div = byid('notification-box');
+			break;
+		case 'msg':
+			var btn = byid('notification-msg');
+			var div = byid('notification-msg-box');
+			break;
+	}
 	btn.onmouseover = function()
 	{
-		byid('notification-box').style.display = 'block';
+		div.style.display = 'block';
 	}
 	btn.onmouseout = function()
 	{
-		byid('notification-box').style.display = 'none';
+		div.style.display = 'none';
 	}
 }
 

@@ -8,6 +8,27 @@
 					</li>
 					<li>
 						<a href="inbox.php">Inbox</a>
+						<?php
+							if($_SERVER['REQUEST_METHOD'] == 'POST')
+								include_once "../php/classes/BOConversations.php";
+							else
+								include_once "php/classes/BOConversations.php";
+							
+							$conv = new BOConversations;
+							$unread = $conv->getNotifications($_SESSION['id']);
+							if($unread)
+							{
+						?>
+							<i id="notification-msg"><?php echo $unread?></i>
+							<div id="notification-msg-box">
+								<p>You have <strong><?php echo $unread?></strong> unread conversations</p>
+							</div>
+							<script type="text/javascript">
+								showNotification('msg');
+							</script>
+						<?php
+							}//end if sizeof
+						?>
 					</li>
 					<li>
 						<?php 
@@ -41,7 +62,7 @@
 								<p>There are <strong><?php echo $n[0]['COUNT']?></strong> unanswered questions in Vet Talk</p>
 							</div>
 							<script type="text/javascript">
-								showNotification();
+								showNotification('q');
 							</script>
 						<?php
 							}//end if sizeof

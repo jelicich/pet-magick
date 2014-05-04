@@ -16,7 +16,7 @@ class BOPopups{
     
     function upload($ref){
 
-//var_dump($ref); exit;
+        //var_dump($ref); exit;
         try{ 
             $this->table->upload($ref);
             return true;

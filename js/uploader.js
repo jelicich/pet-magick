@@ -419,8 +419,26 @@ function imgVideoUploader(whatFor, modulo){
 		            		
 		            		
 		            		var reader = new FileReader();
+		            		var imageValSize  = new Image();
 
 		            		 reader.onload = function(e) {
+
+		            		 	/*	imageValSize.src  = e.target.result;      
+		            		 	    var w = imageValSize.width;       
+							        var h = imageValSize.height;  
+
+							        if(w > 1200 || h > 1500)
+			            			{
+			            				errMsg('Too large...');
+				            			//var noRemoveInput = true; // creo q esto no iria en este caso
+				            			//flagidation = 1; //creo q esto no iria en este caso
+				            			byid('file-container').appendChild(file_id);
+				            			return;
+				            		}
+				            	*/
+
+				
+
 
 						        	var contImgCap = create('div');
 						        		contImgCap.id = 'cont_' + filesSelectedPosition;
@@ -522,8 +540,8 @@ function imgVideoUploader(whatFor, modulo){
 										  	  }
 										  	  
 						                }
-					            }// end onload
-					            reader.readAsDataURL(this.files[0]);
+					         }// end onload
+					         reader.readAsDataURL(this.files[0]);
 				      }// end if
 
 			      	  filesSelectedPosition++;

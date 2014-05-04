@@ -5,8 +5,8 @@ session_start();
 
 
 
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-{	
+//if($_SERVER['REQUEST_METHOD'] == 'POST')
+//{	
 	include_once "../../php/classes/BOPopups.php";
 	$pop = new BOPopups;
 
@@ -16,14 +16,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	);
 
 	$pop->upload($ref);
-	header("Location: ../pop-ups.php?active=1&tab=".$_POST['section']);
+	header("HTTP/1.1 301 Moved Permanently"); 
+	header("Location: http://www.petmagick.com/admin/pop-ups.php?active=1&tab=".$_POST['section']);
 
-	
+/*	
 }
 else
 {
 	echo "Request method error";
 }
 
-
+*/
 ?>

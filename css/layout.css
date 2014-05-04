@@ -106,7 +106,7 @@ p,span{
 	height: 210px;
 	width: 770px;
 	padding: 10px 5px 10px 0;
-	margin-left: 145px;
+	margin-left: 136px;
 	background: rgba(255, 255, 255, 0.3);
 }
 
@@ -401,6 +401,17 @@ p,span{
 	border-top: 10px solid #6a9a16 !important;
 }
 
+.arrow-pet-loss{
+	border-top: 10px solid #9e466b !important;
+}
+.arrow-vet-talk{
+	border-top: 10px solid #5f8a13 !important;
+}
+
+.arrow-antics{
+	border-top: 10px solid #6a9a16 !important;
+}
+
 
 .arrow-vet-talk{
 	border-top: 10px solid #6a9a16 !important;
@@ -576,6 +587,11 @@ p,span{
 #antics .hidden{
 	z-index: 999;
 }
+
+.hidden-profile{
+background-color: rgba(217, 82, 72, 0.6) !important;
+}
+
 .animal-antics-mod{
 	background: #bdd19c;
 

@@ -19,17 +19,21 @@ class BOPics{
 
 function val($query){
 
-   /*   if( !isset($query['file']) )
-      {
-        throw new Exception('<span>esta vacio desde php images</span>');
-        return;
-      }*/
+    
 
+    /*  $tam = getimagesize($query['file']);
+      if($tam[0] > 960 || $tam[1] > 1400)
+      {
+        throw new Exception("<div class='alert alert-danger' id='err'>Too large...</p>");
+        return;
+      }
+    */
       if($query['fileSize'] > 5242880) 
       {// ver q medidas necesito aca para cada formato, tal vez separarlos
         throw new Exception('<div class="alert alert-danger" id="err">Too large...</div>');
         return;
       }
+
       if(!in_array($query['fileType'], $this->mime)){
         // ver si esto lo junto  o lo evaluo separado
         throw new Exception('<div class="alert alert-danger" id="err">Invalid format...</div>');

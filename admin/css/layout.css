@@ -16,7 +16,10 @@ h1{
 	display: none;
 }
 
-
+#log-form{
+	float:none !important;
+	margin: 0 auto;
+}
 /*//////////////////////// WORDPRESS /////////////////
 #just_wp{
 	margin-bottom: 67px !important;

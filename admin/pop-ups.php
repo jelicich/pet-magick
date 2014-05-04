@@ -59,7 +59,7 @@ $pop = new BOPopups;
 		 	<div class="tab-content">
 			  
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'profiles' || !isset($_GET['tab'])) echo "active"; ?>" id="profiles">
-			    	<form action="php/texts.php" method="post" id="profiles_id" >
+			    	<form action="http://www.petmagick.com/admin/php/texts.php" method="post" id="profiles_id" >
 				    	<label><b><small>Enter a text about Profiles section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("profiles") ?></textarea><br>
 				    	<input type="hidden" value="profiles" name="section" />
@@ -68,7 +68,7 @@ $pop = new BOPopups;
 			    </div>
 
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'antics') echo "active"; ?>" id="antics">
-			    	<form action="php/texts.php" method="post"  id="antics_id">
+			    	<form action="http://www.petmagick.com/admin/php/texts.php" method="post"  id="antics_id">
 				      	<label><b><small>Enter a text about Animal antics section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("antics") ?></textarea><br>
 				    	<input type="hidden" value="antics" name="section" />
@@ -77,7 +77,7 @@ $pop = new BOPopups;
 			    </div>
 
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'vet') echo "active"; ?>" id="vet">
-			    	<form action="php/texts.php" method="post" id="vet_id">
+			    	<form action="http://www.petmagick.com/admin/php/texts.php" method="post" id="vet_id">
 				      	<label><b><small>Enter a text about Vet talk section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("vet") ?></textarea><br>
 				    	<input type="hidden" value="vet" name="section" />
@@ -86,7 +86,7 @@ $pop = new BOPopups;
 			    </div>
 
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'projects') echo "active"; ?>" id="projects">
-			    	<form action="php/texts.php" method="post" id="projects_id">
+			    	<form action="http://www.petmagick.com/admin/php/texts.php" method="post" id="projects_id">
 				      	<label><b><small>Enter a text about Projects section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("projects") ?></textarea><br>
 				    	<input type="hidden" value="projects" name="section" />
@@ -95,7 +95,7 @@ $pop = new BOPopups;
 			    </div>
 
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'organizations') echo "active"; ?>" id="organizations">
-			    	<form action="php/texts.php" method="post" id="organizations_id">
+			    	<form action="http://www.petmagick.com/admin/php/texts.php" method="post" id="organizations_id">
 				      	<label><b><small>Enter a text about Organizations section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("organizations") ?></textarea><br>
 				    	<input type="hidden" value="organizations" name="section" />
@@ -104,7 +104,7 @@ $pop = new BOPopups;
 			    </div>
 
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'petloss') echo "active"; ?>" id="petloss">
-			    	<form action="php/texts.php" method="post" id="petloss_id" >
+			    	<form action="http://www.petmagick.com/admin/php/texts.php" method="post" id="petloss_id" >
 				      	<label><b><small>Enter a text about Pet loss section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("petloss") ?></textarea><br>
 				    	<input type="hidden" value="petloss" name="section" />
@@ -113,7 +113,7 @@ $pop = new BOPopups;
 			    </div>
 
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'forum') echo "active"; ?>" id="forum">
-			    	<form action="php/texts.php" method="post" id="forum_id" >
+			    	<form action="http://www.petmagick.com/admin/php/texts.php" method="post" id="forum_id" >
 				      	<label><b><small>Enter a text about Forum section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("forum") ?></textarea><br>
 				    	<input type="hidden" value="forum" name="section" />
@@ -122,7 +122,7 @@ $pop = new BOPopups;
 			    </div>
 
 			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'blog') echo "active"; ?>" id="blog">
-				    <form action="php/texts.php" method="post" id="blog_id">
+				    <form action="http://www.petmagick.com/admin/php/texts.php" method="post" id="blog_id">
 				      	<label><b><small>Enter a text about Blog section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("blog") ?></textarea><br>
 				    	<input type="hidden" value="blog" name="section" />

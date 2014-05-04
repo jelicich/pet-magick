@@ -5,34 +5,37 @@ PENDIENTES
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
-- ver los formatos de video q vamos a usar y de img 
+- ver los formatos de video q vamos a usar y de img (yo pondria cartelito con los formatos permitidos y ya)
 
 - css en ventanas modales (scroll)
 
 - Configurar paginas de error en server.
 
-- centrar logo admin
 
-- cambiar logo JP en el rep de video
 
-- poner notificacion en inbox
 
-- En profiles muestra ??, ?? cuando no completas los 3 campos (pais, region, ciudad). si pones pais solo, o pais y region muestra ?? ??
 
 ===================================================================================================================
 BUGS / TEST
 ===========
 
-- Si subis una imagen muy pesada o grande no la sube y tampoco tira error (Trate de subir una imagen de 3mb / 4600 x 3000px). Falla php (y el server no imprime errores)
+- Se rompe news al borrar un posteo
 
-- INBOX (no acorta los mensajes en la lista de conversaciones. Muestra todo el mensaje entero, si es un choclo lo muestra entero. HAcer substr o left a la consulta)
+- Si te deslogueas desde el home no no refresca el header
+
+- Si subis una imagen muy pesada o grande no la sube y tampoco tira error (Trate de subir una imagen de 3mb / 4600 x 3000px). 
+
+- En profiles muestra ??, ?? cuando no completas los 3 campos (pais, region, ciudad). si pones pais solo, o pais y region muestra ?? ??
+
 
 APORTADOS:
 
 - Cuando te registras dice confirm password el placeholder dice password2. 
 - y algo conceptual cuando te registras
-[06:14:32 p.m.] Martin Sazzaroli: Lastname debería ir a la derecha de name y no abajo
+[06:14:32 p.m.] Martin Sazzaroli: Lastname deberÃ­a ir a la derecha de name y no abajo
 [06:14:44 p.m.] Martin Sazzaroli: y tendrias que ir altabeando de izquierda a derecha
+
+
 
 
 ===================================================================================================================

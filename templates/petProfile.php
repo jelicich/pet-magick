@@ -133,7 +133,7 @@
 													<img src= video/".$a[0]['THUMBNAIL']." class='thumb-big video-thumb'/>
 												</span>
 
-												<dl class='hidden'>
+												<dl class='hidden hidden-profile'>
 													<dt>".htmlspecialchars($a[0]['TITLE'])."</dt>
 													<dd>".htmlspecialchars($a[0]['CAPTION'])."</dd>
 												</dl>

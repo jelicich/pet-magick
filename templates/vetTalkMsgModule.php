@@ -3,7 +3,7 @@
 				<h2>Question time?</h2>
 				
 				<div id='what' class='ask-qa'> <!-- invertir clase y id aca -->
-					<span id="leave-comment">Leave your comment</span>
+					<span id="leave-comment">Ask a Question</span>
 						<div id='pop-up-click' class='mod'>
 
 							<?php

@@ -11,7 +11,7 @@ PENDIENTES
 
 - Configurar paginas de error en server.
 
-
+- Agregar metas keywords description etc
 
 
 

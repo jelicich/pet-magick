@@ -15,9 +15,16 @@ session_start();
 		'content' => $_POST['content']
 	);
 
-	$pop->upload($ref);
-	header("HTTP/1.1 301 Moved Permanently"); 
-	header("Location: http://www.petmagick.com/admin/pop-ups.php?active=1&tab=".$_POST['section']);
+	if(!$pop->upload($ref))
+	{
+		echo $pop->getErrors();
+	}
+	else
+	{
+		header("Location: ../pop-ups.php?active=1&tab=".$_POST['section']);
+	}
+
+	
 
 /*	
 }

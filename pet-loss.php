@@ -45,7 +45,7 @@
 	<div class="container_12" id="content">
 
 		<div id='what'>
-			<a href="#" ><p>How does Project board work ?</p></a>
+			<a href="#" ><p>How does Pet Loss work ?</p></a>
 			<div class='active five_pixels'>
 				<div id='pop-up' class='mod grid_4 '>
 

@@ -44,10 +44,18 @@ class BONews{
 
      function deleteNews($id){ 
         
-       $q = doctrine_query::create()
-        ->delete('News n')
-        ->where('n.ID_NEWS =?', $id);
-        $q->execute();
+       try{
+            $q = Doctrine_Query::create()
+            ->delete('News n')
+            ->where('n.ID_NEWS =?', $id);
+            $q->execute();
+            return true;
+        }
+        catch(Exception $e)
+        {
+             $this->err = $e->getMessage();
+              return false;
+        }
 
     }
 

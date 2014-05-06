@@ -9,9 +9,15 @@ $n = new BONews;
 $u = new BOUsers; 
 
 $newsid = $_POST['n'];
-$n->deleteNews($newsid);
-$_GET['u'] = $_SESSION['id'];
+if(!$n->deleteNews($newsid))
+{
+	echo $n->getErrors();
+}
+else
+{
+	$_GET['u'] = $_SESSION['id'];
+	include_once "../templates/userNews.php";	
+}
 
-include_once "../templates/userNews.php";
 	
 ?>

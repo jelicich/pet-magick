@@ -57,7 +57,7 @@ function  admin_reg(){
 		var email = byid('email').value;
 		var password = byid('password').value;
 		var password2 = byid('password2').value;
-		var rank = byid('rank').value; // Ver q valores mandamos por aca
+		//var rank = byid('rank').value; // Ver q valores mandamos por aca
 		//var country = byid('country').value;
 		//var region = byid('region').value;
 		//var city = byid('city').value;
@@ -65,7 +65,7 @@ function  admin_reg(){
 
 		//variable q pasa todo por post
 		var vars = 'nickname='+nickname +'&email='+email+'&password='+password+
-				   '&password2='+password2+'&rank='+rank ;
+				   '&password2='+password2;
 
 		ajax('POST', 'php/vets_new.php',  admin_printUserMenu, vars, true);
 	}

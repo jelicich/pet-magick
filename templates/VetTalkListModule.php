@@ -132,7 +132,9 @@
 			else{ $content =   htmlspecialchars($allArticles[$i]['CONTENT']); }
 
 			//array_push($noRepeat, $j);
-			$date =  $time->FormatDisplayDate($allArticles[$i]['DATE']);
+			//$date =  $time->FormatDisplayDate($allArticles[$i]['DATE']);
+			$dNewDate = strtotime($allArticles[$i]['DATE']);
+            $date = date('l jS F Y', $dNewDate);
 ?>
 	
 				<li class="clearfix">
@@ -140,7 +142,7 @@
 					<div class="content-description bg-txt ">
 						<h3><?php echo $title; if(strlen($title)==65) echo '...'?></h3>
 						<p><?php echo $content; if(strlen($content)==80) echo '...'; ?></p>
-					<p class="gray_date"><small><?php echo $date; ?></small></p>
+					    <p class="gray_date"><small><?php echo $date; ?></small></p>
 
 						<span id="<?php echo 'id_'.$articleId; ?>" class='linkToModule'>View post</span>
 						<!-- <a href=<?php //echo '#'.$articleId ?> class='linkToModule'>View post</a> -->

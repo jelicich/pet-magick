@@ -19,7 +19,7 @@ PENDIENTES
 BUGS / TEST
 ===========
 
-- Se rompe news al borrar un posteo
+- no esta creando vets (error 500)
 
 - Si te deslogueas desde el home no no refresca el header
 

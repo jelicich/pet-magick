@@ -32,8 +32,11 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	else{ $srcImg = $article[0]['Pics']['THUMB']; }
 	
 }	
-	$time = new BOLocation;
-	$date =  $time->FormatDisplayDate($date);
+	//$time = new BOLocation;
+	//$date =  $time->FormatDisplayDate($date);
+	
+	$dNewDate = strtotime($date);
+    $date = date('l jS F Y', $dNewDate);
 ?>
 <div class="mod vet-talk-mod" id='mainArticle'>
 	<div class="mod-header">

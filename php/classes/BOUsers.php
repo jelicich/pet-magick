@@ -279,7 +279,7 @@ class BOUsers{
     
     function delete($ref){
 
-      $q = doctrine_query:: create()
+      $q = Doctrine_Query:: create()
           ->delete('Users u')
           ->where('u.ID_USER = ?', $ref);
           //->where('u.EMAIL = ?', $ref);
@@ -490,7 +490,7 @@ class BOUsers{
           $q = Doctrine_Query::create()
           ->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, u.EMAIL')
           ->from('Users u') 
-          ->AndWhere('u.RANK = ?', 2);
+          ->AndWhere('u.RANK = ?', 1);
 
             $user = $q->execute();
             return $user->toArray();

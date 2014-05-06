@@ -34,7 +34,10 @@
 					<?php 
 						for($i = 0; $i<sizeof($aq); $i++)
 						{						
-							$date =  $time->FormatDisplayDate($aq[$i]['DATE']);
+							//$date =  $time->FormatDisplayDate($aq[$i]['DATE']);
+							$dNewDate = strtotime($aq[$i]['DATE']);
+						    $date= date('l jS F Y', $dNewDate);
+
 					?>
 
 							<li class="clearfix">
@@ -56,7 +59,9 @@
 
 											if(!empty($aq[$i]['Answers']))
 											{
-												$date =  $time->FormatDisplayDate($aq[$i]['Answers']['DATE']);
+												//$date =  $time->FormatDisplayDate($aq[$i]['Answers']['DATE']);
+												$dNewDate = strtotime($aq[$i]['Answers']['DATE']);
+						    					$date= date('l jS F Y', $dNewDate);
 											?>
 												<a href=<?php echo '"user-profile.php?u='. htmlspecialchars($aq[$i]['Answers']['Users']['ID_USER']) .'"' ?> ><img src=<?php echo '"'.$aq[$i]['Answers']['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
 												<div class="content-description bg-txt">

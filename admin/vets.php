@@ -60,9 +60,9 @@ $u = $u->getVets();
 					<label><b><small>Create a new Vet user</small></b></label>
 					<input type="text" id="nickname" name="nickname" class="form-control" placeholder="Nick name" required /><br>
 				    <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus /><br>
-				    <input type="password" id="password" name="password"class="form-control" placeholder="Password" required /><br>
-				    <input type="password" id="password2" name="password2"class="form-control" placeholder="Password again" required /><br>
-				    <input type="hidden" id="rank" name="rank" class="form-control" value=2 /><br>
+				    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required /><br>
+				    <input type="password" id="password2" name="password2" class="form-control" placeholder="Password again" required /><br>
+				   <!--  <input type="hidden" id="rank" name="rank" class="form-control" value=2 /><br> -->
 
 				    <input type="button" class="btn btn-info btn-mini" id="reg" value="Save" />
 				</form>
@@ -76,7 +76,7 @@ $u = $u->getVets();
 					<label><b><small>Modify existing users status</small></b></label>
 				    <input type="email" name="email" id="email-log" class="form-control" placeholder="Email address" required autofocus /><br>
 				    <label>
-				   	 	<input id="yesOrNot" type="radio" name="yesOrNot" value=2 checked> Vet (normal users)
+				   	 	<input id="yesOrNot" type="radio" name="yesOrNot" value=1 checked> Vet (normal users)
 					</label>
 				    <label>
 				   	 	<input id="yesOrNot" type="radio" name="yesOrNot" value=0> No vet (Vet users)

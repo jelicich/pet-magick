@@ -3,9 +3,12 @@
 session_start();
 
 include_once('../../php/classes/BOUsers.php');
+//include_once '../../blog/wp-load.php';
+
+$token = sha1(uniqid()); 
 
 $user = new BOUsers;
-//var_dump($_POST);
+
 $dato = array(
 	'name' => "default",
 	'lastname' => "default",
@@ -15,17 +18,23 @@ $dato = array(
 	'password' => $_POST['password'],
 	'password2' => $_POST['password2'],
 
-	'country' => "default",
-	'region' =>"default",
+	'country' => null,
+	'region' => null,
 	
-	'city' => "default",
-	'rank' => 2,
-	'token' => "default"
+	'city' => null,
+	'rank' => 1,
+	'token' => $token
 );
 
 
+
+$user->registration($dato);
+
+
+
+/*	
 if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la misma de login.php
-	
+
 	$user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']));
 
 	// busco el nombre de usuario
@@ -65,3 +74,8 @@ if($user->registration($dato)){// Tal vez no haga falta repetir este if. Es la m
 	echo json_encode($user->err);
 	
 }
+*/
+
+
+
+?>

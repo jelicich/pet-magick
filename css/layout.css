@@ -2014,6 +2014,7 @@ Tunear!!!
 	margin: 0;
 	height: 78%;
 	margin-bottom: 2%;
+	padding-right: 10px;
 	/*overflow: scroll;*/
 }
 
@@ -3964,4 +3965,3 @@ a[href$=".jpg"]{
 	color: rgba(255,255,255,0.5);
 	font-size: 11px;
 }
-

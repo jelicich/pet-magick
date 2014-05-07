@@ -52,8 +52,8 @@ $pop = new BOPopups;
 			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'projects') echo "active"; ?>><a href="#projects" data-toggle="tab">Projects</a></li>
 			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'organizations') echo "active"; ?>><a href="#organizations" data-toggle="tab">Organizations</a></li>
 			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'petloss') echo "active"; ?>><a href="#petloss" data-toggle="tab">Pet loss</a></li>
-			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'forum') echo "active"; ?>><a href="#forum" data-toggle="tab">Forum</a></li>
-			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'blog') echo "active"; ?>><a href="#blog" data-toggle="tab">Blog</a></li>
+			<!--    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'forum') echo "active"; ?>><a href="#forum" data-toggle="tab">Forum</a></li>
+			    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'blog') echo "active"; ?>><a href="#blog" data-toggle="tab">Blog</a></li> -->
 			</ul>
 		 	
 		 	<div class="tab-content">
@@ -112,7 +112,7 @@ $pop = new BOPopups;
 			    	 </form>
 			    </div>
 
-			    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'forum') echo "active"; ?>" id="forum">
+		<!--	    <div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'forum') echo "active"; ?>" id="forum">
 			    	<form action="http://www.petmagick.com/admin/php/texts.php" method="post" id="forum_id" >
 				      	<label><b><small>Enter a text about Forum section</small></b></label>
 				    	<textarea cols='50' rows='10' class="texts" name="content"><?php echo $pop->getPopUps("forum") ?></textarea><br>
@@ -128,7 +128,7 @@ $pop = new BOPopups;
 				    	<input type="hidden" value="blog" name="section" />
 				    	<a href="#" class="save btn btn-mini btn-info" onclick="document.getElementById('blog_id').submit(); return false;" >Save</a>
 				    </form>
-			    </div>
+			    </div> -->
             </div>
 		</div>
     </div>

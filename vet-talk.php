@@ -57,7 +57,7 @@
 	
 	<div class="grid_12">
 		<div id='what' >
-			<a href="#"><p>How does Project board work ?</p></a>
+			<a href="#"><p>How does Vet Talk work ?</p></a>
 			<div class='active'>
 				<div id='pop-up' class='mod grid_4 '>
 

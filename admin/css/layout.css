@@ -20,6 +20,15 @@ h1{
 	float:none !important;
 	margin: 0 auto;
 }
+
+#alert-vet{
+	text-align: center;
+	margin-left: 0 !important;
+
+}
+
+
+
 /*//////////////////////// WORDPRESS /////////////////
 #just_wp{
 	margin-bottom: 67px !important;

@@ -45,7 +45,7 @@ function admin_login(){
 }//end login
 
 
-
+/*
 function  admin_reg(){
 		
 	byid('reg').onclick = function() {
@@ -70,3 +70,4 @@ function  admin_reg(){
 		ajax('POST', 'php/vets_new.php',  admin_printUserMenu, vars, true);
 	}
 }//end reg
+*/

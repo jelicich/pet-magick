@@ -44,34 +44,35 @@ $u = $u->getVets();
 	include_once("templates/header.php");
 ?>
 
+<div class="alert alert-danger span7" id="alert-vet"><strong>Remeber!</strong> The users must be registered to be able to become a Vet</div>
 <div class="well span7  " id="pop-upsModule">
 	<div class="tabbable"> 
 		<ul class="nav nav-tabs">
-			<li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'new' || !isset($_GET['tab'])) echo "active"; ?>><a href="#new" data-toggle="tab">New</a></li>
-		    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'existing') echo "active"; ?>><a href="#existing" data-toggle="tab" >Existing users</a></li>
-		    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'delete') echo "active"; ?>><a href="#delete" data-toggle="tab">Delete</a></li>
+		<!--	<li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'new' || !isset($_GET['tab'])) echo "active"; ?>><a href="#new" data-toggle="tab">New</a></li> -->
+		    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'existing' || !isset($_GET['tab'])) echo "active"; ?>><a href="#existing" data-toggle="tab" >Admin Vets</a></li>
+		    <li class=<?php if(isset($_GET['tab']) && $_GET['tab']== 'delete') echo "active"; ?>><a href="#delete" data-toggle="tab">Delete Vets</a></li>
 		   
 		</ul>
 
 		<div class="tab-content">
 			
-			<div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'new' || !isset($_GET['tab'])) echo "active"; ?>" id="new">
+		<!--	<div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'new' || !isset($_GET['tab'])) echo "active"; ?>" id="new">
 				<form action="php/vets_new.php" method="post" id="vets_new" >
 					<label><b><small>Create a new Vet user</small></b></label>
 					<input type="text" id="nickname" name="nickname" class="form-control" placeholder="Nick name" required /><br>
 				    <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus /><br>
 				    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required /><br>
 				    <input type="password" id="password2" name="password2" class="form-control" placeholder="Password again" required /><br>
-				   <!--  <input type="hidden" id="rank" name="rank" class="form-control" value=2 /><br> -->
+				   <!--  <input type="hidden" id="rank" name="rank" class="form-control" value=2 /><br> 
 
 				    <input type="button" class="btn btn-info btn-mini" id="reg" value="Save" />
 				</form>
 				<div id="here"></div>
 			</div>
-		
+		-->
 
 		
-			<div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'existing') echo "active"; ?>" id="existing">
+			<div class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab']== 'existing'|| !isset($_GET['tab'])) echo "active"; ?>" id="existing">
 				<form action="php/becomeVet.php" method="post" id="vetsform" >
 					<label><b><small>Modify existing users status</small></b></label>
 				    <input type="email" name="email" id="email-log" class="form-control" placeholder="Email address" required autofocus /><br>
@@ -128,9 +129,10 @@ $u = $u->getVets();
 </div>
 
 
+
 </body>
 </html>
 
 <script type="text/javascript">
-	admin_reg(); 
+	//admin_reg(); 
 </script>

@@ -423,7 +423,7 @@ function imgVideoUploader(whatFor, modulo){
 
 		            		 reader.onload = function(e) {
 
-		            		 	/*	imageValSize.src  = e.target.result;      
+		            		 		imageValSize.src  = e.target.result;      
 		            		 	    var w = imageValSize.width;       
 							        var h = imageValSize.height;  
 
@@ -431,11 +431,11 @@ function imgVideoUploader(whatFor, modulo){
 			            			{
 			            				errMsg('Too large...');
 				            			//var noRemoveInput = true; // creo q esto no iria en este caso
-				            			//flagidation = 1; //creo q esto no iria en este caso
+				            			flagidation = 1; //creo q esto no iria en este caso
 				            			byid('file-container').appendChild(file_id);
 				            			return;
 				            		}
-				            	*/
+				            	
 
 				
 

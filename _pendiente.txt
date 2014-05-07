@@ -27,6 +27,7 @@ BUGS / TEST
 
 - En profiles muestra ??, ?? cuando no completas los 3 campos (pais, region, ciudad). si pones pais solo, o pais y region muestra ?? ??
 
+- Click de "more results" en el autocomplete no anda.
 
 APORTADOS:
 

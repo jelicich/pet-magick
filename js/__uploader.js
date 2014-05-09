@@ -473,7 +473,7 @@ function imgVideoUploader(whatFor, modulo){
 			            				return;
 			            			}
 			            			
-			            			reader.onload = function(){loadReader(e)};
+			            			
 
 			            			/*
 			            			reader.onload = function(e)
@@ -488,8 +488,7 @@ function imgVideoUploader(whatFor, modulo){
 			            		}
 		            		})();
 		            		
-
-		            		 function loadReader(e) {
+		            		reader.onload = function(e){
 		            		 	alert('entra');
 		            		 	/*
 		            		 		imageValSize.src  = e.target.result;      
@@ -609,7 +608,7 @@ function imgVideoUploader(whatFor, modulo){
 										  	  }
 										  	  
 						                }
-					         }// end onload
+					        }// end onload
 
 
 

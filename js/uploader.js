@@ -385,8 +385,28 @@ function imgVideoUploader(whatFor, modulo){
 					            		{ // Ver q numero necesitamos
 					            			errMsg('Too large...');
 					            			flagidation = 1;
-
+					            			return;
 					            		}
+					            		var _URL = window.URL || window.webkitURL;
+									    var file, imageValSize;
+									    if ((file = this.files[0])) 
+									    {
+									        imageValSize = new Image();
+									        imageValSize.src = _URL.createObjectURL(file);
+									        exceds = false;
+									        var imgLoading = true;
+									        imageValSize.onload = function () 
+									        {
+									            if(this.width>2500 || this.height>2500)
+									            {
+									            	errMsg('Exceds max height/width');
+					            					imgLoading = false;
+					            					exceds = true;
+									            }
+									            imgLoading = false;
+									        }
+									        
+									    }
 			            			}
 			            		}
 			            		else 
@@ -421,8 +441,8 @@ function imgVideoUploader(whatFor, modulo){
 		            		var reader = new FileReader();
 		            		var imageValSize  = new Image();
 
-		            		 reader.onload = function(e) {
-
+		            		 reader.onload = function(ev) {
+		            		 	/*
 		            		 		imageValSize.src  = e.target.result;      
 		            		 	    var w = imageValSize.width;       
 							        var h = imageValSize.height;  
@@ -435,16 +455,27 @@ function imgVideoUploader(whatFor, modulo){
 				            			byid('file-container').appendChild(file_id);
 				            			return;
 				            		}
-				            	
-
-				
-
-
-						        	var contImgCap = create('div');
+				            	*/
+				            	setOnload(ev);
+								function setOnload(e)
+								{	
+									if(imgLoading)
+							  	  	{
+							  	  		setTimeout(function(){setOnload(e);},10);
+							  	  	}					  	  	
+							  		else
+							  	    {
+							  	    	if(exceds == true)
+							  	    	{
+							  	    		exceds = false;
+							  	    		return;
+							  	    	}
+								
+										var contImgCap = create('div');
 						        		contImgCap.id = 'cont_' + filesSelectedPosition;
 						        		contImgCap.className = 'clearfix cont-preview';
 
-						        	var selectedImg = create('img');
+						        		var selectedImg = create('img');
 					          			selectedImg.id = 'img_' + filesSelectedPosition;
 					          			selectedImg.className = 'img-upload';
 
@@ -505,7 +536,7 @@ function imgVideoUploader(whatFor, modulo){
 									    removeErr();
 
 									    selectedImg.onclick = function(){
-
+									    	console.log('fileSelected ', filesSelected);
 						                    var ImgPosition = this.id.slice(4); 
 						                    byid('cont_' + ImgPosition).parentNode.removeChild(byid('cont_' + ImgPosition));
 						                  	
@@ -523,10 +554,15 @@ function imgVideoUploader(whatFor, modulo){
 							                 /// DESCOMENTE ESTAS LINEAS PARA Q NO CARGE LA IMG LUEGO DE Q LA BORRASTE.... -- START --
 							                 this.parentNode.removeChild(this);
 							                 filesSelected[ImgPosition] = 'Remover esta posicion!!!'; // remover esta posicion del array
+							                 //console.log('ImgPosition ', ImgPosition);
+							                 //console.log('fileSelected ', filesSelected);
+							                 //console.log('fileSelected[ImgPosition] ', filesSelected[ImgPosition]);
+							                 //filesSelected.splice(ImgPosition, 2);
+							                 //console.log('filesSelected spliced ', filesSelected);
 							                // -- END --
 
 							                  if (amount != 'album'){
-				  	  						
+				  	  								
 										  	  		file_id.id = 'file_id';
 													file_id.name = 'file';
 													byid('file-container').appendChild(file_id);
@@ -540,24 +576,46 @@ function imgVideoUploader(whatFor, modulo){
 										  	  }
 										  	  
 						                }
+						            }   
+
+								};
+
+
+						        	
 					         }// end onload
 					         reader.readAsDataURL(this.files[0]);
 				      }// end if
 
-			      	  filesSelectedPosition++;
-				  	  filesSelected[filesSelectedPosition] = file_id.files[0];
-				  	  file_id.value = '';
+				      
 
-				  	  if(filesSelectedPosition >= 2 && modulo == 'admin'  && noRemoveInput  != true){/* NUEVO PARA ADMIN ================ */ 
+				      (function setArray()
+					  {
+					  	  if(imgLoading)
+					  	  	{
+					  	  		setTimeout(function(){setArray();},10);
+					  	  	}					  	  	
+					  	  else
+					  	  {
 
-				  	  	file_id.parentNode.removeChild(file_id);
+					  	  	  filesSelectedPosition++;
+						  	  filesSelected[filesSelectedPosition] = file_id.files[0];
+						  	  file_id.value = '';
 
-				  	  }
+						  	  if(filesSelectedPosition >= 2 && modulo == 'admin'  && noRemoveInput  != true){/* NUEVO PARA ADMIN ================ */ 
 
-				  	  if (filesSelectedPosition >= 1 && amount != 'album' && noRemoveInput  != true){
-				  	  		
-				  	  		file_id.parentNode.removeChild(file_id);
-				  	  }
+						  	  	file_id.parentNode.removeChild(file_id);
+
+						  	  }
+
+						  	  if (filesSelectedPosition >= 1 && amount != 'album' && noRemoveInput  != true){
+						  	  		
+						  	  		file_id.parentNode.removeChild(file_id);
+						  	  }	
+					  	  }
+					  	  	
+					  })();
+
+			      	  
 				  }// end onchange
 
 				  uploadBtn.onclick = function (evt) { // este parametro creo q no va...

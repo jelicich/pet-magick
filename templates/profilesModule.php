@@ -18,7 +18,7 @@ if(!isset($u)){
 		$r = $u->searchUsers('*',$firstPag*28,28);
 	else
 		$r = $u->searchUsers('*',$firstPag*28,12);
-
+	//var_dump($r); exit;
 if($r)
 {
 	shuffle($r);
@@ -33,14 +33,24 @@ if($r)
 			$thumb = 'img/users/thumb/default.jpg';	
 		}
 
+		
+		if(isset($r[$i]['Countries']['Country'])){
+
+			$country = $r[$i]['Countries']['Country'];
+
+		}else{
+				
+				$country = "";
+
+		}
+
 		if(isset($r[$i]['Cities']['City'])){
 
-				$city = $r[$i]['Cities']['City'];
-				$country = $r[$i]['Countries']['Country'];
+				$city = $r[$i]['Cities']['City']. ", ";
+				
+				
 		}else{
-				$city = "??";
-				$country = "??";
-
+				$city = "";
 		}
 
 		?>
@@ -49,7 +59,7 @@ if($r)
 					<img src= "<?php  echo $thumb ?>" class='thumb-mid'/>
 					<dl class='hidden'>
 						<dt><?php echo  htmlspecialchars($r[$i]['NAME']." ".$r[$i]['LASTNAME']); ?> </dt>
-						<dd><?php echo  $city.", ".$country ?></dd>
+						<dd><?php echo  $city.$country ?></dd>
 					<!-- <dd><strong>Pets: </strong>Dog Cat</dd> -->
 					</dl>
 				</a>

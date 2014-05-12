@@ -852,6 +852,21 @@ background-color: rgba(217, 82, 72, 0.6) !important;
 
 
 /* ========================================================== scroll ===========================*/
+.mod.profiles-mod.animal-antics-mod .scrollable-module{
+
+	padding-top: 23px !important;
+	padding-right: 3px;
+}
+
+.mod.profiles-mod.animal-antics-mod #antics ul{
+	margin-top: -10px !important;
+}
+
+#antics .last-result-tributes{
+	margin-top: 11px;
+	margin-left: 10px;
+}
+
 .scrollable-module{
 	overflow: scroll;
 	max-height: 407px;

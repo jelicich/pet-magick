@@ -50,7 +50,7 @@
 
 						<div>
 							<label for="password2">Confirm password*</label>
-							<input type="password" name="password2" id="password2" placeholder="password2" style="width:100%"/>
+							<input type="password" name="password2" id="password2" placeholder="confirm password" style="width:100%"/>
 						</div>
 					</div>
 				</div>

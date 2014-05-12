@@ -13,25 +13,19 @@ PENDIENTES
 
 - Agregar metas keywords description etc
 
-
+- search no funciona en wp
 
 ===================================================================================================================
 BUGS / TEST
 ===========
 
-- no esta creando vets (error 500)
 
 - Si te deslogueas desde el home no no refresca el header
-
-- Si subis una imagen muy pesada o grande no la sube y tampoco tira error (Trate de subir una imagen de 3mb / 4600 x 3000px). 
-
-- En profiles muestra ??, ?? cuando no completas los 3 campos (pais, region, ciudad). si pones pais solo, o pais y region muestra ?? ??
 
 - Click de "more results" en el autocomplete no anda.
 
 APORTADOS:
 
-- Cuando te registras dice confirm password el placeholder dice password2. 
 - y algo conceptual cuando te registras
 [06:14:32 p.m.] Martin Sazzaroli: Lastname debería ir a la derecha de name y no abajo
 [06:14:44 p.m.] Martin Sazzaroli: y tendrias que ir altabeando de izquierda a derecha

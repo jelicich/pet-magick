@@ -154,7 +154,7 @@ $menu[60] = array( __('Appearance'), $appearance_cap, 'themes.php', '', 'menu-to
 unset( $appearance_cap );
 */
 
-//MENU ADMIN REMOVE ADMIN-REMOME REMOVE-MENU MENU-REMOVE- HIDE-MENU
+//MENU ADMIN REMOVE ADMIN-REMOME REMOVE-MENU MENU-REMOVE- HIDE-MENU CUSTOM PET MAGICK CUSTOM-PET-MAGICK
 //FROM HERE
 /*
 // Add 'Editor' to the bottom of the Appearance menu.

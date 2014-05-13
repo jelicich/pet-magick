@@ -30,6 +30,7 @@ APORTADOS:
 [06:14:32 p.m.] Martin Sazzaroli: Lastname debería ir a la derecha de name y no abajo
 [06:14:44 p.m.] Martin Sazzaroli: y tendrias que ir altabeando de izquierda a derecha
 
+- Fotos en wordpress revisar pq sigue cakeado algunas
 
 
 

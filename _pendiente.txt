@@ -1,7 +1,7 @@
 PENDIENTES
 ==========
 
-- revisar videos con scroll
+- videos "show all"
 
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
@@ -14,6 +14,19 @@ PENDIENTES
 - Agregar metas keywords description etc
 
 - search no funciona en wp
+
+
+
+REUNION CON MIKE
+================
+
+- text format in modules
+- location in search
+- pet loss flag
+- pop up blog
+- html characters
+
+
 
 ===================================================================================================================
 BUGS / TEST

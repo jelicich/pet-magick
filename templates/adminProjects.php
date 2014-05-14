@@ -59,9 +59,8 @@
 													</ul>
 												</div>
 											</div> 
-					-->
+					-->						<input type="button" value="Edit" name="<?php echo $list[$i]['ID_PROJECT'] ?>" class="btn edit-project" />
 											<input type="button" value="Delete" name="<?php echo $list[$i]['ID_PROJECT'] ?>" class="btn btn-danger delete-project" />
-											<!-- <a href=<?php //echo '"#'.$list[$i]['ID_PROJECT'].'"'?> class="btn btn-danger delete-project">Delete</a> -->
 										</div>
 									</li>
 					<?php
@@ -80,6 +79,7 @@
 ?>
 			<script type="text/javascript">
 			    	uploadProject();
+			    	editProject();
 					deleteProject();
 			</script>
 <?php

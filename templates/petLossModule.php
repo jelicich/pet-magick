@@ -41,6 +41,7 @@
 					<a href="<?php echo 'pet-tribute.php?t='.$r[$i]['ID_TRIBUTE']; ?>" >
 						<img src= "<?php echo $thumb ?>" class='thumb-mid'/>
 						<dl class='hidden'>
+							<!-- <dt>R.I.P</dt> -->
 							<dt><?php echo  htmlspecialchars($r[$i]['Pets']['NAME']); ?> </dt>
 							<dd><?php echo  $r[$i]['SINCE']." - ".$r[$i]['THRU'];  ?></dd>
 						</dl>

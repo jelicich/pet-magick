@@ -1111,6 +1111,25 @@ function uploadProject()
 
 }//end editPetProfile
 
+
+function editProject()
+{
+	var btn = document.querySelectorAll('.edit-project');
+
+	for(var i = 0; i < btn.length; i++)
+	{
+		btn[i].onclick = function()
+		{
+			var p = this.name;
+	  		
+			byid('modal-edit-container').style.display='block';	
+			ajax('GET', 'ajax/getEditProject.php?pr='+ p, printEditPro, null, true);
+		}	
+	}
+}
+
+
+
 function printEditPro(){
 
 	printEdit('modal-edit', this.responseText);

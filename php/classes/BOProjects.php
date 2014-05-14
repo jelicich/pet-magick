@@ -28,6 +28,20 @@ class BOProjects{
         }
     }// end insertProjects
 
+    function editProject($ref){
+
+        try{ 
+
+            $this->table->editProject($ref);
+            return true;
+        }
+        catch(Exception $e){
+
+              $this->err = $e->getMessage();
+              return false;
+        }
+    }
+
     function getAllProjects($limit){
         
         $q = Doctrine_Query::create()
@@ -40,22 +54,21 @@ class BOProjects{
 
         if($r != false)
         return $r->toArray();
-
     }// end getAllProjects
 
     function getProjectsById($id){ 
 
      $q = Doctrine_Query::create()
 
-        ->select('*') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+        ->select('*') 
         ->from('Projects p')
         //->innerJoin('o.Users u')
-        //->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
+        //->leftJoin('o.Pics ph') 
         ->where('p.ID_PROJECT = ?', $id)
         ->groupBy('p.ID_PROJECT');
     
         $p = $q->execute();    
-   
+    
        if(sizeof($p) > 0){
            
             return $p->toArray();

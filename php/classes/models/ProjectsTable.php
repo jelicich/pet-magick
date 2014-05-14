@@ -50,6 +50,16 @@ class ProjectsTable extends Doctrine_Table
         $q->execute();
     }
 
+    public function editProject($ref)
+    {
+        $q = Doctrine_Query::create()
+        ->update('Projects p')
+        ->set('p.TITLE', '?', $ref['title'] )
+        ->set('p.DESCRIPTION', '?', $ref['description'] )
+        ->where('p.ID_PROJECT  = ?', $ref['project_id']);
+        $rta = $q->execute();
+    }
+
     public function howmuch_projects(){
 
          $q = Doctrine_Query::create()

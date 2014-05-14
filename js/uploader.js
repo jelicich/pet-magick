@@ -173,6 +173,11 @@ function imgVideoUploader(whatFor, modulo){
 						var uploadBtn = byid('save-project');
 			  			var cancelBtn = byid('cancel-project');
 			  		}
+			  		else if(modulo == 'edit-project')
+			  		{
+						var uploadBtn = byid('save-edit-project');
+			  			var cancelBtn = byid('cancel-edit-project');
+			  		}
 			  		else if(modulo == 'vet-talk')
 			  		{
 			  			var uploadBtn = byid('save-vet-talk'); 
@@ -230,11 +235,12 @@ function imgVideoUploader(whatFor, modulo){
 
 				  			var cont = byid('organization');
 				  		}
-				  		else if(modulo == 'project'){
+				  		else if(modulo == 'project' || modulo == 'edit-project'){
 
 				  			var cont = byid('project');
 
-				  		}else if(modulo == 'vet-talk'){
+				  		}
+				  		else if(modulo == 'vet-talk'){
 
 				  			var cont = byid('vet-talk');
 
@@ -311,6 +317,12 @@ function imgVideoUploader(whatFor, modulo){
 						var vars = '?u='; // 
 			  		}
 			  		else if(modulo == 'project')
+			  		{
+						var file = 'ajax/getProjects.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
+						var vars = '?u=';
+			  		}
+
+			  		else if(modulo == 'edit-project')
 			  		{
 						var file = 'ajax/getProjects.php'; // IMPORTANTE: HACER ESTO> NO HAY CANCEL POR AHORA
 						var vars = '?u=';
@@ -900,6 +912,15 @@ function imgVideoUploader(whatFor, modulo){
 						  		index ++;
 						  		p = p.substr(index);
 								formData.append("u", p);
+
+					  		}else if(modulo == 'edit-project'){
+
+					  			var ajaxPostFile = 'ajax/editProject.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("pr", p);
 
 					  		}else if(modulo == 'vet-talk'){
 

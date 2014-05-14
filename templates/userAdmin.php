@@ -123,14 +123,8 @@
 ?>
 			<script type="text/javascript">
 				updatePassword(<?php echo $_SESSION['id']; ?>);
-				
-				
 				deleteAccount();
-
-
-
-
-			</script>
+				</script>
 			
 <?php
 }

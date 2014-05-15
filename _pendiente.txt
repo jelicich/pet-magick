@@ -7,7 +7,7 @@ PENDIENTES
 
 - ver los formatos de video q vamos a usar y de img (yo pondria cartelito con los formatos permitidos y ya)
 
-- css en ventanas modales (scroll)
+- css en ventanas modales (scroll y miniaturas con caption al seleccionar imgs)
 
 - Configurar paginas de error en server.
 
@@ -20,11 +20,8 @@ PENDIENTES
 REUNION CON MIKE
 ================
 
-- text format in modules
-- location in search
 - pet loss flag
 - pop up blog
-- html characters
 
 
 

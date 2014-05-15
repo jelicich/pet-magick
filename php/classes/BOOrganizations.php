@@ -84,13 +84,12 @@ class BOOrganizations{
     function getOrganizationsById($id){ 
 
          $q = Doctrine_Query::create()
-
-            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, o.ALBUM_ID') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+                     
+            ->select('o.ID_ORGANIZATION, o.NAME, o.DESCRIPTION, o.USER_ID, o.ALBUM_ID,, a.ID_ALBUM, f.PIC') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
             ->from('Organizations o')
-            //->innerJoin('o.Users u')
-            //->leftJoin('o.Pics ph') // van con leftJoin, sino, si el usuario no tiene nada cargado, no trae nada
-            ->where('o.ID_ORGANIZATION = ?', $id)
-            ->groupBy('o.ID_ORGANIZATION');
+            ->leftJoin('o.Albums a')
+            ->leftJoin('a.Pics f') 
+            ->where('o.ID_ORGANIZATION = ?', $id);
         
             $p = $q->execute();    
        
@@ -139,6 +138,32 @@ class BOOrganizations{
             return false;
        }
     }
+
+    function editOrganization($ref, $del, $path){
+
+      try{  
+             $pic = new BOPics;
+            
+            if($del > 0)
+            {
+                for($i = 0; $i < sizeof($del); $i++)
+                {
+                    $pic->unlinkProfilePic($del[$i], $path);    
+                }
+                
+            }
+ 
+
+            $this->table->editOrganization($ref);
+            return true;
+        }
+        catch(Exception $e){
+
+              $this->err = $e->getMessage();
+              return false;
+        }
+    }
+
 
     function getErrors(){
 

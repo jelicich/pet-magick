@@ -42,7 +42,7 @@
 													if(strlen($desc)== 125) echo '...';?></p>
 													<a href=<?php echo $anchor.$list[$i]['ID_ORGANIZATION']; ?> class='linkToModule'>View organization</a>
 
-													
+													<input type="button" value="Edit" name="<?php echo $list[$i]['ID_ORGANIZATION'] ?>" class="btn edit-organization" />
 													<input type="button" value="Delete" name="<?php echo $list[$i]['ID_ORGANIZATION']; ?>" class="btn btn-danger delete-org" />
 													<!-- <a href=<?php //echo '"#'.$list[$i]['ID_ORGANIZATION'].'"'?> class="btn btn-danger delete-org">Delete</a> -->
 												</div>
@@ -61,6 +61,7 @@
 ?>
 			<script type="text/javascript">
 			    	uploadOrganization();
+			    	editOrganization();
 					deleteOrganization();
 			</script>
 <?php

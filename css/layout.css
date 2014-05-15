@@ -1604,7 +1604,8 @@ max-height: 100px !important;
 	margin-top: 5px;
 }
 
-.edit-project{
+.edit-project,
+.edit-organization{
 	float: right;
 	margin-top: -30px;
 	min-width: 68px;

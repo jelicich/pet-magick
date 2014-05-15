@@ -1129,6 +1129,23 @@ function editProject()
 }
 
 
+function editOrganization()
+{
+	var btn = document.querySelectorAll('.edit-organization');
+
+	for(var i = 0; i < btn.length; i++)
+	{
+		btn[i].onclick = function()
+		{
+			var p = this.name;
+	  		
+			byid('modal-edit-container').style.display='block';	
+			ajax('GET', 'ajax/getEditOrganization.php?org='+ p, printEditPro, null, true);
+		}	
+	}
+}
+
+
 
 function printEditPro(){
 

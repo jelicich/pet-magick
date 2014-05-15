@@ -11,13 +11,13 @@ if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
 
 */
 
-//var_dump($_FILES['file']); exit;
+//var_dump($_POST); exit;
 
-include_once "../php/classes/BOProjects.php";
+include_once "../php/classes/BOOrganizations.php";
 include_once "../php/classes/BOPics.php";
 include_once "../php/classes/BOAlbums.php";
 
-$pro = new BOProjects;
+$org = new BOOrganizations;
 $pics = new BOPics;
 $a = new BOAlbums;
 
@@ -44,14 +44,14 @@ $newData = array(
 
 	'title' => $_POST['title'],
 	'description'=> $_POST['description'],
-	'project_id' => $_POST['pr']
+	'organization_id' => $_POST['org']
 	//'album_id' => $_POST['albumId']
 
 );
 
 
 
-$pro->editProject($newData, $deletePic, "../img/projects/");
+$org->editOrganization($newData, $deletePic, "../img/organizations/");
 
 
 if(isset($_FILES['file'])){ // normalWay();
@@ -66,7 +66,7 @@ if(isset($_FILES['file'])){ // normalWay();
 		$query['fileType'] = $_FILES['file']['type'][$i];
 		$query['caption']  = $_POST['caption'][$i];
 
-		$path = '../img/projects/';
+		$path = '../img/organizations/';
 		$pics->upload($query,$path,$_POST['albumId']);
 
 	}// end for
@@ -86,7 +86,7 @@ if(isset($_FILES['file'])){ // normalWay();
 		$query['caption'] = $_POST["caption_".$p]; 
 
 		$obj = $pics; 
-		$path = '../img/projects/';
+		$path = '../img/organizations/';
 
 		createQuery($query, $path, $obj);
 
@@ -96,6 +96,6 @@ if(isset($_FILES['file'])){ // normalWay();
 
 
 $_GET['u'] = $_SESSION['id']; // no se q onda esto....
-include_once '../templates/adminProjects.php';
+include_once '../templates/adminOrganizations.php';
 
 

@@ -28,9 +28,20 @@ class BOProjects{
         }
     }// end insertProjects
 
-    function editProject($ref){
+    function editProject($ref, $del, $path){
 
-        try{ 
+      try{  
+             $pic = new BOPics;
+            
+            if($del > 0)
+            {
+                for($i = 0; $i < sizeof($del); $i++)
+                {
+                    $pic->unlinkProfilePic($del[$i], $path);    
+                }
+                
+            }
+ 
 
             $this->table->editProject($ref);
             return true;
@@ -60,12 +71,11 @@ class BOProjects{
 
      $q = Doctrine_Query::create()
 
-        ->select('*') 
+        ->select('p.ID_PROJECT, p.TITLE AS TITLE, p.DESCRIPTION AS DESCRIPTION, p.USER_ID, p.ALBUM_ID, a.ID_ALBUM, f.PIC') 
         ->from('Projects p')
-        //->innerJoin('o.Users u')
-        //->leftJoin('o.Pics ph') 
-        ->where('p.ID_PROJECT = ?', $id)
-        ->groupBy('p.ID_PROJECT');
+        ->leftJoin('p.Albums a')
+        ->leftJoin('a.Pics f') 
+        ->where('p.ID_PROJECT = ?', $id);
     
         $p = $q->execute();    
     
@@ -128,7 +138,6 @@ class BOProjects{
         return  $this->err;
     }// end getErrors
 
-
     function getProjectListByUser($id)
     {
       $q = Doctrine_Query::create()
@@ -177,9 +186,7 @@ class BOProjects{
        }
     }
 
-
-
-    function deleteProject($id)
+     function deleteProject($id)
     {
       try
       {

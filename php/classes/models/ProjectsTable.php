@@ -51,7 +51,8 @@ class ProjectsTable extends Doctrine_Table
     }
 
     public function editProject($ref)
-    {
+    {   
+        
         $q = Doctrine_Query::create()
         ->update('Projects p')
         ->set('p.TITLE', '?', $ref['title'] )

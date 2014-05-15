@@ -168,6 +168,11 @@ function imgVideoUploader(whatFor, modulo){
 						var uploadBtn = byid('save-organization'); 
 			  			var cancelBtn = byid('cancel-organization');
 			  		}
+			  		else if(modulo == 'edit-organization')
+			  		{
+						var uploadBtn = byid('save-edit-organization');
+			  			var cancelBtn = byid('cancel-edit-organization');
+			  		}
 			  		else if(modulo == 'project')
 			  		{
 						var uploadBtn = byid('save-project');
@@ -231,7 +236,7 @@ function imgVideoUploader(whatFor, modulo){
 				  			var cont = byid('pet-profile');
 				  			ajaxx('POST', 'ajax/refreshPets.php', refreshPets, null, true);
 
-				  		}else if(modulo == 'organization'){
+				  		}else if(modulo == 'organization'  || modulo == 'edit-organization'){
 
 				  			var cont = byid('organization');
 				  		}
@@ -315,6 +320,11 @@ function imgVideoUploader(whatFor, modulo){
 			  		{
 						var file = 'ajax/getOrganizations.php'; 
 						var vars = '?u='; // 
+			  		}
+			  		else if(modulo == 'edit-organization')
+			  		{
+						var file = 'ajax/getOrganizations.php'; 
+						var vars = '?u=';
 			  		}
 			  		else if(modulo == 'project')
 			  		{
@@ -904,7 +914,17 @@ function imgVideoUploader(whatFor, modulo){
 						  		p = p.substr(index);
 								formData.append("u", p);
 
-					  		}else if(modulo == 'project'){
+					  		}else if(modulo == 'edit-organization'){
+
+					  			var ajaxPostFile = 'ajax/editOrganization.php';
+					  			var p = this.href;
+								var index = p.indexOf('#');
+						  		index ++;
+						  		p = p.substr(index);
+								formData.append("org", p);
+
+					  		}
+					  		else if(modulo == 'project'){
 
 					  			var ajaxPostFile = 'ajax/uploadProject.php';
 					  			var p = this.href;

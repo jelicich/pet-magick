@@ -3,16 +3,16 @@
 //var_dump($_GET["u"]); exit;
 //include_once "../php/classes/BOProjects.php";
 //$pro = new BOProjects;
-$project = $pro->getProjectsById($_GET["pr"]);
+$organizations = $org->getOrganizationsById($_GET["org"]);
 
-//var_dump($project ); exit;
+//var_dump($organizations ); exit;
 
 
 
 
 ?>
 					<div class="mod-header">
-						<h2>Edit Project</h2>
+						<h2>Edit Organization</h2>
 					</div>	
 
 					<div class="mod-content">
@@ -40,15 +40,15 @@ $project = $pro->getProjectsById($_GET["pr"]);
 										<ul class="clearfix">
 								<?php
 
-										for( $i=0; $i <sizeof($project[0]['Albums']["Pics"]); $i++ )
+										for( $i=0; $i <sizeof($organizations[0]['Albums']["Pics"]); $i++ )
 										{
 								?>
 										
 											<li>
 												
 												<label>
-													<img class="thumb-small" src=<?php echo '"img/projects/thumb/'.$project[0]['Albums']["Pics"][$i]['PIC'].'"';?> /><br/>
-													<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$project[0]['Albums']["Pics"][$i]['ID_PIC'].'"'; ?> />
+													<img class="thumb-small" src=<?php echo '"img/organizations/thumb/'.$organizations[0]['Albums']["Pics"][$i]['PIC'].'"';?> /><br/>
+													<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$organizations[0]['Albums']["Pics"][$i]['ID_PIC'].'"'; ?> />
 													Delete
 												</label>
 												
@@ -69,28 +69,28 @@ $project = $pro->getProjectsById($_GET["pr"]);
 
 							<div class="cont-tr-tit">
 								<label for="pro-name">
-									Project Name*
+									Organization Name*
 									<span class="hid-def"><span class="left-tr"></span>Mandatory field. 100 characters max.</span>
 								</label> 
-								<input type='text' class='form-element mandatory' name='title' id="pro-name" value="<?php echo $project[0]['TITLE']; ?>" />
-								<input type='hidden' class='form-element mandatory' name='albumId' id="pro-album" value="<?php echo $project[0]['ALBUM_ID']; ?>" />
+								<input type='text' class='form-element mandatory' name='title' id="pro-name" value="<?php echo $organizations[0]['NAME']; ?>" />
+								<input type='hidden' class='form-element mandatory' name='albumId' id="pro-album" value="<?php echo $organizations[0]['ALBUM_ID']; ?>" />
 								<label for="pro-description">
-									Project description*
+									Organization description*
 									<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
 								</label> 
-								<textarea class='form-element mandatory' name='description' id="pro-description"><?php echo $project[0]['DESCRIPTION']; ?></textarea>
+								<textarea class='form-element mandatory' name='description' id="pro-description"><?php echo $organizations[0]['DESCRIPTION']; ?></textarea>
 							</div>
 							
 
 							<?php
-								echo '<a href="#'.$project[0]['ID_PROJECT'].'" class="btn" id="save-edit-project">Save</a>';
-								echo '<a href="#'.$project[0]['USER_ID'].'" class="btn" id="cancel-edit-project">Cancel</a>';
+								echo '<a href="#'.$organizations[0]['ID_ORGANIZATION'].'" class="btn" id="save-edit-organization">Save</a>';
+								echo '<a href="#'.$organizations[0]['USER_ID'].'" class="btn" id="cancel-edit-organization">Cancel</a>';
 							?>
 						</form>
 
 					</div>
 						<script type="text/javascript">
-							imgVideoUploader('album', 'edit-project'); 
+							imgVideoUploader('album', 'edit-organization'); 
 						</script>
 
 				

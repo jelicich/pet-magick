@@ -29,6 +29,18 @@ class OrganizationsTable extends Doctrine_Table
             $Organizations->save();
     }// end insertOrganizations
 
+    public function editOrganization($ref)
+    {   
+        
+        $q = Doctrine_Query::create()
+        ->update('Organizations o')
+        ->set('o.NAME', '?', $ref['title'] )
+        ->set('o.DESCRIPTION', '?', $ref['description'] )
+        ->where('o.ID_ORGANIZATION  = ?', $ref['organization_id']);
+        $rta = $q->execute();
+    }
+
+
     public function deleteOrganization($id){
         
         $q= Doctrine_Query::create()

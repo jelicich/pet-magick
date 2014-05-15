@@ -4,8 +4,8 @@ function flexslider(){
 	//$("#pet-album").on("ready", $(function(){
 		$(function(){ 
 		  $('.flexslider').flexslider({
-		    animation: false,
-		    animationLoop: false,
+		    animation: true,
+		    animationLoop: true,
 		    itemWidth: 80,
 		    itemMargin: 5
 		  });

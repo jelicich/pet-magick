@@ -20,7 +20,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	if(!isset($featuredProjects['TITLE'])){ $title = '?'; }
 	else{ $title =  htmlspecialchars($featuredProjects['TITLE']); }
 	if(!isset( $featuredProjects['DESCRIPTION'] )){ $description =  '?'; }
-	else{ $description =   htmlspecialchars($featuredProjects['DESCRIPTION']); }
+	else{ $description =   nl2br($featuredProjects['DESCRIPTION']); }
 
 }else{
 	
@@ -50,7 +50,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	if(!isset($featuredProjects[0]['TITLE'])){ $title = '?'; }
 	else{ $title =  htmlspecialchars($featuredProjects[0]['TITLE']); }
 	if(!isset( $featuredProjects[0]['DESCRIPTION'] )){ $description =  '?'; }
-	else{ $description =   htmlspecialchars($featuredProjects[0]['DESCRIPTION']); }
+	else{ $description =   nl2br($featuredProjects[0]['DESCRIPTION']); }
 	
 } // end else
 

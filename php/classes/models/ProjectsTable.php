@@ -21,7 +21,7 @@ class ProjectsTable extends Doctrine_Table
 
     		$Projects = new Projects();
             $Projects->TITLE = $ref['title'];
-            $Projects->DESCRIPTION = $ref['description'];
+            $Projects->DESCRIPTION = htmlspecialchars($ref['description']);
             $Projects->USER_ID = $ref['user_id'];
             $Projects->ALBUM_ID = $ref['album_id'];
 

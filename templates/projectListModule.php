@@ -63,7 +63,7 @@
 				if(!isset($everyProject['TITLE'])){ $title = '?'; }
 				else{ $title =  htmlspecialchars($everyProject['TITLE']); }
 				if(!isset( $everyProject['DESCRIPTION'] )){ $description =  '?'; }
-				else{ $description =   htmlspecialchars($everyProject['DESCRIPTION']); }
+				else{ $description =   $everyProject['DESCRIPTION']; }
 
 				array_push($noRepeat, $projectId);
 ?>

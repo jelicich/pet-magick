@@ -95,7 +95,7 @@
 									if(empty($about))
 										echo 'The user has not entered any description yet';
 									else
-										echo htmlspecialchars($about);
+										echo nl2br($about);
 								?>
 							</p>
 

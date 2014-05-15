@@ -31,7 +31,7 @@
 					<div class="scrollable-text" id="tributeText">
 						<div class="bg-txt-featured-modules">
 							
-							<p><?php echo  htmlspecialchars($a['CONTENT']) ?></p>
+							<p><?php echo  nl2br($a['CONTENT']) ?></p>
 
 						</div>
 					</div>

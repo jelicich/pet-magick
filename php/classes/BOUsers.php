@@ -778,6 +778,9 @@ class BOUsers{
             ->where('u.NAME LIKE ?', '%'.$string.'%')
             ->orWhere('u.LASTNAME LIKE ?', '%'.$string.'%')
             ->orWhere('u.NICKNAME LIKE ?', '%'.$string.'%')
+            ->orWhere('k.Country LIKE ?', '%'.$string.'%')
+            ->orWhere('r.Region LIKE ?', '%'.$string.'%')
+            ->orWhere('c.City LIKE ?', '%'.$string.'%')
             ->orderBy('u.ID_USER DESC')
             ->offset($from)
             ->limit($to);  

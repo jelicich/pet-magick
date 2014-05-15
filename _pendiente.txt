@@ -45,6 +45,7 @@ APORTADOS:
 
 - Fotos en wordpress revisar pq sigue cakeado algunas
 
+- Cuando haces una pregunta en Vet talk se imprime abajo de todo y cuando refrescas aparece arriba de todo hay q hacer q el appendchild sea antes del primer hijo
 
 
 ===================================================================================================================

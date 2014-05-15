@@ -24,7 +24,7 @@ class VetTalkTable extends Doctrine_Table
 
             $VetTalk = new VetTalk();
             $VetTalk->TITLE = $ref['title'];
-            $VetTalk->CONTENT = $ref['content'];
+            $VetTalk->CONTENT = htmlspecialchars($ref['content']);
             $VetTalk->DATE = $now;
             $VetTalk->USER_ID = $ref['user_id'];
             $VetTalk->PIC_ID = $ref['pic_id'];

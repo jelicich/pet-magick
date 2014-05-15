@@ -46,7 +46,7 @@
 										<a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'"' ?> ><img src=<?php echo '"'.$aq[$i]['Users']['Pics']['THUMB'] .'"';?> class="thumb-small side-img"/></a>
 										<div class="content-description bg-txt">
 											<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Users']['ID_USER'] .'&active=10"' ?>><?php echo  htmlspecialchars($aq[$i]['Users']['NAME'].' '.$aq[$i]['Users']['LASTNAME']); ?></a></h3>
-											<p><?php echo  htmlspecialchars($aq[$i]['QUESTION']) ?></p>
+											<p><?php echo  nl2br($aq[$i]['QUESTION']) ?></p>
 											<span class="gray_date"><small><?php echo $date; ?></small></span>
 										</div>
 									</li>
@@ -66,7 +66,7 @@
 												<a href=<?php echo '"user-profile.php?u='. htmlspecialchars($aq[$i]['Answers']['Users']['ID_USER']) .'"' ?> ><img src=<?php echo '"'.$aq[$i]['Answers']['Users']['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/></a>
 												<div class="content-description bg-txt">
 													<h3><a href=<?php echo '"user-profile.php?u='.$aq[$i]['Answers']['Users']['ID_USER'] .'"' ?>><?php echo  htmlspecialchars($aq[$i]['Answers']['Users']['NAME'].' '.$aq[$i]['Answers']['Users']['LASTNAME']) ?></a></h3>
-													<p><?php echo  htmlspecialchars($aq[$i]['Answers']['ANSWER']) ?></p>
+													<p><?php echo  nl2br($aq[$i]['Answers']['ANSWER']) ?></p>
 													<span class="gray_date"><small><?php echo $date; ?></small></span>
 												</div>
 												

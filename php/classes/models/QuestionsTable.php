@@ -20,7 +20,7 @@ class QuestionsTable extends Doctrine_Table
     public function post($array)
     {
     	$c = new Questions;
-        $c->QUESTION = $array['comment'];
+        $c->QUESTION = htmlspecialchars($array['comment']);
         $c->DATE = date('Y-m-d H:i:s');
         $c->USER_ID = $_SESSION['id'];
         $c->save();
@@ -54,6 +54,7 @@ class QuestionsTable extends Doctrine_Table
             $ar[0]['Users']['Pics']['PIC'] = 'img/users/default.jpg';
             $ar[0]['Users']['Pics']['THUMB'] = 'img/users/thumb/default.jpg';
         }   
+        $ar[0]['QUESTION'] = nl2br($ar[0]['QUESTION']);
 
         $ob = json_encode($ar);
 

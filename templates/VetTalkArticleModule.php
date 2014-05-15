@@ -7,7 +7,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	//var_dump($article);
 	$userId = $article['USER_ID'];
 	$title =  htmlspecialchars($article['TITLE']);
-	$content =  htmlspecialchars($article['CONTENT']);
+	$content =  nl2br($article['CONTENT']);
 	$date = $article['DATE'];
 	$name =  htmlspecialchars($article['Users']['NAME']);
 	$lastName =  htmlspecialchars($article['Users']['LASTNAME']);
@@ -24,7 +24,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	$userId = $article[0]['USER_ID'];
 	$title =  htmlspecialchars($article[0]['TITLE']);
 	$date = $article[0]['DATE'];
-	$content =  htmlspecialchars($article[0]['CONTENT']);
+	$content =  nl2br($article[0]['CONTENT']);
 	$name =  htmlspecialchars($article[0]['Users']['NAME']);
 	$lastName =  htmlspecialchars($article[0]['Users']['LASTNAME']);
 

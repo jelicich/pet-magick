@@ -22,7 +22,7 @@ class TributesTable extends Doctrine_Table
     	//var_dump($array);
     	$t = new Tributes;
     	$t->TITLE = $array['tr-title'];
-    	$t->CONTENT = $array['tr-msg'];
+    	$t->CONTENT = htmlspecialchars($array['tr-msg']);
 
     	if(!empty($array['tr-since']))
     		$t->SINCE = $array['tr-since'];
@@ -41,7 +41,7 @@ class TributesTable extends Doctrine_Table
         $q = Doctrine_Query::create()
             ->update('Tributes t')
             ->set('t.TITLE', '?', $array['tr-title'] )
-            ->set('t.CONTENT', '?', $array['tr-msg'] );
+            ->set('t.CONTENT', '?', htmlspecialchars($array['tr-msg']) );
             if(!empty($array['tr-since']))
                 $q->set('t.SINCE','?',$array['tr-since']);
             if(!empty($array['tr-thru']))

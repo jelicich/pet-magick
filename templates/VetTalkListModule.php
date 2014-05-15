@@ -129,7 +129,7 @@
 			if(!isset($allArticles[$i]['TITLE'])){ $title = '?'; }
 			else{ $title =  htmlspecialchars($allArticles[$i]['TITLE']); }
 			if(!isset( $allArticles[$i]['CONTENT'])){ $content =  '?'; }
-			else{ $content =   htmlspecialchars($allArticles[$i]['CONTENT']); }
+			else{ $content = $allArticles[$i]['CONTENT']; }
 
 			//array_push($noRepeat, $j);
 			//$date =  $time->FormatDisplayDate($allArticles[$i]['DATE']);

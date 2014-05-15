@@ -9,7 +9,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	$userId = $featuredOrg['USER_ID'];
 	$albumId = $featuredOrg['ALBUM_ID'];
 	$name =  htmlspecialchars($featuredOrg['NAME']);
-	$description = htmlspecialchars($featuredOrg['DESCRIPTION']);
+	$description = nl2br($featuredOrg['DESCRIPTION']);
 
 	$orgAlbum = $pics->table->getPicsByAlbum($albumId);
 
@@ -29,7 +29,7 @@ if(!isset($_GET['p'])){ // tengo q revisar esto pq en lib mando u, no p
 	$userId = $featuredOrg[0]['USER_ID'];
 	$albumId = $featuredOrg[0]['ALBUM_ID'];
 	$name =  htmlspecialchars($featuredOrg[0]['NAME']);
-	$description =  htmlspecialchars($featuredOrg[0]['DESCRIPTION']);
+	$description =  nl2br($featuredOrg[0]['DESCRIPTION']);
 	$orgAlbum = $pics->table->getPicsByAlbum($albumId);
 	/*if(!isset($featuredOrg[0]['Pics']['PIC'])){ $srcImg = 'default.jpg'; }
 	else{ $srcImg = $featuredOrg[0]['Pics']['PIC']; } */

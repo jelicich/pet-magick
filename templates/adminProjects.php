@@ -20,7 +20,7 @@
 									for($i=0; $i<sizeof($list); $i++){
 
 										$project_title =  htmlspecialchars($list[$i]['TITLE']);
-										$project_desc =  htmlspecialchars($list[$i]['DESCRIPTION']);
+										$project_desc =  $list[$i]['DESCRIPTION'];
 
 										if(isset($list[$i]['Albums']['Pics'][0]['THUMB'])){
 

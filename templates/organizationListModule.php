@@ -39,7 +39,7 @@
 			if(!isset($allOrg[$j]['NAME'])){ $name = '?'; }
 			else{ $name =  htmlspecialchars($allOrg[$j]['NAME']); }
 			if(!isset( $allOrg[$j]['DESCRIPTION'])){ $description =  '?'; }
-			else{ $description =   htmlspecialchars($allOrg[$j]['DESCRIPTION']); }
+			else{ $description =   $allOrg[$j]['DESCRIPTION']; }
 
 			array_push($noRepeat, $j);
 		

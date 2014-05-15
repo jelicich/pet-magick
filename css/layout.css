@@ -3986,3 +3986,7 @@ a[href$=".jpg"]{
 	color: rgba(255,255,255,0.5);
 	font-size: 11px;
 }
+.vet-q div.content-description.bg-txt{
+	height: auto;
+	min-height: 80px;
+}

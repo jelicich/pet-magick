@@ -22,7 +22,7 @@
 											{
 
 												$name = htmlspecialchars($list[$i]['NAME']);
-												$desc = htmlspecialchars($list[$i]['DESCRIPTION']);
+												$desc = $list[$i]['DESCRIPTION'];
 
 												if(isset($list[$i]['Albums']['Pics'][0]['PIC'])){
 

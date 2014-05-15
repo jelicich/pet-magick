@@ -200,7 +200,7 @@ class UsersTable extends Doctrine_Table
 		            ->set('u.LASTNAME', '?', $array['lastname'] )
 		            //->set('u.NICKNAME', '?', $array['nickname'] )
 		            ->set('u.EMAIL', '?', $array['email'] )
-		            ->set('u.ABOUT', '?', $array['about'] );
+		            ->set('u.ABOUT', '?', htmlspecialchars($array['about']) );
 		            
 
     	if(!empty($array['country']) && is_numeric($array['country']))

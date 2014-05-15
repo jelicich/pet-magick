@@ -21,7 +21,7 @@ class OrganizationsTable extends Doctrine_Table
             //var_dump($ref); exit;
     		$Organizations = new Organizations();
             $Organizations->NAME = $ref['name'];
-            $Organizations->DESCRIPTION = $ref['description'];
+            $Organizations->DESCRIPTION = htmlspecialchars($ref['description']);
             $Organizations->USER_ID = $ref['user_id'];
             $Organizations->ALBUM_ID = $ref['album_id'];
            /// $Organizations->PIC_ID = '';

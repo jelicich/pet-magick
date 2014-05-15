@@ -19,7 +19,7 @@
 											{
 
 												$vet_title = htmlspecialchars($list[$i]['TITLE']);
-												$vet_cont = htmlspecialchars($list[$i]['CONTENT']);
+												$vet_cont = $list[$i]['CONTENT'];
 										?>
 											<li class="clearfix">
 												<img src= <?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>

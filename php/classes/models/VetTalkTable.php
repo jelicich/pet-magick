@@ -37,7 +37,7 @@ class VetTalkTable extends Doctrine_Table
 
         $q = Doctrine_Query::create()
 
-              ->select('v.*, LEFT(v.CONTENT, 80) as CONTENT, LEFT(v.TITLE,65) as TITLE, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
+              ->select('v.*, LEFT(v.CONTENT, 75) as CONTENT, LEFT(v.TITLE,65) as TITLE, ph.PIC, ph.thumb') // ver si necesito la pic de perfil del user o una del album para la principal del modulo de projects
               ->from('VetTalk v')
               ->leftJoin('v.Pics ph')
               ->where('v.ANIMAL_CATEGORY_ID = ?',$cat)

@@ -1476,8 +1476,9 @@ if(byid('send-comment')){
 			li.innerHTML = '<a href="user-profile.php?u=' + html[0]['Users']['ID_USER'] + '"> <img src="'+ html[0]['Users']['Pics']['THUMB'] +'" class="thumb-small side-img" /></a><div class="content-description bg-txt"><h3><a href="user-profile.php?u='+html[0]['Users']['ID_USER']+'">'+ html[0]['Users']['NAME'] + ' ' + html[0]['Users']['LASTNAME'] +'</a></h3><p>'+ html[0]['COMMENT'] +'</p><span class="gray_date"><small>'+ html[0]['DATE'] +'</small></span></div>';
 		}
 		
-		
-		byid('comments-wrapper').appendChild(li);
+
+		var fChild = byid('comments-wrapper').getElementsByTagName('li')[0];
+		byid('comments-wrapper').insertBefore(li,fChild);
 		fl = 0;
 		var pop = byid('pop-up-click');
 		pop.style.display = 'none';

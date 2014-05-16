@@ -118,8 +118,8 @@ p,span{
 }
 
 .content-description{ 
-	min-height: 60px;
-	height: 80px; /* esto es para ie */
+	min-height: 80px;
+	/*height: 80px; /* esto es para ie */
 }
 
 
@@ -3987,7 +3987,7 @@ a[href$=".jpg"]{
 	color: rgba(255,255,255,0.5);
 	font-size: 11px;
 }
-.vet-q div.content-description.bg-txt{
-	height: auto;
-	min-height: 80px;
+#projectsList div.content-description.bg-txt,
+#vetTalkListmodule div.content-description.bg-txt{
+	height: 80px;
 }

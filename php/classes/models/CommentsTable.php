@@ -57,7 +57,7 @@ class CommentsTable extends Doctrine_Table
             $ar[0]['Users']['Pics']['PIC'] = 'img/users/default.jpg';
             $ar[0]['Users']['Pics']['THUMB'] = 'img/users/thumb/default.jpg';
         }   
-
+        $ar[0]['COMMENT'] = nl2br($ar[0]['COMMENT']);
         $ob = json_encode($ar);
 
 
@@ -74,7 +74,8 @@ class CommentsTable extends Doctrine_Table
             ->from('Comments c')
             ->leftJoin('c.Users u')
             ->leftJoin('u.Pics p')
-            ->where('c.TRIBUTE_ID =?', $id);
+            ->where('c.TRIBUTE_ID =?', $id)
+            ->orderBy('c.DATE DESC');
         $ob = $q->execute();
 
         if($ob)

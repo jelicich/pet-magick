@@ -312,6 +312,9 @@ function autoSearch(inputId)
 					lis.className = 'more-results';
 					lis.innerHTML = 'More results';
 					input.suggestions.appendChild(lis);
+					lis.onclick = function(){
+						window.location.href = "search.php?q="+input.inputField.value = this.innerHTML;+"&tar=us";
+					}
 				}
 				break;
 			}

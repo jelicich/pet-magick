@@ -178,7 +178,7 @@ function login(){
 		//levanto los valores de los campos
 		var email = byid('email-log').value;
 		var pass = byid('password-log').value;
-		var token = byid('token').value;
+		//var token = byid('token').value;
 
 
 		source = 'log';
@@ -187,12 +187,12 @@ function login(){
 
 		if(n != -1)
 		{
-			var vars = 'email='+email+'&password='+pass+'&token='+token+'&url=1';
+			var vars = 'email='+email+'&password='+pass+'&url=1';
 			ajax('POST', '../ajax/login.php', printUserMenu, vars, true);	
 		}			
 		else
 		{
-			var vars = 'email='+email+'&password='+pass+'&token='+token;
+			var vars = 'email='+email+'&password='+pass;
 			ajax('POST', 'ajax/login.php', printUserMenu, vars, true);	
 		}
 			
@@ -216,7 +216,7 @@ function reg(){
 		var country = byid('country').value;
 		var region = byid('region').value;
 		var city = byid('city').value;
-		var token = byid('token').value;
+		//var token = byid('token').value;;
 
 		
 		//VALIDATION
@@ -241,13 +241,13 @@ function reg(){
 		if(n != -1)
 		{
 			var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
-			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token+'&url=1';
+			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&url=1';
 			ajax('POST', '../ajax/reg.php', printUserMenu, vars, true);	
 		}
 		else
 		{
 			var vars = 'name='+name+'&lastname='+lastname+'&nickname='+nickname +'&email='+email+'&password='+password+
-			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city+'&token='+token;
+			'&password2='+password2+'&rank='+rank +'&country='+country+'&region='+region+'&city='+city;
 			ajax('POST', 'ajax/reg.php', printUserMenu, vars, true);	
 		}
 

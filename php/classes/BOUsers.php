@@ -83,7 +83,7 @@ class BOUsers{
 
   //======================= LOGIN VAL
 
-  function val_login($usr, $pass, $tok){
+  function val_login($usr, $pass){
 
     if(empty($usr) || empty($pass))
     {
@@ -96,12 +96,12 @@ class BOUsers{
       {
         throw new Exception('Invalid username/password');
       }
-      else
+     /* else
       {
         //no sé si esto es al pedo
         if($_SESSION['token'] != $tok)
           throw new Exception('There\'s an open session');
-      }
+      }*/
 
          // chequeo q el user tenga status 1
         $q = Doctrine_Query::create()
@@ -130,7 +130,9 @@ class BOUsers{
             {
               $this->val_reg($ref);
               //reg wordpress
-      
+
+              $ref['token'] = sha1(uniqid());
+
               $user_name = $ref['nickname'];
               $user_email = $ref['email'];
               $user_password = $ref['password'];
@@ -227,8 +229,8 @@ class BOUsers{
             {
               $usr = $ref[0];
               $pass = sha1($ref[1]);
-              $tok = $ref[2];
-              $this->val_login($usr, $pass, $tok);
+             // $tok = $ref[2];
+              $this->val_login($usr, $pass);
               return true;
             }
        

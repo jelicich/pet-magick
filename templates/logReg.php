@@ -82,7 +82,7 @@
 	     		<p>* Mandatory fields</p>
 
 	     		<input type="button" id="reg" value="Sign up!" class="btn btn-danger" />
-				<input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />
+				<!-- <input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />  -->
 
 			</form>
 		</div>
@@ -107,7 +107,7 @@
 				</div>
 				
 				<input type="button" id="login" value="Login" class="btn btn-danger"/>
-				<input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> />
+			<!--	<input type="hidden" name="token" id="token" value=<?php echo '"'. $_SESSION['token'] . '"'; ?> /> -->
 
 				<span id="forgotPassword">Forgot your password ?</span>
 

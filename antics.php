@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 	//session_destroy();
-	$_SESSION['token'] = sha1(uniqid()); 
+	//$_SESSION['token'] = sha1(uniqid()); 
 	
 
 

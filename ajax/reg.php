@@ -22,7 +22,7 @@ $dato = array(
 	
 	'city' => $_POST['city'],
 	'rank' => 0,
-	'token' => $_POST['token']
+	//'token' => $_POST['token']
 );
 
 

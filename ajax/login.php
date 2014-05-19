@@ -5,7 +5,7 @@ include_once "../php/classes/BOUsers.php";
 $user = new BOUsers;
 
 //if($user->login(array($_POST['email'],$_POST['password'], $_POST['token']))) //si devuelve true
-if($user->login(array($_POST['email'],$_POST['password'], $_SESSION['token']))) // Fijate q tuve q cambiar esto para q imprimiera un sha, pero no se bien q onda.
+if($user->login(array($_POST['email'],$_POST['password']))) // Fijate q tuve q cambiar esto para q imprimiera un sha, pero no se bien q onda.
 {
 	// busco el nombre de usuario
 	//$datosU = $user->table->findByMailLog($_POST['email']);

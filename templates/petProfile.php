@@ -38,7 +38,7 @@
 								<div class="scrollable-text" id="aboutText">
 									<div class="bg-txt-featured-modules">
 										<p>
-											<?php echo htmlspecialchars($p->getStory()); ?>
+											<?php echo nl2br($p->getStory()); ?>
 										</p>
 									</div>
 								</div>

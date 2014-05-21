@@ -117,7 +117,7 @@
 								</div>
 																
 								<label for="pet-story">Pet story</label>
-								<textarea class="form-element" name="story"><?php echo htmlspecialchars($p->getStory()) ?></textarea>
+								<textarea class="form-element" name="story"><?php echo $p->getStory() ?></textarea>
 								
 							</div>
 								

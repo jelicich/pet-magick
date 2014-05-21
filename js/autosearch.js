@@ -178,7 +178,7 @@ function autoSearch(inputId)
 				//var val = byid('finder').value
 				var val = input.inputField.value;
 				//ACTUALIZAR RUTA ABSOLUTA
-				window.location.href = "search.php?q="+val+"&tar=us";
+				window.location.href = "/search.php?q="+val+"&tar=us";
 			}
 			else
 			{
@@ -188,7 +188,7 @@ function autoSearch(inputId)
 		  		index ++;
 		  		user = user.substr(index);
 		  		//ACTUALIZAR RUTA ABSOLUTA
-				window.location.href = "user-profile.php?u="+user;
+				window.location.href = "/user-profile.php?u="+user;
 			}	
 		}
 		else
@@ -217,7 +217,7 @@ function autoSearch(inputId)
 				if(input.inputField.value != '')
 				{
 						//ACTUALIZAR RUTA ABSOLUTA
-						ajax_pvt('POST', 'ajax/searchTool.php', suggest , false, true);
+						ajax_pvt('POST', '/ajax/searchTool.php', suggest , false, true);
 				}
 			//}
 		}//end lookFor
@@ -277,7 +277,7 @@ function autoSearch(inputId)
 								if(!config.hidden)
 								{
 									//ACTUALIZAR RUTA ABSOLUTA
-									window.location.href = "user-profile.php?u="+user;
+									window.location.href = "/user-profile.php?u="+user;
 								}
 								else
 								{
@@ -313,7 +313,7 @@ function autoSearch(inputId)
 					lis.innerHTML = 'More results';
 					input.suggestions.appendChild(lis);
 					lis.onclick = function(){
-						window.location.href = "search.php?q="+input.inputField.value = this.innerHTML;+"&tar=us";
+						window.location.href = "search.php?q="+input.inputField.value+"&tar=us";
 					}
 				}
 				break;

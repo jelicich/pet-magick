@@ -86,7 +86,7 @@
 
 
 				<div class="blind">
-					<div class="scrollable-text" id="aboutText">
+					<div class="scrollable-about" id="aboutText">
 						<div class="bg-txt-featured-modules">
 							
 							<p>
@@ -130,7 +130,7 @@
 		<script type="text/javascript">
 			
 			show_img_up('#user-about');
-			start_scroll('scrollable-text', false);
+			start_scroll('scrollable-about', false);
 
 		</script>
 		<!-- END about module -->

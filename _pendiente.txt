@@ -2,15 +2,12 @@
 PENDIENTES
 ==========
 
-- videos "show all"
-
-- Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
-
 - ver los formatos de video q vamos a usar y de img (yo pondria cartelito con los formatos permitidos y ya)
 
 - css en ventanas modales (scroll y miniaturas con caption al seleccionar imgs)
 
-- Configurar paginas de error en server.
+
+- Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
 - Agregar metas keywords description etc
 
@@ -31,8 +28,6 @@ BUGS / TEST
 
 
 - Si te deslogueas desde el home no no refresca el header
-
-- Click de "more results" en el autocomplete no anda.
 
 APORTADOS:
 

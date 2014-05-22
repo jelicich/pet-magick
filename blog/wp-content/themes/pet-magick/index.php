@@ -5,10 +5,25 @@
  * @package Simon WP Framework
  * @since Simon WP Framework 1.0
  */
-
+  include_once "../php/classes/BOPopups.php";
+  $pop = new BOPopups;
 get_header(); ?>
 
 <div class="container_12" id="blog-content">
+  
+  <div id='what' >
+    <a href="#"><p>What is the blog ?</p></a>
+    <div class='active'>
+      <div id='pop-up' class='mod grid_4 '>
+
+        <p> 
+          <?php echo nl2br($pop->getPopUps("blog")); ?>
+        </p>
+
+      </div>
+      <div class=' arrow-top'></div>
+    </div>
+  </div>
   
     <div class="grid_8">
       

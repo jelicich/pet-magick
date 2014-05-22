@@ -62,7 +62,7 @@
 				<div id='pop-up' class='mod grid_4 '>
 
 					<p> 
-						<?php echo htmlspecialchars($pop->getPopUps("vet")); ?>
+						<?php echo nl2br($pop->getPopUps("vet")); ?>
 					</p>
 
 				</div>

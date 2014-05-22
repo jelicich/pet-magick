@@ -653,6 +653,7 @@ background-color: rgba(217, 82, 72, 0.6) !important;
 	top: 0;
 	left: 0;
 	right: 0;
+	height: auto;
 }
 
 #reg-form{

@@ -8,7 +8,28 @@
  get_header(); ?>
 
 <div class="container_12" id="blog-content">
+  <?php
+  if(isset($_GET['post_type']) && $_GET['post_type'] == 'forum')
+  {
+    include_once "../php/classes/BOPopups.php";
+    $pop = new BOPopups;
+  ?>
+  <div id='what' >
+    <a href="#"><p>What is the forum ?</p></a>
+    <div class='active'>
+      <div id='pop-up' class='mod grid_4 '>
 
+        <p> 
+          <?php echo nl2br($pop->getPopUps("forum")); ?>
+        </p>
+
+      </div>
+      <div class=' arrow-top'></div>
+    </div>
+  </div>
+  <?php
+  }
+  ?>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div class="grid_12">      
       <div class="mod forum-mod">

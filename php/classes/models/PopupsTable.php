@@ -21,7 +21,7 @@ class PopupsTable extends Doctrine_Table
      	
      	$q = Doctrine_Query::create()
 	        ->update('Popups p')
-	        ->set('p.CONTENT', '?', $ref['content'] )
+	        ->set('p.CONTENT', '?', htmlspecialchars($ref['content']) )
 	        ->where('p.SECTION = ?', $ref['section']);
 	        $q->execute();
      }

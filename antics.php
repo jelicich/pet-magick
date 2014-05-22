@@ -56,7 +56,7 @@
 			<div id='pop-up' class='mod grid_4 '>
 
 				<p> 
-					<?php echo htmlspecialchars($pop->getPopUps("antics")); ?>
+					<?php echo nl2br($pop->getPopUps("antics")); ?>
 				</p>
 
 			</div>
@@ -91,8 +91,16 @@
 			?>
 		</div>
 
-
-		
+	<?php
+	if(isset($_GET['c'])) 
+	{
+	?>
+		<div style="margin:-10px 0 5px 10px;" id="show-all" class="grid_12">
+			<a href="antics.php">Show all videos</a>
+		</div>
+	<?php 
+	} 
+	?>
 		<!-- videos module -->
 		<div class="mod profiles-mod animal-antics-mod grid_12 ">
 			<?php 

@@ -42,6 +42,9 @@ h1{
 	#pop-upsModule,  #ads-module{
 		margin: 0 auto;
 	}
+	#pop-upsModule textarea{
+		width: 95%;
+	}
 
 	body {
 		 background: transparent url(../img/bg.png) 0 0 repeat;

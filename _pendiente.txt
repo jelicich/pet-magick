@@ -7,7 +7,7 @@ PENDIENTES
 - css en ventanas modales (scroll y miniaturas con caption al seleccionar imgs)
 
 
-- Poner google analitics (Necesitamos el dominio y etc. Ya hice la ccuenta: pet_magick@gmail.com // pass: PetMagick1320)
+- Poner google analitics (Necesitamos el dominio y etc. Ya hice la cuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
 - Agregar metas keywords description etc
 
@@ -18,7 +18,6 @@ REUNION CON MIKE
 ================
 
 - pet loss flag
-- pop up blog
 
 
 

@@ -22,13 +22,12 @@ $project = $pro->getProjectsById($_GET["pr"]);
 
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 							<div id="upload-status"></div>
+							<h3 class="file-container">Select pictures <input type="file" name="file" id="file_id"/></h3>
 							<div class="table">
-								<ul class="clearfix">
-									<li class="new-pic-cont" style="width:100%">
-										<div class="clearfix">
-											<div id='imgContainer' class="clearfix albumContainer"></div>
-										</div>		
-										<p id="file-container">Select pictures<input type="file" name="file" id="file_id"/></p>
+								<ul>
+									<li>
+										<div id='imgContainer' class="clearfix albumContainer"></div>
+										
 									</li>
 								</ul>
 							</div>
@@ -91,6 +90,12 @@ $project = $pro->getProjectsById($_GET["pr"]);
 					</div>
 						<script type="text/javascript">
 							imgVideoUploader('album', 'edit-project'); 
+							$('.table').mCustomScrollbar({
+							    advanced:{
+							        updateOnContentResize: true
+							    },
+							    theme:"light-thin"
+							});
 						</script>
 
 				

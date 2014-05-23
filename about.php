@@ -57,294 +57,46 @@
 						<div class="terms_scroll" id="aboutText">
 							<div class="bg-txt-featured-modules">
 								<p>
-									Wu-wei is another term which defies exact
-									translation so is usually left as it is. It is the
-									doctrine of inaction or non-action, but only
-									a superficial outlook interprets it as laissez
-									faire, in the sense of indifference, for the
-									Taoist is not indifferent, but should be totally
-									committed to life. If any translation should
-									be attempted, possibly “non-interference” or
-									“letting-go” is the best. At the lowest level it
-									is a policy of naturalness, of “live and let live”
-									and of avoiding friction, with its inevitable
-									consequences of discord and conflict, whether
-									on the individual
-									or national scale, and allowing
-									the maximum of individual liberty
-									and understanding the views of others. It is
-									also a letting-go, a giving-way, a yielding, primarily
-									a yielding
-									of the self, the ego, as that
-									which is responsible for introducing selfishness
-									and dissonance. At a higher level it is the
-									desirelessness, the dispassionateness, which
-									leads automatically
-									to release from tensions
-									and helps towards realization. Action is normally
-									the outcome of the incessant, and usually
-									feverish, working of the mind taken up
-									with desires, daydreams, and the unproductive
-									turning over of problems which, like desires,
-									are “self ” created and self-centered. Problems
-									are solved (which, literally, means “loosened”)
-									when tensions are eased and one is able to
-									understand the true nature of a thing, hence
-									“sleeping on it”, or the sudden flash of intuition
-									which comes when the rational mind
-									ceases its activity and a spontaneous recognition
-									of reality occurs.
-									It is a doctrine of immediacy, or, as
-									Chuang Tzu calls it, “non-angularity”, of
-									spontaneous adaptation and response and of
-									perfect acceptance; an action which is so unforced
-									and natural that it loses the ordinary
-									meaning of action with its accompanying deliberation
-									and weighing up, and is so in harmony
-									with the natural that it simply is, without
-									having to think about it. There is no ulterior
-									motive, indeed, there is no motive at all
-									in such “actionless action”, since this activity
-									Wu-wei is another term which defies exact
-									translation so is usually left as it is. It is the
-									doctrine of inaction or non-action, but only
-									a superficial outlook interprets it as laissez
-									faire, in the sense of indifference, for the
-									Taoist is not indifferent, but should be totally
-									committed to life. If any translation should
-									be attempted, possibly “non-interference” or
-									“letting-go” is the best. At the lowest level it
-									is a policy of naturalness, of “live and let live”
-									and of avoiding friction, with its inevitable
-									consequences of discord and conflict, whether
-									on the individual
-									or national scale, and allowing
-									the maximum of individual liberty
-									and understanding the views of others. It is
-									also a letting-go, a giving-way, a yielding, primarily
-									a yielding
-									of the self, the ego, as that
-									which is responsible for introducing selfishness
-									and dissonance. At a higher level it is the
-									desirelessness, the dispassionateness, which
-									leads automatically
-									to release from tensions
-									and helps towards realization. Action is normally
-									the outcome of the incessant, and usually
-									feverish, working of the mind taken up
-									with desires, daydreams, and the unproductive
-									turning over of problems which, like desires,
-									are “self ” created and self-centered. Problems
-									are solved (which, literally, means “loosened”)
-									when tensions are eased and one is able to
-									understand the true nature of a thing, hence
-									“sleeping on it”, or the sudden flash of intuition
-									which comes when the rational mind
-									ceases its activity and a spontaneous recognition
-									of reality occurs.
-									It is a doctrine of immediacy, or, as
-									Chuang Tzu calls it, “non-angularity”, of
-									spontaneous adaptation and response and of
-									perfect acceptance; an action which is so unforced
-									and natural that it loses the ordinary
-									meaning of action with its accompanying deliberation
-									and weighing up, and is so in harmony
-									with the natural that it simply is, without
-									having to think about it. There is no ulterior
-									motive, indeed, there is no motive at all
-									in such “actionless action”, since this activity
-									Wu-wei is another term which defies exact
-									translation so is usually left as it is. It is the
-									doctrine of inaction or non-action, but only
-									a superficial outlook interprets it as laissez
-									faire, in the sense of indifference, for the
-									Taoist is not indifferent, but should be totally
-									committed to life. If any translation should
-									be attempted, possibly “non-interference” or
-									“letting-go” is the best. At the lowest level it
-									is a policy of naturalness, of “live and let live”
-									and of avoiding friction, with its inevitable
-									consequences of discord and conflict, whether
-									on the individual
-									or national scale, and allowing
-									the maximum of individual liberty
-									and understanding the views of others. It is
-									also a letting-go, a giving-way, a yielding, primarily
-									a yielding
-									of the self, the ego, as that
-									which is responsible for introducing selfishness
-									and dissonance. At a higher level it is the
-									desirelessness, the dispassionateness, which
-									leads automatically
-									to release from tensions
-									and helps towards realization. Action is normally
-									the outcome of the incessant, and usually
-									feverish, working of the mind taken up
-									with desires, daydreams, and the unproductive
-									turning over of problems which, like desires,
-									are “self ” created and self-centered. Problems
-									are solved (which, literally, means “loosened”)
-									when tensions are eased and one is able to
-									understand the true nature of a thing, hence
-									“sleeping on it”, or the sudden flash of intuition
-									which comes when the rational mind
-									ceases its activity and a spontaneous recognition
-									of reality occurs.
-									It is a doctrine of immediacy, or, as
-									Chuang Tzu calls it, “non-angularity”, of
-									spontaneous adaptation and response and of
-									perfect acceptance; an action which is so unforced
-									and natural that it loses the ordinary
-									meaning of action with its accompanying deliberation
-									and weighing up, and is so in harmony
-									with the natural that it simply is, without
-									having to think about it. There is no ulterior
-									motive, indeed, there is no motive at all
-									in such “actionless action”, since this activity
-									Wu-wei is another term which defies exact
-									translation so is usually left as it is. It is the
-									doctrine of inaction or non-action, but only
-									a superficial outlook interprets it as laissez
-									faire, in the sense of indifference, for the
-									Taoist is not indifferent, but should be totally
-									committed to life. If any translation should
-									be attempted, possibly “non-interference” or
-									“letting-go” is the best. At the lowest level it
-									is a policy of naturalness, of “live and let live”
-									and of avoiding friction, with its inevitable
-									consequences of discord and conflict, whether
-									on the individual
-									or national scale, and allowing
-									the maximum of individual liberty
-									and understanding the views of others. It is
-									also a letting-go, a giving-way, a yielding, primarily
-									a yielding
-									of the self, the ego, as that
-									which is responsible for introducing selfishness
-									and dissonance. At a higher level it is the
-									desirelessness, the dispassionateness, which
-									leads automatically
-									to release from tensions
-									and helps towards realization. Action is normally
-									the outcome of the incessant, and usually
-									feverish, working of the mind taken up
-									with desires, daydreams, and the unproductive
-									turning over of problems which, like desires,
-									are “self ” created and self-centered. Problems
-									are solved (which, literally, means “loosened”)
-									when tensions are eased and one is able to
-									understand the true nature of a thing, hence
-									“sleeping on it”, or the sudden flash of intuition
-									which comes when the rational mind
-									ceases its activity and a spontaneous recognition
-									of reality occurs.
-									It is a doctrine of immediacy, or, as
-									Chuang Tzu calls it, “non-angularity”, of
-									spontaneous adaptation and response and of
-									perfect acceptance; an action which is so unforced
-									and natural that it loses the ordinary
-									meaning of action with its accompanying deliberation
-									and weighing up, and is so in harmony
-									with the natural that it simply is, without
-									having to think about it. There is no ulterior
-									motive, indeed, there is no motive at all
-									in such “actionless action”, since this activity
-									Wu-wei is another term which defies exact
-									translation so is usually left as it is. It is the
-									doctrine of inaction or non-action, but only
-									a superficial outlook interprets it as laissez
-									faire, in the sense of indifference, for the
-									Taoist is not indifferent, but should be totally
-									committed to life. If any translation should
-									be attempted, possibly “non-interference” or
-									“letting-go” is the best. At the lowest level it
-									is a policy of naturalness, of “live and let live”
-									and of avoiding friction, with its inevitable
-									consequences of discord and conflict, whether
-									on the individual
-									or national scale, and allowing
-									the maximum of individual liberty
-									and understanding the views of others. It is
-									also a letting-go, a giving-way, a yielding, primarily
-									a yielding
-									of the self, the ego, as that
-									which is responsible for introducing selfishness
-									and dissonance. At a higher level it is the
-									desirelessness, the dispassionateness, which
-									leads automatically
-									to release from tensions
-									and helps towards realization. Action is normally
-									the outcome of the incessant, and usually
-									feverish, working of the mind taken up
-									with desires, daydreams, and the unproductive
-									turning over of problems which, like desires,
-									are “self ” created and self-centered. Problems
-									are solved (which, literally, means “loosened”)
-									when tensions are eased and one is able to
-									understand the true nature of a thing, hence
-									“sleeping on it”, or the sudden flash of intuition
-									which comes when the rational mind
-									ceases its activity and a spontaneous recognition
-									of reality occurs.
-									It is a doctrine of immediacy, or, as
-									Chuang Tzu calls it, “non-angularity”, of
-									spontaneous adaptation and response and of
-									perfect acceptance; an action which is so unforced
-									and natural that it loses the ordinary
-									meaning of action with its accompanying deliberation
-									and weighing up, and is so in harmony
-									with the natural that it simply is, without
-									having to think about it. There is no ulterior
-									motive, indeed, there is no motive at all
-									in such “actionless action”, since this activity
-									Wu-wei is another term which defies exact
-									translation so is usually left as it is. It is the
-									doctrine of inaction or non-action, but only
-									a superficial outlook interprets it as laissez
-									faire, in the sense of indifference, for the
-									Taoist is not indifferent, but should be totally
-									committed to life. If any translation should
-									be attempted, possibly “non-interference” or
-									“letting-go” is the best. At the lowest level it
-									is a policy of naturalness, of “live and let live”
-									and of avoiding friction, with its inevitable
-									consequences of discord and conflict, whether
-									on the individual
-									or national scale, and allowing
-									the maximum of individual liberty
-									and understanding the views of others. It is
-									also a letting-go, a giving-way, a yielding, primarily
-									a yielding
-									of the self, the ego, as that
-									which is responsible for introducing selfishness
-									and dissonance. At a higher level it is the
-									desirelessness, the dispassionateness, which
-									leads automatically
-									to release from tensions
-									and helps towards realization. Action is normally
-									the outcome of the incessant, and usually
-									feverish, working of the mind taken up
-									with desires, daydreams, and the unproductive
-									turning over of problems which, like desires,
-									are “self ” created and self-centered. Problems
-									are solved (which, literally, means “loosened”)
-									when tensions are eased and one is able to
-									understand the true nature of a thing, hence
-									“sleeping on it”, or the sudden flash of intuition
-									which comes when the rational mind
-									ceases its activity and a spontaneous recognition
-									of reality occurs.
-									It is a doctrine of immediacy, or, as
-									Chuang Tzu calls it, “non-angularity”, of
-									spontaneous adaptation and response and of
-									perfect acceptance; an action which is so unforced
-									and natural that it loses the ordinary
-									meaning of action with its accompanying deliberation
-									and weighing up, and is so in harmony
-									with the natural that it simply is, without
-									having to think about it. There is no ulterior
-									motive, indeed, there is no motive at all
-									in such “actionless action”, since this activity
+We at Pet Magick know that pet lovers are one of the most passionate groups on the planet, why – because we are a part of that group and understand the depth of feeling that can develop when you bring an animal into your life. <br><br>
+So we decided to create the means for people to channel that passion, a place where animal lovers can connect and share with others who think the same way and know just what they are talking about. Members can create a personal profile with photo’s and details of the times they spend with their animal friends, their family, their bbq, their new car, wedding…whatever is going on in their life that they’d like to share. And it’s <b>FREE!</b><br><br>
+
+
+<h3>Grief Support</h3><br>
+But Pet Magick is more than just a website to show photo’s and chat about pets. It is also a place for those people who are struggling with the death of a loyal pet friend to express their grief and sense of loss and know that they will be supported by other people who also know and fully understand the depth of the emotional pain they are going through. It’s a place to help with the healing process.<br><br>
+<h3>Helping Others</h3><br>
+Being charitable is a trait that can not only change an individual’s
+life, but also improve  a community, a country and eventually the entire planet. 
+So we at Pet Magick strongly support the great work being done by animal shelters and 
+refuge centers around the world. Our Organizations  page is a directory 
+for registered charities to promote themselves and their cause, a page to highlight 
+the charitable work they do and any assistance they require to continue making a positive difference to their local community. 
+We also understand that individuals or like minded groups may have a worthy charitable project that they’d like to promote and see expand.
+ So we’ve created our Projects page, a place for members to post the details and photo’s of a project that’s close to their heart. 
+ It may be something as simple as taking a suitable pet to an aged care facility, so the less mobile residents can once again interact 
+ with and enjoy the company of a friendly animal. Or a dog owner lobbying the local council for a fenced off, leash free exercise area 
+ for other dog owners and their pets to enjoy. One small idea may spread and become a global network of similar charitable projects, 
+ that’s the goal of our Projects page.<br><br>
+<h3>Having Fun</h3><br>
+We also realize that having a pet can be a lot of fun,
+ because pets can do some really funny, sometimes crazy things. If you’ve caught those moments on 
+ video then make your pet a star by sharing the footage with other pet lovers on our Animal Antics page.<br><br>
+<h3>Pet Health</h3><br>
+All responsible pet owners are vigilant in monitoring the health of their pet. 
+So we have created a page where general animal health advice is available for 
+all visitors to view and registered members can post a question and have it answered by a 
+qualified animal health advisor. (NB : all the information posted on the Vet Talk page is for 
+advisory purposes only, it is not intended as a diagnosis, if you have concerns about your pet’s health, 
+see a qualified veterinarian as soon as possible).<br><br>
+<h3>Having a Chat</h3><br>
+We know pet owners love to chat about “all things pet”, 
+so members can send private messages to others from their personal profile page, 
+or participate in a public discussion through the Forum section. Comments are always welcome about any of the 
+blog articles posted. (NB: we realize that opinions vary on most subjects and we whole heartedly believe in free speech, 
+but rude or inflammatory posts / comments will be removed).<br><br>
+<h3>Making a Difference</h3><br>
+We at Pet Magick want this site to be more than just a place for pet lovers to chat and share photos, we want this site to make a positive contribution to society and building a global community of passionate pet lovers will be the driving force behind that. So whether you join and start a charitable project that spreads worldwide, or join to make some new pet loving friends, by just joining you will be playing your part in an organization that is “making a difference”.
+The great comic Spike Milligan said – “Imagine a world where everything living gets a good fair chance at life.”   Now wouldn’t that be great!    
+
 								</p>
 							</div>
 						</div>

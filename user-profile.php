@@ -249,7 +249,7 @@
 
 
 <div id="modal-edit-container">
-	<div id="modal-edit" class="edit-scrollable">
+	<div id="modal-edit">
 		<img class="loading" src="img/loading.gif" width="208" height="13" />
 	</div>
 </div>

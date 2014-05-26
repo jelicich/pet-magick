@@ -1,6 +1,6 @@
 
 			
-		<div class="edit-scrollable">
+		<div>
 			<div class="mod-header">
 				<h2>Edit user information</h2>
 			</div>
@@ -16,65 +16,82 @@
 
 					<div id="upload-status"></div>
 				
-					<div class="table">
-						<ul class="clearfix">
-							<li class="current-pic-cont">
-								<img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/>
-								<?php
-									if($p->hasPic())
-									{
-								?>
-									<label>Delete
-										<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$p->getPicId().'"'; ?> />
+					<ul class="nav nav-tabs user-about-tabs">
+						<li class="active"><a href="#prof-pic" data-toggle="tab">Profile Picture</a></li>
+						<li><a href="#per-info" data-toggle="tab">Personal Information</a></li>
+						<li><a href="#location" data-toggle="tab">Location</a></li>
+					</ul>
+					<div class="tab-content">
+					  
+					  	<div class="tab-pane active" id="prof-pic">
+						  	<div class="table">
+								<ul class="clearfix">
+									<li class="current-pic-cont">
+										<img src=<?php echo '"'. $p->getThumb() .'"'; ?> class="thumb-mid"/>
+										<?php
+											if($p->hasPic())
+											{
+										?>
+											<label>Delete
+												<input class="form-element" type="checkbox" name="delete-pic[]" value=<?php echo '"'.$p->getPicId().'"'; ?> />
+											</label>
+										<?php
+											}
+										?>
+									</li>
+									<li class="new-pic-cont">
+										<label>Profile Picture</label>
+										<div class="clearfix">
+											<div id='imgContainer' class="clearfix"></div>
+										</div>		
+										<p id="file-container"><input type="file" name="file" id="file_id"  /></p>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					 	<div class="tab-pane" id="per-info">
+							<ul class="clearfix li-info">
+								<li>
+									<label for="usr-name">
+										Name* 
+										<span class="hid-def"><span class="left-tr"></span>Mandatory field. 18 characters max.</span>
 									</label>
-								<?php
-									}
-								?>
-							</li>
-							<li class="new-pic-cont">
-								<div class="clearfix">
-									<div id='imgContainer' class="clearfix"></div>
-								</div>		
-								<p id="file-container"><input type="file" name="file" id="file_id"  /></p>
-							</li>
-						</ul>
-					</div>
-					<!-- IMG UPLOADER -->
-					
+									<input class="form-element mandatory" type="text" value=<?php echo '"'.$p->getName().'"' ?> name="name" id="usr-name"/>
+								</li>
+								<li>
+									<label for="usr-lastname">
+										Lastname*
+										<span class="hid-def"><span class="left-tr"></span>Mandatory field. 18 characters max.</span>
+									</label>
+									<input class="form-element mandatory" type="text" value=<?php echo '"'.$p->getLastname().'"' ?> name="lastname" id="usr-lastname"/>
+								</li>
+								<!--
+								<li class="odd">
+									<label for="usr-nickname">
+										Nickname
+										<span class="hid-def"><span class="left-tr"></span>Can't be modified.</span>
+									</label>
+									<input disabled="disabled" type="text" value=<?php echo '"'.$p->getNickname().'"' ?> name="nickname" id="usr-nickname"/>
+								</li>
+								-->
+								<li>
+									<label for="usr-email">
+										e-mail*
+										<span class="hid-def"><span class="left-tr"></span>Mandatory field. 254 characters max.</span>
+									</label>
+									<input class="form-element mandatory email-field" type="text" value=<?php echo '"'.$p->getEmail().'"' ?> name="email" id="usr-email"/>
+								</li>
+								<li>
+									<label for="usr-about">About me</label>
+									<textarea class="form-element" name="about" id="usr-about"><?php echo $p->getAbout() ?></textarea>
+								</li>
+							</ul>
+					  	</div>
+					  
+					  	<div class="tab-pane" id="location">
+					  		<ul class="clearfix li-info">
 
-					<div class="table">
-						<ul class="clearfix li-info">
-							<li class="odd">
-								<label for="usr-name">
-									Name* 
-									<span class="hid-def"><span class="left-tr"></span>Mandatory field. 18 characters max.</span>
-								</label>
-								<input class="form-element mandatory" type="text" value=<?php echo '"'.$p->getName().'"' ?> name="name" id="usr-name"/>
-							</li>
-							<li class="even">
-								<label for="usr-lastname">
-									Lastname*
-									<span class="hid-def"><span class="left-tr"></span>Mandatory field. 18 characters max.</span>
-								</label>
-								<input class="form-element mandatory" type="text" value=<?php echo '"'.$p->getLastname().'"' ?> name="lastname" id="usr-lastname"/>
-							</li>
-							<li class="odd">
-								<label for="usr-nickname">
-									Nickname
-									<span class="hid-def"><span class="left-tr"></span>Can't be modified.</span>
-								</label>
-								<input disabled="disabled" type="text" value=<?php echo '"'.$p->getNickname().'"' ?> name="nickname" id="usr-nickname"/>
-							</li>
-							<li class="even">
-								<label for="usr-email">
-									e-mail*
-									<span class="hid-def"><span class="left-tr"></span>Mandatory field. 254 characters max.</span>
-								</label>
-								<input class="form-element mandatory email-field" type="text" value=<?php echo '"'.$p->getEmail().'"' ?> name="email" id="usr-email"/>
-							</li>
-
-							<!-- location -->
-						
 							<?php
 								$loc = $p->getLocation();
 								if(empty($loc))
@@ -223,11 +240,10 @@
 						    ?>
 
 							<!-- end location -->
-						</ul>
+					  		</ul>
+					  	</div>
 					</div>
 
-			    	<label for="usr-about">About me</label>
-					<textarea class="form-element" name="about" id="usr-about"><?php echo $p->getAbout() ?></textarea>
 				</form>
 					
 				

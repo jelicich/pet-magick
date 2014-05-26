@@ -463,7 +463,7 @@ function imgVideoUploader(whatFor, modulo){
 		            		var reader = new FileReader();
 		            		var imageValSize  = new Image();
 
-		            		 reader.onload = function(ev) {
+		            		reader.onload = function(ev) {
 		            		 	/*
 		            		 		imageValSize.src  = e.target.result;      
 		            		 	    var w = imageValSize.width;       
@@ -490,6 +490,7 @@ function imgVideoUploader(whatFor, modulo){
 							  	    	if(exceds == true)
 							  	    	{
 							  	    		exceds = false;
+							  	    		byid('file-container').appendChild(file_id);
 							  	    		return;
 							  	    	}
 								

@@ -3846,7 +3846,7 @@ a[href$=".jpg"]{
 	height: 100%;
 	position: fixed;
 	z-index: 9990;
-	background:rgba(255,255,255,0.5);
+	background:rgba(255,255,255,0.8);
 	top: 0;
 	left: 0;
 	display: none;
@@ -3862,11 +3862,16 @@ a[href$=".jpg"]{
 }
 
 #modal-edit .loading{
-	display: block;
+/*	display: block;
 	margin: 10px auto;
 	position: absolute;
 	bottom: 0;
 	right: 10px;
+	*/
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -104px;
 }
 
 #modal-edit .mod-header{
@@ -4063,9 +4068,10 @@ a[href$=".jpg"]{
 	max-height: 160px;
 }
 
+.add-pet #file-container,
 .album-user-edition .file-container{
 	color: #fff !important;
-	margin-right: 20px !important;
+	
 }
 
 .album-user-edition #form-id input[type="text"] {
@@ -4125,9 +4131,10 @@ a[href$=".jpg"]{
 	background: rgba(255,255,255,0.3);
 	width: 100%;
 }
-#save-edit-user{
+#save-edit-user, #save-new-pet{
 	margin-right: 10px;
 }
+
 .new-pic-cont .cont-preview{
 	width: 98px;
 	height: 98px;
@@ -4166,7 +4173,7 @@ a[href$=".jpg"]{
 	height: 100px;
 	resize: none;
 }
-/*PERSONAL INFO*/
+/*LOCATION*/
 #location ul.li-info{
 	margin: 0;
 }
@@ -4180,4 +4187,55 @@ a[href$=".jpg"]{
 }
 #location ul.li-info li select{
 	width: 100%;
+}
+
+
+/* ============================ ventana modal add pet =======================*/
+
+.add-pet .new-pic-cont{
+	margin-bottom: 10px;
+}
+
+.add-pet ul.li-info li textarea,
+.add-pet #tr-msg {
+width: 100%;
+height: 100px;
+resize: none;
+}
+
+.li-info li{
+	float: left;
+	margin-right: 10px;
+}
+
+.add-pet input[type='file']{
+	padding: 6px;
+	background: rgba(255,255,255,0.3);
+	width: 100%;
+	color: #000;
+}
+#create-tribute input[type='checkbox']{
+	margin: 0;
+}
+
+.since-gone li input{
+	width: 285px;
+}
+.since-gone li:last-child{
+	margin-right: 0 !important;
+}
+#tr-title{
+	width: 100%;
+}
+
+/* ============================ ventana modal edit pet=======================*/
+
+#save-edit-pet-about{
+	margin: 0 10px 0 0;
+}
+.edit-pet textarea,
+.edit-pet #tr-msg {
+	width: 100%;
+	height: 100px;
+	resize: none;
 }

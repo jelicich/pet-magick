@@ -1585,35 +1585,74 @@ max-height: 100px !important;
 
 #adminOrg .bg-txt,
 #adminProject .bg-txt,
-#adminVetArticle .bg-txt,
-#vtquestions .bg-txt
+#adminVetArticle .bg-txt
 {
-	height: 80px;
-	width: 89%;
+	min-height: 80px;
+	width: 89%;	
+	height: auto;
+}
+#vtquestions .bg-txt{
+	min-height: 80px;
+	width: 89%;	
+	height: auto;
 }
 
 .qa-profile{
-	float: right;
-	margin: -20px 0 0 0 !important;
+	float: left;
+	margin: 0 !important;
+	width: 390px;
+	height: 100%;
+	padding-left: 10px;
 }
-.qa-profile .submit-answer{
-	margin-bottom: -12px;
+.qa-profile textarea{
+	width: 302px;
+	height: 100%
+}
+#vtquestions .qa-list{
+	padding-top: 0 !important;
+}
+#vtquestions .qa-list li{
+	margin-top: 0 !important;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.q-textarea-cont textarea{
+	width: 99%;
+	resize: none;
+	height: 100px;
+}
+#vtquestions{
+	padding-top: 0 !important;
+}
+.submit-answer{
+	float: right;
+	margin-right: 9px;
+}
+.cont-q-adm{
+	float: left;
+	width: 390px;
 }
 
 .delete-org, 
 .delete-project,
 .delete-vet-talk
 {
-	float: right;
-	margin-top: 5px;
+	position: absolute;
+	right:10px;
+	top:45px;
+	min-width: 68px;
+}
+.delete-vet-talk{
+	top:10px;
 }
 
 .edit-project,
 .edit-organization{
-	float: right;
-	margin-top: -30px;
+	position: absolute;
+	right:10px;
+	top:10px;
 	min-width: 68px;
 }
+
 
 #upload-organization,
 #upload-project,
@@ -1624,6 +1663,11 @@ max-height: 100px !important;
 .linkToModule{
 	font-weight: bold;
 	cursor: pointer;
+}
+
+.adm-space{
+	padding-right: 90px;
+	position: relative;
 }
 
 /* ------------------------------ pet loss */
@@ -4034,7 +4078,6 @@ a[href$=".jpg"]{
 
 
 
-
 /* ============================ ventana modal user album start =======================*/
 
 .mod-content.album-user-edition{
@@ -4238,4 +4281,43 @@ resize: none;
 	width: 100%;
 	height: 100px;
 	resize: none;
+}
+
+/* ======================= modal video =============================== */
+
+.album-user-edition #save-edit-album, 
+.album-user-edition #cancel-edit-album,
+.album-user-edition #save-edit-pet-album, 
+.album-user-edition #cancel-edit-pet-album,
+.video-modal #save-edit-pet-video,
+.video-modal #cancel-edit-pet-video
+{
+	margin: 5px 5px 0 0;
+}
+
+
+/*
+.mod-content.video-modal{
+		height: 150px;
+}
+*/
+
+.video-modal .file-container{
+	color: #fff !important;
+	margin-right: 20px !important;
+}
+.video-modal input[type='file']{
+	padding: 6px;
+	background: rgba(255,255,255,0.3);
+	width: 100%;
+	color: #000;
+}
+.video-modal .img-upload{
+	display: block;
+	width: 70px;
+}
+.video-modal #form-id input[name="title"],
+.video-modal #form-id input[name="caption"]{
+	display: block;
+	margin-top: 10px;
 }

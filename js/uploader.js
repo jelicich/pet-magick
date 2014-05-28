@@ -433,7 +433,8 @@ function imgVideoUploader(whatFor, modulo){
 			            		}
 			            		else 
 			            		{
-			            			
+			            			//exceds es flag para validar tamaño de img
+			            			exceds = false;
 			            			if(mimeVideo.indexOf(this.files[0].type) == -1)
 			            			{
 			            				errMsg('Invalid format...');

@@ -23,7 +23,7 @@
 										?>
 											<li class="clearfix">
 												<img src= <?php echo '"'.$list[$i]['Pics']['THUMB'] .'"'?> class="thumb-small side-img"/>
-												<div class="content-description bg-txt">
+												<div class="content-description bg-txt adm-space">
 													<h3><?php echo $vet_title;
 													if(strlen($vet_title) == 65) echo '...';?></h3>
 													<p><?php echo $vet_cont;

@@ -34,7 +34,7 @@
 									<li class="clearfix">
 
 										<img src= <?php echo '"'.$img.'"'?> class="thumb-small side-img"/>
-										<div class="content-description bg-txt">
+										<div class="content-description bg-txt adm-space">
 											<h3><?php echo $project_title;
 											if(strlen($project_title) == 65) {echo '...';} ?></h3>
 											<p><?php echo $project_desc; 

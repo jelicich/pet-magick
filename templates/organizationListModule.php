@@ -18,7 +18,7 @@
 
 
 	$allOrg = $org->getAllOrganizations();
-	//var_dump($allOrg);
+	//var_dump($allOrg); exit;
 	$t = sizeof($allOrg);
 	$noRepeat = array();
 	
@@ -33,9 +33,10 @@
 		}else{
 
 			$orgId = $allOrg[$j]["ID_ORGANIZATION"];
+			$orgAlbum = $pics->table->getPicsByAlbum($allOrg[$j]["ALBUM_ID"]);
 
-			if(!isset($allOrg[$j]['Pics']['PIC'])){ $srcImg = 'img/users/thumb/default.jpg'; }
-			else{ $srcImg = 'img/organizations/thumb/'.$allOrg[$j]['Pics']['PIC']; }
+			if(!isset($orgAlbum[0]['THUMB'])){ $srcImg = 'img/users/thumb/default.jpg'; }
+			else{ $srcImg = 'img/organizations/thumb/'.$orgAlbum[0]['THUMB']; } 
 			if(!isset($allOrg[$j]['NAME'])){ $name = '?'; }
 			else{ $name =  htmlspecialchars($allOrg[$j]['NAME']); }
 			if(!isset( $allOrg[$j]['DESCRIPTION'])){ $description =  '?'; }

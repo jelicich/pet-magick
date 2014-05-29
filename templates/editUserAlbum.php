@@ -8,7 +8,8 @@
 						
 						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
 							<div id="upload-status"></div>
-							<h3 class="file-container">Select pictures <input type="file" name="file" id="file_id"/></h3>
+							<label>Select pictures</label>
+							<input type="file" name="file" id="file_id"/>
 							<div class="table">
 								<ul>
 									<li>

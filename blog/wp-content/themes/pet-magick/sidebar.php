@@ -9,7 +9,7 @@
 
 <div class="grid_4 vet-talk-mod">
   <div class="mod-header">
-    <h2>Blog menu</h2>
+    <h2>Blog Menu</h2>
   </div>
   <div id="sidebar" class="mod-content clearfix"> 
     <!-- begin widget sidebar --> 

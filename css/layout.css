@@ -4076,13 +4076,12 @@ a[href$=".jpg"]{
 
 
 
-
+#modal-edit-container input[type='checkbox']{
+	margin-top: 0;
+}
 
 /* ============================ ventana modal user album start =======================*/
 
-.mod-content.album-user-edition{
-		height: 420px;
-}
 
 .album-user-edition .table{
 	height: 180px;
@@ -4113,7 +4112,7 @@ a[href$=".jpg"]{
 
 .add-pet #file-container,
 .album-user-edition .file-container{
-	color: #fff !important;
+	color: #000 !important;
 	
 }
 
@@ -4141,6 +4140,11 @@ a[href$=".jpg"]{
 
 .album-user-edition #save-edit-album, #cancel-edit-album{
 	margin: 5px 5px 0 0;
+}
+.album-user-edition input[type='file']{
+	padding: 6px;
+	background: rgba(255,255,255,0.3);
+	width: 100%;
 }
 
 /* ============================ ventana modal user album end =======================*/
@@ -4320,4 +4324,260 @@ resize: none;
 .video-modal #form-id input[name="caption"]{
 	display: block;
 	margin-top: 10px;
+}
+
+/* ======================= create org ===================== */
+.upload-org #save-organization{
+	margin-right: 10px;	
+}
+
+.upload-org #org-description{
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+.upload-org .table{
+	height: 180px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	overflow: auto;
+    padding: 10px;
+	background-color: rgba(255,255,255,0.5);
+}
+
+.upload-org .table ul  {
+	margin: 0 !important;
+}
+
+.upload-org .table ul li {
+	width: 170px;
+	margin: 0 auto;
+}
+
+.upload-org .cont-preview{
+	width: 170px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.upload-org .cont-preview img{
+	max-height: 160px;
+}
+.upload-org .file-container{
+	color: #000 !important;
+	
+}
+
+.upload-org #form-id input[type="text"] {
+	width: 172px;
+	margin-top: 5px;
+}
+.upload-org input[type='file']{
+	padding: 6px;
+	background: rgba(255,255,255,0.3);
+	width: 100%;
+	color: #000;
+}
+.upload-org #form-id #org-name{
+	width: 100%;
+}
+
+/* ===================== edit org =============== */
+.edit-org .table{
+	height: 180px;
+	margin-top: 5px;
+	overflow: auto;
+    padding: 10px;
+	background-color: rgba(255,255,255,0.5);
+}
+
+.edit-org .table ul  {
+	margin: 0 !important;
+}
+
+.edit-org .table ul li {
+	width: 170px;
+	margin: 0 auto;
+}
+
+.edit-org .cont-preview{
+	width: 170px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.edit-org .cont-preview  img{
+	max-height: 160px;
+}
+
+.edit-org .file-container{
+	color: #000 !important;
+	
+}
+
+.edit-org #form-id input[type="text"] {
+	width: 172px;
+	margin-top: 5px;
+}
+
+.edit-org input[type='file']{
+	padding: 6px;
+	background: rgba(255,255,255,0.3);
+	width: 100%;
+	color: #000;
+}
+
+.edit-org .album-grid{
+	height: 120px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.3);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+.edit-org .album-grid ul li label{
+	margin-bottom: 5px;
+}
+.edit-org #form-id #pro-name{
+	width: 100%;
+}
+.edit-org #form-id #pro-description{
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+.edit-org #save-edit-organization{
+	margin-right: 10px;	
+}
+
+/*=========== create proj ============*/
+.upload-pro #save-project{
+	margin-right: 10px;	
+}
+
+.upload-pro #org-description{
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+.upload-pro .table{
+	height: 180px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	overflow: auto;
+    padding: 10px;
+	background-color: rgba(255,255,255,0.5);
+}
+
+.upload-pro .table ul  {
+	margin: 0 !important;
+}
+
+.upload-pro .table ul li {
+	width: 170px;
+	margin: 0 auto;
+}
+
+.upload-pro .cont-preview{
+	width: 170px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.upload-pro .cont-preview img{
+	max-height: 160px;
+}
+.upload-pro .file-container{
+	color: #000 !important;
+	
+}
+
+.upload-pro #form-id input[type="text"] {
+	width: 172px;
+	margin-top: 5px;
+}
+.upload-pro input[type='file']{
+	padding: 6px;
+	background: rgba(255,255,255,0.3);
+	width: 100%;
+	color: #000;
+}
+.upload-pro #form-id #pro-name{
+	width: 100%;
+}
+
+.upload-pro #pro-description{
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+
+/* ================ edit proj ===============*/
+.edit-pro .table{
+	height: 180px;
+	margin-top: 5px;
+	overflow: auto;
+    padding: 10px;
+	background-color: rgba(255,255,255,0.5);
+}
+
+.edit-pro .table ul  {
+	margin: 0 !important;
+}
+
+.edit-pro .table ul li {
+	width: 170px;
+	margin: 0 auto;
+}
+
+.edit-pro .cont-preview{
+	width: 170px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.edit-pro .cont-preview  img{
+	max-height: 160px;
+}
+
+.edit-pro .file-container{
+	color: #000 !important;
+	
+}
+
+.edit-pro #form-id input[type="text"] {
+	width: 172px;
+	margin-top: 5px;
+}
+
+.edit-pro input[type='file']{
+	padding: 6px;
+	background: rgba(255,255,255,0.3);
+	width: 100%;
+	color: #000;
+}
+
+.edit-pro .album-grid{
+	height: 120px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.3);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+.edit-pro .album-grid ul li label{
+	margin-bottom: 5px;
+}
+.edit-pro #form-id #pro-name{
+	width: 100%;
+}
+.edit-pro #form-id #pro-description{
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+.edit-pro #save-edit-organization{
+	margin-right: 10px;	
 }

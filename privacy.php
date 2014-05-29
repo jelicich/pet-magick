@@ -191,19 +191,9 @@
 
 									this policy will be deemed your acceptance of those changes.
 
-									<br><br><strong>Contacting us</strong><br><br>
+									<br><br>
 
-									If you have any questions about this Privacy Policy, the practices of this site, or your dealings 
-
-									with this site, please contact us at:<br><br>
-
-									www.petmagick.com<br><br>
-
-									159 Cameron Rd<br>
-
-									 Te Puke 3119 <br>
-
-									New Zealand<br>
+									
 
 									This document was last updated on April 03, 2014
 								</p>

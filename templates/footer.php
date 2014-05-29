@@ -5,6 +5,7 @@
 				<span class="copyright">&copy; Copyright All rights reserved</span>
 				<ul class="clearfix">
 					<li><a href="about.php">About Pet Magick</a></li>
+					<li><a href="../contact.php">Contact Us</a></li>
 					<li><a href="terms.php">Terms and conditions</a></li>
 					<li><a href="privacy.php">Privacy</a></li>
 				</ul>

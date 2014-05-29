@@ -69,7 +69,7 @@
 		<div id="lastest-video-mod" class="mod grid_8">
 			
 			<div class="mod-header">
-				<h2>Latest videos</h2>
+				<h2>Latest Videos</h2>
 			</div>
 
 			<ul class='mod-content clearfix videoCap'>

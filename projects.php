@@ -79,7 +79,7 @@
 		<!-- Current projects module -->
 		<div class="mod grid_8 projects-mod list ">
 			<div class="mod-header">
-				<h2>Current projects</h2>
+				<h2>Current Projects</h2>
 			</div>
 			<div class="scrollable-list-sections" id="projectsList">
 

@@ -16,7 +16,13 @@
 
 			<span class='vcard'>
 				<a class="url fn n" href="<?php bbp_user_profile_url(); ?>" title="<?php bbp_displayed_user_field( 'display_name' ); ?>" rel="me">
-					<?php echo get_avatar( bbp_get_displayed_user_field( 'user_email', 'raw' ), apply_filters( 'bbp_single_user_details_avatar_size', 150 ) ); ?>
+					<?php //echo get_avatar( bbp_get_displayed_user_field( 'user_email', 'raw' ), apply_filters( 'bbp_single_user_details_avatar_size', 150 ) ); ?>
+					<?php 
+					include_once '../php/classes/BOUsers.php';
+			        $pmuser = new BOUsers;
+			        $pic = $pmuser->getProfilePicWP($_GET['bbp_user']);
+			        echo '<img class="avatar avatar-96 photo" height="96" width="96" src="'.$pic['THUMB']. '"/>';
+					?>
 				</a>
 			</span>
 
@@ -67,14 +73,15 @@
 						</span>
 					</li>
 					-->
-					<li>
-						<span>
-							<a href="<?php echo '../user-profile.php?u='.$_GET['bbp_user'];?>">View Profile</a>
-						</span>
-					</li>
+					
 
 				<?php endif; ?>
 
+				<li>
+					<span>
+						<a href="<?php echo '../user-profile.php?u='.$_GET['bbp_user'];?>">View Profile</a>
+					</span>
+				</li>
 			</ul>
 		</div><!-- #bbp-user-navigation -->
 	</div><!-- #bbp-single-user-details -->

@@ -1409,7 +1409,13 @@ function bbp_topic_author_avatar( $topic_id = 0, $size = 40 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		if ( !empty( $topic_id ) ) {
 			if ( !bbp_is_topic_anonymous( $topic_id ) ) {
-				$author_avatar = get_avatar( bbp_get_topic_author_id( $topic_id ), $size );
+				//$author_avatar = get_avatar( bbp_get_topic_author_id( $topic_id ), $size );
+				//CUSTOM PET MAGICK
+				include_once '../php/classes/BOUsers.php';
+	            $pmuser = new BOUsers;
+	            $pic = $pmuser->getProfilePicWP(bbp_get_topic_author_id( $topic_id ));
+	            $author_avatar = '<img class="avatar avatar-14 photo" src="'.$pic['THUMB'].'" height="14" width="14" />';
+	            //END CUSTOM
 			} else {
 				$author_avatar = get_avatar( get_post_meta( $topic_id, '_bbp_anonymous_email', true ), $size );
 			}
@@ -1508,6 +1514,7 @@ function bbp_topic_author_link( $args = '' ) {
 				// Assemble the links
 				foreach ( $author_links as $link => $link_text ) {
 					$link_class = ' class="bbp-author-' . esc_attr( $link ) . '"';
+					//$author_link[] = sprintf( '<a href="%1$s"%2$s%3$s>%4$s</a>', esc_url( $author_url ), $link_title, $link_class, $link_text );
 					$author_link[] = sprintf( '<a href="%1$s"%2$s%3$s>%4$s</a>', esc_url( $author_url ), $link_title, $link_class, $link_text );
 				}
 

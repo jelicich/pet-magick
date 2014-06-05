@@ -1,92 +1,88 @@
-						
-						<div class="mod-header">
-							<h2>Upload Vet Talk article</h2>
-						</div>	
-						
-						<div class="mod-content upload-vet">
+<?php
 
-							<iframe name="iframe_IE" src="" style="display: none"></iframe> 
+session_start();
+include_once "../php/classes/BOVettalk.php";
+include_once "../php/classes/BOPics.php";
 
-							<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
-								<div id="upload-status"></div>
+$vt = new BOVettalk;
+$pics = new BOPics;
 
-								<ul class="nav nav-tabs user-about-tabs">
-									<li class="active"><a href="#vet-info" data-toggle="tab">Information</a></li>
-									<li><a href="#vet-pics" data-toggle="tab">Pictures</a></li>
-								</ul>
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+
+	if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
+	{
+		echo 'Session ERROR';
+		die;
+	}
+
+	function createQuery($query, $path, $class){
+
+		$id_last_insert = $class->upload($query, $path);
+		//var_dump($id_last_insert);
+		//le agrego a post la imagen;
+		$_POST['pic']=$id_last_insert;
+		//echo $class->getErrors();
+	}//create query
+
+	if(isset($_FILES['file'])){ // normalWay();
+
+		$t = count($_FILES['file']['name']); 
+
+		for($i = 0; $i < $t; $i++){
+
+			$query['file'] = $_FILES['file']['tmp_name'][$i];
+			$query['fileName'] = $_FILES['file']['name'][$i];
+			$query['fileSize'] = $_FILES['file']['size'][$i];
+			$query['fileType'] = $_FILES['file']['type'][$i];
+			$query['caption']  = '';
+
+			$obj = $pics; 
+			$path = '../img/vetTalk/';
+
+			createQuery($query, $path, $obj);
+
+		}// end for
+	}else{ // fallBack();
+		
+		foreach ($_FILES as $key => $eachFile) 
+		{
+					//$index = strpos($key, "_");
+			  		//$index++;
+			  		//$p = substr($key, $index);
+
+					$query['file'] = $eachFile['tmp_name'];
+					$query['fileName'] = $eachFile['name'];
+					$query['fileSize'] =$eachFile['size'];
+					$query['fileType'] = $eachFile['type'];
+					$query['caption'] = ''; 
+
+					$obj = $pics; 
+					$path = '../img/vetTalk/';
+			
+					createQuery($query, $path, $obj);$counter++;
+		}// end foreach
+	}// end else
+
+	if(!isset($_POST['pic'])){ $_POST['pic'] = null; }
+	
+	$query = array(
+
+		'title' => $_POST['title'],
+		'content' => $_POST['content'],
+		'user_id' => $_POST['u'],
+		'pic_id' => $_POST['pic'],
+		'category' => $_POST['category']
+	);
+
+	//var_dump($_POST);
+	if(!$vt->insertArticle($query))
+		echo $vt->getErrors();
 
 
-								<div class="tab-content">						  
-						  			<div class="tab-pane active" id="vet-info">
-										<div class="cont-tr-tit">
-											
-											<label for="vet-title">
-												Title*
-												<span class="hid-def"><span class="left-tr"></span>Mandatory field. 100 characters max.</span>
-											</label>
 
-											<input type='text' class='form-element mandatory' name='title' id="vet-title"/>
-											<label for="vet-cat">
-												Category*
-												<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
-											</label>
-											<select class='form-element mandatory' name='category' id="vet-cat">
-												<?php
-												include_once "../php/classes/BOAnimalCategories.php";
-												$anCat = new BOAnimalCategories;
-												$cats = $anCat->getCategories();
-												for($i = 0; $i<sizeof($cats); $i++)
-												{
-													echo '<option value="'.$cats[$i]['ID_ANIMAL_CATEGORY'].'">'.$cats[$i]['NAME'].'</option>';
-												}
-												?>
-											</select>
-						  					<label for="vet-content">
-						  						Content*
-						  						<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
-						  					</label>
-						  					<textarea class='form-element mandatory' name='content' id="vet-content"></textarea>
-				  						</div>
-			  						</div>
+	include_once '../templates/adminVettalk.php';
+	
 
-			  						<div class="tab-pane" id="vet-pics">
-										
-										<div class="table">
-											<ul class="clearfix">
-												<label for="file_id">Select Picture</label>
-												<li class="new-pic-cont" style="width:100%">
-													<div class="clearfix">
-														<div id='imgContainer' ></div>
-													</div>		
-													<p id="file-container"><input type="file" name="file" id="file_id"/></p>
-												</li>
-											</ul>
-										</div>
-
-									</div>
-
-								</div>
-
-								<?php
-									echo '<a href="#'.$_GET['u'].'" class="btn" id="save-vet-talk">Save</a>';
-									echo '<a href="#'.$_GET['u'].'" class="btn" id="cancel-vet-talk">Cancel</a>';
-								?>
-
-							</form>
-						</div>
-
-
-
-
-						<script type="text/javascript">
-							imgVideoUploader('profile', 'vet-talk'); 
-
-						/*	$('.table').mCustomScrollbar({
-							    advanced:{
-							        updateOnContentResize: true
-							    },
-							    theme:"light-thin"
-							});*/
-						</script>
-
-				
+}	
+	?>

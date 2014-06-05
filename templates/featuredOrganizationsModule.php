@@ -89,7 +89,7 @@ for ($i=0; $i < $t; $i++) {
 
 		<li>
 			<a class='link-img' href= <?php echo "img/organizations/".$srcImg ?> > 
-				<img class="thumb-mid" src= <?php echo 'img/organizations/thumb/'.$srcImg; ?> />
+				<img class="thumb-mid" src= <?php echo 'img/organizations/thumb/'.$srcImg; ?> alt="<?php echo $orgAlbum[$i]['CAPTION'] ?>" />
 			</a> 
 		</li>
 

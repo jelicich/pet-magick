@@ -31,8 +31,10 @@
 						  		</div>
 
 						  		<div class="tab-pane" id="pro-pics">
+						  			
 						  			<label class="file-container">Select pictures</label>
 									<input type="file" name="file" id="file_id"/>
+									
 									<div class="table">
 										<ul>
 											<li>
@@ -40,6 +42,7 @@
 											</li>
 										</ul>
 									</div>
+
 						  		</div>
 
 						  	</div>
@@ -58,6 +61,13 @@
 					</div>
 						<script type="text/javascript">
 							imgVideoUploader('album', 'project'); 
+
+							$('.table').mCustomScrollbar({
+							    advanced:{
+							        updateOnContentResize: true
+							    },
+							    theme:"light-thin"
+							});
 						</script>
 
 				

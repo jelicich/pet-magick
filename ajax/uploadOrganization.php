@@ -1,110 +1,65 @@
-<?php
-//var_dump($_POST); exit;
-session_start();
+				<div class="mod-header">
+					<h2>Upload New Organization</h2>
+				</div>						
+
+				<div class="mod-content upload-org">
+
+					<iframe name="iframe_IE" src="" style="display: none"></iframe> 
+
+					<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
+						<div id="upload-status"></div>
+						<ul class="nav nav-tabs user-about-tabs">
+							<li class="active"><a href="#org-info" data-toggle="tab">Information</a></li>
+							<li><a href="#org-pics" data-toggle="tab">Pictures</a></li>
+						</ul>
+						<div class="tab-content">						  
+						  	<div class="tab-pane active" id="org-info">
+						  		<div class="cont-tr-tit">
+									<label for="org-name">
+										Organization Name*
+										<span class="hid-def"><span class="left-tr"></span>Mandatory field. 100 characters max.</span>
+									</label> 
+									<input type='text' class='form-element mandatory' name='name' id="org-name"/>
+									<label for="org-description">
+										Description*
+										<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+									</label>
+									<textarea class='form-element mandatory' name='description' id="org-description"></textarea>
+								</div>
+						  	</div>
+
+						  	<div class="tab-pane" id="org-pics">
+						  		<label class="file-container">Select pictures</label>
+								<input type="file" name="file" id="file_id"/>
+								<div class="table">
+									<ul>
+										<li>
+											<div id='imgContainer' class="clearfix albumContainer"></div>
+										</li>
+									</ul>
+								</div>
+						  	</div>
+						</div>
 
 
 
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-	if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
-	{
-		echo 'Session ERROR';
-		die;
-	}
 
-	function createQuery($query, $path, $class){
+					</form>
+					<?php
+					echo '<a href="#'.$_GET['u'].'" class="btn" id="save-organization">Save</a>';
+					echo '<a href="#'.$_GET['u'].'" class="btn" id="cancel-organization">Cancel</a>';
+					?>
+					
+				</div>
 
-		$id_last_insert = $class->upload($query, $path);
-		//var_dump($id_last_insert);
-		//le agrego a post la imagen;
-		//$_POST['pic'] = $id_last_insert;
-		//echo $_POST['pic']; exit;
-		//echo $class->getErrors();
-	}//create query
+				<script type="text/javascript">
+					imgVideoUploader('album', 'organization'); 
+					$('.table').mCustomScrollbar({
+					    advanced:{
+					        updateOnContentResize: true
+					    },
+					    theme:"light-thin"
+					});
+				</script>
 
-
-include_once "../php/classes/BOOrganizations.php";
-include_once "../php/classes/BOPics.php";
-include_once "../php/classes/BOAlbums.php";
-
-$org = new BOOrganizations;
-$pics = new BOPics;
-$a = new BOAlbums;
-//var_dump($_POST); exit;
-	$albumId = $a->createAlbum();
-///var_dump($albumId); exit;
-
-	$dato = array(
-
-		'name' => $_POST['name'],
-		'description'=> $_POST['description'],
-		'user_id' => $_POST['u'],
-		'album_id' => $albumId
-
-	);
-
-	$org->insertOrganizations($dato);
-
-	if(isset($_FILES['file'])){ // normalWay();
-
-		$t = count($_FILES['file']['name']); 
-
-		for($i = 0; $i < $t; $i++){
-
-			$query['file'] = $_FILES['file']['tmp_name'][$i];
-			$query['fileName'] = $_FILES['file']['name'][$i];
-			$query['fileSize'] = $_FILES['file']['size'][$i];
-			$query['fileType'] = $_FILES['file']['type'][$i];
-			$query['caption']  = $_POST['caption'][$i];
-
-			$path = '../img/organizations/';
-		    $pics->upload($query,$path,$albumId);
-
-			//$obj = $pics; 
-			//$path = '../img/organizations/';
-
-			//createQuery($query, $path, $obj);
-
-		}// end for
-	}else{ // fallBack();
-		
-		foreach ($_FILES as $key => $eachFile) 
-		{
-					$index = strpos($key, "_");
-			  		$index++;
-			  		$p = substr($key, $index);
-
-					$query['file'] = $eachFile['tmp_name'];
-					$query['fileName'] = $eachFile['name'];
-					$query['fileSize'] =$eachFile['size'];
-					$query['fileType'] = $eachFile['type'];
-					$query['caption'] = $_POST["caption_".$p];  
-
-					$obj = $pics; 
-					$path = '../img/organizations/';
-			
-					createQuery($query, $path, $obj);
-		}// end foreach
-	}// end else
-
-
-}
-/*
-if(!isset($_POST['pic'])){ $_POST['pic'] = null; }
-
-$dato = array(
-
-	'name' => $_POST['name'],
-	'description' => $_POST['description'],
-	'user_id' => $_POST['u'],
-	'pic_id' => $_POST['pic']
-);
-
-
-//$org->insertOrganizations($dato);
-
-*/
-include_once '../templates/adminOrganizations.php'
-
-?>
 				

@@ -58,7 +58,7 @@ $organizations = $org->getOrganizationsById($_GET["org"]);
 										</ul>
 									</div>
 
-									<div class="album-grid scrolleable">
+									<div class="album-grid scrollable">
 									
 												<ul class="clearfix">
 										<?php
@@ -93,14 +93,22 @@ $organizations = $org->getOrganizationsById($_GET["org"]);
 
 					</div>
 						<script type="text/javascript">
+						
 							imgVideoUploader('album', 'edit-organization'); 
+							
 							$('.table').mCustomScrollbar({
 							    advanced:{
 							        updateOnContentResize: true
 							    },
 							    theme:"light-thin"
 							});
-							start_scroll('scrolleable');
+
+							$('.scrollable').mCustomScrollbar({
+							    advanced:{
+							        updateOnContentResize: true
+							    },
+							    theme:"light-thin"
+							});
 						</script>
 
 				

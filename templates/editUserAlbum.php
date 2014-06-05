@@ -59,7 +59,9 @@
 						
 
 						<script type="text/javascript">
+							
 							imgVideoUploader('album', 'albumProfile'); // SUBIR IMG
+							
 							$('.scrollable').mCustomScrollbar({
 							    advanced:{
 							        updateOnContentResize: true
@@ -75,5 +77,4 @@
 							    theme:"light-thin"
 							});
 
-							//imgVideoUploader('profile', 'about'); // SUBIR IMG
 						</script>

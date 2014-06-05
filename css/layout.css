@@ -4451,6 +4451,12 @@ resize: none;
 	margin-right: 10px;	
 }
 
+.edit-org #save-edit-organization,
+.edit-org #cancel-edit-organization
+{
+		margin-top: -15px;
+}
+
 /*=========== create proj ============*/
 .upload-pro #save-project{
 	margin-right: 10px;	
@@ -4578,6 +4584,87 @@ resize: none;
 	height: 100px;
 	resize: none;
 }
-.edit-pro #save-edit-organization{
+.edit-pro #save-edit-project{
 	margin-right: 10px;	
+
+}
+
+.edit-pro #save-edit-project,
+.edit-pro #cancel-edit-project
+{
+		margin-top: -15px;
+}
+
+
+/*=========== create vet ============*/
+
+
+
+.upload-vet .table{
+	height: 180px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	/*overflow: auto;*/
+    padding: 10px;
+	/*background-color: rgba(255,255,255,0.5);*/
+}
+
+
+.upload-vet .new-pic-cont .cont-preview{
+		height: 140px;
+		padding-bottom: 0px;
+
+}
+
+.upload-vet .table ul  {
+	margin: 0 !important;
+}
+
+.upload-vet .table ul li {
+	width: 170px;
+	margin: 0 auto;
+}
+
+
+
+.upload-vet .cont-preview{
+	width: 170px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.upload-vet .cont-preview img{
+	max-height: 90%;
+}
+
+.upload-vet .file-container{
+	color: #000 !important;
+	
+}
+
+.upload-vet input[type="text"] {
+	width: 172px;
+	margin-top: 5px;
+}
+.upload-vet input[type='file']{
+	padding: 6px;
+	background: rgba(255,255,255,0.3);
+	width: 100%;
+	color: #000;
+}
+.upload-vet #vet-title, 
+.upload-vet select
+{
+	width: 100%;
+}
+
+.upload-vet #vet-content{
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+
+
+.upload-vet #save-vet-talk {
+	margin-right: 10px;
 }

@@ -59,7 +59,7 @@ $project = $pro->getProjectsById($_GET["pr"]);
 
 
 
-									<div class="album-grid scrolleable">
+									<div class="album-grid scrollable">
 									
 												<ul class="clearfix">
 										<?php
@@ -86,22 +86,6 @@ $project = $pro->getProjectsById($_GET["pr"]);
 							  	</div>
 
 							</div>
-
-
-
-							
-
-
-
-
-
-
-
-
-							
-							
-
-							
 						</form>
 
 						<?php
@@ -112,13 +96,23 @@ $project = $pro->getProjectsById($_GET["pr"]);
 					</div>
 						<script type="text/javascript">
 							imgVideoUploader('album', 'edit-project'); 
+						
+
 							$('.table').mCustomScrollbar({
 							    advanced:{
 							        updateOnContentResize: true
 							    },
 							    theme:"light-thin"
 							});
-							start_scroll('scrolleable');
+
+
+							$('.scrollable').mCustomScrollbar({
+							    advanced:{
+							        updateOnContentResize: true
+							    },
+							    theme:"light-thin"
+							});
+							
 						</script>
 
 				

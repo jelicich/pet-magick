@@ -1,114 +1,73 @@
-<?php
 
-session_start();
+					<div class="mod-header">
+						<h2>Upload New Project</h2>
+					</div>	
 
-
-if(!isset($_POST['u']) || $_POST['u'] != $_SESSION['id'])
-{
-	echo 'Session ERROR';
-	die;
-}
+					<div class="mod-content upload-pro">
 
 
+						<iframe name="iframe_IE" src="" style="display: none"></iframe> 
 
+						<form action="ajax/insertar.php" method="post" enctype="multipart/form-data" id="form-id" target="iframe_IE">
+							<div id="upload-status"></div>
+							<ul class="nav nav-tabs user-about-tabs">
+								<li class="active"><a href="#pro-info" data-toggle="tab">Information</a></li>
+								<li><a href="#pro-pics" data-toggle="tab">Pictures</a></li>
+							</ul>
+							<div class="tab-content">						  
+						  		<div class="tab-pane active" id="pro-info">
+						  			<div class="cont-tr-tit">
+										<label for="pro-name">
+											Project Name*
+											<span class="hid-def"><span class="left-tr"></span>Mandatory field. 100 characters max.</span>
+										</label> 
+										<input type='text' class='form-element mandatory' name='name' id="pro-name"/>
+										<label for="pro-description">
+											Project description*
+											<span class="hid-def"><span class="left-tr"></span>Mandatory field.</span>
+										</label> 
+										<textarea class='form-element mandatory' name='description' id="pro-description"></textarea>
+									</div>
+						  		</div>
 
-include_once "../php/classes/BOProjects.php";
-include_once "../php/classes/BOPics.php";
-include_once "../php/classes/BOAlbums.php";
+						  		<div class="tab-pane" id="pro-pics">
+						  			
+						  			<label class="file-container">Select pictures</label>
+									<input type="file" name="file" id="file_id"/>
+									
+									<div class="table">
+										<ul>
+											<li>
+												<div id='imgContainer' class="clearfix albumContainer"></div>
+											</li>
+										</ul>
+									</div>
 
-$pro = new BOProjects;
-$pics = new BOPics;
-$a = new BOAlbums;
+						  		</div>
 
-//var_dump($_POST);
-
-$query = array();
-$id_last_insert;
-
-function createQuery($query, $path, $class){
-
-	$id_last_insert = $class->upload($query, $path);
-	//var_dump($id_last_insert);
-	//le agrego a post la imagen;
-	//$_POST['pic'] = $id_last_insert;
-	//echo $class->getErrors();
-}//create query
-
-
-	//busco si tiene album
-/*	$albumId = $project->getAlbumIdByProject($_POST['p']);
-	//si no tiene creo uno
-	if(empty($albumId))
-	{
-		$a = new BOAlbums;
-		$id = $a->createAlbum();
-		//setAlbum(ALBUM-ID , ID-PET)
-		$project->setAlbum($id, $_POST['p']);
-		$albumId = $id;
-	}
-*/
-		
-
-		
+						  	</div>
 
 
 
-$albumId = $a->createAlbum();
+							
 
-$dato = array(
+							
+						</form>
+						<?php
+							echo '<a href="#'.$_GET['u'].'" class="btn" id="save-project">Save</a>';
+							echo '<a href="#'.$_GET['u'].'" class="btn" id="cancel-project">Cancel</a>';
+						?>
 
-	'title' => $_POST['name'],
-	'description'=> $_POST['description'],
-	'user_id' => $_POST['u'],
-	'album_id' => $albumId
+					</div>
+						<script type="text/javascript">
+							imgVideoUploader('album', 'project'); 
 
-);
+							$('.table').mCustomScrollbar({
+							    advanced:{
+							        updateOnContentResize: true
+							    },
+							    theme:"light-thin"
+							});
+						</script>
 
-
-
-$pro->insertProjects($dato);
-
-
-if(isset($_FILES['file'])){ // normalWay();
-
-	$t = count($_FILES['file']['name']); 
-
-	for($i = 0; $i < $t; $i++){
-
-		$query['file'] = $_FILES['file']['tmp_name'][$i];
-		$query['fileName'] = $_FILES['file']['name'][$i];
-		$query['fileSize'] = $_FILES['file']['size'][$i];
-		$query['fileType'] = $_FILES['file']['type'][$i];
-		$query['caption']  = $_POST['caption'][$i];
-
-		$path = '../img/projects/';
-		$pics->upload($query,$path,$albumId);
-
-	}// end for
-
-}else{ // fallBack();
-	
-	foreach ($_FILES as $key => $eachFile) 
-	{
-		$index = strpos($key, "_");
-  		$index++;
-  		$p = substr($key, $index);
-
-		$query['file'] = $eachFile['tmp_name'];
-		$query['fileName'] = $eachFile['name'];
-		$query['fileSize'] =$eachFile['size'];
-		$query['fileType'] = $eachFile['type'];
-		$query['caption'] = $_POST["caption_".$p]; 
-
-		$obj = $pics; 
-		$path = '../img/projects/';
-
-		createQuery($query, $path, $obj);
-
-	}// end foreach
-}// end else
-
-
-include_once '../templates/adminProjects.php';
-
-
+				

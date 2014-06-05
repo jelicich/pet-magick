@@ -13,9 +13,15 @@ function imgVideoUploader(whatFor, modulo){
 		var filesSelected = []; 
 		var filesSelectedPosition = 0;
 		var formData;
-		var mime = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
+
+		//var mime = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 
+			  		//'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
+		//var mimeImg = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
+
+		var mime = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg',  
 			  		'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
-		var mimeImg = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'];
+			  		
+		var mimeImg = ['image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg'];
 		var mimeVideo= [ 'video/mp3', 'video/mp4', 'video/ogg', 'video/webm','video/wav'];
 
 		function ajaxx(metodo,url, unaFuncion, mensaje, async) {

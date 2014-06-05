@@ -13,7 +13,6 @@
 									
 										<?php
 										$list = $org->getOrgListByUser($idUsr);
-										//var_dump($list); exit;
 										$anchor = 'organizations.php?s=0&p=';
 
 										if($list)
@@ -63,11 +62,10 @@
 			    	uploadOrganization();
 			    	editOrganization();
 					deleteOrganization();
+					start_scroll_profile('adminOrg', false);
 			</script>
 <?php
 	}
 ?>
-			<script type="text/javascript">
-				start_scroll_profile('adminOrg', false);
-			</script>
+			
 								

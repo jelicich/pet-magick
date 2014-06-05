@@ -41,25 +41,7 @@
 											if(strlen($project_desc) ==125) echo '...';?></p>
 											<a href=<?php echo $anchor.$list[$i]['ID_PROJECT']; ?> class='linkToModule'>View project</a>
 
-					<!--						<div id="pet-album">
-												<div class="flexslider carousel">
-													<ul class="slides">
-
-					<?php
-											/*for($j = 0; $j < sizeof($list[$i]['Albums']['Pics']); $j++)
-											{
-												echo '<li>
-														<a href="'.$list[$i]['Albums']['Pics'][$j]['PIC'].'">
-															<img src="'.$list[$i]['Albums']['Pics'][$j]['THUMB'].'"/>
-														</a>
-													  </li>';
-											}
-											*/
-					?>
-													</ul>
-												</div>
-											</div> 
-					-->						<input type="button" value="Edit" name="<?php echo $list[$i]['ID_PROJECT'] ?>" class="btn edit-project" />
+											<input type="button" value="Edit" name="<?php echo $list[$i]['ID_PROJECT'] ?>" class="btn edit-project" />
 											<input type="button" value="Delete" name="<?php echo $list[$i]['ID_PROJECT'] ?>" class="btn btn-danger delete-project" />
 										</div>
 									</li>
@@ -81,12 +63,10 @@
 			    	uploadProject();
 			    	editProject();
 					deleteProject();
+					start_scroll_profile('adminProject', false);
 			</script>
 <?php
 	}
 ?>
-			<script type="text/javascript">
-				//flexslider();		
-				start_scroll_profile('adminProject', false);
-			</script>
+		
 								

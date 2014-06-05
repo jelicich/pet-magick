@@ -4,12 +4,10 @@ PENDIENTES
 
 - ver los formatos de video q vamos a usar y de img (yo pondria cartelito con los formatos permitidos y ya)
 
-- css en ventanas modales (scroll y miniaturas con caption al seleccionar imgs)
-
-
 - Poner google analitics (Necesitamos el dominio y etc. Ya hice la cuenta: pet_magick@gmail.com // pass: PetMagick1320)
 
 - Agregar metas keywords description etc
+
 
 
 
@@ -33,8 +31,6 @@ APORTADOS:
 - y algo conceptual cuando te registras
 [06:14:32 p.m.] Martin Sazzaroli: Lastname debería ir a la derecha de name y no abajo
 [06:14:44 p.m.] Martin Sazzaroli: y tendrias que ir altabeando de izquierda a derecha
-
-- Fotos en wordpress revisar pq sigue cakeado algunas
 
 
 ===================================================================================================================

@@ -8,7 +8,8 @@ class BOPics{
 
   var $table;
   var $err;
-  var $mime = array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png');
+  //var $mime = array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png');
+  var $mime = array('image/JPG','image/JPEG','image/jpg', 'image/jpeg', 'image/pjpeg');
 
   function __construct(){
 

@@ -87,9 +87,12 @@ for ($i=0; $i < $t; $i++) {
 		$srcImg = $orgAlbum[$i]['THUMB'];
 ?>
 
-		<li>
+		<li class="sliderCap">
 			<a class='link-img' href= <?php echo "img/organizations/".$srcImg ?> > 
 				<img class="thumb-mid" src= <?php echo 'img/organizations/thumb/'.$srcImg; ?> alt="<?php echo $orgAlbum[$i]['CAPTION'] ?>" />
+				<dl class='hidden'>
+					<dt><?php if(strlen(htmlspecialchars($orgAlbum[$i]['CAPTION'])) > 8) echo substr(htmlspecialchars($orgAlbum[$i]['CAPTION']),0,8).'...'; else echo htmlspecialchars($orgAlbum[$i]['CAPTION']); ?> </dt>
+				</dl>
 			</a> 
 		</li>
 

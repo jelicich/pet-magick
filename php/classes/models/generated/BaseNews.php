@@ -29,9 +29,9 @@ abstract class BaseNews extends Doctrine_Record
              'primary' => true,
              'autoincrement' => true,
              ));
-        $this->hasColumn('NEWS', 'string', 300, array(
+        $this->hasColumn('NEWS', 'string', 600, array(
              'type' => 'string',
-             'length' => 300,
+             'length' => 600,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

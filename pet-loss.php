@@ -154,7 +154,8 @@
 												<a href="<?php echo 'pet-tribute.php?t='.$r[$i]['ID_TRIBUTE']; ?>" >
 													<img src= "<?php echo $thumb ?>" class='thumb-mid'/>
 													<dl class='hidden'>
-														<dt><?php echo  htmlspecialchars($r[$i]['Pets']['NAME']); ?> </dt>
+													<dt>R.I.P</dt>
+														<dd><?php echo  htmlspecialchars($r[$i]['Pets']['NAME']); ?> </dd>
 														<dd><?php echo  $r[$i]['SINCE']." - ".$r[$i]['THRU'];  ?></dd>
 													</dl>
 												</a>

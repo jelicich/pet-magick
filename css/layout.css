@@ -296,7 +296,7 @@ p,span{
 .mod-content p{
 	color:#000000;
 	line-height: 16px;
-	margin-bottom: 0;
+	margin-bottom: 35px;
 }
 
 .mod-header, .mod-content{
@@ -1404,9 +1404,14 @@ max-height: 100px !important;
 	background: rgba(255, 255, 255, 0.3);
 	width: 97%;
 	margin: 5px;
-	height: 170px;
+	height: auto;
+	min-height: 170px;
+	max-height: 220px;
 	padding: 10px 10px 10px 10px;
 }
+
+
+
 
 .bg-news a{
 	float: right;

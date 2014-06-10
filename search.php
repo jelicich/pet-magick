@@ -381,7 +381,7 @@
 <!-- END wrapper-->
 
 
-<?php var_dump($totalRec); ?>
+<?php //var_dump($totalRec); ?>
 
 <script type="text/javascript">
 	//start_scroll('scrollable-module', false);

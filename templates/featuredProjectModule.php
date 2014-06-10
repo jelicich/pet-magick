@@ -101,9 +101,12 @@ for ($i=0; $i < $t; $i++) {
 		$srcImg = $projectAlbum[$i]['THUMB'];
 ?>
 
-		<li>
+		<li class="sliderCap">
 			<a class='link-img' href= <?php echo "img/projects/".$srcImg ?> > 
-				<img class="thumb-mid" src= <?php echo 'img/projects/thumb/'.$srcImg; ?> />
+				<img class="thumb-mid" src= <?php echo 'img/projects/thumb/'.$srcImg; ?> alt="<?php echo $projectAlbum[$i]['CAPTION'] ?>" />
+				<dl class='hidden'>
+					<dt><?php if(strlen(htmlspecialchars($projectAlbum[$i]['CAPTION'])) > 8) echo substr(htmlspecialchars($projectAlbum[$i]['CAPTION']),0,8).'...'; else echo htmlspecialchars($projectAlbum[$i]['CAPTION']); ?> </dt>
+				</dl>
 			</a> 
 		</li>
 

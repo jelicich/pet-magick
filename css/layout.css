@@ -296,7 +296,7 @@ p,span{
 .mod-content p{
 	color:#000000;
 	line-height: 16px;
-	/*margin-bottom: 35px;*/
+	margin-bottom: 0;
 }
 
 .mod-header, .mod-content{

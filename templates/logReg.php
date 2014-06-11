@@ -61,7 +61,7 @@
 						
 						<?php
 							foreach ($countries as $key => $value){
-	     						echo '<option value="'.$value['CountryId'].'">'.$value['Country'].'</option>';
+	     						echo '<option value="'.$value['CountryId'].'">'.utf8_encode($value['Country']).'</option>';
 							}
 					    ?>
 

@@ -147,7 +147,7 @@
 					<ul class='grid-thumbs clearfix mod-content ' id='profilesModuleByPet' >
 						<?php 
 							$_GET['s'] = 0; // lo utilizo para el limit. o representa a index.php
-							include_once 'templates/profilesModule.php'; 
+							include_once 'templates/profilesModHome.php'; 
 						?>
 					</ul>
 				</div>

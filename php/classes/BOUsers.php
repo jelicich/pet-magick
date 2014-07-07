@@ -924,6 +924,46 @@ class BOUsers{
     }
 
 
+    function get12rand()
+    {
+      $q = Doctrine_Query::create()
+          ->select('u.ID_USER')
+          ->from('Users u')
+          ->where('u.STATUS = ?',1);
+      $rta = $q->execute();
+      $ids = $rta->toArray();
+
+      $totalIds = sizeof($ids);
+      //var_dump($totalIds);
+      //die;
+      $arr = array();
+      while ( count($arr) < 12 ) 
+      {
+        $x = mt_rand(0,$totalIds - 1);
+        if ( !in_array($ids[$x]['ID_USER'],$arr) ) 
+        { 
+          $arr[] = $ids[$x]['ID_USER']; 
+        }
+      }
+
+      //var_dump($arr);
+      //die;
+      $q = Doctrine_Query::create()
+          ->select('u.ID_USER, u.NAME, u.LASTNAME, u.NICKNAME, ph.PIC, k.Country, r.Region, c.City')
+          ->from('Users u') 
+          ->leftJoin('u.Pics ph')
+          ->leftJoin('u.Countries k')
+          ->leftJoin('u.Regions r')
+          ->leftJoin('u.Cities c')
+          ->whereIn('u.ID_USER', $arr);
+      $rta = $q->execute();
+      $profiles = $rta->toArray();
+
+      return $profiles;
+
+
+
+    }
 }//End class BOUsers
 
 
